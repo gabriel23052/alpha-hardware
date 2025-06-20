@@ -28,6 +28,17 @@ html {
   --dneutral-xdark: #222020;
   --feedback-positive: #31bc07;
   --primary-gradient: linear-gradient(to bottom, #ffc107, #f29603);
+
+  --px4: 0.25rem;
+  --px8: 0.5rem;
+  --px12: 0.75rem;
+  --px16: 1rem;
+  --px20: 1.25rem;
+  --px24: 1.5rem;
+  --px32: 2rem;
+  --px40: 2.5rem;
+  --px64: 4rem;
+  --px100: 6.25rem;
 }
 
 .primary-xlight {

@@ -1,0 +1,164 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  --primary-xlight: #ffc2c2;
+  --primary-light: #f27d7d;
+  --primary: #eb3832;
+  --primary-dark: #af1510;
+  --primary-xdark: #5d0603;
+  --secondary-xlight: #f9eac3;
+  --secondary-light: #f3d279;
+  --secondary: #ffc107;
+  --secondary-dark: #c99b02;
+  --secondary-xdark: #774e03;
+  --lneutral-xlight: #f9f7f7;
+  --lneutral-light: #eeecec;
+  --lneutral: #cfc9c9;
+  --lneutral-dark: #afafab;
+  --lneutral-xdark: #929292;
+  --dneutral-xlight: #888383;
+  --dneutral-light: #5e5a5a;
+  --dneutral: #3f3c3c;
+  --dneutral-dark: #2c2a2a;
+  --dneutral-xdark: #222020;
+  --feedback-positive: #31bc07;
+  --primary-gradient: linear-gradient(to bottom, #ffc107, #f29603);
+}
+
+.primary-xlight {
+  color: var(--primary-xlight);
+}
+.bg-primary-xlight {
+  background-color: var(--primary-xlight);
+}
+.primary-light {
+  color: var(--primary-light);
+}
+.bg-primary-light {
+  background-color: var(--primary-light);
+}
+.primary {
+  color: var(--primary);
+}
+.bg-primary {
+  background-color: var(--primary);
+}
+.primary-dark {
+  color: var(--primary-dark);
+}
+.bg-primary-dark {
+  background-color: var(--primary-dark);
+}
+.primary-xdark {
+  color: var(--primary-xdark);
+}
+.bg-primary-xdark {
+  background-color: var(--primary-xdark);
+}
+.secondary-xlight {
+  color: var(--secondary-xlight);
+}
+.bg-secondary-xlight {
+  background-color: var(--secondary-xlight);
+}
+.secondary-light {
+  color: var(--secondary-light);
+}
+.bg-secondary-light {
+  background-color: var(--secondary-light);
+}
+.secondary {
+  color: var(--secondary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.secondary-dark {
+  color: var(--secondary-dark);
+}
+.bg-secondary-dark {
+  background-color: var(--secondary-dark);
+}
+.secondary-xdark {
+  color: var(--secondary-xdark);
+}
+.bg-secondary-xdark {
+  background-color: var(--secondary-xdark);
+}
+.lneutral-xlight {
+  color: var(--lneutral-xlight);
+}
+.bg-lneutral-xlight {
+  background-color: var(--lneutral-xlight);
+}
+.lneutral-light {
+  color: var(--lneutral-light);
+}
+.bg-lneutral-light {
+  background-color: var(--lneutral-light);
+}
+.lneutral {
+  color: var(--lneutral);
+}
+.bg-lneutral {
+  background-color: var(--lneutral);
+}
+.lneutral-dark {
+  color: var(--lneutral-dark);
+}
+.bg-lneutral-dark {
+  background-color: var(--lneutral-dark);
+}
+.lneutral-xdark {
+  color: var(--lneutral-xdark);
+}
+.bg-lneutral-xdark {
+  background-color: var(--lneutral-xdark);
+}
+.dneutral-xlight {
+  color: var(--dneutral-xlight);
+}
+.bg-dneutral-xlight {
+  background-color: var(--dneutral-xlight);
+}
+.dneutral-light {
+  color: var(--dneutral-light);
+}
+.bg-dneutral-light {
+  background-color: var(--dneutral-light);
+}
+.dneutral {
+  color: var(--dneutral);
+}
+.bg-dneutral {
+  background-color: var(--dneutral);
+}
+.dneutral-dark {
+  color: var(--dneutral-dark);
+}
+.bg-dneutral-dark {
+  background-color: var(--dneutral-dark);
+}
+.dneutral-xdark {
+  color: var(--dneutral-xdark);
+}
+.bg-dneutral-xdark {
+  background-color: var(--dneutral-xdark);
+}
+.feedback-positive {
+  color: var(--feedback-positive);
+}
+.bg-feedback-positive {
+  background-color: var(--feedback-positive);
+}
+.primary-gradient {
+  color: var(--primary-gradient);
+}
+.bg-primary-gradient {
+  background-color: var(--primary-gradient);
+}

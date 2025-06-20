@@ -41,6 +41,22 @@ html {
   --px100: 6.25rem;
 }
 
+@media (max-width: 1366px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-width: 460px) {
+  html {
+    font-size: 12px;
+  }
+}
+
 .primary-xlight {
   color: var(--primary-xlight);
 }
@@ -172,4 +188,8 @@ html {
 }
 .bg-primary-gradient {
   background-color: var(--primary-gradient);
+}
+
+div {
+  font-size: var(--px24);
 }

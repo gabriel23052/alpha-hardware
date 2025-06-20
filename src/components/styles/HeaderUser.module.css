@@ -1,0 +1,14 @@
+.headerUserLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--px12);
+  grid-column: 9 / span 2;
+}
+
+.headerUserLinks a {
+  text-decoration: underline;
+}
+.headerUserLinks a:hover {
+  color: var(--lneutral-light);
+}
+

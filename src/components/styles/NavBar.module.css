@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  display: block;
+  padding: var(--px8) var(--px24);
+}
+.links a:hover {
+  background-color: var(--dneutral-dark);
+}

@@ -1,0 +1,36 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  padding-top: var(--px16);
+  padding-bottom: var(--px16);
+}
+
+.logo {
+  grid-column: span 2;
+}
+
+.search {
+  grid-column: span 5;
+  padding: var(--px8) var(--px16);
+  border-radius: var(--px4);
+}
+.search:hover,
+.search:focus {
+  background-color: var(--lneutral-light);
+}
+
+.shortcuts {
+  display: flex;
+  gap: var(--px24);
+  grid-column: 11 / span 2;
+  justify-self: end;
+}
+
+.shortcuts a {
+  padding: --px4;
+  transition: transform 200ms;
+}
+.shortcuts a:hover {
+  transform: scale(1.1);
+}

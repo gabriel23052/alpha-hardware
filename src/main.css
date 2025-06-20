@@ -26,6 +26,8 @@
   margin: 0px;
   padding: 0px;
   border: none;
+  outline: none;
+  box-sizing: border-box;
 }
 
 html {
@@ -81,6 +83,15 @@ html {
   html {
     font-size: 12px;
   }
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
 }
 
 .primary-xlight {
@@ -277,4 +288,11 @@ html {
   font-size: var(--px24);
   line-height: var(--px24);
   font-weight: 400;
+}
+
+.defaultContainer {
+  max-width: 1406px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px var(--px20);
 }

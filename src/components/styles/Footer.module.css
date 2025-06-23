@@ -86,3 +86,20 @@
   display: block;
   text-align: center;
 }
+
+@media (max-width: 700px) {
+  .gridContainer {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: var(--px32);
+  }
+
+  .social {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: span 2;
+  }
+  .social > img {
+    width: 10rem;
+  }
+}

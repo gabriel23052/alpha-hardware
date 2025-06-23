@@ -1,7 +1,3 @@
-.container {
-  width: 100%;
-}
-
 .links {
   display: flex;
 }
@@ -29,4 +25,18 @@
 
 .links li:last-child a::after {
   display: none;
+}
+
+@media (max-width: 700px) {
+  .links {
+    flex-direction: column;
+  }
+
+  .container {
+    width: 100%;
+    display: none;
+  }
+  .container.open {
+    display: block;
+  }
 }

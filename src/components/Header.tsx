@@ -12,10 +12,15 @@ import svgCart from "../assets/svg/cart.svg";
 
 const Header = () => {
   const [search, setSearch] = React.useState("");
+  const [mobileMenu, setMobileMenu] = React.useState(false);
 
   return (
     <header>
-      <div className={`bg-primary ${classes.contentContainer}`}>
+      <div
+        className={`bg-primary ${classes.contentContainer} ${
+          mobileMenu ? classes.open : ""
+        }`}
+      >
         <div className={`defaultContainer ${classes.content}`}>
           <Link className={`${classes.logo}`} to="/">
             <img src={svgLogo} />
@@ -40,7 +45,7 @@ const Header = () => {
           </nav>
         </div>
       </div>
-      <NavBar />
+      <NavBar visible={mobileMenu} />
     </header>
   );
 };

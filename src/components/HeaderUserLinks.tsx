@@ -17,9 +17,8 @@ const HeaderUserLinks = () => {
         <span>
           <Link className="lneutral-xlight text-default-b" to="/">
             Entrar
-          </Link>
-          <br />
-          ou{" "}
+          </Link>{" "}
+          ou <br />
           <Link className="lneutral-xlight text-default-b" to="/">
             Cadastrar-se
           </Link>

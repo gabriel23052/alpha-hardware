@@ -240,6 +240,18 @@ ul {
 .bg-primary-gradient {
   background-color: var(--primary-gradient);
 }
+.white {
+  color: white;
+}
+.bg-white {
+  background-color: white;
+}
+.black {
+  color: black;
+}
+.bg-black {
+  background-color: black;
+}
 
 .text-small {
   font-family: var(--primary-font);

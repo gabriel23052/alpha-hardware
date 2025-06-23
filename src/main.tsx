@@ -5,6 +5,7 @@ import "./main.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Index from "./pages/Index";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<Index />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   </StrictMode>
 );

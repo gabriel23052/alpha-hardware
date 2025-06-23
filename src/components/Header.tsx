@@ -17,36 +17,34 @@ const Header = () => {
 
   return (
     <header className={`${classes.header}`}>
-      <div
-        className={`bg-primary ${classes.contentContainer} ${
-          mobileMenu ? classes.open : ""
-        }`}
-      >
-        <div className={`defaultContainer ${classes.content}`}>
-          <Link className={`${classes.logo}`} to="/">
-            <img src={svgLogo} />
-          </Link>
-          <input //Improvisado
-            className={`text-default dneutral-dark ${classes.search}`}
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-          <HeaderUserLinks />
-          <nav className={`${classes.shortcuts}`}>
-            <Link to="/">
-              <img src={svgFavorite} />
+      <div className={`${classes.container} ${mobileMenu ? classes.open : ""}`}>
+        <div className={`bg-primary`}>
+          <div className={`defaultContainer ${classes.wrapper}`}>
+            <Link className={`${classes.logo}`} to="/">
+              <img src={svgLogo} />
             </Link>
-            <Link to="/">
-              <img src={svgMyPurchases} />
-            </Link>
-            <Link to="/">
-              <img src={svgCart} />
-            </Link>
-          </nav>
+            <input //Improvisado
+              className={`text-default dneutral-dark ${classes.search}`}
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+            <HeaderUserLinks />
+            <nav className={`${classes.shortcuts}`}>
+              <Link to="/">
+                <img src={svgFavorite} />
+              </Link>
+              <Link to="/">
+                <img src={svgMyPurchases} />
+              </Link>
+              <Link to="/">
+                <img src={svgCart} />
+              </Link>
+            </nav>
+          </div>
         </div>
+        <NavBar />
       </div>
-      <NavBar visible={mobileMenu} />
       <button
         className={`bg-dneutral ${classes.menuBtn}`}
         onClick={() => setMobileMenu((val) => !val)}

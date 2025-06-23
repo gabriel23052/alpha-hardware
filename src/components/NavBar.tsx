@@ -2,13 +2,9 @@ import { Link } from "react-router";
 
 import classes from "./styles/NavBar.module.css";
 
-const NavBar = ({ visible }: { visible: boolean }) => {
+const NavBar = () => {
   return (
-    <div
-      className={`bg-dneutral-xdark ${classes.container} ${
-        visible ? classes.open : ""
-      }`}
-    >
+    <div className={`bg-dneutral-xdark`}>
       <nav className={`lneutral-light text-default defaultContainer`}>
         <ul className={`${classes.links}`}>
           <li>

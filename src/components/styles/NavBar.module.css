@@ -31,12 +31,4 @@
   .links {
     flex-direction: column;
   }
-
-  .container {
-    width: 100%;
-    display: none;
-  }
-  .container.open {
-    display: block;
-  }
 }

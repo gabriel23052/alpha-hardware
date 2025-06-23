@@ -9,13 +9,14 @@ import svgLogo from "../assets/svg/logo.svg";
 import svgFavorite from "../assets/svg/favorite.svg";
 import svgMyPurchases from "../assets/svg/myPurchases.svg";
 import svgCart from "../assets/svg/cart.svg";
+import menu from "../assets/svg/menu.svg";
 
 const Header = () => {
   const [search, setSearch] = React.useState("");
   const [mobileMenu, setMobileMenu] = React.useState(false);
 
   return (
-    <header>
+    <header className={`${classes.header}`}>
       <div
         className={`bg-primary ${classes.contentContainer} ${
           mobileMenu ? classes.open : ""
@@ -46,6 +47,12 @@ const Header = () => {
         </div>
       </div>
       <NavBar visible={mobileMenu} />
+      <button
+        className={`bg-dneutral ${classes.menuBtn}`}
+        onClick={() => setMobileMenu((val) => !val)}
+      >
+        <img src={menu} />
+      </button>
     </header>
   );
 };

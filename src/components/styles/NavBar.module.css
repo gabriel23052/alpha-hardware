@@ -30,5 +30,15 @@
 @media (max-width: 700px) {
   .links {
     flex-direction: column;
+    padding-top: var(--px8);
+    padding-bottom: var(--px8);
+  }
+
+  .links a {
+    padding: var(--px12);
+  }
+
+  .links a::after {
+    display: none;
   }
 }

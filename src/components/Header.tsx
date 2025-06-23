@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import NavBar from "./NavBar";
+import HeaderNavBar from "./HeaderNavBar";
 import HeaderUserLinks from "./HeaderUserLinks";
 
 import classes from "./styles/Header.module.css";
@@ -43,7 +43,7 @@ const Header = () => {
             </nav>
           </div>
         </div>
-        <NavBar />
+        <HeaderNavBar />
       </div>
       <button
         className={`bg-dneutral ${classes.menuBtn}`}

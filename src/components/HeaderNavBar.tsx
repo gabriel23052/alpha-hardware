@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 
-import classes from "./styles/NavBar.module.css";
+import classes from "./styles/HeaderNavBar.module.css";
 
-const NavBar = () => {
+const HeaderNavBar = () => {
   return (
     <div className={`bg-dneutral-xdark`}>
       <nav className={`lneutral-light text-default defaultContainer`}>
@@ -43,4 +43,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default HeaderNavBar;

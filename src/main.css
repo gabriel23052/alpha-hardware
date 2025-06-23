@@ -86,7 +86,17 @@ html {
 }
 
 body {
-  padding-top: 4.8rem;
+  padding-top: 8.2rem;
+}
+@media (max-width: 970px) {
+  body {
+    padding-top: 7.85rem;
+  }
+}
+@media (max-width: 700px) {
+  body {
+    padding-top: 4.8rem;
+  }
 }
 
 a {

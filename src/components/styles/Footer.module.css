@@ -78,7 +78,7 @@
   background-color: var(--lneutral-xdark);
 }
 
-.social > img {
+.social > svg {
   width: 13rem;
 }
 
@@ -99,7 +99,7 @@
     align-items: center;
     grid-column: span 2;
   }
-  .social > img {
+  .social > svg {
     width: 10rem;
   }
 }

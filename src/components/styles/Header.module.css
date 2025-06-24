@@ -18,7 +18,7 @@
   grid-column: span 2;
 }
 
-.logo img {
+.logo svg {
   width: 9.06rem; /* ~145px */
 }
 
@@ -47,7 +47,7 @@
   transform: scale(1.1);
 }
 
-.shortcuts img {
+.shortcuts svg {
   width: var(--px32);
 }
 
@@ -68,7 +68,7 @@
   background-color: var(--dneutral-light);
 }
 
-.menuBtn img {
+.menuBtn svg {
   width: var(--px32);
 }
 
@@ -79,7 +79,7 @@
     gap: var(--px32);
   }
 
-  .logo img {
+  .logo svg {
     width: 8rem;
   }
 
@@ -109,7 +109,7 @@
     grid-column: initial;
   }
 
-  .logo img {
+  .logo svg {
     width: 6rem;
   }
 

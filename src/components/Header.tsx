@@ -5,11 +5,11 @@ import HeaderUserLinks from "./HeaderUserLinks";
 
 import classes from "./styles/Header.module.css";
 
-import svgLogo from "../assets/svg/logo.svg";
-import svgFavorite from "../assets/svg/favorite.svg";
-import svgMyPurchases from "../assets/svg/myPurchases.svg";
-import svgCart from "../assets/svg/cart.svg";
-import svgMenu from "../assets/svg/menu.svg";
+import SVGLogo from "../assets/svg/logo.svg?react";
+import SVGFavorite from "../assets/svg/favorite.svg?react";
+import SVGMyPurchases from "../assets/svg/myPurchases.svg?react";
+import SVGCart from "../assets/svg/cart.svg?react";
+import SVGMenu from "../assets/svg/menu.svg?react";
 
 const Header = () => {
   const [search, setSearch] = React.useState("");
@@ -21,7 +21,7 @@ const Header = () => {
         <div className={`bg-primary`}>
           <div className={`defaultContainer ${classes.wrapper}`}>
             <Link className={`${classes.logo}`} to="/">
-              <img src={svgLogo} />
+              <SVGLogo />
             </Link>
             <input //Improvisado
               className={`text-default dneutral-dark ${classes.search}`}
@@ -32,13 +32,13 @@ const Header = () => {
             <HeaderUserLinks />
             <nav className={`${classes.shortcuts}`}>
               <Link to="/">
-                <img src={svgFavorite} />
+                <SVGFavorite />
               </Link>
               <Link to="/">
-                <img src={svgMyPurchases} />
+                <SVGMyPurchases />
               </Link>
               <Link to="/">
-                <img src={svgCart} />
+                <SVGCart />
               </Link>
             </nav>
           </div>
@@ -49,7 +49,7 @@ const Header = () => {
         className={`bg-dneutral ${classes.menuBtn}`}
         onClick={() => setMobileMenu((val) => !val)}
       >
-        <img src={svgMenu} />
+        <SVGMenu />
       </button>
     </header>
   );

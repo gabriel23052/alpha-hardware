@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import classes from "./styles/HeaderUser.module.css";
 
-import svgUser from "../assets/svg/user.svg";
+import SVGUser from "../assets/svg/user.svg?react";
 
 const HeaderUserLinks = () => {
   const user = React.useRef<string | null>("Gabriel"); // Improvisado
@@ -12,7 +12,7 @@ const HeaderUserLinks = () => {
     <section
       className={`text-default lneutral-xlight ${classes.headerUserLinks}`}
     >
-      <img src={svgUser} />
+      <SVGUser />
       {user.current === null ? (
         <span>
           <Link className="lneutral-xlight text-default-b" to="/">

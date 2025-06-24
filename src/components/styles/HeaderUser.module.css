@@ -5,7 +5,7 @@
   grid-column: 9 / span 2;
 }
 
-.headerUserLinks img {
+.headerUserLinks svg {
   width: var(--px32);
 }
 

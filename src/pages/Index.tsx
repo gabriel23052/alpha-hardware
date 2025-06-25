@@ -6,6 +6,7 @@ const Index = () => {
   return (
     <main>
       <ResponsiveBanner bannerData={banners.gpusSale} />
+      <ResponsiveBanner bannerData={banners.cbxAd} />
     </main>
   );
 };

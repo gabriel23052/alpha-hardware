@@ -23,6 +23,30 @@ const banners: { [index: string]: IResponsiveBanner } = {
       },
     ],
   },
+  cbxAd: {
+    link: "/",
+    baseSrc: "./img/banners/cbxAd.jpg",
+    baseWidth: 3840,
+    baseHeight: 200,
+    alt: "Festival das Placas de Vídeo",
+    responsiveImages: [
+      {
+        width: 768,
+        height: 400,
+        src: "./img/banners/cbxAd-768px.jpg",
+      },
+      {
+        width: 1366,
+        height: 300,
+        src: "./img/banners/cbxAd-1366px.jpg",
+      },
+      {
+        width: 1920,
+        height: 300,
+        src: "./img/banners/cbxAd-1920px.jpg",
+      },
+    ],
+  },
 };
 
 export default banners;

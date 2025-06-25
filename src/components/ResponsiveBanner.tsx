@@ -2,38 +2,24 @@ import { Link } from "react-router";
 
 import classes from "./styles/ResponsiveBanner.module.css";
 
-interface ResponsiveBannerProps {
-  link: string;
-  baseSrc: string;
-  responsiveImages: {
-    width: number;
-    height: number;
-    src: string;
-  }[];
-  baseWidth: number;
-  baseHeight: number;
-  alt?: string;
-}
+type ResponsiveBannerProps = { bannerData: IResponsiveBanner };
 
-const ResponsiveBanner = ({
-  link,
-  baseSrc,
-  responsiveImages,
-  alt,
-  baseWidth,
-  baseHeight,
-}: ResponsiveBannerProps) => {
+const ResponsiveBanner = ({ bannerData }: ResponsiveBannerProps) => {
+  const { link, baseSrc, alt, baseWidth, baseHeight, responsiveImages } =
+    bannerData;
+
   function sortResponsiveImages() {
     return responsiveImages.sort((a, b) => a.width - b.width);
   }
 
   if (responsiveImages.length === 0) return null;
+
   return (
     <Link to={link} className={`${classes.responsiveBanner}`}>
       <picture>
         {sortResponsiveImages().map((responsiveImage) => (
           <source
-            key={responsiveImage.width}
+            key={responsiveImage.src}
             media={`(max-width: ${responsiveImage.width}px)`}
             srcSet={responsiveImage.src}
             width={responsiveImage.width}

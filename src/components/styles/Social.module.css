@@ -1,0 +1,73 @@
+.social {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  margin-top: var(--px64);
+  margin-bottom: var(--px64);
+}
+
+.text {
+  grid-column: 2 / span 5;
+}
+
+.text h2 {
+  margin-bottom: var(--px12);
+}
+
+.socialMedia {
+  grid-column: 8 / span 4;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px16);
+}
+
+.list a {
+  display: flex;
+}
+
+.list div {
+  padding: var(--px12);
+  border-radius: 8px 0 0 8px;
+}
+
+.list span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: 1px solid var(--lneutral-light);
+  border-radius: 0 8px 8px 0;
+}
+
+.list svg {
+  display: block;
+  width: var(--px40);
+  height: var(--px40);
+}
+
+.instagram {
+  background: linear-gradient(#fec808 0%, #fd09d1 70%, #3c45db 100%);
+}
+
+.x {
+  background-color: black;
+}
+
+.facebook {
+  background-color: #0f92ee;
+}
+
+@media (max-width: 750px) {
+  .social {
+    grid-template-columns: 1fr;
+    gap: var(--px24);
+  }
+
+  .text,
+  .socialMedia {
+    grid-column: initial;
+  }
+}

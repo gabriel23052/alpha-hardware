@@ -2,9 +2,9 @@ import { Link } from "react-router";
 import classes from "./styles/Footer.module.css";
 
 import SVGLogo from "../assets/svg/logo.svg?react";
-import SVGInstagram from "../assets/svg/instagram.svg?react";
-import SVGX from "../assets/svg/x.svg?react";
-import SVGFacebook from "../assets/svg/facebook.svg?react";
+import SVGInstagramDark from "../assets/svg/instagramDark.svg?react";
+import SVGXDark from "../assets/svg/xDark.svg?react";
+import SVGFacebookDark from "../assets/svg/facebookDark.svg?react";
 
 const Footer = () => {
   return (
@@ -75,13 +75,13 @@ const Footer = () => {
             <h3 className="secondary text-large">Mídias Sociais</h3>
             <div className={`${classes.links}`}>
               <a className="bg-dneutral-xlight" href="/">
-                <SVGInstagram />
+                <SVGInstagramDark />
               </a>
               <a className="bg-dneutral-xlight" href="/">
-                <SVGX />
+                <SVGXDark />
               </a>
               <a className="bg-dneutral-xlight" href="/">
-                <SVGFacebook />
+                <SVGFacebookDark />
               </a>
             </div>
           </div>

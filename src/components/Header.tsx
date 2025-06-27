@@ -17,7 +17,10 @@ const Header = () => {
 
   return (
     <header className={`${classes.header}`}>
-      <div className={`${classes.container} ${mobileMenu ? classes.open : ""}`}>
+      <div
+        className={`${classes.container} ${mobileMenu ? classes.open : ""}`}
+        id="ariaHeader"
+      >
         <div className={`bg-primary`}>
           <div className={`defaultContainer ${classes.wrapper}`}>
             <Link className={`${classes.logo}`} to="/">
@@ -47,6 +50,8 @@ const Header = () => {
       </div>
       <button
         className={`bg-dneutral ${classes.menuBtn}`}
+        aria-expanded={mobileMenu ? "true" : "false"}
+        aria-controls="ariaHeader"
         onClick={() => setMobileMenu((val) => !val)}
       >
         <SVGMenu />

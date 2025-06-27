@@ -31,6 +31,10 @@
 .list div {
   padding: var(--px12);
   border-radius: 8px 0 0 8px;
+  transition: transform 300ms;
+}
+.list a:hover div {
+  transform: scale(1.05);
 }
 
 .list span {
@@ -40,6 +44,10 @@
   flex: 1;
   border: 1px solid var(--lneutral-light);
   border-radius: 0 8px 8px 0;
+  transition: background-color 300ms;
+}
+.list a:hover span {
+  background-color: var(--white);
 }
 
 .list svg {

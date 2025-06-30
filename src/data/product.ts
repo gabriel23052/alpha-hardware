@@ -6,10 +6,18 @@ const product: IProduct = {
   maxInstallments: 12,
   installmentsPrice: 16203,
   cashDiscount: 10,
-  sale: null,
+  sale: {
+    expiresAt: 1751399410,
+    oldPrice: 185599,
+    price: 159999,
+    cardPrice: 165999,
+    maxInstallments: 12,
+    installmentsPrice: 13835,
+    discount: 10,
+  },
   imagesSrc: {
     thumb: "./img/products/0cb98cb8e-0.jpg",
-  }
+  },
 };
 
 export default product;

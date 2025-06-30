@@ -1,3 +1,5 @@
+import parsePrice from "../utils/parsePrice";
+
 interface CardPriceProps {
   className?: string;
   cardPrice: number;
@@ -16,12 +18,12 @@ const CardPrice = ({
       R$
       <span className="dneutral-dark text-default">
         {" "}
-        {(cardPrice / 100).toLocaleString("pt-BR")}{" "}
+        {parsePrice(cardPrice)}{" "}
       </span>
       no cartão <br /> em até {maxInstallments}x de R$
       <span className="dneutral-dark text-default">
         {" "}
-        {(installmentsPrice / 100).toLocaleString("pt-BR")}
+        {parsePrice(installmentsPrice)}
       </span>
     </span>
   );

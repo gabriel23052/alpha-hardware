@@ -9,9 +9,9 @@ import Price from "./Price";
 import CardPrice from "./CardPrice";
 import OldPrice from "./OldPrice";
 
-type ProductCardProps = { product: IProduct };
+type ProductCardProps = { product: IProduct; buttons?: boolean };
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, buttons }: ProductCardProps) => {
   const [saleTime, setSaleTime] = React.useState(0);
 
   const getPeriodString = (period: number) => {
@@ -114,14 +114,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
           installmentsPrice={product.sale.installmentsPrice}
           maxInstallments={product.sale.maxInstallments}
         />
-        <div className={`${classes.buttonsContainer}`}>
-          <Link to="" className="lneutral-xlight bg-primary text-default-b">
-            COMPRAR
-          </Link>
-          <button className="bg-lneutral-xlight">
-            <SVGCartAdd />
-          </button>
-        </div>
+        {buttons && (
+          <div className={`${classes.buttonsContainer}`}>
+            <Link to="" className="lneutral-xlight bg-primary text-default-b">
+              COMPRAR
+            </Link>
+            <button className="bg-lneutral-xlight">
+              <SVGCartAdd />
+            </button>
+          </div>
+        )}
       </div>
     </Link>
   );

@@ -11,7 +11,7 @@ const Index = () => {
     <main>
       <ResponsiveBanner bannerData={banners.gpusSale} />
       <div className="defaultContainer">
-        <ProductCard product={product} />
+        <ProductCard product={product} buttons={true} />
       </div>
       <Categories />
       <ResponsiveBanner bannerData={banners.cbxAd} />

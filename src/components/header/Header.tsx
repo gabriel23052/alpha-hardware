@@ -22,7 +22,7 @@ const Header = () => {
         className={`${classes.container} ${mobileMenu ? classes.open : ""}`}
         id="ariaHeader"
       >
-        <div className={`bg-primary`}>
+        <div className="bg-primary">
           <div className={`defaultContainer ${classes.wrapper}`}>
             <Link className={`${classes.logo}`} to="/">
               <SVGLogo />

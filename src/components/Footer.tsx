@@ -48,7 +48,7 @@ const Footer = () => {
         </nav>
         <nav className={`${classes.institutional}`}>
           <h3 className="secondary text-large">Institucional</h3>
-          <ul className={`text-default`}>
+          <ul className="text-default">
             <li>
               <Link className="white" to={"/"}>
                 Sobre a Alpha Hardware

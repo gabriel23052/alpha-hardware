@@ -24,6 +24,7 @@
 
 .wrapper {
   padding: var(--px12) var(--px16);
+  padding-bottom: var(--px20);
 }
 
 .name {
@@ -42,10 +43,10 @@
 }
 
 .buttonsContainer {
-  height: var(--px40);
   display: flex;
-  margin-top: var(--px20);
   gap: var(--px12);
+  padding: var(--px12);
+  padding-top: 0px;
 }
 
 .buttonsContainer a {

@@ -79,53 +79,55 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
     );
 
   return (
-    <Link to="/" className={`${classes.productCard}`}>
-      {saleTime > 0 ? (
-        <div
-          className={`bg-secondary secondary-xdark text-default ${classes.sale}`}
-        >
-          <span>
-            <span className="text-large-m">{product.sale.discount}%</span> OFF
-          </span>
-          <span>{getPeriodString(saleTime)}</span>
-        </div>
-      ) : (
-        <div
-          className={`text-default lneutral-xdark ${classes.sale} ${classes.expired}`}
-        >
-          Promoção expirada
-        </div>
-      )}
-      <div className={`${classes.thumb}`}>
-        <img src={product.imagesSrc.thumb} alt={product.name} />
-      </div>
-      <div className={`${classes.wrapper}`}>
-        <span className={`dneutral text-small-b ${classes.name}`}>
-          {product.name}
-        </span>
-        <OldPrice oldPrice={product.sale.oldPrice} />
-        <Price
-          className={`${classes.price}`}
-          price={product.sale.price}
-          cashDiscount={product.cashDiscount}
-        />
-        <CardPrice
-          cardPrice={product.sale.cardPrice}
-          installmentsPrice={product.sale.installmentsPrice}
-          maxInstallments={product.sale.maxInstallments}
-        />
-        {buttons && (
-          <div className={`${classes.buttonsContainer}`}>
-            <Link to="" className="lneutral-xlight bg-primary text-default-b">
-              COMPRAR
-            </Link>
-            <button className="bg-lneutral-xlight">
-              <SVGCartAdd />
-            </button>
+    <article className={`${classes.productCard}`}>
+      <Link to="/">
+        {saleTime > 0 ? (
+          <div
+            className={`bg-secondary secondary-xdark text-default ${classes.sale}`}
+          >
+            <span>
+              <span className="text-large-m">{product.sale.discount}%</span> OFF
+            </span>
+            <span>{getPeriodString(saleTime)}</span>
+          </div>
+        ) : (
+          <div
+            className={`text-default lneutral-xdark ${classes.sale} ${classes.expired}`}
+          >
+            Promoção expirada
           </div>
         )}
-      </div>
-    </Link>
+        <div className={`${classes.thumb}`}>
+          <img src={product.imagesSrc.thumb} alt={product.name} />
+        </div>
+        <div className={`${classes.wrapper}`}>
+          <span className={`dneutral text-small-b ${classes.name}`}>
+            {product.name}
+          </span>
+          <OldPrice oldPrice={product.sale.oldPrice} />
+          <Price
+            className={`${classes.price}`}
+            price={product.sale.price}
+            cashDiscount={product.cashDiscount}
+          />
+          <CardPrice
+            cardPrice={product.sale.cardPrice}
+            installmentsPrice={product.sale.installmentsPrice}
+            maxInstallments={product.sale.maxInstallments}
+          />
+        </div>
+      </Link>
+      {buttons && (
+        <div className={`${classes.buttonsContainer}`}>
+          <Link to="" className="lneutral-xlight bg-primary text-default-b">
+            COMPRAR
+          </Link>
+          <button className="bg-lneutral-xlight">
+            <SVGCartAdd />
+          </button>
+        </div>
+      )}
+    </article>
   );
 };
 

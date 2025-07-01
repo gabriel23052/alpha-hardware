@@ -1,8 +1,8 @@
-import classes from "./styles/Social.module.css";
+import SVGInstagram from "@svg/instagram.svg?react";
+import SVGX from "@svg/x.svg?react";
+import SVGFacebook from "@svg/facebook.svg?react";
 
-import SVGInstagram from "../assets/svg/instagram.svg?react";
-import SVGX from "../assets/svg/x.svg?react";
-import SVGFacebook from "../assets/svg/facebook.svg?react";
+import classes from "./Social.module.css";
 
 const Social = () => {
   return (

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
 
-import classes from "./styles/ProductCard.module.css";
+import ProductPrice from "./ProductPrice";
+import ProductCardPrice from "./ProductCardPrice";
+import ProductOldPrice from "./ProductOldPrice";
 
-import SVGCartAdd from "../assets/svg/cartAdd.svg?react";
+import SVGCartAdd from "@svg/cartAdd.svg?react";
 
-import Price from "./Price";
-import CardPrice from "./CardPrice";
-import OldPrice from "./OldPrice";
+import classes from "./ProductCard.module.css";
 
 type ProductCardProps = { product: IProduct; buttons?: boolean };
 
@@ -56,12 +56,12 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <Price
+          <ProductPrice
             className={`${classes.price}`}
             price={product.price}
             cashDiscount={product.cashDiscount}
           />
-          <CardPrice
+          <ProductCardPrice
             cardPrice={product.cardPrice}
             installmentsPrice={product.installmentsPrice}
             maxInstallments={product.maxInstallments}
@@ -104,13 +104,13 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <OldPrice oldPrice={product.sale.oldPrice} />
-          <Price
+          <ProductOldPrice oldPrice={product.sale.oldPrice} />
+          <ProductPrice
             className={`${classes.price}`}
             price={product.sale.price}
             cashDiscount={product.cashDiscount}
           />
-          <CardPrice
+          <ProductCardPrice
             cardPrice={product.sale.cardPrice}
             installmentsPrice={product.sale.installmentsPrice}
             maxInstallments={product.sale.maxInstallments}

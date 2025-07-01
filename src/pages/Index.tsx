@@ -1,10 +1,10 @@
-import Categories from "../components/Categories";
-import ProductCard from "../components/ProductCard";
-import ResponsiveBanner from "../components/ResponsiveBanner";
-import Social from "../components/Social";
+import ResponsiveBanner from "@components/ResponsiveBanner";
+import ProductCard from "@components/product/ProductCard";
+import Categories from "@components/Categories";
+import Social from "@components/Social";
 
-import banners from "../data/banners";
-import product from "../data/product";
+import banners from "@data/banners";
+import product from "@data/product";
 
 const Index = () => {
   return (

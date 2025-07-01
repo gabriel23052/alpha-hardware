@@ -1,10 +1,11 @@
 import { Link } from "react-router";
-import classes from "./styles/Footer.module.css";
 
-import SVGLogo from "../assets/svg/logo.svg?react";
-import SVGInstagramDark from "../assets/svg/instagramDark.svg?react";
-import SVGXDark from "../assets/svg/xDark.svg?react";
-import SVGFacebookDark from "../assets/svg/facebookDark.svg?react";
+import SVGLogo from "@svg/logo.svg?react";
+import SVGInstagramDark from "@svg/instagramDark.svg?react";
+import SVGXDark from "@svg/xDark.svg?react";
+import SVGFacebookDark from "@svg/facebookDark.svg?react";
+
+import classes from "./Footer.module.css";
 
 const Footer = () => {
   return (

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import classes from "./styles/ResponsiveBanner.module.css";
+import classes from "./ResponsiveBanner.module.css";
 
 type ResponsiveBannerProps = { bannerData: IResponsiveBanner };
 

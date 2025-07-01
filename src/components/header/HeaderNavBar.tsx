@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import classes from "./styles/HeaderNavBar.module.css";
+import classes from "./HeaderNavBar.module.css";
 
 const HeaderNavBar = () => {
   return (

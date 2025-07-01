@@ -1,13 +1,13 @@
 import { Link } from "react-router";
 
-import classes from "./styles/Categories.module.css";
+import SVGGpu from "@svg/gpu.svg?react";
+import SVGMotherBoard from "@svg/motherBoard.svg?react";
+import SVGCpu from "@svg/cpu.svg?react";
+import SVGRam from "@svg/ram.svg?react";
+import SVGSsd from "@svg/ssd.svg?react";
+import SVGHdd from "@svg/hdd.svg?react";
 
-import SVGGpu from "../assets/svg/gpu.svg?react";
-import SVGMotherBoard from "../assets/svg/motherBoard.svg?react";
-import SVGCpu from "../assets/svg/cpu.svg?react";
-import SVGRam from "../assets/svg/ram.svg?react";
-import SVGSsd from "../assets/svg/ssd.svg?react";
-import SVGHdd from "../assets/svg/hdd.svg?react";
+import classes from "./Categories.module.css";
 
 const Categories = () => {
   return (
@@ -17,7 +17,7 @@ const Categories = () => {
           O que você precisa?
         </h2>
       </div>
-      <ul className={`text-default ${classes.list}`}> 
+      <ul className={`text-default ${classes.list}`}>
         <li>
           <Link className="bg-lneutral-xlight" to="/">
             <SVGGpu />

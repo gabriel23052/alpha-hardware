@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
-import HeaderNavBar from "./HeaderNavBar";
+
 import HeaderUserLinks from "./HeaderUserLinks";
+import HeaderNavBar from "./HeaderNavBar";
 
-import classes from "./styles/Header.module.css";
+import SVGLogo from "@svg/logo.svg?react";
+import SVGFavorite from "@svg/favorite.svg?react";
+import SVGMyPurchases from "@svg/myPurchases.svg?react";
+import SVGCart from "@svg/cart.svg?react";
+import SVGMenu from "@svg/menu.svg?react";
 
-import SVGLogo from "../assets/svg/logo.svg?react";
-import SVGFavorite from "../assets/svg/favorite.svg?react";
-import SVGMyPurchases from "../assets/svg/myPurchases.svg?react";
-import SVGCart from "../assets/svg/cart.svg?react";
-import SVGMenu from "../assets/svg/menu.svg?react";
+import classes from "./Header.module.css";
 
 const Header = () => {
   const [search, setSearch] = React.useState("");

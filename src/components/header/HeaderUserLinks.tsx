@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-import classes from "./styles/HeaderUser.module.css";
+import SVGUser from "@svg/user.svg?react";
 
-import SVGUser from "../assets/svg/user.svg?react";
+import classes from "./HeaderUser.module.css";
 
 const HeaderUserLinks = () => {
   const user = React.useRef<string | null>("Gabriel"); // Improvisado

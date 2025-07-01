@@ -1,12 +1,16 @@
-import parsePrice from "../utils/parsePrice";
+import parsePrice from "@utils/parsePrice";
 
-interface PriceProps {
+interface ProductPriceProps {
   className?: string;
   price: number;
   cashDiscount: number;
 }
 
-const Price = ({ price, cashDiscount, className }: PriceProps) => {
+const ProductPrice = ({
+  price,
+  cashDiscount,
+  className,
+}: ProductPriceProps) => {
   return (
     <span className={`lneutral-xdark text-small ${className || ""}`}>
       R$
@@ -16,4 +20,4 @@ const Price = ({ price, cashDiscount, className }: PriceProps) => {
   );
 };
 
-export default Price;
+export default ProductPrice;

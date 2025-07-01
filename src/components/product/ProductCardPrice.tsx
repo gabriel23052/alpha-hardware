@@ -1,18 +1,18 @@
-import parsePrice from "../utils/parsePrice";
+import parsePrice from "@utils/parsePrice";
 
-interface CardPriceProps {
+interface ProductCardPriceProps {
   className?: string;
   cardPrice: number;
   installmentsPrice: number;
   maxInstallments: number;
 }
 
-const CardPrice = ({
+const ProductCardPrice = ({
   className,
   cardPrice,
   installmentsPrice,
   maxInstallments,
-}: CardPriceProps) => {
+}: ProductCardPriceProps) => {
   return (
     <span className={`lneutral-xdark text-small ${className || ""}`}>
       R$
@@ -29,4 +29,4 @@ const CardPrice = ({
   );
 };
 
-export default CardPrice;
+export default ProductCardPrice;

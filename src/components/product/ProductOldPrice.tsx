@@ -1,11 +1,11 @@
-import parsePrice from "../utils/parsePrice";
+import parsePrice from "@utils/parsePrice";
 
-interface OldPriceProps {
+interface ProductOldPriceProps {
   className?: string;
   oldPrice: number;
 }
 
-const OldPrice = ({ oldPrice, className }: OldPriceProps) => {
+const ProductOldPrice = ({ oldPrice, className }: ProductOldPriceProps) => {
   return (
     <span
       className={`dneutral-xlight text-default ${className || ""}`}
@@ -18,4 +18,4 @@ const OldPrice = ({ oldPrice, className }: OldPriceProps) => {
   );
 };
 
-export default OldPrice;
+export default ProductOldPrice;

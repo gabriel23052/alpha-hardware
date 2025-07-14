@@ -48,7 +48,8 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
 
   if (product.sale === null)
     return (
-        <Link to="/" className={`${classes.productCard}`}>
+      <article className={`${classes.productCard}`}>
+        <Link to="/">
           <div className={`${classes.thumb}`}>
             <img
               src={`./img/products/${product.media.thumb}`}
@@ -69,16 +70,17 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
               installmentsPrice={product.prices.installments}
               maxInstallments={product.prices.maxInstallments}
             />
-            <div className={`${classes.buttonsContainer}`}>
-              <Link to="" className="lneutral-xlight bg-primary text-default-b">
-                COMPRAR
-              </Link>
-              <button className="bg-lneutral-xlight">
-                <SVGCartAdd />
-              </button>
-            </div>
           </div>
         </Link>
+        <div className={`${classes.buttonsContainer}`}>
+          <Link to="" className="lneutral-xlight bg-primary text-default-b">
+            COMPRAR
+          </Link>
+          <button className="bg-lneutral-xlight">
+            <SVGCartAdd />
+          </button>
+        </div>
+      </article>
     );
 
   return (

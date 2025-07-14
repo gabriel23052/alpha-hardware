@@ -14,7 +14,7 @@ const ProductPrice = ({
   return (
     <span className={`lneutral-xdark text-small ${className || ""}`}>
       R$
-      <span className="dneutral-dark text-large"> {parsePrice(price)} </span>
+      <span className="dneutral-dark text-large-m"> {parsePrice(price)} </span>
       no PIX ({cashDiscount}% OFF)
     </span>
   );

@@ -7,7 +7,7 @@
 }
 
 .thumb {
-  padding: var(--px32);
+  padding: var(--px24);
   height: 13.5rem;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .wrapper {
-  padding: var(--px12) var(--px16);
+  padding: var(--px16) var(--px12);
   padding-bottom: var(--px20);
 }
 

@@ -1,0 +1,19 @@
+.sale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--px4) var(--px8);
+  border-radius: 8px 8px 0 0;
+  outline: 1px solid var(--secondary);
+}
+
+.sale > span {
+  display: block;
+}
+
+.sale.expired {
+  display: block;
+  outline: none;
+  text-align: center;
+  background-color: var(--lneutral-light);
+}

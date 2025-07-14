@@ -28,16 +28,18 @@ interface IMedia {
   }[];
 }
 
+interface ISale {
+  name: string;
+  expiration: number;
+  discontPercentage: number;
+  prices: IPrices;
+}
+
 interface IProduct {
   id: string;
   name: string;
   category: string;
   prices: IPrices;
-  sale: null | {
-    name: string;
-    expiration: number;
-    discontPercentage: number;
-    prices: IPrices;
-  };
+  sale: null | ISale;
   media: IMedia;
 }

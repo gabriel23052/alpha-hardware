@@ -9,7 +9,19 @@ const product: IProduct = {
     maxInstallments: 12,
     installments: 14815,
   },
-  sale: null,
+  sale: {
+    name: "Festival das Placas de Vídeo",
+    expiration: 1752619125 + 3600 * 90,
+    discontPercentage: 10,
+    prices: {
+      normal: 139990,
+      withDiscont: 131591,
+      discontPercentage: 6,
+      maxInstallments: 12,
+      installments: 11666,
+      oldPrice: 155544,
+    },
+  },
   media: {
     thumb: "2F9B652E8-thumb.jpg",
     images: [

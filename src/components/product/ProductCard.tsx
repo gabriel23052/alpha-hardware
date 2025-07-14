@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-import ProductPrice from "./ProductPrice";
 import ProductCardPrice from "./ProductCardPrice";
-import ProductOldPrice from "./ProductOldPrice";
 
 import SVGCartAdd from "@svg/cartAdd.svg?react";
 
@@ -60,16 +58,7 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
             <span className={`dneutral text-small-b ${classes.name}`}>
               {product.name}
             </span>
-            <ProductPrice
-              className={`${classes.price}`}
-              price={product.prices.withDiscont}
-              cashDiscount={product.prices.discontPercentage}
-            />
-            <ProductCardPrice
-              cardPrice={product.prices.normal}
-              installmentsPrice={product.prices.installments}
-              maxInstallments={product.prices.maxInstallments}
-            />
+            <ProductCardPrice prices={product.prices} />
           </div>
         </Link>
         <div className={`${classes.buttonsContainer}`}>
@@ -115,19 +104,7 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <ProductOldPrice
-            oldPrice={product.sale.prices.oldPrice || product.prices.normal}
-          />
-          <ProductPrice
-            className={`${classes.price}`}
-            price={product.sale.prices.withDiscont}
-            cashDiscount={product.sale.prices.discontPercentage}
-          />
-          <ProductCardPrice
-            cardPrice={product.sale.prices.normal}
-            installmentsPrice={product.sale.prices.installments}
-            maxInstallments={product.sale.prices.maxInstallments}
-          />
+          <ProductCardPrice prices={product.sale.prices} />
         </div>
       </Link>
       {buttons && (

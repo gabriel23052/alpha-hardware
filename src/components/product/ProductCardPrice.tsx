@@ -1,31 +1,40 @@
 import parsePrice from "@utils/parsePrice";
 
+import classes from "./ProductCardPrice.module.css";
+
 interface ProductCardPriceProps {
-  className?: string;
-  cardPrice: number;
-  installmentsPrice: number;
-  maxInstallments: number;
+  prices: IPrices;
 }
 
-const ProductCardPrice = ({
-  className,
-  cardPrice,
-  installmentsPrice,
-  maxInstallments,
-}: ProductCardPriceProps) => {
+const ProductCardPrice = ({ prices }: ProductCardPriceProps) => {
   return (
-    <span className={`lneutral-xdark text-small ${className || ""}`}>
-      R$
-      <span className="dneutral-dark text-default">
-        {" "}
-        {parsePrice(cardPrice)}{" "}
+    <>
+      {prices.oldPrice && (
+        <span className={`dneutral-xlight text-default ${classes.oldPrice}`}>
+          R$ {parsePrice(prices.oldPrice)}
+        </span>
+      )}
+      <span className={`lneutral-xdark text-small ${classes.price}`}>
+        R$
+        <span className="dneutral-dark text-large-m">
+          {" "}
+          {parsePrice(prices.withDiscont)}{" "}
+        </span>
+        no PIX ({prices.discontPercentage}% OFF)
       </span>
-      no cartão <br /> em até {maxInstallments}x de R$
-      <span className="dneutral-dark text-default">
-        {" "}
-        {parsePrice(installmentsPrice)}
+      <span className={`lneutral-xdark text-small`}>
+        R$
+        <span className="dneutral-dark text-default">
+          {" "}
+          {parsePrice(prices.normal)}{" "}
+        </span>
+        no cartão <br /> em até {prices.maxInstallments}x de R$
+        <span className="dneutral-dark text-default">
+          {" "}
+          {parsePrice(prices.installments)}
+        </span>
       </span>
-    </span>
+    </>
   );
 };
 

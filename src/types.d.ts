@@ -11,24 +11,33 @@ interface IResponsiveBanner {
   }[];
 }
 
+interface IPrices {
+  normal: number;
+  withDiscont: number;
+  discontPercentage: number;
+  maxInstallments: number;
+  installments: number;
+  oldPrice?: number;
+}
+
+interface IMedia {
+  thumb: string;
+  images: {
+    small: string;
+    medium: string;
+  }[];
+}
+
 interface IProduct {
   id: string;
   name: string;
-  price: number;
-  cardPrice: number;
-  maxInstallments: number;
-  installmentsPrice: number;
-  cashDiscount: number;
+  category: string;
+  prices: IPrices;
   sale: null | {
-    discount: number;
-    expiresAt: number;
-    price: number;
-    cardPrice: number;
-    maxInstallments: number;
-    installmentsPrice: number;
-    oldPrice: number;
+    name: string;
+    expiration: number;
+    discontPercentage: number;
+    prices: IPrices;
   };
-  imagesSrc: {
-    thumb: string;
-  };
+  media: IMedia;
 }

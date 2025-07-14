@@ -32,7 +32,7 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
     if (!product.sale) return;
     const date = new Date();
     let time = Math.floor(
-      (product.sale.expiresAt * 1000 - date.getTime()) / 1000
+      (product.sale.expiration * 1000 - date.getTime()) / 1000
     );
     if (time <= 0) return;
     setSaleTime(time);
@@ -48,34 +48,37 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
 
   if (product.sale === null)
     return (
-      <Link to="/" className={`${classes.productCard}`}>
-        <div className={`${classes.thumb}`}>
-          <img src={product.imagesSrc.thumb} alt={product.name} />
-        </div>
-        <div className={`${classes.wrapper}`}>
-          <span className={`dneutral text-small-b ${classes.name}`}>
-            {product.name}
-          </span>
-          <ProductPrice
-            className={`${classes.price}`}
-            price={product.price}
-            cashDiscount={product.cashDiscount}
-          />
-          <ProductCardPrice
-            cardPrice={product.cardPrice}
-            installmentsPrice={product.installmentsPrice}
-            maxInstallments={product.maxInstallments}
-          />
-          <div className={`${classes.buttonsContainer}`}>
-            <Link to="" className="lneutral-xlight bg-primary text-default-b">
-              COMPRAR
-            </Link>
-            <button className="bg-lneutral-xlight">
-              <SVGCartAdd />
-            </button>
+        <Link to="/" className={`${classes.productCard}`}>
+          <div className={`${classes.thumb}`}>
+            <img
+              src={`./img/products/${product.media.thumb}`}
+              alt={product.name}
+            />
           </div>
-        </div>
-      </Link>
+          <div className={`${classes.wrapper}`}>
+            <span className={`dneutral text-small-b ${classes.name}`}>
+              {product.name}
+            </span>
+            <ProductPrice
+              className={`${classes.price}`}
+              price={product.prices.withDiscont}
+              cashDiscount={product.prices.discontPercentage}
+            />
+            <ProductCardPrice
+              cardPrice={product.prices.normal}
+              installmentsPrice={product.prices.installments}
+              maxInstallments={product.prices.maxInstallments}
+            />
+            <div className={`${classes.buttonsContainer}`}>
+              <Link to="" className="lneutral-xlight bg-primary text-default-b">
+                COMPRAR
+              </Link>
+              <button className="bg-lneutral-xlight">
+                <SVGCartAdd />
+              </button>
+            </div>
+          </div>
+        </Link>
     );
 
   return (
@@ -86,7 +89,10 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
             className={`bg-secondary secondary-xdark text-default ${classes.sale}`}
           >
             <span>
-              <span className="text-large-m">{product.sale.discount}%</span> OFF
+              <span className="text-large-m">
+                {product.sale.discontPercentage}%
+              </span>{" "}
+              OFF
             </span>
             <span>{getPeriodString(saleTime)}</span>
           </div>
@@ -98,22 +104,27 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
           </div>
         )}
         <div className={`${classes.thumb}`}>
-          <img src={product.imagesSrc.thumb} alt={product.name} />
+          <img
+            src={`./img/products/${product.media.thumb}`}
+            alt={product.name}
+          />
         </div>
         <div className={`${classes.wrapper}`}>
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <ProductOldPrice oldPrice={product.sale.oldPrice} />
+          <ProductOldPrice
+            oldPrice={product.sale.prices.oldPrice || product.prices.normal}
+          />
           <ProductPrice
             className={`${classes.price}`}
-            price={product.sale.price}
-            cashDiscount={product.cashDiscount}
+            price={product.sale.prices.withDiscont}
+            cashDiscount={product.sale.prices.discontPercentage}
           />
           <ProductCardPrice
-            cardPrice={product.sale.cardPrice}
-            installmentsPrice={product.sale.installmentsPrice}
-            maxInstallments={product.sale.maxInstallments}
+            cardPrice={product.sale.prices.normal}
+            installmentsPrice={product.sale.prices.installments}
+            maxInstallments={product.sale.prices.maxInstallments}
           />
         </div>
       </Link>

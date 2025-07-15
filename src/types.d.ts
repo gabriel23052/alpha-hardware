@@ -43,3 +43,8 @@ interface IProduct {
   sale: null | ISale;
   media: IMedia;
 }
+
+interface IProductSelection {
+  title: string;
+  products: IProduct[];
+}

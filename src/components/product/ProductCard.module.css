@@ -1,6 +1,5 @@
 .productCard {
   display: block;
-  max-width: 300px;
   width: 100%;
   border: 1px solid var(--lneutral-light);
   border-radius: 8px;
@@ -84,4 +83,18 @@
 .buttonsContainer svg {
   height: 100%;
   display: block;
+}
+
+@media (max-width: 950px) {
+  /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
+  .productCard:nth-last-child(-n + 2) {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  /* Reexibe os últimos dois cards */
+  .productCard:nth-last-child(-n + 2) {
+    display: initial;
+  }
 }

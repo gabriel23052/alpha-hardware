@@ -48,3 +48,8 @@ interface IProductSelection {
   title: string;
   products: IProduct[];
 }
+
+interface ISaleSelection {
+  title: string;
+  products: IProduct[];
+}

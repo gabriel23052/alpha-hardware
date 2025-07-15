@@ -1,4 +1,5 @@
 import ResponsiveBanner from "@components/ResponsiveBanner";
+import ProductSale from "@components/product/ProductSale";
 import ProductSelection from "@components/product/ProductSelection";
 import Categories from "@components/Categories";
 import Social from "@components/Social";
@@ -9,6 +10,7 @@ const Index = () => {
   return (
     <main>
       <ResponsiveBanner bannerData={homepageData.banners.gpusSale} />
+      <ProductSale saleSelection={homepageData.saleSelection.gpusSale} />
       <ProductSelection
         productSelection={homepageData.productsSelection.newProducts}
       />

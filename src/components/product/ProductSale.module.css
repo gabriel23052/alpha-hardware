@@ -1,0 +1,37 @@
+.productSale {
+  margin: var(--px32) auto;
+}
+
+.title h2 {
+  padding: var(--px8) var(--px16);
+  padding-right: var(--px40);
+  border-radius: 4px;
+  margin-bottom: var(--px16);
+  background: var(--dneutral-dark) url("../../assets/svg/logoLine.svg") center
+    right no-repeat;
+  background-size: auto 100%;
+  transition: background-color 300ms, padding-left 300ms;
+}
+.title:hover h2,
+.title:focus h2 {
+  background-color: var(--dneutral-xdark);
+  padding-left: var(--px20);
+}
+
+.products {
+  display: grid;
+  gap: var(--px16);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 950px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

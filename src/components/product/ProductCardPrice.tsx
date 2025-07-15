@@ -17,11 +17,11 @@ const ProductCardPrice = ({ prices, showOldPrice }: ProductCardPriceProps) => {
       )}
       <span className={`lneutral-xdark text-small ${classes.price}`}>
         R$
-        <span className="dneutral-dark text-large-m">
+        <span className={`dneutral-dark text-large-m`}>
           {" "}
           {parsePrice(prices.withDiscont)}{" "}
         </span>
-        no PIX ({prices.discontPercentage}% OFF)
+        <br/>no PIX ({prices.discontPercentage}% OFF)
       </span>
       <span className={`lneutral-xdark text-small`}>
         R$

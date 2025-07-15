@@ -1,20 +1,19 @@
 import ResponsiveBanner from "@components/ResponsiveBanner";
-import ProductCard from "@components/product/ProductCard";
+import ProductSelection from "@components/product/ProductSelection";
 import Categories from "@components/Categories";
 import Social from "@components/Social";
 
-import banners from "@data/banners";
-import product from "@data/product";
+import homepageData from "@data/homepageData";
 
 const Index = () => {
   return (
     <main>
-      <ResponsiveBanner bannerData={banners.gpusSale} />
-      <div className="defaultContainer">
-        <ProductCard product={product} buttons={true} />
-      </div>
+      <ResponsiveBanner bannerData={homepageData.banners.gpusSale} />
+      <ProductSelection
+        productSelection={homepageData.productsSelection.newProducts}
+      />
       <Categories />
-      <ResponsiveBanner bannerData={banners.cbxAd} />
+      <ResponsiveBanner bannerData={homepageData.banners.cbxAd} />
       <Social />
     </main>
   );

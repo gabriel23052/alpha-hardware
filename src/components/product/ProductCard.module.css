@@ -1,9 +1,14 @@
 .productCard {
   display: block;
-  max-width: 260px;
+  max-width: 300px;
   width: 100%;
   border: 1px solid var(--lneutral-light);
   border-radius: 8px;
+  transition: border-color 300ms;
+}
+.productCard:hover,
+.productCard:focus {
+  border-color: var(--secondary-light);
 }
 
 .thumb {

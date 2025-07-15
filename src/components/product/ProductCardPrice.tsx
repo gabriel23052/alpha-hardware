@@ -4,12 +4,13 @@ import classes from "./ProductCardPrice.module.css";
 
 interface ProductCardPriceProps {
   prices: IPrices;
+  showOldPrice: boolean;
 }
 
-const ProductCardPrice = ({ prices }: ProductCardPriceProps) => {
+const ProductCardPrice = ({ prices, showOldPrice }: ProductCardPriceProps) => {
   return (
     <>
-      {prices.oldPrice && (
+      {prices.oldPrice && showOldPrice && (
         <span className={`dneutral-xlight text-default ${classes.oldPrice}`}>
           R$ {parsePrice(prices.oldPrice)}
         </span>

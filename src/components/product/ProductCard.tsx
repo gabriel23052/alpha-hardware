@@ -7,13 +7,19 @@ import SVGCartAdd from "@svg/cartAdd.svg?react";
 import classes from "./ProductCard.module.css";
 import ProductCardSaleLabel from "./ProductCardSaleLabel";
 
-type ProductCardProps = { product: IProduct; buttons?: boolean };
+type ProductCardProps = {
+  product: IProduct;
+  showSale: boolean;
+  buttons?: boolean;
+};
 
-const ProductCard = ({ product, buttons }: ProductCardProps) => {
+const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
   return (
     <article className={`${classes.productCard}`}>
       <Link to="/">
-        {product.sale && <ProductCardSaleLabel sale={product.sale} />}
+        {product.sale && showSale && (
+          <ProductCardSaleLabel sale={product.sale} />
+        )}
         <div className={`${classes.thumb}`}>
           <img
             src={`./img/products/${product.media.thumb}`}
@@ -24,7 +30,10 @@ const ProductCard = ({ product, buttons }: ProductCardProps) => {
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <ProductCardPrice prices={product.prices} />
+          <ProductCardPrice
+            prices={product.sale ? product.sale.prices : product.prices}
+            showOldPrice={showSale}
+          />
         </div>
       </Link>
       {buttons && (

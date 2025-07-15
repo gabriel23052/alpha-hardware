@@ -55,6 +55,9 @@
 }
 
 .buttonsContainer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   padding: var(--px8) 0;
   border-radius: 4px;

@@ -28,10 +28,20 @@
   .products {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
+  .products > article:nth-last-child(-n + 2) {
+    display: none;
+  }
 }
 
 @media (max-width: 650px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reexibe os últimos dois cards */
+  .products > article:nth-last-child(-n + 2) {
+    display: initial;
   }
 }

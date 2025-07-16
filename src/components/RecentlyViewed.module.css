@@ -1,0 +1,30 @@
+.recentlyViewed {
+  padding: var(--px40) 0;
+}
+
+.title {
+  display: flex;
+  gap: var(--px16);
+  align-items: center;
+  margin-bottom: var(--px24);
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--px16);
+}
+
+@media (max-width: 950px) {
+  .products {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: var(--px8);
+    scroll-behavior: smooth;
+  }
+
+  .products > article {
+    width: 18rem;
+    min-width: 18rem;
+  }
+}

@@ -806,6 +806,123 @@ const homepageData = {
       ],
     },
   },
+  recentlyViewed: [
+    {
+      id: "026333169",
+      name: "Placa de Vídeo Gigabyte RTX 3050 Windforce OC NVIDIA GeForce, 6GB, GDDR6, DLSS, Ray Tracing",
+      category: "gpu",
+      prices: {
+        normal: 155544,
+        withDiscont: 146211,
+        discontPercentage: 6,
+        maxInstallments: 12,
+        installments: 12962,
+      },
+      sale: {
+        name: "Festival das Placas de Vídeo",
+        expiration: Math.floor(Date.now() / 1000 + 86400),
+        discontPercentage: 10,
+        prices: {
+          normal: 139990,
+          withDiscont: 131591,
+          discontPercentage: 6,
+          maxInstallments: 12,
+          installments: 11666,
+          oldPrice: 155544,
+        },
+      },
+      media: {
+        thumb: "026333169-thumb.jpg",
+        images: [
+          { small: "026333169-00-s.jpg", medium: "026333169-00-m.jpg" },
+          { small: "026333169-01-s.jpg", medium: "026333169-01-m.jpg" },
+          { small: "026333169-02-s.jpg", medium: "026333169-02-m.jpg" },
+          { small: "026333169-03-s.jpg", medium: "026333169-03-m.jpg" },
+          { small: "026333169-04-s.jpg", medium: "026333169-04-m.jpg" },
+        ],
+      },
+    },
+    {
+      id: "688377899",
+      name: "Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing",
+      category: "gpu",
+      prices: {
+        normal: 499999,
+        withDiscont: 469999,
+        discontPercentage: 6,
+        maxInstallments: 12,
+        installments: 41667,
+      },
+      sale: {
+        name: "Festival das Placas de Vídeo",
+        expiration: Math.floor(Date.now() / 1000 + 86400),
+        discontPercentage: 10,
+        prices: {
+          normal: 450000,
+          withDiscont: 423000,
+          discontPercentage: 6,
+          maxInstallments: 12,
+          installments: 37500,
+          oldPrice: 499999,
+        },
+      },
+      media: {
+        thumb: "688377899-thumb.jpg",
+        images: [
+          { small: "688377899-00-s.jpg", medium: "688377899-00-m.jpg" },
+          { small: "688377899-01-s.jpg", medium: "688377899-01-m.jpg" },
+          { small: "688377899-02-s.jpg", medium: "688377899-02-m.jpg" },
+          { small: "688377899-03-s.jpg", medium: "688377899-03-m.jpg" },
+          { small: "688377899-04-s.jpg", medium: "688377899-04-m.jpg" },
+        ],
+      },
+    },
+    {
+      id: "C45F042A9",
+      name: "Placa-Mãe ASRock B450M Steel Legend, AMD AM4, mATX, DDR4, Preto - B450M Steel Legend",
+      category: "moba",
+      prices: {
+        normal: 85881,
+        withDiscont: 79010,
+        discontPercentage: 8,
+        maxInstallments: 12,
+        installments: 7157,
+      },
+      sale: null,
+      media: {
+        thumb: "C45F042A9-thumb.jpg",
+        images: [
+          { small: "C45F042A9-00-s.jpg", medium: "C45F042A9-00-m.jpg" },
+          { small: "C45F042A9-01-s.jpg", medium: "C45F042A9-01-m.jpg" },
+          { small: "C45F042A9-02-s.jpg", medium: "C45F042A9-02-m.jpg" },
+          { small: "C45F042A9-03-s.jpg", medium: "C45F042A9-03-m.jpg" },
+          { small: "C45F042A9-04-s.jpg", medium: "C45F042A9-04-m.jpg" },
+        ],
+      },
+    },
+    {
+      id: "9764E9629",
+      name: "Placa de Vídeo XFX Mercury RX 9070 XT OC GAMING EDITION WITH AMD Radeon, RGB, 16GB, GDDR6, HDMI 3xDP, RDNA 4",
+      category: "gpu",
+      prices: {
+        normal: 666666,
+        withDiscont: 626666,
+        discontPercentage: 6,
+        maxInstallments: 12,
+        installments: 55556,
+      },
+      sale: null,
+      media: {
+        thumb: "9764E9629-thumb.jpg",
+        images: [
+          { small: "9764E9629-00-s.jpg", medium: "9764E9629-00-m.jpg" },
+          { small: "9764E9629-01-s.jpg", medium: "9764E9629-01-m.jpg" },
+          { small: "9764E9629-02-s.jpg", medium: "9764E9629-02-m.jpg" },
+          { small: "9764E9629-03-s.jpg", medium: "9764E9629-03-m.jpg" },
+        ],
+      },
+    },
+  ],
 };
 
 export default homepageData;

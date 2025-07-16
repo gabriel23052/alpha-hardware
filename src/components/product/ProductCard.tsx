@@ -15,7 +15,7 @@ type ProductCardProps = {
 
 const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
   return (
-    <article className={`${classes.productCard}`}>
+    <article className={`bg-white ${classes.productCard}`}>
       <Link to="/">
         {product.sale && showSale && (
           <ProductCardSaleLabel sale={product.sale} />

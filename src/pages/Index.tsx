@@ -12,13 +12,14 @@ const Index = () => {
     <main>
       <ResponsiveBanner bannerData={homepageData.banners.gpusSale} />
       <ProductSale saleSelection={homepageData.saleSelection.gpusSale} />
+      <Categories />
       <ProductSelection
         productSelection={homepageData.productsSelection.newProducts}
       />
-      <Categories />
       <ResponsiveBanner bannerData={homepageData.banners.cbxAd} />
-      <RecentlyViewed products={homepageData.recentlyViewed} />
       <Social />
+      <ProductSelection productSelection={homepageData.productsSelection.noMoreFreezes} />
+      <RecentlyViewed products={homepageData.recentlyViewed} />
     </main>
   );
 };

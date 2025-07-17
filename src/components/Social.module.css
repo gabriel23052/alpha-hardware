@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
-  margin-top: var(--px64);
-  margin-bottom: var(--px64);
+  margin: var(--px64) auto;
 }
 
 .text {

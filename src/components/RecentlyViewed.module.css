@@ -9,6 +9,10 @@
   margin-bottom: var(--px24);
 }
 
+.title svg {
+  width: var(--px32);
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

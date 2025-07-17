@@ -26,6 +26,8 @@
   margin: 0px;
   padding: 0px;
   border: none;
+  outline: none;
+  box-sizing: border-box;
 }
 
 html {
@@ -81,6 +83,33 @@ html {
   html {
     font-size: 12px;
   }
+}
+
+body {
+  padding-top: 8.2rem;
+}
+@media (max-width: 970px) {
+  body {
+    padding-top: 7.85rem;
+  }
+}
+@media (max-width: 700px) {
+  body {
+    padding-top: 4.8rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+svg {
+  height: auto;
 }
 
 .primary-xlight {
@@ -215,66 +244,85 @@ html {
 .bg-primary-gradient {
   background-color: var(--primary-gradient);
 }
+.white {
+  color: white;
+}
+.bg-white {
+  background-color: white;
+}
+.black {
+  color: black;
+}
+.bg-black {
+  background-color: black;
+}
 
 .text-small {
   font-family: var(--primary-font);
-  font-size: var(--px14);
+  font-size: 0.875rem;
   line-height: var(--px20);
   font-weight: 400;
 }
 
 .text-small-b {
   font-family: var(--primary-font);
-  font-size: var(--px14);
+  font-size: 0.875rem;
   line-height: var(--px20);
   font-weight: 700;
 }
 
 .text-default {
   font-family: var(--primary-font);
-  font-size: var(--px16);
+  font-size: 1rem;
   line-height: var(--px24);
   font-weight: 400;
 }
 
 .text-default-b {
   font-family: var(--primary-font);
-  font-size: var(--px16);
+  font-size: 1rem;
   line-height: var(--px24);
   font-weight: 700;
 }
 
 .text-large {
   font-family: var(--primary-font);
-  font-size: var(--px20);
+  font-size: 1.25rem;
   line-height: var(--px32);
   font-weight: 400;
 }
 
 .text-large-m {
   font-family: var(--primary-font);
-  font-size: var(--px20);
+  font-size: 1.25rem;
   line-height: var(--px32);
   font-weight: 500;
 }
 
 .text-verylarge {
   font-family: var(--primary-font);
-  font-size: var(--px24);
+  font-size: 1.5rem;
   line-height: var(--px32);
   font-weight: 400;
 }
 
 .text-verylarge-m {
   font-family: var(--primary-font);
-  font-size: var(--px24);
+  font-size: 1.5rem;
   line-height: var(--px32);
   font-weight: 500;
 }
 
 .text-display {
   font-family: var(--display-font);
-  font-size: var(--px24);
-  line-height: var(--px24);
+  font-size: 1.5rem;
+  line-height: var(--px32);
   font-weight: 400;
+}
+
+.defaultContainer {
+  max-width: 1406px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px var(--px20);
 }

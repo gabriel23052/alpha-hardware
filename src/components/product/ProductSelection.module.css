@@ -1,0 +1,61 @@
+.productSelection {
+  margin: var(--px64) auto;
+}
+
+.titleWithLine {
+  margin-bottom: var(--px20);
+  position: relative;
+}
+.titleWithLine::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  display: block;
+  background-color: var(--secondary);
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+.title {
+  display: inline-block;
+  margin-left: var(--px32);
+  padding: 0 var(--px12);
+  background-color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--px12);
+}
+
+@media (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 950px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
+  .products > article:nth-last-child(-n + 2) {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reexibe os últimos dois cards */
+  .products > article:nth-last-child(-n + 2) {
+    display: initial;
+  }
+}

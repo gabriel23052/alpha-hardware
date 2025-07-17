@@ -1,0 +1,44 @@
+.links {
+  display: flex;
+}
+
+.links a {
+  display: block;
+  padding: var(--px8) var(--px24);
+  position: relative;
+  transition: background-color 300ms;
+}
+.links a:hover {
+  background-color: var(--dneutral-dark);
+}
+.links a::after {
+  content: "";
+  width: 2px;
+  height: var(--px12);
+  display: block;
+  background-color: var(--dneutral);
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  transform: translateY(-50%);
+}
+
+.links li:last-child a::after {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .links {
+    flex-direction: column;
+    padding-top: var(--px8);
+    padding-bottom: var(--px8);
+  }
+
+  .links a {
+    padding: var(--px12);
+  }
+
+  .links a::after {
+    display: none;
+  }
+}

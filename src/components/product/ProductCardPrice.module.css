@@ -1,0 +1,17 @@
+.price {
+  display: block;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+}
+
+.price br {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .price br {
+    display: initial;
+  }
+}

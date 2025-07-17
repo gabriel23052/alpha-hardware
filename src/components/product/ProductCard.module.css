@@ -1,0 +1,86 @@
+.productCard {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--lneutral-light);
+  border-radius: 8px;
+  transition: border-color 300ms;
+}
+.productCard:hover,
+.productCard:focus {
+  border-color: var(--secondary-light);
+}
+
+.thumb {
+  padding: var(--px24);
+  height: 13.5rem;
+}
+
+.thumb img {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  transition: transform 300ms;
+}
+.productCard:hover img,
+.productCard:focus img {
+  transform: scale(1.03);
+}
+
+.wrapper {
+  padding: var(--px16) var(--px12);
+  padding-bottom: var(--px20);
+}
+
+.name {
+  height: 3.75rem; /* 60px */
+  display: -webkit-box;
+  margin-bottom: var(--px16);
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  text-overflow: "ellipsis";
+  overflow: hidden;
+}
+
+.price {
+  display: block;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: var(--px12);
+  padding: var(--px12);
+  padding-top: 0px;
+}
+
+.buttonsContainer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: var(--px8) 0;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 300ms;
+}
+.buttonsContainer a:hover,
+.buttonsContainer a:focus {
+  background-color: var(--primary-dark);
+}
+
+.buttonsContainer button {
+  padding: var(--px8) var(--px12);
+  outline: 1px solid var(--lneutral-light);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.buttonsContainer button:hover,
+.buttonsContainer button:focus {
+  background-color: var(--white);
+}
+
+.buttonsContainer svg {
+  height: 100%;
+  display: block;
+}

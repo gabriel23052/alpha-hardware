@@ -1,4 +1,4 @@
-import products from "./products";
+import products from "./data/products";
 
 export default class ProductsAPI {
   private productsIndexMap: Map<string, number>;
@@ -10,8 +10,14 @@ export default class ProductsAPI {
     }
   }
 
-  getProductById(id: string) {
-    const index = this.productsIndexMap.get(id);
-    return index === undefined ? undefined : products[index];
+  public getProductsById(ids: string | string[]) {
+    const result: IProduct[] = [];
+    if (typeof ids === "string") ids = [ids];
+    ids.forEach((id) => {
+      const index = this.productsIndexMap.get(id);
+      if (index === undefined) return;
+      result.push(products[index]);
+    });
+    return result;
   }
 }

@@ -8,6 +8,11 @@ import Header from "@components/header/Header";
 import Index from "./pages/Index";
 import Footer from "@components/Footer";
 
+// TEST
+import ProductsAPI from "./fakeAPI/ProductsAPI";
+const fakeApi = new ProductsAPI();
+console.log(fakeApi.getProductById("C45F042A9"));
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

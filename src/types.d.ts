@@ -42,6 +42,7 @@ interface IProduct {
   prices: IPrices;
   sale: null | ISale;
   media: IMedia;
+  tags: string[];
 }
 
 interface IProductSelection {

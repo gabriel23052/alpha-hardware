@@ -646,7 +646,7 @@ const products: IProduct[] = [
     tags: ["MSI", "AMD", "DDR4"],
   },
   {
-    id: "C45F02A9",
+    id: "C45F042A9",
     name: "Placa-Mãe ASRock B450M Steel Legend, AMD AM4, mATX, DDR4",
     category: "moba",
     prices: {

@@ -45,12 +45,20 @@ interface IProduct {
   tags: string[];
 }
 
+interface IProductIdSelection {
+  title: string;
+  role: "default" | "sale" | "recentlyViewed";
+  productIds: string[];
+}
+
 interface IProductSelection {
   title: string;
+  role: "default" | "sale" | "recentlyViewed";
   products: IProduct[];
 }
 
-interface ISaleSelection {
-  title: string;
-  products: IProduct[];
+interface IHomepage {
+  banners: IResponsiveBanner[],
+  productSelection: IProductIdSelection[]
 }
+

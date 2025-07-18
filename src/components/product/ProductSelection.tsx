@@ -6,15 +6,17 @@ const ProductSelection = ({
 }: {
   productSelection: IProductSelection;
 }) => {
+  const { title, products } = productSelection;
+
   return (
     <article className={`defaultContainer ${classes.productSelection}`}>
       <div className={`${classes.titleWithLine}`}>
         <h2 className={`dneutral-dark text-verylarge-m ${classes.title}`}>
-          {productSelection.title}
+          {title}
         </h2>
       </div>
       <div className={classes.products}>
-        {productSelection.products.map((product) => (
+        {products.map((product) => (
           <ProductCard
             key={product.id}
             product={product}

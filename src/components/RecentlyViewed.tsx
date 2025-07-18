@@ -4,7 +4,11 @@ import SVGRecently from "@svg/recently.svg?react";
 
 import classes from "./RecentlyViewed.module.css";
 
-const RecentlyViewed = ({ products }: { products: IProduct[] }) => {
+const RecentlyViewed = ({
+  productSelection,
+}: {
+  productSelection: IProductSelection;
+}) => {
   return (
     <section className={`bg-lneutral-xlight ${classes.recentlyViewed}`}>
       <div className={`defaultContainer ${classes.wrapper}`}>
@@ -15,7 +19,7 @@ const RecentlyViewed = ({ products }: { products: IProduct[] }) => {
           </h2>
         </div>
         <div className={`${classes.products}`}>
-          {products.map((product) => (
+          {productSelection.products.map((product) => (
             <ProductCard
               key={product.id}
               product={product}

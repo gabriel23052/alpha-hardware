@@ -5,21 +5,26 @@ import Categories from "@components/Categories";
 import RecentlyViewed from "@components/RecentlyViewed";
 import Social from "@components/Social";
 
-import homepageData from "@data/homepageData";
+import ContentAPI from "../fakeAPI/ContentAPI";
+
+const contentApi = new ContentAPI();
+const homepageContent = contentApi.getHomepageContent();
 
 const Index = () => {
   return (
     <main>
-      <ResponsiveBanner bannerData={homepageData.banners.gpusSale} />
-      <ProductSale saleSelection={homepageData.saleSelection.gpusSale} />
+      <ResponsiveBanner bannerData={homepageContent.banners[0]} />
+      <ProductSale productSelection={homepageContent.productsSelection[0]} />
       <Categories />
       <ProductSelection
-        productSelection={homepageData.productsSelection.newProducts}
+        productSelection={homepageContent.productsSelection[1]}
       />
-      <ResponsiveBanner bannerData={homepageData.banners.cbxAd} />
+      <ResponsiveBanner bannerData={homepageContent.banners[1]} />
       <Social />
-      <ProductSelection productSelection={homepageData.productsSelection.noMoreFreezes} />
-      <RecentlyViewed products={homepageData.recentlyViewed} />
+      <ProductSelection
+        productSelection={homepageContent.productsSelection[2]}
+      />
+      <RecentlyViewed productSelection={homepageContent.productsSelection[3]} />
     </main>
   );
 };

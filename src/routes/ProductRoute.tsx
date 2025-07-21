@@ -2,17 +2,18 @@ import { useParams } from "react-router";
 
 import Product from "@components/product/Product";
 import ProductsAPI from "../fakeAPI/ProductsAPI";
+import ProductNotFound from "@components/product/ProductNotFound";
 
 const ProductRoute = () => {
+  // Temporário
   const { productId } = useParams<{ productId: string }>();
   if (productId === undefined) {
-    return null;
+    return <ProductNotFound />;
   }
-
   const productsApi = new ProductsAPI();
   const product = productsApi.getProductsById(productId)[0];
   if (product === undefined) {
-    return null;
+    return <ProductNotFound />;
   }
 
   return (

@@ -1,0 +1,19 @@
+.productNotFound {
+  margin: 20rem auto;
+}
+
+.productNotFound h1 {
+  text-align: center;
+  margin-bottom: var(--px12);
+}
+
+.productNotFound p {
+  text-align: center;
+}
+
+.productNotFound a {
+  text-decoration: underline;
+}
+.productNotFound a:hover {
+  color: var(--dneutral-xdark);
+}

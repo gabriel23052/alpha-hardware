@@ -10,7 +10,7 @@ import ContentAPI from "../fakeAPI/ContentAPI";
 const contentApi = new ContentAPI();
 const homepageContent = contentApi.getHomepageContent();
 
-const Index = () => {
+const IndexRoute = () => {
   return (
     <main>
       <ResponsiveBanner bannerData={homepageContent.banners[0]} />
@@ -29,4 +29,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexRoute;

@@ -1,0 +1,14 @@
+.product {
+  padding-top: var(--px64);
+  padding-bottom: var(--px64);
+}
+
+.title {
+  margin-bottom: var(--px32);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--px16);
+}

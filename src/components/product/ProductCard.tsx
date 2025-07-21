@@ -22,7 +22,7 @@ const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
         )}
         <div className={`${classes.thumb}`}>
           <img
-            src={`./img/products/${product.media.thumb}`}
+            src={`/img/products/${product.media.thumb}`}
             alt={product.name}
           />
         </div>

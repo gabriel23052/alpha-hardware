@@ -1,0 +1,11 @@
+.productBuyPrice {
+  margin-bottom: var(--px24);
+}
+
+.productBuyPrice > span {
+  display: block;
+}
+
+.priceWithDiscont {
+  margin-bottom: var(--px8);
+}

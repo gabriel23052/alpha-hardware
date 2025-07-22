@@ -1,4 +1,5 @@
 import classes from "./Product.module.css";
+import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
 
 const Product = ({ product }: { product: IProduct }) => {
@@ -10,7 +11,7 @@ const Product = ({ product }: { product: IProduct }) => {
       </div>
       <div className={`${classes.container}`}>
         <ProductGallery media={product.media} alt={product.name} />
-        <div></div>
+        <ProductBuy product={product} />
       </div>
     </article>
   );

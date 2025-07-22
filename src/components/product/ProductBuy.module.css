@@ -1,0 +1,54 @@
+.productBuy {
+  padding: var(--px40) var(--px24);
+  border-radius: 8px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.buyButton {
+  padding: var(--px12) var(--px64);
+  border-radius: 4px;
+  transition: background-color 300ms;
+}
+.buyButton:hover,
+.buyButton:focus {
+  background-color: var(--primary-dark);
+}
+
+.cartButton {
+  display: block;
+  margin-left: var(--px16);
+  padding: var(--px8);
+  cursor: pointer;
+  outline: 1px solid var(--lneutral-light);
+  border-radius: 4px;
+  transition: outline 300ms;
+}
+.cartButton:hover,
+.cartButton:focus {
+  outline: 1px solid var(--lneutral-dark);
+}
+
+.favoriteButton {
+  margin-left: var(--px4);
+  padding: var(--px8);
+  background: none;
+  cursor: pointer;
+  transition: transform 300ms;
+}
+.favoriteButton:hover,
+.favoriteButton:focus {
+  transform: scale(1.1);
+}
+
+.favoriteButton svg {
+  fill: url(#gradient);
+}
+
+.favoriteButton svg path {
+  stroke: url(#gradient);
+  stroke-width: 1;
+}

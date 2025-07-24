@@ -10,14 +10,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--px8);
-  padding: var(--px4) 0;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .selector button {
-  display: block;
   width: 6.25rem;
   height: 6.25rem;
+  display: block;
   padding: 1rem;
   background-color: white;
   border: 1px solid var(--lneutral-light);
@@ -44,4 +43,27 @@
 .imageContainer img {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 1000px) {
+  .productGallery {
+    height: auto;
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+    gap: 0px;
+  }
+
+  .selector {
+    max-width: 100%;
+    grid-row: 2;
+    flex-direction: row;
+    padding-right: 0;
+    padding-bottom: 8px;
+  }
+
+  .selector button {
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
 }

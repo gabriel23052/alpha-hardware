@@ -1,5 +1,5 @@
 .product {
-  padding-top: var(--px64);
+  padding-top: var(--px32);
   padding-bottom: var(--px64);
 }
 
@@ -12,3 +12,15 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--px16);
 }
+
+@media (max-width: 700px) {
+  .product {
+    padding-top: 4.5rem;
+  }
+  
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+  
+

@@ -965,7 +965,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 139990,
@@ -1001,7 +1001,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 864000,
       discontPercentage: 10,
       prices: {
         normal: 450000,
@@ -1037,7 +1037,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 15,
       prices: {
         normal: 245555,
@@ -1073,7 +1073,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 15,
       prices: {
         normal: 226667,
@@ -1109,7 +1109,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 250000,
@@ -1145,7 +1145,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 15,
       prices: {
         normal: 245555,
@@ -1181,7 +1181,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 15,
       prices: {
         normal: 623333,
@@ -1217,7 +1217,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 409999,
@@ -1253,7 +1253,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 399999,
@@ -1289,7 +1289,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: 1752419125,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 469999,

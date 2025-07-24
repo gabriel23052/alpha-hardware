@@ -5,7 +5,14 @@ import classes from "./ProductBuyPrice.module.css";
 const ProductBuyPrice = ({ prices }: { prices: IPrices }) => {
   return (
     <div className={`${classes.productBuyPrice}`}>
-      <span className={`lneutral-xdark text-default ${classes.priceWithDiscont}`}>
+      {prices.oldPrice && (
+        <span className={`lneutral-dark text-default ${classes.oldPrice}`}>
+          R$ {parsePrice(prices.oldPrice)}
+        </span>
+      )}
+      <span
+        className={`lneutral-xdark text-default ${classes.priceWithDiscont}`}
+      >
         <span className="primary-dark">
           R${" "}
           <span className="text-price">{parsePrice(prices.withDiscont)}</span>

@@ -1,14 +1,19 @@
-.productBuy {
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: var(--px40) var(--px24);
   border-radius: 8px;
+}
+
+.sale h2 {
+  padding: var(--px4) var(--px24);
+  border-radius: 4px 4px 0 0;
 }
 
 .buttons {
   display: flex;
   align-items: center;
+  margin-bottom: var(--px32);
 }
 
 .buyButton {

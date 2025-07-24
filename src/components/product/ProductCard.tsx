@@ -5,7 +5,7 @@ import ProductCardPrice from "./ProductCardPrice";
 import SVGCartAdd from "@svg/cartAdd.svg?react";
 
 import classes from "./ProductCard.module.css";
-import ProductCardSaleLabel from "./ProductCardSaleLabel";
+import ProductSaleLabel from "./ProductSaleLabel";
 
 type ProductCardProps = {
   product: IProduct;
@@ -18,7 +18,7 @@ const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
     <article className={`bg-white ${classes.productCard}`}>
       <Link to={`./product/${product.id}`}>
         {product.sale && showSale && (
-          <ProductCardSaleLabel sale={product.sale} />
+          <ProductSaleLabel sale={product.sale} inCard={true} />
         )}
         <div className={`${classes.thumb}`}>
           <img

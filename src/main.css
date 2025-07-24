@@ -321,7 +321,7 @@ svg {
 .text-display {
   font-family: var(--display-font);
   font-size: 1.5rem;
-  line-height: var(--px32);
+  line-height: var(--px40);
   font-weight: 400;
 }
 

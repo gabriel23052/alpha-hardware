@@ -48,6 +48,7 @@
   grid-template-columns: auto min-content;
   align-items: flex-end;
   justify-content: left;
+  padding-bottom: 2.125rem;
   gap: var(--px4) var(--px8);
 }
 

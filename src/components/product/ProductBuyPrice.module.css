@@ -6,6 +6,11 @@
   display: block;
 }
 
+.oldPrice {
+  text-decoration: line-through;
+  margin-bottom: var(--px4);
+}
+
 .priceWithDiscont {
   margin-bottom: var(--px8);
 }

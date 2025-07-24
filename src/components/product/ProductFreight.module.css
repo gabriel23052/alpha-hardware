@@ -1,0 +1,91 @@
+.freight h3 {
+  margin-bottom: var(--px16);
+}
+
+.freight button {
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.freight ul {
+  display: flex;
+  margin-bottom: var(--px8);
+}
+
+.freight li {
+  padding: 0 var(--px12);
+  position: relative;
+}
+.freight li:first-child {
+  padding-left: 0;
+}
+.freight li::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background-color: var(--lneutral);
+  top: 0px;
+  right: 0px;
+}
+.freight li:last-child::after {
+  display: none;
+}
+
+.freight li span {
+  display: block;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  gap: var(--px8);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: flex-end;
+  justify-content: left;
+  gap: var(--px4) var(--px8);
+}
+
+.input {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: var(--px4);
+  align-items: flex-start;
+}
+
+.input input {
+  width: 100%;
+  padding: var(--px8) var(--px16);
+  border: 1px solid var(--lneutral-light);
+  border-radius: 4px;
+  transition: border-color 300ms;
+}
+.input input::placeholder {
+  color: var(--lneutral);
+}
+.input input:hover,
+.input input:focus {
+  border-color: var(--lneutral);
+}
+
+.form button {
+  padding: var(--px8) var(--px12);
+  border: 1px solid var(--lneutral-light);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 300ms;
+}
+.form button:hover,
+.form button:focus {
+  border-color: var(--lneutral-dark);
+}
+
+.form a {
+  text-decoration: underline;
+}

@@ -62,3 +62,12 @@ interface IHomepage {
   productSelection: IProductIdSelection[]
 }
 
+interface IFreight {
+  cep: string;
+  options: {
+    name: string;
+    price: number;
+    deliveryTime: number;
+  }[]
+}
+

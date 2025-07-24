@@ -1,4 +1,7 @@
 .productBuy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: var(--px40) var(--px24);
   border-radius: 8px;
 }

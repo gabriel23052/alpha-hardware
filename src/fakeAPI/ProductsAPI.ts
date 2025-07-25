@@ -20,4 +20,11 @@ export default class ProductsAPI {
     });
     return result;
   }
+
+  public getRelatedProducts(product: IProduct): IProduct[] {
+    const { id, category } = product;
+    return products
+      .filter((product) => product.category === category && id !== product.id)
+      .slice(0, 4);
+  }
 }

@@ -18,6 +18,11 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--px16);
+  margin-bottom: var(--px32);
+}
+
+.description p {
+  max-width: 680px;
 }
 
 @media (max-width: 950px) {

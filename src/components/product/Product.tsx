@@ -37,6 +37,17 @@ const Product = ({ product }: { product: IProduct }) => {
           ))}
         </ul>
       </div>
+      <div className={`${classes.description}`}>
+        <UnderlinedTitle>Descrição do produto</UnderlinedTitle>
+        <p className="dneutral text-default">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean velit
+          nibh, congue sit amet porttitor a, congue ut mi. Morbi quis porta ex.
+          Integer purus nisi, ultricies elementum diam ac, lobortis efficitur
+          dolor. Mauris feugiat finibus purus, quis porttitor orci commodo sed.
+          Vestibulum eget turpis sed sapien imperdiet elementum. Cras vitae
+          dolor
+        </p>
+      </div>
     </article>
   );
 };

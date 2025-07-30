@@ -1,7 +1,7 @@
 .underlinedTitle {
   display: inline-block;
   position: relative;
-  margin-bottom: var(--px24);
+  margin-bottom: var(--px20);
 }
 
 .underlinedTitle::after {

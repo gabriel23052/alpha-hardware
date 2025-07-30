@@ -6,6 +6,7 @@ import ProductGallery from "./ProductGallery";
 import ProductCard from "./ProductCard";
 
 import ProductsAPI from "../../fakeAPI/ProductsAPI";
+import ProductSpecSheet from "./ProductSpecSheet";
 
 const Product = ({ product }: { product: IProduct }) => {
   // Temporário
@@ -48,6 +49,7 @@ const Product = ({ product }: { product: IProduct }) => {
           dolor
         </p>
       </div>
+      <ProductSpecSheet />
     </article>
   );
 };

@@ -21,6 +21,22 @@ export default class ProductsAPI {
     return result;
   }
 
+  // Temporário
+  public getRecentlyViewedProducts(): IProductSelection {
+    const productApi = new ProductsAPI();
+    const recentlyViewedIds = [
+      "026333169",
+      "688377899",
+      "C45F042A9",
+      "9764E9629",
+    ];
+    return {
+      title: "",
+      role: "recentlyViewed",
+      products: productApi.getProductsById(recentlyViewedIds),
+    };
+  }
+
   public getRelatedProducts(product: IProduct): IProduct[] {
     const { id, category } = product;
     return products

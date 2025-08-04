@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard";
+import ProductList from "./ProductList";
 import classes from "./ProductSelection.module.css";
 
 const ProductSelection = ({
@@ -15,16 +15,7 @@ const ProductSelection = ({
           {title}
         </h2>
       </div>
-      <div className={classes.products}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            showButtons={true}
-            showSale={false}
-          />
-        ))}
-      </div>
+      <ProductList products={products} showSale={false} showButtons={true} className={classes.products} />
     </article>
   );
 };

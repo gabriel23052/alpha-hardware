@@ -1,8 +1,7 @@
-import ProductCard from "./product/ProductCard";
-
 import SVGRecently from "@svg/recently.svg?react";
 
 import classes from "./RecentlyViewed.module.css";
+import ProductList from "./product/ProductList";
 
 const RecentlyViewed = ({
   productSelection,
@@ -18,16 +17,12 @@ const RecentlyViewed = ({
             Produtos que você viu recentemente
           </h2>
         </div>
-        <div className={`${classes.products}`}>
-          {productSelection.products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              showSale={false}
-              showButtons={true}
-            />
-          ))}
-        </div>
+        <ProductList
+          products={productSelection.products}
+          showSale={false}
+          showButtons={true}
+          className={classes.products}
+        />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import ProductCard from "./ProductCard";
 import classes from "./ProductSale.module.css";
+import ProductList from "./ProductList";
 
 const ProductSale = ({
   productSelection,
@@ -14,16 +14,12 @@ const ProductSale = ({
       <Link className={`${classes.title}`} to={"/"}>
         <h2 className={`secondary-light text-display`}>{title}</h2>
       </Link>
-      <div className={`${classes.products}`}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            showButtons={true}
-            showSale={true}
-          />
-        ))}
-      </div>
+      <ProductList
+        products={products}
+        showSale={true}
+        showButtons={false}
+        className={`${classes.products}`}
+      />
     </article>
   );
 };

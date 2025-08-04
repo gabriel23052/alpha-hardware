@@ -27,7 +27,7 @@
     scroll-behavior: smooth;
   }
 
-  .products > article {
+  .products article {
     width: 18rem;
     min-width: 18rem;
   }

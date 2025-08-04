@@ -3,10 +3,10 @@ import classes from "./Product.module.css";
 import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
-import ProductCard from "./ProductCard";
 
 import ProductsAPI from "../../fakeAPI/ProductsAPI";
 import ProductSpecSheet from "./ProductSpecSheet";
+import ProductList from "./ProductList";
 
 const Product = ({ product }: { product: IProduct }) => {
   // Temporário
@@ -25,18 +25,11 @@ const Product = ({ product }: { product: IProduct }) => {
       </div>
       <div className={`${classes.relatedProducts}`}>
         <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
-        <ul>
-          {relatedProducts.map((product) => (
-            <li key={product.id}>
-              <ProductCard
-                key={product.id}
-                product={product}
-                showSale={false}
-                showButtons={false}
-              />
-            </li>
-          ))}
-        </ul>
+        <ProductList
+          products={relatedProducts}
+          showSale={false}
+          showButtons={false}
+        />
       </div>
       <div className={`${classes.description}`}>
         <UnderlinedTitle>Descrição do produto</UnderlinedTitle>

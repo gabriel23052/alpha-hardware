@@ -30,7 +30,7 @@
   }
 
   /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
-  .products > article:nth-last-child(-n + 2) {
+  .products li:nth-last-child(-n + 2) > article {
     display: none;
   }
 }
@@ -41,7 +41,7 @@
   }
 
   /* Reexibe os últimos dois cards */
-  .products > article:nth-last-child(-n + 2) {
-    display: initial;
+  .products li:nth-last-child(-n + 2) > article {
+    display: block;
   }
 }

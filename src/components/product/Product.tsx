@@ -27,7 +27,7 @@ const Product = ({ product }: { product: IProduct }) => {
         <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
         <ul>
           {relatedProducts.map((product) => (
-            <li>
+            <li key={product.id}>
               <ProductCard
                 key={product.id}
                 product={product}

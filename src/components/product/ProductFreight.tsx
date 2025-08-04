@@ -45,7 +45,7 @@ const ProductFreight = () => {
         </h3>
         <ul className={`${classes.options}`}>
           {freightData.options.map((option) => (
-            <li className="dneutral-dark">
+            <li className="dneutral-dark" key={option.name}>
               <h4 className="text-small-b">{option.name}</h4>
               <span className="text-small">
                 {option.deliveryTime} dias úteis

@@ -4,7 +4,7 @@ import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
 
-import ProductsAPI from "../../fakeAPI/ProductsAPI";
+import ProductsAPI from "@fakeAPI/ProductsAPI";
 import ProductSpecSheet from "./ProductSpecSheet";
 import ProductList from "./ProductList";
 

@@ -11,6 +11,8 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@data": path.resolve(__dirname, "./src/data"),
+      "@fakeAPI": path.resolve(__dirname, "./src/fakeAPI"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
     },
   },
   plugins: [react(), svgr()],

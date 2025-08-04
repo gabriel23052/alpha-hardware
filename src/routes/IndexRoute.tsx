@@ -6,11 +6,13 @@ import RecentlyViewed from "@components/RecentlyViewed";
 import Social from "@components/Social";
 
 import ContentAPI from "../fakeAPI/ContentAPI";
+import usePageTitle from "../hooks/usePageTitle";
 
 const contentApi = new ContentAPI();
 const homepageContent = contentApi.getHomepageContent();
 
 const IndexRoute = () => {
+  usePageTitle("Alpha Hardware");
   return (
     <main>
       <ResponsiveBanner bannerData={homepageContent.banners[0]} />

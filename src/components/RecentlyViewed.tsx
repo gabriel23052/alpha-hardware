@@ -19,8 +19,8 @@ const RecentlyViewed = ({
         </div>
         <ProductList
           products={productSelection.products}
-          showSale={false}
-          showButtons={true}
+          hideSale={true}
+          hideButtons={true}
           className={classes.products}
         />
       </div>

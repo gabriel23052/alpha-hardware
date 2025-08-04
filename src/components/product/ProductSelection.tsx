@@ -15,7 +15,11 @@ const ProductSelection = ({
           {title}
         </h2>
       </div>
-      <ProductList products={products} showSale={false} showButtons={true} className={classes.products} />
+      <ProductList
+        products={products}
+        hideSale={true}
+        className={classes.products}
+      />
     </article>
   );
 };

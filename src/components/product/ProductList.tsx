@@ -2,14 +2,14 @@ import ProductCard from "./ProductCard";
 
 type ProductListProps = {
   products: IProduct[];
-  showSale: boolean;
-  showButtons: boolean;
+  hideSale?: boolean;
+  hideButtons?: boolean;
   className?: string;
 };
 const ProductList = ({
   products,
-  showSale,
-  showButtons,
+  hideSale,
+  hideButtons,
   className,
 }: ProductListProps) => {
   return (
@@ -18,8 +18,8 @@ const ProductList = ({
         <li key={product.id}>
           <ProductCard
             product={product}
-            showSale={showSale}
-            showButtons={showButtons}
+            hideSale={hideSale}
+            hideButtons={hideButtons}
           />
         </li>
       ))}

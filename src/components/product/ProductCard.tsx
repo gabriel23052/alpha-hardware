@@ -9,15 +9,15 @@ import ProductSaleLabel from "./ProductSaleLabel";
 
 type ProductCardProps = {
   product: IProduct;
-  showSale: boolean;
-  showButtons?: boolean;
+  hideSale?: boolean;
+  hideButtons?: boolean;
 };
 
-const ProductCard = ({ product, showSale, showButtons }: ProductCardProps) => {
+const ProductCard = ({ product, hideSale, hideButtons }: ProductCardProps) => {
   return (
     <article className={`bg-white ${classes.productCard}`}>
       <Link to={`/product/${product.id}`}>
-        {product.sale && showSale && (
+        {product.sale && !hideSale && (
           <ProductSaleLabel sale={product.sale} inCard={true} />
         )}
         <div className={`${classes.thumb}`}>
@@ -32,11 +32,11 @@ const ProductCard = ({ product, showSale, showButtons }: ProductCardProps) => {
           </span>
           <ProductCardPrice
             prices={product.sale ? product.sale.prices : product.prices}
-            showOldPrice={showSale}
+            showOldPrice={hideSale === false}
           />
         </div>
       </Link>
-      {showButtons && (
+      {!hideButtons && (
         <div className={`${classes.buttonsContainer}`}>
           <Link to="" className="lneutral-xlight bg-primary text-default-b">
             COMPRAR

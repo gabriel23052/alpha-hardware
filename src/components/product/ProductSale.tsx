@@ -16,8 +16,6 @@ const ProductSale = ({
       </Link>
       <ProductList
         products={products}
-        showSale={true}
-        showButtons={false}
         className={`${classes.products}`}
       />
     </article>

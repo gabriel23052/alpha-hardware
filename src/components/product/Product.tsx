@@ -27,8 +27,8 @@ const Product = ({ product }: { product: IProduct }) => {
         <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
         <ProductList
           products={relatedProducts}
-          showSale={false}
-          showButtons={false}
+          hideSale={true}
+          hideButtons={true}
         />
       </div>
       <div className={`${classes.description}`}>

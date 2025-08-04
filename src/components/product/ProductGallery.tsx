@@ -1,4 +1,5 @@
 import React from "react";
+
 import classes from "./ProductGallery.module.css";
 
 const ProductGallery = ({ media, alt }: { media: IMedia; alt: string }) => {

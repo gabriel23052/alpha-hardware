@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 
 import HeaderUserLinks from "./HeaderUserLinks";
@@ -13,8 +13,8 @@ import SVGMenu from "@svg/menu.svg?react";
 import classes from "./Header.module.css";
 
 const Header = () => {
-  const [search, setSearch] = React.useState("");
-  const [mobileMenu, setMobileMenu] = React.useState(false);
+  const [search, setSearch] = useState("");
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
     <header className={`${classes.header}`}>

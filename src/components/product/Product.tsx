@@ -1,12 +1,12 @@
-import classes from "./Product.module.css";
-
 import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
-
-import ProductsAPI from "@fakeAPI/ProductsAPI";
 import ProductSpecSheet from "./ProductSpecSheet";
 import ProductList from "./ProductList";
+
+import ProductsAPI from "@fakeAPI/ProductsAPI";
+
+import classes from "./Product.module.css";
 
 const Product = ({ product }: { product: IProduct }) => {
   // Temporário

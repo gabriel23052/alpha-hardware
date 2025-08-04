@@ -1,7 +1,8 @@
+import ProductList from "@components/product/ProductList";
+
 import SVGRecently from "@svg/recently.svg?react";
 
 import classes from "./RecentlyViewed.module.css";
-import ProductList from "@components/product/ProductList";
 
 const RecentlyViewed = ({
   productSelection,

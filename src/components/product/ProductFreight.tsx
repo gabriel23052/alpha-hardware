@@ -2,9 +2,9 @@ import React from "react";
 
 import parsePrice from "@utils/parsePrice";
 
-import classes from "./ProductFreight.module.css";
-
 import SVGDisclaimer from "@svg/disclaimer.svg?react";
+
+import classes from "./ProductFreight.module.css";
 
 // Temporário
 const freightData: IFreight = {

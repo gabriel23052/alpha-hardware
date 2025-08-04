@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 
 import ProductCardPrice from "./ProductCardPrice";
+import ProductSaleLabel from "./ProductSaleLabel";
 
 import SVGCartAdd from "@svg/cartAdd.svg?react";
 
 import classes from "./ProductCard.module.css";
-import ProductSaleLabel from "./ProductSaleLabel";
 
 type ProductCardProps = {
   product: IProduct;

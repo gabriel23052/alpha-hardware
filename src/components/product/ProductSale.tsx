@@ -1,6 +1,8 @@
 import { Link } from "react-router";
-import classes from "./ProductSale.module.css";
+
 import ProductList from "./ProductList";
+
+import classes from "./ProductSale.module.css";
 
 const ProductSale = ({
   productSelection,

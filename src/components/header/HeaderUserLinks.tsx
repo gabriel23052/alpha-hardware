@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 import { Link } from "react-router";
 
 import SVGUser from "@svg/user.svg?react";
@@ -6,7 +6,7 @@ import SVGUser from "@svg/user.svg?react";
 import classes from "./HeaderUser.module.css";
 
 const HeaderUserLinks = () => {
-  const user = React.useRef<string | null>("Gabriel"); // Improvisado
+  const user = useRef<string | null>("Gabriel"); // Improvisado
 
   return (
     <section

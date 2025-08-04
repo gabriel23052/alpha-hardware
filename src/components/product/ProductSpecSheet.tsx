@@ -1,4 +1,5 @@
 import UnderlinedTitle from "@components/UnderlinedTitle";
+
 import classes from "./ProductSpecSheet.module.css";
 
 const ProductSpecSheet = () => {

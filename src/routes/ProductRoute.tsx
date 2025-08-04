@@ -1,10 +1,12 @@
 import { useParams } from "react-router";
 
 import Product from "@components/product/Product";
-import ProductsAPI from "@fakeAPI/ProductsAPI";
 import ProductNotFound from "@components/product/ProductNotFound";
 import RecentlyViewed from "@components/RecentlyViewed";
+
 import usePageTitle from "@hooks/usePageTitle";
+
+import ProductsAPI from "@fakeAPI/ProductsAPI";
 
 const ProductRoute = () => {
   // Temporário

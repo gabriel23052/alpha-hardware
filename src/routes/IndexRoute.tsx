@@ -5,8 +5,9 @@ import Categories from "@components/Categories";
 import RecentlyViewed from "@components/RecentlyViewed";
 import Social from "@components/Social";
 
-import ContentAPI from "@fakeAPI/ContentAPI";
 import usePageTitle from "@hooks/usePageTitle";
+
+import ContentAPI from "@fakeAPI/ContentAPI";
 
 const contentApi = new ContentAPI();
 const homepageContent = contentApi.getHomepageContent();

@@ -24,7 +24,7 @@ const RecentlyViewed = ({
               key={product.id}
               product={product}
               showSale={false}
-              buttons={true}
+              showButtons={true}
             />
           ))}
         </div>

@@ -32,7 +32,7 @@ const Product = ({ product }: { product: IProduct }) => {
                 key={product.id}
                 product={product}
                 showSale={false}
-                buttons={false}
+                showButtons={false}
               />
             </li>
           ))}

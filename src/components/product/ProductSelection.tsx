@@ -20,7 +20,7 @@ const ProductSelection = ({
           <ProductCard
             key={product.id}
             product={product}
-            buttons={true}
+            showButtons={true}
             showSale={false}
           />
         ))}

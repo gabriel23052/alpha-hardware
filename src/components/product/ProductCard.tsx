@@ -10,10 +10,10 @@ import ProductSaleLabel from "./ProductSaleLabel";
 type ProductCardProps = {
   product: IProduct;
   showSale: boolean;
-  buttons?: boolean;
+  showButtons?: boolean;
 };
 
-const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
+const ProductCard = ({ product, showSale, showButtons }: ProductCardProps) => {
   return (
     <article className={`bg-white ${classes.productCard}`}>
       <Link to={`/product/${product.id}`}>
@@ -36,7 +36,7 @@ const ProductCard = ({ product, showSale, buttons }: ProductCardProps) => {
           />
         </div>
       </Link>
-      {buttons && (
+      {showButtons && (
         <div className={`${classes.buttonsContainer}`}>
           <Link to="" className="lneutral-xlight bg-primary text-default-b">
             COMPRAR

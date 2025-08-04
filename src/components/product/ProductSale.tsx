@@ -19,7 +19,7 @@ const ProductSale = ({
           <ProductCard
             key={product.id}
             product={product}
-            buttons={true}
+            showButtons={true}
             showSale={true}
           />
         ))}

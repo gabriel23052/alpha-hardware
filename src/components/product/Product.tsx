@@ -7,11 +7,14 @@ import ProductList from "./ProductList";
 import ProductsAPI from "@fakeAPI/ProductsAPI";
 
 import classes from "./Product.module.css";
+import endpoints from "@fakeAPI/endpoints";
 
 const Product = ({ product }: { product: IProduct }) => {
   // Temporário
   const productsAPI = new ProductsAPI();
   const relatedProducts = productsAPI.getRelatedProducts(product);
+
+  console.log(endpoints["GET /api/products"]({ids: ["E01929272"]}));
 
   return (
     <article className={`defaultContainer ${classes.product}`}>

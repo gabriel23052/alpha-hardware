@@ -1,6 +1,14 @@
 import ProductsAPI from "./ProductsAPI";
 import validations from "./validations";
 
+function response<T>(data: T): IFakeApiResponse<T> {
+  return { data, error: null };
+}
+
+function error<T>(message: string): IFakeApiResponse<T> {
+  return { data: null, error: message };
+}
+
 export default {
   "GET /api/products": (
     params: Record<string, unknown>
@@ -10,14 +18,14 @@ export default {
       params.ids === undefined ||
       !validations.productIds(params.ids)
     ) {
-      return { code: 400, data: null, error: "Parâmetro(s) incorreto(s)" };
+      return error("Parâmetro(s) incorreto(s)");
     }
     const { ids } = params;
     const productsApi = new ProductsAPI();
     const products = productsApi.getProductsById(ids);
     if (products.length === 0) {
-      return { code: 404, data: null, error: "Produtos não encontrados" };
+      return error("Produtos não encontrados");
     }
-    return { code: 200, data: productsApi.getProductsById(ids), error: null };
+    return response(productsApi.getProductsById(ids));
   },
 };

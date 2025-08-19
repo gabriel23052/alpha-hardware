@@ -72,7 +72,6 @@ interface IFreight {
 }
 
 interface IFakeApiResponse<T> {
-  code: number;
   data: null | T;
   error: null | string;
 }

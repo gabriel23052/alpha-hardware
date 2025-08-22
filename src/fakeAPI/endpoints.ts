@@ -10,22 +10,28 @@ function error<T>(message: string): IFakeApiResponse<T> {
 }
 
 export default {
-  "GET /api/products": (
+  "GET /api/product": (
     params: Record<string, unknown>
-  ): IFakeApiResponse<IProduct[]> => {
+  ): IFakeApiResponse<{ product: IProduct; relatedProducts?: IProduct[] }> => {
     if (
       params === undefined ||
-      params.ids === undefined ||
-      !validations.productIds(params.ids)
+      params.id === undefined ||
+      params.withRelatedProducts === undefined ||
+      typeof params.withRelatedProducts !== "boolean" ||
+      !validations.productId(params.id)
     ) {
       return error("Parâmetro(s) incorreto(s)");
     }
-    const { ids } = params;
+    const { id, withRelatedProducts } = params;
     const productsApi = new ProductsAPI();
-    const products = productsApi.getProductsById(ids);
-    if (products.length === 0) {
+    const product = productsApi.getProductsById(id)[0];
+    if (!product) {
       return error("Produtos não encontrados");
     }
-    return response(productsApi.getProductsById(ids));
+    if (withRelatedProducts) {
+      const relatedProducts = productsApi.getRelatedProducts(product);
+      return response({ product, relatedProducts });
+    }
+    return response({ product });
   },
 };

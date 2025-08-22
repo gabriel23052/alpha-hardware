@@ -34,4 +34,10 @@ export default {
     }
     return response({ product });
   },
+  "GET /api/products/recentlyViewed":
+    (): IFakeApiResponse<IProductSelection> => {
+      // Temporário
+      const productsApi = new ProductsAPI();
+      return response(productsApi.getRecentlyViewedProducts());
+    },
 };

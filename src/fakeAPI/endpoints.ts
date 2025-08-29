@@ -1,5 +1,5 @@
-import ContentAPI from "./ContentAPI";
-import ProductsAPI from "./ProductsAPI";
+import ContentHandler from "./handlers/ContentHandler";
+import ProductsHandler from "./handlers/ProductsHandler";
 import validations from "./validations";
 
 function response<T>(data: T): IFakeApiResponse<T> {
@@ -24,13 +24,13 @@ export default {
       return error("Parâmetro(s) incorreto(s)");
     }
     const { id, withRelatedProducts } = params;
-    const productsApi = new ProductsAPI();
-    const product = productsApi.getProductsById(id)[0];
+    const productsHandler = new ProductsHandler();
+    const product = productsHandler.getProductsById(id)[0];
     if (!product) {
       return error("Produtos não encontrados");
     }
     if (withRelatedProducts) {
-      const relatedProducts = productsApi.getRelatedProducts(product);
+      const relatedProducts = productsHandler.getRelatedProducts(product);
       return response({ product, relatedProducts });
     }
     return response({ product });
@@ -38,11 +38,11 @@ export default {
   "GET /api/products/recentlyViewed":
     (): IFakeApiResponse<IProductSelection> => {
       // Temporário
-      const productsApi = new ProductsAPI();
-      return response(productsApi.getRecentlyViewedProducts());
+      const productsHandler = new ProductsHandler();
+      return response(productsHandler.getRecentlyViewedProducts());
     },
   "GET /api/homepage": () => {
-    const contentApi = new ContentAPI();
-    return response(contentApi.getHomepageContent());
+    const contentHandler = new ContentHandler();
+    return response(contentHandler.getHomepageContent());
   },
 };

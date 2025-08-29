@@ -1,9 +1,9 @@
-import homepage from "./data/homepage";
-import ProductsAPI from "./ProductsAPI";
+import homepage from "../data/homepage";
+import Products from "./ProductsHandler";
 
-export default class ContentAPI {
+export default class ContentHandler {
   public getHomepageContent() {
-    const productsApi = new ProductsAPI();
+    const productsApi = new Products();
     const resolvedProductsSelection = homepage.productSelection.map(
       ({ title, role, productIds }) => {
         return {

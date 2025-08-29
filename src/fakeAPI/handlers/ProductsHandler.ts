@@ -1,6 +1,6 @@
-import products from "./data/products";
+import products from "../data/products";
 
-export default class ProductsAPI {
+export default class ProductsHandler {
   private productsIndexMap: Map<string, number>;
 
   constructor() {
@@ -23,7 +23,7 @@ export default class ProductsAPI {
 
   // Temporário
   public getRecentlyViewedProducts(): IProductSelection {
-    const productApi = new ProductsAPI();
+    const productApi = new ProductsHandler();
     const recentlyViewedIds = [
       "026333169",
       "688377899",

@@ -10,11 +10,14 @@ import useFakeAPI from "@hooks/useFakeAPI";
 
 import classes from "./Product.module.css";
 
+interface IProductApiResponse {
+  product: IProduct;
+  relatedProducts: IProduct[];
+}
+
 const Product = ({ productId }: { productId: string }) => {
-  const { data, error, loading, request } = useFakeAPI<{
-    product: IProduct;
-    relatedProducts: IProduct[];
-  }>("GET /api/product");
+  const { data, error, loading, request } =
+    useFakeAPI<IProductApiResponse>("GET /api/product");
   const product = data && data.product;
 
   useEffect(() => {

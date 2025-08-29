@@ -10,11 +10,16 @@ import Social from "@components/Social";
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
 
+interface IHomepageApiResponse {
+  banners: IResponsiveBanner[];
+  productSelection: IProductSelection[];
+}
+
 const IndexRoute = () => {
   usePageTitle("Alpha Hardware");
 
   const { data, error, loading, request } =
-    useFakeAPI<IResolvedHomepage>("GET /api/homepage");
+    useFakeAPI<IHomepageApiResponse>("GET /api/homepage");
 
   useEffect(() => {
     request();

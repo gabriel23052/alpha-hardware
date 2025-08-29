@@ -11,7 +11,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
-  const { data, error, request } = useFakeAPI<{
+  const { data, error, loading, request } = useFakeAPI<{
     product: IProduct;
     relatedProducts: IProduct[];
   }>("GET /api/product");
@@ -21,6 +21,9 @@ const Product = ({ productId }: { productId: string }) => {
     request({ id: productId, withRelatedProducts: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Temporário
+  if (loading) return <h1 style={{ margin: "400px 0" }}>CARREGANDO</h1>;
 
   // Temporário
   if (error) return <p>{error}</p>;

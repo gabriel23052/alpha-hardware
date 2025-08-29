@@ -1,3 +1,4 @@
+import ContentAPI from "./ContentAPI";
 import ProductsAPI from "./ProductsAPI";
 import validations from "./validations";
 
@@ -40,4 +41,8 @@ export default {
       const productsApi = new ProductsAPI();
       return response(productsApi.getRecentlyViewedProducts());
     },
+  "GET /api/homepage": () => {
+    const contentApi = new ContentAPI();
+    return response(contentApi.getHomepageContent());
+  },
 };

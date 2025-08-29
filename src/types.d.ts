@@ -62,6 +62,11 @@ interface IHomepage {
   productSelection: IProductIdSelection[]
 }
 
+interface IResolvedHomepage {
+  banners: IResponsiveBanner[],
+  productSelection: IProductSelection[]
+}
+
 interface IFreight {
   cep: string;
   options: {

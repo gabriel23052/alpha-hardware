@@ -15,7 +15,7 @@ export default class ContentAPI {
     );
     return {
       banners: homepage.banners,
-      productsSelection: resolvedProductsSelection,
+      productSelection: resolvedProductsSelection,
     };
   }
 }

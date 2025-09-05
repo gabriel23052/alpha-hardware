@@ -35,6 +35,16 @@ export default {
     }
     return response({ product });
   },
+  "GET /api/products/suggestions": (
+    params: Record<string, unknown>
+  ): IFakeApiResponse<IProductSuggestion[]> => {
+    if (params.search === undefined || typeof params.search !== "string") {
+      return error("Parâmetro(s) incorreto(s)");
+    }
+    const productsHandler = new ProductsHandler();
+    const result = productsHandler.getSuggestions(params.search);
+    return response(result);
+  },
   "GET /api/products/recentlyViewed":
     (): IFakeApiResponse<IProductSelection> => {
       // Temporário

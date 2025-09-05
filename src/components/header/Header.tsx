@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import HeaderUserLinks from "./HeaderUserLinks";
 import HeaderNavBar from "./HeaderNavBar";
+import HeaderSearch from "./HeaderSearch";
 
 import SVGLogo from "@svg/logo.svg?react";
 import SVGFavorite from "@svg/favorite.svg?react";
@@ -13,7 +14,6 @@ import SVGMenu from "@svg/menu.svg?react";
 import classes from "./Header.module.css";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
@@ -27,12 +27,7 @@ const Header = () => {
             <Link className={`${classes.logo}`} to="/">
               <SVGLogo />
             </Link>
-            <input //Improvisado
-              className={`text-default dneutral-dark ${classes.search}`}
-              type="text"
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
-            />
+            <HeaderSearch />
             <HeaderUserLinks />
             <nav className={`${classes.shortcuts}`}>
               <Link to="/">

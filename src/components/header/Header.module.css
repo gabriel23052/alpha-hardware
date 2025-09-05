@@ -22,15 +22,6 @@
   width: 9.06rem; /* ~145px */
 }
 
-.search {
-  grid-column: span 5;
-  padding: var(--px8) var(--px16);
-  border-radius: var(--px4);
-}
-.search:hover,
-.search:focus {
-  background-color: var(--lneutral-light);
-}
 
 .shortcuts {
   display: flex;

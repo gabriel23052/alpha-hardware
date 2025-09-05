@@ -21,6 +21,14 @@ export default class ProductsHandler {
     return result;
   }
 
+  public getSuggestions(search: string) {
+    return products
+      .filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      )
+      .map((product) => ({ id: product.id, name: product.name }));
+  }
+
   // Temporário
   public getRecentlyViewedProducts(): IProductSelection {
     const productApi = new ProductsHandler();

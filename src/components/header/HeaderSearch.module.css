@@ -1,0 +1,60 @@
+.container {
+  grid-column: span 5;
+  position: relative;
+}
+.container::after {
+  content: "";
+  width: var(--px24);
+  height: var(--px24);
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--px16);
+  position: absolute;
+  background-image: url("../../assets/svg/search.svg");
+  background-size: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: var(--px8) 2.75rem var(--px8) var(--px16);
+  border-radius: var(--px4);
+}
+.input:hover,
+.input:focus {
+  background-color: var(--lneutral-light);
+}
+
+.input.withSuggestions {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.suggestions {
+  width: 100%;
+  position: absolute;
+  padding-bottom: var(--px4);
+  border-radius: 0px 0px 4px 4px;
+  z-index: 10;
+}
+
+.suggestions a {
+  display: block;
+  padding: var(--px4) var(--px16);
+}
+.suggestions a:hover,
+.suggestions a:focus {
+  background-color: var(--lneutral-light);
+}
+
+@media (max-width: 970px) {
+  .container {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-column: span 2;
+  }
+}

@@ -1,87 +1,186 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
 
-import classes from "./HeaderSearch.module.css";
 import fakeFetch from "@utils/fakeFetch";
 import debounce from "@utils/debounce";
 
+import classes from "./HeaderSearch.module.css";
+
+const SUGGESTIONS_LIMIT = 5;
+const MIN_SEARCH_LENGTH = 3;
+const DEBOUNCE_DELAY = 1000;
+const BLUR_DELAY = 100;
+
 const HeaderSearch = () => {
   const [search, setSearch] = useState("");
-  const [suggestions, setSuggestions] = useState<IProductSuggestion[]>([]);
+  const [suggestionsShown, setSuggestionsShown] = useState<
+    IProductSuggestion[]
+  >([]);
 
-  const searchRef = useRef("");
-  const lastLength = useRef(0);
-  const suggestionsList = useRef<IProductSuggestion[]>([]);
+  const searchStateRef = useRef("");
+  const prevSearchLength = useRef(0);
+  const suggestions = useRef<IProductSuggestion[]>([]);
+  const focused = useRef(false);
+  const linksElem = useRef<HTMLAnchorElement[]>([]);
+  const inputElem = useRef<HTMLInputElement>(null);
+  const blurTimeout = useRef<number | null>(null);
 
-  const DEBOUNCE_DELAY = 1000;
-
-  const debouncedSuggestionSearch = useRef(
+  const suggestionsSearch = useRef(
     debounce((searchInApi: boolean) => {
       if (searchInApi) {
         fetchSuggestions();
         return;
       }
-      suggestionsList.current = suggestionsList.current.filter((product) =>
-        product.name.toLowerCase().includes(searchRef.current.toLowerCase())
+      setSuggestionsShown(
+        suggestions.current
+          .filter((product) =>
+            product.name
+              .toLowerCase()
+              .includes(searchStateRef.current.toLowerCase())
+          )
+          .slice(0, SUGGESTIONS_LIMIT)
       );
-      setSuggestions(suggestionsList.current.slice(0, 5));
     }, DEBOUNCE_DELAY)
   );
+
+  useEffect(() => {
+    searchStateRef.current = search;
+    if (search.length < MIN_SEARCH_LENGTH) {
+      setSuggestionsShown([]);
+      suggestions.current = [];
+      return;
+    }
+    if (
+      search.length < prevSearchLength.current ||
+      suggestions.current.length === 0
+    ) {
+      suggestions.current = [];
+      suggestionsSearch.current(true);
+      return;
+    }
+    suggestionsSearch.current(false);
+  }, [search]);
+
+  useEffect(() => {
+    if (suggestionsShown.length === 0) return;
+  }, [suggestionsShown]);
+
+  useEffect(
+    () => () => {
+      if (blurTimeout.current) {
+        clearTimeout(blurTimeout.current);
+      }
+    },
+    []
+  );
+
+  const handleBlur = () => {
+    focused.current = false;
+    blurTimeout.current = window.setTimeout(() => {
+      if (!focused.current) {
+        setSuggestionsShown([]);
+      }
+    }, BLUR_DELAY);
+  };
+
+  const handleFocus = () => {
+    focused.current = true;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handlePaste = () => {
+    suggestions.current = [];
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.currentTarget instanceof HTMLInputElement && e.key === "ArrowDown") {
+      e.preventDefault();
+      linksElem.current[0]?.focus();
+      return;
+    }
+    if (e.currentTarget instanceof HTMLLIElement === false) return;
+    const index = Number(e.currentTarget.dataset.index);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      linksElem.current[index + 1]?.focus();
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (index === 0) {
+        inputElem.current?.focus();
+        return;
+      }
+      linksElem.current[index - 1]?.focus();
+    }
+  };
 
   const fetchSuggestions = async () => {
     const response = await fakeFetch<IProductSuggestion[]>(
       "GET /api/products/suggestions",
-      { search: searchRef.current }
+      { search: searchStateRef.current }
     );
     if (response.error) return;
-    if (response.data) {
-      suggestionsList.current = response.data;
-      setSuggestions(suggestionsList.current.slice(0, 5));
-    }
-  };
-
-  useEffect(() => {
-    searchRef.current = search;
-    if (search.length < 3) {
-      setSuggestions([]);
-      suggestionsList.current = [];
-      lastLength.current = search.length;
-      return;
-    }
+    console.log(searchStateRef.current.length);
     if (
-      search.length < lastLength.current ||
-      suggestionsList.current.length === 0
+      response.data &&
+      focused.current &&
+      searchStateRef.current.length >= MIN_SEARCH_LENGTH
     ) {
-      lastLength.current = search.length;
-      debouncedSuggestionSearch.current(true);
-      return;
+      suggestions.current = response.data;
+      prevSearchLength.current = searchStateRef.current.length;
+      setSuggestionsShown(suggestions.current.slice(0, SUGGESTIONS_LIMIT));
     }
-    lastLength.current = search.length;
-    debouncedSuggestionSearch.current(false);
-  }, [search]);
-
-  const handlePaste = () => {
-    suggestionsList.current = [];
   };
 
   return (
-    <div className={`${classes.container}`}>
+    <div
+      className={`${classes.container}`}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
       <input
         className={`text-default dneutral-dark ${classes.input} ${
-          suggestions.length > 0 ? classes.withSuggestions : ""
+          suggestionsShown.length > 0 ? classes.withSuggestions : ""
         }`}
         type="text"
-        onChange={(e) => setSearch(e.target.value)}
-        onPaste={handlePaste}
+        role="combobox"
+        aria-controls="suggestion-list"
+        aria-autocomplete="list"
+        aria-label="Pesquisar produtos"
+        aria-expanded={suggestionsShown.length > 0}
+        ref={inputElem}
         value={search}
+        onChange={handleChange}
+        onPaste={handlePaste}
+        onKeyDown={handleKeyDown}
       />
-      {suggestions.length > 0 && (
-        <ul className={`bg-lneutral-xlight ${classes.suggestions}`}>
-          {suggestions.map((item) => (
+      {suggestionsShown.length > 0 && (
+        <ul
+          className={`bg-lneutral-xlight ${classes.suggestions}`}
+          id="suggestion-list"
+          role="listbox"
+        >
+          {suggestionsShown.map((item, index) => (
             <li
-              key={item.id}
               className={`text-default dneutral-dark ${classes.suggestionItem}`}
+              key={item.id}
+              role="option"
+              data-index={index}
+              onKeyDown={handleKeyDown}
             >
-              <a href={`/product/${item.id}`}>{item.name}</a>
+              <Link
+                to={`/product/${item.id}`}
+                data-index={index}
+                tabIndex={-1}
+                ref={(el) => {
+                  linksElem.current[index] = el!;
+                }}
+              >
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>

@@ -19,10 +19,11 @@
   width: 100%;
   padding: var(--px8) 2.75rem var(--px8) var(--px16);
   border-radius: var(--px4);
+  transition: background-color 300ms;
 }
 .input:hover,
 .input:focus {
-  background-color: var(--lneutral-light);
+  background-color: var(--lneutral-xlight);
 }
 
 .input.withSuggestions {
@@ -30,12 +31,27 @@
   border-bottom-right-radius: 0;
 }
 
-.suggestions {
+.error {
+  padding: var(--px4) 0;
+  text-align: center;
+}
+
+.suggestionsContainer {
   width: 100%;
+  min-height: 0px;
   position: absolute;
-  padding-bottom: var(--px4);
-  border-radius: 0px 0px 4px 4px;
   z-index: 10;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.suggestionsContainer.loading {
+  background-color: #f00;
+  min-height: var(--px8);
+  animation: backgroundLoading 600ms infinite alternate-reverse;
+}
+
+.suggestions {
+  padding-bottom: var(--px4);
 }
 
 .suggestions a {
@@ -56,5 +72,14 @@
 @media (max-width: 700px) {
   .container {
     grid-column: span 2;
+  }
+}
+
+@keyframes backgroundLoading {
+  from {
+    background-color: var(--lneutral);
+  }
+  to {
+    background-color: var(--lneutral-light);
   }
 }

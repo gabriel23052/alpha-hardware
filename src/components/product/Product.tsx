@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { useLocation } from "react-router";
+
 import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
@@ -20,10 +22,11 @@ const Product = ({ productId }: { productId: string }) => {
     useFakeAPI<IProductApiResponse>("GET /api/product");
   const product = data && data.product;
 
+  const location = useLocation();
   useEffect(() => {
     request({ id: productId, withRelatedProducts: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location]);
 
   // Temporário
   if (loading) return <h1 style={{ margin: "400px 0" }}>CARREGANDO</h1>;

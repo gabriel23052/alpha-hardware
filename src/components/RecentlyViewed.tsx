@@ -20,7 +20,7 @@ const RecentlyViewed = () => {
   if (data) {
     return (
       <section className={`bg-lneutral-xlight ${classes.recentlyViewed}`}>
-        <div className={`defaultContainer ${classes.wrapper}`}>
+        <div className={`defaultContainer`}>
           <div className={`${classes.title}`}>
             <SVGRecently />
             <h2 className="dneutral text-verylarge-m">

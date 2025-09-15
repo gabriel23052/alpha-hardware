@@ -7,12 +7,12 @@
   width: var(--px24);
   height: var(--px24);
   display: block;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--px16);
-  position: absolute;
   background-image: url("../../assets/svg/search.svg");
   background-size: 100%;
+  position: absolute;
+  top: 50%;
+  right: var(--px16);
+  transform: translateY(-50%);
 }
 
 .input {
@@ -39,28 +39,32 @@
 .suggestionsContainer {
   width: 100%;
   min-height: 0px;
+  border-radius: 0px 0px 4px 4px;
   position: absolute;
   z-index: 10;
-  border-radius: 0px 0px 4px 4px;
 }
 
 .suggestionsContainer.loading {
-  background-color: #f00;
   min-height: var(--px8);
   animation: backgroundLoading 600ms infinite alternate-reverse;
 }
 
 .suggestions {
   padding-bottom: var(--px4);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .suggestions a {
   display: block;
   padding: var(--px4) var(--px16);
+  border-bottom: 1px solid var(--lneutral-light);
 }
 .suggestions a:hover,
 .suggestions a:focus {
   background-color: var(--lneutral-light);
+}
+.suggestions li:last-child a {
+  border-bottom: none;
 }
 
 @media (max-width: 970px) {

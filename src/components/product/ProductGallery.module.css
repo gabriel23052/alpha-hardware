@@ -26,13 +26,18 @@
 }
 .selector button:hover,
 .selector button:focus {
-  border-color: var(--lneutral);
+  border-color: var(--lneutral-xdark);
 }
 
 .selector button img {
-  display: block;
   width: 100%;
   height: 100%;
+  display: block;
+  transition: transform 300ms;
+}
+.selector button:hover img,
+.selector button:focus img {
+  transform: scale(1.05);
 }
 
 .imageContainer {

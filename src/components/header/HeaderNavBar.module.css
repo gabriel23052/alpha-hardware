@@ -8,9 +8,10 @@
   position: relative;
   transition: background-color 300ms;
 }
-.links a:hover {
+.links a:hover,
+.links a:focus {
   background-color: var(--dneutral-dark);
-}
+}   
 .links a::after {
   content: "";
   width: 2px;

@@ -32,7 +32,8 @@
   border-radius: 8px 0 0 8px;
   transition: transform 300ms;
 }
-.list a:hover div {
+.list a:hover div,
+.list a:focus div {
   transform: scale(1.05);
 }
 
@@ -45,7 +46,8 @@
   border-radius: 0 8px 8px 0;
   transition: background-color 300ms;
 }
-.list a:hover span {
+.list a:hover span,
+.list a:focus span {
   background-color: var(--white);
 }
 

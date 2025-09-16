@@ -6,7 +6,7 @@
   transition: border-color 300ms;
 }
 .productCard:hover,
-.productCard:focus {
+.productCard:focus-within {
   border-color: var(--secondary-light);
 }
 
@@ -22,7 +22,7 @@
   transition: transform 300ms;
 }
 .productCard:hover img,
-.productCard:focus img {
+.productCard:focus-within img {
   transform: scale(1.03);
 }
 
@@ -83,4 +83,10 @@
 .buttonsContainer svg {
   height: 100%;
   display: block;
+  transition: transform 300ms;
+}
+
+.buttonsContainer button:hover svg,
+.buttonsContainer button:focus svg {
+  transform: scale(1.1);
 }

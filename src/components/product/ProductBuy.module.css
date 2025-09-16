@@ -33,11 +33,19 @@
   cursor: pointer;
   outline: 1px solid var(--lneutral-light);
   border-radius: 4px;
-  transition: outline 300ms;
+  transition: outline-color 300ms;
 }
 .cartButton:hover,
 .cartButton:focus {
-  outline: 1px solid var(--lneutral-dark);
+  outline-color: var(--lneutral);
+}
+
+.cartButton svg {
+  transition: transform 300ms;
+}
+.cartButton:hover svg,
+.cartButton:focus svg {
+  transform: scale(1.05);
 }
 
 .favoriteButton {

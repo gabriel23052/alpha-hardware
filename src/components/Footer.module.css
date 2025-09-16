@@ -20,7 +20,8 @@
   position: relative;
   transition: background-color 300ms;
 }
-.categories a:hover {
+.categories a:hover,
+.categories a:focus {
   background-color: var(--dneutral-xdark);
 }
 .categories a::after {
@@ -46,7 +47,8 @@
   padding: var(--px8);
   text-decoration: underline;
 }
-.institutional a:hover {
+.institutional a:hover,
+.institutional a:focus {
   color: var(--lneutral);
 }
 
@@ -75,7 +77,7 @@
 }
 .social a:hover,
 .social a:focus {
-  background-color: var(--lneutral-xdark);
+  background-color: var(--lneutral-dark);
 }
 
 .social > svg {

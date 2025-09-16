@@ -1,0 +1,41 @@
+.headerUserLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--px12);
+  grid-column: 9 / span 2;
+}
+
+.headerUserLinks svg {
+  width: var(--px32);
+}
+
+.headerUserLinks a {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  transition: color 300ms;
+}
+.headerUserLinks a:hover,
+.headerUserLinks a:focus {
+  color: var(--primary-xdark);
+}
+.headerUserLinks a::after {
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-color: var(--lneutral-xlight);
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  transition: background-color 300ms;
+}
+.headerUserLinks a:hover::after,
+.headerUserLinks a:focus::after {
+  background-color: var(--primary-xdark);
+}
+
+@media (max-width: 700px) {
+  .headerUserLinks {
+    grid-column: span 2;
+  }
+}

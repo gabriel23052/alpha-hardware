@@ -13,22 +13,28 @@
   top: 50%;
   right: var(--px16);
   transform: translateY(-50%);
+  transition: transform 200ms;
+}
+.container:focus-within::after,
+.container:hover::after {
+  transform: scale(1.1) translateY(-50%);
 }
 
 .input {
   width: 100%;
   padding: var(--px8) 2.75rem var(--px8) var(--px16);
   border-radius: var(--px4);
-  transition: background-color 300ms;
 }
 .input:hover,
 .input:focus {
   background-color: var(--lneutral-xlight);
+  outline-offset: 2px;
 }
 
 .input.withSuggestions {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  outline: none;
 }
 
 .error {

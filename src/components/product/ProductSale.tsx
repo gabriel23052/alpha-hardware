@@ -16,10 +16,7 @@ const ProductSale = ({
       <Link className={`${classes.title}`} to={"/"}>
         <h2 className={`secondary-light text-display`}>{title}</h2>
       </Link>
-      <ProductList
-        products={products}
-        className={`${classes.products}`}
-      />
+      <ProductList products={products} className={`${classes.products}`} />
     </article>
   );
 };

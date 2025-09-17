@@ -11,6 +11,7 @@
   flex-direction: column;
   gap: var(--px8);
   overflow: auto;
+  scrollbar-gutter: stable;
 }
 
 .selector button {

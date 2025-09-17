@@ -1001,7 +1001,7 @@ const products: IProduct[] = [
     },
     sale: {
       name: "Festival das Placas de Vídeo",
-      expiration: Math.floor(Date.now() / 1000) + 864000,
+      expiration: Math.floor(Date.now() / 1000) + 86400,
       discontPercentage: 10,
       prices: {
         normal: 450000,

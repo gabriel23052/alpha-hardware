@@ -4,7 +4,7 @@ export default async function fakeFetch<T>(
   route: keyof typeof endpoints,
   params?: Record<string, unknown>
 ): Promise<IFakeApiResponse<T>> {
-  const MAX_RESPONSE_TIME = 3000;
+  const MAX_RESPONSE_TIME = 500;
   const MIN_RESPONSE_TIME = 1000;
   const routeHandler = endpoints[route];
   return new Promise((resolve) => {

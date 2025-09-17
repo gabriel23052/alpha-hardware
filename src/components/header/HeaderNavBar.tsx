@@ -4,7 +4,7 @@ import classes from "./HeaderNavBar.module.css";
 
 const HeaderNavBar = () => {
   return (
-    <div className="bg-dneutral-xdark">
+    <div className="bg-dneutral-xdark" id="ariaHeaderNavBar">
       <nav className="lneutral-light text-default defaultContainer">
         <ul className={`${classes.links}`}>
           <li>

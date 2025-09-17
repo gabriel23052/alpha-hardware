@@ -11,6 +11,7 @@ const HeaderUserLinks = () => {
   return (
     <section
       className={`text-default lneutral-xlight ${classes.headerUserLinks}`}
+      id="ariaHeaderUserLinks"
     >
       <SVGUser />
       {user.current === null ? (

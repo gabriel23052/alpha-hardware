@@ -10,7 +10,6 @@ import IndexRoute from "./routes/IndexRoute";
 import ProductRoute from "./routes/ProductRoute";
 import ScrollToTop from "@utils/ScrollToTop";
 
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

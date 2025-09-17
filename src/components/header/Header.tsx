@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 
 import HeaderUserLinks from "./HeaderUserLinks";
@@ -14,41 +14,67 @@ import SVGMenu from "@svg/menu.svg?react";
 import classes from "./Header.module.css";
 
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [showAllHeaderContent, setShowAllHeaderContent] = useState(
+    window.innerWidth > 700
+  );
+
+  const mediaQuery = useRef(window.matchMedia("(max-width: 700px)"));
+  const mediaQueryCallback = useRef(() => setShowAllHeaderContent(true));
+
+  useEffect(() => {
+    mediaQuery.current.addEventListener("change", mediaQueryCallback.current);
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      mediaQuery.current.removeEventListener(
+        "change",
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        mediaQueryCallback.current
+      );
+    };
+  }, []);
+
+  const handleClick = () => {
+    setShowAllHeaderContent((prev) => !prev);
+  };
 
   return (
-    <header className={`${classes.header}`}>
+    <header className={`${classes.headerContainer}`}>
       <div
-        className={`${classes.container} ${mobileMenu ? classes.open : ""}`}
-        id="ariaHeader"
+        className={`${classes.overflowContainer}  ${
+          showAllHeaderContent ? classes.allContent : ""
+        }`}
       >
-        <div className="bg-primary">
+        <div className={`bg-primary`}>
           <div className={`defaultContainer ${classes.wrapper}`}>
             <Link className={`${classes.logo}`} to="/">
               <SVGLogo />
             </Link>
             <HeaderSearch />
-            <HeaderUserLinks />
-            <nav className={`${classes.shortcuts}`}>
-              <Link to="/">
-                <SVGFavorite />
-              </Link>
-              <Link to="/">
-                <SVGMyPurchases />
-              </Link>
-              <Link to="/">
-                <SVGCart />
-              </Link>
-            </nav>
+            {showAllHeaderContent && (
+              <>
+                <HeaderUserLinks />
+                <nav className={`${classes.shortcuts}`} id="ariaShortcuts">
+                  <Link to="/">
+                    <SVGFavorite />
+                  </Link>
+                  <Link to="/">
+                    <SVGMyPurchases />
+                  </Link>
+                  <Link to="/">
+                    <SVGCart />
+                  </Link>
+                </nav>
+              </>
+            )}
           </div>
         </div>
-        <HeaderNavBar />
+        {showAllHeaderContent && <HeaderNavBar />}
       </div>
       <button
-        className={`bg-dneutral ${classes.menuBtn}`}
-        aria-expanded={mobileMenu ? "true" : "false"}
-        aria-controls="ariaHeader"
-        onClick={() => setMobileMenu((val) => !val)}
+        className={`bg-dneutral ${classes.mobileMenuBtn}`}
+        aria-expanded={showAllHeaderContent ? "true" : "false"}
+        aria-controls="ariaHeaderUserLinks ariaShortcuts ariaHeaderNavBar"
+        onClick={handleClick}
       >
         <SVGMenu />
       </button>

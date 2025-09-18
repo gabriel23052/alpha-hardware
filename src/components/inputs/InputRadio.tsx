@@ -5,6 +5,7 @@ type InputRadioProps = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
+  value: string;
   handler: (id: string, value: string) => void;
 };
 
@@ -14,26 +15,24 @@ const InputRadio = ({
   id,
   options,
   handler,
+  value,
 }: InputRadioProps) => {
-  const [selection, setSelection] = React.useState<string>("");
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelection(e.target.id);
-    handler(id, e.target.id);
+    handler(id, e.target.id.split("-").pop()!);
   };
 
   return (
-    <div className={`${containerClassName} ${labelStyles}`}>
+    <div className={`${containerClassName ?? ""} ${labelStyles ?? ""}`}>
       {options.map((option) => (
         <label
           key={option.value}
-          htmlFor={option.value}
-          className={`${selection === option.value ? "selected" : ""}`}
+          htmlFor={`${id}-${option.value}`}
+          className={`${value === option.value ? "selected" : ""}`}
         >
           <input
             type="radio"
             name={id}
-            id={option.value}
+            id={`${id}-${option.value}`}
             onChange={handleChange}
           />
           {option.label}

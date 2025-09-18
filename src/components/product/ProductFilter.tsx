@@ -1,5 +1,6 @@
 import InputRadio from "@components/inputs/InputRadio";
 import classes from "./ProductFilter.module.css";
+import useForm from "@hooks/useForm";
 
 const CATEGORIES_RADIO_OPTIONS = [
   { label: "Placas de Vídeo", value: "gpu" },
@@ -11,12 +12,13 @@ const CATEGORIES_RADIO_OPTIONS = [
 ];
 
 const ProductFilter = () => {
+  const { data, handleChange } = useForm<{ category: string; tags: string[] }>({
+    category: "",
+    tags: [],
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  };
-
-  const handleTest = (id: string, value: string) => {
-    console.log(id, value);
   };
 
   return (
@@ -28,7 +30,8 @@ const ProductFilter = () => {
           labelStyles="dneutral text-small"
           id="category"
           options={CATEGORIES_RADIO_OPTIONS}
-          handler={handleTest}
+          value={data.category}
+          handler={handleChange}
         />
       </div>
     </form>

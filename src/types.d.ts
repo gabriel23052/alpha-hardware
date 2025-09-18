@@ -58,8 +58,8 @@ interface IProductSelection {
 }
 
 interface IHomepage {
-  banners: IResponsiveBanner[],
-  productSelection: IProductIdSelection[]
+  banners: IResponsiveBanner[];
+  productSelection: IProductIdSelection[];
 }
 
 interface IProductSuggestion {
@@ -73,7 +73,7 @@ interface IFreight {
     name: string;
     price: number;
     deliveryTime: number;
-  }[]
+  }[];
 }
 
 interface IFakeApiResponse<T> {
@@ -81,3 +81,10 @@ interface IFakeApiResponse<T> {
   error: null | string;
 }
 
+type IJsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | IJsonValue[]
+  | { [key: string]: IJsonValue };

@@ -1,0 +1,28 @@
+.productFilter h2 {
+  margin-bottom: var(--px8);
+}
+
+.categoryInput label {
+  display: block;
+  padding: var(--px4) var(--px8);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.categoryInput label:hover,
+.categoryInput label:focus {
+  background-color: var(--lneutral-light);
+}
+
+.categoryInput label:global(.selected) {
+  background-color: var(--secondary-light);
+  color: var(--secondary-xdark);
+}
+
+.categoryInput input {
+  width: var(--px16);
+  height: var(--px16);
+  position: absolute;
+  opacity: 0;
+}

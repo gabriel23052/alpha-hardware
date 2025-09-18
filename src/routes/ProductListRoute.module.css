@@ -1,0 +1,12 @@
+.productListRoute {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding-top: var(--px40);
+  padding-bottom: var(--px40);
+}
+
+.decoration {
+  height: var(--px32);
+  margin-bottom: var(--px16);
+  grid-column: span 6;
+}

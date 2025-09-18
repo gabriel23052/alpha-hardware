@@ -8,6 +8,7 @@ import Header from "@components/header/Header";
 import Footer from "@components/Footer";
 import IndexRoute from "./routes/IndexRoute";
 import ProductRoute from "./routes/ProductRoute";
+import ProductListRoute from "./routes/ProductListRoute";
 import ScrollToTop from "@utils/ScrollToTop";
 
 createRoot(document.getElementById("root")!).render(
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<IndexRoute />} />
           <Route path="/product/:productId" element={<ProductRoute />} />
+          <Route path="/products" element={<ProductListRoute />} />
         </Routes>
         <Footer />
       </ScrollToTop>

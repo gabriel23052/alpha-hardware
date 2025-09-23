@@ -5,8 +5,8 @@ type InputCheckboxProps = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  handler: (id: string, value: string[]) => void;
   value: string[];
+  handler: (id: string, value: string[]) => void;
 };
 
 const InputCheckbox = ({
@@ -14,8 +14,8 @@ const InputCheckbox = ({
   labelStyles,
   id,
   options,
-  handler,
   value,
+  handler,
 }: InputCheckboxProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.id.split("-").pop()!;

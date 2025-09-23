@@ -14,8 +14,8 @@ const InputRadio = ({
   labelStyles,
   id,
   options,
-  handler,
   value,
+  handler,
 }: InputRadioProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handler(id, e.target.id.split("-").pop()!);

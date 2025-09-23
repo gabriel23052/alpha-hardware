@@ -10,8 +10,8 @@ type ProductFilterTagsProps = {
 
 const ProductFilterTags = ({
   tags,
-  handler,
   value,
+  handler,
 }: ProductFilterTagsProps) => {
   return (
     <div>
@@ -20,7 +20,7 @@ const ProductFilterTags = ({
           <h3 className="dneutral text-default-b">{tag.label}</h3>
           <InputCheckbox
             containerClassName={`${classes.tagsInput}`}
-            labelStyles="dneutral text-small"            
+            labelStyles="dneutral text-small"
             id="tags"
             options={tag.values.map((value) => ({ label: value, value }))}
             value={value}

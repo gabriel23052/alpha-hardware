@@ -1,0 +1,41 @@
+.priceSelection {
+  margin-bottom: var(--px16);
+}
+
+.priceSelection h2 {
+  margin-bottom: var(--px8);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--px8);
+  align-items: center;
+  padding-left: var(--px8);
+}
+
+.container label {
+  display: block;
+  position: relative;
+}
+.container label::after {
+  content: "R$";
+  position: absolute;
+  left: calc(100% + var(--px16));
+  color: var(--lneutral-dark);
+}
+
+.container input {
+  padding: var(--px4) var(--px8);
+  padding-left: 1.8rem; /* ~ 29px */
+  border: 1px solid var(--lneutral-light);
+  border-radius: 4px;
+  transition: background-color 300ms;
+}
+.container input:hover,
+.container input:focus {
+  background-color: white;
+}
+.container input::placeholder {
+  color: var(--lneutral-dark);
+}

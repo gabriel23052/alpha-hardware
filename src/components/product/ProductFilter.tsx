@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import InputRadio from "@components/inputs/InputRadio";
 import ProductFilterTags from "./ProductFilterTags";
+import ProductFilterPrices from "./ProductFilterPrices";
 
 import useForm from "@hooks/useForm";
 
@@ -52,9 +53,13 @@ const ProductFilter = () => {
   const { data, changeData } = useForm<{
     category: keyof typeof TAGS_WITH_LABELS | "";
     tags: string[];
+    minPrice: string;
+    maxPrice: string;
   }>({
     category: "",
     tags: [],
+    minPrice: "",
+    maxPrice: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -79,6 +84,7 @@ const ProductFilter = () => {
           handler={changeData}
         />
       </div>
+      <ProductFilterPrices data={data} handler={changeData} />
       {data.category && (
         <ProductFilterTags
           tags={TAGS_WITH_LABELS[data.category]}

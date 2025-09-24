@@ -1,5 +1,9 @@
-.productFilter h2 {
+.productFilter > h2 {
   margin-bottom: var(--px8);
+}
+
+.categoryInput {
+  margin-bottom: var(--px24);
 }
 
 .categoryInput label {

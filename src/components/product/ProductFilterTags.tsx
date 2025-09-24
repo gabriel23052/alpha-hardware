@@ -14,7 +14,7 @@ const ProductFilterTags = ({
   handler,
 }: ProductFilterTagsProps) => {
   return (
-    <div>
+    <div className={`${classes.filterTags}`}>
       {tags.map((tag) => (
         <div key={tag.label}>
           <h3 className="dneutral text-default-b">{tag.label}</h3>

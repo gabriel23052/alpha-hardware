@@ -1,5 +1,5 @@
 .priceSelection {
-  margin-bottom: var(--px16);
+  margin-bottom: var(--px24);
 }
 
 .priceSelection h2 {
@@ -56,5 +56,5 @@
 .container > span {
   position: absolute;
   top: calc(100% + var(--px4));
-  right: 0px; 
+  right: 0px;
 }

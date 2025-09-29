@@ -1,12 +1,12 @@
-import React from "react";
+import { type ChangeEvent } from "react";
 
-type InputCheckboxProps = {
+type Props = {
   containerClassName?: string;
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  value: IFormValue<string[]>;
-  handler: (id: string, value: IJsonValue) => void;
+  field: IFormField<string[]>;
+  fieldHandler: (id: string, value: IJsonValue) => void;
 };
 
 const InputCheckbox = ({
@@ -14,19 +14,19 @@ const InputCheckbox = ({
   labelStyles,
   id,
   options,
-  value,
-  handler,
-}: InputCheckboxProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.id.split("-").pop()!;
-    if (value.value.includes(val)) {
-      handler(
+  field,
+  fieldHandler,
+}: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.id.split("-").pop()!;
+    if (field.value.includes(value)) {
+      fieldHandler(
         id,
-        value.value.filter((v) => v !== val)
+        field.value.filter((v) => v !== value)
       );
       return;
     }
-    handler(id, [...value.value, val]);
+    fieldHandler(id, [...field.value, value]);
   };
 
   return (
@@ -35,7 +35,7 @@ const InputCheckbox = ({
         <label
           key={option.value}
           htmlFor={`${id}-${option.value}`}
-          className={`${value.value.includes(option.value) ? "selected" : ""}`}
+          className={`${field.value.includes(option.value) ? "selected" : ""}`}
         >
           <input
             type="checkbox"

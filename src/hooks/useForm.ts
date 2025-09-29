@@ -8,34 +8,36 @@ type FieldConfig = {
 };
 
 export default function useForm<const T extends Record<string, FieldConfig>>(
-  fields: T
+  fieldsConfig: T
 ) {
   type FormState = {
     [K in keyof T]: { value: T[K]["initialValue"]; error: string | null };
   };
 
   const initialState = Object.fromEntries(
-    Object.entries(fields).map(([key, value]) => [
+    Object.entries(fieldsConfig).map(([key, value]) => [
       key,
       { value: value.initialValue, error: null },
     ])
   ) as FormState;
 
-  const [data, setData] = useState(initialState);
-  const changeData = (id: string, value: IJsonValue) => {
-    if (!(id in data)) {
+  const [fields, setData] = useState(initialState);
+
+  const fieldHandler = (id: string, value: IJsonValue) => {
+    if (!(id in fields)) {
       console.error(`O campo de ID "${id}" não existe`);
       return;
     }
-    const error = fields[id].validation
-      ? validations[fields[id].validation](value)
+    const error = fieldsConfig[id].validation
+      ? validations[fieldsConfig[id].validation](value)
       : null;
     setData((prevData) => ({
       ...prevData,
       [id]: { value, error },
     }));
+
     return;
   };
 
-  return { data, changeData };
+  return { fields, fieldHandler };
 }

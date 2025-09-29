@@ -1,14 +1,16 @@
-type Props = React.InputHTMLAttributes<HTMLInputElement> & {
+import {type InputHTMLAttributes, type ChangeEvent} from "react";
+
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   id: string;
-  val: IFormValue<string>;
-  handler: (id: string, value: IJsonValue) => void;
+  field: IFormField<string>;
+  fieldHandler: (id: string, value: IJsonValue) => void;
 };
 
-const InputNumber = ({ id, val: value, handler, ...attr }: Props) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const InputNumber = ({ id, field, fieldHandler, ...attr }: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (/^[\d,]*$/.test(newValue)) {
-      handler(id, newValue);
+      fieldHandler(id, newValue);
     }
   };
 
@@ -20,7 +22,7 @@ const InputNumber = ({ id, val: value, handler, ...attr }: Props) => {
       inputMode="numeric"
       pattern="[0-9,]*"
       aria-label="Digite um número"
-      value={value.value}
+      value={field.value}
       onChange={handleChange}
       {...attr}
     />

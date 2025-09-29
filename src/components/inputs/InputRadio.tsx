@@ -1,12 +1,12 @@
-import React from "react";
+import {type ChangeEvent} from "react";
 
-type InputRadioProps = {
+type Props = {
   containerClassName?: string;
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  value: IFormValue<string>;
-  handler: (id: string, value: IJsonValue) => void;
+  field: IFormField<string>;
+  fieldHandler: (id: string, value: IJsonValue) => void;
 };
 
 const InputRadio = ({
@@ -14,11 +14,11 @@ const InputRadio = ({
   labelStyles,
   id,
   options,
-  value,
-  handler,
-}: InputRadioProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handler(id, e.target.id.split("-").pop()!);
+  field,
+  fieldHandler,
+}: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    fieldHandler(id, e.target.id.split("-").pop()!);
   };
 
   return (
@@ -27,7 +27,7 @@ const InputRadio = ({
         <label
           key={option.value}
           htmlFor={`${id}-${option.value}`}
-          className={`${value.value === option.value ? "selected" : ""}`}
+          className={`${field.value === option.value ? "selected" : ""}`}
         >
           <input
             type="radio"

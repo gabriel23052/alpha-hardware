@@ -1,9 +1,12 @@
 const validations = {
   priceFilter: (value: IJsonValue) => {
-    if (typeof value !== "string") return "O preço precisa ser uma string";
+    if (typeof value !== "string") {
+      console.error(`Erro na validação "priceFilter": Não é string`);
+      return "Erro na validação";
+    }
     return value.length === 0 || /^\d{1,5}(,\d{1,2})?$/.test(value)
       ? null
-      : "Valor inválido";
+      : "Preço(s) Inválido(s)";
   },
 };
 

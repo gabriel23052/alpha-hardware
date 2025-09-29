@@ -50,7 +50,7 @@ const CATEGORIES_RADIO_OPTIONS = [
 ];
 
 const ProductFilter = () => {
-  const { data, changeData } = useForm({
+  const { fields, fieldHandler } = useForm({
     category: { initialValue: "", validation: null },
     tags: { initialValue: [], validation: null },
     minPrice: { initialValue: "", validation: "priceFilter" },
@@ -62,9 +62,9 @@ const ProductFilter = () => {
   };
 
   useEffect(() => {
-    changeData("tags", []);
+    fieldHandler("tags", []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.category.value]);
+  }, [fields.category.value]);
 
   return (
     <form onSubmit={handleSubmit} className={`${classes.productFilter}`}>
@@ -75,16 +75,16 @@ const ProductFilter = () => {
           labelStyles="dneutral text-small"
           id="category"
           options={CATEGORIES_RADIO_OPTIONS}
-          value={data.category}
-          handler={changeData}
+          field={fields.category}
+          fieldHandler={fieldHandler}
         />
       </div>
-      <ProductFilterPrices data={data} handler={changeData} />
-      {data.category.value && (
+      <ProductFilterPrices fields={fields} fieldHandler={fieldHandler} />
+      {fields.category.value && (
         <ProductFilterTags
-          tags={TAGS_WITH_LABELS[data.category.value]}
-          value={data.tags}
-          handler={changeData}
+          tags={TAGS_WITH_LABELS[fields.category.value]}
+          field={fields.tags}
+          fieldHandler={fieldHandler}
         />
       )}
     </form>

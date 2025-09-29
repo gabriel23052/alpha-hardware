@@ -5,8 +5,8 @@ type InputCheckboxProps = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  value: string[];
-  handler: (id: string, value: string[]) => void;
+  value: IFormValue<string[]>;
+  handler: (id: string, value: IJsonValue) => void;
 };
 
 const InputCheckbox = ({
@@ -19,14 +19,14 @@ const InputCheckbox = ({
 }: InputCheckboxProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.id.split("-").pop()!;
-    if (value.includes(val)) {
+    if (value.value.includes(val)) {
       handler(
         id,
-        value.filter((v) => v !== val)
+        value.value.filter((v) => v !== val)
       );
       return;
     }
-    handler(id, [...value, val]);
+    handler(id, [...value.value, val]);
   };
 
   return (
@@ -35,7 +35,7 @@ const InputCheckbox = ({
         <label
           key={option.value}
           htmlFor={`${id}-${option.value}`}
-          className={`${value.includes(option.value) ? "selected" : ""}`}
+          className={`${value.value.includes(option.value) ? "selected" : ""}`}
         >
           <input
             type="checkbox"

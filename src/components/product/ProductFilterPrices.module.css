@@ -12,17 +12,30 @@
   gap: var(--px8);
   align-items: center;
   padding-left: var(--px8);
+  position: relative;
 }
 
 .container label {
   display: block;
   position: relative;
 }
-.container label::after {
+.container label::before {
   content: "R$";
   position: absolute;
   left: calc(100% + var(--px16));
   color: var(--lneutral-dark);
+}
+.container label.error::after {
+  content: "";
+  width: var(--px16);
+  height: var(--px16);
+  display: block;
+  background-image: url(../../assets/svg/error.svg);
+  background-size: 100%;
+  position: absolute;
+  left: calc(100% + 12rem);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .container input {
@@ -38,4 +51,10 @@
 }
 .container input::placeholder {
   color: var(--lneutral-dark);
+}
+
+.container > span {
+  position: absolute;
+  top: calc(100% + var(--px4));
+  right: 0px; 
 }

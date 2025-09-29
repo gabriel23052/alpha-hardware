@@ -4,8 +4,8 @@ import classes from "./ProductFilterTags.module.css";
 
 type ProductFilterTagsProps = {
   tags: { label: string; values: string[] }[];
-  value: string[];
-  handler: (id: string, value: string[]) => void;
+  value: IFormValue<string[]>;
+  handler: (id: string, value: IJsonValue) => void;
 };
 
 const ProductFilterTags = ({

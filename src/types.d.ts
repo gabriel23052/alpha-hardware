@@ -81,10 +81,9 @@ interface IFakeApiResponse<T> {
   error: null | string;
 }
 
-type IJsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | IJsonValue[]
-  | { [key: string]: IJsonValue };
+type IJsonValue = string | number | boolean | null | IJsonValue[] | object;
+
+interface IFormValue<T extends IJsonValue> {
+  value: T;
+  error: string | null;
+}

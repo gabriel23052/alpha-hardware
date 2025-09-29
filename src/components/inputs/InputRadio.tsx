@@ -5,8 +5,8 @@ type InputRadioProps = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  value: string;
-  handler: (id: string, value: string) => void;
+  value: IFormValue<string>;
+  handler: (id: string, value: IJsonValue) => void;
 };
 
 const InputRadio = ({
@@ -27,7 +27,7 @@ const InputRadio = ({
         <label
           key={option.value}
           htmlFor={`${id}-${option.value}`}
-          className={`${value === option.value ? "selected" : ""}`}
+          className={`${value.value === option.value ? "selected" : ""}`}
         >
           <input
             type="radio"

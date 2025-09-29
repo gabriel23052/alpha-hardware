@@ -50,17 +50,12 @@ const CATEGORIES_RADIO_OPTIONS = [
 ];
 
 const ProductFilter = () => {
-  const { data, changeData } = useForm<{
-    category: keyof typeof TAGS_WITH_LABELS | "";
-    tags: string[];
-    minPrice: string;
-    maxPrice: string;
-  }>({
-    category: "",
-    tags: [],
-    minPrice: "",
-    maxPrice: "",
-  });
+  const { data, changeData } = useForm({
+    category: { initialValue: "", validation: null },
+    tags: { initialValue: [], validation: null },
+    minPrice: { initialValue: "", validation: "priceFilter" },
+    maxPrice: { initialValue: "", validation: "priceFilter" },
+  } as const);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +64,7 @@ const ProductFilter = () => {
   useEffect(() => {
     changeData("tags", []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.category]);
+  }, [data.category.value]);
 
   return (
     <form onSubmit={handleSubmit} className={`${classes.productFilter}`}>
@@ -85,9 +80,9 @@ const ProductFilter = () => {
         />
       </div>
       <ProductFilterPrices data={data} handler={changeData} />
-      {data.category && (
+      {data.category.value && (
         <ProductFilterTags
-          tags={TAGS_WITH_LABELS[data.category]}
+          tags={TAGS_WITH_LABELS[data.category.value]}
           value={data.tags}
           handler={changeData}
         />

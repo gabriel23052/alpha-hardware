@@ -30,7 +30,7 @@ const InputCheckbox = ({
   };
 
   return (
-    <div className={`${containerClassName} ${labelStyles}`}>
+    <fieldset className={`${containerClassName} ${labelStyles}`}>
       {options.map((option) => (
         <label
           key={option.value}
@@ -46,7 +46,7 @@ const InputCheckbox = ({
           {option.label}
         </label>
       ))}
-    </div>
+    </fieldset>
   );
 };
 

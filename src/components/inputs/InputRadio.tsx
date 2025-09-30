@@ -22,7 +22,7 @@ const InputRadio = ({
   };
 
   return (
-    <div className={`${containerClassName ?? ""} ${labelStyles ?? ""}`}>
+    <fieldset className={`${containerClassName ?? ""} ${labelStyles ?? ""}`}>
       {options.map((option) => (
         <label
           key={option.value}
@@ -38,7 +38,7 @@ const InputRadio = ({
           {option.label}
         </label>
       ))}
-    </div>
+    </fieldset>
   );
 };
 

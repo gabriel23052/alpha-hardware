@@ -17,7 +17,7 @@
   transition: background-color 300ms;
 }
 .tagsInput label:hover,
-.tagsInput label:focus {
+.tagsInput label:focus-within {
   background-color: var(--lneutral-light);
 }
 

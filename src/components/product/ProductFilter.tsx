@@ -57,14 +57,20 @@ const ProductFilter = () => {
     maxPrice: { initialValue: "", validation: "priceFilter" },
   } as const);
 
+  useEffect(() => {
+    cleanFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fields.category.value]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  useEffect(() => {
+  const cleanFilters = () => {
+    fieldHandler("minPrice", "");
+    fieldHandler("maxPrice", "");
     fieldHandler("tags", []);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fields.category.value]);
+  };
 
   return (
     <form onSubmit={handleSubmit} className={`${classes.productFilter}`}>
@@ -79,6 +85,12 @@ const ProductFilter = () => {
           fieldHandler={fieldHandler}
         />
       </div>
+      <button
+        className={`secondary-xdark bg-white text-small ${classes.cleanButton}`}
+        onClick={cleanFilters}
+      >
+        Limpar Filtros
+      </button>
       <ProductFilterPrices fields={fields} fieldHandler={fieldHandler} />
       {fields.category.value && (
         <ProductFilterTags

@@ -1,9 +1,11 @@
-.productFilter > h2 {
+.categorySelection > h2 {
   margin-bottom: var(--px8);
 }
 
-.categoryInput {
-  margin-bottom: var(--px24);
+.categorySelection {
+  border-bottom: 1px solid var(--lneutral);
+  padding-bottom: var(--px16);
+  margin-bottom: var(--px16);
 }
 
 .categoryInput label {
@@ -29,4 +31,18 @@
   height: var(--px16);
   position: absolute;
   opacity: 0;
+}
+
+.cleanButton {
+  width: 100%;
+  margin-bottom: var(--px20);
+  padding: var(--px4) 0;
+  border: 1px solid var(--secondary-xdark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.cleanButton:hover,
+.cleanButton:focus {
+  background-color: var(--lneutral-xlight);
 }

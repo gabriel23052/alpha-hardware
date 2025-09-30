@@ -87,3 +87,13 @@ interface IFormField<T extends IJsonValue> {
   value: T;
   error: string | null;
 }
+
+interface IFakeApiProductFilter {
+  id?: string;
+  name?: string;
+  sale?: string;
+  category?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  tags?: string[];
+}

@@ -58,8 +58,16 @@ interface IProductSelection {
 }
 
 interface IHomepage {
-  banners: IResponsiveBanner[];
-  productSelection: IProductIdSelection[];
+  banners: {
+    main: IResponsiveBanner;
+    secondary: IResponsiveBanner;
+  };
+  products: {
+    sale: IProductIdSelection;
+    first: IProductIdSelection;
+    second: IProductIdSelection;
+    recentlyViewd: IProductIdSelection;
+  };
 }
 
 interface IProductSuggestion {

@@ -11,15 +11,24 @@ import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 interface IHomepageApiResponse {
-  banners: IResponsiveBanner[];
-  productSelection: IProductSelection[];
+  banners: {
+    main: IResponsiveBanner;
+    secondary: IResponsiveBanner;
+  };
+  products: {
+    sale: IProductSelection;
+    first: IProductSelection;
+    second: IProductSelection;
+    recentlyViewd: IProductSelection;
+  };
 }
 
 const IndexRoute = () => {
   usePageTitle("Alpha Hardware");
 
-  const { data, error, loading, request } =
-    useFakeAPI<IHomepageApiResponse>("GET /api/homepage");
+  const { data, error, loading, request } = useFakeAPI<IHomepageApiResponse>(
+    "GET /api/pageContent/home"
+  );
 
   useEffect(() => {
     request();
@@ -35,13 +44,13 @@ const IndexRoute = () => {
   if (data) {
     return (
       <main>
-        <ResponsiveBanner bannerData={data.banners[0]} />
-        <ProductSale productSelection={data.productSelection[0]} />
+        <ResponsiveBanner bannerData={data.banners.main} />
+        <ProductSale productSelection={data.products.sale} />
         <Categories />
-        <ProductSelection productSelection={data.productSelection[1]} />
-        <ResponsiveBanner bannerData={data.banners[1]} />
+        <ProductSelection productSelection={data.products.first} />
+        <ResponsiveBanner bannerData={data.banners.secondary} />
         <Social />
-        <ProductSelection productSelection={data.productSelection[2]} />
+        <ProductSelection productSelection={data.products.second} />
         <RecentlyViewed />
       </main>
     );

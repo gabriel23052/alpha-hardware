@@ -60,6 +60,12 @@ export default class ProductsHandler {
       .slice(0, 4);
   }
 
+  getProductsByIdList(idList: string[]) {
+    return idList
+      .map((id) => this.getProductByFilter({ id })[0])
+      .filter((product) => product !== undefined);
+  }
+
   public getProductByFilter(filter: IFakeApiProductFilter) {
     const result: IProduct[] = [];
 

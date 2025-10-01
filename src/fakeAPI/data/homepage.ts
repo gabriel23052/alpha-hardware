@@ -1,6 +1,6 @@
 const homepage: IHomepage = {
-  banners: [
-    {
+  banners: {
+    main: {
       link: "/",
       baseSrc: "./img/banners/homeBanner.jpg",
       baseWidth: 3840,
@@ -24,7 +24,7 @@ const homepage: IHomepage = {
         },
       ],
     },
-    {
+    secondary: {
       link: "/",
       baseSrc: "./img/banners/cbxAd.jpg",
       baseWidth: 3840,
@@ -48,9 +48,9 @@ const homepage: IHomepage = {
         },
       ],
     },
-  ],
-  productSelection: [
-    {
+  },
+  products: {
+    sale: {
       title: "Festival das Placas de Vídeo",
       role: "sale",
       productIds: [
@@ -64,7 +64,7 @@ const homepage: IHomepage = {
         "B7FA0718A",
       ],
     },
-    {
+    first: {
       title: "Produtos recém-chegados",
       role: "default",
       productIds: [
@@ -90,7 +90,7 @@ const homepage: IHomepage = {
         "81F2F1B97",
       ],
     },
-    {
+    second: {
       title: "Chega de travamentos",
       role: "default",
       productIds: [
@@ -116,12 +116,12 @@ const homepage: IHomepage = {
         "E48931615",
       ],
     },
-    {
+    recentlyViewd: {
       title: "",
       role: "recentlyViewed",
       productIds: ["026333169", "688377899", "C45F042A9", "9764E9629"],
     },
-  ],
+  },
 };
 
 export default homepage;

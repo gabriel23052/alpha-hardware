@@ -2,21 +2,19 @@ import homepage from "../data/homepage";
 import ProductsHandler from "./ProductsHandler";
 
 export default class PageContentHandler {
-  public getHomepageContent() {
+  public getHomePageContent() {
     const productsHandler = new ProductsHandler();
-    const resolvedProductsSelection = homepage.productSelection.map(
-      ({ title, role, productIds }) => {
-        return {
-          title,
-          role,
-          products: productsHandler.getProductsById(productIds),
-        };
-      }
-    );
-    return {
-      banners: homepage.banners,
-      productSelection: resolvedProductsSelection,
-    };
+    const products: Record<string, IProductSelection> = {};
+    Object.keys(homepage.products).forEach((key) => {
+      products[key] = {
+        title: homepage.products[key as keyof typeof homepage.products].title,
+        role: homepage.products[key as keyof typeof homepage.products].role,
+        products: productsHandler.getProductsByIdList(
+          homepage.products[key as keyof typeof homepage.products].productIds
+        ),
+      };
+    });
+    return { banners: homepage.banners, products };
   }
 
   public getProductPageContent(productId: string) {

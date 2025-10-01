@@ -1,30 +1,26 @@
 import { useEffect } from "react";
-
 import { useLocation } from "react-router";
 
 import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
 import ProductSpecSheet from "./ProductSpecSheet";
-import ProductList from "./ProductList";
+// import ProductList from "./ProductList";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import classes from "./Product.module.css";
 
-interface IProductApiResponse {
-  product: IProduct;
-  relatedProducts: IProduct[];
-}
-
 const Product = ({ productId }: { productId: string }) => {
   const { data, error, loading, request } =
-    useFakeAPI<IProductApiResponse>("GET /api/product");
-  const product = data && data.product;
+    useFakeAPI<IProduct[]>("GET /api/products");
 
   const location = useLocation();
+
+  const product = data && data[0];
+
   useEffect(() => {
-    request({ id: productId, withRelatedProducts: true });
+    request({ id: productId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -47,11 +43,11 @@ const Product = ({ productId }: { productId: string }) => {
         </div>
         <div className={`${classes.relatedProducts}`}>
           <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
-          <ProductList
+          {/* <ProductList
             products={data.relatedProducts}
             hideSale={true}
             hideButtons={true}
-          />
+          /> */}
         </div>
         <div className={`${classes.description}`}>
           <UnderlinedTitle>Descrição do produto</UnderlinedTitle>

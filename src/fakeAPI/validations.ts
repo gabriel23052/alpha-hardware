@@ -29,7 +29,10 @@ const validations = {
   },
 
   productFilter: (filter: object): filter is IFakeApiProductFilter => {
-    if ("id" in filter && validations.productId(filter.id)) return true;
+    if ("id" in filter) {
+      if (validations.productId(filter.id)) return true;
+      return false;
+    }
 
     if (
       "name" in filter &&

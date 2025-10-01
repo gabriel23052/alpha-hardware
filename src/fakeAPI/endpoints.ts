@@ -1,4 +1,4 @@
-import ContentHandler from "./handlers/ContentHandler";
+import PageContentHandler from "./handlers/PageContentHandler";
 import ProductsHandler from "./handlers/ProductsHandler";
 
 import validations from "./validations";
@@ -33,7 +33,14 @@ export default {
     return response(productsHandler.getRecentlyViewedProducts());
   },
   "GET /api/homepage": () => {
-    const contentHandler = new ContentHandler();
-    return response(contentHandler.getHomepageContent());
+    const pageHandler = new PageContentHandler();
+    return response(pageHandler.getHomepageContent());
+  },
+  "GET /api/pageContent/product": (params: object) => {
+    if (!("productId" in params) || !validations.productId(params.productId)) {
+      return error("Parâmetro(s) incorreto(s)");
+    }
+    const pageHandler = new PageContentHandler();
+    return response(pageHandler.getProductPageContent(params.productId));
   },
 };

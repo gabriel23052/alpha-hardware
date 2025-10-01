@@ -5,22 +5,25 @@ import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
 import ProductSpecSheet from "./ProductSpecSheet";
-// import ProductList from "./ProductList";
+import ProductList from "./ProductList";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
-  const { data, error, loading, request } =
-    useFakeAPI<IProduct[]>("GET /api/products");
+  const { data, error, loading, request } = useFakeAPI<{
+    product: IProduct[];
+    relatedProducts: IProduct[];
+  }>("GET /api/pageContent/product");
+
+  const product = data ? data.product : null;
+  const relatedProducts = data ? data.relatedProducts : null;
 
   const location = useLocation();
 
-  const product = data && data[0];
-
   useEffect(() => {
-    request({ id: productId });
+    request({ productId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -30,24 +33,27 @@ const Product = ({ productId }: { productId: string }) => {
   // Temporário
   if (error) return <p>{error}</p>;
 
-  if (product)
+  // Temporário
+  if (product?.length === 0) return <p>Produto não encontrado</p>;
+
+  if (product && relatedProducts)
     return (
       <article className={`defaultContainer ${classes.product}`}>
         <div className={`${classes.title}`}>
-          <span className="lneutral-xdark text-small">{product.id}</span>
-          <h1 className="dneutral text-verylarge">{product.name}</h1>
+          <span className="lneutral-xdark text-small">{product[0].id}</span>
+          <h1 className="dneutral text-verylarge">{product[0].name}</h1>
         </div>
         <div className={`${classes.main}`}>
-          <ProductGallery media={product.media} alt={product.name} />
-          <ProductBuy product={product} />
+          <ProductGallery media={product[0].media} alt={product[0].name} />
+          <ProductBuy product={product[0]} />
         </div>
         <div className={`${classes.relatedProducts}`}>
           <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
-          {/* <ProductList
-            products={data.relatedProducts}
+          <ProductList
+            products={relatedProducts}
             hideSale={true}
             hideButtons={true}
-          /> */}
+          />
         </div>
         <div className={`${classes.description}`}>
           <UnderlinedTitle>Descrição do produto</UnderlinedTitle>

@@ -48,10 +48,15 @@ export default class ProductsHandler {
     };
   }
 
-  public getRelatedProducts(product: IProduct): IProduct[] {
-    const { id, category } = product;
+  public getRelatedProducts(productId: string): IProduct[] {
+    const baseProduct = this.getProductByFilter({ id: productId })[0];
+    if (baseProduct === undefined) return [];
     return products
-      .filter((product) => product.category === category && id !== product.id)
+      .filter(
+        (product) =>
+          product.category === baseProduct.category &&
+          baseProduct.id !== product.id
+      )
       .slice(0, 4);
   }
 

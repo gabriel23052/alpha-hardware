@@ -1,6 +1,8 @@
 import exclusionFilter from "@utils/exclusionFilter";
 import products from "../data/products";
 
+const MAX_PRICE = 9999999;
+
 export default class ProductsHandler {
   private productsIndexMap: Map<string, number>;
 
@@ -56,14 +58,14 @@ export default class ProductsHandler {
   public getProductByFilter(filter: IFakeApiProductFilter) {
     const result: IProduct[] = [];
 
-    if (filter.id) {
-      const index = this.productsIndexMap.get(filter.id);
+    if ("id" in filter) {
+      const index = this.productsIndexMap.get(filter.id as string);
       if (index !== undefined) result.push(products[index]);
       return result;
     }
 
-    if (filter.name) {
-      const filterName = filter.name.toLowerCase();
+    if ("name" in filter) {
+      const filterName = (filter.name as string).toLowerCase();
       result.push(
         ...products.filter((product) =>
           product.name.toLowerCase().includes(filterName)
@@ -72,7 +74,7 @@ export default class ProductsHandler {
       if (result.length === 0) return result;
     }
 
-    if (filter.sale) {
+    if ("sale" in filter) {
       if (result.length > 0) {
         exclusionFilter(
           result,
@@ -86,7 +88,7 @@ export default class ProductsHandler {
       if (result.length === 0) return result;
     }
 
-    if (filter.category) {
+    if ("category" in filter) {
       if (result.length > 0) {
         exclusionFilter(
           result,
@@ -102,7 +104,7 @@ export default class ProductsHandler {
 
     if (filter.minPrice !== undefined && filter.maxPrice !== undefined) {
       const minPrice = filter.minPrice;
-      const maxPrice = filter.maxPrice;
+      const maxPrice = filter.maxPrice === 0 ? MAX_PRICE : filter.maxPrice;
       if (result.length > 0) {
         exclusionFilter(result, (product) => {
           const productPrice = product.sale
@@ -123,11 +125,10 @@ export default class ProductsHandler {
       if (result.length === 0) return result;
     }
 
-    if (filter.tags) {
-      const filterTags = filter.tags;
+    if ("tags" in filter) {
       if (result.length > 0) {
         exclusionFilter(result, (product) => {
-          for (const filterTag of filterTags) {
+          for (const filterTag of filter.tags as string[]) {
             if (product.tags.includes(filterTag)) return false;
           }
           return true;

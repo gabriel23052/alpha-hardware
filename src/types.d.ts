@@ -45,28 +45,27 @@ interface IProduct {
   tags: string[];
 }
 
-interface IProductIdSelection {
+interface IProductIdList {
   title: string;
   role: "default" | "sale" | "recentlyViewed";
   productIds: string[];
 }
 
-interface IProductSelection {
+interface IProductList {
   title: string;
-  role: "default" | "sale" | "recentlyViewed";
+  role: "default" | "sale";
   products: IProduct[];
 }
 
-interface IHomepage {
+interface IHomePageContent {
   banners: {
-    main: IResponsiveBanner;
-    secondary: IResponsiveBanner;
+    first: IResponsiveBanner;
+    second: IResponsiveBanner;
   };
-  products: {
-    sale: IProductIdSelection;
-    first: IProductIdSelection;
-    second: IProductIdSelection;
-    recentlyViewd: IProductIdSelection;
+  productIdLists: {
+    sale: IProductIdList;
+    first: IProductIdList;
+    second: IProductIdList;
   };
 }
 
@@ -84,16 +83,16 @@ interface IFreight {
   }[];
 }
 
-interface IFakeApiResponse<T> {
-  data: null | T;
-  error: null | string;
-}
-
-type IJsonValue = string | number | boolean | null | IJsonValue[] | object;
+type IJsonValue = string | number | boolean | null | IJsonValue[] | Record<string, unknown>;
 
 interface IFormField<T extends IJsonValue> {
   value: T;
   error: string | null;
+}
+
+interface IFakeApiResponse<T> {
+  data: null | T;
+  error: null | string;
 }
 
 interface IFakeApiProductFilter {

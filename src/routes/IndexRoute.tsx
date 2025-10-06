@@ -12,15 +12,15 @@ import useFakeAPI from "@hooks/useFakeAPI";
 
 interface IHomepageApiResponse {
   banners: {
-    main: IResponsiveBanner;
-    secondary: IResponsiveBanner;
+    first: IResponsiveBanner;
+    second: IResponsiveBanner;
   };
-  products: {
-    sale: IProductSelection;
-    first: IProductSelection;
-    second: IProductSelection;
-    recentlyViewd: IProductSelection;
+  productLists: {
+    sale: IProductList;
+    first: IProductList;
+    second: IProductList;
   };
+  recentlyViewed: IProduct[];
 }
 
 const IndexRoute = () => {
@@ -44,14 +44,14 @@ const IndexRoute = () => {
   if (data) {
     return (
       <main>
-        <ResponsiveBanner bannerData={data.banners.main} />
-        <ProductSale productSelection={data.products.sale} />
+        <ResponsiveBanner bannerData={data.banners.first} />
+        <ProductSale productSelection={data.productLists.sale} />
         <Categories />
-        <ProductSelection productSelection={data.products.first} />
-        <ResponsiveBanner bannerData={data.banners.secondary} />
+        <ProductSelection productSelection={data.productLists.first} />
+        <ResponsiveBanner bannerData={data.banners.second} />
         <Social />
-        <ProductSelection productSelection={data.products.second} />
-        <RecentlyViewed />
+        <ProductSelection productSelection={data.productLists.second} />
+        <RecentlyViewed products={data.recentlyViewed} />
       </main>
     );
   }

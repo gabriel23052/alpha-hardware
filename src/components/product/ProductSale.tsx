@@ -7,7 +7,7 @@ import classes from "./ProductSale.module.css";
 const ProductSale = ({
   productSelection,
 }: {
-  productSelection: IProductSelection;
+  productSelection: IProductList;
 }) => {
   const { title, products } = productSelection;
 

@@ -12,13 +12,12 @@ function error(message: string): IFakeApiResponse<null> {
 }
 
 export default {
-  
-  "GET /api/products": (params: object) => {
+  "GET /api/products": (params: Record<string, unknown>) => {
     if (!validations.productFilter(params)) {
       return error("Parâmetro(s) incorreto(s)");
     }
     const productHandler = new ProductsHandler();
-    return response<IProduct[]>(productHandler.getProductByFilter(params));
+    return response<IProduct[]>(productHandler.getByFilter(params));
   },
 
   "GET /api/products/suggestions": (params: Record<string, unknown>) => {
@@ -30,18 +29,12 @@ export default {
     return response(result);
   },
 
-  "GET /api/products/recentlyViewed": () => {
-    // Temporário
-    const productsHandler = new ProductsHandler();
-    return response(productsHandler.getRecentlyViewedProducts());
-  },
-
   "GET /api/pageContent/home": () => {
     const pageHandler = new PageContentHandler();
     return response(pageHandler.getHomePageContent());
   },
 
-  "GET /api/pageContent/product": (params: object) => {
+  "GET /api/pageContent/product": (params: Record<string, unknown>) => {
     if (!("productId" in params) || !validations.productId(params.productId)) {
       return error("Parâmetro(s) incorreto(s)");
     }

@@ -1,6 +1,6 @@
-const homepage: IHomepage = {
+const homepage: IHomePageContent = {
   banners: {
-    main: {
+    first: {
       link: "/",
       baseSrc: "./img/banners/homeBanner.jpg",
       baseWidth: 3840,
@@ -24,7 +24,7 @@ const homepage: IHomepage = {
         },
       ],
     },
-    secondary: {
+    second: {
       link: "/",
       baseSrc: "./img/banners/cbxAd.jpg",
       baseWidth: 3840,
@@ -49,7 +49,7 @@ const homepage: IHomepage = {
       ],
     },
   },
-  products: {
+  productIdLists: {
     sale: {
       title: "Festival das Placas de Vídeo",
       role: "sale",
@@ -115,11 +115,6 @@ const homepage: IHomepage = {
         "3F0567CD0",
         "E48931615",
       ],
-    },
-    recentlyViewd: {
-      title: "",
-      role: "recentlyViewed",
-      productIds: ["026333169", "688377899", "C45F042A9", "9764E9629"],
     },
   },
 };

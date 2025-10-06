@@ -2,6 +2,7 @@ import exclusionFilter from "@utils/exclusionFilter";
 import products from "../data/products";
 
 const MAX_PRICE = 9999999;
+const RELATED_ARRAY_MAX_LENGTH = 4;
 
 export default class ProductsHandler {
   private productsIndexMap: Map<string, number>;
@@ -13,43 +14,26 @@ export default class ProductsHandler {
     }
   }
 
-  public getProductsById(ids: string | string[]) {
-    const result: IProduct[] = [];
-    if (typeof ids === "string") ids = [ids];
-    ids.forEach((id) => {
-      const index = this.productsIndexMap.get(id);
-      if (index === undefined) return;
-      result.push(products[index]);
-    });
-    return result;
-  }
-
   public getSuggestions(search: string) {
-    return products
-      .filter((product) =>
-        product.name.toLowerCase().includes(search.toLowerCase())
-      )
-      .map((product) => ({ id: product.id, name: product.name }));
+    return this.getByFilter({ name: search }).map((product) => ({
+      id: product.id,
+      name: product.name,
+    }));
   }
 
   // Temporário
-  public getRecentlyViewedProducts(): IProductSelection {
+  public getRecentlyViewed(): IProduct[] {
     const productApi = new ProductsHandler();
-    const recentlyViewedIds = [
+    return productApi.getByIdList([
       "026333169",
       "688377899",
       "C45F042A9",
       "9764E9629",
-    ];
-    return {
-      title: "",
-      role: "recentlyViewed",
-      products: productApi.getProductsById(recentlyViewedIds),
-    };
+    ]);
   }
 
-  public getRelatedProducts(productId: string): IProduct[] {
-    const baseProduct = this.getProductByFilter({ id: productId })[0];
+  public getRelated(productId: string): IProduct[] {
+    const baseProduct = this.getByFilter({ id: productId })[0];
     if (baseProduct === undefined) return [];
     return products
       .filter(
@@ -57,16 +41,16 @@ export default class ProductsHandler {
           product.category === baseProduct.category &&
           baseProduct.id !== product.id
       )
-      .slice(0, 4);
+      .slice(0, RELATED_ARRAY_MAX_LENGTH);
   }
 
-  getProductsByIdList(idList: string[]) {
+  getByIdList(idList: string[]) {
     return idList
-      .map((id) => this.getProductByFilter({ id })[0])
+      .map((id) => this.getByFilter({ id })[0])
       .filter((product) => product !== undefined);
   }
 
-  public getProductByFilter(filter: IFakeApiProductFilter) {
+  public getByFilter(filter: IFakeApiProductFilter) {
     const result: IProduct[] = [];
 
     if ("id" in filter) {

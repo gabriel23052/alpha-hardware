@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import validations from "@utils/validations";
 
@@ -23,21 +23,24 @@ export default function useForm<const T extends Record<string, FieldConfig>>(
 
   const [fields, setData] = useState(initialState);
 
+  const validForm = useRef(false);
+
   const fieldHandler = (id: string, value: IJsonValue) => {
     if (!(id in fields)) {
       console.error(`O campo de ID "${id}" não existe`);
       return;
     }
-    const error = fieldsConfig[id].validation
+    const fieldError = fieldsConfig[id].validation
       ? validations[fieldsConfig[id].validation](value)
       : null;
+    validForm.current = fieldError ? false : true;
     setData((prevData) => ({
       ...prevData,
-      [id]: { value, error },
+      [id]: { value, error: fieldError },
     }));
 
     return;
   };
 
-  return { fields, fieldHandler };
+  return { fields, fieldHandler, validForm: validForm.current };
 }

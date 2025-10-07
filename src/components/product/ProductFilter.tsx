@@ -5,6 +5,7 @@ import ProductFilterTags from "./ProductFilterTags";
 import ProductFilterPrices from "./ProductFilterPrices";
 
 import useForm from "@hooks/useForm";
+import useDebounce from "@hooks/useDebounce";
 
 import classes from "./ProductFilter.module.css";
 
@@ -49,8 +50,10 @@ const CATEGORIES_RADIO_OPTIONS = [
   { label: "HD's", value: "hdd" },
 ];
 
+const UPDATE_DELAY = 2000;
+
 const ProductFilter = () => {
-  const { fields, fieldHandler } = useForm({
+  const { fields, fieldHandler, validForm } = useForm({
     category: { initialValue: "", validation: null },
     tags: { initialValue: [], validation: null },
     minPrice: { initialValue: "", validation: "priceFilter" },
@@ -61,6 +64,22 @@ const ProductFilter = () => {
     cleanFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fields.category.value]);
+
+  useEffect(() => {
+    if (!validForm) return;
+    debouncedUpdateFilter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fields]);
+
+  const debouncedUpdateFilter = useDebounce(() => {
+    const { category, tags, minPrice, maxPrice } = { ...fields };
+    const filter: IFakeApiProductFilter = {};
+    if (category.value.length > 0) filter.category = category.value;
+    if (tags.value.length > 0) filter.tags = tags.value;
+    filter.minPrice = Number(minPrice.value.replace(",", ".")) * 100;
+    filter.maxPrice = Number(maxPrice.value.replace(",", ".")) * 100;
+    console.log(filter);
+  }, UPDATE_DELAY);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

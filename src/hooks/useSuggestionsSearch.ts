@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import debounce from "@utils/debounce";
 import fakeFetch from "@utils/fakeFetch";
+
+import useDebounce from "./useDebounce";
 
 const SUGGESTIONS_LIMIT = 5;
 const MIN_SEARCH_LENGTH = 3;
@@ -21,30 +22,28 @@ export default function useSuggestionsSearch() {
   const suggestions = useRef<IProductSuggestion[]>([]);
   const visible = useRef(false);
 
-  const suggestionsSearch = useRef(
-    debounce((searchInApi: boolean) => {
-      if (searchInApi) {
-        if (
-          visible.current &&
-          searchStateRef.current.length >= MIN_SEARCH_LENGTH
-        ) {
-          setSuggestionsShown([]);
-          setError(null);
-          fetchSuggestions();
-        }
-        return;
+  const debouncedSuggestionsSearch = useDebounce((searchInApi: boolean) => {
+    if (searchInApi) {
+      if (
+        visible.current &&
+        searchStateRef.current.length >= MIN_SEARCH_LENGTH
+      ) {
+        setSuggestionsShown([]);
+        setError(null);
+        fetchSuggestions();
       }
-      setSuggestionsShown(
-        suggestions.current
-          .filter((product) =>
-            product.name
-              .toLowerCase()
-              .includes(searchStateRef.current.toLowerCase())
-          )
-          .slice(0, SUGGESTIONS_LIMIT)
-      );
-    }, DEBOUNCE_DELAY)
-  );
+      return;
+    }
+    setSuggestionsShown(
+      suggestions.current
+        .filter((product) =>
+          product.name
+            .toLowerCase()
+            .includes(searchStateRef.current.toLowerCase())
+        )
+        .slice(0, SUGGESTIONS_LIMIT)
+    );
+  }, DEBOUNCE_DELAY);
 
   useEffect(() => {
     searchStateRef.current = search;
@@ -59,10 +58,11 @@ export default function useSuggestionsSearch() {
     ) {
       suggestions.current = [];
       fetchID.current++;
-      suggestionsSearch.current(true);
+      debouncedSuggestionsSearch(true);
       return;
     }
-    suggestionsSearch.current(false);
+    debouncedSuggestionsSearch(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   const closeSuggestions = () => {

@@ -8,7 +8,7 @@ export default function useFakeAPI<T>(route: keyof typeof endpoints) {
   const [error, setError] = useState<null | string>(null);
   const [loading, setLoading] = useState(false);
 
-  async function request(params?: Record<string, unknown>) {
+  async function request(params?: object) {
     setLoading(true);
     const response = await fakeFetch(route, params);
     if (response.error !== null) {

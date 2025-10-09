@@ -3,10 +3,18 @@
   grid-template-columns: repeat(6, 1fr);
   padding-top: var(--px40);
   padding-bottom: var(--px40);
+  gap: var(--px24);
 }
 
 .decoration {
   height: var(--px32);
   margin-bottom: var(--px16);
   grid-column: span 6;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--px8);
+  grid-column: 2 / 7;
 }

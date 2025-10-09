@@ -52,7 +52,11 @@ const CATEGORIES_RADIO_OPTIONS = [
 
 const UPDATE_DELAY = 2000;
 
-const ProductFilter = () => {
+type Props = {
+  setFilter: React.Dispatch<React.SetStateAction<IFakeApiProductFilter>>; 
+}
+
+const ProductFilter = ({setFilter}: Props) => {
   const { fields, fieldHandler, validForm } = useForm({
     category: { initialValue: "", validation: null },
     tags: { initialValue: [], validation: null },
@@ -78,7 +82,7 @@ const ProductFilter = () => {
     if (tags.value.length > 0) filter.tags = tags.value;
     filter.minPrice = Number(minPrice.value.replace(",", ".")) * 100;
     filter.maxPrice = Number(maxPrice.value.replace(",", ".")) * 100;
-    console.log(filter);
+    setFilter(filter);
   }, UPDATE_DELAY);
 
   const handleSubmit = (e: React.FormEvent) => {

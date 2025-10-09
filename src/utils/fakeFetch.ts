@@ -2,7 +2,7 @@ import endpoints from "@fakeAPI/endpoints";
 
 export default async function fakeFetch<T>(
   route: keyof typeof endpoints,
-  params?: Record<string, unknown>
+  params?: object
 ): Promise<IFakeApiResponse<T>> {
   const MAX_RESPONSE_TIME = 500;
   const MIN_RESPONSE_TIME = 1000;

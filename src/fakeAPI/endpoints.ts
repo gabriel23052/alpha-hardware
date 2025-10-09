@@ -29,6 +29,11 @@ export default {
     return response(result);
   },
 
+  "GET /api/products/recentlyViewed": () => {
+    const productsHandler = new ProductsHandler();
+    return response(productsHandler.getRecentlyViewed());
+  },
+
   "GET /api/pageContent/home": () => {
     const pageHandler = new PageContentHandler();
     return response(pageHandler.getHomePageContent());

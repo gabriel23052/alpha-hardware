@@ -20,7 +20,6 @@ interface IHomepageApiResponse {
     first: IProductList;
     second: IProductList;
   };
-  recentlyViewed: IProduct[];
 }
 
 const IndexRoute = () => {
@@ -51,7 +50,7 @@ const IndexRoute = () => {
         <ResponsiveBanner bannerData={data.banners.second} />
         <Social />
         <ProductSelection productSelection={data.productLists.second} />
-        <RecentlyViewed products={data.recentlyViewed} />
+        <RecentlyViewed />
       </main>
     );
   }

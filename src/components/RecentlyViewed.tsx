@@ -1,10 +1,26 @@
+import { useEffect } from "react";
+
 import ProductList from "@components/product/ProductList";
+
+import useFakeAPI from "@hooks/useFakeAPI";
 
 import SVGRecently from "@svg/recently.svg?react";
 
 import classes from "./RecentlyViewed.module.css";
 
-const RecentlyViewed = ({ products }: { products: IProduct[] }) => {
+const RecentlyViewed = () => {
+  const {
+    data: products,
+    loading,
+    error,
+    request,
+  } = useFakeAPI<IProduct[]>("GET /api/products/recentlyViewed");
+
+  useEffect(() => {
+    request();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section className={`bg-lneutral-xlight ${classes.recentlyViewed}`}>
       <div className={`defaultContainer`}>
@@ -14,12 +30,19 @@ const RecentlyViewed = ({ products }: { products: IProduct[] }) => {
             Produtos que você viu recentemente
           </h2>
         </div>
-        <ProductList
-          products={products}
-          hideSale={true}
-          hideButtons={true}
-          className={classes.products}
-        />
+        {loading ? (
+          <h1>Carregando</h1>
+        ) : error ? (
+          <h1>Erro: {error}</h1>
+        ) : (
+          products && (
+            <ProductList
+              className={classes.products}
+              products={products}
+              hideSale={true}
+            />
+          )
+        )}
       </div>
     </section>
   );

@@ -25,7 +25,6 @@ export default class PageContentHandler {
     return {
       banners,
       productLists,
-      recentlyViewed: productsHandler.getRecentlyViewed(),
     };
   }
 

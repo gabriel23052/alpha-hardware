@@ -10,8 +10,12 @@ import classes from "./ProductListRoute.module.css";
 const ProductListRoute = () => {
   const [filter, setFilter] = useState<IFakeApiProductFilter>({});
 
-  const { data: products, loading, error, request } =
-    useFakeAPI<IProduct[]>("GET /api/products");
+  const {
+    data: products,
+    loading,
+    error,
+    request,
+  } = useFakeAPI<IProduct[]>("GET /api/products");
 
   useEffect(() => {
     if (Object.keys(filter).length === 0) return;
@@ -19,9 +23,15 @@ const ProductListRoute = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
+  const handleClick = () => {
+    setFilter({ sale: "2A0F24" });
+  };
+
   return (
     <main className={`defaultContainer ${classes.productListRoute}`}>
-      <div className={`bg-dneutral ${classes.decoration}`}></div>
+      <div className={`bg-dneutral ${classes.decoration}`}>
+        <button onClick={handleClick}>TEST</button>
+      </div>
       <ProductFilter setFilter={setFilter} />
       {loading ? (
         <h1>Carregando</h1>

@@ -21,6 +21,7 @@ export default class ProductsHandler {
       sale.products.forEach((product) => {
         this.productsSaleMap.set(product.id, {
           sale: {
+            id: sale.id,
             name: sale.name,
             discont: product.discont,
             expiration: product.expiration,
@@ -50,19 +51,24 @@ export default class ProductsHandler {
       if (result.length === 0) return result;
     }
 
-    // if ("sale" in filter) {
-    //   if (result.length > 0) {
-    //     exclusionFilter(
-    //       result,
-    //       (product) => product.sale?.name !== filter.sale
-    //     );
-    //   } else {
-    //     result.push(
-    //       ...products.filter((product) => product.sale?.name === filter.sale)
-    //     );
-    //   }
-    //   if (result.length === 0) return result;
-    // }
+    if ("sale" in filter) {
+      const sale = sales.find((sale) => sale.id === filter.sale);
+      if (sale) {
+        if (result.length > 0) {
+          exclusionFilter(
+            result,
+            (product) =>
+              !this.productsSaleMap.has(product.id) ||
+              this.productsSaleMap.get(product.id)?.sale.id !== filter.sale
+          );
+        } else {
+          result.push(
+            ...this.getByIdList(sale.products.map((product) => product.id))
+          );
+        }
+      }
+      if (result.length === 0) return result;
+    }
 
     if ("category" in filter) {
       if (result.length > 0) {

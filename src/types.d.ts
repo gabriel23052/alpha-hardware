@@ -40,6 +40,7 @@ interface ISale {
 }
 
 interface IProductSale {
+  id: string;
   name: string;
   expiration: number;
   discont: number;

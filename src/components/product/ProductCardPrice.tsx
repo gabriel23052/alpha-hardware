@@ -10,24 +10,25 @@ interface ProductCardPriceProps {
 const ProductCardPrice = ({ prices, showOldPrice }: ProductCardPriceProps) => {
   return (
     <>
-      {prices.oldPrice && showOldPrice && (
+      {prices.previous && showOldPrice && (
         <span className={`dneutral-xlight text-default ${classes.oldPrice}`}>
-          R$ {parsePrice(prices.oldPrice)}
+          R$ {parsePrice(prices.previous)}
         </span>
       )}
       <span className={`lneutral-xdark text-small ${classes.price}`}>
         R$
         <span className={`dneutral-dark text-large-m`}>
           {" "}
-          {parsePrice(prices.withDiscont)}{" "}
+          {parsePrice(prices.pix)}{" "}
         </span>
-        <br/>no PIX ({prices.discontPercentage}% OFF)
+        <br />
+        no PIX ({prices.pixDiscont}% OFF)
       </span>
       <span className={`lneutral-xdark text-small`}>
         R$
         <span className="dneutral-dark text-default">
           {" "}
-          {parsePrice(prices.normal)}{" "}
+          {parsePrice(prices.full)}{" "}
         </span>
         no cartão <br /> em até {prices.maxInstallments}x de R$
         <span className="dneutral-dark text-default">

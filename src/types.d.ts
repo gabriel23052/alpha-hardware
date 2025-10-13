@@ -12,12 +12,12 @@ interface IResponsiveBanner {
 }
 
 interface IPrices {
-  normal: number;
-  withDiscont: number;
-  discontPercentage: number;
+  full: number;
+  pix: number;
+  pixDiscont: number;
   maxInstallments: number;
   installments: number;
-  oldPrice?: number;
+  previous?: number;
 }
 
 interface IMedia {
@@ -29,10 +29,20 @@ interface IMedia {
 }
 
 interface ISale {
+  id: string;
+  name: string;
+  products: {
+    id: string;
+    expiration: number;
+    discont: number;
+    prices: IPrices;
+  }[];
+}
+
+interface IProductSale {
   name: string;
   expiration: number;
-  discontPercentage: number;
-  prices: IPrices;
+  discont: number;
 }
 
 interface IProduct {
@@ -40,14 +50,14 @@ interface IProduct {
   name: string;
   category: string;
   prices: IPrices;
-  sale: null | ISale;
+  sale?: IProductSale;
   media: IMedia;
   tags: string[];
 }
 
 interface IProductIdList {
   title: string;
-  role: "default" | "sale" | "recentlyViewed";
+  role: "default" | "sale";
   productIds: string[];
 }
 
@@ -83,7 +93,13 @@ interface IFreight {
   }[];
 }
 
-type IJsonValue = string | number | boolean | null | IJsonValue[] | Record<string, unknown>;
+type IJsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | IJsonValue[]
+  | Record<string, unknown>;
 
 interface IFormField<T extends IJsonValue> {
   value: T;

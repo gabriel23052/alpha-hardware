@@ -31,7 +31,7 @@ const ProductCard = ({ product, hideSale, hideButtons }: ProductCardProps) => {
             {product.name}
           </span>
           <ProductCardPrice
-            prices={product.sale ? product.sale.prices : product.prices}
+            prices={product.prices}
             showOldPrice={hideSale === false}
           />
         </div>

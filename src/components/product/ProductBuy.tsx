@@ -14,17 +14,15 @@ const ProductBuy = ({ product }: { product: IProduct }) => {
     <section className={`bg-lneutral-xlight ${classes.productBuy}`}>
       {product.sale && (
         <div className={`${classes.sale}`}>
-          <h2 className="secondary bg-dneutral text-display">{product.sale.name}</h2>
+          <h2 className="secondary bg-dneutral text-display">
+            {product.sale.name}
+          </h2>
           <ProductSaleLabel sale={product.sale} inCard={false} />
         </div>
       )}
       <div className={`${classes.container}`}>
         <div className={`${classes.topWrapper}`}>
-          <ProductBuyPrice
-            prices={
-              product.sale === null ? product.prices : product.sale.prices
-            }
-          />
+          <ProductBuyPrice prices={product.prices} />
           <div className={`${classes.buttons}`}>
             <Link
               className={`bg-primary lneutral-xlight text-default-b ${classes.buyButton}`}

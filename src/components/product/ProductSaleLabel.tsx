@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./ProductSaleLabel.module.css";
 
 type ProductSaleLabelProps = {
-  sale: ISale;
+  sale: IProductSale;
   inCard: boolean;
 };
 
@@ -45,7 +45,7 @@ const ProductSaleLabel = ({ sale, inCard }: ProductSaleLabelProps) => {
         }`}
       >
         <span>
-          <span className="text-large-m">{sale.discontPercentage}%</span> OFF
+          <span className="text-large-m">{sale.discont}%</span> OFF
         </span>
         <span className="text-default">{getPeriodString(saleTime)}</span>
       </div>

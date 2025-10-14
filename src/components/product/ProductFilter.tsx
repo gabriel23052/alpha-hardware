@@ -53,10 +53,10 @@ const CATEGORIES_RADIO_OPTIONS = [
 const UPDATE_DELAY = 2000;
 
 type Props = {
-  setFilter: React.Dispatch<React.SetStateAction<IFakeApiProductFilter>>; 
-}
+  setFilter: React.Dispatch<React.SetStateAction<IFakeApiProductFilter>>;
+};
 
-const ProductFilter = ({setFilter}: Props) => {
+const ProductFilter = ({ setFilter }: Props) => {
   const { fields, fieldHandler, validForm } = useForm({
     category: { initialValue: "", validation: null },
     tags: { initialValue: [], validation: null },
@@ -65,24 +65,27 @@ const ProductFilter = ({setFilter}: Props) => {
   } as const);
 
   useEffect(() => {
+    if (fields.category.value === "") return;
     cleanFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fields.category.value]);
 
   useEffect(() => {
-    if (!validForm) return;
     debouncedUpdateFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fields]);
 
   const debouncedUpdateFilter = useDebounce(() => {
+    if (!validForm) return;
     const { category, tags, minPrice, maxPrice } = { ...fields };
     const filter: IFakeApiProductFilter = {};
     if (category.value.length > 0) filter.category = category.value;
     if (tags.value.length > 0) filter.tags = tags.value;
     filter.minPrice = Number(minPrice.value.replace(",", ".")) * 100;
     filter.maxPrice = Number(maxPrice.value.replace(",", ".")) * 100;
-    setFilter(filter);
+    setFilter((prev) => {
+      return { ...prev, ...filter };
+    });
   }, UPDATE_DELAY);
 
   const handleSubmit = (e: React.FormEvent) => {

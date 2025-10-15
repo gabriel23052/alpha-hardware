@@ -4,18 +4,19 @@ import ProductsHandler from "./ProductsHandler";
 export default class PageContentHandler {
   public getHomePageContent() {
     const productsHandler = new ProductsHandler();
-    const { banners, productIdLists } = homepage;
+    const { banners, productIdGroups } = homepage;
 
-    type ProductLists = {
-      [key: string]: { title: string; role: string; products: IProduct[] };
+    type ProductGroups = {
+      [key: string]: IProductGroup;
     };
 
-    const productLists = Object.entries(productIdLists).reduce<ProductLists>(
+    const productGroups = Object.entries(productIdGroups).reduce<ProductGroups>(
       (acc, current) => {
         acc[current[0]] = {
-          title: current[1].title,
-          role: current[1].role,
-          products: productsHandler.getByIdList(current[1].productIds),
+          meta: current[1].meta,
+          products: productsHandler.select({
+            id: current[1].productIds,
+          }).products,
         };
         return acc;
       },
@@ -24,15 +25,15 @@ export default class PageContentHandler {
 
     return {
       banners,
-      productLists,
+      productGroups,
     };
   }
 
   public getProductPageContent(productId: string) {
     const productsHandler = new ProductsHandler();
     return {
-      product: productsHandler.getByFilter({ id: productId }),
-      relatedProducts: productsHandler.getRelated(productId),
+      product: productsHandler.select({ id: productId }),
+      relatedProducts: productsHandler.selectRelated(productId),
     };
   }
 }

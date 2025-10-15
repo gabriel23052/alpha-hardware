@@ -12,13 +12,20 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
-  const { data, error, loading, request } = useFakeAPI<{
-    product: IProduct[];
-    relatedProducts: IProduct[];
+  const {
+    data: pageContent,
+    error,
+    loading,
+    request,
+  } = useFakeAPI<{
+    product: IProductGroup;
+    relatedProducts: IProductGroup;
   }>("GET /api/pageContent/product");
 
-  const product = data ? data.product : null;
-  const relatedProducts = data ? data.relatedProducts : null;
+  const product = pageContent ? pageContent.product.products : null;
+  const relatedProducts = pageContent
+    ? pageContent.relatedProducts.products
+    : null;
 
   const location = useLocation();
 

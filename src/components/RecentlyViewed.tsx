@@ -10,11 +10,11 @@ import classes from "./RecentlyViewed.module.css";
 
 const RecentlyViewed = () => {
   const {
-    data: products,
+    data: productGroup,
     loading,
     error,
     request,
-  } = useFakeAPI<IProduct[]>("GET /api/products/recentlyViewed");
+  } = useFakeAPI<IProductGroup>("GET /api/products/recentlyViewed");
 
   useEffect(() => {
     request();
@@ -35,10 +35,10 @@ const RecentlyViewed = () => {
         ) : error ? (
           <h1>Erro: {error}</h1>
         ) : (
-          products && (
+          productGroup && (
             <ProductList
               className={classes.products}
-              products={products}
+              products={productGroup.products}
               hideSale={true}
             />
           )

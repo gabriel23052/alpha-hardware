@@ -62,21 +62,27 @@ interface IProductIdList {
   productIds: string[];
 }
 
-interface IProductList {
-  title: string;
-  role: "default" | "sale";
+interface IProductGroup {
+  meta?: {
+    saleName?: string;
+    title?: string;
+  };
   products: IProduct[];
 }
+
+type IProductIdGroup = Omit<IProductGroup, "products"> & {
+  productIds: string[];
+};
 
 interface IHomePageContent {
   banners: {
     first: IResponsiveBanner;
     second: IResponsiveBanner;
   };
-  productIdLists: {
-    sale: IProductIdList;
-    first: IProductIdList;
-    second: IProductIdList;
+  productIdGroups: {
+    sale: IProductIdGroup;
+    first: IProductIdGroup;
+    second: IProductIdGroup;
   };
 }
 
@@ -113,7 +119,7 @@ interface IFakeApiResponse<T> {
 }
 
 interface IFakeApiProductFilter {
-  id?: string;
+  id?: string | string[];
   name?: string;
   sale?: string;
   category?: string;

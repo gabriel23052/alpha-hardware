@@ -49,10 +49,11 @@ const homepage: IHomePageContent = {
       ],
     },
   },
-  productIdLists: {
+  productIdGroups: {
     sale: {
-      title: "Festival das Placas de Vídeo",
-      role: "sale",
+      meta: {
+        title: "Festival das Placas de Vídeo",
+      },
       productIds: [
         "026333169",
         "688377899",
@@ -65,8 +66,9 @@ const homepage: IHomePageContent = {
       ],
     },
     first: {
-      title: "Produtos recém-chegados",
-      role: "default",
+      meta: {
+        title: "Festival das Placas de Vídeo",
+      },
       productIds: [
         "D55645F74",
         "46FCACB03",
@@ -91,8 +93,9 @@ const homepage: IHomePageContent = {
       ],
     },
     second: {
-      title: "Chega de travamentos",
-      role: "default",
+      meta: {
+        title: "Chega de travamentos",
+      },
       productIds: [
         "2F9B652E8",
         "A8D4D200D",

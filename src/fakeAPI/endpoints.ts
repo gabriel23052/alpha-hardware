@@ -17,7 +17,7 @@ export default {
       return error("Parâmetro(s) incorreto(s)");
     }
     const productHandler = new ProductsHandler();
-    return response<IProduct[]>(productHandler.getByFilter(params));
+    return response<IProductGroup>(productHandler.select(params));
   },
 
   "GET /api/products/suggestions": (params: object) => {
@@ -25,13 +25,12 @@ export default {
       return error("Parâmetro(s) incorreto(s)");
     }
     const productsHandler = new ProductsHandler();
-    const result = productsHandler.getSuggestions(params.search);
-    return response(result);
+    return response(productsHandler.selectSuggestions(params.search));
   },
 
   "GET /api/products/recentlyViewed": () => {
     const productsHandler = new ProductsHandler();
-    return response(productsHandler.getRecentlyViewed());
+    return response(productsHandler.selectRecentlyViewed());
   },
 
   "GET /api/pageContent/home": () => {

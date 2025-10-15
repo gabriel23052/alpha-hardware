@@ -14,11 +14,11 @@ const ProductListRoute = () => {
   const location = useLocation();
 
   const {
-    data: products,
+    data: productGroup,
     loading,
     error,
     request,
-  } = useFakeAPI<IProduct[]>("GET /api/products");
+  } = useFakeAPI<IProductGroup>("GET /api/products");
 
   useEffect(() => {
     const sale = params.get("sale");
@@ -41,10 +41,10 @@ const ProductListRoute = () => {
       ) : error ? (
         <h1>Erro: {error}</h1>
       ) : (
-        products && (
+        productGroup && (
           <ProductList
             className={classes.productList}
-            products={products}
+            products={productGroup.products}
             hideSale={true}
           />
         )

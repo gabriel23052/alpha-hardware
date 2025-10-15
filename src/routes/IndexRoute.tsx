@@ -15,10 +15,10 @@ interface IHomepageApiResponse {
     first: IResponsiveBanner;
     second: IResponsiveBanner;
   };
-  productLists: {
-    sale: IProductList;
-    first: IProductList;
-    second: IProductList;
+  productGroups: {
+    sale: IProductGroup;
+    first: IProductGroup;
+    second: IProductGroup;
   };
 }
 
@@ -44,12 +44,12 @@ const IndexRoute = () => {
     return (
       <main>
         <ResponsiveBanner bannerData={data.banners.first} />
-        <ProductSale productSelection={data.productLists.sale} />
+        <ProductSale productSelection={data.productGroups.sale} />
         <Categories />
-        <ProductSelection productSelection={data.productLists.first} />
+        <ProductSelection productSelection={data.productGroups.first} />
         <ResponsiveBanner bannerData={data.banners.second} />
         <Social />
-        <ProductSelection productSelection={data.productLists.second} />
+        <ProductSelection productSelection={data.productGroups.second} />
         <RecentlyViewed />
       </main>
     );

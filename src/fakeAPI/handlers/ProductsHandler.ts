@@ -7,13 +7,13 @@ import sales from "@fakeAPI/data/sales";
 const RELATED_ARRAY_MAX_LENGTH = 4;
 
 export default class ProductsHandler {
-  private productsIndexMap: Map<string, number>;
+  private productsMap: Map<string, IProduct>;
   private productsSaleMap: Map<string, { sale: IProductSale; prices: IPrices }>;
 
   constructor() {
-    this.productsIndexMap = new Map();
-    products.forEach((product, index) => {
-      this.productsIndexMap.set(product.id, index);
+    this.productsMap = new Map();
+    products.forEach((product) => {
+      this.productsMap.set(product.id, product);
     });
 
     this.productsSaleMap = new Map();
@@ -32,12 +32,15 @@ export default class ProductsHandler {
     });
   }
 
-  private filter(filter: IFakeApiProductFilter) {
+  private getProducts(filter: IFakeApiProductFilter) {
     const result: IProduct[] = [];
 
     if ("id" in filter) {
-      const index = this.productsIndexMap.get(filter.id as string);
-      if (index !== undefined) result.push(products[index]);
+      if (typeof filter.id === "string") filter.id = [filter.id];
+      filter.id?.forEach((id) => {
+        const product = this.productsMap.get(id);
+        if (product) result.push(product);
+      });
       return result;
     }
 
@@ -63,7 +66,9 @@ export default class ProductsHandler {
           );
         } else {
           result.push(
-            ...this.getByIdList(sale.products.map((product) => product.id))
+            ...this.select({
+              id: sale.products.map((product) => product.id),
+            }).products
           );
         }
       }
@@ -130,45 +135,46 @@ export default class ProductsHandler {
     }
   }
 
-  public getSuggestions(search: string) {
-    return this.getByFilter({ name: search }).map((product) => ({
+  private selectSale(id: string) {
+    return sales.find((sale) => sale.id === id);
+  }
+
+  public selectSuggestions(search: string) {
+    return this.getProducts({ name: search }).map((product) => ({
       id: product.id,
       name: product.name,
     }));
   }
 
   // Temporário
-  public getRecentlyViewed(): IProduct[] {
-    const productHandler = new ProductsHandler();
-    return productHandler.getByIdList([
-      "026333169",
-      "688377899",
-      "C45F042A9",
-      "9764E9629",
-    ]);
+  public selectRecentlyViewed() {
+    return {
+      products: this.getProducts({
+        id: ["026333169", "688377899", "C45F042A9", "9764E9629"],
+      }),
+    };
   }
 
-  public getRelated(productId: string): IProduct[] {
-    const baseProduct = this.getByFilter({ id: productId })[0];
-    if (baseProduct === undefined) return [];
-    return products
-      .filter(
-        (product) =>
-          product.category === baseProduct.category &&
-          baseProduct.id !== product.id
-      )
-      .slice(0, RELATED_ARRAY_MAX_LENGTH);
+  public selectRelated(baseProductId: string): IProductGroup {
+    const baseProduct = this.getProducts({ id: baseProductId });
+    if (baseProduct === undefined) return { products: [] };
+    return {
+      products: this.getProducts({
+        category: baseProduct[0].category,
+      })
+        .filter((product) => product.id !== baseProductId)
+        .slice(0, RELATED_ARRAY_MAX_LENGTH),
+    };
   }
 
-  public getByIdList(idList: string[]) {
-    return idList
-      .map((id) => this.getByFilter({ id })[0])
-      .filter((product) => product !== undefined);
-  }
-
-  public getByFilter(filter: IFakeApiProductFilter) {
-    const filteredProducts = this.filter(filter);
-    this.injectSales(filteredProducts);
-    return filteredProducts;
+  public select(filter: IFakeApiProductFilter) {
+    const productGroup: IProductGroup = { products: [] };
+    productGroup.products = this.getProducts(filter);
+    this.injectSales(productGroup.products);
+    if ("sale" in filter && typeof filter.sale === "string") {
+      const sale = this.selectSale(filter.sale);
+      if (sale) productGroup.meta = { saleName: sale.name };
+    }
+    return productGroup;
   }
 }

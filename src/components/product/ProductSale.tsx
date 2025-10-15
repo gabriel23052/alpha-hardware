@@ -7,15 +7,17 @@ import classes from "./ProductSale.module.css";
 const ProductSale = ({
   productSelection,
 }: {
-  productSelection: IProductList;
+  productSelection: IProductGroup;
 }) => {
-  const { title, products } = productSelection;
+  const { meta, products } = productSelection;
 
   return (
     <article className={`defaultContainer ${classes.productSale}`}>
-      <Link className={`${classes.title}`} to={"/"}>
-        <h2 className={`secondary-light text-display`}>{title}</h2>
-      </Link>
+      {meta && meta.title && (
+        <Link className={`${classes.title}`} to={"/"}>
+          <h2 className={`secondary-light text-display`}>{meta.title}</h2>
+        </Link>
+      )}
       <ProductList products={products} className={`${classes.products}`} />
     </article>
   );

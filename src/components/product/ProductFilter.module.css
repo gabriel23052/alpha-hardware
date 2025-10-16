@@ -1,3 +1,7 @@
+.productFilter {
+  grid-row: 2;
+}
+
 .categorySelection > h2 {
   margin-bottom: var(--px8);
 }

@@ -1,20 +1,43 @@
 .productListRoute {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr 5fr;
+  gap: var(--px16);
   padding-top: var(--px40);
   padding-bottom: var(--px40);
-  gap: var(--px24);
 }
 
-.decoration {
-  height: var(--px32);
-  margin-bottom: var(--px16);
-  grid-column: span 6;
+.saleName {
+  width: max-content;
+  display: flex;
+  gap: var(--px8);
+  align-items: center;
+  grid-column: 2;
+  padding: var(--px8) var(--px16);
+  padding-right: var(--px12);
+  border-radius: 12px;
+}
+
+.saleName button {
+  width: var(--px24);
+  height: var(--px24);
+  padding: var(--px4);
+  background: none;
+  cursor: pointer;
+  border-radius: 40%;
+  transition: background-color 300ms;
+}
+.saleName button:hover,
+.saleName button:focus {
+  background-color: var(--secondary-xlight);
+}
+
+.saleName svg {
+  width: 100%;
 }
 
 .productList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--px8);
-  grid-column: 2 / 7;
+  grid-row: 2;
 }

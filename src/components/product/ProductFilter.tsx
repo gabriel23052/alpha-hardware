@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import InputRadio from "@components/inputs/InputRadio";
 import ProductFilterTags from "./ProductFilterTags";
@@ -54,23 +54,31 @@ const UPDATE_DELAY = 2000;
 
 type Props = {
   setFilter: React.Dispatch<React.SetStateAction<IFakeApiProductFilter>>;
+  initialCategory: string | undefined;
 };
 
-const ProductFilter = ({ setFilter }: Props) => {
+const ProductFilter = ({ setFilter, initialCategory }: Props) => {
   const { fields, fieldHandler, validForm } = useForm({
-    category: { initialValue: "", validation: null },
+    category: { initialValue: initialCategory || "", validation: null },
     tags: { initialValue: [], validation: null },
     minPrice: { initialValue: "", validation: "priceFilter" },
     maxPrice: { initialValue: "", validation: "priceFilter" },
   } as const);
 
-  useEffect(() => {
-    if (fields.category.value === "") return;
-    cleanFilters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fields.category.value]);
+  const previousCategory = useRef(fields.category.value);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (previousCategory.current !== fields.category.value) {
+      resetPriceAndTags();
+      previousCategory.current = fields.category.value;
+      return;
+    }
+    previousCategory.current = fields.category.value;
     debouncedUpdateFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fields]);
@@ -92,7 +100,7 @@ const ProductFilter = ({ setFilter }: Props) => {
     e.preventDefault();
   };
 
-  const cleanFilters = () => {
+  const resetPriceAndTags = () => {
     fieldHandler("minPrice", "");
     fieldHandler("maxPrice", "");
     fieldHandler("tags", []);
@@ -113,14 +121,18 @@ const ProductFilter = ({ setFilter }: Props) => {
       </div>
       <button
         className={`secondary-xdark bg-white text-small ${classes.cleanButton}`}
-        onClick={cleanFilters}
+        onClick={resetPriceAndTags}
       >
         Limpar Filtros
       </button>
       <ProductFilterPrices fields={fields} fieldHandler={fieldHandler} />
-      {fields.category.value && (
+      {fields.category.value in TAGS_WITH_LABELS && (
         <ProductFilterTags
-          tags={TAGS_WITH_LABELS[fields.category.value]}
+          tags={
+            TAGS_WITH_LABELS[
+              fields.category.value as keyof typeof TAGS_WITH_LABELS
+            ]
+          }
           field={fields.tags}
           fieldHandler={fieldHandler}
         />

@@ -12,11 +12,17 @@ import classes from "./ProductListRoute.module.css";
 
 const ProductListRoute = () => {
   const [params] = useSearchParams();
+
   const [filter, setFilter] = useState<IFakeApiProductFilter>(() => {
+    const initialFilter: IFakeApiProductFilter = {};
     const sale = params.get("sale");
-    if (sale && sale.length === 6) return { sale };
-    return {};
+    const initialCategory = params.get("category");
+    if (sale && sale.length === 6) initialFilter.sale = sale;
+    if (initialCategory && initialCategory.length <= 30)
+      initialFilter.category = initialCategory;
+    return initialFilter;
   });
+  
   const {
     data: productGroup,
     loading,
@@ -42,7 +48,7 @@ const ProductListRoute = () => {
 
   return (
     <main className={`defaultContainer ${classes.productListRoute}`}>
-      <ProductFilter setFilter={setFilter} />
+      <ProductFilter setFilter={setFilter} initialCategory={params.get("category") || ""} />
       {loading ? (
         <h1>Carregando</h1>
       ) : error ? (

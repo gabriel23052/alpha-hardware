@@ -1,12 +1,14 @@
-import {type ChangeEvent} from "react";
+import { type ChangeEvent } from "react";
+
+import type { Field, UpdateField } from "@hooks/useJafh";
 
 type Props = {
   containerClassName?: string;
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  field: IFormField<string>;
-  fieldHandler: (id: string, value: IJsonValue) => void;
+  field: Field<string>;
+  updateField: UpdateField<string>;
 };
 
 const InputRadio = ({
@@ -15,10 +17,10 @@ const InputRadio = ({
   id,
   options,
   field,
-  fieldHandler,
+  updateField,
 }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    fieldHandler(id, e.target.id.split("-").pop()!);
+    updateField(id, e.target.id.split("-").pop()!);
   };
 
   return (

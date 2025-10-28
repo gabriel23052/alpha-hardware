@@ -1,16 +1,18 @@
-import {type InputHTMLAttributes, type ChangeEvent} from "react";
+import { type InputHTMLAttributes, type ChangeEvent } from "react";
+
+import type { Field, UpdateField } from "@hooks/useJafh";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   id: string;
-  field: IFormField<string>;
-  fieldHandler: (id: string, value: IJsonValue) => void;
+  field: Field<string>;
+  updateField: UpdateField<string>;
 };
 
-const InputNumber = ({ id, field, fieldHandler, ...attr }: Props) => {
+const InputNumber = ({ id, field, updateField, ...attr }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (/^[\d,]*$/.test(newValue)) {
-      fieldHandler(id, newValue);
+      updateField(id, newValue);
     }
   };
 

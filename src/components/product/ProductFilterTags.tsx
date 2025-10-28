@@ -1,17 +1,19 @@
 import InputCheckbox from "@components/inputs/InputCheckbox";
 
+import type { Field, UpdateField } from "@hooks/useJafh";
+
 import classes from "./ProductFilterTags.module.css";
 
 type ProductFilterTagsProps = {
   tags: { label: string; values: string[] }[];
-  field: IFormField<string[]>;
-  fieldHandler: (id: string, value: IJsonValue) => void;
+  field: Field<string[]>;
+  updateField: UpdateField<string[]>;
 };
 
 const ProductFilterTags = ({
   tags,
   field,
-  fieldHandler,
+  updateField,
 }: ProductFilterTagsProps) => {
   return (
     <div className={`${classes.filterTags}`}>
@@ -24,7 +26,7 @@ const ProductFilterTags = ({
             id="tags"
             options={tag.values.map((value) => ({ label: value, value }))}
             field={field}
-            fieldHandler={fieldHandler}
+            updateField={updateField}
           />
         </div>
       ))}

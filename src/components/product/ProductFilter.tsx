@@ -1,11 +1,8 @@
-import { useEffect, useRef } from "react";
-
 import InputRadio from "@components/inputs/InputRadio";
 import ProductFilterTags from "./ProductFilterTags";
 import ProductFilterPrices from "./ProductFilterPrices";
 
-import useForm from "@hooks/useForm";
-import useDebounce from "@hooks/useDebounce";
+import type { JafhForm } from "@hooks/useJafh";
 
 import classes from "./ProductFilter.module.css";
 
@@ -50,60 +47,24 @@ const CATEGORIES_RADIO_OPTIONS = [
   { label: "HD's", value: "hdd" },
 ];
 
-const UPDATE_DELAY = 2000;
-
 type Props = {
-  setFilter: React.Dispatch<React.SetStateAction<IFakeApiProductFilter>>;
-  initialCategory: string | undefined;
+  filterForm: JafhForm<{
+    category: string;
+    tags: string[];
+    minPrice: string;
+    maxPrice: string;
+  }>;
 };
 
-const ProductFilter = ({ setFilter, initialCategory }: Props) => {
-  const { fields, fieldHandler, validForm } = useForm({
-    category: { initialValue: initialCategory || "", validation: null },
-    tags: { initialValue: [], validation: null },
-    minPrice: { initialValue: "", validation: "priceFilter" },
-    maxPrice: { initialValue: "", validation: "priceFilter" },
-  } as const);
-
-  const previousCategory = useRef(fields.category.value);
-  const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    if (previousCategory.current !== fields.category.value) {
-      resetPriceAndTags();
-      previousCategory.current = fields.category.value;
-      return;
-    }
-    previousCategory.current = fields.category.value;
-    debouncedUpdateFilter();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fields]);
-
-  const debouncedUpdateFilter = useDebounce(() => {
-    if (!validForm) return;
-    const { category, tags, minPrice, maxPrice } = { ...fields };
-    const filter: IFakeApiProductFilter = {};
-    if (category.value.length > 0) filter.category = category.value;
-    if (tags.value.length > 0) filter.tags = tags.value;
-    filter.minPrice = Number(minPrice.value.replace(",", ".")) * 100;
-    filter.maxPrice = Number(maxPrice.value.replace(",", ".")) * 100;
-    setFilter((prev) => {
-      return { ...prev, ...filter };
-    });
-  }, UPDATE_DELAY);
-
+const ProductFilter = ({ filterForm }: Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
   const resetPriceAndTags = () => {
-    fieldHandler("minPrice", "");
-    fieldHandler("maxPrice", "");
-    fieldHandler("tags", []);
+    filterForm.updateField("minPrice", "");
+    filterForm.updateField("maxPrice", "");
+    filterForm.updateField("tags", []);
   };
 
   return (
@@ -115,8 +76,8 @@ const ProductFilter = ({ setFilter, initialCategory }: Props) => {
           labelStyles="dneutral text-small"
           id="category"
           options={CATEGORIES_RADIO_OPTIONS}
-          field={fields.category}
-          fieldHandler={fieldHandler}
+          field={filterForm.fields.category}
+          updateField={filterForm.updateField}
         />
       </div>
       <button
@@ -125,16 +86,16 @@ const ProductFilter = ({ setFilter, initialCategory }: Props) => {
       >
         Limpar Filtros
       </button>
-      <ProductFilterPrices fields={fields} fieldHandler={fieldHandler} />
-      {fields.category.value in TAGS_WITH_LABELS && (
+      <ProductFilterPrices filterForm={filterForm} />
+      {filterForm.fields.category.value in TAGS_WITH_LABELS && (
         <ProductFilterTags
           tags={
             TAGS_WITH_LABELS[
-              fields.category.value as keyof typeof TAGS_WITH_LABELS
+              filterForm.fields.category.value as keyof typeof TAGS_WITH_LABELS
             ]
           }
-          field={fields.tags}
-          fieldHandler={fieldHandler}
+          field={filterForm.fields.tags}
+          updateField={filterForm.updateField}
         />
       )}
     </form>

@@ -1,3 +1,4 @@
+import type { Field, UpdateField } from "@hooks/useJafh";
 import { type ChangeEvent } from "react";
 
 type Props = {
@@ -5,8 +6,8 @@ type Props = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  field: IFormField<string[]>;
-  fieldHandler: (id: string, value: IJsonValue) => void;
+  field: Field<string[]>;
+  updateField: UpdateField<string[]>;
 };
 
 const InputCheckbox = ({
@@ -15,18 +16,18 @@ const InputCheckbox = ({
   id,
   options,
   field,
-  fieldHandler,
+  updateField,
 }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.id.split("-").pop()!;
     if (field.value.includes(value)) {
-      fieldHandler(
+      updateField(
         id,
         field.value.filter((v) => v !== value)
       );
       return;
     }
-    fieldHandler(id, [...field.value, value]);
+    updateField(id, [...field.value, value]);
   };
 
   return (

@@ -64,8 +64,9 @@ interface IProductIdList {
 
 interface IProductGroup {
   meta?: {
-    saleName?: string;
     title?: string;
+    saleName?: string;
+    saleId?: string;
   };
   products: IProduct[];
 }

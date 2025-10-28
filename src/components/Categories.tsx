@@ -9,6 +9,15 @@ import SVGHdd from "@svg/hdd.svg?react";
 
 import classes from "./Categories.module.css";
 
+const CATEGORIES = [
+  { name: "gpu", label: "Placas de Vídeo", Svg: SVGGpu },
+  { name: "moba", label: "Placas-mãe", Svg: SVGMotherBoard },
+  { name: "cpu", label: "Processadores", Svg: SVGCpu },
+  { name: "ram", label: "Memórias RAM", Svg: SVGRam },
+  { name: "ssd", label: "SSD's", Svg: SVGSsd },
+  { name: "hdd", label: "HD's", Svg: SVGHdd },
+];
+
 const Categories = () => {
   return (
     <nav className={`${classes.categories}`}>
@@ -18,42 +27,17 @@ const Categories = () => {
         </h2>
       </div>
       <ul className={`text-default ${classes.list}`}>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGGpu />
-            <span className="dneutral">Placas de Vídeo</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGMotherBoard />
-            <span className="dneutral">Placas-Mãe</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGCpu />
-            <span className="dneutral">Processadores</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGRam />
-            <span className="dneutral">Memórias</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGSsd />
-            <span className="dneutral">SSDs</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="bg-lneutral-xlight" to="/">
-            <SVGHdd />
-            <span className="dneutral">HDs</span>
-          </Link>
-        </li>
+        {CATEGORIES.map(({ name, label, Svg }) => (
+          <li key={name}>
+            <Link
+              className="bg-lneutral-xlight"
+              to={`/products?category=${name}`}
+            >
+              <Svg />
+              <span className="dneutral">{label}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

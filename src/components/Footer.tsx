@@ -7,6 +7,15 @@ import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
 import classes from "./Footer.module.css";
 
+const CATEGORIES = [
+  { name: "gpu", label: "Placas de Vídeo" },
+  { name: "moba", label: "Placas-mãe" },
+  { name: "cpu", label: "Processadores" },
+  { name: "ram", label: "Memórias RAM" },
+  { name: "ssd", label: "SSD's" },
+  { name: "hdd", label: "HD's" },
+];
+
 const Footer = () => {
   return (
     <footer className={`bg-dneutral-dark ${classes.footer}`}>
@@ -14,36 +23,13 @@ const Footer = () => {
         <nav className={`${classes.categories}`}>
           <h3 className="secondary text-large">Departamentos</h3>
           <ul className="text-default">
-            <li>
-              <Link className="white" to={"/"}>
-                Placas de Vídeo
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Placas-Mãe
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Processadores
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Memórias RAM
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                SSDs
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                HDs
-              </Link>
-            </li>
+            {CATEGORIES.map(({ name, label }) => (
+              <li key={name}>
+                <Link className="white" to={`/products?category=${name}`}>
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <nav className={`${classes.institutional}`}>

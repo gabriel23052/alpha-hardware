@@ -1,7 +1,7 @@
 const homepage: IHomePageContent = {
   banners: {
     first: {
-      link: "/",
+      link: "/products?sale=2A0F24",
       baseSrc: "./img/banners/homeBanner.jpg",
       baseWidth: 3840,
       baseHeight: 200,
@@ -52,7 +52,8 @@ const homepage: IHomePageContent = {
   productIdGroups: {
     sale: {
       meta: {
-        title: "Festival das Placas de Vídeo",
+        saleId: "2A0F24",
+        saleName: "Festival das Placas de Vídeo",
       },
       productIds: [
         "026333169",

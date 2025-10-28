@@ -13,9 +13,12 @@ const ProductSale = ({
 
   return (
     <article className={`defaultContainer ${classes.productSale}`}>
-      {meta && meta.title && (
-        <Link className={`${classes.title}`} to={"/"}>
-          <h2 className={`secondary-light text-display`}>{meta.title}</h2>
+      {meta && meta.saleId && meta.saleName && (
+        <Link
+          className={`${classes.title}`}
+          to={`/products?sale=${meta.saleId}`}
+        >
+          <h2 className={`secondary-light text-display`}>{meta.saleName}</h2>
         </Link>
       )}
       <ProductList products={products} className={`${classes.products}`} />

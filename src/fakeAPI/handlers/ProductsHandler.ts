@@ -3,7 +3,7 @@ import exclusionFilter from "@utils/exclusionFilter";
 import products from "@fakeAPI/data/products";
 import sales from "@fakeAPI/data/sales";
 
-// const MAX_PRICE = 9999999;
+const MAX_PRICE = 9999999;
 const RELATED_ARRAY_MAX_LENGTH = 4;
 
 export default class ProductsHandler {
@@ -89,28 +89,30 @@ export default class ProductsHandler {
       if (result.length === 0) return result;
     }
 
-    // if (filter.minPrice !== undefined && filter.maxPrice !== undefined) {
-    //   const minPrice = filter.minPrice;
-    //   const maxPrice = filter.maxPrice === 0 ? MAX_PRICE : filter.maxPrice;
-    //   if (result.length > 0) {
-    //     exclusionFilter(result, (product) => {
-    //       const productPrice = product.sale
-    //         ? product.sale.prices.full
-    //         : product.prices.full;
-    //       return productPrice < minPrice || productPrice > maxPrice;
-    //     });
-    //   } else {
-    //     result.push(
-    //       ...products.filter((product) => {
-    //         const productPrice = product.sale
-    //           ? product.sale.prices.pix
-    //           : product.prices.pix;
-    //         return productPrice >= minPrice && productPrice <= maxPrice;
-    //       })
-    //     );
-    //   }
-    //   if (result.length === 0) return result;
-    // }
+    if ("minPrice" in filter || "maxPrice" in filter) {
+      const minPrice = filter.minPrice ?? 0;
+      const maxPrice = filter.maxPrice ?? MAX_PRICE;
+      if (result.length > 0) {
+        exclusionFilter(result, (product) => {
+          const productSale = this.productsSaleMap.get(product.id);
+          const productPrice = productSale
+            ? productSale.prices.pix
+            : product.prices.pix;
+          return productPrice < minPrice || productPrice > maxPrice;
+        });
+      } else {
+        result.push(
+          ...products.filter((product) => {
+            const productSale = this.productsSaleMap.get(product.id);
+            const productPrice = productSale
+              ? productSale.prices.pix
+              : product.prices.pix;
+            return productPrice >= minPrice && productPrice <= maxPrice;
+          })
+        );
+      }
+      if (result.length === 0) return result;
+    }
 
     if ("tags" in filter) {
       if (result.length > 0) {

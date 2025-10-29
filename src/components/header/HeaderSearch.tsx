@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import useSuggestionsSearch from "@hooks/useSuggestionsSearch";
 
@@ -19,6 +19,8 @@ const HeaderSearch = () => {
     resetSuggestions,
     visible,
   } = useSuggestionsSearch();
+
+  const navigate = useNavigate();
 
   const blurTimeout = useRef<number | null>(null);
   const inputElem = useRef<HTMLInputElement>(null);
@@ -49,6 +51,13 @@ const HeaderSearch = () => {
     setSearch(e.target.value);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (search.length > 0) {
+      navigate(`/products?name=${search}`);
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       closeSuggestions();
@@ -75,10 +84,11 @@ const HeaderSearch = () => {
   };
 
   return (
-    <div
+    <form
       className={`${classes.container}`}
       onFocus={handleFocus}
       onBlur={handleBlur}
+      onSubmit={handleSubmit}
     >
       <input
         className={`text-default dneutral-dark bg-lneutral-light ${
@@ -137,7 +147,7 @@ const HeaderSearch = () => {
           </ul>
         )}
       </div>
-    </div>
+    </form>
   );
 };
 

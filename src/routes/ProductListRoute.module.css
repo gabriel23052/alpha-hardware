@@ -6,33 +6,14 @@
   padding-bottom: var(--px40);
 }
 
-.saleName {
-  width: max-content;
-  display: flex;
-  gap: var(--px8);
-  align-items: center;
+.topMenu {
   grid-column: 2;
-  padding: var(--px8) var(--px16);
-  padding-right: var(--px12);
-  border-radius: 12px;
 }
 
-.saleName button {
-  width: var(--px24);
-  height: var(--px24);
-  padding: var(--px4);
-  background: none;
-  cursor: pointer;
-  border-radius: 40%;
-  transition: background-color 300ms;
-}
-.saleName button:hover,
-.saleName button:focus {
-  background-color: var(--secondary-xlight);
-}
-
-.saleName svg {
-  width: 100%;
+.filtersBreadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--px8) var(--px12);
 }
 
 .productList {

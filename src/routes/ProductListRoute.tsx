@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useSearchParams } from "react-router";
 
 import ProductFilter from "@components/product/ProductFilter";
 import ProductList from "@components/product/ProductList";
@@ -8,9 +8,8 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
 
-import SVGClose from "@svg/close.svg?react";
-
 import classes from "./ProductListRoute.module.css";
+import ProductFilterBreadcrumb from "@components/product/ProductFilterBreadcrumb";
 
 type FilterFormFields = {
   name: null | string;
@@ -24,7 +23,11 @@ type FilterFormFields = {
 const FILTER_UPDATE_DELAY = 1000;
 
 const ProductListRoute = () => {
+  const [showSaleBreadcrumb, setShowSaleBreadcrumb] = useState(true);
+
   const [params] = useSearchParams();
+
+  const location = useLocation();
 
   const filterForm = useJafh<FilterFormFields>(
     {
@@ -60,21 +63,51 @@ const ProductListRoute = () => {
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
-      const category = params.get("category");
-      const sale = params.get("sale");
-      if (category) filterForm.updateField("category", category);
-      if (sale) filterForm.updateField("sale", sale);
+      return;
     }
     updateFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterForm.fields]);
 
+  useEffect(() => {
+    verifyQueryParams();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   const removeSaleFilter = () => {
+    setShowSaleBreadcrumb(false);
     filterForm.updateField("sale", null);
+  };
+
+  const removeNameFilter = () => {
+    filterForm.updateField("name", null);
+  };
+
+  const verifyQueryParams = () => {
+    const category = params.get("category");
+    const sale = params.get("sale");
+    const name = params.get("name");
+    if (category) filterForm.updateField("category", category);
+    if (sale) filterForm.updateField("sale", sale);
+    if (name) filterForm.updateField("name", name);
   };
 
   return (
     <main className={`defaultContainer ${classes.productListRoute}`}>
+      <div className={`${classes.topMenu}`}>
+        <div className={`${classes.filtersBreadcrumb}`}>
+          {api.data && showSaleBreadcrumb && api.data.meta?.saleName && (
+            <ProductFilterBreadcrumb closeBlickHandler={removeSaleFilter}>
+              {api.data.meta.saleName}
+            </ProductFilterBreadcrumb>
+          )}
+          {filterForm.fields.name.value && (
+            <ProductFilterBreadcrumb closeBlickHandler={removeNameFilter}>
+              {`Busca por: "${filterForm.fields.name.value}"`}
+            </ProductFilterBreadcrumb>
+          )}
+        </div>
+      </div>
       <ProductFilter filterForm={filterForm} />
       {api.loading ? (
         <h1>Carregando</h1>
@@ -82,23 +115,11 @@ const ProductListRoute = () => {
         <h1>Erro: {api.error}</h1>
       ) : (
         api.data?.products && (
-          <>
-            {api.data.meta?.saleName && (
-              <span
-                className={`bg-secondary-light secondary-xdark text-default ${classes.saleName}`}
-              >
-                {api.data.meta?.saleName}{" "}
-                <button onClick={removeSaleFilter}>
-                  <SVGClose />
-                </button>
-              </span>
-            )}
-            <ProductList
-              className={classes.productList}
-              products={api.data?.products}
-              hideSale={!api.data.meta?.saleName}
-            />
-          </>
+          <ProductList
+            className={classes.productList}
+            products={api.data?.products}
+            hideSale={!api.data.meta?.saleName}
+          />
         )
       )}
     </main>

@@ -1,0 +1,29 @@
+.breadcrumb {
+  display: flex;
+  gap: var(--px8);
+  align-items: center;
+  padding: var(--px8) var(--px16);
+  padding-right: var(--px12);
+  border: 1px solid var(--secondary-xdark);
+  border-radius: 12px;
+}
+
+.breadcrumb button {
+  width: var(--px24);
+  height: var(--px24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border-radius: 4px;
+  transition: background-color 300ms;
+  cursor: pointer;
+}
+.breadcrumb button:hover,
+.breadcrumb button:focus {
+  background-color: var(--secondary-xlight);
+}
+
+.breadcrumb svg {
+  width: 0.875rem; /* 14px */
+}

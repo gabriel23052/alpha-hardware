@@ -57,15 +57,13 @@ const validations = {
 
     if (
       "minPrice" in filter &&
-      (!("maxPrice" in filter) ||
-        !validations.integerWithLimits(filter.minPrice, MIN_PRICE, MAX_PRICE))
+      !validations.integerWithLimits(filter.minPrice, MIN_PRICE, MAX_PRICE)
     )
       return false;
 
     if (
       "maxPrice" in filter &&
-      (!("minPrice" in filter) ||
-        !validations.integerWithLimits(filter.maxPrice, MIN_PRICE, MAX_PRICE))
+      !validations.integerWithLimits(filter.maxPrice, MIN_PRICE, MAX_PRICE)
     )
       return false;
 

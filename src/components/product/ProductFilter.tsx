@@ -81,7 +81,7 @@ const ProductFilter = ({ filterForm }: Props) => {
         />
       </div>
       <button
-        className={`secondary-xdark bg-white text-small ${classes.cleanButton}`}
+        className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}
         onClick={resetPriceAndTags}
       >
         Limpar Filtros

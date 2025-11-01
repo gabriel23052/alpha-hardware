@@ -1,0 +1,27 @@
+.container {
+  position: relative;
+}
+
+.container svg {
+  width: var(--px20);
+  position: absolute;
+  right: var(--px8);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.select {
+  width: 11rem;
+  padding: var(--px8);
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.select:hover,
+.select:focus {
+  background-color: var(--lneutral);
+  color: var(--dneutral);
+}

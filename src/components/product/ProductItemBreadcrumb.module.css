@@ -2,15 +2,16 @@
   display: flex;
   gap: var(--px8);
   align-items: center;
-  padding: var(--px8) var(--px16);
+  padding: var(--px4) var(--px12);
   padding-right: var(--px12);
   border: 1px solid var(--secondary-xdark);
   border-radius: 12px;
+  cursor: default;
 }
 
 .breadcrumb button {
-  width: var(--px24);
-  height: var(--px24);
+  width: var(--px20);
+  height: var(--px20);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,5 +26,5 @@
 }
 
 .breadcrumb svg {
-  width: 0.875rem; /* 14px */
+  width: var(--px12);
 }

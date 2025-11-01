@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
 
 const ProductFilterBreadcrumb = ({ children, closeBlickHandler }: Props) => {
   return (
-    <span className={`secondary-xdark text-default ${classes.breadcrumb}`}>
+    <span className={`secondary-xdark text-small ${classes.breadcrumb}`}>
       {children}
       <button onClick={closeBlickHandler}>
         <SVGClose />

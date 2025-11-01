@@ -1,0 +1,46 @@
+import type { ChangeEvent, HTMLAttributes } from "react";
+
+import type { Field, UpdateField } from "@hooks/useJafh";
+
+type Props = HTMLAttributes<HTMLSelectElement> & {
+  className: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
+  id: string;
+  field: Field<string>;
+  updateField: UpdateField<string>;
+};
+
+const InputSelect = ({
+  className,
+  options,
+  id,
+  field,
+  updateField,
+  ...atr
+}: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    updateField(id, e.target.value);
+  };
+
+  return (
+    <select
+      className={className}
+      id={id}
+      name={id}
+      onChange={handleChange}
+      value={field.value}
+      {...atr}
+    >
+      {options.map(({ value, label }) => (
+        <option value={value} key={value}>
+          {label}
+        </option>
+      ))}
+    </select>
+  );
+};
+
+export default InputSelect;

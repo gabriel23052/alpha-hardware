@@ -127,4 +127,5 @@ interface IFakeApiProductFilter {
   minPrice?: number;
   maxPrice?: number;
   tags?: string[];
+  sortBy?: "increasingPrice" | "decreasingPrice";
 }

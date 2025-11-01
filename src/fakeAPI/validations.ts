@@ -79,6 +79,14 @@ const validations = {
       }
     }
 
+    if ("sortBy" in filter) {
+      if (
+        filter.sortBy !== "increasingPrice" &&
+        filter.sortBy !== "decreasingPrice"
+      )
+        return false;
+    }
+
     return true;
   },
 };

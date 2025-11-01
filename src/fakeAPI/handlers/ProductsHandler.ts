@@ -177,6 +177,12 @@ export default class ProductsHandler {
       const sale = this.selectSale(filter.sale);
       if (sale) productGroup.meta = { saleName: sale.name };
     }
+    if ("sortBy" in filter) {
+      productGroup.products =
+        filter.sortBy === "increasingPrice"
+          ? productGroup.products.sort((a, b) => a.prices.pix - b.prices.pix)
+          : productGroup.products.sort((a, b) => b.prices.pix - a.prices.pix);
+    }
     return productGroup;
   }
 }

@@ -1,13 +1,19 @@
-const validations = {
-  priceFilter: (value: IJsonValue) => {
+import type { JafhError, JafhValidation } from "@hooks/useJafh";
+
+export default class Validation {
+  private static createError = (
+    message: string,
+    userFriendly: boolean = true
+  ): JafhError => {
+    return { message, userFriendly };
+  };
+
+  public static priceFilter: JafhValidation = (value) => {
     if (typeof value !== "string") {
-      console.error(`Erro na validação "priceFilter": Não é string`);
-      return "Erro na validação";
+      return this.createError(`"priceFilter" deve ser uma string`, false);
     }
     return value.length === 0 || /^\d{1,5}(,\d{1,2})?$/.test(value)
       ? null
-      : "Preço(s) Inválido(s)";
-  },
-};
-
-export default validations;
+      : this.createError(`Preço inválido`);
+  };
+}

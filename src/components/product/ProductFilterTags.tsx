@@ -1,13 +1,13 @@
 import InputCheckbox from "@components/inputs/InputCheckbox";
 
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 import classes from "./ProductFilterTags.module.css";
 
 type ProductFilterTagsProps = {
   tags: { label: string; values: string[] }[];
-  field: Field<string[]>;
-  updateField: UpdateField<string[]>;
+  field: JafhField<string[]>;
+  updateField: JafhUpdateField<string[]>;
 };
 
 const ProductFilterTags = ({

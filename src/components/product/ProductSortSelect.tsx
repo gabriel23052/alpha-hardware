@@ -1,14 +1,14 @@
 import InputSelect from "@components/inputs/InputSelect";
 
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 import SVGSort from "@svg/sort.svg?react";
 
 import classes from "./ProductSortDropdown.module.css";
 
 type Props = {
-  field: Field<string>;
-  updateField: UpdateField<string>;
+  field: JafhField<string>;
+  updateField: JafhUpdateField<string>;
 };
 
 const SORT_OPTIONS = [

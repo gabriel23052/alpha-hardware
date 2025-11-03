@@ -1,4 +1,4 @@
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 import { type ChangeEvent } from "react";
 
 type Props = {
@@ -6,8 +6,8 @@ type Props = {
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  field: Field<string[]>;
-  updateField: UpdateField<string[]>;
+  field: JafhField<string[]>;
+  updateField: JafhUpdateField<string[]>;
 };
 
 const InputCheckbox = ({

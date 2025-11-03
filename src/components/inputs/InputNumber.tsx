@@ -1,11 +1,11 @@
 import { type InputHTMLAttributes, type ChangeEvent } from "react";
 
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   id: string;
-  field: Field<string>;
-  updateField: UpdateField<string>;
+  field: JafhField<string>;
+  updateField: JafhUpdateField<string>;
 };
 
 const InputNumber = ({ id, field, updateField, ...attr }: Props) => {

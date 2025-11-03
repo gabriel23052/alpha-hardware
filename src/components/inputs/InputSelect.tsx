@@ -1,6 +1,6 @@
 import type { ChangeEvent, HTMLAttributes } from "react";
 
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 type Props = HTMLAttributes<HTMLSelectElement> & {
   className: string;
@@ -9,8 +9,8 @@ type Props = HTMLAttributes<HTMLSelectElement> & {
     label: string;
   }[];
   id: string;
-  field: Field<string>;
-  updateField: UpdateField<string>;
+  field: JafhField<string>;
+  updateField: JafhUpdateField<string>;
 };
 
 const InputSelect = ({

@@ -101,19 +101,6 @@ interface IFreight {
   }[];
 }
 
-type IJsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | IJsonValue[]
-  | Record<string, unknown>;
-
-interface IFormField<T extends IJsonValue> {
-  value: T;
-  error: string | null;
-}
-
 interface IFakeApiResponse<T> {
   data: null | T;
   error: null | string;

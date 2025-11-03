@@ -10,6 +10,8 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
 
+import Validation from "@utils/validations";
+
 import classes from "./ProductListRoute.module.css";
 
 type FilterFormFields = {
@@ -36,8 +38,8 @@ const ProductListRoute = () => {
       name: { value: null, validation: null },
       sale: { value: null, validation: null },
       category: { value: "", validation: null },
-      minPrice: { value: "", validation: null },
-      maxPrice: { value: "", validation: null },
+      minPrice: { value: "", validation: Validation.priceFilter },
+      maxPrice: { value: "", validation: Validation.priceFilter },
       tags: { value: [], validation: null },
       sortBy: { value: "", validation: null },
     },

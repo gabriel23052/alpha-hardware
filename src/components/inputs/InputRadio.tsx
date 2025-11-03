@@ -1,14 +1,14 @@
 import { type ChangeEvent } from "react";
 
-import type { Field, UpdateField } from "@hooks/useJafh";
+import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 type Props = {
   containerClassName?: string;
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
-  field: Field<string>;
-  updateField: UpdateField<string>;
+  field: JafhField<string>;
+  updateField: JafhUpdateField<string>;
 };
 
 const InputRadio = ({

@@ -1,24 +1,26 @@
 import { useMemo, useRef, useState } from "react";
 
-export type FieldConfig<T> = {
+export type JafhFieldConfig<T> = {
   value: T;
-  validation: Validation | null;
+  validation: JafhValidation | null;
 };
 
-export type Field<T> = {
+export type JafhField<T> = {
   value: T;
   error: string | null;
 };
 
-export type Validation = (value: unknown) => {
+export type JafhValidation = (value: unknown) => JafhError | null;
+
+export type JafhUpdateField<T> = (id: string, newValue: T) => void;
+
+export type JafhError = {
   message: string;
   userFriendly: boolean;
-} | null;
-
-export type UpdateField<T> = (id: string, newValue: T) => void;
+};
 
 export type JafhForm<T> = {
-  fields: { [K in keyof T]: Field<T[K]> };
+  fields: { [K in keyof T]: JafhField<T[K]> };
   updateField: <T>(id: string, newValue: T) => void;
   isValid: boolean;
   getData: () => { [K in keyof T]: T[K] };
@@ -31,10 +33,10 @@ export type JafhForm<T> = {
  * @param validationErrorMessage Default error message to use when the validation is not "user friendly"
  * */
 export default function useJafh<T extends { [key: string]: unknown }>(
-  fieldsConfig: { [K in keyof T]: FieldConfig<T[K]> },
+  fieldsConfig: { [K in keyof T]: JafhFieldConfig<T[K]> },
   validationErrorMessage: string
 ): JafhForm<T> {
-  type FHState = { [K in keyof T]: Field<T[K]> };
+  type FHState = { [K in keyof T]: JafhField<T[K]> };
 
   const fieldsId = useRef<(keyof T)[]>(Object.keys(fieldsConfig));
 

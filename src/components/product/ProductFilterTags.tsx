@@ -1,34 +1,62 @@
-import InputCheckbox from "@components/inputs/InputCheckbox";
+import type { ChangeEvent } from "react";
 
 import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 import classes from "./ProductFilterTags.module.css";
 
-type ProductFilterTagsProps = {
-  tags: { label: string; values: string[] }[];
-  field: JafhField<string[]>;
-  updateField: JafhUpdateField<string[]>;
+type Props = {
+  id: string;
+  groups: { legend: string; values: string[] }[];
+  field: JafhField<[string, string][]>;
+  updateField: JafhUpdateField<[string, string][]>;
 };
 
-const ProductFilterTags = ({
-  tags,
-  field,
-  updateField,
-}: ProductFilterTagsProps) => {
+const ProductFilterTags = ({ id, groups, field, updateField }: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const tags = field.value;
+    const legend = e.target.dataset.legend;
+    const value = e.target.dataset.value;
+    if (value === undefined || legend === undefined) return;
+    const index = tags.findIndex((tag) => tag[0] === legend);
+    if (index === -1) {
+      tags.push([legend, value]);
+    } else {
+      if (tags[index][0] === legend && tags[index][1] === value) {
+        tags.splice(index, 1);
+      } else {
+        tags[index] = [legend, value];
+      }
+    }
+    updateField(id, tags);
+  };
+
+  const isChecked = (legend: string, value: string) =>
+    field.value.some((tag) => tag[0] === legend && tag[1] === value);
+
   return (
-    <div className={`${classes.filterTags}`}>
-      {tags.map((tag) => (
-        <div key={tag.label}>
-          <h3 className="dneutral text-default-b">{tag.label}</h3>
-          <InputCheckbox
-            containerClassName={`${classes.tagsInput}`}
-            labelStyles="dneutral text-small"
-            id="tags"
-            options={tag.values.map((value) => ({ label: value, value }))}
-            field={field}
-            updateField={updateField}
-          />
-        </div>
+    <div className={classes.container}>
+      {groups.map((group) => (
+        <fieldset key={group.legend} className={`${classes.field}`}>
+          <legend className={`text-default-b dneutral`}>{group.legend}</legend>
+          {group.values.map((value) => (
+            <label
+              key={value}
+              className={`text-small dneutral ${
+                isChecked(group.legend, value) ? "selected" : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                name={`${id}-${group.legend}`}
+                checked={isChecked(group.legend, value)}
+                data-legend={group.legend}
+                data-value={value}
+                onChange={handleChange}
+              />
+              {value}
+            </label>
+          ))}
+        </fieldset>
       ))}
     </div>
   );

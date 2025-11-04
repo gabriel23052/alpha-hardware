@@ -118,9 +118,9 @@ export default class ProductsHandler {
       if (result.length > 0) {
         exclusionFilter(result, (product) => {
           for (const filterTag of filter.tags as string[]) {
-            if (product.tags.includes(filterTag)) return false;
+            if (!product.tags.includes(filterTag)) return true;
           }
-          return true;
+          return false;
         });
       }
     }

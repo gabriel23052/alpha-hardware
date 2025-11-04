@@ -20,7 +20,7 @@ type FilterFormFields = {
   category: string;
   minPrice: string;
   maxPrice: string;
-  tags: string[];
+  tags: [string, string][];
   sortBy: "" | "increasingPrice" | "decreasingPrice";
 };
 
@@ -59,7 +59,8 @@ const ProductListRoute = () => {
       filter.minPrice = Number(formData.minPrice.replace(",", ".")) * 100;
     if (formData.maxPrice !== "")
       filter.maxPrice = Number(formData.maxPrice.replace(",", ".")) * 100;
-    if (formData.tags.length !== 0) filter.tags = formData.tags;
+    if (formData.tags.length !== 0)
+      filter.tags = formData.tags.map((tag) => tag[1]);
     if (formData.sortBy !== "") filter.sortBy = formData.sortBy;
     api.request(filter);
   }, FILTER_UPDATE_DELAY);

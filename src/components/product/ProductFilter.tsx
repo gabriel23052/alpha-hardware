@@ -1,4 +1,5 @@
 import InputRadio from "@components/inputs/InputRadio";
+
 import ProductFilterTags from "./ProductFilterTags";
 import ProductFilterPrices from "./ProductFilterPrices";
 
@@ -7,34 +8,34 @@ import type { JafhForm } from "@hooks/useJafh";
 import classes from "./ProductFilter.module.css";
 
 // prettier-ignore
-const TAGS_WITH_LABELS = {
+const TAGS_WITH_LEGENDS = {
   moba: [
-    { label: "Fabricante", values: ["Asus", "Gigabyte", "MSI", "ASRock", "Colorful"] },
-    { label: "Socket", values: ["AMD", "Intel"] },
-    { label: "Memória", values: ["DDR4", "DDR5"] },
+    { legend: "Fabricante", values: ["Asus", "Gigabyte", "MSI", "ASRock", "Colorful"] },
+    { legend: "Socket", values: ["AMD", "Intel"] },
+    { legend: "Memória", values: ["DDR4", "DDR5"] },
   ],
   gpu: [
-    { label: "Plataforma", values: ["NVidia", "AMD"] },
-    { label: "Fabricante", values: ["Asus", "Gigabyte", "MSI", "Sapphire", "XFX", "Palit", "PCyes", "ASRock"] },
-    { label: "VRAM", values: ["4GB", "6GB", "8GB", "12GB", "16GB"] },
+    { legend: "Plataforma", values: ["NVidia", "AMD"] },
+    { legend: "Fabricante", values: ["Asus", "Gigabyte", "MSI", "Sapphire", "XFX", "Palit", "PCyes", "ASRock"] },
+    { legend: "VRAM", values: ["4GB", "6GB", "8GB", "12GB", "16GB"] },
   ],
   cpu: [
-    { label: "Fabricante", values: ["Intel", "AMD"] },
-    { label: "Socket", values: ["LGA1700", "LGA1200", "AM4", "AM5"] },
+    { legend: "Fabricante", values: ["Intel", "AMD"] },
+    { legend: "Socket", values: ["LGA1700", "LGA1200", "AM4", "AM5"] },
   ],
   ram: [
-    { label: "Fabricante", values: ["Kingston", "Rise Mode", "XPG", "Corsair", "Lexar"] },
-    { label: "Barramento", values: ["DDR3", "DDR4", "DDR5"] },
-    { label: "Capacidade", values: ["8GB", "16GB", "16GB (2x8GB)", "32GB (2x16GB)"] },
+    { legend: "Fabricante", values: ["Kingston", "Rise Mode", "XPG", "Corsair", "Lexar"] },
+    { legend: "Barramento", values: ["DDR3", "DDR4", "DDR5"] },
+    { legend: "Capacidade", values: ["8GB", "16GB", "16GB (2x8GB)", "32GB (2x16GB)"] },
   ],
   ssd: [
-    { label: "Fabricante", values: ["Corsair", "Kingston", "Rise Mode", "Sandisk", "WD", "Husky", "Lexar", "Adata"] },
-    { label: "Capacidade", values: ["120GB", "128GB", "240GB", "256GB", "480GB", "500GB", "960GB", "1TB", "2TB", "4TB"] },
+    { legend: "Fabricante", values: ["Corsair", "Kingston", "Rise Mode", "Sandisk", "WD", "Husky", "Lexar", "Adata"] },
+    { legend: "Capacidade", values: ["120GB", "128GB", "240GB", "256GB", "480GB", "500GB", "960GB", "1TB", "2TB", "4TB"] },
   ],
   hdd: [
-    { label: "Fabricante", values: ["WD", "Toshiba", "Seagate"] },
-    { label: "Tipo", values: ["Interno", "Externo"] },
-    { label: "Capacidade", values: ["1TB", "2TB", "4TB", "5TB", "6TB", "8TB", "16TB", "18TB", "22TB"] },
+    { legend: "Fabricante", values: ["WD", "Toshiba", "Seagate"] },
+    { legend: "Tipo", values: ["Interno", "Externo"] },
+    { legend: "Capacidade", values: ["1TB", "2TB", "4TB", "5TB", "6TB", "8TB", "16TB", "18TB", "22TB"] },
   ],
 };
 
@@ -50,9 +51,9 @@ const CATEGORIES_RADIO_OPTIONS = [
 type Props = {
   filterForm: JafhForm<{
     category: string;
-    tags: string[];
     minPrice: string;
     maxPrice: string;
+    tags: [string, string][];
   }>;
 };
 
@@ -87,11 +88,12 @@ const ProductFilter = ({ filterForm }: Props) => {
         Limpar Filtros
       </button>
       <ProductFilterPrices filterForm={filterForm} />
-      {filterForm.fields.category.value in TAGS_WITH_LABELS && (
+      {filterForm.fields.category.value in TAGS_WITH_LEGENDS && (
         <ProductFilterTags
-          tags={
-            TAGS_WITH_LABELS[
-              filterForm.fields.category.value as keyof typeof TAGS_WITH_LABELS
+          id="tags"
+          groups={
+            TAGS_WITH_LEGENDS[
+              filterForm.fields.category.value as keyof typeof TAGS_WITH_LEGENDS
             ]
           }
           field={filterForm.fields.tags}

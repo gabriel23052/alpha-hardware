@@ -1,7 +1,7 @@
 .headerContainer {
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: fixed;
+  position: sticky;
   top: 0px;
   left: 0px;
   z-index: 5;
@@ -17,6 +17,7 @@
 
 .logo {
   grid-column: span 2;
+  transition: max-height 400ms, opacity 400ms;
 }
 
 .logo svg {
@@ -31,7 +32,7 @@
 }
 
 .shortcuts a {
-  padding: --px4;
+  padding: var(--px4);
   transition: transform 200ms;
 }
 .shortcuts a:hover,
@@ -50,14 +51,7 @@
   padding: var(--px12);
   border-radius: var(--px16);
   cursor: pointer;
-  position: absolute;
-  left: var(--px8);
-  top: calc(100% + var(--px8));
-  transition: background-color 300ms;
-}
-.mobileMenuBtn:hover,
-.mobileMenuBtn:focus {
-  background-color: var(--dneutral-light);
+  background: none;
 }
 
 .mobileMenuBtn svg {
@@ -82,27 +76,23 @@
 
 @media (max-width: 700px) {
   .overflowContainer {
-    max-height: 5rem;
-    transition: max-height 400ms;
-  }
-  .overflowContainer.allContent {
-    max-height: 30rem;
     overflow-y: hidden;
+    transition: max-height 400ms;
   }
 
   .wrapper {
     display: grid;
     grid-template-columns: auto 1fr 1fr;
-    gap: var(--px16) var(--px32);
+    gap: var(--px12) var(--px32);
   }
 
-  .logo,
+  .logo {
+    justify-self: center;
+    grid-column: 1/4;
+  }
+
   .shortcuts {
     grid-column: initial;
-  }
-
-  .logo svg {
-    width: 6rem;
   }
 
   .search {

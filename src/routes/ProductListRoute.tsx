@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 
 import ProductFilter from "@components/product/ProductFilter";
@@ -11,6 +11,8 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
 
 import Validation from "@utils/validations";
+
+import SVGFilter from "@svg/filter.svg?react";
 
 import classes from "./ProductListRoute.module.css";
 
@@ -28,6 +30,7 @@ const FILTER_UPDATE_DELAY = 1000;
 
 const ProductListRoute = () => {
   const [showSaleBreadcrumb, setShowSaleBreadcrumb] = useState(true);
+  const [showFilter, setShowFilter] = useState(window.innerWidth > 900);
 
   const [params] = useSearchParams();
 
@@ -67,6 +70,29 @@ const ProductListRoute = () => {
 
   const firstRender = useRef(true);
   const previousCategory = useRef("");
+  const mediaQuery = useRef(window.matchMedia("(max-width: 900px)"));
+
+  const filterContainerID = useId();
+
+  const toggleMobileFilter = useRef((e: MediaQueryListEvent) => {
+    if (e.matches) {
+      setShowFilter(false);
+      return;
+    }
+    setShowFilter(true);
+  });
+
+  useEffect(() => {
+    mediaQuery.current.addEventListener("change", toggleMobileFilter.current);
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      mediaQuery.current.removeEventListener(
+        "change",
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        toggleMobileFilter.current
+      );
+    };
+  }, []);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -99,12 +125,25 @@ const ProductListRoute = () => {
   };
 
   const updateFieldsFromQueryParams = () => {
-    const category = params.get("category");
-    const sale = params.get("sale");
-    const name = params.get("name");
-    if (category) filterForm.updateField("category", category);
-    if (sale) filterForm.updateField("sale", sale);
-    if (name) filterForm.updateField("name", name);
+    filterForm.updateField("category", "");
+    filterForm.updateField("sale", null);
+    filterForm.updateField("name", null);
+    if (params.get("category")) {
+      filterForm.updateField("category", params.get("category"));
+      return;
+    }
+    if (params.get("sale")) {
+      filterForm.updateField("sale", params.get("sale"));
+      return;
+    }
+    if (params.get("name")) {
+      filterForm.updateField("name", params.get("name"));
+      return;
+    }
+  };
+
+  const openMobileFilter = () => {
+    setShowFilter(true);
   };
 
   return (
@@ -125,12 +164,25 @@ const ProductListRoute = () => {
         <span className={`lneutral-xdark text-small`}>
           Exibindo {api.data ? api.data.products.length : 0} produtos
         </span>
+        <button
+          className={`bg-lneutral-xlight dneutral-light ${classes.filterBtn}`}
+          onClick={openMobileFilter}
+          aria-label="Abrir os filtros"
+          aria-controls={filterContainerID}
+        >
+          <SVGFilter />
+        </button>
         <ProductSortSelect
           field={filterForm.fields.sortBy}
           updateField={filterForm.updateField}
         />
       </div>
-      <ProductFilter filterForm={filterForm} />
+      <ProductFilter
+        filterForm={filterForm}
+        filterContainerID={filterContainerID}
+        showFilter={showFilter}
+        setShowFilter={setShowFilter}
+      />
       {api.loading ? (
         <h1>Carregando</h1>
       ) : api.error ? (

@@ -1,8 +1,10 @@
 import { useEffect, useState, type FocusEvent } from "react";
 
+import type { JafhForm } from "@hooks/useJafh";
+
 import InputNumber from "@components/inputs/InputNumber";
 
-import type { JafhForm } from "@hooks/useJafh";
+import SVGError from "@svg/error.svg?react";
 
 import classes from "./ProductFilterPrices.module.css";
 
@@ -39,45 +41,41 @@ const ProductFilterPrices = ({ filterForm }: Props) => {
   };
 
   return (
-    <div className={`${classes.priceSelection}`}>
+    <div className={`${classes.container}`}>
       <h2 className="dneutral text-default-b">Preço</h2>
-      <div className={`${classes.container}`}>
-        <label
-          className={`dneutral text-small ${
-            filterForm.fields.minPrice.error && minBlurred ? classes.error : ""
-          }`}
-          htmlFor="minPrice"
-        >
-          Mínimo:
-        </label>
-        <InputNumber
-          className="dneutral bg-lneutral-xlight text-small"
-          id="minPrice"
-          maxLength={8}
-          placeholder="0,00"
-          autoComplete="off"
-          onBlur={handleBlur}
-          field={filterForm.fields.minPrice}
-          updateField={filterForm.updateField}
-        />
-        <label
-          className={`dneutral text-small ${
-            filterForm.fields.maxPrice.error && maxBlurred ? classes.error : ""
-          }`}
-          htmlFor="minPrice"
-        >
-          Máximo:
-        </label>
-        <InputNumber
-          className="dneutral bg-lneutral-xlight text-small"
-          id="maxPrice"
-          maxLength={8}
-          placeholder="0,00"
-          autoComplete="off"
-          onBlur={handleBlur}
-          field={filterForm.fields.maxPrice}
-          updateField={filterForm.updateField}
-        />
+      <fieldset className={`${classes.fields}`}>
+        <div className={`${classes.field}`}>
+          <label className={`dneutral text-small`} htmlFor="minPrice">
+            Mínimo:
+          </label>
+          <InputNumber
+            className="dneutral bg-lneutral-xlight text-small"
+            id="minPrice"
+            maxLength={8}
+            placeholder="0,00"
+            autoComplete="off"
+            onBlur={handleBlur}
+            field={filterForm.fields.minPrice}
+            updateField={filterForm.updateField}
+          />
+          {filterForm.fields.minPrice.error && minBlurred && <SVGError />}
+        </div>
+        <div className={`${classes.field}`}>
+          <label className={`dneutral text-small`} htmlFor="minPrice">
+            Máximo:
+          </label>
+          <InputNumber
+            className="dneutral bg-lneutral-xlight text-small"
+            id="maxPrice"
+            maxLength={8}
+            placeholder="0,00"
+            autoComplete="off"
+            onBlur={handleBlur}
+            field={filterForm.fields.maxPrice}
+            updateField={filterForm.updateField}
+          />
+          {filterForm.fields.maxPrice.error && maxBlurred && <SVGError />}
+        </div>
         {minBlurred && maxBlurred ? (
           filterForm.fields.minPrice.error ||
           filterForm.fields.maxPrice.error ? (
@@ -93,7 +91,7 @@ const ProductFilterPrices = ({ filterForm }: Props) => {
             )
           )
         ) : null}
-      </div>
+      </fieldset>
     </div>
   );
 };

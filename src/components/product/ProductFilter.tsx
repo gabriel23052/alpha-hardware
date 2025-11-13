@@ -1,9 +1,12 @@
-import InputRadio from "@components/inputs/InputRadio";
+import type { MouseEventHandler } from "react";
 
 import ProductFilterTags from "./ProductFilterTags";
 import ProductFilterPrices from "./ProductFilterPrices";
+import InputRadio from "@components/inputs/InputRadio";
 
 import type { JafhForm } from "@hooks/useJafh";
+
+import SVGChevronLeft from "@svg/chevronLeft.svg?react";
 
 import classes from "./ProductFilter.module.css";
 
@@ -55,51 +58,91 @@ type Props = {
     maxPrice: string;
     tags: [string, string][];
   }>;
+  filterContainerID: string;
+  showFilter: boolean;
+  setShowFilter: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ProductFilter = ({ filterForm }: Props) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
+const ProductFilter = ({
+  filterForm,
+  filterContainerID,
+  showFilter,
+  setShowFilter,
+}: Props) => {
   const resetPriceAndTags = () => {
     filterForm.updateField("minPrice", "");
     filterForm.updateField("maxPrice", "");
     filterForm.updateField("tags", []);
   };
 
+  const closeMobileFilter: MouseEventHandler<HTMLFormElement> = (e) => {
+    if (e.target instanceof HTMLFormElement) {
+      setShowFilter(false);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit} className={`${classes.productFilter}`}>
-      <div className={`${classes.categorySelection}`}>
-        <h2 className="dneutral text-default-b">Departamentos</h2>
-        <InputRadio
-          containerClassName={`${classes.categoryInput}`}
-          labelStyles="dneutral text-small"
-          id="category"
-          options={CATEGORIES_RADIO_OPTIONS}
-          field={filterForm.fields.category}
-          updateField={filterForm.updateField}
-        />
-      </div>
+    <form
+      className={`${classes.container}`}
+      style={
+        showFilter
+          ? {
+              opacity: "1",
+              pointerEvents: "all",
+            }
+          : undefined
+      }
+      onSubmit={(e: React.FormEvent) => {
+        e.preventDefault();
+      }}
+      onClick={closeMobileFilter}
+      id={filterContainerID}
+    >
       <button
-        className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}
-        onClick={resetPriceAndTags}
+        className={`${classes.closeButton}`}
+        aria-label="Fechar os filtros"
+        aria-controls={filterContainerID}
       >
-        Limpar Filtros
+        <SVGChevronLeft />
       </button>
-      <ProductFilterPrices filterForm={filterForm} />
-      {filterForm.fields.category.value in TAGS_WITH_LEGENDS && (
-        <ProductFilterTags
-          id="tags"
-          groups={
-            TAGS_WITH_LEGENDS[
-              filterForm.fields.category.value as keyof typeof TAGS_WITH_LEGENDS
-            ]
-          }
-          field={filterForm.fields.tags}
-          updateField={filterForm.updateField}
-        />
-      )}
+      <div
+        className={`${classes.filters}`}
+        style={{
+          transform: showFilter ? "" : "translateX(-101%)",
+        }}
+      >
+        <div className={`${classes.categorySelection}`}>
+          <h2 className="dneutral text-default-b">Departamentos</h2>
+          <InputRadio
+            containerClassName={`${classes.categoryInput}`}
+            labelStyles="dneutral text-small"
+            id="category"
+            options={CATEGORIES_RADIO_OPTIONS}
+            field={filterForm.fields.category}
+            updateField={filterForm.updateField}
+          />
+        </div>
+        <button
+          className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}
+          onClick={resetPriceAndTags}
+        >
+          Limpar Filtros
+        </button>
+        <ProductFilterPrices filterForm={filterForm} />
+        {filterForm.fields.category.value in TAGS_WITH_LEGENDS && (
+          <ProductFilterTags
+            id="tags"
+            groups={
+              TAGS_WITH_LEGENDS[
+                filterForm.fields.category
+                  .value as keyof typeof TAGS_WITH_LEGENDS
+              ]
+            }
+            field={filterForm.fields.tags}
+            updateField={filterForm.updateField}
+          />
+        )}
+      </div>
     </form>
   );
 };

@@ -4,6 +4,7 @@
 
 .container svg {
   width: var(--px20);
+  height: var(--px20);
   position: absolute;
   right: var(--px8);
   top: 50%;
@@ -15,10 +16,11 @@
   width: 11rem;
   padding: var(--px8);
   border-radius: 4px;
-  cursor: pointer;
+  border: 1px solid var(--lneutral-light);
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
+  cursor: pointer;
   transition: 300ms background-color;
 }
 .select:hover,

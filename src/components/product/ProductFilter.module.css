@@ -1,5 +1,28 @@
-.productFilter {
+.container {
   grid-row: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms;
+}
+
+.closeButton {
+  width: var(--px40);
+  height: var(--px40);
+  display: none; /* flex in media query */
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+  position: fixed;
+  left: 20rem;
+  top: var(--px16);
+  pointer-events: none;
+}
+
+.closeButton svg {
+  width: var(--px12);
+  height: var(--px24);
+  transform: translateX(-1px);
 }
 
 .categorySelection > h2 {
@@ -7,9 +30,9 @@
 }
 
 .categorySelection {
-  border-bottom: 1px solid var(--lneutral);
-  padding-bottom: var(--px16);
   margin-bottom: var(--px16);
+  padding-bottom: var(--px16);
+  border-bottom: 1px solid var(--lneutral);
 }
 
 .categoryInput label {
@@ -49,4 +72,30 @@
 .cleanButton:focus {
   background-color: var(--lneutral);
   color: var(--dneutral);
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+  }
+
+  .closeButton {
+    display: flex;
+  }
+
+  .filters {
+    width: max-content;
+    height: 100%;
+    padding: var(--px16);
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    transition: transform 400ms;
+    overflow-y: auto;
+  }
 }

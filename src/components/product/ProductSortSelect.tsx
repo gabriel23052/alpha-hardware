@@ -4,7 +4,7 @@ import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 import SVGSort from "@svg/sort.svg?react";
 
-import classes from "./ProductSortDropdown.module.css";
+import classes from "./ProductSortSelect.module.css";
 
 type Props = {
   field: JafhField<string>;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const SORT_OPTIONS = [
-  { value: "", label: "Nenhuma" },
+  { value: "", label: "Sem ordenação" },
   { value: "increasingPrice", label: "Preço crescente" },
   { value: "decreasingPrice", label: "Preço descrescente" },
 ];
@@ -21,7 +21,7 @@ const ProductSortSelect = ({ field, updateField }: Props) => {
   return (
     <div className={`${classes.container}`}>
       <InputSelect
-        className={`bg-lneutral-light dneutral-light text-small ${classes.select}`}
+        className={`bg-lneutral-xlight dneutral-light text-small ${classes.select}`}
         options={SORT_OPTIONS}
         id="sortBy"
         field={field}

@@ -3,12 +3,13 @@ import endpoints from "./routeHandlers";
 const MAX_RESPONSE_TIME = 500;
 const MIN_RESPONSE_TIME = 1000;
 
-export default async function request<T>(
+export default function request<T>(
   route: keyof typeof endpoints,
   params?: object
-): Promise<IFakeApiResponse<T>> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
+) {
+  let timeout: number | null = null;
+  const promise = new Promise<IFakeApiResponse<T>>((resolve) => {
+    timeout = window.setTimeout(() => {
       if (!(route in endpoints)) {
         resolve({
           data: null,
@@ -22,4 +23,12 @@ export default async function request<T>(
       resolve(routeHandler(params || {}) as IFakeApiResponse<T>);
     }, Math.floor(Math.random() * MAX_RESPONSE_TIME) + MIN_RESPONSE_TIME);
   });
+
+  function cancel() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+  }
+
+  return { promise, cancel };
 }

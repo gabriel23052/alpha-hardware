@@ -10,7 +10,7 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
 
-import Validation from "@utils/validations";
+import FieldValidations from "@utils/FieldValidations";
 
 import SVGFilter from "@svg/filter.svg?react";
 
@@ -41,8 +41,8 @@ const ProductListRoute = () => {
       name: { value: null, validation: null },
       sale: { value: null, validation: null },
       category: { value: "", validation: null },
-      minPrice: { value: "", validation: Validation.priceFilter },
-      maxPrice: { value: "", validation: Validation.priceFilter },
+      minPrice: { value: "", validation: FieldValidations.priceFilter },
+      maxPrice: { value: "", validation: FieldValidations.priceFilter },
       tags: { value: [], validation: null },
       sortBy: { value: "", validation: null },
     },
@@ -65,7 +65,7 @@ const ProductListRoute = () => {
     if (formData.tags.length !== 0)
       filter.tags = formData.tags.map((tag) => tag[1]);
     if (formData.sortBy !== "") filter.sortBy = formData.sortBy;
-    api.request(filter);
+    api.fetch(filter);
   }, FILTER_UPDATE_DELAY);
 
   const firstRender = useRef(true);
@@ -186,7 +186,7 @@ const ProductListRoute = () => {
       {api.loading ? (
         <h1>Carregando</h1>
       ) : api.error ? (
-        <h1>Erro: {api.error}</h1>
+        <h1>Erro: {api.error.message}</h1>
       ) : (
         api.data?.products && (
           <ProductList

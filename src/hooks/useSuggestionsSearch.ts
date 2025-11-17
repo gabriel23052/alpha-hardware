@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import fakeFetch from "@utils/fakeFetch";
+import request from "@fakeAPI/request";
 
 import useDebounce from "./useDebounce";
 
@@ -78,7 +78,7 @@ export default function useSuggestionsSearch() {
   const fetchSuggestions = async () => {
     const currentFetchID = fetchID.current;
     setLoading(true);
-    const response = await fakeFetch<IProductSuggestion[]>(
+    const response = await request<IProductSuggestion[]>(
       "GET /api/products/suggestions",
       { search: searchStateRef.current.trim() }
     );

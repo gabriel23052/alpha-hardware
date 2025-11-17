@@ -1,6 +1,6 @@
 import type { JafhError, JafhValidation } from "@hooks/useJafh";
 
-export default class Validation {
+export default class FieldValidations {
   private static createError = (
     message: string,
     userFriendly: boolean = true

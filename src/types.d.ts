@@ -103,7 +103,12 @@ interface IFreight {
 
 interface IFakeApiResponse<T> {
   data: null | T;
-  error: null | string;
+  error: null | IFakeApiError;
+}
+
+interface IFakeApiError {
+  userFriendly: boolean;
+  message: string;
 }
 
 interface IFakeApiProductFilter {

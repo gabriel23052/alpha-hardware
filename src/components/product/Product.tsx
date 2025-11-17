@@ -16,7 +16,7 @@ const Product = ({ productId }: { productId: string }) => {
     data: pageContent,
     error,
     loading,
-    request,
+    fetch,
   } = useFakeAPI<{
     product: IProductGroup;
     relatedProducts: IProductGroup;
@@ -30,7 +30,7 @@ const Product = ({ productId }: { productId: string }) => {
   const location = useLocation();
 
   useEffect(() => {
-    request({ productId });
+    fetch({ productId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -38,7 +38,7 @@ const Product = ({ productId }: { productId: string }) => {
   if (loading) return <h1 style={{ margin: "400px 0" }}>CARREGANDO</h1>;
 
   // Temporário
-  if (error) return <p>{error}</p>;
+  if (error) return <p>{error.message}</p>;
 
   // Temporário
   if (product?.length === 0) return <p>Produto não encontrado</p>;

@@ -25,12 +25,12 @@ interface IHomepageApiResponse {
 const IndexRoute = () => {
   usePageTitle("Alpha Hardware");
 
-  const { data, error, loading, request } = useFakeAPI<IHomepageApiResponse>(
+  const { data, error, loading, fetch } = useFakeAPI<IHomepageApiResponse>(
     "GET /api/pageContent/home"
   );
 
   useEffect(() => {
-    request();
+    fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

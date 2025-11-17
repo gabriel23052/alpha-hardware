@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-import endpoints from "@fakeAPI/endpoints";
-import fakeFetch from "@utils/fakeFetch";
+import type routeHandlers from "@fakeAPI/routeHandlers";
+import request from "@fakeAPI/request";
 
-export default function useFakeAPI<T>(route: keyof typeof endpoints) {
+export default function useFakeAPI<T>(route: keyof typeof routeHandlers) {
   const [data, setData] = useState<null | T>(null);
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<null | IFakeApiError>(null);
   const [loading, setLoading] = useState(false);
 
-  async function request(params?: object) {
+  async function fetch(params?: object) {
     setLoading(true);
-    const response = await fakeFetch(route, params);
-    if (response.error !== null) {
+    const response = await request<T>(route, params);
+    if (response.error) {
       setError(response.error);
       setLoading(false);
       return;
@@ -20,5 +20,5 @@ export default function useFakeAPI<T>(route: keyof typeof endpoints) {
     setLoading(false);
   }
 
-  return { data, error, loading, request };
+  return { data, error, loading, fetch };
 }

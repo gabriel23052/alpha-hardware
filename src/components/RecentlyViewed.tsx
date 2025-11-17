@@ -13,11 +13,11 @@ const RecentlyViewed = () => {
     data: productGroup,
     loading,
     error,
-    request,
+    fetch,
   } = useFakeAPI<IProductGroup>("GET /api/products/recentlyViewed");
 
   useEffect(() => {
-    request();
+    fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,7 +33,7 @@ const RecentlyViewed = () => {
         {loading ? (
           <h1>Carregando</h1>
         ) : error ? (
-          <h1>Erro: {error}</h1>
+          <h1>Erro: {error.message}</h1>
         ) : (
           productGroup && (
             <ProductList

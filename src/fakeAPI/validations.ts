@@ -6,49 +6,49 @@ const MAX_PRODUCT_TAG_ARRAY_SIZE = 4;
 const MIN_PRICE = 0;
 const MAX_PRICE = 9999999;
 
-const validations = {
-  productId: (id: unknown): id is string => {
-    return typeof id === "string" && /^[a-f\d]{9}$/i.test(id);
-  },
-
-  stringWithLimitedLength: (str: unknown, maxLength: number): str is string => {
+export default class Validations {
+  private static stringWithLimitedLength(str: unknown, maxLength: number): str is string {
     return typeof str === "string" && str.length <= maxLength;
-  },
-
-  integerWithLimits: (
+  }
+  
+  private static integerWithLimits(
     number: unknown,
     min: number,
     max: number
-  ): number is number => {
+  ): number is number {
     return (
       typeof number === "number" &&
       Number.isInteger(number) &&
       number >= min &&
       number <= max
     );
-  },
+  }
 
-  productFilter: (filter: object): filter is IFakeApiProductFilter => {
+  public static productId(id: unknown): id is string {
+    return typeof id === "string" && /^[a-f\d]{9}$/i.test(id);
+  }
+  
+  public static productFilter(filter: object): filter is IFakeApiProductFilter {
     if ("id" in filter) {
-      if (validations.productId(filter.id)) return true;
+      if (this.productId(filter.id)) return true;
       return false;
     }
 
     if (
       "name" in filter &&
-      !validations.stringWithLimitedLength(filter.name, MAX_PRODUCT_NAME_LENGTH)
+      !this.stringWithLimitedLength(filter.name, MAX_PRODUCT_NAME_LENGTH)
     )
       return false;
 
     if (
       "sale" in filter &&
-      !validations.stringWithLimitedLength(filter.sale, MAX_SALE_NAME_LENGTH)
+      !this.stringWithLimitedLength(filter.sale, MAX_SALE_NAME_LENGTH)
     )
       return false;
 
     if (
       "category" in filter &&
-      !validations.stringWithLimitedLength(
+      !this.stringWithLimitedLength(
         filter.category,
         MAX_PRODUCT_CATEGORY_NAME_LENGTH
       )
@@ -57,13 +57,13 @@ const validations = {
 
     if (
       "minPrice" in filter &&
-      !validations.integerWithLimits(filter.minPrice, MIN_PRICE, MAX_PRICE)
+      !this.integerWithLimits(filter.minPrice, MIN_PRICE, MAX_PRICE)
     )
       return false;
 
     if (
       "maxPrice" in filter &&
-      !validations.integerWithLimits(filter.maxPrice, MIN_PRICE, MAX_PRICE)
+      !this.integerWithLimits(filter.maxPrice, MIN_PRICE, MAX_PRICE)
     )
       return false;
 
@@ -74,7 +74,7 @@ const validations = {
       )
         return false;
       for (const tag of filter.tags) {
-        if (!validations.stringWithLimitedLength(tag, MAX_PRODUCT_TAG_LENGTH))
+        if (!this.stringWithLimitedLength(tag, MAX_PRODUCT_TAG_LENGTH))
           return false;
       }
     }
@@ -88,7 +88,5 @@ const validations = {
     }
 
     return true;
-  },
+  }
 };
-
-export default validations;

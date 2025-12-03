@@ -10,67 +10,68 @@
   background-image: url("../../assets/svg/search.svg");
   background-size: 100%;
   position: absolute;
-  top: 50%;
-  right: var(--px16);
-  transform: translateY(-50%);
+  right: var(--px12);
+  top: var(--px8);
   transition: transform 200ms;
 }
-.container:focus-within::after,
-.container:hover::after {
-  transform: scale(1.1) translateY(-50%);
+.container.loading::after {
+  width: var(--px20);
+  height: var(--px20);
+  background: none;
+  border: 2px solid var(--lneutral-dark);
+  border-left-color: transparent;
+  border-radius: 50%;
+  animation: rotation360 1s infinite linear;
 }
 
 .input {
   width: 100%;
   padding: var(--px8) 2.75rem var(--px8) var(--px16);
-  border-radius: var(--px4);
+  border-radius: 4px;
 }
 .input:hover,
 .input:focus {
-  background-color: var(--lneutral-xlight);
-  outline-offset: 2px;
+  background-color: white;
 }
 
-.input.withSuggestions {
+.input.opened {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   outline: none;
 }
 
-.error {
-  padding: var(--px4) 0;
-  text-align: center;
-}
-
-.suggestionsContainer {
+.contentContainer {
   width: 100%;
-  min-height: 0px;
   border-radius: 0px 0px 4px 4px;
   position: absolute;
   z-index: 10;
-}
-
-.suggestionsContainer.loading {
-  min-height: var(--px8);
-  animation: backgroundLoading 600ms infinite alternate-reverse;
-}
-
-.suggestions {
-  padding-bottom: var(--px4);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.suggestions a {
+.error {
+  padding: var(--px4);
+  text-align: center;
+}
+
+.list a {
   display: block;
   padding: var(--px4) var(--px16);
   border-bottom: 1px solid var(--lneutral-light);
 }
-.suggestions a:hover,
-.suggestions a:focus {
+.list a:hover,
+.list a:focus {
   background-color: var(--lneutral-light);
 }
-.suggestions li:last-child a {
-  border-bottom: none;
+
+.moreItemsLink {
+  display: block;
+  text-decoration: underline;
+  text-align: center;
+  padding: var(--px8);
+}
+.moreItemsLink:hover,
+.moreItemsLink:focus {
+  background-color: var(--lneutral-light);
 }
 
 @media (max-width: 970px) {
@@ -85,11 +86,11 @@
   }
 }
 
-@keyframes backgroundLoading {
+@keyframes rotation360 {
   from {
-    background-color: var(--lneutral);
+    transform: rotate(0deg);
   }
   to {
-    background-color: var(--lneutral-light);
+    transform: rotate(360deg);
   }
 }

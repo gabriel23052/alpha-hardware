@@ -1,91 +1,147 @@
-import { useEffect, useRef } from "react";
-
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 
-import useSuggestionsSearch from "@hooks/useSuggestionsSearch";
+import useFakeAPI from "@hooks/useFakeAPI";
+import useJafh from "@hooks/useJafh";
+import useDebounce from "@hooks/useDebounce";
 
 import classes from "./HeaderSearch.module.css";
 
-const BLUR_DELAY = 100;
+const NUMBER_OF_SUGGESTIONS = 5;
+const MIN_SEARCH_LENGTH = 3;
+const DEBOUNCE_DELAY = 500;
+const BLUR_DELAY = 200;
 
 const HeaderSearch = () => {
-  const {
-    search,
-    suggestionsShown,
-    loading,
-    error,
-    setSearch,
-    closeSuggestions,
-    resetSuggestions,
-    visible,
-  } = useSuggestionsSearch();
+  const searchForm = useJafh(
+    {
+      search: { value: "", validation: null },
+    },
+    "Erro na validação, tente novamente"
+  );
+
+  const api = useFakeAPI<IProductSuggestion[]>("GET /api/products/suggestions");
+
+  const [focused, setFocused] = useState(false);
+
+  const previousSearch = useRef("");
+  const blurTimeout = useRef<number | null>(null);
+  const linksRef = useRef<HTMLAnchorElement[]>([]);
+  const moreItemsLinkRef = useRef<HTMLAnchorElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
-  const blurTimeout = useRef<number | null>(null);
-  const inputElem = useRef<HTMLInputElement>(null);
-  const linksElem = useRef<HTMLAnchorElement[]>([]);
+  const listId = useId();
 
   useEffect(() => {
-    return () => {
-      if (blurTimeout.current) {
-        clearTimeout(blurTimeout.current);
-      }
-    };
-  }, []);
+    const search = searchForm.fields.search.value;
+    setFocused(true);
+    if (
+      search.length < MIN_SEARCH_LENGTH ||
+      (api.data &&
+        api.data.length !== 0 &&
+        search.substring(0, previousSearch.current.length) ===
+          previousSearch.current)
+    )
+      return;
+    fetchNewSuggestions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchForm.fields.search.value]);
 
-  const handleBlur = () => {
-    visible.current = false;
-    blurTimeout.current = window.setTimeout(() => {
-      if (!visible.current) {
-        closeSuggestions();
+  const suggestions = useMemo(() => {
+    const search = searchForm.fields.search.value;
+    if (search.length < MIN_SEARCH_LENGTH) {
+      return [];
+    }
+    if (api.data && api.data.length > 0) {
+      if (search === previousSearch.current) {
+        return api.data.slice(0, NUMBER_OF_SUGGESTIONS);
       }
-    }, BLUR_DELAY);
-  };
+      if (search.length > previousSearch.current.length) {
+        const filtered: IProductSuggestion[] = [];
+        for (const suggestion of api.data) {
+          if (
+            suggestion &&
+            suggestion.name.toLowerCase().includes(search.toLowerCase())
+          ) {
+            filtered.push(suggestion);
+          }
+          if (filtered.length >= NUMBER_OF_SUGGESTIONS) break;
+        }
+        return filtered;
+      }
+    }
+    return [];
+  }, [api.data, searchForm.fields.search.value]);
 
-  const handleFocus = () => {
-    visible.current = true;
-  };
+  const fetchNewSuggestions = useDebounce(() => {
+    const search = searchForm.fields.search.value;
+    previousSearch.current = search;
+    api.fetch({ search });
+  }, DEBOUNCE_DELAY);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    searchForm.updateField("search", e.target.value);
+  };
+
+  const handleClick = () => {
+    searchForm.updateField("search", "");
+    setFocused(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "Escape":
+        setFocused(false);
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        if (e.currentTarget instanceof HTMLInputElement) {
+          linksRef.current[0]?.focus();
+        }
+        if (e.currentTarget instanceof HTMLLIElement) {
+          const index = Number(e.currentTarget.dataset.index);
+          (linksRef.current[index + 1] || moreItemsLinkRef.current).focus();
+        }
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (e.currentTarget instanceof HTMLLIElement) {
+          const index = Number(e.currentTarget.dataset.index);
+          (linksRef.current[index - 1] || inputRef.current).focus();
+        }
+        if (e.currentTarget instanceof HTMLAnchorElement) {
+          linksRef.current[linksRef.current.length - 1].focus();
+        }
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (search.length > 0) {
-      navigate(`/products?name=${search}`);
-    }
+    setFocused(false);
+    searchForm.updateField("search", "");
+    inputRef.current?.blur();
+    navigate(
+      `/products?name=${encodeURIComponent(searchForm.fields.search.value)}`
+    );
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      closeSuggestions();
-    }
-    if (e.currentTarget instanceof HTMLInputElement && e.key === "ArrowDown") {
-      e.preventDefault();
-      linksElem.current[0]?.focus();
-      return;
-    }
-    if (e.currentTarget instanceof HTMLLIElement === false) return;
-    const index = Number(e.currentTarget.dataset.index);
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      linksElem.current[index + 1]?.focus();
-    }
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      if (index === 0) {
-        inputElem.current?.focus();
-        return;
-      }
-      linksElem.current[index - 1]?.focus();
-    }
+  const handleFocus = () => {
+    if (blurTimeout.current !== null) window.clearTimeout(blurTimeout.current);
+    setFocused(true);
+  };
+
+  const handleBlur = () => {
+    blurTimeout.current = window.setTimeout(
+      () => setFocused(false),
+      BLUR_DELAY
+    );
   };
 
   return (
     <form
-      className={`${classes.container}`}
+      className={`${classes.container} ${api.loading ? classes.loading : ""}`}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onSubmit={handleSubmit}
@@ -94,59 +150,68 @@ const HeaderSearch = () => {
         className={`text-default dneutral-dark bg-lneutral-light ${
           classes.input
         } ${
-          suggestionsShown.length > 0 || error || loading
-            ? classes.withSuggestions
-            : ""
+          focused && (suggestions.length > 0 || api.error) ? classes.opened : ""
         }`}
         type="text"
-        ref={inputElem}
-        value={search}
-        onChange={handleChange}
-        onPaste={resetSuggestions}
-        onKeyDown={handleKeyDown}
+        id="search"
+        name="search"
+        ref={inputRef}
+        value={searchForm.fields.search.value}
+        autoComplete="off"
         role="combobox"
-        aria-controls="suggestion-list"
+        aria-controls={listId}
         aria-autocomplete="list"
         aria-label="Pesquisar produtos"
-        aria-expanded={suggestionsShown.length > 0}
+        aria-expanded={suggestions.length > 0}
+        maxLength={100}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
-      <div
-        className={`bg-lneutral-xlight ${classes.suggestionsContainer} ${
-          loading ? classes.loading : ""
-        }`}
-      >
-        {error && (
-          <div className={`primary text-default ${classes.error}`}>{error}</div>
-        )}
-        {suggestionsShown.length > 0 && (
-          <ul
-            className={`${classes.suggestions}`}
-            id="suggestion-list"
-            role="listbox"
-          >
-            {suggestionsShown.map((item, index) => (
+      {focused && api.error && (
+        <div
+          className={`bg-lneutral-xlight primary-dark text-default ${classes.contentContainer} ${classes.error}`}
+        >
+          {api.error}
+        </div>
+      )}
+      {focused && suggestions.length > 0 && (
+        <div className={`bg-white ${classes.contentContainer}`}>
+          <ul className={`${classes.list}`} id={listId} role="listbox">
+            {suggestions.map((suggestion, index) => (
               <li
-                className={`text-default dneutral-dark ${classes.suggestionItem}`}
-                key={item.id}
+                key={suggestion.id}
                 role="option"
                 data-index={index}
                 onKeyDown={handleKeyDown}
               >
                 <Link
-                  to={`/product/${item.id}`}
+                  className={`text-default dneutral`}
+                  to={`/product/${suggestion.id}`}
                   data-index={index}
                   tabIndex={-1}
                   ref={(el) => {
-                    linksElem.current[index] = el!;
+                    linksRef.current[index] = el!;
                   }}
+                  onClick={handleClick}
                 >
-                  {item.name}
+                  {suggestion.name}
                 </Link>
               </li>
             ))}
           </ul>
-        )}
-      </div>
+          <Link
+            to={`/products?name=${encodeURIComponent(
+              searchForm.fields.search.value
+            )}`}
+            className={`text-small dneutral ${classes.moreItemsLink}`}
+            onClick={handleClick}
+            ref={moreItemsLinkRef}
+            onKeyDown={handleKeyDown}
+          >
+            Exibir mais resultados
+          </Link>
+        </div>
+      )}
     </form>
   );
 };

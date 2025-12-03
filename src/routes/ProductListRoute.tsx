@@ -186,7 +186,7 @@ const ProductListRoute = () => {
       {api.loading ? (
         <h1>Carregando</h1>
       ) : api.error ? (
-        <h1>Erro: {api.error.message}</h1>
+        <h1>Erro: {api.error}</h1>
       ) : (
         api.data?.products && (
           <ProductList

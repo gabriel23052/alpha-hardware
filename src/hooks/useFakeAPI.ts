@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import type routeHandlers from "@fakeAPI/routeHandlers";
 import request from "@fakeAPI/request";
 
+const GENERIC_ERROR_MESSAGE = "Ocorreu um erro inesperado, tente novamente";
+
 export default function useFakeAPI<T>(route: keyof typeof routeHandlers) {
   const [data, setData] = useState<null | T>(null);
-  const [error, setError] = useState<null | IFakeApiError>(null);
+  const [error, setError] = useState<null | string>(null);
   const [loading, setLoading] = useState(false);
 
   const activeRequest = useRef<null | {
@@ -20,7 +22,13 @@ export default function useFakeAPI<T>(route: keyof typeof routeHandlers) {
     const response = await activeRequest.current.promise;
     activeRequest.current = null;
     if (response.error) {
-      setError(response.error);
+      setError(() => {
+        if (response.error?.userFriendly) {
+          return response.error.message;
+        }
+        console.error(response.error?.message);
+        return GENERIC_ERROR_MESSAGE;
+      });
       setLoading(false);
       return;
     }

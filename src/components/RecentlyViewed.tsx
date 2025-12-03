@@ -33,7 +33,7 @@ const RecentlyViewed = () => {
         {loading ? (
           <h1>Carregando</h1>
         ) : error ? (
-          <h1>Erro: {error.message}</h1>
+          <h1>Erro: {error}</h1>
         ) : (
           productGroup && (
             <ProductList

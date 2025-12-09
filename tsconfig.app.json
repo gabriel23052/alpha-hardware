@@ -28,7 +28,6 @@
       "@svg/*": ["src/assets/svg/*"],
       "@utils/*": ["src/utils/*"],
       "@components/*": ["src/components/*"],
-      "@data/*": ["src/data/*"],
       "@fakeAPI/*": ["src/fakeAPI/*"],
       "@hooks/*": ["src/hooks/*"]
     }

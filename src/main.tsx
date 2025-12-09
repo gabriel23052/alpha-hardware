@@ -9,7 +9,7 @@ import Footer from "@components/Footer";
 import IndexRoute from "./routes/IndexRoute";
 import ProductRoute from "./routes/ProductRoute";
 import ProductListRoute from "./routes/ProductListRoute";
-import ScrollToTop from "@utils/ScrollToTop";
+import ScrollToTop from "@components/ScrollToTop";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

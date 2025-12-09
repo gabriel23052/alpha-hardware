@@ -5,16 +5,9 @@ import SVGInstagramDark from "@svg/instagramDark.svg?react";
 import SVGXDark from "@svg/xDark.svg?react";
 import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
-import classes from "./Footer.module.css";
+import { CATEGORIES } from "../data";
 
-const CATEGORIES = [
-  { name: "gpu", label: "Placas de Vídeo" },
-  { name: "moba", label: "Placas-mãe" },
-  { name: "cpu", label: "Processadores" },
-  { name: "ram", label: "Memórias RAM" },
-  { name: "ssd", label: "SSD's" },
-  { name: "hdd", label: "HD's" },
-];
+import classes from "./Footer.module.css";
 
 const Footer = () => {
   return (

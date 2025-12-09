@@ -7,15 +7,15 @@ import SVGCartAdd from "@svg/cartAdd.svg?react";
 
 import classes from "./ProductCard.module.css";
 
-type ProductCardProps = {
+type Props = {
   product: IProduct;
   hideSale?: boolean;
   hideButtons?: boolean;
 };
 
-const ProductCard = ({ product, hideSale, hideButtons }: ProductCardProps) => {
+const ProductCard = ({ product, hideSale, hideButtons }: Props) => {
   return (
-    <article className={`bg-white ${classes.productCard}`}>
+    <article className={`bg-white ${classes.productCard}`} title={product.name}>
       <Link to={`/product/${product.id}`}>
         {product.sale && !hideSale && (
           <ProductSaleLabel sale={product.sale} inCard={true} />

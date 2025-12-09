@@ -2,12 +2,12 @@ import parsePrice from "@utils/parsePrice";
 
 import classes from "./ProductCardPrice.module.css";
 
-interface ProductCardPriceProps {
+interface Props {
   prices: IPrices;
   showOldPrice: boolean;
 }
 
-const ProductCardPrice = ({ prices, showOldPrice }: ProductCardPriceProps) => {
+const ProductCardPrice = ({ prices, showOldPrice }: Props) => {
   return (
     <>
       {prices.previous && showOldPrice && (

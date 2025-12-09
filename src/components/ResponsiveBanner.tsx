@@ -2,9 +2,9 @@ import { Link } from "react-router";
 
 import classes from "./ResponsiveBanner.module.css";
 
-type ResponsiveBannerProps = { bannerData: IResponsiveBanner };
+type Props = { bannerData: IResponsiveBanner };
 
-const ResponsiveBanner = ({ bannerData }: ResponsiveBannerProps) => {
+const ResponsiveBanner = ({ bannerData }: Props) => {
   const { link, baseSrc, alt, baseWidth, baseHeight, responsiveImages } =
     bannerData;
 

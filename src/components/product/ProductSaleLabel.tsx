@@ -2,12 +2,12 @@ import React from "react";
 
 import classes from "./ProductSaleLabel.module.css";
 
-type ProductSaleLabelProps = {
+type Props = {
   sale: IProductSale;
   inCard: boolean;
 };
 
-const ProductSaleLabel = ({ sale, inCard }: ProductSaleLabelProps) => {
+const ProductSaleLabel = ({ sale, inCard }: Props) => {
   const [saleTime, setSaleTime] = React.useState(0);
 
   const getPeriodString = (period: number) => {

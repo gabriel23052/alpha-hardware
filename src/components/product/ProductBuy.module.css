@@ -8,6 +8,11 @@
 .sale h2 {
   padding: var(--px4) var(--px24);
   border-radius: 4px 4px 0 0;
+  transition: 300ms background-color;
+}
+.sale:hover h2,
+.sale:focus h2 {
+  background-color: var(--dneutral-dark);
 }
 
 .buttons {

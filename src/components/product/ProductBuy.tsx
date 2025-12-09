@@ -13,12 +13,16 @@ const ProductBuy = ({ product }: { product: IProduct }) => {
   return (
     <section className={`bg-lneutral-xlight ${classes.productBuy}`}>
       {product.sale && (
-        <div className={`${classes.sale}`}>
-          <h2 className="secondary bg-dneutral text-display">
+        <Link
+          className={`${classes.sale}`}
+          to={`/products?sale=${product.sale.id}`}
+          target="_blank"
+        >
+          <h2 className={`secondary bg-dneutral text-display`}>
             {product.sale.name}
           </h2>
           <ProductSaleLabel sale={product.sale} inCard={false} />
-        </div>
+        </Link>
       )}
       <div className={`${classes.container}`}>
         <div className={`${classes.topWrapper}`}>

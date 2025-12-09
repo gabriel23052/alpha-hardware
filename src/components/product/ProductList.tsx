@@ -1,17 +1,18 @@
 import ProductCard from "./ProductCard";
 
-type ProductListProps = {
+type Props = {
   products: IProduct[];
   hideSale?: boolean;
   hideButtons?: boolean;
   className?: string;
 };
+
 const ProductList = ({
   products,
   hideSale,
   hideButtons,
   className,
-}: ProductListProps) => {
+}: Props) => {
   return (
     <ul className={className || ""}>
       {products.map((product) => (

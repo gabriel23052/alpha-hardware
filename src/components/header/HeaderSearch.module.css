@@ -1,5 +1,5 @@
 .container {
-  grid-column: span 5;
+  width: min(100%, 40rem);
   position: relative;
 }
 .container::after {
@@ -74,15 +74,9 @@
   background-color: var(--lneutral-light);
 }
 
-@media (max-width: 970px) {
-  .container {
-    flex-grow: 1;
-  }
-}
-
 @media (max-width: 700px) {
   .container {
-    grid-column: span 2;
+    width: 100%;
   }
 }
 

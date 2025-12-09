@@ -1,3 +1,8 @@
+.container {
+  transition: 320ms 80ms max-height;
+  overflow-y: hidden;
+}
+
 .links {
   display: flex;
 }
@@ -11,7 +16,7 @@
 .links a:hover,
 .links a:focus {
   background-color: var(--dneutral-dark);
-}   
+}
 .links a::after {
   content: "";
   width: 2px;

@@ -11,24 +11,27 @@ const CATEGORIES = [
   { name: "hdd", label: "HD's" },
 ];
 
-const HeaderNavBar = () => {
+type Props = { maxHeight: string; id: string };
+
+const HeaderNavBar = ({ maxHeight, id }: Props) => {
   return (
-    <div className="bg-dneutral-xdark" id="ariaHeaderNavBar">
-      <nav className="lneutral-light text-default defaultContainer">
-        <ul className={`${classes.links}`}>
-          {CATEGORIES.map(({ name, label }) => (
-            <li key={name}>
-              <Link
-                className="lneutral-light"
-                to={`/products?category=${name}`}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+    <nav
+      className={`bg-dneutral-xdark ${classes.container}`}
+      id={id}
+      style={{ maxHeight }}
+    >
+      <ul
+        className={`lneutral-light text-default defaultContainer ${classes.links}`}
+      >
+        {CATEGORIES.map(({ name, label }) => (
+          <li key={name}>
+            <Link className="lneutral-light" to={`/products?category=${name}`}>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 

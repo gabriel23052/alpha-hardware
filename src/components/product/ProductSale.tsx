@@ -21,7 +21,11 @@ const ProductSale = ({
           <h2 className={`secondary-light text-display`}>{meta.saleName}</h2>
         </Link>
       )}
-      <ProductList products={products} className={`${classes.products}`} />
+      <ProductList
+        products={products}
+        className={`${classes.products}`}
+        hideSale={false}
+      />
     </article>
   );
 };

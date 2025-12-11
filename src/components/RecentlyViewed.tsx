@@ -22,8 +22,8 @@ const RecentlyViewed = () => {
   }, []);
 
   return (
-    <section className={`bg-lneutral-xlight ${classes.recentlyViewed}`}>
-      <div className={`defaultContainer`}>
+    <section className={`bg-lneutral-xlight ${classes.container}`}>
+      <div className={`defaultContainer ${classes.wrapper}`}>
         <div className={`${classes.title}`}>
           <SVGRecently />
           <h2 className="dneutral text-verylarge-m">

@@ -68,7 +68,7 @@ const homepage: IHomePageContent = {
     },
     first: {
       meta: {
-        title: "Festival das Placas de Vídeo",
+        title: "Novidades",
       },
       productIds: [
         "D55645F74",
@@ -83,19 +83,11 @@ const homepage: IHomePageContent = {
         "7554C4CF6",
         "B447CB386",
         "816D1CD88",
-        "A244D6ACD",
-        "4E0235EDE",
-        "A02EECCAA",
-        "24B6D4F89",
-        "91022DA09",
-        "68C6F5693",
-        "5065428A7",
-        "81F2F1B97",
       ],
     },
     second: {
       meta: {
-        title: "Chega de travamentos",
+        title: "Chega de lag",
       },
       productIds: [
         "2F9B652E8",
@@ -110,14 +102,6 @@ const homepage: IHomePageContent = {
         "EA86C3F67",
         "17256E1C0",
         "CC5BF03BA",
-        "3206A3A20",
-        "91022DA09",
-        "E060FA226",
-        "9CA1977D6",
-        "3F6BC274A",
-        "D23C4039A",
-        "3F0567CD0",
-        "E48931615",
       ],
     },
   },

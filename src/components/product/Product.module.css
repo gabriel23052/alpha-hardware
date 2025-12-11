@@ -16,9 +16,12 @@
 
 .relatedProducts ul {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
   gap: var(--px16);
   margin-bottom: var(--px32);
+  padding-bottom: var(--px8);
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .description {
@@ -29,22 +32,14 @@
   max-width: 680px;
 }
 
-@media (max-width: 950px) {
-  .relatedProducts ul {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: var(--px8);
-    scroll-behavior: smooth;
-  }
-
-  .relatedProducts article {
-    width: 18rem;
-    min-width: 18rem;
-  }
-}
-
 @media (max-width: 700px) {
   .main {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .relatedProducts ul {
+    grid-template-columns: repeat(4, 360px);
   }
 }

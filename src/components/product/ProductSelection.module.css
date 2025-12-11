@@ -28,34 +28,18 @@
 
 .products {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--px12);
 }
 
-@media (max-width: 1200px) {
-  .products {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 950px) {
-  .products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
-  .products li:nth-last-child(-n + 2) > article {
-    display: none;
-  }
-}
-
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  /* Reexibe os últimos dois cards */
-  .products li:nth-last-child(-n + 2) > article {
-    display: block;
+@media (max-width: 500px) {
+  .products {
+    grid-template-columns: 1fr;
   }
 }

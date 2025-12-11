@@ -3,10 +3,10 @@
 }
 
 .title h2 {
+  margin-bottom: var(--px16);
   padding: var(--px8) var(--px16);
   padding-right: var(--px40);
   border-radius: 4px;
-  margin-bottom: var(--px16);
   background: var(--dneutral-dark) url("../../assets/svg/logoLine.svg") center
     right no-repeat;
   background-size: auto 100%;
@@ -20,28 +20,18 @@
 
 .products {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--px16);
-  grid-template-columns: repeat(4, 1fr);
 }
 
-@media (max-width: 950px) {
-  .products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Esconde os últimos dois cards para manter a simetria em grid com 3 colunas */
-  .products li:nth-last-child(-n + 2) > article {
-    display: none;
-  }
-}
-
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  /* Reexibe os últimos dois cards */
-  .products li:nth-last-child(-n + 2) > article {
-    display: block;
+@media (max-width: 500px) {
+  .products {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,5 +1,9 @@
-.recentlyViewed {
+.container {
   padding: var(--px40) 0;
+}
+
+.wrapper {
+  padding: 0;
 }
 
 .title {
@@ -7,6 +11,7 @@
   gap: var(--px16);
   align-items: center;
   margin-bottom: var(--px24);
+  padding: 0 var(--px20);
 }
 
 .title svg {
@@ -15,20 +20,25 @@
 
 .products {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
   gap: var(--px16);
+  padding-bottom: var(--px8);
+  overflow-x: auto;
 }
 
-@media (max-width: 950px) {
-  .products {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: var(--px8);
-    scroll-behavior: smooth;
+.products li:first-child {
+  margin-left: var(--px20);
+}
+.products li:last-child {
+  margin-right: var(--px20);
+}
+
+@media (max-width: 500px) {
+  .title h2 {
+    font-size: 1.4rem;
   }
 
-  .products article {
-    width: 18rem;
-    min-width: 18rem;
+  .products {
+    grid-template-columns: repeat(4, 360px);
   }
 }

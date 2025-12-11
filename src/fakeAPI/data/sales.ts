@@ -129,7 +129,7 @@ const sales = [
           pix: 432400,
           pixDiscont: 8,
           maxInstallments: 12,
-          installments: 39167,
+          installments: 39167, 
           previous: 522221,
         },
       },

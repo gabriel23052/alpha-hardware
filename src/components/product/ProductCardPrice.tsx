@@ -9,7 +9,7 @@ interface Props {
 
 const ProductCardPrice = ({ prices, showOldPrice }: Props) => {
   return (
-    <>
+    <div className={`${classes.container}`}>
       {prices.previous && showOldPrice && (
         <span className={`dneutral-xlight text-default ${classes.oldPrice}`}>
           R$ {parsePrice(prices.previous)}
@@ -21,7 +21,6 @@ const ProductCardPrice = ({ prices, showOldPrice }: Props) => {
           {" "}
           {parsePrice(prices.pix)}{" "}
         </span>
-        <br />
         no PIX ({prices.pixDiscont}% OFF)
       </span>
       <span className={`lneutral-xdark text-small`}>
@@ -36,7 +35,7 @@ const ProductCardPrice = ({ prices, showOldPrice }: Props) => {
           {parsePrice(prices.installments)}
         </span>
       </span>
-    </>
+    </div>
   );
 };
 

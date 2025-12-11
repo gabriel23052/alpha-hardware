@@ -15,26 +15,26 @@ type Props = {
 
 const ProductCard = ({ product, hideSale, hideButtons }: Props) => {
   return (
-    <article className={`bg-white ${classes.productCard}`} title={product.name}>
-      <Link to={`/product/${product.id}`}>
+    <article className={`bg-white ${classes.container}`} title={product.name}>
+      <Link to={`/product/${product.id}`} className={`${classes.link}`}>
         {product.sale && !hideSale && (
           <ProductSaleLabel sale={product.sale} inCard={true} />
         )}
-        <div className={`${classes.thumb}`}>
-          <img
-            src={`/img/products/${product.media.thumb}`}
-            alt={product.name}
-          />
-        </div>
         <div className={`${classes.wrapper}`}>
+          <div className={`${classes.thumb}`}>
+            <img
+              src={`/img/products/${product.media.thumb}`}
+              alt={product.name}
+            />
+          </div>
           <span className={`dneutral text-small-b ${classes.name}`}>
             {product.name}
           </span>
-          <ProductCardPrice
-            prices={product.prices}
-            showOldPrice={hideSale === false}
-          />
         </div>
+        <ProductCardPrice
+          prices={product.prices}
+          showOldPrice={hideSale === false}
+        />
       </Link>
       {!hideButtons && (
         <div className={`${classes.buttonsContainer}`}>

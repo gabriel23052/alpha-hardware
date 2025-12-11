@@ -3,7 +3,6 @@ import { type ChangeEvent } from "react";
 import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
 type Props = {
-  containerClassName?: string;
   labelStyles?: string;
   id: string;
   options: { label: string; value: string }[];
@@ -12,7 +11,6 @@ type Props = {
 };
 
 const InputRadio = ({
-  containerClassName,
   labelStyles,
   id,
   options,
@@ -24,12 +22,14 @@ const InputRadio = ({
   };
 
   return (
-    <fieldset className={`${containerClassName ?? ""} ${labelStyles ?? ""}`}>
+    <>
       {options.map((option) => (
         <label
+          className={`${labelStyles ?? ""} ${
+            field.value === option.value ? "selected" : ""
+          }`}
           key={option.value}
           htmlFor={`${id}-${option.value}`}
-          className={`${field.value === option.value ? "selected" : ""}`}
         >
           <input
             type="radio"
@@ -40,7 +40,7 @@ const InputRadio = ({
           {option.label}
         </label>
       ))}
-    </fieldset>
+    </>
   );
 };
 

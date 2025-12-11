@@ -79,14 +79,15 @@ const ProductFilter = ({
       >
         <div className={`${classes.categorySelection}`}>
           <h2 className="dneutral text-default-b">Departamentos</h2>
-          <InputRadio
-            containerClassName={`${classes.categoryInput}`}
-            labelStyles="dneutral text-small"
-            id="category"
-            options={CATEGORIES_RADIO_OPTIONS}
-            field={filterForm.fields.category}
-            updateField={filterForm.updateField}
-          />
+          <fieldset className={`${classes.categoryInput}`}>
+            <InputRadio
+              labelStyles="dneutral text-small"
+              id="category"
+              options={CATEGORIES_RADIO_OPTIONS}
+              field={filterForm.fields.category}
+              updateField={filterForm.updateField}
+            />
+          </fieldset>
         </div>
         <button
           className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}

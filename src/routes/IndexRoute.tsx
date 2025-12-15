@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import LoadingBox from "@components/LoadingBox";
+import ErrorMessage from "@components/ErrorMessage";
 import ResponsiveBanner from "@components/ResponsiveBanner";
 import ProductSale from "@components/product/ProductSale";
 import ProductSelection from "@components/product/ProductSelection";
@@ -34,11 +36,13 @@ const IndexRoute = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Temporário
-  if (loading) return <h1 style={{ margin: "400px 0" }}>CARREGANDO</h1>;
+  if (loading) {
+    return <LoadingBox height="100rem" />;
+  }
 
-  // Temporário
-  if (error) return <p>Erro</p>;
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   if (data) {
     return (

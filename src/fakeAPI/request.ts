@@ -1,7 +1,7 @@
 import endpoints from "./routeHandlers";
 
-const MAX_RESPONSE_TIME = 500;
-const MIN_RESPONSE_TIME = 1000;
+const MAX_RESPONSE_TIME = 1000;
+const MIN_RESPONSE_TIME = 500;
 
 export default function request<T>(
   route: keyof typeof endpoints,

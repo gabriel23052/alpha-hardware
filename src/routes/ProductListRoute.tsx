@@ -1,6 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 
+import LoadingBox from "@components/LoadingBox";
+import ErrorMessage from "@components/ErrorMessage";
 import ProductFilter from "@components/product/ProductFilter";
 import ProductList from "@components/product/ProductList";
 import ProductFilterBreadcrumb from "@components/product/ProductFilterBreadcrumb";
@@ -27,10 +29,13 @@ type FilterFormFields = {
 };
 
 const FILTER_UPDATE_DELAY = 1000;
+const MOBILE_MAX_WIDTH = 900;
 
 const ProductListRoute = () => {
   const [showSaleBreadcrumb, setShowSaleBreadcrumb] = useState(true);
-  const [showFilter, setShowFilter] = useState(window.innerWidth > 900);
+  const [showFilter, setShowFilter] = useState(
+    window.innerWidth > MOBILE_MAX_WIDTH
+  );
 
   const [params] = useSearchParams();
 
@@ -70,7 +75,9 @@ const ProductListRoute = () => {
 
   const firstRender = useRef(true);
   const previousCategory = useRef("");
-  const mediaQuery = useRef(window.matchMedia("(max-width: 900px)"));
+  const mediaQuery = useRef(
+    window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`)
+  );
 
   const filterContainerID = useId();
 
@@ -184,18 +191,22 @@ const ProductListRoute = () => {
         setShowFilter={setShowFilter}
       />
       {api.loading ? (
-        <h1>Carregando</h1>
+        <LoadingBox height="20rem" />
       ) : api.error ? (
-        <h1>Erro: {api.error}</h1>
-      ) : (
-        api.data?.products && (
+        <ErrorMessage message={api.error} />
+      ) : api.data?.products ? (
+        api.data.products.length === 0 ? (
+          <span className={`text-default dneutral-dark ${classes.badFilter}`}>
+            Nenhum produto encontrado, verifique os filtros
+          </span>
+        ) : (
           <ProductList
             className={classes.productList}
-            products={api.data?.products}
+            products={api.data.products}
             hideSale={!api.data.meta?.saleName}
           />
         )
-      )}
+      ) : null}
     </main>
   );
 };

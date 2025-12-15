@@ -159,7 +159,7 @@ export default class ProductsHandler {
 
   public selectRelated(baseProductId: string): IProductGroup {
     const baseProduct = this.getProducts({ id: baseProductId });
-    if (baseProduct === undefined) return { products: [] };
+    if (baseProduct.length === 0) return { products: [] };
     return {
       products: this.getProducts({
         category: baseProduct[0].category,

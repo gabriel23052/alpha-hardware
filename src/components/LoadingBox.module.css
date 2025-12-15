@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  height: 100%;
+  padding: var(--px20);
+}
+.container::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--lneutral-light);
+  border-radius: 10px;
+  animation: loadingBackground 700ms linear 0ms infinite alternate-reverse;
+}
+
+@keyframes loadingBackground {
+  from {
+    background-color: rgba(0, 0, 0, 0.09);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+}

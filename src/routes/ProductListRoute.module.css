@@ -40,6 +40,12 @@
   width: var(--px20);
 }
 
+.badFilter {
+  margin-top: var(--px16);
+  margin-bottom: 20rem;
+  text-align: center;
+}
+
 .productList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));

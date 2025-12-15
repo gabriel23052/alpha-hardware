@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
+import ErrorMessage from "@components/ErrorMessage";
+import LoadingBox from "@components/LoadingBox";
 import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductBuy from "./ProductBuy";
 import ProductGallery from "./ProductGallery";
@@ -10,6 +12,8 @@ import ProductList from "./ProductList";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import classes from "./Product.module.css";
+
+const PRODUCT_NOT_FOUND_MESSAGE = "Produto não encontrado, verifique a URL";
 
 const Product = ({ productId }: { productId: string }) => {
   const {
@@ -34,16 +38,19 @@ const Product = ({ productId }: { productId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-  // Temporário
-  if (loading) return <h1 style={{ margin: "400px 0" }}>CARREGANDO</h1>;
+  if (loading) {
+    return <LoadingBox height="93rem" />;
+  }
 
-  // Temporário
-  if (error) return <p>{error}</p>;
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
-  // Temporário
-  if (product?.length === 0) return <p>Produto não encontrado</p>;
+  if (product?.length === 0) {
+    return <ErrorMessage message={PRODUCT_NOT_FOUND_MESSAGE} />;
+  }
 
-  if (product && relatedProducts)
+  if (product && relatedProducts) {
     return (
       <article className={`defaultContainer ${classes.product}`}>
         <div className={`${classes.title}`}>
@@ -76,6 +83,7 @@ const Product = ({ productId }: { productId: string }) => {
         <ProductSpecSheet />
       </article>
     );
+  }
 };
 
 export default Product;

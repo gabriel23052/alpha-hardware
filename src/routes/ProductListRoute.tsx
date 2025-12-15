@@ -14,6 +14,8 @@ import useDebounce from "@hooks/useDebounce";
 
 import FieldValidations from "@utils/FieldValidations";
 
+import { CATEGORIES } from "../data";
+
 import SVGFilter from "@svg/filter.svg?react";
 
 import classes from "./ProductListRoute.module.css";
@@ -131,6 +133,10 @@ const ProductListRoute = () => {
     filterForm.updateField("name", null);
   };
 
+  const removeCategoryFilter = () => {
+    filterForm.updateField("category", "");
+  };
+
   const updateFieldsFromQueryParams = () => {
     filterForm.updateField("category", "");
     filterForm.updateField("sale", null);
@@ -158,13 +164,22 @@ const ProductListRoute = () => {
       <div className={`${classes.topMenu}`}>
         <div className={`${classes.filtersBreadcrumb}`}>
           {api.data && showSaleBreadcrumb && api.data.meta?.saleName && (
-            <ProductFilterBreadcrumb closeBlickHandler={removeSaleFilter}>
+            <ProductFilterBreadcrumb closeClickHandler={removeSaleFilter}>
               {api.data.meta.saleName}
             </ProductFilterBreadcrumb>
           )}
           {filterForm.fields.name.value && (
-            <ProductFilterBreadcrumb closeBlickHandler={removeNameFilter}>
+            <ProductFilterBreadcrumb closeClickHandler={removeNameFilter}>
               {`Busca por: "${filterForm.fields.name.value}"`}
+            </ProductFilterBreadcrumb>
+          )}
+          {filterForm.fields.category.value !== "" && (
+            <ProductFilterBreadcrumb closeClickHandler={removeCategoryFilter}>
+              {
+                CATEGORIES.find(
+                  (cat) => cat.name === filterForm.fields.category.value
+                )?.label
+              }
             </ProductFilterBreadcrumb>
           )}
         </div>

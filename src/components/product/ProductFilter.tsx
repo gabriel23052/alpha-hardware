@@ -17,6 +17,8 @@ const CATEGORIES_RADIO_OPTIONS = CATEGORIES.map((category) => ({
   value: category.name,
 }));
 
+const MOBILE_MAX_WIDTH = 900;
+
 type Props = {
   filterForm: JafhForm<{
     category: string;
@@ -42,7 +44,10 @@ const ProductFilter = ({
   };
 
   const closeMobileFilter: MouseEventHandler<HTMLFormElement> = (e) => {
-    if (e.target instanceof HTMLFormElement) {
+    if (
+      e.target instanceof HTMLFormElement &&
+      window.innerWidth <= MOBILE_MAX_WIDTH
+    ) {
       setShowFilter(false);
     }
   };

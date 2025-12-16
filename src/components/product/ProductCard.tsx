@@ -7,6 +7,8 @@ import SVGCartAdd from "@svg/cartAdd.svg?react";
 
 import classes from "./ProductCard.module.css";
 
+const PRODUCT_THUMB_WIDTH_HEIGHT = 168;
+
 type Props = {
   product: IProduct;
   hideSale?: boolean;
@@ -25,6 +27,8 @@ const ProductCard = ({ product, hideSale, hideButtons }: Props) => {
             <img
               src={`/img/products/${product.media.thumb}`}
               alt={product.name}
+              width={PRODUCT_THUMB_WIDTH_HEIGHT}
+              height={PRODUCT_THUMB_WIDTH_HEIGHT}
             />
           </div>
           <span className={`dneutral text-small-b ${classes.name}`}>

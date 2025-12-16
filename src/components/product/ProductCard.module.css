@@ -21,8 +21,8 @@
 }
 
 .thumb img {
+  width: auto;
   height: 100%;
-  max-width: 100%;
   display: block;
   margin: 0 auto;
   transition: transform 300ms;
@@ -105,7 +105,7 @@
   }
 
   .name {
-    height: 4.5rem; /* 72px */ 
+    height: 4.5rem; /* 72px */
     font-size: 1rem;
     line-height: var(--px24);
   }

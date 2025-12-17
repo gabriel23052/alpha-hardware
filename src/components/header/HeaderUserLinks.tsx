@@ -16,11 +16,11 @@ const HeaderUserLinks = () => {
       <SVGUser />
       {user.current === null ? (
         <span>
-          <Link className="lneutral-xlight text-default" to="/">
+          <Link className="lneutral-xlight text-default" to="/auth/login">
             Entrar
           </Link>{" "}
           ou <br />
-          <Link className="lneutral-xlight text-default" to="/">
+          <Link className="lneutral-xlight text-default" to="/auth/register">
             Cadastrar-se
           </Link>
         </span>

@@ -41,7 +41,7 @@ html {
   --secondary: #ffc107;
   --secondary-dark: #c99b02;
   --secondary-xdark: #774e03;
-  --lneutral-xlight: #f9f7f7;
+  --lneutral-xlight: #fcfafa;
   --lneutral-light: #eeecec;
   --lneutral: #cfc9c9;
   --lneutral-dark: #afafab;
@@ -52,6 +52,7 @@ html {
   --dneutral-dark: #2c2a2a;
   --dneutral-xdark: #222020;
   --feedback-positive: #31bc07;
+  --feedback-negative: #ff2e27;
   --primary-gradient: linear-gradient(to bottom, #ffc107, #f29603);
 
   --px4: 0.25rem;
@@ -223,6 +224,12 @@ svg {
 }
 .bg-feedback-positive {
   background-color: var(--feedback-positive);
+}
+.feedback-negative {
+  color: var(--feedback-negative);
+}
+.bg-feedback-negative {
+  color: var(--feedback-negative);
 }
 .primary-gradient {
   color: var(--primary-gradient);

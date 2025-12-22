@@ -1,7 +1,9 @@
+.container {
+  display: flex;
+}
+
 .underlinedTitle {
-  display: inline-block;
   position: relative;
-  margin-bottom: var(--px20);
 }
 
 .underlinedTitle::after {

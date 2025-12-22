@@ -62,7 +62,7 @@ const Product = ({ productId }: { productId: string }) => {
           <ProductBuy product={product[0]} />
         </div>
         <div className={`${classes.relatedProducts}`}>
-          <UnderlinedTitle>Produtos relacionados</UnderlinedTitle>
+          <UnderlinedTitle className={`${classes.relatedTitle}`} align="left">Produtos relacionados</UnderlinedTitle>
           <ProductList
             products={relatedProducts}
             hideSale={true}
@@ -70,7 +70,7 @@ const Product = ({ productId }: { productId: string }) => {
           />
         </div>
         <div className={`${classes.description}`}>
-          <UnderlinedTitle>Descrição do produto</UnderlinedTitle>
+          <UnderlinedTitle className={`${classes.descTitle}`} align="left">Descrição do produto</UnderlinedTitle>
           <p className="dneutral text-default">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
             velit nibh, congue sit amet porttitor a, congue ut mi. Morbi quis

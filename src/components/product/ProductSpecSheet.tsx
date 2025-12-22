@@ -5,7 +5,9 @@ import classes from "./ProductSpecSheet.module.css";
 const ProductSpecSheet = () => {
   return (
     <div className={`${classes.specSheet}`}>
-      <UnderlinedTitle>Ficha técnica</UnderlinedTitle>
+      <UnderlinedTitle className={`${classes.title}`} align="left">
+        Ficha técnica
+      </UnderlinedTitle>
       <dl>
         <div>
           <dt className="dneutral-dark text-default-b">Chave</dt>

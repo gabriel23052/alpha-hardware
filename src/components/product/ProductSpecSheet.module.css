@@ -1,4 +1,8 @@
-.specSheet div {
+.title {
+  margin-bottom: var(--px12);
+}
+
+.specSheet dl div {
   margin-bottom: var(--px8);
 }
 

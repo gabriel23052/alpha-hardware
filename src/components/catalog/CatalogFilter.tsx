@@ -1,7 +1,7 @@
 import type { MouseEventHandler } from "react";
 
-import ProductFilterTags from "./ProductFilterTags";
-import ProductFilterPrices from "./ProductFilterPrices";
+import CatalogFilterTags from "./CatalogFilterTags";
+import CatalogFilterPrices from "./CatalogFilterPrices";
 import InputRadio from "@components/inputs/InputRadio";
 
 import type { JafhForm } from "@hooks/useJafh";
@@ -10,7 +10,7 @@ import SVGChevronLeft from "@svg/chevronLeft.svg?react";
 
 import { CATEGORIES, TAGS_WITH_LEGENDS } from "../../data";
 
-import classes from "./ProductFilter.module.css";
+import classes from "./CatalogFilter.module.css";
 
 const CATEGORIES_RADIO_OPTIONS = CATEGORIES.map((category) => ({
   label: category.label,
@@ -31,7 +31,7 @@ type Props = {
   setShowFilter: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ProductFilter = ({
+const CatalogFilter = ({
   filterForm,
   filterContainerID,
   showFilter,
@@ -100,9 +100,9 @@ const ProductFilter = ({
         >
           Limpar Filtros
         </button>
-        <ProductFilterPrices filterForm={filterForm} />
+        <CatalogFilterPrices filterForm={filterForm} />
         {filterForm.fields.category.value in TAGS_WITH_LEGENDS && (
-          <ProductFilterTags
+          <CatalogFilterTags
             id="tags"
             groups={
               TAGS_WITH_LEGENDS[
@@ -119,4 +119,4 @@ const ProductFilter = ({
   );
 };
 
-export default ProductFilter;
+export default CatalogFilter;

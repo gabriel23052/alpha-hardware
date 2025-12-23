@@ -2,13 +2,13 @@ import type { MouseEventHandler, PropsWithChildren } from "react";
 
 import SVGClose from "@svg/close.svg?react";
 
-import classes from "./ProductItemBreadcrumb.module.css";
+import classes from "./CatalogFilterBreadcrumb.module.css";
 
 type Props = PropsWithChildren<{
   closeClickHandler: MouseEventHandler<HTMLButtonElement>;
 }>;
 
-const ProductFilterBreadcrumb = ({ children, closeClickHandler }: Props) => {
+const CatalogFilterBreadcrumb = ({ children, closeClickHandler }: Props) => {
   return (
     <span className={`secondary-xdark text-small ${classes.breadcrumb}`}>
       {children}
@@ -19,4 +19,4 @@ const ProductFilterBreadcrumb = ({ children, closeClickHandler }: Props) => {
   );
 };
 
-export default ProductFilterBreadcrumb;
+export default CatalogFilterBreadcrumb;

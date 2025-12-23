@@ -6,13 +6,13 @@ import InputNumber from "@components/inputs/InputNumber";
 
 import SVGError from "@svg/error.svg?react";
 
-import classes from "./ProductFilterPrices.module.css";
+import classes from "./CatalogFilterPrices.module.css";
 
 type Props = {
   filterForm: JafhForm<{ minPrice: string; maxPrice: string }>;
 };
 
-const ProductFilterPrices = ({ filterForm }: Props) => {
+const CatalogFilterPrices = ({ filterForm }: Props) => {
   const [minBlurred, setMinBlurred] = useState(false);
   const [maxBlurred, setMaxBlurred] = useState(false);
   const [minGreaterThanMax, setMinGreaterThanMax] = useState(false);
@@ -96,4 +96,4 @@ const ProductFilterPrices = ({ filterForm }: Props) => {
   );
 };
 
-export default ProductFilterPrices;
+export default CatalogFilterPrices;

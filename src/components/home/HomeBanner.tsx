@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 
-import classes from "./ResponsiveBanner.module.css";
+import classes from "./HomeBanner.module.css";
 
 type Props = { bannerData: IResponsiveBanner };
 
-const ResponsiveBanner = ({ bannerData }: Props) => {
+const HomeBanner = ({ bannerData }: Props) => {
   const { link, baseSrc, alt, baseWidth, baseHeight, responsiveImages } =
     bannerData;
 
@@ -37,4 +37,4 @@ const ResponsiveBanner = ({ bannerData }: Props) => {
   );
 };
 
-export default ResponsiveBanner;
+export default HomeBanner;

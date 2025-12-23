@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
+import HomeBanner from "./HomeBanner";
+import HomeCategories from "./HomeCategories";
+import HomeSocial from "./HomeSocial";
 import LoadingBox from "@components/LoadingBox";
 import ErrorMessage from "@components/ErrorMessage";
-import ResponsiveBanner from "@components/ResponsiveBanner";
 import ProductSale from "@components/product/ProductSale";
 import ProductSelection from "@components/product/ProductSelection";
-import Categories from "@components/Categories";
 import RecentlyViewed from "@components/RecentlyViewed";
-import Social from "@components/Social";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
@@ -24,7 +24,7 @@ interface IHomepageApiResponse {
   };
 }
 
-const IndexRoute = () => {
+const Home = () => {
   usePageTitle("Alpha Hardware");
 
   const { data, error, loading, fetch } = useFakeAPI<IHomepageApiResponse>(
@@ -47,12 +47,12 @@ const IndexRoute = () => {
   if (data) {
     return (
       <main>
-        <ResponsiveBanner bannerData={data.banners.first} />
+        <HomeBanner bannerData={data.banners.first} />
         <ProductSale productSelection={data.productGroups.sale} />
-        <Categories />
+        <HomeCategories />
         <ProductSelection productSelection={data.productGroups.first} />
-        <ResponsiveBanner bannerData={data.banners.second} />
-        <Social />
+        <HomeBanner bannerData={data.banners.second} />
+        <HomeSocial />
         <ProductSelection productSelection={data.productGroups.second} />
         <RecentlyViewed />
       </main>
@@ -60,4 +60,4 @@ const IndexRoute = () => {
   }
 };
 
-export default IndexRoute;
+export default Home;

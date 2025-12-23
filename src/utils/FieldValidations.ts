@@ -29,7 +29,7 @@ export default class FieldValidations {
     }
     return /^[\p{L}\p{N}\s]+$/u.test(value)
       ? null
-      : this.createError("Utilize somente letras e números e espaços");
+      : this.createError("Utilize somente letras, números e espaços");
   };
 
   public static email: JafhValidation = (value) => {

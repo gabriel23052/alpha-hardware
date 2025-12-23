@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 
 import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
 
-import classes from "./ProductFilterTags.module.css";
+import classes from "./CatalogFilterTags.module.css";
 
 type Props = {
   id: string;
@@ -11,7 +11,7 @@ type Props = {
   updateField: JafhUpdateField<[string, string][]>;
 };
 
-const ProductFilterTags = ({ id, groups, field, updateField }: Props) => {
+const CatalogFilterTags = ({ id, groups, field, updateField }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const tags = field.value;
     const legend = e.target.dataset.legend;
@@ -62,4 +62,4 @@ const ProductFilterTags = ({ id, groups, field, updateField }: Props) => {
   );
 };
 
-export default ProductFilterTags;
+export default CatalogFilterTags;

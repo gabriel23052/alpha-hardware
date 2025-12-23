@@ -14,7 +14,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   containerClassName?: string;
   label: string;
   id: string;
-  blurCallback: (e: FocusEvent<HTMLInputElement>) => void;
+  blurCallback?: (e: FocusEvent<HTMLInputElement>) => void;
   field: JafhField<string>;
   updateField: JafhUpdateField<string>;
 };
@@ -41,7 +41,7 @@ const InputPassword = ({
   };
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    blurCallback(e);
+    if(blurCallback) blurCallback(e);
     setShowError(true);
   };
 

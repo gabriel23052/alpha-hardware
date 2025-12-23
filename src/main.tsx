@@ -6,11 +6,11 @@ import "./main.css";
 
 import Header from "@components/header/Header";
 import Footer from "@components/Footer";
-import IndexRoute from "./routes/IndexRoute";
-import ProductRoute from "./routes/ProductRoute";
-import ProductListRoute from "./routes/ProductListRoute";
+import Home from "@components/home/Home";
+import ProductPage from "./components/product/ProductPage";
+import Catalog from "./components/catalog/Catalog";
 import ScrollToTop from "@components/ScrollToTop";
-import AuthRoute from "./routes/AuthRoute";
+import Auth from "@components/auth/Auth";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,10 +18,10 @@ createRoot(document.getElementById("root")!).render(
       <ScrollToTop>
         <Header />
         <Routes>
-          <Route path="/" element={<IndexRoute />} />
-          <Route path="/product/:productId" element={<ProductRoute />} />
-          <Route path="/products" element={<ProductListRoute />} />
-          <Route path="/auth/*" element={<AuthRoute/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path="/products" element={<Catalog />} />
+          <Route path="/auth/*" element={<Auth />} />
         </Routes>
         <Footer />
       </ScrollToTop>

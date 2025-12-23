@@ -2,9 +2,9 @@ import SVGInstagram from "@svg/instagram.svg?react";
 import SVGX from "@svg/x.svg?react";
 import SVGFacebook from "@svg/facebook.svg?react";
 
-import classes from "./Social.module.css";
+import classes from "./HomeSocial.module.css";
 
-const Social = () => {
+const HomeSocial = () => {
   return (
     <section className={`defaultContainer ${classes.social}`}>
       <div className={`${classes.text}`}>
@@ -54,4 +54,4 @@ const Social = () => {
   );
 };
 
-export default Social;
+export default HomeSocial;

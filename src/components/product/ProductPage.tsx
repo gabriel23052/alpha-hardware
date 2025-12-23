@@ -5,7 +5,7 @@ import RecentlyViewed from "@components/RecentlyViewed";
 
 import usePageTitle from "@hooks/usePageTitle";
 
-const ProductRoute = () => {
+const ProductPage = () => {
   usePageTitle("Alpha Hardware - Produto");
   const { productId } = useParams<{ productId: string }>();
 
@@ -17,4 +17,4 @@ const ProductRoute = () => {
   );
 };
 
-export default ProductRoute;
+export default ProductPage;

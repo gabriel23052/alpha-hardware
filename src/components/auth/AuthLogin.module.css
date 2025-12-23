@@ -1,0 +1,33 @@
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px20);
+  margin-bottom: var(--px64);
+}
+
+.submitBtn {
+  margin-bottom: var(--px8);
+}
+
+.loginLink {
+  text-align: center;
+  margin-bottom: var(--px32);
+}
+
+.loginLink a {
+  text-decoration: underline;
+}
+.loginLink a:hover,
+.loginLink a:focus {
+  color: var(--secondary);
+}
+
+.recoverLink {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  padding-block: var(--px8);
+}
+.recoverLink:hover {
+  color: var(--primary);
+}

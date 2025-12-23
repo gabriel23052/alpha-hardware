@@ -3,10 +3,10 @@ import { useLocation, useSearchParams } from "react-router";
 
 import LoadingBox from "@components/LoadingBox";
 import ErrorMessage from "@components/ErrorMessage";
-import ProductFilter from "@components/product/ProductFilter";
+import CatalogFilter from "@components/catalog/CatalogFilter";
 import ProductList from "@components/product/ProductList";
-import ProductFilterBreadcrumb from "@components/product/ProductFilterBreadcrumb";
-import ProductSortSelect from "@components/product/ProductSortSelect";
+import CatalogFilterBreadcrumb from "@components/catalog/CatalogFilterBreadcrumb";
+import CatalogSortSelect from "@components/catalog/CatalogSortSelect";
 
 import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
@@ -14,11 +14,11 @@ import useDebounce from "@hooks/useDebounce";
 
 import FieldValidations from "@utils/FieldValidations";
 
-import { CATEGORIES } from "../data";
+import { CATEGORIES } from "../../data";
 
 import SVGFilter from "@svg/filter.svg?react";
 
-import classes from "./ProductListRoute.module.css";
+import classes from "./Catalog.module.css";
 
 type FilterFormFields = {
   name: null | string;
@@ -33,7 +33,7 @@ type FilterFormFields = {
 const FILTER_UPDATE_DELAY = 1000;
 const MOBILE_MAX_WIDTH = 900;
 
-const ProductListRoute = () => {
+const Catalog = () => {
   const [showSaleBreadcrumb, setShowSaleBreadcrumb] = useState(true);
   const [showFilter, setShowFilter] = useState(
     window.innerWidth > MOBILE_MAX_WIDTH
@@ -164,23 +164,23 @@ const ProductListRoute = () => {
       <div className={`${classes.topMenu}`}>
         <div className={`${classes.filtersBreadcrumb}`}>
           {api.data && showSaleBreadcrumb && api.data.meta?.saleName && (
-            <ProductFilterBreadcrumb closeClickHandler={removeSaleFilter}>
+            <CatalogFilterBreadcrumb closeClickHandler={removeSaleFilter}>
               {api.data.meta.saleName}
-            </ProductFilterBreadcrumb>
+            </CatalogFilterBreadcrumb>
           )}
           {filterForm.fields.name.value && (
-            <ProductFilterBreadcrumb closeClickHandler={removeNameFilter}>
+            <CatalogFilterBreadcrumb closeClickHandler={removeNameFilter}>
               {`Busca por: "${filterForm.fields.name.value}"`}
-            </ProductFilterBreadcrumb>
+            </CatalogFilterBreadcrumb>
           )}
           {filterForm.fields.category.value !== "" && (
-            <ProductFilterBreadcrumb closeClickHandler={removeCategoryFilter}>
+            <CatalogFilterBreadcrumb closeClickHandler={removeCategoryFilter}>
               {
                 CATEGORIES.find(
                   (cat) => cat.name === filterForm.fields.category.value
                 )?.label
               }
-            </ProductFilterBreadcrumb>
+            </CatalogFilterBreadcrumb>
           )}
         </div>
         <span className={`lneutral-xdark text-small`}>
@@ -194,12 +194,12 @@ const ProductListRoute = () => {
         >
           <SVGFilter />
         </button>
-        <ProductSortSelect
+        <CatalogSortSelect
           field={filterForm.fields.sortBy}
           updateField={filterForm.updateField}
         />
       </div>
-      <ProductFilter
+      <CatalogFilter
         filterForm={filterForm}
         filterContainerID={filterContainerID}
         showFilter={showFilter}
@@ -226,4 +226,4 @@ const ProductListRoute = () => {
   );
 };
 
-export default ProductListRoute;
+export default Catalog;

@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 
-import { CATEGORIES } from "../data";
+import { CATEGORIES } from "../../data";
 
-import classes from "./Categories.module.css";
+import classes from "./HomeCategories.module.css";
 
-const Categories = () => {
+const HomeCategories = () => {
   return (
     <nav className={`${classes.categories}`}>
       <div className={`${classes.titleWithLine}`}>
@@ -29,4 +29,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default HomeCategories;

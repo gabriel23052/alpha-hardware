@@ -1,32 +1,26 @@
-import { useEffect, useMemo, useState, type FocusEvent } from "react";
+import { type FocusEvent } from "react";
 import { Link } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputPassword from "@components/inputs/InputPassword";
 import InputDefault from "@components/inputs/InputDefault";
 import PrimaryButton from "@components/PrimaryButton";
+import Alert from "@components/Alert";
 
 import useJafh from "@hooks/useJafh";
+import usePasswordMatcher from "@hooks/usePasswordMatcher";
 
 import FieldValidations from "@utils/FieldValidations";
-
-import SVGAlert from "@svg/alert.svg?react";
 
 import classes from "./AuthRegister.module.css";
 
 const AuthRegister = () => {
-  const [passwordsComparation, setPasswordsComparation] = useState({
-    areEqual: true,
-    passwordHasBlurred: false,
-    confirmationHasBlurred: false,
-  });
-
   const registerForm = useJafh(
     {
       username: { value: "", validation: FieldValidations.username },
       email: { value: "", validation: FieldValidations.email },
       password: { value: "", validation: FieldValidations.password },
-      passwordConfirmation: {
+      confirmation: {
         value: "",
         validation: FieldValidations.password,
       },
@@ -34,39 +28,16 @@ const AuthRegister = () => {
     "Erro na validação, tente novamente"
   );
 
-  useEffect(() => {
-    setPasswordsComparation((prev) => ({
-      ...prev,
-      areEqual:
-        registerForm.fields.password.value ===
-        registerForm.fields.passwordConfirmation.value,
-    }));
-  }, [
+  const passwordMatcher = usePasswordMatcher(
     registerForm.fields.password.value,
-    registerForm.fields.passwordConfirmation.value,
-  ]);
+    registerForm.fields.confirmation.value
+  );
 
   const handlePasswordsBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (e.target.id === "password") {
-      setPasswordsComparation((prev) => ({
-        ...prev,
-        passwordHasBlurred: true,
-      }));
-      return;
-    }
-    setPasswordsComparation((prev) => ({
-      ...prev,
-      confirmationHasBlurred: true,
-    }));
+    passwordMatcher.blurField(
+      e.target.id === "password" ? "password" : "confirmation"
+    );
   };
-
-  const showPasswordConfirmationError = useMemo(
-    () =>
-      !passwordsComparation.areEqual &&
-      passwordsComparation.passwordHasBlurred &&
-      passwordsComparation.confirmationHasBlurred,
-    [passwordsComparation]
-  );
 
   return (
     <AuthFormWrapper title="Crie sua conta">
@@ -101,20 +72,17 @@ const AuthRegister = () => {
           <InputPassword
             containerClassName={classes.input}
             label="Confirme sua senha"
-            id="passwordConfirmation"
+            id="confirmation"
             maxLength={64}
             blurCallback={handlePasswordsBlur}
-            field={registerForm.fields.passwordConfirmation}
+            field={registerForm.fields.confirmation}
             updateField={registerForm.updateField}
           />
         </div>
-        {showPasswordConfirmationError && (
-          <div className={classes.passwordAlert}>
-            <SVGAlert />
-            <p className="text-default feedback-negative">
-              As senhas são diferentes
-            </p>
-          </div>
+        {passwordMatcher.showError && (
+          <Alert className={classes.passwordAlert}>
+            As senhas são diferentes
+          </Alert>
         )}
         <PrimaryButton className={classes.submitBtn}>criar conta</PrimaryButton>
       </form>

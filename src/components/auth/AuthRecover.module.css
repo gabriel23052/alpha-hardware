@@ -1,0 +1,15 @@
+.instructions {
+  margin-bottom: var(--px32);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px20);
+  margin-bottom: var(--px64);
+}
+
+.passwordAlert {
+  margin-bottom: var(--px16);
+}
+

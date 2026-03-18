@@ -1,13 +1,18 @@
-const sales = [
+const expirationDate = new Date();
+expirationDate.setDate(expirationDate.getDate() + 1);
+expirationDate.setHours(0, 0, 0, 0);
+const expiration = Math.floor(expirationDate.getTime() / 1000);
+
+const sales: FASale[] = [
   {
-    id: "2A0F24",
+    id: "SAL-15AFC6",
     name: "Festival das Placas de Vídeo",
-    products: [
+    saleModifiers: [
       {
-        id: "026333169",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-026333169",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 139990,
           pix: 131591,
           pixDiscont: 6,
@@ -17,10 +22,10 @@ const sales = [
         },
       },
       {
-        id: "688377899",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-688377899",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 450000,
           pix: 423000,
           pixDiscont: 6,
@@ -30,10 +35,10 @@ const sales = [
         },
       },
       {
-        id: "002350C9D",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-002350C9D",
+        expiration,
         discont: 15,
-        prices: {
+        salePrices: {
           full: 245555,
           pix: 230822,
           pixDiscont: 6,
@@ -43,10 +48,10 @@ const sales = [
         },
       },
       {
-        id: "2107D4DB3",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-2107D4DB3",
+        expiration,
         discont: 15,
-        prices: {
+        salePrices: {
           full: 226667,
           pix: 213067,
           pixDiscont: 6,
@@ -56,10 +61,10 @@ const sales = [
         },
       },
       {
-        id: "9C0DAC9F7",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-9C0DAC9F7",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 250000,
           pix: 235000,
           pixDiscont: 6,
@@ -69,10 +74,10 @@ const sales = [
         },
       },
       {
-        id: "E01929272",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-E01929272",
+        expiration,
         discont: 15,
-        prices: {
+        salePrices: {
           full: 245555,
           pix: 230822,
           pixDiscont: 6,
@@ -82,10 +87,10 @@ const sales = [
         },
       },
       {
-        id: "2FD400729",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-2FD400729",
+        expiration,
         discont: 15,
-        prices: {
+        salePrices: {
           full: 623333,
           pix: 573467,
           pixDiscont: 8,
@@ -95,10 +100,10 @@ const sales = [
         },
       },
       {
-        id: "B7FA0718A",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-B7FA0718A",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 409999,
           pix: 385400,
           pixDiscont: 6,
@@ -108,10 +113,10 @@ const sales = [
         },
       },
       {
-        id: "3709D4A9F",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-3709D4A9F",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 399999,
           pix: 376000,
           pixDiscont: 6,
@@ -121,20 +126,35 @@ const sales = [
         },
       },
       {
-        id: "4E0235EDE",
-        expiration: Math.floor(Date.now() / 1000) + 86400,
+        productId: "PRO-4E0235EDE",
+        expiration,
         discont: 10,
-        prices: {
+        salePrices: {
           full: 469999,
           pix: 432400,
           pixDiscont: 8,
           maxInstallments: 12,
-          installments: 39167, 
+          installments: 39167,
           previous: 522221,
         },
       },
     ],
   },
-];
+] as const;
 
-export default sales;
+const saleModifierMap = new Map<
+  string,
+  { id: string; name: string; modifier: FASaleModifier }
+>();
+
+for (const sale of sales) {
+  for (const modifier of sale.saleModifiers) {
+    saleModifierMap.set(modifier.productId, {
+      id: sale.id,
+      name: sale.name,
+      modifier,
+    });
+  }
+}
+
+export { sales, saleModifierMap };

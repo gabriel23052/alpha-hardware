@@ -11,23 +11,23 @@ type FAResponse<T = unknown> =
       };
     };
 
-type FARecordData =
+type FARequestParameterData =
   | number
   | string
   | boolean
-  | FARecordData[]
-  | { [key: string]: FARecordData };
+  | FARequestParameterData[]
+  | { [key: string]: FARequestParameterData };
 
-type FARecord = Record<string, FARecordData>;
+type FARequestParameter = Record<string, FARequestParameterData>;
 
-type FAHomepageBanners_Default = {
+type FAHomepageBanners_Full = {
   sale: FABanner;
   ad: FABanner;
 };
 
-type FAHomepageCollections_Default = {
-  first: FACollection_Card;
-  second: FACollection_Card;
+type FAHomepageCollections_Full = {
+  first: FACollection_PrCard;
+  second: FACollection_PrCard;
 };
 
 type FABanner = {
@@ -43,7 +43,7 @@ type FABanner = {
     src: string;
   }[];
 };
-type FABanner_Default = FABanner;
+type FABanner_Full = FABanner;
 
 type FAProduct = {
   id: string;
@@ -59,7 +59,7 @@ type FAProduct = {
     discont: number;
   };
 };
-type FAProduct_Default = FAProduct;
+type FAProduct_Full = FAProduct;
 type FAProduct_Price = {
   id: string;
   pixPrice: number;
@@ -77,12 +77,14 @@ type FAProduct_Card = {
     discont: number;
   };
 };
-type FAProduct_Views =
+
+type FAProductFormats =
   | FAProduct_Price
-  | FAProduct_Default
+  | FAProduct_Full
   | FAProduct_Suggestion
   | FAProduct_Card;
-type FAProduct_ViewsOptions = "default" | "price" | "card" | "suggestion";
+
+type FAProductFormatOptions = "full" | "price" | "card" | "suggestion";
 
 type FAProductMedia = {
   thumb: string;
@@ -93,12 +95,12 @@ type FAProductMedia = {
 };
 
 type FAProductQuery = {
-  filter: FAProductQueryFilter;
-  view: "default" | "suggestion" | "card";
+  filter: FAProductFilter;
+  format: FAProductFormatOptions;
   sort?: FAProductSort;
 };
 
-type FAProductQueryFilter = {
+type FAProductFilter = {
   name?: string;
   saleId?: string;
   category?: string;
@@ -123,7 +125,7 @@ type FACollection = {
   name: string;
   productsId: string[];
 };
-type FACollection_Card = {
+type FACollection_PrCard = {
   id: string;
   name: string;
   products: FAProduct_Card[];
@@ -134,7 +136,7 @@ type FASale = {
   name: string;
   saleModifiers: FASaleModifier[];
 };
-type FASale_Card = {
+type FASale_PrCard = {
   id: string;
   name: string;
   products: FAProduct_Card[];

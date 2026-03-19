@@ -5,7 +5,7 @@ import { HomepageHandler } from "./handlers/HomepageHandler";
 import { ProductsHandler } from "./handlers/ProductsHandler";
 
 const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
-  "GET api/pageContent/homepage/banners":
+  "GET api/homepage/banners":
     (): FAResponse<FAHomepageBanners_Full> => {
       const homepageHandler = new HomepageHandler();
       const response = new FakeAPIResponse<FAHomepageBanners_Full>();
@@ -13,14 +13,14 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
       return response.getResponse();
     },
 
-  "GET api/pageContent/homepage/sale": (): FAResponse<FASale_PrCard> => {
+  "GET api/homepage/sale": (): FAResponse<FASale_PrCard> => {
     const homepageHandler = new HomepageHandler();
     const response = new FakeAPIResponse<FASale_PrCard>();
     homepageHandler.getHomepageSale(response);
     return response.getResponse();
   },
 
-  "GET api/pageContent/homepage/collections":
+  "GET api/homepage/collections":
     (): FAResponse<FAHomepageCollections_Full> => {
       const homepageHandler = new HomepageHandler();
       const response = new FakeAPIResponse<FAHomepageCollections_Full>();

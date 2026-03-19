@@ -1,0 +1,14 @@
+.animation {
+  width: 100%;
+  height: 100%;
+  animation: backgroundPulse 1s linear infinite alternate-reverse;
+}
+
+@keyframes backgroundPulse {
+  from {
+    background-color: var(--lneutral-light);
+  }
+  to {
+    background-color: var(--lneutral-xlight);
+  }
+}

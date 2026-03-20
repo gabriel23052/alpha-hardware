@@ -1,5 +1,5 @@
-.productSale {
-  margin: var(--px32) auto;
+.container {
+  margin-block: var(--px32);
 }
 
 .title h2 {
@@ -10,28 +10,30 @@
   background: var(--dneutral-dark) url("../../assets/svg/logoLine.svg") center
     right no-repeat;
   background-size: auto 100%;
-  transition: background-color 300ms, padding-left 300ms;
+  transition: background-color 300ms;
 }
-.title:hover h2,
-.title:focus h2 {
+.title:hover h2 {
   background-color: var(--dneutral-xdark);
-  padding-left: var(--px20);
+}
+.title:focus h2 {
+  outline: 2px solid var(--dneutral-dark);
+  outline-offset: 2px;
 }
 
-.products {
+.productList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--px16);
 }
 
 @media (max-width: 700px) {
-  .products {
+  .productList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 500px) {
-  .products {
+  .productList {
     grid-template-columns: 1fr;
   }
 }

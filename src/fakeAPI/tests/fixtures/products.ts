@@ -762,7 +762,9 @@ const productsFixtures = {
         },
         expectedIds: [
           "PRO-2FD400729",
+          "PRO-019F41CA9",
           "PRO-4E0235EDE",
+          "PRO-AD8E593EB",
           "PRO-688377899",
           "PRO-B7FA0718A",
           "PRO-3709D4A9F",

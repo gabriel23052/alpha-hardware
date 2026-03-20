@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   overflow-x: hidden;
-  margin-block: 2rem;
   position: relative;
 }
 

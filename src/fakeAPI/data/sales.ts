@@ -138,6 +138,32 @@ const sales: FASale[] = [
           previous: 522221,
         },
       },
+      {
+        productId: "PRO-019F41CA9",
+        expiration,
+        discont: 10,
+        salePrices: {
+          full: 58224,
+          pix: 53566,
+          pixDiscont: 8,
+          maxInstallments: 12,
+          installments: 4852,
+          previous: 64691,
+        },
+      },
+      {
+        productId: "PRO-AD8E593EB",
+        expiration,
+        discont: 15,
+        salePrices: {
+          full: 143149,
+          pix: 134560,
+          pixDiscont: 6,
+          maxInstallments: 12,
+          installments: 11929,
+          previous: 168411,
+        },
+      },
     ],
   },
 ] as const;

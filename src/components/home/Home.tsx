@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import HomeBanner from "./HomeBanner";
 import HomeCategories from "./HomeCategories";
 import HomeSocial from "./HomeSocial";
+import ProductSale from "@components/product/ProductSale";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
@@ -15,9 +16,7 @@ type HomeBanners = {
 const Home = () => {
   usePageTitle("Alpha Hardware");
 
-  const bannersRequest = useFakeAPI<HomeBanners>(
-    "GET api/homepage/banners",
-  );
+  const bannersRequest = useFakeAPI<HomeBanners>("GET api/homepage/banners");
   const saleRequest = useFakeAPI<ISale>("GET api/homepage/sale");
 
   useEffect(() => {
@@ -33,7 +32,11 @@ const Home = () => {
         loading={bannersRequest.loading}
         error={bannersRequest.error}
       />
-      {/* <ProductSale productSelection={data.productGroups.sale} /> */}
+      <ProductSale
+        data={saleRequest.data}
+        loading={saleRequest.loading}
+        error={saleRequest.error}
+      />
       <HomeCategories />
       {/*<ProductSelection productSelection={data.productGroups.first} />*/}
       <HomeBanner

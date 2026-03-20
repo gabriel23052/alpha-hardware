@@ -26,7 +26,7 @@ class HomepageHandler {
     salesTable.searchById(config.homepage.saleId);
     if (salesTable.empty)
       return response.setError(ErrorMessages.HP_SALE_NOT_FOUND);
-    return salesTable.getInPrCardFormat()[0];
+    response.setData(salesTable.getInPrCardFormat()[0]);
   }
 
   public getHomepageCollections(

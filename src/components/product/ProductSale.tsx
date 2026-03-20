@@ -1,31 +1,35 @@
 import { Link } from "react-router";
 
 import ProductList from "./ProductList";
+import ErrorMessage from "@components/ErrorMessage";
+import ProductSaleSkeleton from "./ProductSaleSkeleton";
 
 import classes from "./ProductSale.module.css";
 
-const ProductSale = ({
-  productSelection,
-}: {
-  productSelection: IProductGroup;
-}) => {
-  const { meta, products } = productSelection;
+type Props = {
+  data: ISale | null;
+  loading: boolean;
+  error: string | null;
+};
+
+const ProductSale = ({ data, loading, error }: Props) => {
+  if (loading) return <ProductSaleSkeleton />;
 
   return (
-    <article className={`defaultContainer ${classes.productSale}`}>
-      {meta && meta.saleId && meta.saleName && (
-        <Link
-          className={`${classes.title}`}
-          to={`/products?sale=${meta.saleId}`}
-        >
-          <h2 className={`secondary-light text-display`}>{meta.saleName}</h2>
-        </Link>
+    <article className={`defaultContainer ${classes.container}`}>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {data && (
+        <>
+          <Link className={`${classes.title}`} to={`/products?sale=${data.id}`}>
+            <h2 className={`text-display secondary-light`}>{data.name}</h2>
+          </Link>
+          <ProductList
+            className={classes.productList}
+            products={data.products}
+            mode="sale"
+          />
+        </>
       )}
-      <ProductList
-        products={products}
-        className={`${classes.products}`}
-        hideSale={false}
-      />
     </article>
   );
 };

@@ -3,10 +3,29 @@
   border: 1px solid var(--lneutral-light);
   border-radius: 8px;
   transition: border-color 300ms;
+  position: relative;
 }
-.container:hover,
-.container:focus-within {
+.container:hover {
   border-color: var(--secondary-light);
+}
+.container:focus-within {
+  outline: 2px solid var(--secondary-dark);
+  outline-offset: 2px;
+}
+
+.link {
+  display: block;
+  padding-bottom: var(--px20);
+}
+
+.saleDiscont {
+  padding: var(--px4) var(--px8);
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+  position: absolute;
+  left: var(--px8);
+  top: var(--px8);
+  z-index: 1;
 }
 
 .wrapper {
@@ -16,8 +35,8 @@
 }
 
 .thumb {
-  padding: var(--px24);
   height: 13.5rem;
+  padding: var(--px24);
 }
 
 .thumb img {
@@ -27,13 +46,12 @@
   margin: 0 auto;
   transition: transform 300ms;
 }
-.container:hover img,
-.container:focus-within img {
+.container:hover img {
   transform: scale(1.03);
 }
 
 .name {
-  height: 3.75rem; /* 60px */
+  height: 3.75rem;
   display: -webkit-box;
   margin-bottom: var(--px16);
   -webkit-line-clamp: 3;
@@ -41,55 +59,6 @@
   line-clamp: 3;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.price {
-  display: block;
-}
-
-.buttonsContainer {
-  display: flex;
-  gap: var(--px12);
-  padding: var(--px12);
-  padding-top: 0px;
-}
-
-.buttonsContainer a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: var(--px8) 0;
-  border-radius: 4px;
-  text-align: center;
-  transition: background-color 300ms;
-}
-.buttonsContainer a:hover,
-.buttonsContainer a:focus {
-  background-color: var(--primary-dark);
-}
-
-.buttonsContainer button {
-  padding: var(--px8) var(--px12);
-  outline: 1px solid var(--lneutral-light);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 300ms;
-}
-.buttonsContainer button:hover,
-.buttonsContainer button:focus {
-  background-color: var(--white);
-}
-
-.buttonsContainer svg {
-  height: 100%;
-  display: block;
-  transition: transform 300ms;
-}
-
-.buttonsContainer button:hover svg,
-.buttonsContainer button:focus svg {
-  transform: scale(1.1);
 }
 
 @media (max-width: 500px) {
@@ -105,7 +74,7 @@
   }
 
   .name {
-    height: 4.5rem; /* 72px */
+    height: 4.5rem;
     font-size: 1rem;
     line-height: var(--px24);
   }

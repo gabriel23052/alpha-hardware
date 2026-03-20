@@ -1,55 +1,52 @@
 import { Link } from "react-router";
 
 import ProductCardPrice from "./ProductCardPrice";
-import ProductSaleLabel from "./ProductSaleLabel";
-
-import SVGCartAdd from "@svg/cartAdd.svg?react";
+import ProductSaleStrip from "./ProductSaleStrip";
+import ProductCardActions from "./ProductCardActions";
 
 import classes from "./ProductCard.module.css";
 
-const PRODUCT_THUMB_WIDTH_HEIGHT = 168;
+const PRODUCT_THUMB_SIZE = 168;
 
 type Props = {
-  product: IProduct;
-  hideSale?: boolean;
-  hideButtons?: boolean;
+  product: IProduct_Card;
+  mode: "default" | "sale" | "hideActions";
 };
 
-const ProductCard = ({ product, hideSale, hideButtons }: Props) => {
+const ProductCard = ({ product, mode }: Props) => {
   return (
-    <article className={`bg-white ${classes.container}`} title={product.name}>
-      <Link to={`/product/${product.id}`} className={`${classes.link}`}>
-        {product.sale && !hideSale && (
-          <ProductSaleLabel sale={product.sale} inCard={true} />
+    <article className={`bg-white ${classes.container}`}>
+      <Link
+        className={classes.link}
+        to={`/product/${product.id}`}
+        title={product.name}
+      >
+        {product.sale && mode === "default" && (
+          <p
+            className={`text-default secondary-xdark bg-secondary ${classes.saleDiscont}`}
+          >
+            - {product.sale.discont}%
+          </p>
         )}
-        <div className={`${classes.wrapper}`}>
-          <div className={`${classes.thumb}`}>
+        {product.sale && mode === "sale" && (
+          <ProductSaleStrip sale={product.sale} mode="card" />
+        )}
+        <div className={classes.wrapper}>
+          <div className={classes.thumb}>
             <img
               src={`/img/products/${product.media.thumb}`}
               alt={product.name}
-              width={PRODUCT_THUMB_WIDTH_HEIGHT}
-              height={PRODUCT_THUMB_WIDTH_HEIGHT}
+              width={PRODUCT_THUMB_SIZE}
+              height={PRODUCT_THUMB_SIZE}
             />
           </div>
-          <span className={`dneutral text-small-b ${classes.name}`}>
+          <p className={`text-small-b dneutral ${classes.name}`}>
             {product.name}
-          </span>
+          </p>
         </div>
-        <ProductCardPrice
-          prices={product.prices}
-          showOldPrice={hideSale === false}
-        />
+        <ProductCardPrice prices={product.prices} />
       </Link>
-      {!hideButtons && (
-        <div className={`${classes.buttonsContainer}`}>
-          <Link to="" className="lneutral-xlight bg-primary text-default-b">
-            COMPRAR
-          </Link>
-          <button className="bg-lneutral-xlight">
-            <SVGCartAdd />
-          </button>
-        </div>
-      )}
+      {mode !== "hideActions" && <ProductCardActions />}
     </article>
   );
 };

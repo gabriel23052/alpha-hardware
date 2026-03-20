@@ -1,6 +1,5 @@
 .container {
   padding: 0 var(--px16);
-  margin-bottom: var(--px20);
 }
 
 .price {
@@ -8,5 +7,6 @@
 }
 
 .oldPrice {
+  height: var(--px24);
   text-decoration: line-through;
 }

@@ -1,0 +1,24 @@
+.sale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--px4) var(--px24);
+  transition: background-color 300ms;
+}
+
+.sale[data-mode="card"] {
+  padding: var(--px4) var(--px8);
+  border-radius: 8px 8px 0 0;
+  outline: 1px solid var(--secondary);
+}
+
+.sale[data-expired="true"] {
+  display: block;
+  text-align: center;
+  background-color: var(--lneutral-light);
+  outline-color: var(--lneutral-light);
+}
+
+.sale[data-expired="true"] p {
+  line-height: var(--px32);
+}

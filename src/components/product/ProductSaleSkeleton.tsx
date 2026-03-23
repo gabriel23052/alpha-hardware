@@ -1,4 +1,5 @@
 import SkeletonLoading from "@components/SkeletonLoading";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 
 import classes from "./ProductSaleSkeleton.module.css";
 
@@ -11,7 +12,7 @@ const ProductSaleSkeleton = () => {
       <ul className={classes.list}>
         {Array.from({ length: NUMBER_OF_CARDS }, (_, i) => (
           <li key={i}>
-            <SkeletonLoading className={classes.card} />
+            <ProductCardSkeleton mode="sale" />
           </li>
         ))}
       </ul>

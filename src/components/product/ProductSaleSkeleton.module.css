@@ -14,10 +14,6 @@
   gap: var(--px16);
 }
 
-.card {
-  height: 31.875rem;
-}
-
 @media (max-width: 700px) {
   .list {
     grid-template-columns: repeat(2, 1fr);
@@ -27,10 +23,6 @@
 @media (max-width: 500px) {
   .list {
     grid-template-columns: 1fr;
-  }
-
-  .card {
-    height: 23rem;
   }
 }
 

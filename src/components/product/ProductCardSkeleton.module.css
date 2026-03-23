@@ -1,0 +1,17 @@
+.cardDefault {
+  height: 29.375rem;
+}
+
+.cardSale {
+  height: 31.875rem;
+}
+
+@media (max-width: 500px) {
+  .cardDefault {
+    height: 20.1538461538462rem; /* 262 ÷ 13 */
+  }
+
+  .cardSale {
+    height: 22.6538461538462rem; /* 294.5 ÷ 13 */
+  }
+}

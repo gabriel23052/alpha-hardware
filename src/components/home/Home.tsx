@@ -5,6 +5,7 @@ import HomeCategories from "./HomeCategories";
 import HomeSocial from "./HomeSocial";
 import ProductSale from "@components/product/ProductSale";
 import ProductCollection from "@components/product/ProductCollection";
+import RecentlyViewed from "@components/RecentlyViewed";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
@@ -64,6 +65,7 @@ const Home = () => {
         loading={collectionsRequest.loading}
         error={collectionsRequest.error}
       />
+      <RecentlyViewed />
     </main>
   );
 };

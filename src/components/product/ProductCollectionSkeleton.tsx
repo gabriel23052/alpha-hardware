@@ -1,8 +1,9 @@
 import SkeletonLoading from "@components/SkeletonLoading";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 
 import classes from "./ProductCollectionSkeleton.module.css";
 
-const NUMBER_OF_CARDS = 12
+const NUMBER_OF_CARDS = 12;
 
 const ProductCollectionSkeleton = () => {
   return (
@@ -11,12 +12,13 @@ const ProductCollectionSkeleton = () => {
       <ul className={classes.list}>
         {Array.from({ length: NUMBER_OF_CARDS }, (_, i) => (
           <li key={i}>
-            <SkeletonLoading className={classes.card} />
+            <ProductCardSkeleton mode="default" />
           </li>
         ))}
-      </ul>    
+      </ul>
     </article>
   );
-}
+};
 
 export default ProductCollectionSkeleton;
+

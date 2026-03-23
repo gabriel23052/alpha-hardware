@@ -1,0 +1,20 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: var(--px16);
+  padding-bottom: var(--px8);
+  overflow-x: auto;
+}
+
+.container li:first-child {
+  margin-left: var(--px20);
+}
+.container li:last-child {
+  margin-right: var(--px20);
+}
+
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: repeat(4, 360px);
+  }
+}

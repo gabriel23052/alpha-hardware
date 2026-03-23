@@ -6,7 +6,7 @@ const config = {
     adBannerId: "BAN-54C86E",
     saleId: "SAL-15AFC6",
     firstCollectionId: "COL-16C9A2",
-    secondCollectionId: "COL-16C9A2",
+    secondCollectionId: "COL-B6876C",
   },
   validationsRules: {
     productQueryNameMaxLength: 200,

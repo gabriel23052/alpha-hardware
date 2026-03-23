@@ -1,0 +1,36 @@
+.container {
+  margin: var(--px64) auto;
+}
+
+.title {
+  width: 100%;
+  height: var(--px32);
+  margin-bottom: var(--px20);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--px12);
+}
+
+.card {
+  height: 29.375rem;
+}
+
+@media (max-width: 700px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: 18.6153846153846rem; /* 242 / 13 */
+  }
+}
+

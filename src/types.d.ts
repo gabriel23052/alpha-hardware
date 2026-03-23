@@ -1,3 +1,27 @@
+type IFakeApiReqParams = Record<string, IFakeApiReqParam>;
+
+type IFakeApiReqParam =
+  | number
+  | string
+  | boolean
+  | IFakeApiReqParam[]
+  | { [key: string]: IFakeApiReqParam };
+
+type IFakeApiResponse<T = unknown> =
+  | {
+      success: true;
+      data: T | null;
+    }
+  | {
+      success: false;
+      error: IFakeApiError;
+    };
+
+type IFakeApiError = {
+  message: string;
+  userFriendly: boolean;
+};
+
 type IBanner = {
   link: string;
   alt?: string;
@@ -9,6 +33,16 @@ type IBanner = {
     height: number;
     src: string;
   }[];
+};
+
+type IProduct = {
+  id: string;
+  name: string;
+  category: string;
+  prices: IProductPrices;
+  sale?: IProductSale;
+  media: IProductMedia;
+  tags: string[];
 };
 
 type IProduct_Card = {
@@ -24,13 +58,28 @@ type IProduct_Card = {
   };
 };
 
-type IProductPrice = {
+type IProductPrices = {
   full: number;
   pix: number;
   pixDiscont: number;
   maxInstallments: number;
   installments: number;
   previous?: number;
+};
+
+type IProductSale = {
+  id: string;
+  name: string;
+  expiration: number;
+  discont: number;
+};
+
+type IProductMedia = {
+  thumb: string;
+  images: {
+    small: string;
+    medium: string;
+  }[];
 };
 
 type ISale = {
@@ -39,60 +88,13 @@ type ISale = {
   products: IProduct_Card[];
 };
 
-// -----
-
-interface IPrices {
-  full: number;
-  pix: number;
-  pixDiscont: number;
-  maxInstallments: number;
-  installments: number;
-  previous?: number;
-}
-
-interface IMedia {
-  thumb: string;
-  images: {
-    small: string;
-    medium: string;
-  }[];
-}
-
-interface IProductSale {
+type IProductCollection = {
   id: string;
   name: string;
-  expiration: number;
-  discont: number;
-}
-
-interface IProduct {
-  id: string;
-  name: string;
-  category: string;
-  prices: IPrices;
-  sale?: IProductSale;
-  media: IMedia;
-  tags: string[];
-}
-
-interface IProductIdList {
-  title: string;
-  role: "default" | "sale";
-  productIds: string[];
-}
-
-interface IProductGroup {
-  meta?: {
-    title?: string;
-    saleName?: string;
-    saleId?: string;
-  };
-  products: IProduct[];
-}
-
-type IProductIdGroup = Omit<IProductGroup, "products"> & {
-  productIds: string[];
+  products: IProduct_Card[];
 };
+
+// -----
 
 interface IHomePageContent {
   banners: {
@@ -119,30 +121,6 @@ interface IFreight {
     deliveryTime: number;
   }[];
 }
-
-type IFakeApiResponse<T = unknown> =
-  | {
-      success: true;
-      data: T | null;
-    }
-  | {
-      success: false;
-      error: IFakeApiError;
-    };
-
-type IFakeApiError = {
-  message: string;
-  userFriendly: boolean;
-};
-
-type IFakeApiReqParams = Record<string, IFakeApiReqParam>;
-
-type IFakeApiReqParam =
-  | number
-  | string
-  | boolean
-  | IFakeApiReqParam[]
-  | { [key: string]: IFakeApiReqParam };
 
 interface IFakeApiProductFilter {
   id?: string | string[];

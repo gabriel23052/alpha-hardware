@@ -3,7 +3,7 @@ import parsePrice from "@utils/parsePrice";
 import classes from "./ProductCardPrice.module.css";
 
 interface Props {
-  prices: IPrices;
+  prices: IProductPrices;
 }
 
 const ProductCardPrice = ({ prices }: Props) => {

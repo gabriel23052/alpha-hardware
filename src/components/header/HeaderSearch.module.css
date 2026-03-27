@@ -12,66 +12,34 @@
   position: absolute;
   right: var(--px12);
   top: var(--px8);
-  transition: transform 200ms;
+  transition: translate 200ms;
 }
-.container.loading::after {
-  width: var(--px20);
-  height: var(--px20);
+.container[data-loading="true"]::after {
+  width: var(--px16);
+  height: var(--px16);
   background: none;
   border: 2px solid var(--lneutral-dark);
   border-left-color: transparent;
   border-radius: 50%;
-  animation: rotation360 1s infinite linear;
+  animation: loading 1s infinite linear;
+  translate: 0 2px;
 }
 
 .input {
   width: 100%;
   padding: var(--px8) 2.75rem var(--px8) var(--px16);
   border-radius: 4px;
+  transition: background-color 300ms;
 }
-.input:hover,
-.input:focus {
+.input:hover {
   background-color: white;
 }
-
-.input.opened {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  outline: none;
+.input[data-showingsuggestions="false"]:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
-
-.contentContainer {
-  width: 100%;
-  border-radius: 0px 0px 4px 4px;
-  position: absolute;
-  z-index: 10;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-.error {
-  padding: var(--px4);
-  text-align: center;
-}
-
-.list a {
-  display: block;
-  padding: var(--px4) var(--px16);
-  border-bottom: 1px solid var(--lneutral-light);
-}
-.list a:hover,
-.list a:focus {
-  background-color: var(--lneutral-light);
-}
-
-.moreItemsLink {
-  display: block;
-  text-decoration: underline;
-  text-align: center;
-  padding: var(--px8);
-}
-.moreItemsLink:hover,
-.moreItemsLink:focus {
-  background-color: var(--lneutral-light);
+.input[data-showingsuggestions="true"] {
+  border-radius: 4px 4px 0 0;
 }
 
 @media (max-width: 700px) {
@@ -80,7 +48,7 @@
   }
 }
 
-@keyframes rotation360 {
+@keyframes loading {
   from {
     transform: rotate(0deg);
   }

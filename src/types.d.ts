@@ -58,6 +58,11 @@ type IProduct_Card = {
   };
 };
 
+type IProduct_Suggestion = {
+  id: string;
+  name: string;
+};
+
 type IProductPrices = {
   full: number;
   pix: number;

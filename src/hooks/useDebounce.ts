@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 export default function useDebounce<T extends unknown[]>(
   func: (...args: T) => unknown,
-  delay: number
+  delay: number,
 ) {
   const timeoutRef = useRef<number | undefined>(undefined);
 
@@ -11,7 +11,7 @@ export default function useDebounce<T extends unknown[]>(
       clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => func(...args), delay);
     },
-    [func, delay]
+    [func, delay],
   );
 
   useEffect(() => {

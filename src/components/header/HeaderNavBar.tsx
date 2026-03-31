@@ -4,17 +4,17 @@ import { CATEGORIES } from "../../data";
 
 import classes from "./HeaderNavBar.module.css";
 
-type Props = { maxHeight: string; id: string };
+type Props = { id: string };
 
-const HeaderNavBar = ({ maxHeight, id }: Props) => {
+const HeaderNavBar = ({ id }: Props) => {
   return (
     <nav
       className={`bg-dneutral-xdark ${classes.container}`}
       id={id}
-      style={{ maxHeight }}
+      aria-label="Categorias"
     >
       <ul
-        className={`lneutral-light text-default defaultContainer ${classes.links}`}
+        className={`text-default lneutral-light defaultContainer ${classes.links}`}
       >
         {CATEGORIES.map(({ name, label }) => (
           <li key={name}>

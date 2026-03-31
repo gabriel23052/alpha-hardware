@@ -1,40 +1,43 @@
-.headerUserLinks {
+.container {
   display: flex;
   align-items: center;
   gap: var(--px12);
+  grid-column: 3;
 }
 
-.headerUserLinks svg {
+.container svg {
   width: var(--px32);
+  height: var(--px32);
 }
 
-.headerUserLinks a {
+.container a {
   display: inline-block;
-  position: relative;
   text-align: center;
+  position: relative;
   transition: color 300ms;
 }
-.headerUserLinks a:hover,
-.headerUserLinks a:focus {
+.container a:hover,
+.container a:focus {
   color: var(--primary-xdark);
 }
-.headerUserLinks a::after {
+.container a::after {
+  content: "";
   width: 100%;
   height: 1px;
-  content: "";
   background-color: var(--lneutral-xlight);
   position: absolute;
   left: 0;
   bottom: 3px;
   transition: background-color 300ms;
 }
-.headerUserLinks a:hover::after,
-.headerUserLinks a:focus::after {
+.container a:hover::after,
+.container a:focus::after {
   background-color: var(--primary-xdark);
 }
 
 @media (max-width: 700px) {
   .headerUserLinks {
-    grid-column: span 2;
+    grid-column: initial;
+    grid-row: 3;
   }
 }

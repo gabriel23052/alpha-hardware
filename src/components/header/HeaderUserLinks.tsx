@@ -5,34 +5,38 @@ import SVGUser from "@svg/user.svg?react";
 
 import classes from "./HeaderUserLinks.module.css";
 
-const HeaderUserLinks = () => {
+type Props = {
+  id: string;
+};
+
+const HeaderUserLinks = ({ id }: Props) => {
   const user = useRef<string | null>(null); // Improvisado
 
   return (
     <section
-      className={`text-default lneutral-xlight ${classes.headerUserLinks}`}
-      id="ariaHeaderUserLinks"
+      className={`text-default lneutral-xlight ${classes.container}`}
+      id={id}
     >
-      <SVGUser />
+      <SVGUser title="Autenticação" width={32} height={32} />
       {user.current === null ? (
         <span>
-          <Link className="lneutral-xlight text-default" to="/auth/login">
+          <Link className="text-default lneutral-xlight" to="/auth/login">
             Entrar
           </Link>{" "}
           ou <br />
-          <Link className="lneutral-xlight text-default" to="/auth/register">
+          <Link className="text-default lneutral-xlight" to="/auth/register">
             Cadastrar-se
           </Link>
         </span>
       ) : (
         <span>
           Olá{" "}
-          <Link className="lneutral-xlight text-default" to="/">
+          <Link className="text-default lneutral-xlight" to="/">
             {user.current}
           </Link>
           <br />
           Não é você?{" "}
-          <Link className="lneutral-xlight text-default" to="/">
+          <Link className="text-default lneutral-xlight" to="/">
             Sair
           </Link>
         </span>

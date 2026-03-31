@@ -12,15 +12,15 @@
   pointer-events: all;
 }
 
-.error {
-  padding: var(--px4);
-  text-align: center;
-}
-
 .list a {
-  display: block;
+  display: -webkit-box;
   padding: var(--px4) var(--px16);
   border-bottom: 1px solid var(--lneutral-light);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .list a:hover,
 .list a:focus {
@@ -37,3 +37,4 @@
 .moreItemsLink:focus {
   background-color: var(--lneutral-light);
 }
+

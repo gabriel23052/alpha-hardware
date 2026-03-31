@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  gap: var(--px24);
+  justify-self: end;
+}
+
+.container a {
+  display: flex;
+  padding: var(--px4);
+  justify-content: center;
+  align-items: center;
+  transition: scale 200ms;
+}
+.container a:hover,
+.container a:focus {
+  scale: 1.1;
+}
+
+.container svg {
+  width: var(--px32);
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-row: 3;
+  }
+}
+

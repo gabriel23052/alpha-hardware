@@ -1,6 +1,9 @@
 .container {
-  width: min(100%, 40rem);
-  position: relative;
+  width: 40rem;
+  position: fixed;
+  z-index: 6;
+  left: calc(max(calc((100% - 1406px) / 2), 0px) + 12.5rem);
+  top: 1.3125rem;
 }
 .container::after {
   content: "";
@@ -42,9 +45,18 @@
   border-radius: 4px 4px 0 0;
 }
 
+@media (max-width: 1100px) {
+  .container {
+    width: auto;
+    right: 25.56rem;
+  }
+}
+
 @media (max-width: 700px) {
   .container {
-    width: 100%;
+    top: 5.4rem;
+    right: 1.25rem;
+    left: 6.3rem;
   }
 }
 

@@ -1,10 +1,25 @@
+body {
+  margin-top: 7.625rem;
+}
+
+.shadow {
+  width: 100%;
+  height: 7.625rem;
+  position: fixed;
+  inset: 0;
+  box-shadow: 0 0 8px rgb(0 0 0 / 40%);
+  pointer-events: none;
+  z-index: 4;
+  transition: height 300ms;
+}
+
 .container {
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: sticky;
+  position: fixed;
   top: 0px;
   left: 0px;
   z-index: 5;
+  transition: clip-path 300ms;
 }
 
 .wrapper {
@@ -12,44 +27,7 @@
   grid-template-columns: max-content auto max-content max-content;
   gap: var(--px40);
   align-items: center;
-  padding-top: var(--px16);
-  padding-bottom: var(--px16);
-}
-
-.logo {
-  transition: max-height 400ms, opacity 400ms;
-}
-
-.logo svg {
-  width: 9.06rem; /* ~145px */
-}
-
-.shortcuts {
-  display: flex;
-  gap: var(--px24);
-  justify-self: end;
-}
-
-.shortcuts a {
-  padding: var(--px4);
-  transition: transform 200ms;
-}
-.shortcuts a:hover,
-.shortcuts a:focus {
-  transform: scale(1.1);
-}
-
-.shortcuts svg {
-  width: var(--px32);
-}
-
-.hideOnMobile {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: span 2;
-  align-items: center;
-  overflow: hidden;
-  transition: 80ms max-height;
+  padding-block: var(--px16);
 }
 
 .mobileMenuBtn {
@@ -66,19 +44,49 @@
   width: var(--px32);
 }
 
+.logo {
+  width: 8.75rem;
+  height: 3.125rem;
+  transition: scale 200ms;
+}
+.logo:hover,
+.logo:focus {
+  scale: 1.025;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 970px) {
   .wrapper {
     gap: var(--px32);
   }
-
-  .logo svg {
-    width: 8rem;
-  }
 }
 
 @media (max-width: 700px) {
-  .container {
-    transition: max-height 400ms;
+  body {
+    margin-top: 9.4rem;
+  }
+
+  .shadow[data-expanded="false"] {
+    height: 9.4rem;
+  }
+  .shadow[data-expanded="true"] {
+    height: 32.1rem;
+  }
+
+  .container[data-expanded="false"] {
+    clip-path: inset(0 0 calc(100% - 9.4rem) 0);
+  }
+  .container[data-expanded="true"] {
+    clip-path: inset(0);
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+    justify-self: start;
   }
 
   .wrapper {
@@ -89,14 +97,5 @@
   .logo {
     justify-self: center;
     grid-column: 1/-1;
-  }
-
-  .hideOnMobile {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .mobileMenuBtn {
-    display: flex;
   }
 }

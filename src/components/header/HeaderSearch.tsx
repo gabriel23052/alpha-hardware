@@ -52,7 +52,6 @@ const HeaderSearch = () => {
   }, DEBOUNCE_DELAY);
 
   const suggestions = useMemo(() => {
-    setFocused(true);
     const search = searchForm.fields.search.value;
     if (search.length < MIN_SEARCH_LENGTH) return [];
     if (!request.data) {
@@ -131,6 +130,7 @@ const HeaderSearch = () => {
         aria-controls={listId}
         aria-autocomplete="list"
         value={searchForm.fields.search.value}
+        placeholder="Buscar produtos"
         onChange={handleChange}
       />
       <HeaderSearchSuggestions

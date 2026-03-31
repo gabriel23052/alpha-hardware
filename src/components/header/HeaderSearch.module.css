@@ -44,6 +44,9 @@
 .input[data-showingsuggestions="true"] {
   border-radius: 4px 4px 0 0;
 }
+.input::placeholder {
+  color: var(--lneutral-xdark);
+}
 
 @media (max-width: 1100px) {
   .container {

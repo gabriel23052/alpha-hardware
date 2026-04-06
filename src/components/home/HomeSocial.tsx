@@ -1,55 +1,41 @@
-import SVGInstagram from "@svg/instagram.svg?react";
-import SVGX from "@svg/x.svg?react";
-import SVGFacebook from "@svg/facebook.svg?react";
+import { SOCIAL_MEDIA } from "../../config";
 
 import classes from "./HomeSocial.module.css";
 
 const HomeSocial = () => {
   return (
-    <section className={`defaultContainer ${classes.social}`}>
-      <div className={`${classes.text}`}>
-        <h2 className="primary text-verylarge-m">
+    <section className={`defaultContainer ${classes.container}`}>
+      <div className={classes.title}>
+        <h2 className="text-verylarge-m primary">
           Acompanhe a Alpha Hardware nas redes sociais
         </h2>
-        <p className="dneutral-xlight text-default">
+        <p className="text-default dneutral-xlight ">
           Lá nós compartilhamos produtos novos, cupons e novidades, além disso,
           sorteamos peças todos os meses por lá!
         </p>
       </div>
-      <div className={`${classes.socialMedia}`}>
-        <ul className={`text-large ${classes.list}`}>
-          <li>
-            <a href="/">
-              <div className={`${classes.instagram}`}>
-                <SVGInstagram />
+      <ul className={`text-large ${classes.links}`}>
+        {SOCIAL_MEDIA.map((socialMedia) => (
+          <li key={socialMedia.id}>
+            <a
+              href={socialMedia.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div
+                className={classes.icon}
+                style={{ background: socialMedia.background }}
+                aria-hidden="true"
+              >
+                <socialMedia.Svg />
               </div>
-              <span className="bg-lneutral-xlight dneutral">
-                @alpha.hardware
-              </span>
+              <p className={`bg-lneutral-xlight ${classes.id}`}>
+                {socialMedia.id}
+              </p>
             </a>
           </li>
-          <li>
-            <a href="/">
-              <div className={`${classes.x}`}>
-                <SVGX />
-              </div>
-              <span className="bg-lneutral-xlight dneutral">
-                @AlphaHardware
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              <div className={`${classes.facebook}`}>
-                <SVGFacebook />
-              </div>
-              <span className="bg-lneutral-xlight dneutral">
-                Alpha Hardware
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        ))}
+      </ul>
     </section>
   );
 };

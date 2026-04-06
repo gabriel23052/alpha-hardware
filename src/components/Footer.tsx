@@ -5,7 +5,7 @@ import SVGInstagramDark from "@svg/instagramDark.svg?react";
 import SVGXDark from "@svg/xDark.svg?react";
 import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
-import { CATEGORIES } from "../data";
+import { CATEGORIES } from "../config";
 
 import classes from "./Footer.module.css";
 

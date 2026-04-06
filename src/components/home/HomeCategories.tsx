@@ -1,14 +1,14 @@
 import { Link } from "react-router";
 
-import { CATEGORIES } from "../../data";
+import { CATEGORIES } from "../../config";
 
 import classes from "./HomeCategories.module.css";
 
 const HomeCategories = () => {
   return (
-    <nav className={`${classes.categories}`}>
-      <div className={`${classes.titleWithLine}`}>
-        <h2 className={`bg-white dneutral-xlight text-large ${classes.title}`}>
+    <nav className={classes.categories}>
+      <div className={classes.titleWithLine}>
+        <h2 className={`text-large bg-white dneutral-xlight ${classes.title}`}>
           O que você precisa?
         </h2>
       </div>
@@ -19,7 +19,7 @@ const HomeCategories = () => {
               className="bg-lneutral-xlight"
               to={`/products?category=${name}`}
             >
-              <Svg />
+              <Svg aria-hidden="true" />
               <span className="dneutral">{label}</span>
             </Link>
           </li>

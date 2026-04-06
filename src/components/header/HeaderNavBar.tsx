@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import { CATEGORIES } from "../../data";
+import { CATEGORIES } from "../../config";
 
 import classes from "./HeaderNavBar.module.css";
 

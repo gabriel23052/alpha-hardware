@@ -39,10 +39,15 @@
   border: 1px solid var(--lneutral-light);
   border-bottom: 4px solid var(--secondary);
   border-radius: 4px;
-  transition: background-color 300ms, transform 300ms;
+  transition:
+    background-color 300ms,
+    transform 300ms;
 }
-.list a:hover,
 .list a:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 4px;
+}
+.list a:hover {
   background-color: var(--white);
   transform: scale(1.05);
 }

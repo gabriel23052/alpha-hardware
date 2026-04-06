@@ -4,6 +4,9 @@ import SVGCpu from "@svg/cpu.svg?react";
 import SVGRam from "@svg/ram.svg?react";
 import SVGSsd from "@svg/ssd.svg?react";
 import SVGHdd from "@svg/hdd.svg?react";
+import SVGInstagram from "@svg/instagram.svg?react";
+import SVGX from "@svg/x.svg?react";
+import SVGFacebook from "@svg/facebook.svg?react";
 
 const CATEGORIES = [
   { name: "gpu", label: "Placas de Vídeo", Svg: SVGGpu },
@@ -12,6 +15,30 @@ const CATEGORIES = [
   { name: "ram", label: "Memórias RAM", Svg: SVGRam },
   { name: "ssd", label: "SSD's", Svg: SVGSsd },
   { name: "hdd", label: "HD's", Svg: SVGHdd },
+];
+
+const SOCIAL_MEDIA = [
+  {
+    id: "@alpha.hardware",
+    name: "instagram",
+    link: "",
+    background: "linear-gradient(#fec808 0%, #fd09d1 70%, #3c45db 100%)",
+    Svg: SVGInstagram,
+  },
+  {
+    id: "@AlphaHardware",
+    name: "x",
+    link: "",
+    background: "#000000",
+    Svg: SVGX,
+  },
+  {
+    id: "Alpha Hardware",
+    name: "facebook",
+    link: "",
+    background: "#0f92ee",
+    Svg: SVGFacebook,
+  },
 ];
 
 // prettier-ignore
@@ -46,4 +73,4 @@ const TAGS_WITH_LEGENDS = {
   ],
 };
 
-export { CATEGORIES, TAGS_WITH_LEGENDS };
+export { CATEGORIES, SOCIAL_MEDIA, TAGS_WITH_LEGENDS };

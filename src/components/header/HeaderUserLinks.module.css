@@ -36,7 +36,7 @@
 }
 
 @media (max-width: 700px) {
-  .headerUserLinks {
+  .container {
     grid-column: initial;
     grid-row: 3;
   }

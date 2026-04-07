@@ -1,20 +1,17 @@
 import { Link } from "react-router";
 
 import SVGLogo from "@svg/logo.svg?react";
-import SVGInstagramDark from "@svg/instagramDark.svg?react";
-import SVGXDark from "@svg/xDark.svg?react";
-import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
-import { CATEGORIES } from "../config";
+import { CATEGORIES, INSTITUTIONAL_LINKS, SOCIAL_MEDIA } from "../config";
 
 import classes from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className={`bg-dneutral-dark ${classes.footer}`}>
+    <footer className={`bg-dneutral-dark ${classes.container}`}>
       <div className={`defaultContainer ${classes.gridContainer}`}>
         <nav className={`${classes.categories}`}>
-          <h3 className="secondary text-large">Departamentos</h3>
+          <h3 className="text-large secondary ">Departamentos</h3>
           <ul className="text-default">
             {CATEGORIES.map(({ name, label }) => (
               <li key={name}>
@@ -26,51 +23,49 @@ const Footer = () => {
           </ul>
         </nav>
         <nav className={`${classes.institutional}`}>
-          <h3 className="secondary text-large">Institucional</h3>
+          <h3 className="text-large secondary">Institucional</h3>
           <ul className="text-default">
-            <li>
-              <Link className="white" to={"/"}>
-                Sobre a Alpha Hardware
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Políticas de Privacidade
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Políticas de Cookies
-              </Link>
-            </li>
-            <li>
-              <Link className="white" to={"/"}>
-                Políticas de Devolução
-              </Link>
-            </li>
+            {INSTITUTIONAL_LINKS.map(({ name, to }) => (
+              <li key={name}>
+                <Link className="white" to={to}>
+                  {name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
-        <section className={`${classes.social}`}>
-          <div>
-            <h3 className="secondary text-large">Mídias Sociais</h3>
-            <div className={`${classes.links}`}>
-              <a className="bg-dneutral-xlight" href="/">
-                <SVGInstagramDark />
-              </a>
-              <a className="bg-dneutral-xlight" href="/">
-                <SVGXDark />
-              </a>
-              <a className="bg-dneutral-xlight" href="/">
-                <SVGFacebookDark />
-              </a>
-            </div>
-          </div>
-          <SVGLogo />
+        <section className={classes.social}>
+          <h3 className="text-large secondary">Mídias Sociais</h3>
+          <ul>
+            {SOCIAL_MEDIA.map((socialMedia) => (
+              <li key={socialMedia.name}>
+                <a
+                  className="bg-dneutral-xlight"
+                  href={socialMedia.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={socialMedia.name}
+                >
+                  <socialMedia.svgDark
+                    aria-hidden="true"
+                    width={32}
+                    height={32}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <SVGLogo
+            className={classes.logo}
+            aria-hidden="true"
+            width={192}
+            height={74}
+          />
         </section>
       </div>
-      <span className={`lneutral-dark text-default ${classes.legalInfo}`}>
+      <p className={`text-default lneutral-dark ${classes.legalInfo}`}>
         Todos os direitos reservados
-      </span>
+      </p>
     </footer>
   );
 };

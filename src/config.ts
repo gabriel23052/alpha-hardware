@@ -7,6 +7,9 @@ import SVGHdd from "@svg/hdd.svg?react";
 import SVGInstagram from "@svg/instagram.svg?react";
 import SVGX from "@svg/x.svg?react";
 import SVGFacebook from "@svg/facebook.svg?react";
+import SVGInstagramDark from "@svg/instagramDark.svg?react";
+import SVGXDark from "@svg/xDark.svg?react";
+import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
 const CATEGORIES = [
   { name: "gpu", label: "Placas de Vídeo", Svg: SVGGpu },
@@ -23,22 +26,32 @@ const SOCIAL_MEDIA = [
     name: "instagram",
     link: "",
     background: "linear-gradient(#fec808 0%, #fd09d1 70%, #3c45db 100%)",
-    Svg: SVGInstagram,
+    svg: SVGInstagram,
+    svgDark: SVGInstagramDark,
   },
   {
     id: "@AlphaHardware",
     name: "x",
     link: "",
     background: "#000000",
-    Svg: SVGX,
+    svg: SVGX,
+    svgDark: SVGXDark,
   },
   {
     id: "Alpha Hardware",
     name: "facebook",
     link: "",
     background: "#0f92ee",
-    Svg: SVGFacebook,
+    svg: SVGFacebook,
+    svgDark: SVGFacebookDark,
   },
+];
+
+const INSTITUTIONAL_LINKS = [
+  { name: "Sobre a Alpha Hardware", to: "/" },
+  { name: "Políticas de Privacidade", to: "/" },
+  { name: "Políticas de Cookies", to: "/" },
+  { name: "Políticas de Devolução", to: "/" },
 ];
 
 // prettier-ignore
@@ -73,4 +86,4 @@ const TAGS_WITH_LEGENDS = {
   ],
 };
 
-export { CATEGORIES, SOCIAL_MEDIA, TAGS_WITH_LEGENDS };
+export { CATEGORIES, SOCIAL_MEDIA, TAGS_WITH_LEGENDS, INSTITUTIONAL_LINKS };

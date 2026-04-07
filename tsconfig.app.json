@@ -23,15 +23,13 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "baseUrl": ".",
     "paths": {
-      "@svg/*": ["src/assets/svg/*"],
-      "@utils/*": ["src/utils/*"],
-      "@components/*": ["src/components/*"],
-      "@fakeAPI/*": ["src/fakeAPI/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@svg/*": ["./src/assets/svg/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@components/*": ["./src/components/*"],
+      "@fakeAPI/*": ["./src/fakeAPI/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["src"]
 }
-

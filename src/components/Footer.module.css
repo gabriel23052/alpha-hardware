@@ -1,4 +1,4 @@
-.footer {
+.container {
   padding-top: var(--px64);
   padding-bottom: var(--px32);
 }
@@ -20,9 +20,13 @@
   position: relative;
   transition: background-color 300ms;
 }
-.categories a:hover,
-.categories a:focus {
+.categories a:hover {
   background-color: var(--dneutral-xdark);
+}
+.categories a:focus {
+  outline: 2px solid var(--lneutral);
+  border-radius: 8px;
+  outline-offset: 2px;
 }
 .categories a::after {
   content: "";
@@ -33,6 +37,9 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
+}
+.categories a:focus::after {
+  background-color: transparent;
 }
 .categories li:last-child a::after {
   display: none;
@@ -47,24 +54,25 @@
   padding: var(--px8);
   text-decoration: underline;
 }
-.institutional a:hover,
-.institutional a:focus {
+.institutional a:hover {
   color: var(--lneutral);
+}
+.institutional a:focus {
+  outline: 2px solid var(--lneutral);
+  border-radius: 8px;
+  outline-offset: 2px;
 }
 
 .social {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
 }
 
 .social h3 {
-  display: block;
   margin-bottom: var(--px16);
 }
 
-.links {
+.social ul {
   display: flex;
   gap: var(--px16);
 }
@@ -75,13 +83,18 @@
   border-radius: var(--px8);
   transition: background-color 300ms;
 }
-.social a:hover,
-.social a:focus {
+.social a:hover {
   background-color: var(--lneutral-dark);
 }
+.social a:focus {
+  outline: 2px solid var(--lneutral);
+  border-radius: 8px;
+  outline-offset: 2px;
+}
 
-.social > svg {
-  width: 13rem;
+.logo {
+  width: 12rem;
+  align-self: end;
 }
 
 .legalInfo {
@@ -96,12 +109,15 @@
   }
 
   .social {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-column: 1/-1;
+    grid-auto-flow: column;
+    column-gap: var(--px32);
   }
-  .social > svg {
-    width: 10rem;
+
+  .logo {
+    grid-row: 1/-1;
+    align-self: center;
   }
 }

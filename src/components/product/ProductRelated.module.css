@@ -1,0 +1,19 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: var(--px16);
+  margin-bottom: var(--px32);
+  padding: 4px 4px var(--px8) 4px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.title {
+  margin-bottom: var(--px24);
+}
+
+@media (max-width: 500px) {
+  .list {
+    grid-template-columns: repeat(4, 360px);
+  }
+}

@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(280px, 1fr));
   gap: var(--px16);
-  padding-bottom: var(--px8);
+  padding-block: var(--px8);
   overflow-x: auto;
 }
 

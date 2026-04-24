@@ -1,24 +1,38 @@
-.sale {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--px4) var(--px24);
-  transition: background-color 300ms;
-}
-
-.sale[data-mode="card"] {
-  padding: var(--px4) var(--px8);
-  border-radius: 8px 8px 0 0;
-  outline: 1px solid var(--secondary);
-}
-
-.sale[data-expired="true"] {
+.container[data-mode="fullPage"]:focus {
   display: block;
-  text-align: center;
+  outline: 2px solid var(--dneutral-dark);
+  outline-offset: 2px;
+}
+.container[data-expired="true"] {
+  display: block;
   background-color: var(--lneutral-light);
+  text-align: center;
   outline-color: var(--lneutral-light);
 }
 
-.sale[data-expired="true"] p {
+.container h2 {
+  padding: var(--px4) var(--px24);
+  border-radius: 4px 4px 0 0;
+  transition: 300ms background-color;
+}
+.container[data-mode="fullPage"]:hover h2 {
+  background-color: var(--dneutral-xdark);
+}
+
+.container[data-expired="true"] p {
   line-height: var(--px32);
+}
+
+.saleInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--px4) var(--px16);
+}
+.container[data-mode="card"] .saleInfo {
+  border-radius: 8px 8px 0 0;
+  outline: 1px solid var(--secondary);
+}
+.container[data-mode="fullPage"] .saleInfo {
+  padding-inline: var(--px24);
 }

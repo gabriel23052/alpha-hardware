@@ -1,24 +1,26 @@
 import parsePrice from "@utils/parsePrice";
 
-import classes from "./ProductBuyPrice.module.css";
+import classes from "./ProductActionsPrice.module.css";
 
-const ProductBuyPrice = ({ prices }: { prices: IPrices }) => {
+type Props = {
+  prices: IProductPrices;
+};
+
+const ProductActionsPrice = ({ prices }: Props) => {
   return (
-    <div className={`${classes.productBuyPrice}`}>
+    <div className={classes.container}>
       {prices.previous && (
-        <span className={`lneutral-dark text-default ${classes.oldPrice}`}>
+        <p className={`text-default lneutral-dark ${classes.oldPrice}`}>
           R$ {parsePrice(prices.previous)}
-        </span>
+        </p>
       )}
-      <span
-        className={`lneutral-xdark text-default ${classes.priceWithDiscont}`}
-      >
+      <p className={`text-default lneutral-xdark ${classes.priceWithDiscont}`}>
         <span className="primary-dark">
           R$ <span className="text-price">{parsePrice(prices.pix)}</span>
         </span>{" "}
         no PIX ({prices.pixDiscont}% OFF)
-      </span>
-      <span className="lneutral-xdark text-default">
+      </p>
+      <p className="lneutral-xdark text-default">
         <span className="dneutral-xdark">R$ {parsePrice(prices.full)}</span> no
         cartão
         <br />
@@ -27,9 +29,9 @@ const ProductBuyPrice = ({ prices }: { prices: IPrices }) => {
           {prices.maxInstallments}x de R$ {parsePrice(prices.installments)}
         </span>{" "}
         sem juros
-      </span>
+      </p>
     </div>
   );
 };
 
-export default ProductBuyPrice;
+export default ProductActionsPrice;

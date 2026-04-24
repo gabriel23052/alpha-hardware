@@ -45,10 +45,12 @@ type IProduct = {
   tags: string[];
 };
 
+type IProduct_Full = IProduct;
+
 type IProduct_Card = {
   id: string;
   name: string;
-  prices: FAProductPrice;
+  prices: IProductPrices;
   media: { thumb: string };
   sale?: {
     id: string;
@@ -99,25 +101,6 @@ type IProductCollection = {
   products: IProduct_Card[];
 };
 
-// -----
-
-interface IHomePageContent {
-  banners: {
-    first: IBanner;
-    second: IBanner;
-  };
-  productIdGroups: {
-    sale: IProductIdGroup;
-    first: IProductIdGroup;
-    second: IProductIdGroup;
-  };
-}
-
-interface IProductSuggestion {
-  id: string;
-  name: string;
-}
-
 interface IFreight {
   cep: string;
   options: {
@@ -126,6 +109,8 @@ interface IFreight {
     deliveryTime: number;
   }[];
 }
+
+// -----
 
 interface IFakeApiProductFilter {
   id?: string | string[];

@@ -6,6 +6,10 @@
   height: 31.875rem;
 }
 
+.cardHideActions {
+  height: 26.125rem;
+}
+
 @media (max-width: 500px) {
   .cardDefault {
     height: 20.1538461538462rem; /* 262 ÷ 13 */
@@ -13,5 +17,9 @@
 
   .cardSale {
     height: 22.6538461538462rem; /* 294.5 ÷ 13 */
+  }
+
+  .cardHideActions {
+    height: 16.9166666666667rem; /* 203 ÷ 12 */
   }
 }

@@ -21,7 +21,7 @@ const ProductCard = ({ product, mode }: Props) => {
         to={`/product/${product.id}`}
         title={product.name}
       >
-        {product.sale && mode === "default" && (
+        {product.sale && mode !== "sale" && (
           <p
             className={`text-default secondary-xdark bg-secondary ${classes.saleDiscont}`}
           >

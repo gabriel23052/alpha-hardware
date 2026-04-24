@@ -1,8 +1,8 @@
-.productBuyPrice {
+.container {
   margin-bottom: var(--px24);
 }
 
-.productBuyPrice > span {
+.container > span {
   display: block;
 }
 

@@ -1,4 +1,4 @@
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
   padding: var(--px40) var(--px24);
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   margin-bottom: var(--px32);
+  gap: var(--px12);
 }
 
 .buyButton {
@@ -26,23 +27,28 @@
   border-radius: 4px;
   transition: background-color 300ms;
 }
-.buyButton:hover,
-.buyButton:focus {
+.buyButton:hover {
   background-color: var(--primary-dark);
+}
+.buyButton:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .cartButton {
   display: block;
-  margin-left: var(--px16);
   padding: var(--px8);
-  cursor: pointer;
   outline: 1px solid var(--lneutral-light);
   border-radius: 4px;
+  cursor: pointer;
   transition: outline-color 300ms;
 }
-.cartButton:hover,
+.cartButton:hover {
+  background-color: var(--white);
+}
 .cartButton:focus {
-  outline-color: var(--lneutral);
+  outline: 2px solid var(--lneutral);
+  outline-offset: 2px;
 }
 
 .cartButton svg {
@@ -54,18 +60,23 @@
 }
 
 .favoriteButton {
-  margin-left: var(--px4);
-  padding: var(--px8);
+  padding: var(--px4);
+  line-height: 0;
+  border-radius: 4px;
   background: none;
   cursor: pointer;
   transition: transform 300ms;
 }
-.favoriteButton:hover,
-.favoriteButton:focus {
+.favoriteButton:hover {
   transform: scale(1.1);
+}
+.favoriteButton:focus {
+  outline: 2px solid #ff7700;
 }
 
 .favoriteButton svg {
+  width: var(--px32);
+  height: var(--px32);
   fill: url(#gradient);
 }
 

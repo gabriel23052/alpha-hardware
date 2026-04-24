@@ -1,0 +1,21 @@
+.container {
+  margin-bottom: var(--px32);
+}
+
+.descTitle {
+  margin-bottom: var(--px12);
+}
+
+.descriptionSkeleton {
+  height: 12rem;
+  margin-bottom: var(--px32);
+}
+
+.specTitle {
+  margin-bottom: var(--px12);
+}
+
+.specSkeleton {
+  height: 10rem;
+}
+

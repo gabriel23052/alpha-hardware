@@ -4,8 +4,8 @@ import { Link } from "react-router";
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputPassword from "@components/inputs/InputPassword";
 import InputDefault from "@components/inputs/InputDefault";
-import PrimaryButton from "@components/PrimaryButton";
-import Alert from "@components/Alert";
+import PrimaryButton from "@components/ui/PrimaryButton";
+import Alert from "@components/ui/Alert";
 
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
@@ -25,17 +25,17 @@ const AuthRegister = () => {
         validation: FieldValidations.password,
       },
     },
-    "Erro na validação, tente novamente"
+    "Erro na validação, tente novamente",
   );
 
   const passwordMatcher = usePasswordMatcher(
     registerForm.fields.password.value,
-    registerForm.fields.confirmation.value
+    registerForm.fields.confirmation.value,
   );
 
   const handlePasswordsBlur = (e: FocusEvent<HTMLInputElement>) => {
     passwordMatcher.blurField(
-      e.target.id === "password" ? "password" : "confirmation"
+      e.target.id === "password" ? "password" : "confirmation",
     );
   };
 

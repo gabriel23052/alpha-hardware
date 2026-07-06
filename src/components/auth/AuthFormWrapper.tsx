@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-import UnderlinedTitle from "@components/UnderlinedTitle";
+import UnderlinedTitle from "@components/ui/UnderlinedTitle";
 
 import classes from "./AuthFormWrapper.module.css";
 

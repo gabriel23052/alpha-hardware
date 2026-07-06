@@ -1,4 +1,4 @@
-import ErrorMessage from "@components/ErrorMessage";
+import ErrorMessage from "@components/ui/ErrorMessage";
 import ProductList from "./ProductList";
 import ProductCollectionSkeleton from "./ProductCollectionSkeleton";
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 import ProductCardPrice from "./ProductCardPrice";
-import ProductSaleStrip from "./ProductSaleStrip";
+import ProductSaleStrip from "../ProductSaleStrip";
 import ProductCardActions from "./ProductCardActions";
 
 import classes from "./ProductCard.module.css";

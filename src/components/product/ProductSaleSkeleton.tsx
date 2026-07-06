@@ -1,5 +1,5 @@
-import SkeletonLoading from "@components/SkeletonLoading";
-import ProductCardSkeleton from "./ProductCardSkeleton";
+import ProductCardSkeleton from "./card/ProductCardSkeleton";
+import SkeletonLoading from "@components/ui/SkeletonLoading";
 
 import classes from "./ProductSaleSkeleton.module.css";
 

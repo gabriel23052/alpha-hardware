@@ -7,9 +7,9 @@ import "./main.css";
 import Header from "@components/header/Header";
 import Footer from "@components/Footer";
 import Home from "@components/home/Home";
-import ProductPage from "./components/product/ProductPage";
-import Catalog from "./components/catalog/Catalog";
-import ScrollToTop from "@components/ScrollToTop";
+import ProductPage from "@components/product/ProductPage";
+import Catalog from "@components/catalog/Catalog";
+import ScrollToTop from "@components/ui/ScrollToTop";
 import Auth from "@components/auth/Auth";
 
 createRoot(document.getElementById("root")!).render(
@@ -26,5 +26,5 @@ createRoot(document.getElementById("root")!).render(
         <Footer />
       </ScrollToTop>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

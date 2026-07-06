@@ -1,4 +1,4 @@
-import ProductCardSkeleton from "@components/product/ProductCardSkeleton";
+import ProductCardSkeleton from "@components/product/card/ProductCardSkeleton";
 
 import classes from "./CatalogSkeleton.module.css";
 

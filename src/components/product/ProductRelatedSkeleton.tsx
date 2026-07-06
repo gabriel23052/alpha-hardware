@@ -1,5 +1,5 @@
-import UnderlinedTitle from "@components/UnderlinedTitle";
-import ProductCardSkeleton from "./ProductCardSkeleton";
+import ProductCardSkeleton from "./card/ProductCardSkeleton";
+import UnderlinedTitle from "@components/ui/UnderlinedTitle";
 
 import classes from "./ProductRelatedSkeleton.module.css";
 

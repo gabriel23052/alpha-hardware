@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-import SkeletonLoading from "@components/SkeletonLoading";
-import ErrorMessage from "@components/ErrorMessage";
+import SkeletonLoading from "@components/ui/SkeletonLoading";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 import classes from "./HomeBanner.module.css";
 

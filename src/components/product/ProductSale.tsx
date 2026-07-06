@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 
 import ProductList from "./ProductList";
-import ErrorMessage from "@components/ErrorMessage";
 import ProductSaleSkeleton from "./ProductSaleSkeleton";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 import classes from "./ProductSale.module.css";
 

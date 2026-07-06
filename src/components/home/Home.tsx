@@ -5,7 +5,7 @@ import HomeCategories from "./HomeCategories";
 import HomeSocial from "./HomeSocial";
 import ProductSale from "@components/product/ProductSale";
 import ProductCollection from "@components/product/ProductCollection";
-import RecentlyViewed from "@components/RecentlyViewed";
+import RecentlyViewed from "@components/recentlyViewed/RecentlyViewed";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";

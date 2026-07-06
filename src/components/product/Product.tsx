@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-import ErrorMessage from "@components/ErrorMessage";
+import ErrorMessage from "@components/ui/ErrorMessage";
 import ProductActions from "./ProductActions";
 import ProductGallery from "./ProductGallery";
 import ProductRelated from "./ProductRelated";

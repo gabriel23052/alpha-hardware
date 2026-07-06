@@ -1,5 +1,5 @@
-import UnderlinedTitle from "@components/UnderlinedTitle";
-import SkeletonLoading from "@components/SkeletonLoading";
+import UnderlinedTitle from "@components/ui/UnderlinedTitle";
+import SkeletonLoading from "@components/ui/SkeletonLoading";
 
 import classes from "./ProductInfoSkeleton.module.css";
 

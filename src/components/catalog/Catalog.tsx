@@ -1,8 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 
-import ErrorMessage from "@components/ErrorMessage";
-import CatalogFilter from "@components/catalog/CatalogFilter";
+import ErrorMessage from "@components/ui/ErrorMessage";
+import CatalogFilter from "@components/catalog/filter/CatalogFilter";
 import ProductList from "@components/product/ProductList";
 import CatalogTopMenu from "./CatalogTopMenu";
 import CatalogSkeleton from "./CatalogSkeleton";

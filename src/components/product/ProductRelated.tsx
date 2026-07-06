@@ -1,7 +1,7 @@
-import UnderlinedTitle from "@components/UnderlinedTitle";
 import ProductList from "./ProductList";
 import ProductRelatedSkeleton from "./ProductRelatedSkeleton";
-import ErrorMessage from "@components/ErrorMessage";
+import UnderlinedTitle from "@components/ui/UnderlinedTitle";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 import classes from "./ProductRelated.module.css";
 
@@ -33,3 +33,4 @@ const ProductRelated = ({ data, loading, error }: Props) => {
 };
 
 export default ProductRelated;
+

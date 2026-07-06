@@ -1,6 +1,6 @@
-import SkeletonLoading from "@components/SkeletonLoading";
 import ProductRelatedSkeleton from "./ProductRelatedSkeleton";
 import ProductInfoSkeleton from "./ProductInfoSkeleton";
+import SkeletonLoading from "@components/ui/SkeletonLoading";
 
 import classes from "./ProductSkeleton.module.css";
 

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputDefault from "@components/inputs/InputDefault";
 import InputPassword from "@components/inputs/InputPassword";
-import PrimaryButton from "@components/PrimaryButton";
+import PrimaryButton from "@components/ui/PrimaryButton";
 
 import useJafh from "@hooks/useJafh";
 
@@ -17,7 +17,7 @@ const AuthLogin = () => {
       username: { value: "", validation: FieldValidations.username },
       password: { value: "", validation: FieldValidations.password },
     },
-    "Erro na validação, tente novamente"
+    "Erro na validação, tente novamente",
   );
 
   return (

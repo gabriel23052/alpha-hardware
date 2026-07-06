@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "@components/ui/ErrorMessage";
 import ProductList from "@components/product/ProductList";
 import RecentlyViewedSkeleton from "./RecentlyViewedSkeleton";
-import SVGRecently from "@svg/recently.svg?react";
 
 import useFakeAPI from "@hooks/useFakeAPI";
+
+import SVGRecently from "@svg/recently.svg?react";
 
 import classes from "./RecentlyViewed.module.css";
 

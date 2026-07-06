@@ -7,7 +7,7 @@ import type { JafhForm } from "@hooks/useJafh";
 
 import SVGChevronLeft from "@svg/chevronLeft.svg?react";
 
-import { TAGS } from "../../config";
+import { TAGS } from "../../../config";
 
 import classes from "./CatalogFilter.module.css";
 import CatalogFilterCategories from "./CatalogFilterCategories";

@@ -2,7 +2,7 @@ import InputRadio from "@components/inputs/InputRadio";
 
 import type { JafhField } from "@hooks/useJafh";
 
-import { CATEGORIES } from "../../config";
+import { CATEGORIES } from "../../../config";
 
 import classes from "./CatalogFilterCategories.module.css";
 
@@ -17,11 +17,10 @@ type Props = {
 };
 
 const CatalogFilterCategories = ({ field, updateCategory }: Props) => {
-
   const handleUpdate = (_: string, newValue: string) => {
     updateCategory(newValue);
-  }  
-  
+  };
+
   return (
     <div className={classes.container}>
       <h2 className="text-default-b dneutral">Categorias</h2>

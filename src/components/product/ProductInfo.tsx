@@ -1,4 +1,4 @@
-import UnderlinedTitle from "@components/UnderlinedTitle";
+import UnderlinedTitle from "@components/ui/UnderlinedTitle";
 
 import classes from "./ProductInfo.module.css";
 

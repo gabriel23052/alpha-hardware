@@ -3,8 +3,8 @@ import { type FocusEvent } from "react";
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputPassword from "@components/inputs/InputPassword";
 import InputDefault from "@components/inputs/InputDefault";
-import PrimaryButton from "@components/PrimaryButton";
-import Alert from "@components/Alert";
+import PrimaryButton from "@components/ui/PrimaryButton";
+import Alert from "@components/ui/Alert";
 
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
@@ -23,17 +23,17 @@ const AuthRecover = () => {
         validation: FieldValidations.password,
       },
     },
-    "Erro na validação, tente novamente"
+    "Erro na validação, tente novamente",
   );
 
   const passwordMatcher = usePasswordMatcher(
     recoverForm.fields.password.value,
-    recoverForm.fields.confirmation.value
+    recoverForm.fields.confirmation.value,
   );
 
   const handlePasswordsBlur = (e: FocusEvent<HTMLInputElement>) => {
     passwordMatcher.blurField(
-      e.target.id === "password" ? "password" : "confirmation"
+      e.target.id === "password" ? "password" : "confirmation",
     );
   };
 

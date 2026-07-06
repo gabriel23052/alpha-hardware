@@ -55,7 +55,7 @@ const INSTITUTIONAL_LINKS = [
 ];
 
 // prettier-ignore
-const TAGS_WITH_LEGENDS = {
+const TAGS = {
   moba: [
     { legend: "Fabricante", values: ["Asus", "Gigabyte", "MSI", "ASRock", "Colorful"] },
     { legend: "Socket", values: ["AMD", "Intel"] },
@@ -86,4 +86,4 @@ const TAGS_WITH_LEGENDS = {
   ],
 };
 
-export { CATEGORIES, SOCIAL_MEDIA, TAGS_WITH_LEGENDS, INSTITUTIONAL_LINKS };
+export { CATEGORIES, SOCIAL_MEDIA, TAGS, INSTITUTIONAL_LINKS };

@@ -1,8 +1,5 @@
 .container {
   grid-row: 2;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms;
 }
 
 .closeButton {
@@ -25,41 +22,6 @@
   transform: translateX(-1px);
 }
 
-.categorySelection > h2 {
-  margin-bottom: var(--px8);
-}
-
-.categorySelection {
-  margin-bottom: var(--px16);
-  padding-bottom: var(--px16);
-  border-bottom: 1px solid var(--lneutral);
-}
-
-.categoryInput label {
-  display: block;
-  padding: var(--px4) var(--px8);
-  border-radius: 4px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 300ms;
-}
-.categoryInput label:hover,
-.categoryInput label:focus {
-  background-color: var(--lneutral-light);
-}
-
-.categoryInput label:global(.selected) {
-  background-color: var(--secondary-light);
-  color: var(--secondary-xdark);
-}
-
-.categoryInput input {
-  width: var(--px16);
-  height: var(--px16);
-  position: absolute;
-  opacity: 0;
-}
-
 .cleanButton {
   width: 100%;
   margin-bottom: var(--px20);
@@ -79,10 +41,17 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 10;
+    transition: opacity 400ms;
+  }
+  .container[data-expanded="true"] {
+    opacity: 1;
+    pointer-events: all;
   }
 
   .closeButton {
@@ -95,7 +64,11 @@
     padding: var(--px16);
     background-color: white;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    transition: transform 400ms;
+    transition: translate 400ms;
     overflow-y: auto;
+    translate: -101%;
+  }
+  .filters[data-expanded="true"] {
+    translate: 0%;
   }
 }

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--px8) var(--px12);
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-column: 1 / -1;
+  }
+}
+

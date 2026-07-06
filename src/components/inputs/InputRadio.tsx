@@ -25,9 +25,8 @@ const InputRadio = ({
     <>
       {options.map((option) => (
         <label
-          className={`${labelStyles ?? ""} ${
-            field.value === option.value ? "selected" : ""
-          }`}
+          className={labelStyles ?? ""}
+          data-ischecked={field.value === option.value}
           key={option.value}
           htmlFor={`${id}-${option.value}`}
         >
@@ -36,6 +35,7 @@ const InputRadio = ({
             name={id}
             id={`${id}-${option.value}`}
             onChange={handleChange}
+            checked={field.value === option.value}
           />
           {option.label}
         </label>

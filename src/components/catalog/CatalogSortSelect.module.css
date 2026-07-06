@@ -2,16 +2,6 @@
   position: relative;
 }
 
-.container svg {
-  width: var(--px20);
-  height: var(--px20);
-  position: absolute;
-  right: var(--px8);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
 .select {
   width: 11rem;
   padding: var(--px8);
@@ -23,8 +13,20 @@
   cursor: pointer;
   transition: 300ms background-color;
 }
-.select:hover,
+.select:hover {
+  background-color: white;
+}
 .select:focus {
-  background-color: var(--lneutral);
-  color: var(--dneutral);
+  outline: 2px solid var(--lneutral);
+  outline-offset: 2px;
+}
+
+.container svg {
+  width: var(--px20);
+  height: var(--px20);
+  position: absolute;
+  right: var(--px8);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

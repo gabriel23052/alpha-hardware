@@ -13,21 +13,23 @@ type Props = {
 
 const SORT_OPTIONS = [
   { value: "", label: "Sem ordenação" },
+  { value: "alphabetical", label: "Ordem alfabética" },
   { value: "increasingPrice", label: "Preço crescente" },
-  { value: "decreasingPrice", label: "Preço descrescente" },
+  { value: "decreasingPrice", label: "Preço decrescente" },
 ];
 
 const CatalogSortSelect = ({ field, updateField }: Props) => {
   return (
-    <div className={`${classes.container}`}>
+    <div className={classes.container}>
       <InputSelect
-        className={`bg-lneutral-xlight dneutral-light text-small ${classes.select}`}
+        className={`text-small bg-lneutral-xlight dneutral-light ${classes.select}`}
         options={SORT_OPTIONS}
-        id="sortBy"
+        id="sort"
         field={field}
         updateField={updateField}
+        title="Ordenação dos produtos"
       />
-      <SVGSort />
+      <SVGSort aria-hidden="true" />
     </div>
   );
 };

@@ -5,13 +5,12 @@ import { HomepageHandler } from "./handlers/HomepageHandler";
 import { ProductsHandler } from "./handlers/ProductsHandler";
 
 const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
-  "GET api/homepage/banners":
-    (): FAResponse<FAHomepageBanners_Full> => {
-      const homepageHandler = new HomepageHandler();
-      const response = new FakeAPIResponse<FAHomepageBanners_Full>();
-      homepageHandler.getHomepageBanners(response);
-      return response.getResponse();
-    },
+  "GET api/homepage/banners": (): FAResponse<FAHomepageBanners_Full> => {
+    const homepageHandler = new HomepageHandler();
+    const response = new FakeAPIResponse<FAHomepageBanners_Full>();
+    homepageHandler.getHomepageBanners(response);
+    return response.getResponse();
+  },
 
   "GET api/homepage/sale": (): FAResponse<FASale_PrCard> => {
     const homepageHandler = new HomepageHandler();

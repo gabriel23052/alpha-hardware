@@ -15,7 +15,7 @@ const Footer = () => {
           <ul className="text-default">
             {CATEGORIES.map(({ name, label }) => (
               <li key={name}>
-                <Link className="white" to={`/products?category=${name}`}>
+                <Link className="white" to={`/catalog?category=${name}`}>
                   {label}
                 </Link>
               </li>

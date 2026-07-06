@@ -94,7 +94,7 @@ const HeaderSearch = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     navigate(
-      `/products?name=${encodeURIComponent(searchForm.fields.search.value)}`,
+      `/catalog?name=${encodeURIComponent(searchForm.fields.search.value)}`,
     );
   };
 

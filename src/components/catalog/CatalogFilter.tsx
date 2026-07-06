@@ -2,22 +2,15 @@ import type { MouseEventHandler } from "react";
 
 import CatalogFilterTags from "./CatalogFilterTags";
 import CatalogFilterPrices from "./CatalogFilterPrices";
-import InputRadio from "@components/inputs/InputRadio";
 
 import type { JafhForm } from "@hooks/useJafh";
 
 import SVGChevronLeft from "@svg/chevronLeft.svg?react";
 
-import { CATEGORIES, TAGS_WITH_LEGENDS } from "../../data";
+import { TAGS } from "../../config";
 
 import classes from "./CatalogFilter.module.css";
-
-const CATEGORIES_RADIO_OPTIONS = CATEGORIES.map((category) => ({
-  label: category.label,
-  value: category.name,
-}));
-
-const MOBILE_MAX_WIDTH = 900;
+import CatalogFilterCategories from "./CatalogFilterCategories";
 
 type Props = {
   filterForm: JafhForm<{
@@ -26,6 +19,7 @@ type Props = {
     maxPrice: string;
     tags: [string, string][];
   }>;
+  updateCategory: (newCategory: string) => void;
   filterContainerID: string;
   showFilter: boolean;
   setShowFilter: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,6 +28,7 @@ type Props = {
 const CatalogFilter = ({
   filterForm,
   filterContainerID,
+  updateCategory,
   showFilter,
   setShowFilter,
 }: Props) => {
@@ -44,25 +39,13 @@ const CatalogFilter = ({
   };
 
   const closeMobileFilter: MouseEventHandler<HTMLFormElement> = (e) => {
-    if (
-      e.target instanceof HTMLFormElement &&
-      window.innerWidth <= MOBILE_MAX_WIDTH
-    ) {
-      setShowFilter(false);
-    }
+    if (e.target instanceof HTMLFormElement) setShowFilter(false);
   };
 
   return (
     <form
-      className={`${classes.container}`}
-      style={
-        showFilter
-          ? {
-              opacity: "1",
-              pointerEvents: "all",
-            }
-          : undefined
-      }
+      className={classes.container}
+      data-expanded={showFilter}
       onSubmit={(e: React.FormEvent) => {
         e.preventDefault();
       }}
@@ -70,30 +53,17 @@ const CatalogFilter = ({
       id={filterContainerID}
     >
       <button
-        className={`${classes.closeButton}`}
+        className={classes.closeButton}
         aria-label="Fechar os filtros"
         aria-controls={filterContainerID}
       >
-        <SVGChevronLeft />
+        <SVGChevronLeft aria-hidden="true" />
       </button>
-      <div
-        className={`${classes.filters}`}
-        style={{
-          transform: showFilter ? "" : "translateX(-101%)",
-        }}
-      >
-        <div className={`${classes.categorySelection}`}>
-          <h2 className="dneutral text-default-b">Departamentos</h2>
-          <fieldset className={`${classes.categoryInput}`}>
-            <InputRadio
-              labelStyles="dneutral text-small"
-              id="category"
-              options={CATEGORIES_RADIO_OPTIONS}
-              field={filterForm.fields.category}
-              updateField={filterForm.updateField}
-            />
-          </fieldset>
-        </div>
+      <div className={classes.filters} data-expanded={showFilter}>
+        <CatalogFilterCategories
+          field={filterForm.fields.category}
+          updateCategory={updateCategory}
+        />
         <button
           className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}
           onClick={resetPriceAndTags}
@@ -101,15 +71,10 @@ const CatalogFilter = ({
           Limpar Filtros
         </button>
         <CatalogFilterPrices filterForm={filterForm} />
-        {filterForm.fields.category.value in TAGS_WITH_LEGENDS && (
+        {filterForm.fields.category.value in TAGS && (
           <CatalogFilterTags
             id="tags"
-            groups={
-              TAGS_WITH_LEGENDS[
-                filterForm.fields.category
-                  .value as keyof typeof TAGS_WITH_LEGENDS
-              ]
-            }
+            groups={TAGS[filterForm.fields.category.value as keyof typeof TAGS]}
             field={filterForm.fields.tags}
             updateField={filterForm.updateField}
           />

@@ -19,7 +19,7 @@ const InputSelect = ({
   id,
   field,
   updateField,
-  ...atr
+  ...attr
 }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     updateField(id, e.target.value);
@@ -32,7 +32,7 @@ const InputSelect = ({
       name={id}
       onChange={handleChange}
       value={field.value}
-      {...atr}
+      {...attr}
     >
       {options.map(({ value, label }) => (
         <option value={value} key={value}>

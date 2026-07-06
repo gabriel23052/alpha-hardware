@@ -1,4 +1,4 @@
-.breadcrumb {
+.container {
   display: flex;
   gap: var(--px8);
   align-items: center;
@@ -9,7 +9,7 @@
   cursor: default;
 }
 
-.breadcrumb button {
+.container button {
   width: var(--px20);
   height: var(--px20);
   display: flex;
@@ -20,11 +20,11 @@
   transition: background-color 300ms;
   cursor: pointer;
 }
-.breadcrumb button:hover,
-.breadcrumb button:focus {
+.container button:hover,
+.container button:focus {
   background-color: var(--secondary-xlight);
 }
 
-.breadcrumb svg {
+.container svg {
   width: var(--px12);
 }

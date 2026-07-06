@@ -47,7 +47,7 @@ const ProductSaleStrip = ({ sale, mode }: Props) => {
       className={classes.container}
       data-mode={mode}
       data-expired={saleTime === ""}
-      to={`/products?sale=${sale.id}`}
+      to={`/catalog?sale=${sale.id}&saleName=${encodeURIComponent(sale.name)}`}
     >
       <h2 className="text-display secondary bg-dneutral">{sale.name}</h2>
       {saleTime === "" && (

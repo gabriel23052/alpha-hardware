@@ -1,8 +1,8 @@
-import { useEffect, useState, type FocusEvent } from "react";
-
-import type { JafhForm } from "@hooks/useJafh";
+import { useState, type FocusEvent } from "react";
 
 import InputNumber from "@components/inputs/InputNumber";
+
+import type { JafhForm } from "@hooks/useJafh";
 
 import SVGError from "@svg/error.svg?react";
 
@@ -15,22 +15,27 @@ type Props = {
 const CatalogFilterPrices = ({ filterForm }: Props) => {
   const [minBlurred, setMinBlurred] = useState(false);
   const [maxBlurred, setMaxBlurred] = useState(false);
-  const [minGreaterThanMax, setMinGreaterThanMax] = useState(false);
 
-  useEffect(() => {
+  const getErrorIfExists = () => {
+    if (!minBlurred || !maxBlurred) return null;
+    if (filterForm.fields.minPrice.error || filterForm.fields.maxPrice.error) {
+      return (
+        filterForm.fields.minPrice.error || filterForm.fields.maxPrice.error
+      );
+    }
+
     const minPrice = Math.floor(
-      Number(filterForm.fields.minPrice.value.replace(",", ".")) * 100
+      Number(filterForm.fields.minPrice.value.replace(",", ".")) * 100,
     );
     const maxPrice = Math.floor(
-      Number(filterForm.fields.maxPrice.value.replace(",", ".")) * 100
+      Number(filterForm.fields.maxPrice.value.replace(",", ".")) * 100,
     );
-
-    if (maxPrice > 0 && minPrice > maxPrice) {
-      setMinGreaterThanMax(true);
-      return;
+    if (filterForm.fields.maxPrice.value !== "" && minPrice > maxPrice) {
+      return "Mínimo maior que o máximo";
     }
-    setMinGreaterThanMax(false);
-  }, [filterForm.fields.maxPrice.value, filterForm.fields.minPrice.value]);
+
+    return null;
+  };
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (e.target.id === "minPrice") {
@@ -41,11 +46,11 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
   };
 
   return (
-    <div className={`${classes.container}`}>
+    <div className={classes.container}>
       <h2 className="dneutral text-default-b">Preço</h2>
-      <fieldset className={`${classes.fields}`}>
-        <div className={`${classes.field}`}>
-          <label className={`dneutral text-small`} htmlFor="minPrice">
+      <fieldset className={classes.fields}>
+        <div className={classes.field}>
+          <label className={"dneutral text-small"} htmlFor="minPrice">
             Mínimo:
           </label>
           <InputNumber
@@ -58,14 +63,16 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
             field={filterForm.fields.minPrice}
             updateField={filterForm.updateField}
           />
-          {filterForm.fields.minPrice.error && minBlurred && <SVGError />}
+          {filterForm.fields.minPrice.error && minBlurred && (
+            <SVGError aria-hidden="true" />
+          )}
         </div>
-        <div className={`${classes.field}`}>
-          <label className={`dneutral text-small`} htmlFor="minPrice">
+        <div className={classes.field}>
+          <label className={"text-small dneutral"} htmlFor="minPrice">
             Máximo:
           </label>
           <InputNumber
-            className="dneutral bg-lneutral-xlight text-small"
+            className="text-small dneutral bg-lneutral-xlight"
             id="maxPrice"
             maxLength={8}
             placeholder="0,00"
@@ -74,23 +81,13 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
             field={filterForm.fields.maxPrice}
             updateField={filterForm.updateField}
           />
-          {filterForm.fields.maxPrice.error && maxBlurred && <SVGError />}
+          {filterForm.fields.maxPrice.error && maxBlurred && (
+            <SVGError aria-hidden="true" />
+          )}
         </div>
-        {minBlurred && maxBlurred ? (
-          filterForm.fields.minPrice.error ||
-          filterForm.fields.maxPrice.error ? (
-            <span className="primary text-small">
-              {filterForm.fields.minPrice.error ||
-                filterForm.fields.maxPrice.error}
-            </span>
-          ) : (
-            minGreaterThanMax && (
-              <span className="primary text-small">
-                Preço mínimo maior que o máximo
-              </span>
-            )
-          )
-        ) : null}
+        {getErrorIfExists() && (
+          <span className="text-small primary">{getErrorIfExists()}</span>
+        )}
       </fieldset>
     </div>
   );

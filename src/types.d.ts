@@ -110,15 +110,22 @@ interface IFreight {
   }[];
 }
 
-// -----
+type IProductFormatOptions = "full" | "price" | "card" | "suggestion";
 
-interface IFakeApiProductFilter {
-  id?: string | string[];
+type IProductFilter = {
   name?: string;
-  sale?: string;
+  saleId?: string;
   category?: string;
   minPrice?: number;
   maxPrice?: number;
   tags?: string[];
-  sortBy?: "increasingPrice" | "decreasingPrice";
 }
+
+type IProductSort = "alphabetical" | "increasingPrice" | "decreasingPrice";
+
+type IProductQuery = {
+  filter: IProductFilter;
+  format: IProductFormatOptions;
+  sort?: IProductSort;
+}
+

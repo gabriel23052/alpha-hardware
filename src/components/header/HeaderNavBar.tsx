@@ -18,7 +18,7 @@ const HeaderNavBar = ({ id }: Props) => {
       >
         {CATEGORIES.map(({ name, label }) => (
           <li key={name}>
-            <Link className="lneutral-light" to={`/products?category=${name}`}>
+            <Link className="lneutral-light" to={`/catalog?category=${name}`}>
               {label}
             </Link>
           </li>

@@ -1,7 +1,7 @@
 const banners: FABanner[] = [
   {
     id: "BAN-1AF1AC",
-    link: "/products?sale=2A0F24",
+    link: "/catalog?sale=SAL-15AFC6&saleName=Festival%20das%20Placas%20de%20Vídeo",
     baseSrc: "./img/banners/BAN-1AF1AC.jpg",
     baseWidth: 3840,
     baseHeight: 200,

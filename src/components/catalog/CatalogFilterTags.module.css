@@ -29,7 +29,7 @@
   outline: 1px solid var(--secondary);
   border-radius: 4px;
 }
-.field label:global(.selected)::before { 
+.field label[data-ischecked="true"]::before { 
   width: var(--px8);
   height: var(--px8);
   background-color: var(--secondary);

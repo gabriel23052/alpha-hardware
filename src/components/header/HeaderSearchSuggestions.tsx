@@ -35,7 +35,7 @@ const HeaderSearchSuggestions = ({ listId, results, query, show }: Props) => {
       </ul>
       <Link
         className={`text-small dneutral ${classes.moreItemsLink}`}
-        to={`/products?name=${encodeURIComponent(query)}`}
+        to={`/catalog?name=${encodeURIComponent(query)}`}
         tabIndex={show ? 0 : -1}
       >
         Mostrar mais produtos

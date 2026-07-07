@@ -217,7 +217,7 @@ const products: FAProduct[] = [
         },
       ],
     },
-    tags: ["MSI", "Intel", "DDR5"],
+    tags: ["Asus", "Intel", "DDR5"],
   },
   {
     id: "PRO-03A80EEF0",
@@ -1455,7 +1455,7 @@ const products: FAProduct[] = [
         },
       ],
     },
-    tags: ["MSI", "AMD", "DDR5"],
+    tags: ["MSI", "Intel", "DDR5"],
   },
   {
     id: "PRO-13944B524",

@@ -8,11 +8,7 @@ type Props = { id: string };
 
 const HeaderNavBar = ({ id }: Props) => {
   return (
-    <nav
-      className={`bg-dneutral-xdark ${classes.container}`}
-      id={id}
-      aria-label="Categorias"
-    >
+    <nav className="bg-dneutral-xdark" id={id} aria-label="Categorias">
       <ul
         className={`text-default lneutral-light defaultContainer ${classes.links}`}
       >

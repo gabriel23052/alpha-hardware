@@ -46,7 +46,7 @@ const InputPassword = ({
   };
 
   return (
-    <div className={`${classes.container} ${containerClassName}`}>
+    <div className={`${classes.container} ${containerClassName ?? ""}`}>
       <label className="text-default dneutral" htmlFor={id}>
         {label}
       </label>

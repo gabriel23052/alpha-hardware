@@ -63,7 +63,7 @@ const ProductFreight = () => {
           ))}
         </ul>
         <div className={classes.disclaimer}>
-          <SVGDisclaimer />
+          <SVGDisclaimer width={16} height={16} aria-hidden="true" />
           <span className="text-small lneutral-xdark">
             Prazos válidos a partir da data de envio
           </span>

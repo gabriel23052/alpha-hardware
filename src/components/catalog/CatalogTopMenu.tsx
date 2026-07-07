@@ -38,10 +38,10 @@ const CatalogTopMenu = ({
       <button
         className={`bg-lneutral-xlight dneutral-light ${classes.filterBtn}`}
         onClick={openMobileFilter}
-        aria-label="Abrir os filtros"
+        aria-label="Abrir menu de filtros"
         aria-controls={filterContainerId}
       >
-        <SVGFilter />
+        <SVGFilter aria-hidden="true" width={20} height={20} />
       </button>
       <CatalogSortSelect
         field={filterForm.fields.sort}

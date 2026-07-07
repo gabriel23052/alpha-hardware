@@ -53,7 +53,7 @@ const Header = () => {
               aria-controls={`${authId} ${shortcutsId}`}
               onClick={handleClick}
             >
-              <SVGMenu aria-hidden="true" />
+              <SVGMenu aria-hidden="true" width={32} height={32} />
             </button>
             <HeaderUserLinks id={authId} />
             <HeaderShortcuts shortcutsId={shortcutsId} />

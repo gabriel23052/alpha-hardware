@@ -27,7 +27,7 @@ const HomeSocial = () => {
                 style={{ background: socialMedia.background }}
                 aria-hidden="true"
               >
-                <socialMedia.svg />
+                <socialMedia.svg width={40} height={40} />
               </div>
               <p className={`bg-lneutral-xlight ${classes.id}`}>
                 {socialMedia.id}

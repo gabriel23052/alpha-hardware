@@ -6,5 +6,7 @@
 }
 
 .container svg {
+  width: var(--px24);
+  height: var(--px24);
   transform: translateY(-3px);
 }

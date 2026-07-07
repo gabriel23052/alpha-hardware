@@ -31,13 +31,13 @@ const ProductActions = ({ product }: Props) => {
               className={`bg-white ${classes.cartButton}`}
               title="Adicionar ao carrinho"
             >
-              <SVGCartAdd aria-hidden="true" />
+              <SVGCartAdd aria-hidden="true" width={36} height={24} />
             </button>
             <button
               className={classes.favoriteButton}
               title="Adicionar aos favoritos"
             >
-              <SVGFavorite aria-hidden="true" />
+              <SVGFavorite aria-hidden="true" width={32} height={32} />
             </button>
           </div>
         </div>

@@ -64,7 +64,7 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
             updateField={filterForm.updateField}
           />
           {filterForm.fields.minPrice.error && minBlurred && (
-            <SVGError aria-hidden="true" />
+            <SVGError aria-hidden="true" width={16} height={16} />
           )}
         </div>
         <div className={classes.field}>
@@ -82,7 +82,7 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
             updateField={filterForm.updateField}
           />
           {filterForm.fields.maxPrice.error && maxBlurred && (
-            <SVGError aria-hidden="true" />
+            <SVGError aria-hidden="true" width={16} height={16} />
           )}
         </div>
         {getErrorIfExists() && (

@@ -13,7 +13,7 @@ const CatalogBreadcrumb = ({ children, close }: Props) => {
     <span className={`text-small secondary-xdark ${classes.container}`}>
       {children}
       <button onClick={close}>
-        <SVGClose title="Excluir filtro" />
+        <SVGClose title="Excluir filtro" width={12} height={12} />
       </button>
     </span>
   );

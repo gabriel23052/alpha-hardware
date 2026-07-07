@@ -24,7 +24,7 @@ const RecentlyViewed = () => {
     <section className={`bg-lneutral-xlight ${classes.container}`}>
       <div className={`defaultContainer ${classes.wrapper}`}>
         <div className={classes.title}>
-          <SVGRecently />
+          <SVGRecently width={32} height={34}/>
           <h2 className="text-verylarge-m dneutral">
             Produtos que você viu recentemente
           </h2>

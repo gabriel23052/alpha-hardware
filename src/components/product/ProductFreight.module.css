@@ -47,6 +47,11 @@
   gap: var(--px8);
 }
 
+.disclaimer svg {
+  width: var(--px16);
+  height: var(--px16);
+}
+
 .form {
   display: grid;
   grid-template-columns: auto min-content;

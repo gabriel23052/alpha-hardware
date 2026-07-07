@@ -2,6 +2,7 @@ import type { MouseEventHandler } from "react";
 
 import CatalogFilterTags from "./CatalogFilterTags";
 import CatalogFilterPrices from "./CatalogFilterPrices";
+import CatalogFilterCategories from "./CatalogFilterCategories";
 
 import type { JafhForm } from "@hooks/useJafh";
 
@@ -10,7 +11,6 @@ import SVGChevronLeft from "@svg/chevronLeft.svg?react";
 import { TAGS } from "../../../config";
 
 import classes from "./CatalogFilter.module.css";
-import CatalogFilterCategories from "./CatalogFilterCategories";
 
 type Props = {
   filterForm: JafhForm<{
@@ -57,7 +57,7 @@ const CatalogFilter = ({
         aria-label="Fechar os filtros"
         aria-controls={filterContainerID}
       >
-        <SVGChevronLeft aria-hidden="true" />
+        <SVGChevronLeft aria-hidden="true" width={12} height={24} />
       </button>
       <div className={classes.filters} data-expanded={showFilter}>
         <CatalogFilterCategories

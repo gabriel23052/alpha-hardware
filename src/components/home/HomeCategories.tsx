@@ -19,7 +19,7 @@ const HomeCategories = () => {
               className="bg-lneutral-xlight"
               to={`/catalog?category=${name}`}
             >
-              <Svg aria-hidden="true" />
+              <Svg aria-hidden="true" width={116} height={64} />
               <span className="dneutral">{label}</span>
             </Link>
           </li>

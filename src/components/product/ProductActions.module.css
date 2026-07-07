@@ -52,6 +52,8 @@
 }
 
 .cartButton svg {
+  width: 2.25rem;
+  height: var(--px24);
   transition: transform 300ms;
 }
 .cartButton:hover svg,

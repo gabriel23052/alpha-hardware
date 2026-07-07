@@ -29,7 +29,7 @@ const CatalogSortSelect = ({ field, updateField }: Props) => {
         updateField={updateField}
         title="Ordenação dos produtos"
       />
-      <SVGSort aria-hidden="true" />
+      <SVGSort aria-hidden="true" width={20} height={20} />
     </div>
   );
 };

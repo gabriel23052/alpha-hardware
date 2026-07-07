@@ -7,7 +7,7 @@ type Props = { children: string; className?: string };
 const Alert = ({ children, className }: Props) => {
   return (
     <div className={`${classes.container} ${className}`}>
-      <SVGAlert />
+      <SVGAlert aria-hidden="true" width={24} height={24}/>
       <p className="text-default feedback-negative">{children}</p>
     </div>
   );

@@ -401,7 +401,7 @@ const salesFixtures = {
           },
           sale: {
             discont: 10,
-            expiration: 1773975600,
+            expiration,
             id: "SAL-15AFC6",
             name: "Festival das Placas de Vídeo",
           },
@@ -422,7 +422,7 @@ const salesFixtures = {
           },
           sale: {
             discont: 15,
-            expiration: 1773975600,
+            expiration,
             id: "SAL-15AFC6",
             name: "Festival das Placas de Vídeo",
           },

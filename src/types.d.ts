@@ -43,6 +43,8 @@ type IProduct = {
   sale?: IProductSale;
   media: IProductMedia;
   tags: string[];
+  description: string;
+  specs: [string, string][];
 };
 
 type IProduct_Full = IProduct;

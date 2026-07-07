@@ -58,6 +58,8 @@ type FAProduct = {
     expiration: number;
     discont: number;
   };
+  description: string;
+  specs: [string, string][];
 };
 type FAProduct_Full = FAProduct;
 type FAProduct_Price = {

@@ -45,6 +45,15 @@ const productsFixtures = {
             ],
           },
           tags: ["XPG", "DDR5", "32GB (2x16GB)"],
+          description:
+            "A Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 6000MHz, DDR5, CL30 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+          specs: [
+            ["Marca", "XPG"],
+            ["Capacidade", "32GB(2x16GB)"],
+            ["Frequência", "6000MHz"],
+            ["Tipo de memória", "DDR5"],
+            ["Latência", "CL30"],
+          ],
         },
       ],
     },
@@ -88,6 +97,15 @@ const productsFixtures = {
             ],
           },
           tags: ["Gigabyte", "12GB", "NVidia"],
+          description:
+            "A Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; barramento de 192 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+          specs: [
+            ["Marca", "Gigabyte"],
+            ["Modelo gráfico", "RTX 5070"],
+            ["Linha gráfica", "NVIDIA GeForce"],
+            ["Memória", "12GB GDDR7"],
+            ["Barramento de memória", "192 bits"],
+          ],
         },
         {
           id: "PRO-A5EDC5457",
@@ -114,6 +132,15 @@ const productsFixtures = {
             ],
           },
           tags: ["AMD", "AM4"],
+          description:
+            "O AMD Ryzen 5 5600GT é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.6GHz (4.6GHz máximo), cache de 4MB e 6 núcleos / 12 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+          specs: [
+            ["Modelo", "AMD Ryzen 5 5600GT"],
+            ["Soquete", "AM4"],
+            ["Frequência", "3.6GHz (4.6GHz máximo)"],
+            ["Cache", "4MB"],
+            ["Núcleos/Threads", "6 núcleos / 12 threads"],
+          ],
         },
         {
           id: "PRO-98DAA2CA8",
@@ -148,6 +175,15 @@ const productsFixtures = {
             ],
           },
           tags: ["Corsair", "DDR4", "8GB"],
+          description:
+            "A Memória RAM Corsair Vengeance LPX, 8GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+          specs: [
+            ["Marca", "Corsair"],
+            ["Capacidade", "8GB"],
+            ["Frequência", "3200MHz"],
+            ["Tipo de memória", "DDR4"],
+            ["Latência", "CL16"],
+          ],
         },
       ],
     },
@@ -191,6 +227,15 @@ const productsFixtures = {
             ],
           },
           tags: ["XPG", "DDR5", "32GB (2x16GB)"],
+          description:
+            "A Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 6000MHz, DDR5, CL30 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+          specs: [
+            ["Marca", "XPG"],
+            ["Capacidade", "32GB(2x16GB)"],
+            ["Frequência", "6000MHz"],
+            ["Tipo de memória", "DDR5"],
+            ["Latência", "CL30"],
+          ],
         },
       ],
     },
@@ -278,6 +323,15 @@ const productsFixtures = {
             ],
           },
           tags: ["Gigabyte", "12GB", "NVidia"],
+          description:
+            "A Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; barramento de 192 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+          specs: [
+            ["Marca", "Gigabyte"],
+            ["Modelo gráfico", "RTX 5070"],
+            ["Linha gráfica", "NVIDIA GeForce"],
+            ["Memória", "12GB GDDR7"],
+            ["Barramento de memória", "192 bits"],
+          ],
         },
       ],
     },
@@ -328,6 +382,15 @@ const productsFixtures = {
             ],
           },
           tags: ["Gigabyte", "8GB", "NVidia"],
+          description:
+            "A Placa de Vídeo Gigabyte RTX 5060 WINDFORCE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+          specs: [
+            ["Marca", "Gigabyte"],
+            ["Modelo gráfico", "RTX 5060"],
+            ["Linha gráfica", "NVIDIA GeForce"],
+            ["Memória", "8GB GDDR7"],
+            ["Barramento de memória", "128 bits"],
+          ],
         },
         {
           id: "PRO-2FD400729",
@@ -373,6 +436,15 @@ const productsFixtures = {
             ],
           },
           tags: ["Gigabyte", "16GB", "NVidia"],
+          description:
+            "A Placa de Vídeo Gigabyte RTX 5070 Ti WINDFORCE SFF 16G NVIDIA GeForce, 16GB, GDDR7, 256bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070 Ti. Conta com memória de 16GB GDDR7; barramento de 256 bits; recursos como DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+          specs: [
+            ["Marca", "Gigabyte"],
+            ["Modelo gráfico", "RTX 5070 Ti"],
+            ["Linha gráfica", "NVIDIA GeForce"],
+            ["Memória", "16GB GDDR7"],
+            ["Barramento de memória", "256 bits"],
+          ],
         },
         {
           id: "PRO-B7FA0718A",
@@ -418,6 +490,15 @@ const productsFixtures = {
             ],
           },
           tags: ["MSI", "12GB", "NVidia"],
+          description:
+            "A Placa de Vídeo MSI GeForce RTX 5070 12G VENTUS 2X OC,12 GB GDDR7, 28Gbps, NVIDIA GeForce RTX 5070 é uma placa de vídeo MSI baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; velocidade de 28 Gbps; recursos como OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+          specs: [
+            ["Marca", "MSI"],
+            ["Modelo gráfico", "RTX 5070"],
+            ["Linha gráfica", "NVIDIA GeForce"],
+            ["Memória", "12GB GDDR7"],
+            ["Velocidade informada", "28 Gbps"],
+          ],
         },
       ],
     },

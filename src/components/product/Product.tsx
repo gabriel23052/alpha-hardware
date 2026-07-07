@@ -10,8 +10,9 @@ import ProductSkeleton from "./ProductSkeleton";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 
-import classes from "./Product.module.css";
 import usePageTitle from "@hooks/usePageTitle";
+
+import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
   const productRequest = useFakeAPI<IProduct_Full>("GET api/products/id");
@@ -19,7 +20,10 @@ const Product = ({ productId }: { productId: string }) => {
     "GET api/products/related",
   );
 
-  usePageTitle("Alpha Hardware" + (productRequest.data ? ` | ${productRequest.data.name}` : ""));
+  usePageTitle(
+    "Alpha Hardware" +
+      (productRequest.data ? ` | ${productRequest.data.name}` : ""),
+  );
 
   const location = useLocation();
 
@@ -58,7 +62,10 @@ const Product = ({ productId }: { productId: string }) => {
           loading={relatedProductsRequest.loading}
           error={relatedProductsRequest.error}
         />
-        <ProductInfo />
+        <ProductInfo
+          description={productRequest.data.description}
+          specs={productRequest.data.specs}
+        />
       </article>
     );
 };

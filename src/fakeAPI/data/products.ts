@@ -36,6 +36,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe ASUS TUF GAMING B760M-PLUS WIFI II, Intel, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, memória DDR5. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Memória", "DDR5"],
+      ["Conectividade", "Wi-Fi"],
+    ],
   },
   {
     id: "PRO-B290D11D5",
@@ -74,6 +82,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS Prime H510M-A R2.0, Intel, ATX, DDR4, LGA 1200, H470 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1200, memória DDR4, formato ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1200"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-1D70EA474",
@@ -112,6 +129,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa Mãe ASUS PRIME H610M-CS D4, LGA 1700, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-2F61C7214",
@@ -150,6 +176,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe Gigabyte H510M H V2, Intel LGA 1200, 10ª E 11ª Geração, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1200, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1200"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-57CEA8CF9",
@@ -188,6 +223,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe MSI B760M Gaming Plus, Intel LGA 1700, M-ATX, DDR5, Wi-Fi é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR5, formato mATX. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-8268BB4FD",
@@ -217,7 +261,16 @@ const products: FAProduct[] = [
         },
       ],
     },
-    tags: ["Asus", "Intel", "DDR5"],
+    tags: ["MSI", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe ASUS Tuf Gaming Z790-Plus, Intel, ATX, DDR5, RGB, Wi-Fi, Bluetooth é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, memória DDR5, formato ATX. Também oferece Wi-Fi e Bluetooth para ampliar as opções de conexão. Também traz recursos como RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR5"],
+      ["Conectividade", "Wi-Fi, Bluetooth"],
+    ],
   },
   {
     id: "PRO-03A80EEF0",
@@ -256,6 +309,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe MSI Pro B760M-E, Intel LGA 1700, M-ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-3F55E68AA",
@@ -294,6 +356,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe Gigabyte B760M GAMING AC Rev. 1.x, Intel LGA1700, Micro ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato Micro ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-67E2FEC06",
@@ -332,6 +403,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe Gigabyte B760M Gaming X Rev. 1.0, Intel, Micro ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, memória DDR4, formato Micro ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "Intel"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-DC7818A33",
@@ -370,6 +449,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Colorful", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe Colorful BATTLE-AX H610M-E, Intel LGA1700, H610, DDR4, WIFI V20 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Colorful"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Memória", "DDR4"],
+      ["Conectividade", "Wi-Fi"],
+    ],
   },
   {
     id: "PRO-5E19C6A23",
@@ -408,6 +496,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS Prime B760M-A, Intel LGA 1700, D4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-FF124E82F",
@@ -446,6 +543,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "Intel", "DDR4"],
+    description:
+      "A Placa Mãe ASRock H610M-HVS M.2 Intel, M-ATX, DDR4, Socket LGA 1700, HDMI, D-Sub é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. Também traz recursos como HDMI, D-Sub. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-325DAC618",
@@ -484,6 +590,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS TUF GAMING B760M-Plus, Intel LGA 1700, mATX, D4, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-07262B83C",
@@ -522,6 +637,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS Prime B760M-A Wi-Fi, Intel LGA 1700, mATX, D4,DDR4, Wi-Fi é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato mATX. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-5ADE4DBBF",
@@ -560,6 +684,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe ASUS ROG STRIX B760-F Gaming Wi-Fi, Intel LGA 1700, ATX, DDR5, Wi-Fi é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR5, formato ATX. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-19BD26348",
@@ -598,6 +731,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe Gigabyte Z790 Aorus Elite AX, LGA 1700, ATX, DDR5, Wi-Fi é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR5, formato ATX. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-D85B8DB40",
@@ -636,6 +778,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS PRIME H510M-K R2.0, INTEL, H470, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-471741A0B",
@@ -674,6 +824,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "Intel", "DDR4"],
+    description:
+      "A Placa Mãe MSI PRO H610M-S Intel Core, DDR4, mATX, Realtek ALC897 Codec é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, memória DDR4, formato mATX. Também traz recursos como Realtek ALC897 Codec. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Plataforma", "Intel"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+      ["Recursos", "Realtek ALC897 Codec"],
+    ],
   },
   {
     id: "PRO-BDC286153",
@@ -712,6 +871,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, D4,DDR4, ATX é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR4, formato ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-7554C4CF6",
@@ -750,6 +918,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
+    description:
+      "A Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, Intel, ATX, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR5, formato ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-7450A321B",
@@ -788,6 +965,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe MSI A520M-A PRO, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-248299B87",
@@ -826,6 +1012,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS TUF GAMING A520M-PLUS II, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-F9C97BA04",
@@ -864,6 +1059,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe Gigabyte B550M Aorus Elite Rev. 1.3, AMD AM4, Micro ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato Micro ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-06AE48775",
@@ -902,6 +1106,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe MSI MPG B550 Gaming Plus, AMD AM4, ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-CAD5BEDDF",
@@ -940,6 +1153,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS TUF Gaming B550M-Plus, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-148CA535D",
@@ -978,6 +1200,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR5"],
+    description:
+      "A Placa-Mãe ASUS TUF Gaming B650M-Plus, AMD AM5 B650, mATX, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM5, memória DDR5, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM5"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-CB446899E",
@@ -1016,6 +1247,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe MSI B550M Pro-VDH WiFi, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. Também oferece Wi-Fi para facilitar a conexão à rede. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-C45F042A9",
@@ -1054,6 +1294,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASRock B450M Steel Legend, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-7CF7FE5D3",
@@ -1092,6 +1341,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS Prime B550M-A, AMD AM4, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-B415C97A3",
@@ -1130,6 +1388,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "AMD", "DDR5"],
+    description:
+      "A Placa-Mãe ASRock B650M PG Riptide, AMD, Micro ATX, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, memória DDR5, formato Micro ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Plataforma", "AMD"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-AFFBDC087",
@@ -1168,6 +1434,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS TUF GAMING A520M-PLUS WIFI, AMD AM4, RGB, mATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato mATX. Também oferece Wi-Fi para facilitar a conexão à rede. Também traz recursos como RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "AM4"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-229E292D5",
@@ -1198,6 +1473,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
+    description:
+      "A Placa Mãe Gigabyte B550M DS3H AC, Rev 1.4, AMD AM4, Micro ATX, DDR4, Wi-Fi, Bluetooth é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato Micro ATX. Também oferece Wi-Fi e Bluetooth para ampliar as opções de conexão. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Conectividade", "Wi-Fi, Bluetooth"],
+      ["Socket", "AM4"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-002A74962",
@@ -1232,6 +1516,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR5"],
+    description:
+      "A Placa Mae ASUS TUF Gaming X670E-Plus, AMD X670, AM5, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM5, memória DDR5. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM5"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-7A476C4D5",
@@ -1270,6 +1562,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS ROG Strix B550-F Gaming II, AMD AM4, Aura Sync RGB, ATX, DDR4, Wi-Fi é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato ATX. Também oferece Wi-Fi para facilitar a conexão à rede. Também traz recursos como Aura Sync RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Conectividade", "Wi-Fi"],
+      ["Socket", "AM4"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-7D6BE3AA2",
@@ -1308,6 +1609,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe Gigabyte A520M K V2 Rev. 1.0, AMD, Micro ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, memória DDR4, formato Micro ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "AMD"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-360C64357",
@@ -1346,6 +1655,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
+    description:
+      "A Placa-Mãe ASUS TUF Gaming B550-PRO, AMD AM4, ATX, DDR4 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM4, memória DDR4, formato ATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM4"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR4"],
+    ],
   },
   {
     id: "PRO-9CE8E8E5A",
@@ -1380,6 +1698,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
+    description:
+      "A Placa Mãe Gigabyte B850 EAGLE WIFI6E, AMD AM5, ATX, DDR5, RGB, Wi-Fi 6E, Bluetooth é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM5, memória DDR5, formato ATX. Também oferece Wi-Fi 6E e Bluetooth para ampliar as opções de conexão. Também traz recursos como RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Conectividade", "Wi-Fi 6E, Bluetooth"],
+      ["Socket", "AM5"],
+      ["Formato", "ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-272C4B402",
@@ -1418,6 +1745,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
+    description:
+      "A Placa-Mãe Gigabyte A620M DS3H, AMD AM5, mATX, DDR5, RGB é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM5, memória DDR5, formato mATX. Também traz recursos como RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM5"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-7CDF50E24",
@@ -1455,7 +1791,16 @@ const products: FAProduct[] = [
         },
       ],
     },
-    tags: ["MSI", "Intel", "DDR5"],
+    tags: ["MSI", "AMD", "DDR5"],
+    description:
+      "A Placa Mãe MSI PRO B760M-G, Intel LGA 1700, mATX, DDR5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma Intel, socket LGA 1700, memória DDR5, formato mATX. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Plataforma", "Intel"],
+      ["Socket", "LGA 1700"],
+      ["Formato", "mATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-13944B524",
@@ -1490,6 +1835,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
+    description:
+      "A Placa-Mãe Gigabyte B650M DS3H Rev. 1.0, RGB, AMD, Micro ATX, DDR5, AM5 é uma placa-mãe voltada para montar ou atualizar computadores com plataforma AMD, socket AM5, memória DDR5, formato Micro ATX. Também traz recursos como RGB. É uma boa escolha para montar ou atualizar um PC com compatibilidade clara e componentes bem definidos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Plataforma", "AMD"],
+      ["Socket", "AM5"],
+      ["Formato", "Micro ATX"],
+      ["Memória", "DDR5"],
+    ],
   },
   {
     id: "PRO-026333169",
@@ -1528,6 +1882,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "6GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 3050 Windforce OC NVIDIA GeForce, 6GB, GDDR6, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 3050. Conta com memória de 6GB GDDR6; recursos como DLSS, Ray Tracing, OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 3050"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "6GB GDDR6"],
+      ["Recursos informados", "DLSS, Ray Tracing, OC"],
+    ],
   },
   {
     id: "PRO-688377899",
@@ -1566,6 +1929,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; barramento de 192 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5070"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "12GB GDDR7"],
+      ["Barramento de memória", "192 bits"],
+    ],
   },
   {
     id: "PRO-002350C9D",
@@ -1604,6 +1976,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5060 WINDFORCE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-2107D4DB3",
@@ -1642,6 +2023,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo RTX 4060 VENTUS 2x Black OC MSI NVIDIA GeForce, 8GB GDDR6, DLSS, Ray Tracing é uma placa de vídeo MSI baseada no modelo RTX 4060. Conta com memória de 8GB GDDR6; recursos como DLSS, Ray Tracing, OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Modelo gráfico", "RTX 4060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR6"],
+      ["Recursos informados", "DLSS, Ray Tracing, OC"],
+    ],
   },
   {
     id: "PRO-9C0DAC9F7",
@@ -1680,6 +2070,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5060 GAMING OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Triple Fan, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; recursos como DLSS, Ray Tracing, Triple Fan. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-E01929272",
@@ -1718,6 +2117,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo ASUS DUAL RTX 5060 O8G NVIDIA GeForce, 8GB GDDR7, 2565MHz, 128 bits, OpenGL 4.6, DLSS 4, Ray Tracing é uma placa de vídeo ASUS baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; clock de 2565 MHz; recursos como DLSS 4, DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Modelo gráfico", "RTX 5060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-2FD400729",
@@ -1756,6 +2164,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "16GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5070 Ti WINDFORCE SFF 16G NVIDIA GeForce, 16GB, GDDR7, 256bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070 Ti. Conta com memória de 16GB GDDR7; barramento de 256 bits; recursos como DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5070 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "16GB GDDR7"],
+      ["Barramento de memória", "256 bits"],
+    ],
   },
   {
     id: "PRO-B7FA0718A",
@@ -1794,6 +2211,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "12GB", "NVidia"],
+    description:
+      "A Placa de Vídeo MSI GeForce RTX 5070 12G VENTUS 2X OC,12 GB GDDR7, 28Gbps, NVIDIA GeForce RTX 5070 é uma placa de vídeo MSI baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; velocidade de 28 Gbps; recursos como OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Modelo gráfico", "RTX 5070"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "12GB GDDR7"],
+      ["Velocidade informada", "28 Gbps"],
+    ],
   },
   {
     id: "PRO-3709D4A9F",
@@ -1832,6 +2258,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "16GB", "NVidia"],
+    description:
+      "A Placa de Vídeo ASUS DUAL RTX 5060 TI O16G NVIDIA GeForce, 16GB GDDR7, 2602MHz, 128 bits, OpenGL4.6, DLSS 4, Ray Tracing é uma placa de vídeo ASUS baseada no modelo RTX 5060 Ti. Conta com memória de 16GB GDDR7; barramento de 128 bits; clock de 2602 MHz; recursos como DLSS 4, DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Modelo gráfico", "RTX 5060 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "16GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-4E0235EDE",
@@ -1870,6 +2305,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "12GB", "NVidia"],
+    description:
+      "A Placa de Vídeo ASUS PRIME RTX 5070 O12G NVIDIA Geforce, 12GB, GDDR7, Blackwell e DLSS4, Ray Tracing, Edição OC é uma placa de vídeo ASUS baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; recursos como DLSS4, DLSS, Ray Tracing. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Modelo gráfico", "RTX 5070"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "12GB GDDR7"],
+      ["Recursos informados", "DLSS4, DLSS, Ray Tracing, Edição OC"],
+    ],
   },
   {
     id: "PRO-998112857",
@@ -1904,6 +2348,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["PCyes", "2GB", "NVidia"],
+    description:
+      "A Placa de Vídeo G610 Projeto Edge Low Profile PCYes NVIDIA GeForce, 2GB, DDR3 é uma placa de vídeo PCYes baseada no modelo G610. Conta com memória de 2GB DDR3. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "PCYes"],
+      ["Modelo gráfico", "G610"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "2GB DDR3"],
+    ],
   },
   {
     id: "PRO-B36AB2296",
@@ -1942,6 +2394,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo MSI RTX 5060 8G VENTUS 2X OC Geforce NVIDIA, 8GB, GDDR7, 128 bits, 2535 MHz, DLSS 4, Ray Tracing é uma placa de vídeo MSI baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; clock de 2535 MHz; recursos como DLSS 4, DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Modelo gráfico", "RTX 5060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-AB0449CE8",
@@ -1980,6 +2441,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo MSI RTX 5060 Ti 8G VENTUS 2X OC PLUS NVIDIA GeForce, 8GB GDDR7, 128-bit, 2617 MHz, FP4 e DLSS 4, Ray Tracing é uma placa de vídeo MSI baseada no modelo RTX 5060 Ti. Conta com memória de 8GB GDDR7; barramento de 128 bits; clock de 2617 MHz; recursos como DLSS 4, DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "MSI"],
+      ["Modelo gráfico", "RTX 5060 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-6B1349768",
@@ -2010,6 +2480,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "16GB", "NVidia"],
+    description:
+      "A Placa de Vídeo RTX 5060 Ti GAMING OC 16G Gigabyte NVIDIA GeForce, 16GB GDDR7, 128bits, RGB, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5060 Ti. Conta com memória de 16GB GDDR7; barramento de 128 bits; recursos como DLSS, Ray Tracing, RGB. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5060 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "16GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-D0986A8D9",
@@ -2048,6 +2527,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5060 EAGLE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5060. Conta com memória de 8GB GDDR7; barramento de 128 bits; recursos como DLSS, Ray Tracing, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "8GB GDDR7"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-4860CF473",
@@ -2086,6 +2574,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Gigabyte RTX 5070 GAMING OC 12G NVIDIA GeForce, 12GB GDDR7, 192bits, RGB, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; barramento de 192 bits; recursos como DLSS, Ray Tracing, RGB. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5070"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "12GB GDDR7"],
+      ["Barramento de memória", "192 bits"],
+    ],
   },
   {
     id: "PRO-033FFE1A6",
@@ -2124,6 +2621,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["PCyes", "6GB", "NVidia"],
+    description:
+      "A Placa de Vídeo PCyes NVIDIA RTX 2060 Graffiti Series, 6GB, GDDR6 é uma placa de vídeo PCYes baseada no modelo RTX 2060. Conta com memória de 6GB GDDR6. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "PCYes"],
+      ["Modelo gráfico", "RTX 2060"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "6GB GDDR6"],
+    ],
   },
   {
     id: "PRO-8B5C16E0F",
@@ -2162,6 +2667,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Palit", "16GB", "NVidia"],
+    description:
+      "A Placa de Vídeo Palit RTX 5070 Ti GameRock NVIDIA GeForce, 16GB, GDDR7, ARGB SYNC EVO, G-Sync, Ray Tracing, DLSS 4 é uma placa de vídeo Palit baseada no modelo RTX 5070 Ti. Conta com memória de 16GB GDDR7; recursos como DLSS 4, DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Palit"],
+      ["Modelo gráfico", "RTX 5070 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "16GB GDDR7"],
+      ["Recursos informados", "DLSS 4, DLSS, Ray Tracing, RGB"],
+    ],
   },
   {
     id: "PRO-68010B73A",
@@ -2200,6 +2714,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
+    description:
+      "A Placa de Vídeo RTX 5070 WINDFORCE SFF 12G Gigabyte NVIDIA GeForce, 12GB, GDDR7, 192bits, DLSS, Ray Tracing é uma placa de vídeo Gigabyte baseada no modelo RTX 5070. Conta com memória de 12GB GDDR7; barramento de 192 bits; recursos como DLSS, Ray Tracing. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RTX 5070"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "12GB GDDR7"],
+      ["Barramento de memória", "192 bits"],
+    ],
   },
   {
     id: "PRO-15F1FF047",
@@ -2238,6 +2761,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["PCyes", "4GB", "NVidia"],
+    description:
+      "A Placa de Vídeo GTX 750 TI PCYes NVIDIA GeForce, 4GB GDDR5, 128 Bit, Full Size é uma placa de vídeo PCYes baseada no modelo GTX 750 Ti. Conta com memória de 4GB GDDR5; barramento de 128 bits. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "PCYes"],
+      ["Modelo gráfico", "GTX 750 Ti"],
+      ["Linha gráfica", "NVIDIA GeForce"],
+      ["Memória", "4GB GDDR5"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-AD8E593EB",
@@ -2276,6 +2808,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 6600 CLD 8G ASRock AMD Radeon, 8GB, GDDR6 é uma placa de vídeo ASRock baseada no modelo RX 6600. Conta com memória de 8GB GDDR6; recursos como OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Modelo gráfico", "RX 6600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Recursos informados", "OC"],
+    ],
   },
   {
     id: "PRO-D55645F74",
@@ -2314,6 +2855,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo XFX AMD RADEON RX 7600 Gaming Graphics Card, 8GB, GDDR6 é uma placa de vídeo XFX baseada no modelo RX 7600. Conta com memória de 8GB GDDR6. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 7600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+    ],
   },
   {
     id: "PRO-9A524C334",
@@ -2352,6 +2901,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7600 Challenger ASRock AMD Radeon, 8GB GDDR6 é uma placa de vídeo ASRock baseada no modelo RX 7600. Conta com memória de 8GB GDDR6; recursos como OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Modelo gráfico", "RX 7600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Recursos informados", "OC"],
+    ],
   },
   {
     id: "PRO-288D0B161",
@@ -2390,6 +2948,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7600 GAMING OC 8G AMD Radeon Gigabyte, 8GB, GDDR6, 128bits, RGB é uma placa de vídeo Gigabyte baseada no modelo RX 7600. Conta com memória de 8GB GDDR6; barramento de 128 bits; recursos como RGB, OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RX 7600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-C9E5FE2A5",
@@ -2428,6 +2995,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo ASRock RX 9060 XT CL 16GO AMD Radeon, 16GB, GDDR6, 128bits, OpenGL 4.6, RDNA 4 é uma placa de vídeo ASRock baseada no modelo RX 9060 XT. Conta com memória de 16GB GDDR6; barramento de 128 bits; recursos como OpenGL 4.6, RDNA 4, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Modelo gráfico", "RX 9060 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-61CBA0795",
@@ -2466,6 +3042,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7600 Series Graphics Cards XFX AMD Radeon, 8GB GDDR6 é uma placa de vídeo XFX baseada no modelo RX 7600. Conta com memória de 8GB GDDR6. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 7600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+    ],
   },
   {
     id: "PRO-14B7D0E88",
@@ -2504,6 +3088,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 6650XT XFX Speedster SWFT210 AMD Radeon, 8GB GDDR6, HDMI 3xDP 2 FAN é uma placa de vídeo XFX baseada no modelo RX 6650XT. Conta com memória de 8GB GDDR6; conexões HDMI e 3x DP; recursos como 2 FAN. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 6650XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Conexões informadas", "HDMI e 3x DP"],
+    ],
   },
   {
     id: "PRO-88E5CD51A",
@@ -2542,6 +3135,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo XFX RX 9060 XT OC AMD Radeon, 16GB, GDDR6, 128bits, 20 Gbps, Triple Fan, RDNA 4 é uma placa de vídeo XFX baseada no modelo RX 9060 XT. Conta com memória de 16GB GDDR6; barramento de 128 bits; velocidade de 20 Gbps; recursos como RDNA 4, Triple Fan, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 9060 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-4B8E02B92",
@@ -2580,6 +3182,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo ASRock RX 9060 XT SL 16GO AMD Radeon, 16GB, GDDR6, 128bits, Triple Fan, OpenGL 4.6, RDNA 4 é uma placa de vídeo ASRock baseada no modelo RX 9060 XT. Conta com memória de 16GB GDDR6; barramento de 128 bits; recursos como OpenGL 4.6, RDNA 4, Triple Fan. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Modelo gráfico", "RX 9060 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-3744553B7",
@@ -2618,6 +3229,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7800XT Gaming 16G XFX Speedster QICK319 AMD Radeon, 16GB DDR6, HDMI 3xDP 3 FAN é uma placa de vídeo XFX baseada no modelo RX 7800XT. Conta com memória de 16GB DDR6; conexões HDMI e 3x DP; recursos como 3 FAN. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 7800XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB DDR6"],
+      ["Conexões informadas", "HDMI e 3x DP"],
+    ],
   },
   {
     id: "PRO-019F41CA9",
@@ -2656,6 +3276,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["PCyes", "4GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 550 AMD PCYes Dual Fan Projeto Edge, 4GB GDDR5, 128 BITS é uma placa de vídeo PCYes baseada no modelo RX 550. Conta com memória de 4GB GDDR5; barramento de 128 bits; recursos como Dual Fan. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "PCYes"],
+      ["Modelo gráfico", "RX 550"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "4GB GDDR5"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-987CC9C3E",
@@ -2694,6 +3323,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Sapphire", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo Sapphire Pulse RX 6500 XT Gaming OC AMD, 8GB, GDDR6, 2855MHz, HDMI e DP é uma placa de vídeo Sapphire baseada no modelo RX 6500 XT. Conta com memória de 8GB GDDR6; clock de 2855 MHz; conexões HDMI e DP; recursos como OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Sapphire"],
+      ["Modelo gráfico", "RX 6500 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Clock informado", "2855 MHz"],
+    ],
   },
   {
     id: "PRO-BFA35D503",
@@ -2732,6 +3370,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
+    description:
+      "A Placa de Vídeo ASRock RX 6600 Challenger White AMD Radeon, 8GB, GDDR6, DirectX 12 Ultimate, RDNA 2 é uma placa de vídeo ASRock baseada no modelo RX 6600. Conta com memória de 8GB GDDR6; recursos como RDNA 2, DirectX 12 Ultimate, OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "ASRock"],
+      ["Modelo gráfico", "RX 6600"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "8GB GDDR6"],
+      ["Recursos informados", "RDNA 2, DirectX 12 Ultimate, OC"],
+    ],
   },
   {
     id: "PRO-F188B319E",
@@ -2770,6 +3417,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo XFX RX 9060 XT OC White AMD Radeon, 16GB, GDDR6, 128bits, 20 Gbps, Triple Fan, FidelityFX, RDNA 4 é uma placa de vídeo XFX baseada no modelo RX 9060 XT. Conta com memória de 16GB GDDR6; barramento de 128 bits; velocidade de 20 Gbps; recursos como RDNA 4, FidelityFX, Triple Fan. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 9060 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-2D5EA13C6",
@@ -2808,6 +3464,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Gigabyte", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo Gigabyte RX 9060 XT Gaming OC AMD Radeon, 16GB, GDDR6, 128bits, Triple Fan, OpenGL 4.6 é uma placa de vídeo Gigabyte baseada no modelo RX 9060 XT. Conta com memória de 16GB GDDR6; barramento de 128 bits; recursos como OpenGL 4.6, Triple Fan, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Gigabyte"],
+      ["Modelo gráfico", "RX 9060 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Barramento de memória", "128 bits"],
+    ],
   },
   {
     id: "PRO-F8E91AFF4",
@@ -2846,6 +3511,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7800 XT Magnetic Air Gaming Graphics Card with XFX Qicksilver White AMD Radeon, 16GB GDDR6, Freesync é uma placa de vídeo XFX baseada no modelo RX 7800 XT. Conta com memória de 16GB GDDR6; recursos como Freesync. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 7800 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Recursos informados", "Freesync"],
+    ],
   },
   {
     id: "PRO-9764E9629",
@@ -2880,6 +3554,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo XFX Mercury RX 9070 XT OC GAMING EDITION WITH AMD Radeon, RGB, 16GB, GDDR6, HDMI 3xDP, RDNA 4 é uma placa de vídeo XFX baseada no modelo RX 9070 XT. Conta com memória de 16GB GDDR6; conexões HDMI e 3x DP; recursos como RGB, RDNA 4, OC. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 9070 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Conexões informadas", "HDMI e 3x DP"],
+    ],
   },
   {
     id: "PRO-E377796B0",
@@ -2918,6 +3601,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Asus", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo RX 7600 XT OC ASUS AMD Radeon Dual O16G, 16GB GDDR6 é uma placa de vídeo ASUS baseada no modelo RX 7600 XT. Conta com memória de 16GB GDDR6; recursos como OC. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "ASUS"],
+      ["Modelo gráfico", "RX 7600 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Recursos informados", "OC"],
+    ],
   },
   {
     id: "PRO-89282152C",
@@ -2956,6 +3648,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo XFX Quicksilver RX 9070 XT GAMING EDITION WITH 16GB AMD Radeon, GDDR6, HDMI 3xDP, RDNA 4 é uma placa de vídeo XFX baseada no modelo RX 9070 XT. Conta com memória de 16GB; conexões HDMI e 3x DP; recursos como RDNA 4. É uma opção para quem compara placas de vídeo pela marca, linha, memória e recursos declarados antes de escolher o upgrade.",
+    specs: [
+      ["Marca", "XFX"],
+      ["Modelo gráfico", "RX 9070 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB"],
+      ["Conexões informadas", "HDMI e 3x DP"],
+    ],
   },
   {
     id: "PRO-ED5A3A0E1",
@@ -2994,6 +3695,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Sapphire", "16GB", "AMD"],
+    description:
+      "A Placa de Vídeo Sapphire PULSE RX 9070 XT GAMING AMD Radeon, 16GB, GDDR6, Dual HDMI, Dual DP, RDNA 4 é uma placa de vídeo Sapphire baseada no modelo RX 9070 XT. Conta com memória de 16GB GDDR6; conexões Dual HDMI e Dual DP; recursos como RDNA 4. Ajuda a comparar modelos da mesma linha com foco em marca, memória, barramento e recursos gráficos.",
+    specs: [
+      ["Marca", "Sapphire"],
+      ["Modelo gráfico", "RX 9070 XT"],
+      ["Linha gráfica", "AMD Radeon"],
+      ["Memória", "16GB GDDR6"],
+      ["Conexões informadas", "Dual HDMI e Dual DP"],
+    ],
   },
   {
     id: "PRO-7EDCF5AAF",
@@ -3024,6 +3734,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-12400F é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 2.5GHz (4.4GHz máximo) e cache de 18MB. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-12400F"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "2.5GHz (4.4GHz máximo)"],
+      ["Cache", "18MB"],
+    ],
   },
   {
     id: "PRO-E48931615",
@@ -3046,6 +3764,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-14600KF é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 5.3GHz máximo, cache de 24MB e 14 núcleos / 20 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-14600KF"],
+      ["Núcleos/Threads", "14 núcleos / 20 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "5.3GHz máximo"],
+      ["Cache", "24MB"],
+    ],
   },
   {
     id: "PRO-2C450F25B",
@@ -3068,6 +3795,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-14600K é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 5.3GHz máximo, cache de 24MB e 14 núcleos / 20 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-14600K"],
+      ["Núcleos/Threads", "14 núcleos / 20 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "5.3GHz máximo"],
+      ["Cache", "24MB"],
+    ],
   },
   {
     id: "PRO-C6A62DCBE",
@@ -3090,6 +3826,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i9-12900KS é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 3.4GHz (5.5GHz máximo) e cache de 30MB. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i9-12900KS"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "3.4GHz (5.5GHz máximo)"],
+      ["Cache", "30MB"],
+      ["Vídeo", "Vídeo integrado"],
+    ],
   },
   {
     id: "PRO-EA86C3F67",
@@ -3120,6 +3865,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-12400 é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 2.5GHz (4.4GHz máximo) e cache de 18MB. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-12400"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "2.5GHz (4.4GHz máximo)"],
+      ["Cache", "18MB"],
+    ],
   },
   {
     id: "PRO-CD85811AE",
@@ -3150,6 +3903,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i7-12700KF é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 3.6GHz (5.0GHz máximo), cache de 25MB e 12 núcleos / 20 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i7-12700KF"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "3.6GHz (5.0GHz máximo)"],
+      ["Cache", "25MB"],
+      ["Núcleos/Threads", "12 núcleos / 20 threads"],
+    ],
   },
   {
     id: "PRO-3F0567CD0",
@@ -3172,6 +3934,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i9-14900K é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 6GHz máximo, cache de 36MB e 24 núcleos / 32 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i9-14900K"],
+      ["Núcleos/Threads", "24 núcleos / 32 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "6GHz máximo"],
+      ["Cache", "36MB"],
+    ],
   },
   {
     id: "PRO-708CC838A",
@@ -3198,6 +3969,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1200"],
+    description:
+      "O Intel Core i3-10105 é um processador para computadores compatíveis com soquete LGA 1200. Traz frequência de 3.7GHz (4.4GHz máximo), cache de 6MB e 4 núcleos / 8 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i3-10105"],
+      ["Soquete", "LGA 1200"],
+      ["Frequência", "3.7GHz (4.4GHz máximo)"],
+      ["Cache", "6MB"],
+      ["Núcleos/Threads", "4 núcleos / 8 threads"],
+    ],
   },
   {
     id: "PRO-392C3C74B",
@@ -3220,6 +4000,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i7-14700KF é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 5.6GHz máximo, cache de 33MB e 20 núcleos / 28 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i7-14700KF"],
+      ["Núcleos/Threads", "20 núcleos / 28 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "5.6GHz máximo"],
+      ["Cache", "33MB"],
+    ],
   },
   {
     id: "PRO-9CA1977D6",
@@ -3250,6 +4039,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1200"],
+    description:
+      "O Intel Core i5-10400 é um processador para computadores compatíveis com soquete LGA 1200. Traz frequência de 2.9GHz (4.3GHz máximo) e cache de 12MB. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-10400"],
+      ["Soquete", "LGA 1200"],
+      ["Frequência", "2.9GHz (4.3GHz máximo)"],
+      ["Cache", "12MB"],
+    ],
   },
   {
     id: "PRO-9B37E4868",
@@ -3272,6 +4069,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i9-14900KF é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 6GHz máximo, cache de 36MB e 24 núcleos / 32 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i9-14900KF"],
+      ["Núcleos/Threads", "24 núcleos / 32 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "6GHz máximo"],
+      ["Cache", "36MB"],
+    ],
   },
   {
     id: "PRO-2F9B652E8",
@@ -3302,6 +4108,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i7-12700K é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 3.6GHz (5.0GHz máximo) e 12 núcleos / 20 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i7-12700K"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "3.6GHz (5.0GHz máximo)"],
+      ["Núcleos/Threads", "12 núcleos / 20 threads"],
+      ["Vídeo", "Vídeo integrado"],
+    ],
   },
   {
     id: "PRO-A3B151AB2",
@@ -3324,6 +4139,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i7-14700K é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 5.6GHz máximo, cache de 33MB e 20 núcleos / 28 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i7-14700K"],
+      ["Núcleos/Threads", "20 núcleos / 28 threads"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "5.6GHz máximo"],
+      ["Cache", "33MB"],
+    ],
   },
   {
     id: "PRO-AF1DFCD36",
@@ -3354,6 +4178,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-13400F é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 4.6GHz máximo, cache de 20MB e 10 núcleos / 16 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-13400F"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "4.6GHz máximo"],
+      ["Cache", "20MB"],
+      ["Núcleos/Threads", "10 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-3206A3A20",
@@ -3392,6 +4225,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1200"],
+    description:
+      "O Intel Core i5-10400F é um processador para computadores compatíveis com soquete LGA 1200. Traz frequência de 2.9GHz (4.3GHz máximo), cache de 12MB e 6 núcleos / 12 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-10400F"],
+      ["Soquete", "LGA 1200"],
+      ["Frequência", "2.9GHz (4.3GHz máximo)"],
+      ["Cache", "12MB"],
+      ["Núcleos/Threads", "6 núcleos / 12 threads"],
+    ],
   },
   {
     id: "PRO-17256E1C0",
@@ -3422,6 +4264,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i3-13100 é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 4.5GHz máximo, cache de 12MB e 4 núcleos / 8 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i3-13100"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "4.5GHz máximo"],
+      ["Cache", "12MB"],
+      ["Núcleos/Threads", "4 núcleos / 8 threads"],
+    ],
   },
   {
     id: "PRO-91022DA09",
@@ -3452,6 +4303,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i3-12100 é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 3.3GHz (4.3GHz máximo) e cache de 12MB. Também consta vídeo integrado e com cooler. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i3-12100"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "3.3GHz (4.3GHz máximo)"],
+      ["Cache", "12MB"],
+      ["Vídeo", "Vídeo integrado"],
+    ],
   },
   {
     id: "PRO-04AA22ED2",
@@ -3478,6 +4338,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1200"],
+    description:
+      "O Intel Core i3-10100F é um processador para computadores compatíveis com soquete LGA 1200. Traz frequência de 3.6GHz (4.3GHz máximo), cache de 6MB e 4 núcleos / 8 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i3-10100F"],
+      ["Soquete", "LGA 1200"],
+      ["Frequência", "3.6GHz (4.3GHz máximo)"],
+      ["Cache", "6MB"],
+      ["Núcleos/Threads", "4 núcleos / 8 threads"],
+    ],
   },
   {
     id: "PRO-65DD0D1EF",
@@ -3508,6 +4377,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i5-13400 é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 4.6GHz máximo, cache de 20MB e 10 núcleos / 16 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i5-13400"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "4.6GHz máximo"],
+      ["Cache", "20MB"],
+      ["Núcleos/Threads", "10 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-6C2EE352C",
@@ -3538,6 +4416,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Intel", "LGA1700"],
+    description:
+      "O Intel Core i3-12100F é um processador para computadores compatíveis com soquete LGA 1700. Traz frequência de 3.3GHz (4.3GHz máximo) e cache de 12MB. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "Intel Core i3-12100F"],
+      ["Soquete", "LGA 1700"],
+      ["Frequência", "3.3GHz (4.3GHz máximo)"],
+      ["Cache", "12MB"],
+    ],
   },
   {
     id: "PRO-A5EDC5457",
@@ -3564,6 +4450,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 5 5600GT é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.6GHz (4.6GHz máximo), cache de 4MB e 6 núcleos / 12 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 5600GT"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.6GHz (4.6GHz máximo)"],
+      ["Cache", "4MB"],
+      ["Núcleos/Threads", "6 núcleos / 12 threads"],
+    ],
   },
   {
     id: "PRO-6AF14669F",
@@ -3590,6 +4485,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 7 5700X3D é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.0GHz (4.1GHz máximo), cache de 4MB e 8 núcleos / 16 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 5700X3D"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.0GHz (4.1GHz máximo)"],
+      ["Cache", "4MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-CC5BF03BA",
@@ -3616,6 +4520,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 5 5500 é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.6GHz (4.2GHz máximo) e cache de 19MB. Também consta sem vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 5500"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.6GHz (4.2GHz máximo)"],
+      ["Cache", "19MB"],
+      ["Vídeo", "Sem vídeo integrado"],
+    ],
   },
   {
     id: "PRO-A02EECCAA",
@@ -3650,6 +4563,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 7 5700X é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.4GHz (4.6GHz máximo) e cache de 36MB. Também consta sem vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 5700X"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.4GHz (4.6GHz máximo)"],
+      ["Cache", "36MB"],
+      ["Vídeo", "Sem vídeo integrado"],
+    ],
   },
   {
     id: "PRO-3CDAB42EA",
@@ -3680,6 +4602,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 7 9800X3D é um processador para computadores compatíveis com soquete AM5. Traz cache de 8MB e 8 núcleos / 16 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 9800X3D"],
+      ["Soquete", "AM5"],
+      ["Cache", "8MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-A244D6ACD",
@@ -3714,6 +4644,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 5 7600 é um processador para computadores compatíveis com soquete AM5. Traz frequência de 5.1GHz máximo, cache de 38MB e 6 núcleos. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 7600"],
+      ["Soquete", "AM5"],
+      ["Frequência", "5.1GHz máximo"],
+      ["Cache", "38MB"],
+      ["Núcleos/Threads", "6 núcleos"],
+    ],
   },
   {
     id: "PRO-E060FA226",
@@ -3736,6 +4675,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 7 7800X3D é um processador para computadores compatíveis com soquete AM5. Traz frequência de 5.0GHz máximo, cache de 104MB e 8 núcleos. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 7800X3D"],
+      ["Soquete", "AM5"],
+      ["Frequência", "5.0GHz máximo"],
+      ["Cache", "104MB"],
+      ["Núcleos/Threads", "8 núcleos"],
+    ],
   },
   {
     id: "PRO-3F6BC274A",
@@ -3766,6 +4714,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 3 3200G é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.6GHz (4GHz máximo), cache de 4MB e 4 núcleos / 4 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 3 3200G"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.6GHz (4GHz máximo)"],
+      ["Cache", "4MB"],
+      ["Núcleos/Threads", "4 núcleos / 4 threads"],
+    ],
   },
   {
     id: "PRO-1C33B2AF2",
@@ -3792,6 +4749,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 5 5600 é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.5GHz (4.4GHz máximo) e cache de 35MB. Também consta sem vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 5600"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.5GHz (4.4GHz máximo)"],
+      ["Cache", "35MB"],
+      ["Vídeo", "Sem vídeo integrado"],
+    ],
   },
   {
     id: "PRO-2356B623A",
@@ -3830,6 +4796,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 5 9600X é um processador para computadores compatíveis com soquete AM5. Traz frequência de 3.9GHz (5.4GHz), cache de 32MB e 6 núcleos / 12 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 9600X"],
+      ["Soquete", "AM5"],
+      ["Frequência", "3.9GHz (5.4GHz)"],
+      ["Cache", "32MB"],
+      ["Núcleos/Threads", "6 núcleos / 12 threads"],
+    ],
   },
   {
     id: "PRO-B5009B531",
@@ -3868,6 +4843,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 5 8600G é um processador para computadores compatíveis com soquete AM5. Traz frequência de 4.3GHz (5.0GHz máximo), cache de 6MB e 6 núcleos / 12 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 8600G"],
+      ["Soquete", "AM5"],
+      ["Frequência", "4.3GHz (5.0GHz máximo)"],
+      ["Cache", "6MB"],
+      ["Núcleos/Threads", "6 núcleos / 12 threads"],
+    ],
   },
   {
     id: "PRO-EA4386256",
@@ -3894,6 +4878,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 7 5700 é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.7GHz (4.6GHz máximo), cache de 4MB e 8 núcleos / 16 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 5700"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.7GHz (4.6GHz máximo)"],
+      ["Cache", "4MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-68C6F5693",
@@ -3928,6 +4921,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 5 5600X é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.7GHz (4.6GHz máximo), cache de 35MB e 6 núcleos / 12 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 5600X"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.7GHz (4.6GHz máximo)"],
+      ["Cache", "35MB"],
+      ["Núcleos/Threads", "6 núcleos / 12 threads"],
+    ],
   },
   {
     id: "PRO-FB98CE8C2",
@@ -3954,6 +4956,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 3 5300G é um processador para computadores compatíveis com soquete AM4. Traz frequência de 4GHz (4.2GHz máximo), cache de 8MB e 4 núcleos / 8 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 3 5300G"],
+      ["Soquete", "AM4"],
+      ["Frequência", "4GHz (4.2GHz máximo)"],
+      ["Cache", "8MB"],
+      ["Núcleos/Threads", "4 núcleos / 8 threads"],
+    ],
   },
   {
     id: "PRO-8557A6F68",
@@ -3988,6 +4999,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 5 4500 é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.6GHz (4.1GHz máximo) e cache de 11MB. Também consta sem vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 4500"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.6GHz (4.1GHz máximo)"],
+      ["Cache", "11MB"],
+      ["Vídeo", "Sem vídeo integrado"],
+    ],
   },
   {
     id: "PRO-3E82487D7",
@@ -4022,6 +5042,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 7 5800XT é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.8GHz (4.8GHz máximo), cache de 32MB e 8 núcleos / 16 threads. Também consta com cooler. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 5800XT"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.8GHz (4.8GHz máximo)"],
+      ["Cache", "32MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-A8D4D200D",
@@ -4052,6 +5081,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 9 9950x3d é um processador para computadores compatíveis com soquete AM5. Traz frequência de 4.4GHz (5.5GHz máximo), cache de 144MB e 16 núcleos / 32 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 9 9950x3d"],
+      ["Soquete", "AM5"],
+      ["Frequência", "4.4GHz (5.5GHz máximo)"],
+      ["Cache", "144MB"],
+      ["Núcleos/Threads", "16 núcleos / 32 threads"],
+    ],
   },
   {
     id: "PRO-5065428A7",
@@ -4090,6 +5128,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM4"],
+    description:
+      "O AMD Ryzen 7 5700G é um processador para computadores compatíveis com soquete AM4. Traz frequência de 3.8GHz (4.6GHz máximo), cache de 20MB e 8 núcleos / 16 threads. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 5700G"],
+      ["Soquete", "AM4"],
+      ["Frequência", "3.8GHz (4.6GHz máximo)"],
+      ["Cache", "20MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-9C19C1D01",
@@ -4112,6 +5159,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 5 7600X é um processador para computadores compatíveis com soquete AM5. Traz frequência de 5.3GHz máximo, cache de 38MB e 6 núcleos. Também consta vídeo integrado. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 5 7600X"],
+      ["Soquete", "AM5"],
+      ["Frequência", "5.3GHz máximo"],
+      ["Cache", "38MB"],
+      ["Núcleos/Threads", "6 núcleos"],
+    ],
   },
   {
     id: "PRO-D23C4039A",
@@ -4150,6 +5206,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["AMD", "AM5"],
+    description:
+      "O AMD Ryzen 7 9700X é um processador para computadores compatíveis com soquete AM5. Traz frequência de 3.8GHz (5.5GHz), cache de 32MB e 8 núcleos / 16 threads. Essas características ajudam a conferir compatibilidade e comparar modelos antes de montar ou atualizar o PC.",
+    specs: [
+      ["Modelo", "AMD Ryzen 7 9700X"],
+      ["Soquete", "AM5"],
+      ["Frequência", "3.8GHz (5.5GHz)"],
+      ["Cache", "32MB"],
+      ["Núcleos/Threads", "8 núcleos / 16 threads"],
+    ],
   },
   {
     id: "PRO-A1778579C",
@@ -4184,6 +5249,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "DDR4", "8GB"],
+    description:
+      "A Memória RAM Kingston Fury Beast, 8GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-B5BF88FD0",
@@ -4218,6 +5292,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "DDR4", "16GB"],
+    description:
+      "A Memória RAM Kingston Fury Beast, 16GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-75BD37021",
@@ -4252,6 +5335,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
+    description:
+      "A Memória RAM Corsair Vengeance LPX, 32GB (2x16GB) 3200Mhz DDR4 CL16 Black é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 3200Mhz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "32GB(2x16GB)"],
+      ["Frequência", "3200Mhz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-C1AC2DA5A",
@@ -4282,6 +5374,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
+    description:
+      "A Memória RAM Rise Mode, 8GB, 1600MHz, DDR3, CL11 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 1600MHz, DDR3, CL11. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "1600MHz"],
+      ["Tipo de memória", "DDR3"],
+      ["Latência", "CL11"],
+    ],
   },
   {
     id: "PRO-FFD3EBEAB",
@@ -4312,6 +5413,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
+    description:
+      "A Memória RAM para Notebook Rise Mode Value Series, 8GB, 1600MHz, DDR3, CL11 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 1600MHz, DDR3, CL11 e formato para notebook. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "1600MHz"],
+      ["Tipo de memória", "DDR3"],
+      ["Latência", "CL11"],
+    ],
   },
   {
     id: "PRO-6BC10434B",
@@ -4350,6 +5460,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XPG", "DDR5", "32GB (2x16GB)"],
+    description:
+      "A Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 6000MHz, DDR5, CL30 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "XPG"],
+      ["Capacidade", "32GB(2x16GB)"],
+      ["Frequência", "6000MHz"],
+      ["Tipo de memória", "DDR5"],
+      ["Latência", "CL30"],
+    ],
   },
   {
     id: "PRO-733D51022",
@@ -4380,6 +5499,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
+    description:
+      "A Memória RAM Gamer Rise Mode Value, 8GB, 1600MHz, DDR3L, CL11 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 1600MHz, DDR3L, CL11. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "1600MHz"],
+      ["Tipo de memória", "DDR3L"],
+      ["Latência", "CL11"],
+    ],
   },
   {
     id: "PRO-4974DEDF2",
@@ -4406,6 +5534,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "16GB"],
+    description:
+      "A Memória RAM Corsair Vengeance LPX, 16GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-C865124A7",
@@ -4436,6 +5573,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "DDR4", "16GB"],
+    description:
+      "A Memória RAM para Notebook Kingston Fury Impact, 16GB, 3200MHz, DDR4, CL20 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 3200MHz, DDR4, CL20 e formato para notebook. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL20"],
+    ],
   },
   {
     id: "PRO-2FBB2DCA5",
@@ -4466,6 +5612,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XPG", "DDR4", "16GB"],
+    description:
+      "A Memória RAM XPG Spectrix D35G, RGB, 16GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 3200MHz, DDR4, CL16 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "XPG"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-604F24FD4",
@@ -4496,6 +5651,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "DDR4", "8GB"],
+    description:
+      "A Memória RAM Para Notebook Kingston Fury Impact, 8GB, 3200MHz, DDR4, CL20 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL20 e formato para notebook. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL20"],
+    ],
   },
   {
     id: "PRO-08E19C717",
@@ -4530,6 +5694,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "DDR5", "16GB"],
+    description:
+      "A Memória RAM Kingston Fury Beast, 16GB, 5600MHz, DDR5, CL40, para Intel XMP é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 5600MHz, DDR5, CL40. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "5600MHz"],
+      ["Tipo de memória", "DDR5"],
+      ["Latência", "CL40"],
+    ],
   },
   {
     id: "PRO-72D59C617",
@@ -4560,6 +5733,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
+    description:
+      "A Memória RAM Corsair Vengeance LPX, 32GB (2x16GB), 3600MHz, DDR4, CL18 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 3600MHz, DDR4, CL18. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "32GB(2x16GB)"],
+      ["Frequência", "3600MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL18"],
+    ],
   },
   {
     id: "PRO-402F93251",
@@ -4598,6 +5780,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XPG", "DDR4", "16GB"],
+    description:
+      "A Memória RAM XPG Spectrix D35G, RGB, 16GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB, 3200MHz, DDR4, CL16 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "XPG"],
+      ["Capacidade", "16GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-B447CB386",
@@ -4632,6 +5823,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Lexar", "DDR4", "8GB"],
+    description:
+      "A Memória RAM Lexar 8GB, 3200MHz, DDR4, CL22 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL22. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Lexar"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL22"],
+    ],
   },
   {
     id: "PRO-6C2275D04",
@@ -4666,6 +5866,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "16GB (2x8GB)"],
+    description:
+      "A Memória RAM Corsair Vengeance LPX, 16GB (2x8GB), 3200MHz, DDR4, CL16, Black é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 16GB(2x8GB), 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "16GB(2x8GB)"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-98DAA2CA8",
@@ -4700,6 +5909,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "8GB"],
+    description:
+      "A Memória RAM Corsair Vengeance LPX, 8GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-CAEC08EE2",
@@ -4738,6 +5956,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
+    description:
+      "A Memória RAM Corsair Vengeance RGB RS, 32GB (2x16GB), 3600MHz, DDR4, CL18 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 32GB(2x16GB), 3600MHz, DDR4, CL18 e recursos como RGB. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "32GB(2x16GB)"],
+      ["Frequência", "3600MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL18"],
+    ],
   },
   {
     id: "PRO-1534C6DB6",
@@ -4764,6 +5991,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["XPG", "DDR4", "8GB"],
+    description:
+      "A Memória RAM XPG Gammix D10, 8GB, 3200MHz, DDR4, CL16 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 3200MHz, DDR4, CL16. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "XPG"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "3200MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL16"],
+    ],
   },
   {
     id: "PRO-40B904113",
@@ -4798,6 +6034,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Husky", "DDR4", "8GB"],
+    description:
+      "A Memória RAM para Notebook Husky Technologies, 8GB, 2666MHz, DDR4, CL19 é uma opção de memória RAM para compor ou atualizar configurações de hardware. A configuração traz 8GB, 2666MHz, DDR4, CL19 e formato para notebook. É uma escolha prática para quem busca melhorar o desempenho em jogos, criação de conteúdo ou uso diário mantendo compatibilidade com a plataforma.",
+    specs: [
+      ["Marca", "Husky Technologies"],
+      ["Capacidade", "8GB"],
+      ["Frequência", "2666MHz"],
+      ["Tipo de memória", "DDR4"],
+      ["Latência", "CL19"],
+    ],
   },
   {
     id: "PRO-816D1CD88",
@@ -4820,6 +6065,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "4TB"],
+    description:
+      "O SSD Corsair MP600 CORE XT, 4TB, PCIe Gen 4.0 x4 NVMe M.2, Leitura: 5000MB/s e Gravação: 4400MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 4TB, interface e formato PCIe 4.0 x4, M.2, NVMe, leitura de 5000MB/s e gravação de 4400MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "4TB"],
+      ["Interface/Formato", "PCIe 4.0 x4, M.2, NVMe"],
+      ["Leitura", "5000MB/s"],
+      ["Gravação", "4400MB/s"],
+    ],
   },
   {
     id: "PRO-FF4ED3B46",
@@ -4850,6 +6104,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "2TB"],
+    description:
+      "O SSD Kingston FURY Renegade, 2048GB, G5, PCIe, M.2 NVMe, Leitura 14.700MBs e Gravação 14.000MBs, Compatível com PS5 é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 2048GB, interface e formato PCIe, M.2, NVMe, leitura de 14.700MB/s e gravação de 14.000MB/s, compatibilidade com PS5. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "2048GB"],
+      ["Interface/Formato", "PCIe, M.2, NVMe"],
+      ["Leitura", "14.700MB/s"],
+      ["Gravação", "14.000MB/s"],
+    ],
   },
   {
     id: "PRO-BAF255869",
@@ -4888,6 +6151,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Corsair", "1TB"],
+    description:
+      "O SSD Corsair MP600 Elite, 1TB, M.2 NVMe, Leitura 7000MB/s e Gravação 6200MB/s, Para PS5 é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato M.2, NVMe, leitura de 7000MB/s e gravação de 6200MB/s, compatibilidade com PS5. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Corsair"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "M.2, NVMe"],
+      ["Leitura", "7000MB/s"],
+      ["Gravação", "6200MB/s"],
+    ],
   },
   {
     id: "PRO-F7CFE3A61",
@@ -4914,6 +6186,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "2TB"],
+    description:
+      "O SSD Externo Kingston XS1000, 2 TB, USB 3.2 Gen 2x2, Portátil, Leitura: 1050 MB/s, Gravação: 1000 MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 2TB, interface e formato Externo, USB 3.2 Gen 2x2, leitura de 1050 MB/s e gravação de 1000 MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "2TB"],
+      ["Interface/Formato", "Externo, USB 3.2 Gen 2x2"],
+      ["Leitura", "1050 MB/s"],
+      ["Gravação", "1000 MB/s"],
+    ],
   },
   {
     id: "PRO-B1D7800F9",
@@ -4944,6 +6225,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "1TB"],
+    description:
+      "O SSD Kingston NV3, 1 TB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 6000 MB/s, Gravação: 4000 MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato PCIe 4.0 x4, M.2 2280, NVMe, leitura de 6000 MB/s e gravação de 4000 MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "PCIe 4.0 x4, M.2 2280, NVMe"],
+      ["Leitura", "6000 MB/s"],
+      ["Gravação", "4000 MB/s"],
+    ],
   },
   {
     id: "PRO-D400AD244",
@@ -4978,6 +6268,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "256GB"],
+    description:
+      "O SSD Rise Mode Gamer Line, 256GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 256GB, interface e formato SATA III, leitura de 530MB/s e gravação de 520MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "256GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "530MB/s"],
+      ["Gravação", "520MB/s"],
+    ],
   },
   {
     id: "PRO-CDF12A42D",
@@ -5012,6 +6311,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "1TB"],
+    description:
+      "O SSD Rise Mode Gamer Line, 1TB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato SATA III, leitura de 530MB/s e gravação de 520MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "530MB/s"],
+      ["Gravação", "520MB/s"],
+    ],
   },
   {
     id: "PRO-EDA4ADBC5",
@@ -5038,6 +6346,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "1TB"],
+    description:
+      "O SSD Externo Kingston XS1000, 1TB, USB 3.2 Gen 2x2, Portátil, Leitura: 1050 MB/s, Gravação: 1000 MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato Externo, USB 3.2 Gen 2x2, leitura de 1050 MB/s e gravação de 1000 MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "Externo, USB 3.2 Gen 2x2"],
+      ["Leitura", "1050 MB/s"],
+      ["Gravação", "1000 MB/s"],
+    ],
   },
   {
     id: "PRO-361C6F5F2",
@@ -5072,6 +6389,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "480GB"],
+    description:
+      'O SSD Kingston A400, 480GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 450MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 480GB, interface e formato SATA III, 2.5", leitura de 500MB/s e gravação de 450MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.',
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "480GB"],
+      ["Interface/Formato", "SATA III, 2.5"],
+      ["Leitura", "500MB/s"],
+      ["Gravação", "450MB/s"],
+    ],
   },
   {
     id: "PRO-EE4536A5F",
@@ -5102,6 +6428,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "500GB"],
+    description:
+      "O SSD Kingston NV3, 500 GB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 5000 MB/s, Gravação: 3000 MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 500GB, interface e formato PCIe 4.0 x4, M.2 2280, NVMe, leitura de 5000 MB/s e gravação de 3000 MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "500GB"],
+      ["Interface/Formato", "PCIe 4.0 x4, M.2 2280, NVMe"],
+      ["Leitura", "5000 MB/s"],
+      ["Gravação", "3000 MB/s"],
+    ],
   },
   {
     id: "PRO-0B19040BB",
@@ -5140,6 +6475,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Husky", "128GB"],
+    description:
+      'O SSD Husky 128GB, SATA III, 2.5", Leitura 500MB/s, Gravação 450MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 128GB, interface e formato SATA III, 2.5", leitura de 500MB/s e gravação de 450MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.',
+    specs: [
+      ["Marca", "Husky"],
+      ["Capacidade", "128GB"],
+      ["Interface/Formato", "SATA III, 2.5"],
+      ["Leitura", "500MB/s"],
+      ["Gravação", "450MB/s"],
+    ],
   },
   {
     id: "PRO-E137E0887",
@@ -5174,6 +6518,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "240GB"],
+    description:
+      'O SSD Kingston A400, 240GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 350MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 240GB, interface e formato SATA III, 2.5", leitura de 500MB/s e gravação de 350MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.',
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "240GB"],
+      ["Interface/Formato", "SATA III, 2.5"],
+      ["Leitura", "500MB/s"],
+      ["Gravação", "350MB/s"],
+    ],
   },
   {
     id: "PRO-6CDB4C194",
@@ -5208,6 +6561,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "1TB"],
+    description:
+      "O SSD Kingston 1TB Padrão Nv3, M.2 2280 NVMe 4.0 Gen 4x4, Leitura: 6000 e Gravação/4000MBps, Ultra Rápido é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato NVMe 4.0 Gen 4x4, M.2 2280, leitura de 6000 MB/s e gravação de 4000 MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "NVMe 4.0 Gen 4x4, M.2 2280"],
+      ["Leitura", "6000 MB/s"],
+      ["Gravação", "4000 MB/s"],
+    ],
   },
   {
     id: "PRO-95CD1B55D",
@@ -5242,6 +6604,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "960GB"],
+    description:
+      'O SSD Kingston A400, 960GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 450MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 960GB, interface e formato SATA III, 2.5", leitura de 500MB/s e gravação de 450MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.',
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "960GB"],
+      ["Interface/Formato", "SATA III, 2.5"],
+      ["Leitura", "500MB/s"],
+      ["Gravação", "450MB/s"],
+    ],
   },
   {
     id: "PRO-08EE20680",
@@ -5268,6 +6639,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "1TB"],
+    description:
+      "O SSD Kingston Fury Renegade, 1TB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 7300 MB/s, Gravação: 6000 MB/s, Compatível com PS5 é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 1TB, interface e formato PCIe 4.0 x4, M.2 2280, NVMe, leitura de 7300 MB/s e gravação de 6000 MB/s, compatibilidade com PS5. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "PCIe 4.0 x4, M.2 2280, NVMe"],
+      ["Leitura", "7300 MB/s"],
+      ["Gravação", "6000 MB/s"],
+    ],
   },
   {
     id: "PRO-5AA51FA88",
@@ -5306,6 +6686,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Adata", "256GB"],
+    description:
+      "O SSD PCIe ADATA, 256GB, NVMe, Leitura: 2.400MB/s e Gravação: 1.800MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 256GB, interface e formato PCIe, NVMe, leitura de 2.400MB/s e gravação de 1.800MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "ADATA"],
+      ["Capacidade", "256GB"],
+      ["Interface/Formato", "PCIe, NVMe"],
+      ["Leitura", "2.400MB/s"],
+      ["Gravação", "1.800MB/s"],
+    ],
   },
   {
     id: "PRO-49717C095",
@@ -5340,6 +6729,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "480GB"],
+    description:
+      "O SSD Rise Mode Gamer Line, 480GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 480GB, interface e formato SATA III, leitura de 530MB/s e gravação de 520MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "480GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "530MB/s"],
+      ["Gravação", "520MB/s"],
+    ],
   },
   {
     id: "PRO-95640912B",
@@ -5374,6 +6772,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "120GB"],
+    description:
+      "O SSD Rise Mode Gamer Line, 120GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 120GB, interface e formato SATA III, leitura de 530MB/s e gravação de 520MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "120GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "530MB/s"],
+      ["Gravação", "520MB/s"],
+    ],
   },
   {
     id: "PRO-147367BC3",
@@ -5408,6 +6815,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "128GB"],
+    description:
+      "O SSD Rise Mode Gamer Line, 128GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 128GB, interface e formato SATA III, leitura de 530MB/s e gravação de 520MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "128GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "530MB/s"],
+      ["Gravação", "520MB/s"],
+    ],
   },
   {
     id: "PRO-2E4A7B4E1",
@@ -5442,6 +6858,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Adata", "240GB"],
+    description:
+      'O SSD Adata SU650, SATA, 240GB, 2.5", Leitura: 520MB/s e Gravação: 450MB/s é uma opção de SSD para ampliar o armazenamento de um computador, notebook ou console compatível. Oferece capacidade de 240GB, interface e formato SATA, 2.5", leitura de 520MB/s e gravação de 450MB/s. As informações destacam capacidade, formato e velocidades para facilitar a escolha do SSD.',
+    specs: [
+      ["Marca", "ADATA"],
+      ["Capacidade", "240GB"],
+      ["Interface/Formato", "SATA, 2.5"],
+      ["Leitura", "520MB/s"],
+      ["Gravação", "450MB/s"],
+    ],
   },
   {
     id: "PRO-2E145E7AA",
@@ -5480,6 +6905,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Lexar", "256GB"],
+    description:
+      "O SSD PCIe Lexar Internal NM620, 256GB, Leitura 3500MB/s e Gravação 1300MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 256GB, interface e formato PCIe, leitura de 3500MB/s e gravação de 1300MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.",
+    specs: [
+      ["Marca", "Lexar"],
+      ["Capacidade", "256GB"],
+      ["Interface/Formato", "PCIe"],
+      ["Leitura", "3500MB/s"],
+      ["Gravação", "1300MB/s"],
+    ],
   },
   {
     id: "PRO-1DFBADD9A",
@@ -5514,6 +6948,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "480GB"],
+    description:
+      'O SSD WD Green, 480GB, SATA III, 2.5", Leitura: 545MB/s, Gravação: 430MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 480GB, interface e formato SATA III, leitura de 545MB/s e gravação de 430MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.',
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "480GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "545MB/s"],
+      ["Gravação", "430MB/s"],
+    ],
   },
   {
     id: "PRO-440F91D6E",
@@ -5552,6 +6995,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Kingston", "1TB"],
+    description:
+      "O SSD Kingston 1TB Nv3 M.2 Nvme PCIe 4, Leitura 6000MB/s, Gravação 4000MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 1TB, interface e formato PCIe 4, NVMe, M.2, leitura de 6000MB/s e gravação de 4000MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.",
+    specs: [
+      ["Marca", "Kingston"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "PCIe 4, NVMe, M.2"],
+      ["Leitura", "6000MB/s"],
+      ["Gravação", "4000MB/s"],
+    ],
   },
   {
     id: "PRO-5FFBA85B9",
@@ -5582,6 +7034,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "240GB"],
+    description:
+      'O SSD WD Green, 240GB, SATA III, 2.5", Leitura: 545MB/s, Gravação: 430MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 240GB, interface e formato SATA III, leitura de 545MB/s e gravação de 430MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.',
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "240GB"],
+      ["Interface/Formato", "SATA III"],
+      ["Leitura", "545MB/s"],
+      ["Gravação", "430MB/s"],
+    ],
   },
   {
     id: "PRO-F734C50BF",
@@ -5612,6 +7073,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Sandisk", "1TB"],
+    description:
+      "O SSD Sandisk Plus 1TB, M.2 2280 NVMe Pcie Gen 3.0, Leitura 3200MB/s E Gravação 2500MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 1TB, interface e formato PCIe Gen 3.0, NVMe, M.2, leitura de 3200MB/s e gravação de 2500MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.",
+    specs: [
+      ["Marca", "Sandisk"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "PCIe Gen 3.0, NVMe, M.2"],
+      ["Leitura", "3200MB/s"],
+      ["Gravação", "2500MB/s"],
+    ],
   },
   {
     id: "PRO-81F2F1B97",
@@ -5638,6 +7108,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Rise Mode", "1TB"],
+    description:
+      "O SSD Rise Mode Gamer M.2 Z Series, 1TB, M.2, NVMe, Leitura: 2200MB/s e Gravação: 1800MB/s é uma opção de armazenamento em SSD para ampliar espaço e velocidade em computadores compatíveis. O modelo traz capacidade de 1TB, interface e formato NVMe, M.2, leitura de 2200MB/s e gravação de 1800MB/s. As características principais ajudam a conferir capacidade, interface e desempenho antes da compra.",
+    specs: [
+      ["Marca", "Rise Mode"],
+      ["Capacidade", "1TB"],
+      ["Interface/Formato", "NVMe, M.2"],
+      ["Leitura", "2200MB/s"],
+      ["Gravação", "1800MB/s"],
+    ],
   },
   {
     id: "PRO-6895E14E6",
@@ -5664,6 +7143,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Externo", "2TB"],
+    description:
+      "O HD Externo WD Elements, 2TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 2TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "2TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-A875C63EF",
@@ -5698,6 +7185,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "1TB"],
+    description:
+      "O HD Interno WD Blue, 1TB, SATA, 3.5' é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 1TB, tipo Interno, interface SATA, formato físico 3.5\". A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "1TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Formato físico", "3.5"],
+    ],
   },
   {
     id: "PRO-831F1A91E",
@@ -5728,6 +7224,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Interno", "16TB"],
+    description:
+      "O HD Seagate IronWolf Pro, NAS, 16TB, Cache 270MB, 7.200RPM, 3.5', SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 16TB, tipo Interno, NAS, interface SATA, formato físico 3.5\", cache de 270MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "16TB"],
+      ["Uso/Tipo", "Interno, NAS"],
+      ["Interface", "SATA"],
+      ["Cache", "270MB"],
+    ],
   },
   {
     id: "PRO-3D519B88D",
@@ -5754,6 +7259,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "4TB"],
+    description:
+      "O HD Surveillance WD Purple, 4TB, 5400RPM, Cache 64MB, 3.5', SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Interno, Surveillance, interface SATA, formato físico 3.5\", cache de 64MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Interno, Surveillance"],
+      ["Interface", "SATA"],
+      ["Cache", "64MB"],
+    ],
   },
   {
     id: "PRO-24B6D4F89",
@@ -5788,6 +7302,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Externo", "5TB"],
+    description:
+      "O HD Externo WD Elements, 5TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 5TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "5TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-909DEC392",
@@ -5822,6 +7344,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Externo", "4TB"],
+    description:
+      "O HD Externo Seagate, 4TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-C09F90AB6",
@@ -5852,6 +7382,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "8TB"],
+    description:
+      'O HD WD Red Plus, 8TB, 3.5", SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 8TB, tipo Interno, interface SATA, formato físico 3.5". A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.',
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "8TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Formato físico", "3.5"],
+    ],
   },
   {
     id: "PRO-80687D50E",
@@ -5882,6 +7421,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Interno", "4TB"],
+    description:
+      "O HD Interno Seagate BarraCuda, 4TB, SATA, 3.5' é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Interno, interface SATA, formato físico 3.5\". A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Formato físico", "3.5"],
+    ],
   },
   {
     id: "PRO-959DDA8A6",
@@ -5916,6 +7464,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Externo", "1TB"],
+    description:
+      "O HD Externo Seagate, 1TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 1TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "1TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-90D0A03BA",
@@ -5950,6 +7506,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Externo", "2TB"],
+    description:
+      "O HD Externo Seagate, 2TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 2TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "2TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-46FCACB03",
@@ -5972,6 +7536,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "4TB"],
+    description:
+      "O HD WD Red Plus, NAS, 4TB, 3.5', Cache 256MB, 5400RPM, SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Interno, NAS, interface SATA, formato físico 3.5\", cache de 256MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Interno, NAS"],
+      ["Interface", "SATA"],
+      ["Cache", "256MB"],
+    ],
   },
   {
     id: "PRO-460E13F00",
@@ -6010,6 +7583,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Seagate", "Externo", "8TB"],
+    description:
+      "O HD Externo Seagate Expansion, 8TB, USB é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 8TB, tipo Externo, interface USB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Seagate"],
+      ["Capacidade", "8TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB"],
+    ],
   },
   {
     id: "PRO-11CE6718F",
@@ -6040,6 +7621,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["Toshiba", "Interno", "4TB"],
+    description:
+      "O HD Toshiba N300, 4TB, 7200 RPM, NAS, 3.5', SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Interno, NAS, interface SATA, formato físico 3.5\", rotação de 7200 RPM. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "Toshiba"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Interno, NAS"],
+      ["Interface", "SATA"],
+      ["Rotação", "7200 RPM"],
+    ],
   },
   {
     id: "PRO-7FE03DF56",
@@ -6078,6 +7668,14 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Externo", "4TB"],
+    description:
+      "O HD Externo WD Elements, 4TB, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
   {
     id: "PRO-0BD230E7D",
@@ -6104,6 +7702,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "2TB"],
+    description:
+      "O HD Interno WD Red Plus,  2TB, SATA, 3.5' é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 2TB, tipo Interno, interface SATA, formato físico 3.5\". A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "2TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Formato físico", "3.5"],
+    ],
   },
   {
     id: "PRO-3F32F454C",
@@ -6126,6 +7733,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "22TB"],
+    description:
+      'O HD WD Purple Pro, 22TB, 7200 RPM, Cache 512MB, 3.5, SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 22TB, tipo Interno, interface SATA, formato físico 3.5", cache de 512MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.',
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "22TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Cache", "512MB"],
+    ],
   },
   {
     id: "PRO-228E8C0E5",
@@ -6152,6 +7768,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "18TB"],
+    description:
+      'O HD WD Purple Pro 18TB, 3.5, 7200RPM, Cache 512MB, SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 18TB, tipo Interno, interface SATA, formato físico 3.5", cache de 512MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.',
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "18TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Cache", "512MB"],
+    ],
   },
   {
     id: "PRO-8299D69CA",
@@ -6174,6 +7799,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "6TB"],
+    description:
+      "O HD WD Red Plus, NAS, 6TB, 3.5', Cache 256MB, 5400RPM, SATA é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 6TB, tipo Interno, NAS, interface SATA, formato físico 3.5\", cache de 256MB. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "6TB"],
+      ["Uso/Tipo", "Interno, NAS"],
+      ["Interface", "SATA"],
+      ["Cache", "256MB"],
+    ],
   },
   {
     id: "PRO-6120A4610",
@@ -6196,6 +7830,15 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Interno", "8TB"],
+    description:
+      "O HD Interno WD Purple Pro Smart, 8TB, SATA, 3.5' é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 8TB, tipo Interno, interface SATA, formato físico 3.5\". A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "8TB"],
+      ["Uso/Tipo", "Interno"],
+      ["Interface", "SATA"],
+      ["Formato físico", "3.5"],
+    ],
   },
   {
     id: "PRO-A6E3C5D08",
@@ -6234,11 +7877,19 @@ const products: FAProduct[] = [
       ],
     },
     tags: ["WD", "Externo", "4TB"],
+    description:
+      "O HD Externo WD 4TB My Passport, USB 3.0 é um HD voltado para armazenamento de arquivos, backups e expansão de capacidade. Entre os principais dados estão capacidade de 4TB, tipo Externo, interface USB 3.0. A descrição reúne os principais atributos do produto para facilitar a comparação entre modelos.",
+    specs: [
+      ["Marca", "WD"],
+      ["Capacidade", "4TB"],
+      ["Uso/Tipo", "Externo"],
+      ["Interface", "USB 3.0"],
+    ],
   },
 ] as const;
 
 const productsIdMap = new Map<string, FAProduct>();
-for(const product of products) {
+for (const product of products) {
   productsIdMap.set(product.id, product);
 }
 

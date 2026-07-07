@@ -39,11 +39,11 @@ const AuthRecover = () => {
 
   return (
     <AuthFormWrapper title="Recupere sua senha">
-      <p className={`dneutral-xlight text-default ${classes.instructions}`}>
+      <p className={`text-default dneutral-xlight ${classes.instructions}`}>
         Para recuperar o acesso a conta, digite seu nome de usuário e atualize
         sua senha:
       </p>
-      <div className={`${classes.inputs}`}>
+      <div className={classes.inputs}>
         <InputDefault
           containerClassName={classes.input}
           label="Nome de usuário"

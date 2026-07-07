@@ -20,7 +20,7 @@ const ProductActionsPrice = ({ prices }: Props) => {
         </span>{" "}
         no PIX ({prices.pixDiscont}% OFF)
       </p>
-      <p className="lneutral-xdark text-default">
+      <p className="text-default lneutral-xdark">
         <span className="dneutral-xdark">R$ {parsePrice(prices.full)}</span> no
         cartão
         <br />

@@ -10,7 +10,7 @@ type Props = PropsWithChildren & {
 
 const AuthFormWrapper = ({ children, title }: Props) => {
   return (
-    <section className={`${classes.container}`}>
+    <section className={classes.container}>
       <UnderlinedTitle className={classes.title} align="center">
         {title}
       </UnderlinedTitle>

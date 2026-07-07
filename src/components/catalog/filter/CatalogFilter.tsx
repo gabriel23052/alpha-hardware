@@ -65,7 +65,7 @@ const CatalogFilter = ({
           updateCategory={updateCategory}
         />
         <button
-          className={`dneutral-light bg-lneutral-light text-small ${classes.cleanButton}`}
+          className={`text-small dneutral-light bg-lneutral-light  ${classes.cleanButton}`}
           onClick={resetPriceAndTags}
         >
           Limpar Filtros

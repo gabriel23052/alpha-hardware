@@ -20,7 +20,7 @@ const ProductActions = ({ product }: Props) => {
       <div className={classes.wrapper}>
         <div className={classes.topWrapper}>
           <ProductActionsPrice prices={product.prices} />
-          <div className={`${classes.buttons}`}>
+          <div className={classes.buttons}>
             <Link
               className={`text-default-b bg-primary lneutral-xlight ${classes.buyButton}`}
               to="/"

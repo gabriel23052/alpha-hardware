@@ -37,11 +37,11 @@ const CatalogFilterTags = ({ id, groups, field, updateField }: Props) => {
     <div className={classes.container}>
       {groups.map((group) => (
         <fieldset key={group.legend} className={classes.field}>
-          <legend className={"text-default-b dneutral"}>{group.legend}</legend>
+          <legend className="text-default-b dneutral">{group.legend}</legend>
           {group.values.map((value) => (
             <label
               key={value}
-              className={"text-small dneutral"}
+              className="text-small dneutral"
               data-ischecked={isChecked(group.legend, value)}
             >
               <input

@@ -32,11 +32,11 @@ const InputDefault = ({
 
   return (
     <div className={`${classes.container} ${containerClassName}`}>
-      <label className="dneutral text-default" htmlFor={id}>
+      <label className="text-default dneutral" htmlFor={id}>
         {label}
       </label>
       <input
-        className="dneutral-light text-default bg-lneutral-xlight"
+        className="text-default dneutral-light bg-lneutral-xlight"
         id={id}
         name={id}
         value={field.value}
@@ -45,7 +45,7 @@ const InputDefault = ({
         {...attr}
       />
       {field.error && showError && (
-        <p className="feedback-negative text-small">{field.error}</p>
+        <p className="text-small feedback-negative">{field.error}</p>
       )}
     </div>
   );

@@ -18,7 +18,7 @@ const ProductCollection = ({ data, loading, error }: Props) => {
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {data && (
         <>
-          <div className={`${classes.titleWithLine}`}>
+          <div className={classes.titleWithLine}>
             <h2 className={`text-verylarge-m dneutral-dark ${classes.title}`}>
               {data.name}
             </h2>

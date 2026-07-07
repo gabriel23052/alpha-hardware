@@ -47,14 +47,14 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
 
   return (
     <div className={classes.container}>
-      <h2 className="dneutral text-default-b">Preço</h2>
+      <h2 className="text-default-b dneutral">Preço</h2>
       <fieldset className={classes.fields}>
         <div className={classes.field}>
-          <label className={"dneutral text-small"} htmlFor="minPrice">
+          <label className="text-small dneutral" htmlFor="minPrice">
             Mínimo:
           </label>
           <InputNumber
-            className="dneutral bg-lneutral-xlight text-small"
+            className="text-small dneutral bg-lneutral-xlight"
             id="minPrice"
             maxLength={8}
             placeholder="0,00"
@@ -68,7 +68,7 @@ const CatalogFilterPrices = ({ filterForm }: Props) => {
           )}
         </div>
         <div className={classes.field}>
-          <label className={"text-small dneutral"} htmlFor="minPrice">
+          <label className="text-small dneutral" htmlFor="minPrice">
             Máximo:
           </label>
           <InputNumber

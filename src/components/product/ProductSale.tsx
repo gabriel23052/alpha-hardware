@@ -21,7 +21,7 @@ const ProductSale = ({ data, loading, error }: Props) => {
       {data && (
         <>
           <Link
-            className={`${classes.title}`}
+            className={classes.title}
             to={`/catalog?sale=${encodeURIComponent(data.id)}&saleName=${encodeURIComponent(data.name)}`}
           >
             <h2 className={`text-display secondary-light`}>{data.name}</h2>

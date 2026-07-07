@@ -42,7 +42,7 @@ const AuthRegister = () => {
   return (
     <AuthFormWrapper title="Crie sua conta">
       <form>
-        <div className={`${classes.inputs}`}>
+        <div className={classes.inputs}>
           <InputDefault
             containerClassName={classes.input}
             label="Nome de usuário"
@@ -86,7 +86,7 @@ const AuthRegister = () => {
         )}
         <PrimaryButton className={classes.submitBtn}>criar conta</PrimaryButton>
       </form>
-      <p className={`dneutral text-small ${classes.loginLink}`}>
+      <p className={`text-small dneutral ${classes.loginLink}`}>
         Já possui uma conta? Faça login{" "}
         <Link className="secondary-xdark" to="/auth/login">
           aqui

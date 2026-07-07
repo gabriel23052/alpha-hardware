@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className={`bg-dneutral-dark ${classes.container}`}>
       <div className={`defaultContainer ${classes.gridContainer}`}>
-        <nav className={`${classes.categories}`}>
+        <nav className={classes.categories}>
           <h3 className="text-large secondary ">Departamentos</h3>
           <ul className="text-default">
             {CATEGORIES.map(({ name, label }) => (
@@ -22,7 +22,7 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
-        <nav className={`${classes.institutional}`}>
+        <nav className={classes.institutional}>
           <h3 className="text-large secondary">Institucional</h3>
           <ul className="text-default">
             {INSTITUTIONAL_LINKS.map(({ name, to }) => (

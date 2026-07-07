@@ -47,7 +47,7 @@ const Header = () => {
               <SVGLogo width={140} height={50} aria-hidden="true" />
             </Link>
             <button
-              className={`${classes.mobileMenuBtn}`}
+              className={classes.mobileMenuBtn}
               title="Abrir menu"
               aria-expanded={expanded}
               aria-controls={`${authId} ${shortcutsId}`}

@@ -37,13 +37,13 @@ const ProductFreight = () => {
 
   if (freightData)
     return (
-      <div className={`${classes.freight}`}>
-        <h3 className="dneutral-xlight text-small-b">
+      <div className={classes.freight}>
+        <h3 className="text-small-b dneutral-xlight">
           Opções de frete para o CEP {freightData.cep} (
-          <button className="dneutral-xlight text-small">alterar</button>
+          <button className="text-small dneutral-xlight">alterar</button>
           ):
         </h3>
-        <ul className={`${classes.options}`}>
+        <ul className={classes.options}>
           {freightData.options.map((option) => (
             <li className="dneutral-dark" key={option.name}>
               <h4 className="text-small-b">{option.name}</h4>
@@ -62,9 +62,9 @@ const ProductFreight = () => {
             </li>
           ))}
         </ul>
-        <div className={`${classes.disclaimer}`}>
+        <div className={classes.disclaimer}>
           <SVGDisclaimer />
-          <span className="lneutral-xdark text-small">
+          <span className="text-small lneutral-xdark">
             Prazos válidos a partir da data de envio
           </span>
         </div>
@@ -72,13 +72,13 @@ const ProductFreight = () => {
     );
 
   return (
-    <form className={`${classes.form}`} onSubmit={handleSubmit}>
-      <div className={`${classes.input}`}>
-        <label className="dneutral text-default" htmlFor="cep">
+    <form className={classes.form} onSubmit={handleSubmit}>
+      <div className={classes.input}>
+        <label className="text-default dneutral" htmlFor="cep">
           Calcule o frete e o prazo de entrega:
         </label>
         <input
-          className="dneutral-dark text-default"
+          className="text-default dneutral-dark"
           type="text"
           id="cep"
           placeholder="00000-000"
@@ -86,9 +86,9 @@ const ProductFreight = () => {
           onChange={(e) => setCep(e.target.value)}
         />
       </div>
-      <button className="dneutral-light bg-white text-default">OK</button>
+      <button className="text-default dneutral-light bg-white">OK</button>
       <a
-        className="lneutral-xdark text-small"
+        className="text-small lneutral-xdark"
         href="https://buscacepinter.correios.com.br/app/localidade_logradouro/index.php"
         target="_blank"
         rel="external noreferrer"

@@ -23,7 +23,7 @@ const AuthLogin = () => {
   return (
     <AuthFormWrapper title="Entre na sua conta">
       <form>
-        <div className={`${classes.inputs}`}>
+        <div className={classes.inputs}>
           <InputDefault
             label="Nome de usuário"
             id="username"
@@ -37,16 +37,16 @@ const AuthLogin = () => {
             updateField={loginForm.updateField}
           />
         </div>
-        <PrimaryButton className={`${classes.submitBtn}`}>entrar</PrimaryButton>
+        <PrimaryButton className={classes.submitBtn}>entrar</PrimaryButton>
       </form>
-      <p className={`dneutral text-small ${classes.loginLink}`}>
+      <p className={`text-small dneutral ${classes.loginLink}`}>
         Não possuí uma conta? Crie{" "}
         <Link className="secondary-xdark" to="/auth/register">
           aqui
         </Link>
       </p>
       <Link
-        className={`dneutral text-default ${classes.recoverLink}`}
+        className={`text-default dneutral ${classes.recoverLink}`}
         to={"/auth/recover"}
       >
         Esqueci minha senha

@@ -6,11 +6,11 @@ type Props = {
 
 const ErrorMessage = ({ children }: Props) => {
   return (
-    <div className={`${classes.container}`}>
-      <p className={`text-large-m primary`}>
+    <div className={classes.container}>
+      <p className="text-large-m primary">
         Ops! Parece que algo deu errado 🙁
       </p>
-      <p className={`text-default dneutral`}>{children}</p>
+      <p className="text-default dneutral">{children}</p>
     </div>
   );
 };

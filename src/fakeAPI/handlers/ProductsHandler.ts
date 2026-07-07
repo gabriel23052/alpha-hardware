@@ -48,7 +48,7 @@ class ProductsHandler {
         difference: Math.abs(pixPrice - product.prices.pix),
       }))
       .sort((difA, difB) => difA.difference - difB.difference)
-      .slice(0, 4)
+      .slice(1, 5)
       .map(({ id }) => id);
     productsTable.searchByIdList(relatedProductsIds);
     response.setData(productsTable.getInCardFormat());

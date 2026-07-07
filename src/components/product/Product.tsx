@@ -11,12 +11,15 @@ import ProductSkeleton from "./ProductSkeleton";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import classes from "./Product.module.css";
+import usePageTitle from "@hooks/usePageTitle";
 
 const Product = ({ productId }: { productId: string }) => {
   const productRequest = useFakeAPI<IProduct_Full>("GET api/products/id");
   const relatedProductsRequest = useFakeAPI<IProduct_Card[]>(
     "GET api/products/related",
   );
+
+  usePageTitle("Alpha Hardware" + (productRequest.data ? ` | ${productRequest.data.name}` : ""));
 
   const location = useLocation();
 

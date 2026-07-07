@@ -14,6 +14,7 @@ import useDebounce from "@hooks/useDebounce";
 import FieldValidations from "@utils/FieldValidations";
 
 import classes from "./Catalog.module.css";
+import usePageTitle from "@hooks/usePageTitle";
 
 export type FilterFormFields = {
   name: string;
@@ -36,6 +37,8 @@ const Catalog = () => {
 
   const [params] = useSearchParams();
   const location = useLocation();
+
+  usePageTitle("Alpha Hardware | Catálogo");
 
   const api = useFakeAPI<IProduct_Card[]>("GET api/products/query");
 

@@ -5,6 +5,7 @@ import InputDefault from "@components/inputs/InputDefault";
 import InputPassword from "@components/inputs/InputPassword";
 import PrimaryButton from "@components/ui/PrimaryButton";
 
+import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 
 import FieldValidations from "@utils/FieldValidations";
@@ -12,6 +13,8 @@ import FieldValidations from "@utils/FieldValidations";
 import classes from "./AuthLogin.module.css";
 
 const AuthLogin = () => {
+  usePageTitle("Alpha Hardware | Login");
+
   const loginForm = useJafh(
     {
       username: { value: "", validation: FieldValidations.username },

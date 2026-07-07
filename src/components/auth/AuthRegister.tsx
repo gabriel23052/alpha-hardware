@@ -7,6 +7,7 @@ import InputDefault from "@components/inputs/InputDefault";
 import PrimaryButton from "@components/ui/PrimaryButton";
 import Alert from "@components/ui/Alert";
 
+import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
 
@@ -15,6 +16,8 @@ import FieldValidations from "@utils/FieldValidations";
 import classes from "./AuthRegister.module.css";
 
 const AuthRegister = () => {
+  usePageTitle("Alpha Hardware | Cadastrar-se");
+
   const registerForm = useJafh(
     {
       username: { value: "", validation: FieldValidations.username },

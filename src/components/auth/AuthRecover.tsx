@@ -6,6 +6,7 @@ import InputDefault from "@components/inputs/InputDefault";
 import PrimaryButton from "@components/ui/PrimaryButton";
 import Alert from "@components/ui/Alert";
 
+import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
 
@@ -14,6 +15,8 @@ import FieldValidations from "@utils/FieldValidations";
 import classes from "./AuthRecover.module.css";
 
 const AuthRecover = () => {
+  usePageTitle("Alpha Hardware | Recuperar conta");
+
   const recoverForm = useJafh(
     {
       username: { value: "", validation: FieldValidations.username },

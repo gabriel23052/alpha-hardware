@@ -1,0 +1,35 @@
+.container {
+  padding-top: var(--px32);
+  padding-bottom: var(--px64);
+}
+
+.header {
+  margin-bottom: var(--px32);
+}
+
+.header h1 {
+  margin-bottom: var(--px12);
+}
+
+.header p {
+  max-width: 760px;
+}
+
+.section {
+  margin-bottom: var(--px32);
+  max-width: 820px;
+}
+
+.section h2 {
+  margin-bottom: var(--px8);
+}
+
+.section p + p {
+  margin-top: var(--px12);
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding-bottom: var(--px40);
+  }
+}

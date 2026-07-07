@@ -48,10 +48,10 @@ const SOCIAL_MEDIA = [
 ];
 
 const INSTITUTIONAL_LINKS = [
-  { name: "Sobre a Alpha Hardware", to: "/" },
-  { name: "Políticas de Privacidade", to: "/" },
-  { name: "Políticas de Cookies", to: "/" },
-  { name: "Políticas de Devolução", to: "/" },
+  { name: "Sobre a Alpha Hardware", to: "/institutional/about" },
+  { name: "Políticas de Privacidade", to: "/institutional/privacy" },
+  { name: "Políticas de Cookies", to: "/institutional/cookies" },
+  { name: "Políticas de Devolução", to: "/institutional/returns" },
 ];
 
 // prettier-ignore

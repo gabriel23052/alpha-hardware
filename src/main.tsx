@@ -11,6 +11,10 @@ import ProductPage from "@components/product/ProductPage";
 import Catalog from "@components/catalog/Catalog";
 import ScrollToTop from "@components/ui/ScrollToTop";
 import Auth from "@components/auth/Auth";
+import InstitutionalAbout from "@components/institutional/InstitutionalAbout";
+import InstitutionalPrivacy from "@components/institutional/InstitutionalPrivacy";
+import InstitutionalCookies from "@components/institutional/InstitutionalCookies";
+import InstitutionalReturns from "@components/institutional/InstitutionalReturns";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -22,9 +26,23 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth/*" element={<Auth />} />
+          <Route path="/institutional/about" element={<InstitutionalAbout />} />
+          <Route
+            path="/institutional/privacy"
+            element={<InstitutionalPrivacy />}
+          />
+          <Route
+            path="/institutional/cookies"
+            element={<InstitutionalCookies />}
+          />
+          <Route
+            path="/institutional/returns"
+            element={<InstitutionalReturns />}
+          />
         </Routes>
         <Footer />
       </ScrollToTop>
     </BrowserRouter>
   </StrictMode>,
 );
+

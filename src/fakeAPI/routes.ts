@@ -3,6 +3,7 @@ import { FakeAPIResponse } from "./FakeAPIResponse";
 import { Validations } from "./Validations";
 import { HomepageHandler } from "./handlers/HomepageHandler";
 import { ProductsHandler } from "./handlers/ProductsHandler";
+import { UsersHandler } from "./handlers/UsersHandler";
 
 const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
   "GET api/homepage/banners": (): FAResponse<FAHomepageBanners_Full> => {
@@ -71,6 +72,38 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const productsHandler = new ProductsHandler();
     const response = new FakeAPIResponse<FAProduct_Card[]>();
     productsHandler.getRecentlyViewed(response);
+    return response.getResponse();
+  },
+
+  "POST api/auth/register": (params): FAResponse<FAUser_WithoutPassword> => {
+    const usersHandler = new UsersHandler();
+    const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+
+    if (!params) {
+      response.setError(ErrorMessages.USER_CREATION_PAYLOAD_NOT_FOUND);
+      return response.getResponse();
+    }
+
+    if (!Validations.userCreationPayload(response, params))
+      return response.getResponse();
+
+    usersHandler.createUser(response, params);
+
+    return response.getResponse();
+  },
+    const usersHandler = new UsersHandler();
+    const response = new FakeAPIResponse<FAUser>();
+
+    if (!params) {
+      response.setError(ErrorMessages.USER_CREATION_PAYLOAD_NOT_FOUND);
+      return response.getResponse();
+    }
+
+    if (!Validations.userCreationPayload(response, params))
+      return response.getResponse();
+
+    usersHandler.createUser(response, params);
+    
     return response.getResponse();
   },
 };

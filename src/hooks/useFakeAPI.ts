@@ -17,14 +17,21 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
 
   const activeRequest = useRef<null | FakeAPIRequest>(null);
 
-  async function fetch(params?: IFakeApiReqParams) {
+  async function fetch(params?: IFakeApiReqParams): Promise<IFakeApiResponse> {
     activeRequest.current?.cancel();
     activeRequest.current = request(route, params);
     setLoading(true);
+    setError(null);
     const response = await activeRequest.current.promise;
     if (!response) {
       if (activeRequest.current === null) setLoading(false);
-      return;
+      return {
+        success: false,
+        error: {
+          userFriendly: false,
+          message: "Requisição cancelada",
+        },
+      };
     }
     activeRequest.current = null;
     if (!response.success) {
@@ -36,10 +43,11 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
         return GENERIC_ERROR_MESSAGE;
       });
       setLoading(false);
-      return;
+      return response;
     }
     setData(response.data as T);
     setLoading(false);
+    return response;
   }
 
   function cancel() {

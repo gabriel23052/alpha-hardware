@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputDefault from "@components/inputs/InputDefault";
 import InputPassword from "@components/inputs/InputPassword";
-import PrimaryButton from "@components/ui/PrimaryButton";
+import FormButton from "@components/ui/FormButton";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
@@ -40,7 +40,9 @@ const AuthLogin = () => {
             updateField={loginForm.updateField}
           />
         </div>
-        <PrimaryButton className={classes.submitBtn}>entrar</PrimaryButton>
+        <FormButton className={classes.submitBtn} state="enable">
+          entrar
+        </FormButton>
       </form>
       <p className={`text-small dneutral ${classes.loginLink}`}>
         Não possuí uma conta? Crie{" "}

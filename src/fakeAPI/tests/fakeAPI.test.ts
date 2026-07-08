@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
 
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { ErrorMessages } from "@fakeAPI/ErrorMessages";
@@ -7,14 +7,34 @@ import { productsFixtures } from "./fixtures/products";
 import { salesFixtures } from "./fixtures/sales";
 import { collectionsFixtures } from "./fixtures/collections";
 import { bannersFixtures } from "./fixtures/banners";
+import { usersFixtures } from "./fixtures/users";
 
 import { ProductsTable } from "@fakeAPI/tables/ProductsTable";
 import { SalesTable } from "@fakeAPI/tables/SalesTable";
 import { CollectionsTable } from "@fakeAPI/tables/CollectionsTable";
 import { BannersTable } from "@fakeAPI/tables/BannersTable";
+import { UsersTable } from "@fakeAPI/tables/UsersTable";
 
 import { PrimitiveValidations } from "@fakeAPI/PrimitiveValidations";
 import { Validations } from "@fakeAPI/Validations";
+import { config } from "@fakeAPI/config";
+
+function createLocalStorageMock() {
+  let store: Record<string, string> = {};
+
+  return {
+    getItem: (key: string) => store[key] ?? null,
+    setItem: (key: string, value: string) => {
+      store[key] = value;
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    },
+  };
+}
 
 describe("tables", () => {
   describe("BannersTable", () => {
@@ -292,6 +312,91 @@ describe("tables", () => {
       expect(salesTable.getInPrCardFormat()[0]).toEqual(expected);
     });
   });
+
+  describe("UsersTable", () => {
+    const localStorageKey = config.localStorageKeys.users;
+
+    beforeEach(() => {
+      vi.stubGlobal("localStorage", createLocalStorageMock());
+    });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it("Inicializa localStorage vazio quando não existem usuários", () => {
+      new UsersTable();
+      expect(localStorage.getItem(localStorageKey)).toBe("[]");
+    });
+
+    it("Retorna usuário para id existente", () => {
+      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      const usersTable = new UsersTable();
+      const expected = [usersFixtures.userList[0]];
+
+      usersTable.searchById(usersFixtures.userList[0].id);
+      expect(usersTable.get()).toEqual(expected);
+    });
+
+    it("Retorna array vazio para id inexistente", () => {
+      localStorage.setItem(config.localStorageKeys.users, JSON.stringify(usersFixtures.userList));
+      const usersTable = new UsersTable();
+
+      usersTable.searchById("USR-000000000");
+      expect(usersTable.get()).toEqual([]);
+    });
+
+    it("Cria usuário e persiste no localStorage", () => {
+      const fixture = usersFixtures.user;
+      const usersTable = new UsersTable();
+
+      usersTable.createUser(fixture.id, fixture.creationPayload);
+      usersTable.searchById(fixture.id);
+
+      expect(usersTable.get()).toEqual(fixture.expected);
+      expect(JSON.parse(localStorage.getItem(config.localStorageKeys.users) || "")).toEqual(
+        fixture.expected,
+      );
+    });
+
+    it("Não cria usuário para id já cadastrado", () => {
+      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      const usersTable = new UsersTable();
+
+      usersTable.createUser(usersFixtures.userList[0].id, {
+        username: "new user",
+        password: "9100",
+      });
+
+      expect(JSON.parse(localStorage.getItem(localStorageKey) || "")).toEqual(
+        usersFixtures.userList,
+      );
+    });
+
+    it("Não cria usuário para nome de usuário já cadastrado", () => {
+      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      const usersTable = new UsersTable();
+
+      usersTable.createUser("USR-000000003", {
+        username: usersFixtures.userList[0].username,
+        password: "9100",
+      });
+
+      expect(JSON.parse(localStorage.getItem(localStorageKey) || "")).toEqual(
+        usersFixtures.userList,
+      );
+    });
+
+    it("Verifica se nome de usuário está cadastrado", () => {
+      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      const usersTable = new UsersTable();
+
+      expect(
+        usersTable.verifyIfExistsByUsername(usersFixtures.userList[0].username),
+      ).toBe(true);
+      expect(usersTable.verifyIfExistsByUsername("missing user")).toBe(false);
+    });
+  });
 });
 
 describe("PrimitiveValidations", () => {
@@ -469,6 +574,64 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productFormat("")).toBe(false);
       expect(PrimitiveValidations.productFormat("Card")).toBe(false);
       expect(PrimitiveValidations.productFormat("Suggestion")).toBe(false);
+    });
+  });
+  describe("username", () => {
+    it("Retorna true para nomes de usuário válidos", () => {
+      expect(PrimitiveValidations.username("valid username")).toBe(true);
+      expect(PrimitiveValidations.username("valid username")).toBe(true);
+      expect(PrimitiveValidations.username("valid username 123")).toBe(true);
+      expect(PrimitiveValidations.username("validusername")).toBe(true);
+      expect(PrimitiveValidations.username("VALID USERNAME")).toBe(true);
+      expect(PrimitiveValidations.username("VALID USERNAME 123")).toBe(true);
+      expect(PrimitiveValidations.username("abc")).toBe(true);
+      expect(PrimitiveValidations.username(" abc")).toBe(true);
+      expect(PrimitiveValidations.username(" abc ")).toBe(true);
+      expect(PrimitiveValidations.username(Array(30).fill("0").join(""))).toBe(
+        true,
+      );
+    });
+
+    it("Retorna false para nomes de usuário inválidos", () => {
+      expect(PrimitiveValidations.username(12)).toBe(false);
+      expect(PrimitiveValidations.username(false)).toBe(false);
+      expect(PrimitiveValidations.username(true)).toBe(false);
+      expect(PrimitiveValidations.username(["wrong"])).toBe(false);
+      expect(PrimitiveValidations.username("")).toBe(false);
+      expect(PrimitiveValidations.username("ab")).toBe(false);
+      expect(PrimitiveValidations.username(" ab")).toBe(false);
+      expect(PrimitiveValidations.username("ab ")).toBe(false);
+      expect(PrimitiveValidations.username(" ab ")).toBe(false);
+      expect(PrimitiveValidations.username("invalid_username")).toBe(false);
+      expect(PrimitiveValidations.username("invalid-username")).toBe(false);
+      expect(PrimitiveValidations.username("ínvalid username")).toBe(false);
+      expect(PrimitiveValidations.username(Array(31).fill("a").join(""))).toBe(
+        false,
+      );
+    });
+  });
+  describe("password", () => {
+    it("Retorna true para senhas válidas", () => {
+      expect(PrimitiveValidations.password("1234")).toBe(true);
+      expect(PrimitiveValidations.password("5678")).toBe(true);
+      expect(PrimitiveValidations.password("9100")).toBe(true);
+      expect(PrimitiveValidations.password("0000")).toBe(true);
+    });
+
+    it("Retorna false para senhas inválidas", () => {
+      expect(PrimitiveValidations.password(12)).toBe(false);
+      expect(PrimitiveValidations.password(1234)).toBe(false);
+      expect(PrimitiveValidations.password(false)).toBe(false);
+      expect(PrimitiveValidations.password(true)).toBe(false);
+      expect(PrimitiveValidations.password(["wrong"])).toBe(false);
+      expect(PrimitiveValidations.password("")).toBe(false);
+      expect(PrimitiveValidations.password("123")).toBe(false);
+      expect(PrimitiveValidations.password("12345")).toBe(false);
+      expect(PrimitiveValidations.password("abcd")).toBe(false);
+      expect(PrimitiveValidations.password("ab3d")).toBe(false);
+      expect(PrimitiveValidations.password(" 1234")).toBe(false);
+      expect(PrimitiveValidations.password(" 1234 ")).toBe(false);
+      expect(PrimitiveValidations.password("1234 ")).toBe(false);
     });
   });
 });
@@ -665,6 +828,90 @@ describe("Validations", () => {
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.PRODUCT_FILTER_INVALID_TAGS,
+      );
+    });
+  });
+
+  describe("userCreationPayload", () => {
+    const res = new FakeAPIResponse();
+
+    it("Retorna true para criações de usuário válidas", () => {
+      expect(
+        Validations.userCreationPayload(res, {
+          username: "valid username",
+          password: "1234",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna erro para criações de usuário inválidas", () => {
+      expect(
+        Validations.userCreationPayload(res, 1),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, "invalid"),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, false),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, true),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, {}),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, {}),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, {
+          invalidProp: "invalid prop"
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_USERNAME,
+      );
+      
+      expect(
+        Validations.userCreationPayload(res, {
+          username: "valid username",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_PASSWORD,
+      );
+
+      expect(
+        Validations.userCreationPayload(res, {
+          password: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_CREATION_INVALID_USERNAME,
       );
     });
   });

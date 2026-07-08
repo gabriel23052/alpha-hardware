@@ -150,3 +150,17 @@ type FASaleModifier = {
   discont: number;
   salePrices: FAProductPrice;
 };
+
+type FAUser = {
+  id: string;
+  username: string;
+  password: string;
+};
+type FAUser_Complete = FAUser;
+type FAUser_WithoutPassword = Omit<FAUser, "password">;
+
+type FAUserCreationPayload = {
+  username: string;
+  password: string;
+}
+

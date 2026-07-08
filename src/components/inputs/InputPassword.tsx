@@ -60,7 +60,7 @@ const InputPassword = ({
         onBlur={handleBlur}
         {...attr}
       />
-      <button onClick={handleClick}>
+      <button onClick={handleClick} type="button">
         <svg
           width="24"
           height="20"

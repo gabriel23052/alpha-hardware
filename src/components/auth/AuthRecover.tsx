@@ -3,7 +3,7 @@ import { type FocusEvent } from "react";
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputPassword from "@components/inputs/InputPassword";
 import InputDefault from "@components/inputs/InputDefault";
-import PrimaryButton from "@components/ui/PrimaryButton";
+import FormButton from "@components/ui/FormButton";
 import Alert from "@components/ui/Alert";
 
 import usePageTitle from "@hooks/usePageTitle";
@@ -79,7 +79,7 @@ const AuthRecover = () => {
           As senhas são diferentes
         </Alert>
       )}
-      <PrimaryButton>Atualizar</PrimaryButton>
+      <FormButton state="enable">Atualizar</FormButton>
     </AuthFormWrapper>
   );
 };

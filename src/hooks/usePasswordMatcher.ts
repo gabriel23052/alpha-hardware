@@ -9,12 +9,14 @@ export default function usePasswordMatcher(
     confirmation: false,
   });
 
+  const areEqual = password === confirmation;
+
   const showError = useMemo(
     () =>
-      password !== confirmation &&
+      !areEqual &&
       hasBlurred.password &&
       hasBlurred.confirmation,
-    [hasBlurred, password, confirmation]
+    [hasBlurred, areEqual]
   );
 
   const blurField = (field: "password" | "confirmation") => {
@@ -31,5 +33,5 @@ export default function usePasswordMatcher(
     }));
   };
 
-  return { blurField, showError };
+  return { areEqual, blurField, showError };
 }

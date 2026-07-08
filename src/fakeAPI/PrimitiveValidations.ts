@@ -47,7 +47,9 @@ class PrimitiveValidations {
     return this.stringLength(tag, minLength, maxLength);
   }
 
-  public static productFormat(format: unknown): format is FAProductFormatOptions {
+  public static productFormat(
+    format: unknown,
+  ): format is FAProductFormatOptions {
     return (
       format === "full" ||
       format === "price" ||
@@ -61,6 +63,32 @@ class PrimitiveValidations {
       sort === "increasingPrice" ||
       sort === "decreasingPrice" ||
       sort === "alphabetical"
+    );
+  }
+
+  public static username(username: unknown): username is string {
+    if (typeof username !== "string") {
+      return false;
+    }
+    const trimedUsername = username.trim();
+    return (
+      this.stringLength(
+        trimedUsername,
+        config.validationsRules.usernameMinLength,
+        config.validationsRules.usernameMaxLength,
+      ) && /^[a-zA-Z0-9\s]+$/.test(trimedUsername)
+    );
+  }
+
+  public static password(password: unknown): password is string {
+    return (
+      typeof password === "string" &&
+      this.stringLength(
+        password,
+        config.validationsRules.passwordLength,
+        config.validationsRules.passwordLength,
+      ) &&
+      /^\d+$/.test(password)
     );
   }
 }

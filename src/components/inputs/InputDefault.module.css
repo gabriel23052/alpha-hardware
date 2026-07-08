@@ -1,7 +1,3 @@
-.container {
-  position: relative;
-}
-
 .container label {
   display: block;
   margin-bottom: var(--px4);
@@ -28,7 +24,4 @@
 .container p {
   display: block;
   text-align: right;
-  position: absolute;
-  top: 100%;
-  right: 0px;
 }

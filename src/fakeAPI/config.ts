@@ -8,6 +8,9 @@ const config = {
     firstCollectionId: "COL-16C9A2",
     secondCollectionId: "COL-B6876C",
   },
+  localStorageKeys: {
+    users: "fakeAPI-users",
+  },
   validationsRules: {
     productQueryNameMaxLength: 200,
     productQueryNameMinLength: 2,
@@ -18,6 +21,9 @@ const config = {
     productQueryTagMaxLength: 30,
     productQueryTagMinLength: 2,
     productQueryMaxTagArraySize: 4,
+    usernameMinLength: 3,
+    usernameMaxLength: 30,
+    passwordLength: 4,
   },
 } as const;
 

@@ -1,0 +1,47 @@
+.button {
+  width: 100%;
+  padding: var(--px12) 0;
+  border-radius: var(--px8);
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  transition: 300ms background-color;
+}
+
+.button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.button[data-state="enable"]:hover {
+  background-color: var(--primary-dark);
+}
+
+.button:disabled,
+.button[data-state="disable"] {
+  background-color: var(--lneutral-dark);
+  color: var(--dneutral-light);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.button[data-state="loading"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: var(--px24);
+  height: var(--px24);
+  border: 3px solid var(--lneutral-xdark);
+  border-top-color: var(--lneutral-xlight);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

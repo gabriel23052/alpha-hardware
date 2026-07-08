@@ -10,7 +10,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 const PrimaryButton = ({ children, className, ...attr }: Props) => {
   return (
     <button
-      className={`lneutral-xlight bg-primary text-default-b ${classes.button} ${className ?? ""}`}
+      className={`text-default-b lneutral-xlight bg-primary ${classes.button} ${className ?? ""}`}
       {...attr}
     >
       {children}

@@ -102,6 +102,31 @@ class Validations {
     }
     return true;
   }
+
+  public static userCreationPayload(
+    response: FakeAPIResponse,
+    userCreationPayload: FARequestParameterData,
+  ): userCreationPayload is FAUserCreationPayload {
+    if (!this.isValidParamRecord(userCreationPayload)) {
+      return response.setError(ErrorMessages.USER_CREATION_INVALID_PAYLOAD);
+    }
+
+    if (
+      !("username" in userCreationPayload) ||
+      !PrimitiveValidations.username(userCreationPayload.username)
+    ) {
+      return response.setError(ErrorMessages.USER_CREATION_INVALID_USERNAME);
+    }
+
+    if (
+      !("password" in userCreationPayload) ||
+      !PrimitiveValidations.password(userCreationPayload.password)
+    ) {
+      return response.setError(ErrorMessages.USER_CREATION_INVALID_PASSWORD);
+    }
+
+    return true;
+  }
 }
 
 export { Validations };

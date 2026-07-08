@@ -27,21 +27,9 @@ export default class FieldValidations {
     if (value.length < 3 || value.length > 30) {
       return this.createError("Deve ter entre 3 e 30 caracteres");
     }
-    return /^[\p{L}\p{N}\s]+$/u.test(value)
+    return /^[a-zA-Z0-9\s]+$/.test(value)
       ? null
-      : this.createError("Utilize somente letras, números e espaços");
-  };
-
-  public static email: JafhValidation = (value) => {
-    if (typeof value !== "string") {
-      return this.createError(`"email" deve ser uma string`, false);
-    }
-    if (value.length === 0) {
-      return this.createError("Campo obrigatório");
-    }
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-      ? null
-      : this.createError("E-mail inválido");
+      : this.createError("Somente letras não acentuadas, números e espaços");
   };
 
   public static password: JafhValidation = (value) => {
@@ -51,8 +39,11 @@ export default class FieldValidations {
     if (value.length === 0) {
       return this.createError("Campo obrigatório");
     }
-    if (value.length < 8 || value.length > 64) {
-      return this.createError("Deve ter entre 8 e 64 caracteres");
+    if (value.length !== 4) {
+      return this.createError("Deve ter 4 caracteres");
+    }
+    if (!/^\d+$/.test(value)) {
+      return this.createError("Deve conter apenas números");
     }
     return null;
   };

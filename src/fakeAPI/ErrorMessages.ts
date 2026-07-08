@@ -23,6 +23,12 @@ enum ErrorMessages {
   PRODUCT_FILTER_INVALID_MIN_PRICE = "Filtro por valor mínimo inválido",
   PRODUCT_FILTER_INVALID_MAX_PRICE = "Filtro por valor máximo inválido",
   PRODUCT_FILTER_INVALID_TAGS = "Filtro por tags inválido",
+
+  USER_CREATION_PAYLOAD_NOT_FOUND = "Os dados para criação de usuário não foram encontrados",
+  USER_CREATION_INVALID_PAYLOAD = "Os dados para criação de usuário são inválidos",
+  USER_CREATION_INVALID_USERNAME = "O nome de usuário fornecido é inválido",
+  USER_CREATION_INVALID_PASSWORD = "A senha fornecida é inválida",
+  USER_CREATION_USERNAME_ALREADY_REGISTERED = "Esse usuário já está cadastrado",
 }
 
 export { ErrorMessages };

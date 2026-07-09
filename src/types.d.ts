@@ -131,3 +131,8 @@ type IProductQuery = {
   sort?: IProductSort;
 }
 
+type IUser = {
+  id: string;
+  username: string;
+}
+

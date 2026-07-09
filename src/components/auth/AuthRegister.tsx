@@ -38,7 +38,7 @@ const AuthRegister = () => {
     "Erro na validação, tente novamente",
   );
 
-  const api = useFakeAPI<FAUser>("POST api/users");
+  const api = useFakeAPI<IUser>("POST api/auth/register");
 
   const passwordMatcher = usePasswordMatcher(
     registerForm.fields.password.value,

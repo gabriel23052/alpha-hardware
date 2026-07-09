@@ -91,19 +91,21 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
 
     return response.getResponse();
   },
+
+  "POST api/auth/login": (params): FAResponse<null> => {
     const usersHandler = new UsersHandler();
-    const response = new FakeAPIResponse<FAUser>();
+    const response = new FakeAPIResponse<null>();
 
     if (!params) {
-      response.setError(ErrorMessages.USER_CREATION_PAYLOAD_NOT_FOUND);
+      response.setError(ErrorMessages.USER_LOGIN_PAYLOAD_NOT_FOUND);
       return response.getResponse();
     }
 
-    if (!Validations.userCreationPayload(response, params))
+    if (!Validations.loginPayload(response, params))
       return response.getResponse();
 
-    usersHandler.createUser(response, params);
-    
+    usersHandler.login(response, params);
+
     return response.getResponse();
   },
 };

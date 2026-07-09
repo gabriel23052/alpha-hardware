@@ -50,6 +50,11 @@ class UsersTable {
     this.usersBuffer = [user];
   }
 
+  public searchByUsername(username: string) {
+    const user = [...this.data.values()].find(
+      (u) => username === u.username,
+    );
+    this.usersBuffer = user ? [user] : [];
   }
 
   public verifyIfExistsByUsername(username: string) {

@@ -127,6 +127,31 @@ class Validations {
 
     return true;
   }
+
+  public static loginPayload(
+    response: FakeAPIResponse,
+    loginPayload: FARequestParameterData,
+  ): loginPayload is FALoginPayload {
+    if (!this.isValidParamRecord(loginPayload)) {
+      return response.setError(ErrorMessages.USER_LOGIN_INVALID_PAYLOAD);
+    }
+
+    if (
+      !("username" in loginPayload) ||
+      !PrimitiveValidations.username(loginPayload.username)
+    ) {
+      return response.setError(ErrorMessages.USER_LOGIN_INVALID_USERNAME);
+    }
+
+    if (
+      !("password" in loginPayload) ||
+      !PrimitiveValidations.password(loginPayload.password)
+    ) {
+      return response.setError(ErrorMessages.USER_LOGIN_INVALID_PASSWORD);
+    }
+
+    return true;
+  }
 }
 
 export { Validations };

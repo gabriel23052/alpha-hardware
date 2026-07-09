@@ -1,12 +1,15 @@
-import { Link } from "react-router";
+import type { FormEventHandler } from "react";
+import { Link, useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputDefault from "@components/inputs/InputDefault";
 import InputPassword from "@components/inputs/InputPassword";
 import FormButton from "@components/ui/FormButton";
+import Alert from "@components/ui/Alert";
 
 import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
+import useFakeAPI from "@hooks/useFakeAPI";
 
 import FieldValidations from "@utils/FieldValidations";
 
@@ -14,6 +17,8 @@ import classes from "./AuthLogin.module.css";
 
 const AuthLogin = () => {
   usePageTitle("Alpha Hardware | Login");
+
+  const navigate = useNavigate();
 
   const loginForm = useJafh(
     {
@@ -23,9 +28,21 @@ const AuthLogin = () => {
     "Erro na validação, tente novamente",
   );
 
+  const api = useFakeAPI<null>("POST api/auth/login");
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const response = await api.fetch({
+      username: loginForm.fields.username.value,
+      password: loginForm.fields.password.value,
+    });
+    if (!response.success) return;
+    navigate("/");
+  };
+
   return (
     <AuthFormWrapper title="Entre na sua conta">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={classes.inputs}>
           <InputDefault
             label="Nome de usuário"
@@ -38,9 +55,16 @@ const AuthLogin = () => {
             id="password"
             field={loginForm.fields.password}
             updateField={loginForm.updateField}
+            maxLength={4}
           />
         </div>
-        <FormButton className={classes.submitBtn} state="enable">
+        {api.error && <Alert className={classes.alert}>{api.error}</Alert>}
+        <FormButton
+          className={classes.submitBtn}
+          state={
+            api.loading ? "loading" : !loginForm.isValid ? "disable" : "enable"
+          }
+        >
           entrar
         </FormButton>
       </form>

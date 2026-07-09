@@ -18,6 +18,8 @@ import { UsersTable } from "@fakeAPI/tables/UsersTable";
 import { PrimitiveValidations } from "@fakeAPI/PrimitiveValidations";
 import { Validations } from "@fakeAPI/Validations";
 import { config } from "@fakeAPI/config";
+import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
+import { sessionsFixture } from "./fixtures/sessions";
 
 function createLocalStorageMock() {
   let store: Record<string, string> = {};
@@ -330,7 +332,10 @@ describe("tables", () => {
     });
 
     it("Retorna usuário para id existente", () => {
-      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(usersFixtures.userList),
+      );
       const usersTable = new UsersTable();
       const expected = [usersFixtures.userList[0]];
 
@@ -338,8 +343,28 @@ describe("tables", () => {
       expect(usersTable.get()).toEqual(expected);
     });
 
+    it("Retorna usuário em formato 'withoutPassword'", () => {
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(usersFixtures.userList),
+      );
+      const usersTable = new UsersTable();
+      const expected = [
+        {
+          id: usersFixtures.userList[0].id,
+          username: usersFixtures.userList[0].username,
+        },
+      ];
+
+      usersTable.searchById(usersFixtures.userList[0].id);
+      expect(usersTable.getInWithoutPasswordFormat()).toEqual(expected);
+    });
+
     it("Retorna array vazio para id inexistente", () => {
-      localStorage.setItem(config.localStorageKeys.users, JSON.stringify(usersFixtures.userList));
+      localStorage.setItem(
+        config.localStorageKeys.users,
+        JSON.stringify(usersFixtures.userList),
+      );
       const usersTable = new UsersTable();
 
       usersTable.searchById("USR-000000000");
@@ -354,13 +379,16 @@ describe("tables", () => {
       usersTable.searchById(fixture.id);
 
       expect(usersTable.get()).toEqual(fixture.expected);
-      expect(JSON.parse(localStorage.getItem(config.localStorageKeys.users) || "")).toEqual(
-        fixture.expected,
-      );
+      expect(
+        JSON.parse(localStorage.getItem(config.localStorageKeys.users) || ""),
+      ).toEqual(fixture.expected);
     });
 
     it("Não cria usuário para id já cadastrado", () => {
-      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(usersFixtures.userList),
+      );
       const usersTable = new UsersTable();
 
       usersTable.createUser(usersFixtures.userList[0].id, {
@@ -374,7 +402,10 @@ describe("tables", () => {
     });
 
     it("Não cria usuário para nome de usuário já cadastrado", () => {
-      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(usersFixtures.userList),
+      );
       const usersTable = new UsersTable();
 
       usersTable.createUser("USR-000000003", {
@@ -388,13 +419,88 @@ describe("tables", () => {
     });
 
     it("Verifica se nome de usuário está cadastrado", () => {
-      localStorage.setItem(localStorageKey, JSON.stringify(usersFixtures.userList));
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(usersFixtures.userList),
+      );
       const usersTable = new UsersTable();
 
       expect(
         usersTable.verifyIfExistsByUsername(usersFixtures.userList[0].username),
       ).toBe(true);
       expect(usersTable.verifyIfExistsByUsername("missing user")).toBe(false);
+    });
+  });
+
+  describe("SessionsTable", () => {
+    const localStorageKey = config.localStorageKeys.sessions;
+
+    beforeEach(() => {
+      vi.stubGlobal("localStorage", createLocalStorageMock());
+    });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it("Inicializa localStorage vazio quando não existem sessões", () => {
+      new SessionsTable();
+      expect(localStorage.getItem(localStorageKey)).toBe("[]");
+    });
+
+    it("Retorna sessão para id existente", () => {
+      const fixture = sessionsFixture.commomSession;
+      localStorage.setItem(localStorageKey, JSON.stringify(fixture.expected));
+
+      const sessionsTable = new SessionsTable();
+      const expectedSession = sessionsFixture.commomSession.expected[0];
+
+      sessionsTable.searchById(expectedSession.id);
+
+      expect(sessionsTable.get()[0].id).toEqual(expectedSession.id);
+      expect(sessionsTable.get()[0].userId).toEqual(expectedSession.userId);
+      expect(sessionsTable.get()[0].startedAt).toBeTypeOf("number");
+    });
+
+    it("Retorna array vazio para id inexistente", () => {
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(sessionsFixture.commomSession.expected),
+      );
+      const sessionsTable = new SessionsTable();
+
+      sessionsTable.searchById("SES-000000000");
+      expect(sessionsTable.get()).toEqual([]);
+    });
+
+    it("Cria a sessão e persiste no localStorage", () => {
+      const payload = sessionsFixture.commomSession.payload;
+      const expected = sessionsFixture.commomSession.expected[0];
+      const sessionsTable = new SessionsTable();
+
+      sessionsTable.createSession(payload.id, payload.userId);
+      sessionsTable.searchById(expected.id);
+
+      const sessionFromLocalstorage = JSON.parse(
+        localStorage.getItem(localStorageKey) || "",
+      );
+
+      expect(sessionFromLocalstorage).toHaveLength(1);
+      expect(sessionFromLocalstorage[0].id).toEqual(expected.id);
+      expect(sessionFromLocalstorage[0].userId).toEqual(expected.userId);
+      expect(sessionFromLocalstorage[0].startedAt).toBeTypeOf("number");
+    });
+
+    it("Remove a sessão do localStorage", () => {
+      const payload = sessionsFixture.commomSession.payload;
+      const sessionsTable = new SessionsTable();
+      sessionsTable.createSession(payload.id, payload.userId);
+      const sessionFromLocalstorage = JSON.parse(
+        localStorage.getItem(localStorageKey) || "",
+      );
+      expect(sessionFromLocalstorage[0]).toBeDefined();
+      sessionsTable.removeSession(payload.id);
+      expect(localStorage.getItem(localStorageKey) || "").toEqual("[]");
     });
   });
 });
@@ -845,57 +951,45 @@ describe("Validations", () => {
     });
 
     it("Retorna erro para criações de usuário inválidas", () => {
-      expect(
-        Validations.userCreationPayload(res, 1),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, 1)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
-      expect(
-        Validations.userCreationPayload(res, "invalid"),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, "invalid")).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
-      expect(
-        Validations.userCreationPayload(res, false),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, false)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
-      expect(
-        Validations.userCreationPayload(res, true),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, true)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
-      expect(
-        Validations.userCreationPayload(res, {}),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
-      expect(
-        Validations.userCreationPayload(res, {}),
-      ).toBe(false);
+      expect(Validations.userCreationPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
       );
 
       expect(
         Validations.userCreationPayload(res, {
-          invalidProp: "invalid prop"
+          invalidProp: "invalid prop",
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_USERNAME,
       );
-      
+
       expect(
         Validations.userCreationPayload(res, {
           username: "valid username",
@@ -912,6 +1006,78 @@ describe("Validations", () => {
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         ErrorMessages.USER_CREATION_INVALID_USERNAME,
+      );
+    });
+  });
+
+  describe("loginPayload", () => {
+    const res = new FakeAPIResponse();
+
+    it("Retorna true para payloads de login válidos", () => {
+      expect(
+        Validations.loginPayload(res, {
+          username: "valid username",
+          password: "1234",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna erro para payloads de login inválidos", () => {
+      expect(Validations.loginPayload(res, 1)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.loginPayload(res, "invalid")).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.loginPayload(res, false)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.loginPayload(res, true)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.loginPayload(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.loginPayload(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.loginPayload(res, {
+          invalidProp: "invalid prop",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_USERNAME,
+      );
+
+      expect(
+        Validations.loginPayload(res, {
+          username: "valid username",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_PASSWORD,
+      );
+
+      expect(
+        Validations.loginPayload(res, {
+          password: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.USER_LOGIN_INVALID_USERNAME,
       );
     });
   });

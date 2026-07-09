@@ -10,6 +10,8 @@ const config = {
   },
   localStorageKeys: {
     users: "fakeAPI-users",
+    sessions: "fakeAPI-sessions",
+    sessionFakeCookie: "fakeCookie-session",
   },
   validationsRules: {
     productQueryNameMaxLength: 200,

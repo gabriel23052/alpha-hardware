@@ -1,6 +1,8 @@
 import { ErrorMessages } from "@fakeAPI/ErrorMessages";
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import { SessionsHandler } from "./SessionsHandler";
 import { UsersTable } from "@fakeAPI/tables/UsersTable";
+import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class UsersHandler {
   public createUser(
@@ -22,6 +24,19 @@ class UsersHandler {
 
     return response.setData(usersTable.getInWithoutPasswordFormat()[0]);
   }
+
+  public login(response: FakeAPIResponse<null>, loginPayload: FALoginPayload) {
+    const usersTable = new UsersTable();
+    usersTable.searchByUsername(loginPayload.username);
+    const user = usersTable.get()[0];
+    if (!user || user.password !== loginPayload.password) {
+      return response.setError(
+        ErrorMessages.USER_LOGIN_INCORRECT_CREDENTIALS,
+        true,
+      );
+    }
+    const sessionsHandler = new SessionsHandler();
+    sessionsHandler.createNewSection(user.id);
   }
 }
 

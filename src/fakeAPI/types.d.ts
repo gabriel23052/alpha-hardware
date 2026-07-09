@@ -162,5 +162,15 @@ type FAUser_WithoutPassword = Omit<FAUser, "password">;
 type FAUserCreationPayload = {
   username: string;
   password: string;
-}
+};
 
+type FALoginPayload = {
+  username: string;
+  password: string;
+};
+
+type FASession = {
+  id: string;
+  userId: string;
+  startedAt: number;
+};

@@ -5,6 +5,10 @@
   margin-bottom: var(--px64);
 }
 
+.alert {
+  margin-bottom: var(--px16);
+}
+
 .submitBtn {
   margin-bottom: var(--px8);
 }

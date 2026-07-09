@@ -105,17 +105,17 @@ const AuthRegister = () => {
           />
         </div>
         {passwordMatcher.showError && (
-          <Alert className={classes.passwordAlert}>
+          <Alert className={classes.alert}>
             As senhas são diferentes
           </Alert>
         )}
         {api.error &&
           api.error === "Esse usuário já está cadastrado" &&
           isUserAlreadyRegistred && (
-            <Alert className={classes.passwordAlert}>{api.error}</Alert>
+            <Alert className={classes.alert}>{api.error}</Alert>
           )}
         {api.error && api.error !== "Esse usuário já está cadastrado" && (
-          <Alert className={classes.passwordAlert}>{api.error}</Alert>
+          <Alert className={classes.alert}>{api.error}</Alert>
         )}
         <FormButton
           className={classes.submitBtn}

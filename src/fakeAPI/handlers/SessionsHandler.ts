@@ -1,4 +1,6 @@
 import { config } from "@fakeAPI/config";
+import { ErrorMessages } from "@fakeAPI/ErrorMessages";
+import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
@@ -22,13 +24,17 @@ class SessionsHandler {
     localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
   }
 
-  public isAValidSession(userId: string, sessionId: string): boolean {
+  public verifySession(response: FakeAPIResponse<null>) {
     const sessionsTable = new SessionsTable();
-    sessionsTable.searchById(sessionId);
-    const session = sessionsTable.get()[0];
-    if (!session) return false;
-    if (session.userId !== userId) return false;
-    return true;
+
+    const currentSessionId = localStorage.getItem(
+      config.localStorageKeys.sessionFakeCookie,
+    );
+
+    if (!currentSessionId || !sessionsTable.verifyIfExistsById(currentSessionId)) {
+      localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
+      return response.setError(ErrorMessages.AUTH_INVALID_SESSION);
+    }
   }
 }
 

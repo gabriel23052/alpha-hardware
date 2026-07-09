@@ -3,6 +3,7 @@ import { FakeAPIResponse } from "./FakeAPIResponse";
 import { Validations } from "./Validations";
 import { HomepageHandler } from "./handlers/HomepageHandler";
 import { ProductsHandler } from "./handlers/ProductsHandler";
+import { SessionsHandler } from "./handlers/SessionsHandler";
 import { UsersHandler } from "./handlers/UsersHandler";
 
 const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
@@ -115,6 +116,13 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
 
     usersHandler.logout();
 
+    return response.getResponse();
+  },
+
+  "POST api/auth/verifySession": (): FAResponse<null> => {
+    const sessionsHandler = new SessionsHandler();
+    const response = new FakeAPIResponse<null>();
+    sessionsHandler.verifySession(response);
     return response.getResponse();
   },
 };

@@ -9,6 +9,7 @@ import Footer from "@components/Footer";
 import Home from "@components/home/Home";
 import ProductPage from "@components/product/ProductPage";
 import Catalog from "@components/catalog/Catalog";
+import SessionValidator from "@components/SessionValidator";
 import ScrollToTop from "@components/ui/ScrollToTop";
 import Auth from "@components/auth/Auth";
 import InstitutionalAbout from "@components/institutional/InstitutionalAbout";
@@ -19,6 +20,7 @@ import InstitutionalReturns from "@components/institutional/InstitutionalReturns
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
+      <SessionValidator />
       <ScrollToTop>
         <Header />
         <Routes>
@@ -45,4 +47,3 @@ createRoot(document.getElementById("root")!).render(
     </BrowserRouter>
   </StrictMode>,
 );
-

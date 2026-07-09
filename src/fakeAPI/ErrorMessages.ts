@@ -36,6 +36,8 @@ enum ErrorMessages {
   USER_LOGIN_INVALID_USERNAME = "O nome de usuário fornecido é inválido",
   USER_LOGIN_INVALID_PASSWORD = "A senha fornecida é inválida",
   USER_LOGIN_INCORRECT_CREDENTIALS = "O nome de usuário ou senha estão incorretos",
+
+  AUTH_INVALID_SESSION = "Seção inexistente ou inválida"
 }
 
 export { ErrorMessages };

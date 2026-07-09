@@ -502,6 +502,21 @@ describe("tables", () => {
       sessionsTable.removeSession(payload.id);
       expect(localStorage.getItem(localStorageKey) || "").toEqual("[]");
     });
+
+    it("Verifica se a sessão existe", () => {
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(sessionsFixture.commomSession.expected),
+      );
+      const sessionsTable = new SessionsTable();
+
+      expect(
+        sessionsTable.verifyIfExistsById(
+          sessionsFixture.commomSession.expected[0].id,
+        ),
+      ).toBe(true);
+      expect(sessionsTable.verifyIfExistsById("SES-000000000")).toBe(false);
+    });
   });
 });
 

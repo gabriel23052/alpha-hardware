@@ -41,6 +41,10 @@ class SessionsTable {
     this.saveInLocalStorage();
   }
 
+  public verifyIfExistsById(id: string) {
+    return this.data.has(id);
+  }
+
   searchById(id: string) {
     const session = this.data.get(id);
     if (!session) {

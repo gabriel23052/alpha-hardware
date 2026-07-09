@@ -1,8 +1,4 @@
-import {
-  useRef,
-  type FocusEvent,
-  type FormEventHandler,
-} from "react";
+import { useRef, type FocusEvent, type FormEventHandler } from "react";
 import { Link, useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
@@ -19,12 +15,15 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import FieldValidations from "@utils/FieldValidations";
 
 import classes from "./AuthRegister.module.css";
+import { useSessionStore } from "@stores/useSessionStore";
 
 const AuthRegister = () => {
   const lastUserAlreadyRegistred = useRef<string | null>(null);
   const navigate = useNavigate();
-  
+
   usePageTitle("Alpha Hardware | Cadastrar-se");
+
+  const sessionStore = useSessionStore();
 
   const registerForm = useJafh(
     {
@@ -60,12 +59,15 @@ const AuthRegister = () => {
       username: registerForm.fields.username.value,
       password: registerForm.fields.password.value,
     });
-    if (response.success) {
+    if (response.success && response.data) {
+      sessionStore.login(response.data);
       navigate("/");
-      console.log(response.data);
       return;
     }
-    if (response.error.message === "Esse usuário já está cadastrado") {
+    if (
+      !response.success &&
+      response.error.message === "Esse usuário já está cadastrado"
+    ) {
       lastUserAlreadyRegistred.current = registerForm.fields.username.value;
     }
   };
@@ -105,9 +107,7 @@ const AuthRegister = () => {
           />
         </div>
         {passwordMatcher.showError && (
-          <Alert className={classes.alert}>
-            As senhas são diferentes
-          </Alert>
+          <Alert className={classes.alert}>As senhas são diferentes</Alert>
         )}
         {api.error &&
           api.error === "Esse usuário já está cadastrado" &&

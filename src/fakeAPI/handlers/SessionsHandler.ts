@@ -3,7 +3,7 @@ import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class SessionsHandler {
-  public createNewSection(userId: string) {
+  public createNewSession(userId: string) {
     const sessionsTable = new SessionsTable();
     const sessionId = createRandomHexId("SES", 9);
     sessionsTable.createSession(sessionId, userId);
@@ -12,7 +12,17 @@ class SessionsHandler {
     localStorage.setItem(config.localStorageKeys.sessionFakeCookie, session.id);
   }
 
-  public isAValidSection(userId: string, sessionId: string): boolean {
+  public finishCurrentSession() {
+    const sessionsTable = new SessionsTable();
+    const currentSession = localStorage.getItem(
+      config.localStorageKeys.sessionFakeCookie,
+    );
+    if (!currentSession) return;
+    sessionsTable.removeSession(currentSession);
+    localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
+  }
+
+  public isAValidSession(userId: string, sessionId: string): boolean {
     const sessionsTable = new SessionsTable();
     sessionsTable.searchById(sessionId);
     const session = sessionsTable.get()[0];

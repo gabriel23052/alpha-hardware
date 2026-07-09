@@ -12,6 +12,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@fakeAPI": path.resolve(__dirname, "./src/fakeAPI"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@stores": path.resolve(__dirname, "./src/stores"),
     },
   },
   plugins: [react(), svgr()],

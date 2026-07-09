@@ -10,6 +10,7 @@ class UsersHandler {
     userCreationPayload: FAUserCreationPayload,
   ) {
     const usersTable = new UsersTable();
+    const sessionsHandler = new SessionsHandler();
 
     if (usersTable.verifyIfExistsByUsername(userCreationPayload.username)) {
       return response.setError(
@@ -22,10 +23,15 @@ class UsersHandler {
     usersTable.createUser(id, userCreationPayload);
     usersTable.searchById(id);
 
+    sessionsHandler.createNewSession(id);
+
     return response.setData(usersTable.getInWithoutPasswordFormat()[0]);
   }
 
-  public login(response: FakeAPIResponse<null>, loginPayload: FALoginPayload) {
+  public login(
+    response: FakeAPIResponse<FAUser_WithoutPassword>,
+    loginPayload: FALoginPayload,
+  ) {
     const usersTable = new UsersTable();
     usersTable.searchByUsername(loginPayload.username);
     const user = usersTable.get()[0];
@@ -36,7 +42,14 @@ class UsersHandler {
       );
     }
     const sessionsHandler = new SessionsHandler();
-    sessionsHandler.createNewSection(user.id);
+    sessionsHandler.createNewSession(user.id);
+
+    return response.setData(usersTable.getInWithoutPasswordFormat()[0]);
+  }
+
+  public logout() {
+    const sessionsHandler = new SessionsHandler();
+    sessionsHandler.finishCurrentSession();
   }
 }
 

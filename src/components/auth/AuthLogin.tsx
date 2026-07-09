@@ -10,6 +10,7 @@ import Alert from "@components/ui/Alert";
 import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
+import { useSessionStore } from "@stores/useSessionStore";
 
 import FieldValidations from "@utils/FieldValidations";
 
@@ -20,6 +21,8 @@ const AuthLogin = () => {
 
   const navigate = useNavigate();
 
+  const sessionStore = useSessionStore();
+
   const loginForm = useJafh(
     {
       username: { value: "", validation: FieldValidations.username },
@@ -28,7 +31,7 @@ const AuthLogin = () => {
     "Erro na validação, tente novamente",
   );
 
-  const api = useFakeAPI<null>("POST api/auth/login");
+  const api = useFakeAPI<IUser>("POST api/auth/login");
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -36,7 +39,11 @@ const AuthLogin = () => {
       username: loginForm.fields.username.value,
       password: loginForm.fields.password.value,
     });
-    if (!response.success) return;
+    if (!response.success || !response.data) return;
+    sessionStore.login({
+      id: response.data.id,
+      username: response.data.username,
+    });
     navigate("/");
   };
 

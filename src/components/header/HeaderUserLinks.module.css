@@ -35,9 +35,26 @@
   background-color: var(--primary-xdark);
 }
 
+.spinner {
+  width: var(--px32);
+  height: var(--px32);
+  border: 2px solid var(--primary-dark);
+  border-top-color: var(--lneutral-light);
+  border-radius: 50%;
+  margin-inline: 3.62rem;
+  margin-block: var(--px8);
+  animation: spin 800ms linear infinite;
+}
+
 @media (max-width: 700px) {
   .container {
     grid-column: initial;
     grid-row: 3;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

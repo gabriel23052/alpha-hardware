@@ -92,9 +92,9 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     return response.getResponse();
   },
 
-  "POST api/auth/login": (params): FAResponse<null> => {
+  "POST api/auth/login": (params): FAResponse<FAUser_WithoutPassword> => {
     const usersHandler = new UsersHandler();
-    const response = new FakeAPIResponse<null>();
+    const response = new FakeAPIResponse<FAUser_WithoutPassword>();
 
     if (!params) {
       response.setError(ErrorMessages.USER_LOGIN_PAYLOAD_NOT_FOUND);
@@ -105,6 +105,15 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
       return response.getResponse();
 
     usersHandler.login(response, params);
+
+    return response.getResponse();
+  },
+
+  "POST api/auth/logout": (): FAResponse<null> => {
+    const usersHandler = new UsersHandler();
+    const response = new FakeAPIResponse<null>();
+
+    usersHandler.logout();
 
     return response.getResponse();
   },

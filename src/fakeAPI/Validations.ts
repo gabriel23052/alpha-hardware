@@ -152,6 +152,31 @@ class Validations {
 
     return true;
   }
+
+  public static recoverPayload(
+    response: FakeAPIResponse,
+    recoverPayload: FARequestParameterData,
+  ): recoverPayload is FARecoverPayload {
+    if (!this.isValidParamRecord(recoverPayload)) {
+      return response.setError(ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD);
+    }
+
+    if (
+      !("username" in recoverPayload) ||
+      !PrimitiveValidations.username(recoverPayload.username)
+    ) {
+      return response.setError(ErrorMessages.AUTH_RECOVER_INVALID_USERNAME);
+    }
+
+    if (
+      !("newPassword" in recoverPayload) ||
+      !PrimitiveValidations.password(recoverPayload.newPassword)
+    ) {
+      return response.setError(ErrorMessages.AUTH_RECOVER_INVALID_PASSWORD);
+    }
+
+    return true;
+  }
 }
 
 export { Validations };

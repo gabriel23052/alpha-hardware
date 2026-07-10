@@ -125,6 +125,23 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     sessionsHandler.verifySession(response);
     return response.getResponse();
   },
+
+  "POST api/auth/recoverPassword": (params): FAResponse<null> => {
+    const usersHandler = new UsersHandler();
+    const response = new FakeAPIResponse<null>();
+
+    if (!params) {
+      response.setError(ErrorMessages.AUTH_RECOVER_PAYLOAD_NOT_FOUND);
+      return response.getResponse();
+    }
+
+    if (!Validations.recoverPayload(response, params))
+      return response.getResponse();
+
+    usersHandler.recoverPassword(response, params);
+
+    return response.getResponse();
+  },
 };
 
 export { routes };

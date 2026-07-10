@@ -174,3 +174,8 @@ type FASession = {
   userId: string;
   startedAt: number;
 };
+
+type FARecoverPayload = {
+  username: string;
+  newPassword: string;
+};

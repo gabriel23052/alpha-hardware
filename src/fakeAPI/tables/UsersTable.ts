@@ -51,14 +51,19 @@ class UsersTable {
   }
 
   public searchByUsername(username: string) {
-    const user = [...this.data.values()].find(
-      (u) => username === u.username,
-    );
+    const user = [...this.data.values()].find((u) => username === u.username);
     this.usersBuffer = user ? [user] : [];
   }
 
   public verifyIfExistsByUsername(username: string) {
     return this.getUserByUsername(username) !== undefined;
+  }
+
+  public updatePassword(id: string, newPassword: string) {
+    const user = this.data.get(id);
+    if (!user) return;
+    user.password = newPassword;
+    this.saveInLocalStorage();
   }
 
   private getUserByUsername(username: string) {

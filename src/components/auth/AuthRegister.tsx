@@ -11,11 +11,11 @@ import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
+import { useSessionStore } from "@stores/useSessionStore";
 
 import FieldValidations from "@utils/FieldValidations";
 
 import classes from "./AuthRegister.module.css";
-import { useSessionStore } from "@stores/useSessionStore";
 
 const AuthRegister = () => {
   const lastUserAlreadyRegistred = useRef<string | null>(null);

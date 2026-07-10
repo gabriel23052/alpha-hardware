@@ -37,7 +37,13 @@ enum ErrorMessages {
   USER_LOGIN_INVALID_PASSWORD = "A senha fornecida é inválida",
   USER_LOGIN_INCORRECT_CREDENTIALS = "O nome de usuário ou senha estão incorretos",
 
-  AUTH_INVALID_SESSION = "Seção inexistente ou inválida"
+  AUTH_INVALID_SESSION = "Seção inexistente ou inválida",
+
+  AUTH_RECOVER_PAYLOAD_NOT_FOUND = "Os dados para recuperação de senha não foram encontrados",
+  AUTH_RECOVER_INVALID_PAYLOAD = "Os dados para recuperação de senha são inválidos",
+  AUTH_RECOVER_INVALID_USERNAME = "O nome de usuário fornecido é inválido",
+  AUTH_RECOVER_INVALID_PASSWORD = "A nova senha fornecida é inválida",
+  AUTH_RECOVER_USERNAME_NOT_FOUND = "Usuário não encontrado",
 }
 
 export { ErrorMessages };

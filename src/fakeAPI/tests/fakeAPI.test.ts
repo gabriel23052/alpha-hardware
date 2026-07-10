@@ -430,6 +430,47 @@ describe("tables", () => {
       ).toBe(true);
       expect(usersTable.verifyIfExistsByUsername("missing user")).toBe(false);
     });
+
+    it("Não altera senha usuário se ele não existe", () => {
+      const usersTable = new UsersTable();
+      const user = {
+        id: "USR-123456789",
+        username: "validuser",
+        password: "1234",
+      };
+      usersTable.createUser(user.id, {
+        username: user.username,
+        password: user.password,
+      });
+
+      const localStorageBeforeTheChange = localStorage.getItem(localStorageKey);
+
+      usersTable.updatePassword("USR-000000000", "1234");
+
+      expect(localStorageBeforeTheChange).toEqual(
+        localStorage.getItem(localStorageKey),
+      );
+    });
+
+    it("Altera senha do usuário", () => {
+      const usersTable = new UsersTable();
+      const newPassword = "4321";
+      const user = {
+        id: "USR-123456789",
+        username: "validuser",
+        password: "1234",
+      };
+
+      usersTable.createUser(user.id, {
+        username: user.username,
+        password: user.password,
+      });
+      usersTable.updatePassword(user.id, newPassword);
+      usersTable.searchById(user.id);
+      const userAfterTheUpdate = usersTable.get()[0];
+      
+      expect(userAfterTheUpdate.password).toEqual(newPassword);
+    });
   });
 
   describe("SessionsTable", () => {
@@ -1096,4 +1137,77 @@ describe("Validations", () => {
       );
     });
   });
+
+  describe("recoverPayload", () => {
+    const res = new FakeAPIResponse();
+    
+    it("Retorna true para payloads de recuperação válidos", () => {
+      expect(
+        Validations.recoverPayload(res, {
+          username: "valid username",
+          newPassword: "1234",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna erro para payloads de recuperação inválidos", () => {
+      expect(Validations.recoverPayload(res, 1)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.recoverPayload(res, "invalid")).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.recoverPayload(res, false)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.recoverPayload(res, true)).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.recoverPayload(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(Validations.recoverPayload(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+      );
+
+      expect(
+        Validations.recoverPayload(res, {
+          invalidProp: "invalid prop",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_USERNAME,
+      );
+
+      expect(
+        Validations.recoverPayload(res, {
+          username: "valid username",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_PASSWORD,
+      );
+
+      expect(
+        Validations.recoverPayload(res, {
+          newPassword: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        ErrorMessages.AUTH_RECOVER_INVALID_USERNAME,
+      );
+    });
+    
+  })
 });

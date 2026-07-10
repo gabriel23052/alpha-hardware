@@ -51,6 +51,25 @@ class UsersHandler {
     const sessionsHandler = new SessionsHandler();
     sessionsHandler.finishCurrentSession();
   }
+
+  public recoverPassword(
+    response: FakeAPIResponse<null>,
+    recoverPayload: FARecoverPayload,
+  ) {
+    const usersTable = new UsersTable();
+
+    if (!usersTable.verifyIfExistsByUsername(recoverPayload.username)) {
+      return response.setError(
+        ErrorMessages.AUTH_RECOVER_USERNAME_NOT_FOUND,
+        true,
+      );
+    }
+
+    usersTable.searchByUsername(recoverPayload.username);
+    const user = usersTable.get()[0];
+    
+    usersTable.updatePassword(user.id, recoverPayload.newPassword);
+  }
 }
 
 export { UsersHandler };

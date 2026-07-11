@@ -2,6 +2,7 @@ import { useRef, type FocusEvent, type FormEventHandler } from "react";
 import { Link, useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
+import AuthNotice from "./AuthNotice";
 import InputPassword from "@components/inputs/InputPassword";
 import InputDefault from "@components/inputs/InputDefault";
 import FormButton from "@components/ui/FormButton";
@@ -75,6 +76,11 @@ const AuthRegister = () => {
   return (
     <AuthFormWrapper title="Crie sua conta">
       <form onSubmit={handleSubmit}>
+        <AuthNotice>
+          Por tratar-se de uma demonstração com dados armazenados localmente, o
+          sistema de autenticação é simplificado, necessitando apenas de um nome
+          de usuário e uma senha númerica de 4 dígitos.
+        </AuthNotice>
         <div className={classes.inputs}>
           <InputDefault
             containerClassName={classes.input}

@@ -1,8 +1,8 @@
-import type { ErrorMessages } from "./ErrorMessages";
+import { getFakeAPIError, type ErrorID } from "./errors";
 
 class FakeAPIResponse<T = unknown> {
   private data: T | null = null;
-  private error: { message: string; userFriendly: boolean } | null = null;
+  private error: FAResponseError | null = null;
   public hasError = false;
 
   public setData(data: T) {
@@ -10,9 +10,9 @@ class FakeAPIResponse<T = unknown> {
     this.data = data;
   }
 
-  public setError(message: ErrorMessages, userFriendly: boolean = false) {
+  public setError(id: ErrorID) {
     this.hasError = true;
-    this.error = { message, userFriendly };
+    this.error = getFakeAPIError(id);
     return false;
   }
 
@@ -20,10 +20,7 @@ class FakeAPIResponse<T = unknown> {
     if (this.error) {
       return {
         success: false,
-        error: {
-          message: this.error.message,
-          userFriendly: this.error?.userFriendly,
-        },
+        error: this.error,
       };
     }
     return {
@@ -34,3 +31,4 @@ class FakeAPIResponse<T = unknown> {
 }
 
 export { FakeAPIResponse };
+

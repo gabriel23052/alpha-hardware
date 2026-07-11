@@ -150,7 +150,7 @@ const Catalog = () => {
       />
 
       {api.loading && <CatalogSkeleton />}
-      {api.error && <ErrorMessage>{api.error}</ErrorMessage>}
+      {api.error && <ErrorMessage>{api.error.message}</ErrorMessage>}
       {!api.loading &&
         api.data &&
         (emptyFilter || api.data.length === 0 ? (

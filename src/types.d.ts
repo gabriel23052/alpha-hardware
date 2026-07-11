@@ -18,8 +18,8 @@ type IFakeApiResponse<T = unknown> =
     };
 
 type IFakeApiError = {
+  id: string;
   message: string;
-  userFriendly: boolean;
 };
 
 type IBanner = {

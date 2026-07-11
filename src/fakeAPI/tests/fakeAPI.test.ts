@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
 
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
-import { ErrorMessages } from "@fakeAPI/ErrorMessages";
+import { getFakeAPIError } from "@fakeAPI/errors";
 
 import { productsFixtures } from "./fixtures/products";
 import { salesFixtures } from "./fixtures/sales";
@@ -468,7 +468,7 @@ describe("tables", () => {
       usersTable.updatePassword(user.id, newPassword);
       usersTable.searchById(user.id);
       const userAfterTheUpdate = usersTable.get()[0];
-      
+
       expect(userAfterTheUpdate.password).toEqual(newPassword);
     });
   });
@@ -831,36 +831,36 @@ describe("Validations", () => {
     it("Retorna erro para consultas inválidas", () => {
       expect(Validations.productQuery(res, 12)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID,
+        getFakeAPIError("PRODUCT_QUERY_INVALID").message,
       );
 
       expect(Validations.productQuery(res, "12")).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID,
+        getFakeAPIError("PRODUCT_QUERY_INVALID").message,
       );
 
       expect(Validations.productQuery(res, true)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID,
+        getFakeAPIError("PRODUCT_QUERY_INVALID").message,
       );
 
       expect(Validations.productQuery(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID,
+        getFakeAPIError("PRODUCT_QUERY_INVALID").message,
       );
 
       expect(Validations.productQuery(res, { sort: "increasingPrice" })).toBe(
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_WITHOUT_FILTER,
+        getFakeAPIError("PRODUCT_QUERY_WITHOUT_FILTER").message,
       );
 
       expect(Validations.productQuery(res, { filter: { name: "test" } })).toBe(
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_WITHOUT_FORMAT,
+        getFakeAPIError("PRODUCT_QUERY_WITHOUT_FORMAT").message,
       );
 
       expect(
@@ -870,7 +870,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID_FORMAT,
+        getFakeAPIError("PRODUCT_QUERY_INVALID_FORMAT").message,
       );
 
       expect(
@@ -881,7 +881,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_QUERY_INVALID_SORT,
+        getFakeAPIError("PRODUCT_QUERY_INVALID_SORT").message,
       );
     });
   });
@@ -933,13 +933,13 @@ describe("Validations", () => {
       // @ts-expect-error test
       expect(Validations.productQueryFilter(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_FILTER,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_FILTER").message,
       );
 
       // @ts-expect-error test
       expect(Validations.productQueryFilter(res, { name: "w" })).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_NAME,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_NAME").message,
       );
 
       expect(
@@ -947,7 +947,7 @@ describe("Validations", () => {
         Validations.productQueryFilter(res, { saleId: "SAL-12a456" }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_SALE_ID,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_SALE_ID").message,
       );
 
       // @ts-expect-error test
@@ -955,7 +955,7 @@ describe("Validations", () => {
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_CATEGORY,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_CATEGORY").message,
       );
 
       // @ts-expect-error test
@@ -963,7 +963,7 @@ describe("Validations", () => {
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_MIN_PRICE,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_MIN_PRICE").message,
       );
 
       // @ts-expect-error test
@@ -971,7 +971,7 @@ describe("Validations", () => {
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_MAX_PRICE,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_MAX_PRICE").message,
       );
 
       // @ts-expect-error test
@@ -979,7 +979,7 @@ describe("Validations", () => {
         false,
       );
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_TAGS,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_TAGS").message,
       );
 
       expect(
@@ -989,7 +989,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.PRODUCT_FILTER_INVALID_TAGS,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_TAGS").message,
       );
     });
   });
@@ -1009,32 +1009,32 @@ describe("Validations", () => {
     it("Retorna erro para criações de usuário inválidas", () => {
       expect(Validations.userCreationPayload(res, 1)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.userCreationPayload(res, "invalid")).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.userCreationPayload(res, false)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.userCreationPayload(res, true)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.userCreationPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.userCreationPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PAYLOAD").message,
       );
 
       expect(
@@ -1043,7 +1043,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_USERNAME,
+        getFakeAPIError("AUTH_REGISTER_INVALID_USERNAME").message,
       );
 
       expect(
@@ -1052,7 +1052,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_PASSWORD,
+        getFakeAPIError("AUTH_REGISTER_INVALID_PASSWORD").message,
       );
 
       expect(
@@ -1061,7 +1061,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_CREATION_INVALID_USERNAME,
+        getFakeAPIError("AUTH_REGISTER_INVALID_USERNAME").message,
       );
     });
   });
@@ -1081,32 +1081,32 @@ describe("Validations", () => {
     it("Retorna erro para payloads de login inválidos", () => {
       expect(Validations.loginPayload(res, 1)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.loginPayload(res, "invalid")).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.loginPayload(res, false)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.loginPayload(res, true)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.loginPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.loginPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PAYLOAD").message,
       );
 
       expect(
@@ -1115,7 +1115,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_USERNAME,
+        getFakeAPIError("AUTH_LOGIN_INVALID_USERNAME").message,
       );
 
       expect(
@@ -1124,7 +1124,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_PASSWORD,
+        getFakeAPIError("AUTH_LOGIN_INVALID_PASSWORD").message,
       );
 
       expect(
@@ -1133,14 +1133,14 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.USER_LOGIN_INVALID_USERNAME,
+        getFakeAPIError("AUTH_LOGIN_INVALID_USERNAME").message,
       );
     });
   });
 
   describe("recoverPayload", () => {
     const res = new FakeAPIResponse();
-    
+
     it("Retorna true para payloads de recuperação válidos", () => {
       expect(
         Validations.recoverPayload(res, {
@@ -1153,32 +1153,32 @@ describe("Validations", () => {
     it("Retorna erro para payloads de recuperação inválidos", () => {
       expect(Validations.recoverPayload(res, 1)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.recoverPayload(res, "invalid")).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.recoverPayload(res, false)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.recoverPayload(res, true)).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.recoverPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(Validations.recoverPayload(res, {})).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PAYLOAD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PAYLOAD").message,
       );
 
       expect(
@@ -1187,7 +1187,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_USERNAME,
+        getFakeAPIError("AUTH_RECOVER_INVALID_USERNAME").message,
       );
 
       expect(
@@ -1196,7 +1196,7 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_PASSWORD,
+        getFakeAPIError("AUTH_RECOVER_INVALID_PASSWORD").message,
       );
 
       expect(
@@ -1205,9 +1205,8 @@ describe("Validations", () => {
         }),
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        ErrorMessages.AUTH_RECOVER_INVALID_USERNAME,
+        getFakeAPIError("AUTH_RECOVER_INVALID_USERNAME").message,
       );
     });
-    
-  })
+  });
 });

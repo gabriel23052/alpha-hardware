@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   text-align: center;
+  margin-block: var(--px24);
 }
 
 .container h3 {

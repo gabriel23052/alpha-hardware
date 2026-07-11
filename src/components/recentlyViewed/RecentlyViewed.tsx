@@ -30,7 +30,7 @@ const RecentlyViewed = () => {
           </h2>
         </div>
         {request.loading && <RecentlyViewedSkeleton />}
-        {request.error && <ErrorMessage>{request.error}</ErrorMessage>}
+        {request.error && <ErrorMessage>{request.error.message}</ErrorMessage>}
         {request.data && (
           <ProductList
             className={classes.products}

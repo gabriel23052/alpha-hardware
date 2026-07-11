@@ -9,7 +9,6 @@ import ProductInfo from "./ProductInfo";
 import ProductSkeleton from "./ProductSkeleton";
 
 import useFakeAPI from "@hooks/useFakeAPI";
-
 import usePageTitle from "@hooks/usePageTitle";
 
 import classes from "./Product.module.css";
@@ -38,7 +37,7 @@ const Product = ({ productId }: { productId: string }) => {
   }
 
   if (productRequest.error) {
-    return <ErrorMessage>{productRequest.error}</ErrorMessage>;
+    return <ErrorMessage>{productRequest.error.message}</ErrorMessage>;
   }
 
   if (productRequest.data)

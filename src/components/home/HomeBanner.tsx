@@ -9,7 +9,7 @@ import classes from "./HomeBanner.module.css";
 type Props = {
   data: IBanner | undefined;
   loading: boolean;
-  error: string | null;
+  error: IFakeApiError | null;
 };
 
 const HomeBanner = ({ data, loading, error }: Props) => {
@@ -23,7 +23,7 @@ const HomeBanner = ({ data, loading, error }: Props) => {
 
   return (
     <div className={classes.container}>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
       {loading && <SkeletonLoading className={classes.skeletonLoading} />}
       {data && (
         <Link to={data.link} className={classes.link}>

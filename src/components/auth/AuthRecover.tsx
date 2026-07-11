@@ -16,6 +16,8 @@ import FieldValidations from "@utils/FieldValidations";
 
 import classes from "./AuthRecover.module.css";
 
+const USER_NOT_FOUND_ERROR_ID = "AUTH_RECOVER_USER_NOT_FOUND"; 
+
 const AuthRecover = () => {
   usePageTitle("Alpha Hardware | Recuperar conta");
 
@@ -61,7 +63,7 @@ const AuthRecover = () => {
     }
     if (
       !response.success &&
-      response.error.message === "Usuário não encontrado"
+      response.error.id === USER_NOT_FOUND_ERROR_ID
     ) {
       lastUserNotRegistred.current = recoverForm.fields.username.value;
     }
@@ -109,12 +111,12 @@ const AuthRecover = () => {
           <Alert className={classes.alert}>As senhas são diferentes</Alert>
         )}
         {api.error &&
-          api.error === "Usuário não encontrado" &&
+          api.error.id === USER_NOT_FOUND_ERROR_ID &&
           isUserNotRegistred && (
-            <Alert className={classes.alert}>{api.error}</Alert>
+            <Alert className={classes.alert}>{api.error.message}</Alert>
           )}
-        {api.error && api.error !== "Usuário não encontrado" && (
-          <Alert className={classes.alert}>{api.error}</Alert>
+        {api.error && api.error.id !== USER_NOT_FOUND_ERROR_ID && (
+          <Alert className={classes.alert}>{api.error.message}</Alert>
         )}
         <FormButton
           state={

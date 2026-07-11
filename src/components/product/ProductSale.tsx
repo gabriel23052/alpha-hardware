@@ -9,7 +9,7 @@ import classes from "./ProductSale.module.css";
 type Props = {
   data: ISale | null;
   loading: boolean;
-  error: string | null;
+  error: IFakeApiError | null;
 };
 
 const ProductSale = ({ data, loading, error }: Props) => {
@@ -17,7 +17,7 @@ const ProductSale = ({ data, loading, error }: Props) => {
 
   return (
     <article className={`defaultContainer ${classes.container}`}>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
       {data && (
         <>
           <Link

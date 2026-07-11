@@ -8,11 +8,11 @@ import classes from "./ProductRelated.module.css";
 type Props = {
   data: IProduct_Card[] | null;
   loading: boolean;
-  error: string | null;
+  error: IFakeApiError | null;
 };
 
 const ProductRelated = ({ data, loading, error }: Props) => {
-  if (error) return <ErrorMessage>{error}</ErrorMessage>;
+  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
   if (loading) return <ProductRelatedSkeleton />;
 

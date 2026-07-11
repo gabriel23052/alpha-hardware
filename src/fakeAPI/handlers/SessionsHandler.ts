@@ -1,5 +1,4 @@
 import { config } from "@fakeAPI/config";
-import { ErrorMessages } from "@fakeAPI/ErrorMessages";
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
@@ -33,7 +32,7 @@ class SessionsHandler {
 
     if (!currentSessionId || !sessionsTable.verifyIfExistsById(currentSessionId)) {
       localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
-      return response.setError(ErrorMessages.AUTH_INVALID_SESSION);
+      return response.setError("AUTH_INVALID_SESSION");
     }
   }
 }

@@ -5,11 +5,13 @@ type FAResponse<T = unknown> =
     }
   | {
       success: false;
-      error: {
-        message: string;
-        userFriendly: boolean;
-      };
+      error: FAResponseError;
     };
+
+type FAResponseError = {
+  id: string;
+  message: string;
+};
 
 type FARequestParameterData =
   | number

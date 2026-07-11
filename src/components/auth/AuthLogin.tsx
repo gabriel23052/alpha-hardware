@@ -65,7 +65,7 @@ const AuthLogin = () => {
             maxLength={4}
           />
         </div>
-        {api.error && <Alert className={classes.alert}>{api.error}</Alert>}
+        {api.error && <Alert className={classes.alert}>{api.error.message}</Alert>}
         <FormButton
           className={classes.submitBtn}
           state={

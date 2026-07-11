@@ -18,6 +18,9 @@ import FieldValidations from "@utils/FieldValidations";
 
 import classes from "./AuthRegister.module.css";
 
+const USER_ALREADY_REGISTRED_ERROR_ID =
+  "USER_CREATION_USER_ALREADY_REGISTERED";
+
 const AuthRegister = () => {
   const lastUserAlreadyRegistred = useRef<string | null>(null);
   const navigate = useNavigate();
@@ -67,7 +70,7 @@ const AuthRegister = () => {
     }
     if (
       !response.success &&
-      response.error.message === "Esse usuário já está cadastrado"
+      response.error.id === USER_ALREADY_REGISTRED_ERROR_ID
     ) {
       lastUserAlreadyRegistred.current = registerForm.fields.username.value;
     }
@@ -116,12 +119,12 @@ const AuthRegister = () => {
           <Alert className={classes.alert}>As senhas são diferentes</Alert>
         )}
         {api.error &&
-          api.error === "Esse usuário já está cadastrado" &&
+          api.error.id === USER_ALREADY_REGISTRED_ERROR_ID &&
           isUserAlreadyRegistred && (
-            <Alert className={classes.alert}>{api.error}</Alert>
+            <Alert className={classes.alert}>{api.error.message}</Alert>
           )}
-        {api.error && api.error !== "Esse usuário já está cadastrado" && (
-          <Alert className={classes.alert}>{api.error}</Alert>
+        {api.error && api.error.id !== USER_ALREADY_REGISTRED_ERROR_ID && (
+          <Alert className={classes.alert}>{api.error.message}</Alert>
         )}
         <FormButton
           className={classes.submitBtn}

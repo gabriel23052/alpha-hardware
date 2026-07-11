@@ -1,4 +1,3 @@
-import { ErrorMessages } from "./ErrorMessages";
 import { FakeAPIResponse } from "./FakeAPIResponse";
 import { Validations } from "./Validations";
 import { HomepageHandler } from "./handlers/HomepageHandler";
@@ -33,7 +32,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const productsHandler = new ProductsHandler();
     const response = new FakeAPIResponse<FAProduct_Full>();
     if (!params) {
-      response.setError(ErrorMessages.PRODUCT_BY_ID_INVALID_ID);
+      response.setError("PRODUCT_INVALID_ID");
       return response.getResponse();
     }
     if (!Validations.productById(response, params))
@@ -46,7 +45,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const productsHandler = new ProductsHandler();
     const response = new FakeAPIResponse<FAProductFormats[]>();
     if (!params) {
-      response.setError(ErrorMessages.PRODUCT_QUERY_INVALID);
+      response.setError("PRODUCT_QUERY_INVALID");
       return response.getResponse();
     }
     if (!Validations.productQuery(response, params)) {
@@ -60,7 +59,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const productsHandler = new ProductsHandler();
     const response = new FakeAPIResponse<FAProduct_Card[]>();
     if (!params) {
-      response.setError(ErrorMessages.PRODUCT_BY_ID_INVALID_ID);
+      response.setError("PRODUCT_WITHOUT_ID");
       return response.getResponse();
     }
     if (!Validations.productById(response, params))
@@ -81,7 +80,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const response = new FakeAPIResponse<FAUser_WithoutPassword>();
 
     if (!params) {
-      response.setError(ErrorMessages.USER_CREATION_PAYLOAD_NOT_FOUND);
+      response.setError("AUTH_REGISTER_PAYLOAD_NOT_FOUND");
       return response.getResponse();
     }
 
@@ -98,7 +97,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const response = new FakeAPIResponse<FAUser_WithoutPassword>();
 
     if (!params) {
-      response.setError(ErrorMessages.USER_LOGIN_PAYLOAD_NOT_FOUND);
+      response.setError("AUTH_LOGIN_PAYLOAD_NOT_FOUND");
       return response.getResponse();
     }
 
@@ -131,7 +130,7 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     const response = new FakeAPIResponse<null>();
 
     if (!params) {
-      response.setError(ErrorMessages.AUTH_RECOVER_PAYLOAD_NOT_FOUND);
+      response.setError("AUTH_RECOVER_PAYLOAD_NOT_FOUND");
       return response.getResponse();
     }
 

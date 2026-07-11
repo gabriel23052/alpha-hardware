@@ -7,7 +7,7 @@ import classes from "./ProductCollection.module.css";
 type Props = {
   data: IProductCollection | undefined;
   loading: boolean;
-  error: string | null;
+  error: IFakeApiError | null;
 };
 
 const ProductCollection = ({ data, loading, error }: Props) => {
@@ -15,7 +15,7 @@ const ProductCollection = ({ data, loading, error }: Props) => {
 
   return (
     <article className={`defaultContainer ${classes.productSelection}`}>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
       {data && (
         <>
           <div className={classes.titleWithLine}>

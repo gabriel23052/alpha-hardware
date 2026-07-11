@@ -1,5 +1,5 @@
 import { config } from "./config";
-import { ErrorMessages } from "./ErrorMessages";
+import { getFakeAPIError } from "./errors";
 import { routes } from "./routes";
 
 function request(route: keyof typeof routes, params?: FARequestParameter) {
@@ -12,12 +12,9 @@ function request(route: keyof typeof routes, params?: FARequestParameter) {
       () => {
         if (abort) resolve();
         if (!(route in routes)) {
-          resolve({
+          return resolve({
             success: false,
-            error: {
-              userFriendly: false,
-              message: ErrorMessages.ROUTE_NOT_FOUND,
-            },
+            error: getFakeAPIError("ROUTE_NOT_FOUND"),
           });
         }
         const routeHandler = routes[route];

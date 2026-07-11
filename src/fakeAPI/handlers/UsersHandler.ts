@@ -1,4 +1,3 @@
-import { ErrorMessages } from "@fakeAPI/ErrorMessages";
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { SessionsHandler } from "./SessionsHandler";
 import { UsersTable } from "@fakeAPI/tables/UsersTable";
@@ -13,10 +12,7 @@ class UsersHandler {
     const sessionsHandler = new SessionsHandler();
 
     if (usersTable.verifyIfExistsByUsername(userCreationPayload.username)) {
-      return response.setError(
-        ErrorMessages.USER_CREATION_USERNAME_ALREADY_REGISTERED,
-        true,
-      );
+      return response.setError("AUTH_REGISTER_USER_ALREADY_REGISTERED");
     }
 
     const id = createRandomHexId("USR", 9);
@@ -36,10 +32,7 @@ class UsersHandler {
     usersTable.searchByUsername(loginPayload.username);
     const user = usersTable.get()[0];
     if (!user || user.password !== loginPayload.password) {
-      return response.setError(
-        ErrorMessages.USER_LOGIN_INCORRECT_CREDENTIALS,
-        true,
-      );
+      return response.setError("AUTH_LOGIN_INCORRECT_CREDENTIALS");
     }
     const sessionsHandler = new SessionsHandler();
     sessionsHandler.createNewSession(user.id);
@@ -59,15 +52,12 @@ class UsersHandler {
     const usersTable = new UsersTable();
 
     if (!usersTable.verifyIfExistsByUsername(recoverPayload.username)) {
-      return response.setError(
-        ErrorMessages.AUTH_RECOVER_USERNAME_NOT_FOUND,
-        true,
-      );
+      return response.setError("AUTH_RECOVER_USER_NOT_FOUND");
     }
 
     usersTable.searchByUsername(recoverPayload.username);
     const user = usersTable.get()[0];
-    
+
     usersTable.updatePassword(user.id, recoverPayload.newPassword);
   }
 }

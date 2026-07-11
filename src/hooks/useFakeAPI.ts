@@ -8,16 +8,16 @@ type FakeAPIRequest = {
   cancel: () => void;
 };
 
-const GENERIC_ERROR_MESSAGE = "Ocorreu um erro inesperado, tente novamente";
-
 export default function useFakeAPI<T>(route: keyof typeof routes) {
   const [data, setData] = useState<null | T>(null);
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<null | IFakeApiError>(null);
   const [loading, setLoading] = useState(false);
 
   const activeRequest = useRef<null | FakeAPIRequest>(null);
 
-  async function fetch(params?: IFakeApiReqParams): Promise<IFakeApiResponse<T>> {
+  async function fetch(
+    params?: IFakeApiReqParams,
+  ): Promise<IFakeApiResponse<T>> {
     activeRequest.current?.cancel();
     activeRequest.current = request(route, params);
     setLoading(true);
@@ -28,20 +28,15 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
       return {
         success: false,
         error: {
-          userFriendly: false,
+          id: "REQUEST_CANCELLED",
           message: "Requisição cancelada",
         },
       };
     }
     activeRequest.current = null;
     if (!response.success) {
-      setError(() => {
-        if (response.error.userFriendly) {
-          return response.error.message;
-        }
-        console.error(response.error.message);
-        return GENERIC_ERROR_MESSAGE;
-      });
+      console.error(response.error.id);
+      setError(response.error);
       setLoading(false);
       return response;
     }

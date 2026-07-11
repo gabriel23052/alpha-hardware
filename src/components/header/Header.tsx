@@ -55,7 +55,7 @@ const Header = () => {
             >
               <SVGMenu aria-hidden="true" width={32} height={32} />
             </button>
-            <HeaderUserLinks id={authId} />
+            <HeaderUserLinks containerId={authId} />
             <HeaderShortcuts shortcutsId={shortcutsId} />
           </div>
         </div>

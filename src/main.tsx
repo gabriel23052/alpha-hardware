@@ -16,6 +16,7 @@ import InstitutionalAbout from "@components/institutional/InstitutionalAbout";
 import InstitutionalPrivacy from "@components/institutional/InstitutionalPrivacy";
 import InstitutionalCookies from "@components/institutional/InstitutionalCookies";
 import InstitutionalReturns from "@components/institutional/InstitutionalReturns";
+import NotFound from "@components/NotFound";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -41,6 +42,7 @@ createRoot(document.getElementById("root")!).render(
             path="/institutional/returns"
             element={<InstitutionalReturns />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </ScrollToTop>

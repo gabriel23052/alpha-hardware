@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 12.5rem;
+}
+
+.container img {
+  width: 12.5rem;
+  height: auto;
+  display: block;
+  margin-block: auto;
+  margin-bottom: var(--px32);
+}
+
+.container p {
+  margin-bottom: var(--px8);
+  text-align: center;
+}
+
+.container a {
+  text-decoration: underline;
+}
+.container a:hover {
+  color: var(--primary-xdark);
+}
+.container a:focus {
+  border-radius: 8px;
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+

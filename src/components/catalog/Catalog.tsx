@@ -149,21 +149,25 @@ const Catalog = () => {
         setShowFilter={setShowFilter}
       />
 
-      {api.loading && <CatalogSkeleton />}
-      {api.error && <ErrorMessage>{api.error.message}</ErrorMessage>}
-      {!api.loading &&
-        api.data &&
-        (emptyFilter || api.data.length === 0 ? (
-          <p className={`text-default dneutral-dark ${classes.badFilter}`}>
-            Ops! Nenhum produto encontrado, verifique os filtros
-          </p>
-        ) : (
-          <ProductList
-            className={classes.products}
-            products={api.data}
-            mode="default"
-          />
-        ))}
+      {api.loading ? (
+        <CatalogSkeleton />
+      ) : api.error ? (
+        <ErrorMessage>{api.error.message}</ErrorMessage>
+      ) : emptyFilter ? (
+        <p className={`text-default dneutral-dark ${classes.badFilter}`}>
+          Ops! Nenhum produto encontrado, verifique os filtros
+        </p>
+      ) : api.data && api.data.length > 0 ? (
+        <ProductList
+          className={classes.products}
+          products={api.data}
+          mode="default"
+        />
+      ) : (
+        <p className={`text-default dneutral-dark ${classes.badFilter}`}>
+          Ops! Nenhum produto encontrado, verifique os filtros
+        </p>
+      )}
     </main>
   );
 };

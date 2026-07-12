@@ -25,7 +25,7 @@ const HeaderSearchSuggestions = ({ listId, results, query, show }: Props) => {
           <li key={id} role="option">
             <Link
               className="text-default dneutral"
-              to={`products/${id}`}
+              to={`product/${id}`}
               tabIndex={show ? 0 : -1}
             >
               {name}

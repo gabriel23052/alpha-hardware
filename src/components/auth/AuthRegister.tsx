@@ -14,12 +14,11 @@ import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
 import { useSessionStore } from "@stores/useSessionStore";
 
-import FieldValidations from "@utils/FieldValidations";
+import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./AuthRegister.module.css";
 
-const USER_ALREADY_REGISTRED_ERROR_ID =
-  "USER_CREATION_USER_ALREADY_REGISTERED";
+const USER_ALREADY_REGISTRED_ERROR_ID = "USER_CREATION_USER_ALREADY_REGISTERED";
 
 const AuthRegister = () => {
   const lastUserAlreadyRegistred = useRef<string | null>(null);
@@ -31,11 +30,11 @@ const AuthRegister = () => {
 
   const registerForm = useJafh(
     {
-      username: { value: "", validation: FieldValidations.username },
-      password: { value: "", validation: FieldValidations.password },
+      username: { value: "", validation: fieldValidations.username },
+      password: { value: "", validation: fieldValidations.password },
       confirmation: {
         value: "",
-        validation: FieldValidations.password,
+        validation: fieldValidations.password,
       },
     },
     "Erro na validação, tente novamente",

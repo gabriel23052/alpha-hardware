@@ -12,7 +12,7 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import { useSessionStore } from "@stores/useSessionStore";
 
-import FieldValidations from "@utils/FieldValidations";
+import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./AuthLogin.module.css";
 
@@ -25,8 +25,8 @@ const AuthLogin = () => {
 
   const loginForm = useJafh(
     {
-      username: { value: "", validation: FieldValidations.username },
-      password: { value: "", validation: FieldValidations.password },
+      username: { value: "", validation: fieldValidations.username },
+      password: { value: "", validation: fieldValidations.password },
     },
     "Erro na validação, tente novamente",
   );
@@ -65,7 +65,9 @@ const AuthLogin = () => {
             maxLength={4}
           />
         </div>
-        {api.error && <Alert className={classes.alert}>{api.error.message}</Alert>}
+        {api.error && (
+          <Alert className={classes.alert}>{api.error.message}</Alert>
+        )}
         <FormButton
           className={classes.submitBtn}
           state={

@@ -10,11 +10,12 @@ import CatalogSkeleton from "./CatalogSkeleton";
 import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
+import usePageTitle from "@hooks/usePageTitle";
 
-import FieldValidations from "@utils/FieldValidations";
+import fieldValidations from "@utils/fieldValidations";
+import urlParamsValidations from "@utils/urlParamsValidations";
 
 import classes from "./Catalog.module.css";
-import usePageTitle from "@hooks/usePageTitle";
 
 export type FilterFormFields = {
   name: string;
@@ -30,7 +31,7 @@ const FILTER_UPDATE_DELAY = 1000;
 
 const Catalog = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [emptyFilter, setEmptyFilter] = useState(true);
+  const [invalidFilter, setInvalidFilter] = useState(true);
   const firstRender = useRef(true);
   const bypassDebouncedUpdate = useRef(true);
   const filterContainerID = useId();
@@ -47,8 +48,8 @@ const Catalog = () => {
       name: { value: "", validation: null },
       saleId: { value: "", validation: null },
       category: { value: "", validation: null },
-      minPrice: { value: "", validation: FieldValidations.priceFilter },
-      maxPrice: { value: "", validation: FieldValidations.priceFilter },
+      minPrice: { value: "", validation: fieldValidations.priceFilter },
+      maxPrice: { value: "", validation: fieldValidations.priceFilter },
       tags: { value: [], validation: null },
       sort: { value: "", validation: null },
     },
@@ -73,10 +74,10 @@ const Catalog = () => {
     if (formData.tags.length !== 0)
       filter.tags = formData.tags.map((tag) => tag[1]);
     if (Object.keys(filter).length === 0) {
-      setEmptyFilter(true);
+      setInvalidFilter(true);
       return;
     }
-    setEmptyFilter(false);
+    setInvalidFilter(false);
     const sort = filterForm.fields.sort.value;
     const query: IProductQuery = {
       format: "card",
@@ -117,14 +118,29 @@ const Catalog = () => {
   }, [filterForm.fields]);
 
   const updateFieldsFromQueryParams = () => {
-    if (params.get("category")) {
-      updateCategory(params.get("category") || "");
+    const category = params.get("category");
+    const sale = params.get("sale");
+    const name = params.get("name");
+    if (category) {
+      if (!urlParamsValidations.productCategory(category)) {
+        setInvalidFilter(true);
+        return;
+      }
+      updateCategory(category);
     }
-    if (params.get("sale")) {
-      filterForm.updateField("saleId", params.get("sale"));
+    if (sale) {
+      if (!urlParamsValidations.saleId(sale)) {
+        setInvalidFilter(true);
+        return;
+      }
+      filterForm.updateField("saleId", sale);
     }
-    if (params.get("name")) {
-      filterForm.updateField("name", params.get("name"));
+    if (name) {
+      if (!urlParamsValidations.productName(name)) {
+        setInvalidFilter(true);
+        return;
+      }
+      filterForm.updateField("name", name);
     }
   };
 
@@ -137,7 +153,7 @@ const Catalog = () => {
       <CatalogTopMenu
         filterForm={filterForm}
         openMobileFilter={openMobileFilter}
-        productsAmount={api.data ? (emptyFilter ? 0 : api.data.length) : 0}
+        productsAmount={api.data ? (invalidFilter ? 0 : api.data.length) : 0}
         filterContainerId={filterContainerID}
         updateCategory={updateCategory}
       />
@@ -153,7 +169,7 @@ const Catalog = () => {
         <CatalogSkeleton />
       ) : api.error ? (
         <ErrorMessage>{api.error.message}</ErrorMessage>
-      ) : emptyFilter ? (
+      ) : invalidFilter ? (
         <p className={`text-default dneutral-dark ${classes.badFilter}`}>
           Ops! Nenhum produto encontrado, verifique os filtros
         </p>

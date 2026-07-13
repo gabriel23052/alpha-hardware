@@ -11,6 +11,13 @@ import SVGInstagramDark from "@svg/instagramDark.svg?react";
 import SVGXDark from "@svg/xDark.svg?react";
 import SVGFacebookDark from "@svg/facebookDark.svg?react";
 
+const VALIDATIONS_RULES = {
+  productCategoryMaxLength: 30,
+  productCategoryMinLength: 2,
+  productNameMaxLength: 200,
+  productNameMinLength: 2,
+} as const;
+
 const CATEGORIES = [
   { name: "gpu", label: "Placas de Vídeo", Svg: SVGGpu },
   { name: "moba", label: "Placas-mãe", Svg: SVGMotherBoard },
@@ -86,4 +93,10 @@ const TAGS = {
   ],
 };
 
-export { CATEGORIES, SOCIAL_MEDIA, TAGS, INSTITUTIONAL_LINKS };
+export {
+  VALIDATIONS_RULES,
+  CATEGORIES,
+  SOCIAL_MEDIA,
+  TAGS,
+  INSTITUTIONAL_LINKS,
+};

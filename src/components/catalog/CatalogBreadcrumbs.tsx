@@ -45,7 +45,7 @@ const CatalogBreadcrumbs = ({
           {`Busca por: "${name}"`}
         </CatalogBreadcrumb>
       )}
-      {category !== "" && (
+      {CATEGORIES.map(c => c.name).includes(category) && (
         <CatalogBreadcrumb close={() => removeFilter("category")}>
           {CATEGORIES.find((cat) => cat.name === category)?.label}
         </CatalogBreadcrumb>

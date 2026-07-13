@@ -12,11 +12,11 @@ import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
 import { useNavigate } from "react-router";
 
-import FieldValidations from "@utils/FieldValidations";
+import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./AuthRecover.module.css";
 
-const USER_NOT_FOUND_ERROR_ID = "AUTH_RECOVER_USER_NOT_FOUND"; 
+const USER_NOT_FOUND_ERROR_ID = "AUTH_RECOVER_USER_NOT_FOUND";
 
 const AuthRecover = () => {
   usePageTitle("Alpha Hardware | Recuperar conta");
@@ -27,11 +27,11 @@ const AuthRecover = () => {
 
   const recoverForm = useJafh(
     {
-      username: { value: "", validation: FieldValidations.username },
-      newPassword: { value: "", validation: FieldValidations.password },
+      username: { value: "", validation: fieldValidations.username },
+      newPassword: { value: "", validation: fieldValidations.password },
       confirmation: {
         value: "",
-        validation: FieldValidations.password,
+        validation: fieldValidations.password,
       },
     },
     "Erro na validação, tente novamente",
@@ -61,10 +61,7 @@ const AuthRecover = () => {
       navigate("/auth/login");
       return;
     }
-    if (
-      !response.success &&
-      response.error.id === USER_NOT_FOUND_ERROR_ID
-    ) {
+    if (!response.success && response.error.id === USER_NOT_FOUND_ERROR_ID) {
       lastUserNotRegistred.current = recoverForm.fields.username.value;
     }
   };

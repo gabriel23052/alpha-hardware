@@ -54,8 +54,8 @@ const AuthRecover = () => {
     e.preventDefault();
     if (!recoverForm.isValid) return;
     const response = await api.fetch({
-      username: recoverForm.fields.username.value,
-      newPassword: recoverForm.fields.newPassword.value,
+      username: recoverForm.fields.username.value.trim(),
+      newPassword: recoverForm.fields.newPassword.value.trim(),
     });
     if (response.success) {
       navigate("/auth/login");

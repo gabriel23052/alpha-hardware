@@ -9,6 +9,10 @@ class PrimitiveValidations {
     return Number.isInteger(target) && target >= min && target <= max;
   }
 
+  private static isTrimmed(str: string) {
+    return str === str.trim();
+  }
+
   public static productId(id: unknown): id is string {
     if (typeof id !== "string") return false;
     return /^PRO-[0-9A-F]{9}$/.test(id);
@@ -20,14 +24,14 @@ class PrimitiveValidations {
   }
 
   public static productFilterName(name: unknown): name is string {
-    if (typeof name !== "string") return false;
+    if (typeof name !== "string" || !this.isTrimmed(name)) return false;
     const maxLength = config.validationsRules.productQueryNameMaxLength;
     const minLength = config.validationsRules.productQueryNameMinLength;
     return this.stringLength(name, minLength, maxLength);
   }
 
   public static productFilterCategory(category: unknown): category is string {
-    if (typeof category !== "string") return false;
+    if (typeof category !== "string" || !this.isTrimmed(category)) return false;
     const maxLength = config.validationsRules.productQueryCategoryMaxLength;
     const minLength = config.validationsRules.productQueryCategoryMinLength;
     return this.stringLength(category, minLength, maxLength);
@@ -41,7 +45,7 @@ class PrimitiveValidations {
   }
 
   public static productFilterTag(tag: unknown): tag is string {
-    if (typeof tag !== "string") return false;
+    if (typeof tag !== "string" || !this.isTrimmed(tag)) return false;
     const maxLength = config.validationsRules.productQueryTagMaxLength;
     const minLength = config.validationsRules.productQueryTagMinLength;
     return this.stringLength(tag, minLength, maxLength);
@@ -67,29 +71,19 @@ class PrimitiveValidations {
   }
 
   public static username(username: unknown): username is string {
-    if (typeof username !== "string") {
-      return false;
-    }
-    const trimedUsername = username.trim();
+    if (typeof username !== "string" || !this.isTrimmed(username)) return false;
     return (
       this.stringLength(
-        trimedUsername,
+        username,
         config.validationsRules.usernameMinLength,
         config.validationsRules.usernameMaxLength,
-      ) && /^[a-zA-Z0-9\s]+$/.test(trimedUsername)
+      ) && /^[a-zA-Z0-9\s]+$/.test(username)
     );
   }
 
   public static password(password: unknown): password is string {
-    return (
-      typeof password === "string" &&
-      this.stringLength(
-        password,
-        config.validationsRules.passwordLength,
-        config.validationsRules.passwordLength,
-      ) &&
-      /^\d+$/.test(password)
-    );
+    if (typeof password !== "string") return false;
+    return /^\d{4}$/.test(password);
   }
 }
 

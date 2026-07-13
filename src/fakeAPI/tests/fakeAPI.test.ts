@@ -579,6 +579,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productId("pro-ABCDEF987")).toBe(false);
       expect(PrimitiveValidations.productId("PRO_ABCDEF987")).toBe(false);
       expect(PrimitiveValidations.productId("PRO-aBC123456")).toBe(false);
+      expect(PrimitiveValidations.productId(" PRO-ABCDEF987")).toBe(false);
+      expect(PrimitiveValidations.productId("PRO-ABCDEF987 ")).toBe(false);
+      expect(PrimitiveValidations.productId(" PRO-ABCDEF987 ")).toBe(false);
     });
   });
   describe("saleId", () => {
@@ -598,6 +601,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.saleId("ABCDEF")).toBe(false);
       expect(PrimitiveValidations.saleId("SAL_AB1C36")).toBe(false);
       expect(PrimitiveValidations.saleId("SAL-abc1d3")).toBe(false);
+      expect(PrimitiveValidations.saleId(" SAL-CDEF12")).toBe(false);
+      expect(PrimitiveValidations.saleId("SAL-CDEF12 ")).toBe(false);
+      expect(PrimitiveValidations.saleId(" SAL-CDEF12 ")).toBe(false);
     });
   });
   describe("productFilterName", () => {
@@ -618,6 +624,15 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productFilterName(["wrong"])).toBe(false);
       expect(PrimitiveValidations.productFilterName("")).toBe(false);
       expect(PrimitiveValidations.productFilterName("A")).toBe(false);
+      expect(PrimitiveValidations.productFilterName(" valid product")).toBe(
+        false,
+      );
+      expect(PrimitiveValidations.productFilterName("valid product ")).toBe(
+        false,
+      );
+      expect(PrimitiveValidations.productFilterName(" valid product ")).toBe(
+        false,
+      );
       expect(
         PrimitiveValidations.productFilterName(Array(201).fill("a").join("")),
       ).toBe(false);
@@ -646,6 +661,15 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productFilterCategory(["wrong"])).toBe(false);
       expect(PrimitiveValidations.productFilterCategory("")).toBe(false);
       expect(PrimitiveValidations.productFilterCategory("A")).toBe(false);
+      expect(
+        PrimitiveValidations.productFilterCategory(" valid category"),
+      ).toBe(false);
+      expect(
+        PrimitiveValidations.productFilterCategory("valid category "),
+      ).toBe(false);
+      expect(
+        PrimitiveValidations.productFilterCategory(" valid category "),
+      ).toBe(false);
       expect(
         PrimitiveValidations.productFilterCategory(
           Array(31).fill("a").join(""),
@@ -695,6 +719,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productFilterTag(["wrong"])).toBe(false);
       expect(PrimitiveValidations.productFilterTag("")).toBe(false);
       expect(PrimitiveValidations.productFilterTag("A")).toBe(false);
+      expect(PrimitiveValidations.productFilterTag(" valid tag")).toBe(false);
+      expect(PrimitiveValidations.productFilterTag("valid tag ")).toBe(false);
+      expect(PrimitiveValidations.productFilterTag(" valid tag ")).toBe(false);
       expect(
         PrimitiveValidations.productFilterTag(Array(31).fill("a").join("")),
       ).toBe(false);
@@ -718,6 +745,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productSort("")).toBe(false);
       expect(PrimitiveValidations.productSort("IncreasingPrice")).toBe(false);
       expect(PrimitiveValidations.productSort("DecreasingPrice")).toBe(false);
+      expect(PrimitiveValidations.productSort(" alphabetical")).toBe(false);
+      expect(PrimitiveValidations.productSort("alphabetical ")).toBe(false);
+      expect(PrimitiveValidations.productSort(" alphabetical ")).toBe(false);
     });
   });
   describe("productFormat", () => {
@@ -736,6 +766,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.productFormat("")).toBe(false);
       expect(PrimitiveValidations.productFormat("Card")).toBe(false);
       expect(PrimitiveValidations.productFormat("Suggestion")).toBe(false);
+      expect(PrimitiveValidations.productFormat(" card")).toBe(false);
+      expect(PrimitiveValidations.productFormat("card ")).toBe(false);
+      expect(PrimitiveValidations.productFormat(" card ")).toBe(false);
     });
   });
   describe("username", () => {
@@ -747,8 +780,6 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.username("VALID USERNAME")).toBe(true);
       expect(PrimitiveValidations.username("VALID USERNAME 123")).toBe(true);
       expect(PrimitiveValidations.username("abc")).toBe(true);
-      expect(PrimitiveValidations.username(" abc")).toBe(true);
-      expect(PrimitiveValidations.username(" abc ")).toBe(true);
       expect(PrimitiveValidations.username(Array(30).fill("0").join(""))).toBe(
         true,
       );
@@ -761,9 +792,9 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.username(["wrong"])).toBe(false);
       expect(PrimitiveValidations.username("")).toBe(false);
       expect(PrimitiveValidations.username("ab")).toBe(false);
-      expect(PrimitiveValidations.username(" ab")).toBe(false);
-      expect(PrimitiveValidations.username("ab ")).toBe(false);
-      expect(PrimitiveValidations.username(" ab ")).toBe(false);
+      expect(PrimitiveValidations.username(" valid username")).toBe(false);
+      expect(PrimitiveValidations.username("valid username ")).toBe(false);
+      expect(PrimitiveValidations.username(" valid username ")).toBe(false);
       expect(PrimitiveValidations.username("invalid_username")).toBe(false);
       expect(PrimitiveValidations.username("invalid-username")).toBe(false);
       expect(PrimitiveValidations.username("ínvalid username")).toBe(false);

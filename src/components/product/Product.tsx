@@ -27,8 +27,8 @@ const Product = ({ productId }: { productId: string }) => {
   const location = useLocation();
 
   useEffect(() => {
-    productRequest.fetch({ id: productId });
-    relatedProductsRequest.fetch({ id: productId });
+    productRequest.fetch({ id: productId.trim() });
+    relatedProductsRequest.fetch({ id: productId.trim() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 

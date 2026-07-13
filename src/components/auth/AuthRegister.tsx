@@ -59,8 +59,8 @@ const AuthRegister = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const response = await api.fetch({
-      username: registerForm.fields.username.value,
-      password: registerForm.fields.password.value,
+      username: registerForm.fields.username.value.trim(),
+      password: registerForm.fields.password.value.trim(),
     });
     if (response.success && response.data) {
       sessionStore.login(response.data);

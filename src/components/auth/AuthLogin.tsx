@@ -36,8 +36,8 @@ const AuthLogin = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const response = await api.fetch({
-      username: loginForm.fields.username.value,
-      password: loginForm.fields.password.value,
+      username: loginForm.fields.username.value.trim(),
+      password: loginForm.fields.password.value.trim(),
     });
     if (!response.success || !response.data) return;
     sessionStore.login({

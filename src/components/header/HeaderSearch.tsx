@@ -44,7 +44,7 @@ const HeaderSearch = () => {
     lastSearchFetch.current = search;
     request.fetch({
       filter: {
-        name: search,
+        name: search.trim(),
       },
       format: "suggestion",
       sort: "alphabetical",
@@ -94,7 +94,7 @@ const HeaderSearch = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     navigate(
-      `/catalog?name=${encodeURIComponent(searchForm.fields.search.value)}`,
+      `/catalog?name=${encodeURIComponent(searchForm.fields.search.value.trim())}`,
     );
   };
 

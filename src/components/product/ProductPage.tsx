@@ -14,7 +14,9 @@ const ProductPage = () => {
       {urlParamsValidations.productId(productId || "") ? (
         <Product productId={productId || ""} />
       ) : (
-        <ErrorMessage>ID de produto inválido, verifique a URL</ErrorMessage>
+        <ErrorMessage blockMarginRem={20}>
+          ID de produto inválido, verifique a URL
+        </ErrorMessage>
       )}
       <RecentlyViewed />
     </main>

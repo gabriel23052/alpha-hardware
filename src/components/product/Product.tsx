@@ -37,11 +37,15 @@ const Product = ({ productId }: { productId: string }) => {
   }
 
   if (productRequest.error) {
-    return <ErrorMessage>{productRequest.error.message}</ErrorMessage>;
+    return (
+      <ErrorMessage blockMarginRem={10}>
+        {productRequest.error.message}
+      </ErrorMessage>
+    );
   }
 
   return productRequest.data === null ? (
-    <ErrorMessage>Produto não encontrado</ErrorMessage>
+    <ErrorMessage blockMarginRem={10}>Produto não encontrado</ErrorMessage>
   ) : (
     <article className={`defaultContainer ${classes.container}`}>
       <div className={classes.title}>

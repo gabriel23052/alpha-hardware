@@ -40,33 +40,32 @@ const Product = ({ productId }: { productId: string }) => {
     return <ErrorMessage>{productRequest.error.message}</ErrorMessage>;
   }
 
-  if (productRequest.data)
-    return (
-      <article className={`defaultContainer ${classes.container}`}>
-        <div className={classes.title}>
-          <p className="text-small lneutral-xdark">{productRequest.data.id}</p>
-          <h1 className="text-verylarge dneutral ">
-            {productRequest.data.name}
-          </h1>
-        </div>
-        <div className={classes.main}>
-          <ProductGallery
-            media={productRequest.data.media}
-            alt={productRequest.data.name}
-          />
-          <ProductActions product={productRequest.data} />
-        </div>
-        <ProductRelated
-          data={relatedProductsRequest.data}
-          loading={relatedProductsRequest.loading}
-          error={relatedProductsRequest.error}
+  return productRequest.data === null ? (
+    <ErrorMessage>Produto não encontrado</ErrorMessage>
+  ) : (
+    <article className={`defaultContainer ${classes.container}`}>
+      <div className={classes.title}>
+        <p className="text-small lneutral-xdark">{productRequest.data.id}</p>
+        <h1 className="text-verylarge dneutral ">{productRequest.data.name}</h1>
+      </div>
+      <div className={classes.main}>
+        <ProductGallery
+          media={productRequest.data.media}
+          alt={productRequest.data.name}
         />
-        <ProductInfo
-          description={productRequest.data.description}
-          specs={productRequest.data.specs}
-        />
-      </article>
-    );
+        <ProductActions product={productRequest.data} />
+      </div>
+      <ProductRelated
+        data={relatedProductsRequest.data}
+        loading={relatedProductsRequest.loading}
+        error={relatedProductsRequest.error}
+      />
+      <ProductInfo
+        description={productRequest.data.description}
+        specs={productRequest.data.specs}
+      />
+    </article>
+  );
 };
 
 export default Product;

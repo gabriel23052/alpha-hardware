@@ -13,26 +13,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-010A562D2-thumb.jpg",
       images: [
-        {
-          small: "PRO-010A562D2-00-s.jpg",
-          medium: "PRO-010A562D2-00-m.jpg",
-        },
-        {
-          small: "PRO-010A562D2-01-s.jpg",
-          medium: "PRO-010A562D2-01-m.jpg",
-        },
-        {
-          small: "PRO-010A562D2-02-s.jpg",
-          medium: "PRO-010A562D2-02-m.jpg",
-        },
-        {
-          small: "PRO-010A562D2-03-s.jpg",
-          medium: "PRO-010A562D2-03-m.jpg",
-        },
-        {
-          small: "PRO-010A562D2-04-s.jpg",
-          medium: "PRO-010A562D2-04-m.jpg",
-        },
+        { small: "PRO-010A562D2-00-s.jpg", medium: "PRO-010A562D2-00-m.jpg" },
+        { small: "PRO-010A562D2-01-s.jpg", medium: "PRO-010A562D2-01-m.jpg" },
+        { small: "PRO-010A562D2-02-s.jpg", medium: "PRO-010A562D2-02-m.jpg" },
+        { small: "PRO-010A562D2-03-s.jpg", medium: "PRO-010A562D2-03-m.jpg" },
+        { small: "PRO-010A562D2-04-s.jpg", medium: "PRO-010A562D2-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
@@ -44,6 +29,7 @@ const products: FAProduct[] = [
       ["Memória", "DDR5"],
       ["Conectividade", "Wi-Fi"],
     ],
+    searchName: "placa mae asus tuf gaming b760m plus wifi ii intel ddr5",
   },
   {
     id: "PRO-B290D11D5",
@@ -59,26 +45,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B290D11D5-thumb.jpg",
       images: [
-        {
-          small: "PRO-B290D11D5-00-s.jpg",
-          medium: "PRO-B290D11D5-00-m.jpg",
-        },
-        {
-          small: "PRO-B290D11D5-01-s.jpg",
-          medium: "PRO-B290D11D5-01-m.jpg",
-        },
-        {
-          small: "PRO-B290D11D5-02-s.jpg",
-          medium: "PRO-B290D11D5-02-m.jpg",
-        },
-        {
-          small: "PRO-B290D11D5-03-s.jpg",
-          medium: "PRO-B290D11D5-03-m.jpg",
-        },
-        {
-          small: "PRO-B290D11D5-04-s.jpg",
-          medium: "PRO-B290D11D5-04-m.jpg",
-        },
+        { small: "PRO-B290D11D5-00-s.jpg", medium: "PRO-B290D11D5-00-m.jpg" },
+        { small: "PRO-B290D11D5-01-s.jpg", medium: "PRO-B290D11D5-01-m.jpg" },
+        { small: "PRO-B290D11D5-02-s.jpg", medium: "PRO-B290D11D5-02-m.jpg" },
+        { small: "PRO-B290D11D5-03-s.jpg", medium: "PRO-B290D11D5-03-m.jpg" },
+        { small: "PRO-B290D11D5-04-s.jpg", medium: "PRO-B290D11D5-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -91,6 +62,8 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asus prime h510m a r2 0 intel atx ddr4 lga 1200 h470",
   },
   {
     id: "PRO-1D70EA474",
@@ -106,26 +79,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-1D70EA474-thumb.jpg",
       images: [
-        {
-          small: "PRO-1D70EA474-00-s.jpg",
-          medium: "PRO-1D70EA474-00-m.jpg",
-        },
-        {
-          small: "PRO-1D70EA474-01-s.jpg",
-          medium: "PRO-1D70EA474-01-m.jpg",
-        },
-        {
-          small: "PRO-1D70EA474-02-s.jpg",
-          medium: "PRO-1D70EA474-02-m.jpg",
-        },
-        {
-          small: "PRO-1D70EA474-03-s.jpg",
-          medium: "PRO-1D70EA474-03-m.jpg",
-        },
-        {
-          small: "PRO-1D70EA474-04-s.jpg",
-          medium: "PRO-1D70EA474-04-m.jpg",
-        },
+        { small: "PRO-1D70EA474-00-s.jpg", medium: "PRO-1D70EA474-00-m.jpg" },
+        { small: "PRO-1D70EA474-01-s.jpg", medium: "PRO-1D70EA474-01-m.jpg" },
+        { small: "PRO-1D70EA474-02-s.jpg", medium: "PRO-1D70EA474-02-m.jpg" },
+        { small: "PRO-1D70EA474-03-s.jpg", medium: "PRO-1D70EA474-03-m.jpg" },
+        { small: "PRO-1D70EA474-04-s.jpg", medium: "PRO-1D70EA474-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -138,6 +96,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus prime h610m cs d4 lga 1700 matx ddr4",
   },
   {
     id: "PRO-2F61C7214",
@@ -153,26 +112,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2F61C7214-thumb.jpg",
       images: [
-        {
-          small: "PRO-2F61C7214-00-s.jpg",
-          medium: "PRO-2F61C7214-00-m.jpg",
-        },
-        {
-          small: "PRO-2F61C7214-01-s.jpg",
-          medium: "PRO-2F61C7214-01-m.jpg",
-        },
-        {
-          small: "PRO-2F61C7214-02-s.jpg",
-          medium: "PRO-2F61C7214-02-m.jpg",
-        },
-        {
-          small: "PRO-2F61C7214-03-s.jpg",
-          medium: "PRO-2F61C7214-03-m.jpg",
-        },
-        {
-          small: "PRO-2F61C7214-04-s.jpg",
-          medium: "PRO-2F61C7214-04-m.jpg",
-        },
+        { small: "PRO-2F61C7214-00-s.jpg", medium: "PRO-2F61C7214-00-m.jpg" },
+        { small: "PRO-2F61C7214-01-s.jpg", medium: "PRO-2F61C7214-01-m.jpg" },
+        { small: "PRO-2F61C7214-02-s.jpg", medium: "PRO-2F61C7214-02-m.jpg" },
+        { small: "PRO-2F61C7214-03-s.jpg", medium: "PRO-2F61C7214-03-m.jpg" },
+        { small: "PRO-2F61C7214-04-s.jpg", medium: "PRO-2F61C7214-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
@@ -185,6 +129,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae gigabyte h510m h v2 intel lga 1200 10ª e 11ª geracao matx ddr4",
   },
   {
     id: "PRO-57CEA8CF9",
@@ -200,26 +146,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-57CEA8CF9-thumb.jpg",
       images: [
-        {
-          small: "PRO-57CEA8CF9-00-s.jpg",
-          medium: "PRO-57CEA8CF9-00-m.jpg",
-        },
-        {
-          small: "PRO-57CEA8CF9-01-s.jpg",
-          medium: "PRO-57CEA8CF9-01-m.jpg",
-        },
-        {
-          small: "PRO-57CEA8CF9-02-s.jpg",
-          medium: "PRO-57CEA8CF9-02-m.jpg",
-        },
-        {
-          small: "PRO-57CEA8CF9-03-s.jpg",
-          medium: "PRO-57CEA8CF9-03-m.jpg",
-        },
-        {
-          small: "PRO-57CEA8CF9-04-s.jpg",
-          medium: "PRO-57CEA8CF9-04-m.jpg",
-        },
+        { small: "PRO-57CEA8CF9-00-s.jpg", medium: "PRO-57CEA8CF9-00-m.jpg" },
+        { small: "PRO-57CEA8CF9-01-s.jpg", medium: "PRO-57CEA8CF9-01-m.jpg" },
+        { small: "PRO-57CEA8CF9-02-s.jpg", medium: "PRO-57CEA8CF9-02-m.jpg" },
+        { small: "PRO-57CEA8CF9-03-s.jpg", medium: "PRO-57CEA8CF9-03-m.jpg" },
+        { small: "PRO-57CEA8CF9-04-s.jpg", medium: "PRO-57CEA8CF9-04-m.jpg" },
       ],
     },
     tags: ["MSI", "Intel", "DDR5"],
@@ -232,6 +163,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR5"],
     ],
+    searchName:
+      "placa mae msi b760m gaming plus intel lga 1700 m atx ddr5 wi fi",
   },
   {
     id: "PRO-8268BB4FD",
@@ -247,18 +180,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-8268BB4FD-thumb.jpg",
       images: [
-        {
-          small: "PRO-8268BB4FD-00-s.jpg",
-          medium: "PRO-8268BB4FD-00-m.jpg",
-        },
-        {
-          small: "PRO-8268BB4FD-01-s.jpg",
-          medium: "PRO-8268BB4FD-01-m.jpg",
-        },
-        {
-          small: "PRO-8268BB4FD-02-s.jpg",
-          medium: "PRO-8268BB4FD-02-m.jpg",
-        },
+        { small: "PRO-8268BB4FD-00-s.jpg", medium: "PRO-8268BB4FD-00-m.jpg" },
+        { small: "PRO-8268BB4FD-01-s.jpg", medium: "PRO-8268BB4FD-01-m.jpg" },
+        { small: "PRO-8268BB4FD-02-s.jpg", medium: "PRO-8268BB4FD-02-m.jpg" },
       ],
     },
     tags: ["MSI", "Intel", "DDR5"],
@@ -271,6 +195,8 @@ const products: FAProduct[] = [
       ["Memória", "DDR5"],
       ["Conectividade", "Wi-Fi, Bluetooth"],
     ],
+    searchName:
+      "placa mae asus tuf gaming z790 plus intel atx ddr5 rgb wi fi bluetooth",
   },
   {
     id: "PRO-03A80EEF0",
@@ -286,26 +212,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-03A80EEF0-thumb.jpg",
       images: [
-        {
-          small: "PRO-03A80EEF0-00-s.jpg",
-          medium: "PRO-03A80EEF0-00-m.jpg",
-        },
-        {
-          small: "PRO-03A80EEF0-01-s.jpg",
-          medium: "PRO-03A80EEF0-01-m.jpg",
-        },
-        {
-          small: "PRO-03A80EEF0-02-s.jpg",
-          medium: "PRO-03A80EEF0-02-m.jpg",
-        },
-        {
-          small: "PRO-03A80EEF0-03-s.jpg",
-          medium: "PRO-03A80EEF0-03-m.jpg",
-        },
-        {
-          small: "PRO-03A80EEF0-04-s.jpg",
-          medium: "PRO-03A80EEF0-04-m.jpg",
-        },
+        { small: "PRO-03A80EEF0-00-s.jpg", medium: "PRO-03A80EEF0-00-m.jpg" },
+        { small: "PRO-03A80EEF0-01-s.jpg", medium: "PRO-03A80EEF0-01-m.jpg" },
+        { small: "PRO-03A80EEF0-02-s.jpg", medium: "PRO-03A80EEF0-02-m.jpg" },
+        { small: "PRO-03A80EEF0-03-s.jpg", medium: "PRO-03A80EEF0-03-m.jpg" },
+        { small: "PRO-03A80EEF0-04-s.jpg", medium: "PRO-03A80EEF0-04-m.jpg" },
       ],
     },
     tags: ["MSI", "Intel", "DDR4"],
@@ -318,6 +229,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae msi pro b760m e intel lga 1700 m atx ddr4",
   },
   {
     id: "PRO-3F55E68AA",
@@ -333,26 +245,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3F55E68AA-thumb.jpg",
       images: [
-        {
-          small: "PRO-3F55E68AA-00-s.jpg",
-          medium: "PRO-3F55E68AA-00-m.jpg",
-        },
-        {
-          small: "PRO-3F55E68AA-01-s.jpg",
-          medium: "PRO-3F55E68AA-01-m.jpg",
-        },
-        {
-          small: "PRO-3F55E68AA-02-s.jpg",
-          medium: "PRO-3F55E68AA-02-m.jpg",
-        },
-        {
-          small: "PRO-3F55E68AA-03-s.jpg",
-          medium: "PRO-3F55E68AA-03-m.jpg",
-        },
-        {
-          small: "PRO-3F55E68AA-04-s.jpg",
-          medium: "PRO-3F55E68AA-04-m.jpg",
-        },
+        { small: "PRO-3F55E68AA-00-s.jpg", medium: "PRO-3F55E68AA-00-m.jpg" },
+        { small: "PRO-3F55E68AA-01-s.jpg", medium: "PRO-3F55E68AA-01-m.jpg" },
+        { small: "PRO-3F55E68AA-02-s.jpg", medium: "PRO-3F55E68AA-02-m.jpg" },
+        { small: "PRO-3F55E68AA-03-s.jpg", medium: "PRO-3F55E68AA-03-m.jpg" },
+        { small: "PRO-3F55E68AA-04-s.jpg", medium: "PRO-3F55E68AA-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
@@ -365,6 +262,8 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae gigabyte b760m gaming ac rev 1 x intel lga1700 micro atx ddr4",
   },
   {
     id: "PRO-67E2FEC06",
@@ -380,26 +279,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-67E2FEC06-thumb.jpg",
       images: [
-        {
-          small: "PRO-67E2FEC06-00-s.jpg",
-          medium: "PRO-67E2FEC06-00-m.jpg",
-        },
-        {
-          small: "PRO-67E2FEC06-01-s.jpg",
-          medium: "PRO-67E2FEC06-01-m.jpg",
-        },
-        {
-          small: "PRO-67E2FEC06-02-s.jpg",
-          medium: "PRO-67E2FEC06-02-m.jpg",
-        },
-        {
-          small: "PRO-67E2FEC06-03-s.jpg",
-          medium: "PRO-67E2FEC06-03-m.jpg",
-        },
-        {
-          small: "PRO-67E2FEC06-04-s.jpg",
-          medium: "PRO-67E2FEC06-04-m.jpg",
-        },
+        { small: "PRO-67E2FEC06-00-s.jpg", medium: "PRO-67E2FEC06-00-m.jpg" },
+        { small: "PRO-67E2FEC06-01-s.jpg", medium: "PRO-67E2FEC06-01-m.jpg" },
+        { small: "PRO-67E2FEC06-02-s.jpg", medium: "PRO-67E2FEC06-02-m.jpg" },
+        { small: "PRO-67E2FEC06-03-s.jpg", medium: "PRO-67E2FEC06-03-m.jpg" },
+        { small: "PRO-67E2FEC06-04-s.jpg", medium: "PRO-67E2FEC06-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR4"],
@@ -411,6 +295,8 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae gigabyte b760m gaming x rev 1 0 intel micro atx ddr4",
   },
   {
     id: "PRO-DC7818A33",
@@ -426,26 +312,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-DC7818A33-thumb.jpg",
       images: [
-        {
-          small: "PRO-DC7818A33-00-s.jpg",
-          medium: "PRO-DC7818A33-00-m.jpg",
-        },
-        {
-          small: "PRO-DC7818A33-01-s.jpg",
-          medium: "PRO-DC7818A33-01-m.jpg",
-        },
-        {
-          small: "PRO-DC7818A33-02-s.jpg",
-          medium: "PRO-DC7818A33-02-m.jpg",
-        },
-        {
-          small: "PRO-DC7818A33-03-s.jpg",
-          medium: "PRO-DC7818A33-03-m.jpg",
-        },
-        {
-          small: "PRO-DC7818A33-04-s.jpg",
-          medium: "PRO-DC7818A33-04-m.jpg",
-        },
+        { small: "PRO-DC7818A33-00-s.jpg", medium: "PRO-DC7818A33-00-m.jpg" },
+        { small: "PRO-DC7818A33-01-s.jpg", medium: "PRO-DC7818A33-01-m.jpg" },
+        { small: "PRO-DC7818A33-02-s.jpg", medium: "PRO-DC7818A33-02-m.jpg" },
+        { small: "PRO-DC7818A33-03-s.jpg", medium: "PRO-DC7818A33-03-m.jpg" },
+        { small: "PRO-DC7818A33-04-s.jpg", medium: "PRO-DC7818A33-04-m.jpg" },
       ],
     },
     tags: ["Colorful", "Intel", "DDR4"],
@@ -458,6 +329,8 @@ const products: FAProduct[] = [
       ["Memória", "DDR4"],
       ["Conectividade", "Wi-Fi"],
     ],
+    searchName:
+      "placa mae colorful battle ax h610m e intel lga1700 h610 ddr4 wifi v20",
   },
   {
     id: "PRO-5E19C6A23",
@@ -473,26 +346,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-5E19C6A23-thumb.jpg",
       images: [
-        {
-          small: "PRO-5E19C6A23-00-s.jpg",
-          medium: "PRO-5E19C6A23-00-m.jpg",
-        },
-        {
-          small: "PRO-5E19C6A23-01-s.jpg",
-          medium: "PRO-5E19C6A23-01-m.jpg",
-        },
-        {
-          small: "PRO-5E19C6A23-02-s.jpg",
-          medium: "PRO-5E19C6A23-02-m.jpg",
-        },
-        {
-          small: "PRO-5E19C6A23-03-s.jpg",
-          medium: "PRO-5E19C6A23-03-m.jpg",
-        },
-        {
-          small: "PRO-5E19C6A23-04-s.jpg",
-          medium: "PRO-5E19C6A23-04-m.jpg",
-        },
+        { small: "PRO-5E19C6A23-00-s.jpg", medium: "PRO-5E19C6A23-00-m.jpg" },
+        { small: "PRO-5E19C6A23-01-s.jpg", medium: "PRO-5E19C6A23-01-m.jpg" },
+        { small: "PRO-5E19C6A23-02-s.jpg", medium: "PRO-5E19C6A23-02-m.jpg" },
+        { small: "PRO-5E19C6A23-03-s.jpg", medium: "PRO-5E19C6A23-03-m.jpg" },
+        { small: "PRO-5E19C6A23-04-s.jpg", medium: "PRO-5E19C6A23-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -505,6 +363,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus prime b760m a intel lga 1700 d4 matx ddr4",
   },
   {
     id: "PRO-FF124E82F",
@@ -520,26 +379,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-FF124E82F-thumb.jpg",
       images: [
-        {
-          small: "PRO-FF124E82F-00-s.jpg",
-          medium: "PRO-FF124E82F-00-m.jpg",
-        },
-        {
-          small: "PRO-FF124E82F-01-s.jpg",
-          medium: "PRO-FF124E82F-01-m.jpg",
-        },
-        {
-          small: "PRO-FF124E82F-02-s.jpg",
-          medium: "PRO-FF124E82F-02-m.jpg",
-        },
-        {
-          small: "PRO-FF124E82F-03-s.jpg",
-          medium: "PRO-FF124E82F-03-m.jpg",
-        },
-        {
-          small: "PRO-FF124E82F-04-s.jpg",
-          medium: "PRO-FF124E82F-04-m.jpg",
-        },
+        { small: "PRO-FF124E82F-00-s.jpg", medium: "PRO-FF124E82F-00-m.jpg" },
+        { small: "PRO-FF124E82F-01-s.jpg", medium: "PRO-FF124E82F-01-m.jpg" },
+        { small: "PRO-FF124E82F-02-s.jpg", medium: "PRO-FF124E82F-02-m.jpg" },
+        { small: "PRO-FF124E82F-03-s.jpg", medium: "PRO-FF124E82F-03-m.jpg" },
+        { small: "PRO-FF124E82F-04-s.jpg", medium: "PRO-FF124E82F-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "Intel", "DDR4"],
@@ -552,6 +396,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asrock h610m hvs m 2 intel m atx ddr4 socket lga 1700 hdmi d sub",
   },
   {
     id: "PRO-325DAC618",
@@ -567,26 +413,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-325DAC618-thumb.jpg",
       images: [
-        {
-          small: "PRO-325DAC618-00-s.jpg",
-          medium: "PRO-325DAC618-00-m.jpg",
-        },
-        {
-          small: "PRO-325DAC618-01-s.jpg",
-          medium: "PRO-325DAC618-01-m.jpg",
-        },
-        {
-          small: "PRO-325DAC618-02-s.jpg",
-          medium: "PRO-325DAC618-02-m.jpg",
-        },
-        {
-          small: "PRO-325DAC618-03-s.jpg",
-          medium: "PRO-325DAC618-03-m.jpg",
-        },
-        {
-          small: "PRO-325DAC618-04-s.jpg",
-          medium: "PRO-325DAC618-04-m.jpg",
-        },
+        { small: "PRO-325DAC618-00-s.jpg", medium: "PRO-325DAC618-00-m.jpg" },
+        { small: "PRO-325DAC618-01-s.jpg", medium: "PRO-325DAC618-01-m.jpg" },
+        { small: "PRO-325DAC618-02-s.jpg", medium: "PRO-325DAC618-02-m.jpg" },
+        { small: "PRO-325DAC618-03-s.jpg", medium: "PRO-325DAC618-03-m.jpg" },
+        { small: "PRO-325DAC618-04-s.jpg", medium: "PRO-325DAC618-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -599,6 +430,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asus tuf gaming b760m plus intel lga 1700 matx d4 ddr4",
   },
   {
     id: "PRO-07262B83C",
@@ -614,26 +447,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-07262B83C-thumb.jpg",
       images: [
-        {
-          small: "PRO-07262B83C-00-s.jpg",
-          medium: "PRO-07262B83C-00-m.jpg",
-        },
-        {
-          small: "PRO-07262B83C-01-s.jpg",
-          medium: "PRO-07262B83C-01-m.jpg",
-        },
-        {
-          small: "PRO-07262B83C-02-s.jpg",
-          medium: "PRO-07262B83C-02-m.jpg",
-        },
-        {
-          small: "PRO-07262B83C-03-s.jpg",
-          medium: "PRO-07262B83C-03-m.jpg",
-        },
-        {
-          small: "PRO-07262B83C-04-s.jpg",
-          medium: "PRO-07262B83C-04-m.jpg",
-        },
+        { small: "PRO-07262B83C-00-s.jpg", medium: "PRO-07262B83C-00-m.jpg" },
+        { small: "PRO-07262B83C-01-s.jpg", medium: "PRO-07262B83C-01-m.jpg" },
+        { small: "PRO-07262B83C-02-s.jpg", medium: "PRO-07262B83C-02-m.jpg" },
+        { small: "PRO-07262B83C-03-s.jpg", medium: "PRO-07262B83C-03-m.jpg" },
+        { small: "PRO-07262B83C-04-s.jpg", medium: "PRO-07262B83C-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -646,6 +464,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asus prime b760m a wi fi intel lga 1700 matx d4 ddr4 wi fi",
   },
   {
     id: "PRO-5ADE4DBBF",
@@ -661,26 +481,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-5ADE4DBBF-thumb.jpg",
       images: [
-        {
-          small: "PRO-5ADE4DBBF-00-s.jpg",
-          medium: "PRO-5ADE4DBBF-00-m.jpg",
-        },
-        {
-          small: "PRO-5ADE4DBBF-01-s.jpg",
-          medium: "PRO-5ADE4DBBF-01-m.jpg",
-        },
-        {
-          small: "PRO-5ADE4DBBF-02-s.jpg",
-          medium: "PRO-5ADE4DBBF-02-m.jpg",
-        },
-        {
-          small: "PRO-5ADE4DBBF-03-s.jpg",
-          medium: "PRO-5ADE4DBBF-03-m.jpg",
-        },
-        {
-          small: "PRO-5ADE4DBBF-04-s.jpg",
-          medium: "PRO-5ADE4DBBF-04-m.jpg",
-        },
+        { small: "PRO-5ADE4DBBF-00-s.jpg", medium: "PRO-5ADE4DBBF-00-m.jpg" },
+        { small: "PRO-5ADE4DBBF-01-s.jpg", medium: "PRO-5ADE4DBBF-01-m.jpg" },
+        { small: "PRO-5ADE4DBBF-02-s.jpg", medium: "PRO-5ADE4DBBF-02-m.jpg" },
+        { small: "PRO-5ADE4DBBF-03-s.jpg", medium: "PRO-5ADE4DBBF-03-m.jpg" },
+        { small: "PRO-5ADE4DBBF-04-s.jpg", medium: "PRO-5ADE4DBBF-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
@@ -693,6 +498,8 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName:
+      "placa mae asus rog strix b760 f gaming wi fi intel lga 1700 atx ddr5 wi fi",
   },
   {
     id: "PRO-19BD26348",
@@ -708,26 +515,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-19BD26348-thumb.jpg",
       images: [
-        {
-          small: "PRO-19BD26348-00-s.jpg",
-          medium: "PRO-19BD26348-00-m.jpg",
-        },
-        {
-          small: "PRO-19BD26348-01-s.jpg",
-          medium: "PRO-19BD26348-01-m.jpg",
-        },
-        {
-          small: "PRO-19BD26348-02-s.jpg",
-          medium: "PRO-19BD26348-02-m.jpg",
-        },
-        {
-          small: "PRO-19BD26348-03-s.jpg",
-          medium: "PRO-19BD26348-03-m.jpg",
-        },
-        {
-          small: "PRO-19BD26348-04-s.jpg",
-          medium: "PRO-19BD26348-04-m.jpg",
-        },
+        { small: "PRO-19BD26348-00-s.jpg", medium: "PRO-19BD26348-00-m.jpg" },
+        { small: "PRO-19BD26348-01-s.jpg", medium: "PRO-19BD26348-01-m.jpg" },
+        { small: "PRO-19BD26348-02-s.jpg", medium: "PRO-19BD26348-02-m.jpg" },
+        { small: "PRO-19BD26348-03-s.jpg", medium: "PRO-19BD26348-03-m.jpg" },
+        { small: "PRO-19BD26348-04-s.jpg", medium: "PRO-19BD26348-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "Intel", "DDR5"],
@@ -740,6 +532,8 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName:
+      "placa mae gigabyte z790 aorus elite ax lga 1700 atx ddr5 wi fi",
   },
   {
     id: "PRO-D85B8DB40",
@@ -755,26 +549,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-D85B8DB40-thumb.jpg",
       images: [
-        {
-          small: "PRO-D85B8DB40-00-s.jpg",
-          medium: "PRO-D85B8DB40-00-m.jpg",
-        },
-        {
-          small: "PRO-D85B8DB40-01-s.jpg",
-          medium: "PRO-D85B8DB40-01-m.jpg",
-        },
-        {
-          small: "PRO-D85B8DB40-02-s.jpg",
-          medium: "PRO-D85B8DB40-02-m.jpg",
-        },
-        {
-          small: "PRO-D85B8DB40-03-s.jpg",
-          medium: "PRO-D85B8DB40-03-m.jpg",
-        },
-        {
-          small: "PRO-D85B8DB40-04-s.jpg",
-          medium: "PRO-D85B8DB40-04-m.jpg",
-        },
+        { small: "PRO-D85B8DB40-00-s.jpg", medium: "PRO-D85B8DB40-00-m.jpg" },
+        { small: "PRO-D85B8DB40-01-s.jpg", medium: "PRO-D85B8DB40-01-m.jpg" },
+        { small: "PRO-D85B8DB40-02-s.jpg", medium: "PRO-D85B8DB40-02-m.jpg" },
+        { small: "PRO-D85B8DB40-03-s.jpg", medium: "PRO-D85B8DB40-03-m.jpg" },
+        { small: "PRO-D85B8DB40-04-s.jpg", medium: "PRO-D85B8DB40-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -786,6 +565,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus prime h510m k r2 0 intel h470 matx ddr4",
   },
   {
     id: "PRO-471741A0B",
@@ -801,26 +581,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-471741A0B-thumb.jpg",
       images: [
-        {
-          small: "PRO-471741A0B-00-s.jpg",
-          medium: "PRO-471741A0B-00-m.jpg",
-        },
-        {
-          small: "PRO-471741A0B-01-s.jpg",
-          medium: "PRO-471741A0B-01-m.jpg",
-        },
-        {
-          small: "PRO-471741A0B-02-s.jpg",
-          medium: "PRO-471741A0B-02-m.jpg",
-        },
-        {
-          small: "PRO-471741A0B-03-s.jpg",
-          medium: "PRO-471741A0B-03-m.jpg",
-        },
-        {
-          small: "PRO-471741A0B-04-s.jpg",
-          medium: "PRO-471741A0B-04-m.jpg",
-        },
+        { small: "PRO-471741A0B-00-s.jpg", medium: "PRO-471741A0B-00-m.jpg" },
+        { small: "PRO-471741A0B-01-s.jpg", medium: "PRO-471741A0B-01-m.jpg" },
+        { small: "PRO-471741A0B-02-s.jpg", medium: "PRO-471741A0B-02-m.jpg" },
+        { small: "PRO-471741A0B-03-s.jpg", medium: "PRO-471741A0B-03-m.jpg" },
+        { small: "PRO-471741A0B-04-s.jpg", medium: "PRO-471741A0B-04-m.jpg" },
       ],
     },
     tags: ["MSI", "Intel", "DDR4"],
@@ -833,6 +598,8 @@ const products: FAProduct[] = [
       ["Memória", "DDR4"],
       ["Recursos", "Realtek ALC897 Codec"],
     ],
+    searchName:
+      "placa mae msi pro h610m s intel core ddr4 matx realtek alc897 codec",
   },
   {
     id: "PRO-BDC286153",
@@ -848,26 +615,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-BDC286153-thumb.jpg",
       images: [
-        {
-          small: "PRO-BDC286153-00-s.jpg",
-          medium: "PRO-BDC286153-00-m.jpg",
-        },
-        {
-          small: "PRO-BDC286153-01-s.jpg",
-          medium: "PRO-BDC286153-01-m.jpg",
-        },
-        {
-          small: "PRO-BDC286153-02-s.jpg",
-          medium: "PRO-BDC286153-02-m.jpg",
-        },
-        {
-          small: "PRO-BDC286153-03-s.jpg",
-          medium: "PRO-BDC286153-03-m.jpg",
-        },
-        {
-          small: "PRO-BDC286153-04-s.jpg",
-          medium: "PRO-BDC286153-04-m.jpg",
-        },
+        { small: "PRO-BDC286153-00-s.jpg", medium: "PRO-BDC286153-00-m.jpg" },
+        { small: "PRO-BDC286153-01-s.jpg", medium: "PRO-BDC286153-01-m.jpg" },
+        { small: "PRO-BDC286153-02-s.jpg", medium: "PRO-BDC286153-02-m.jpg" },
+        { small: "PRO-BDC286153-03-s.jpg", medium: "PRO-BDC286153-03-m.jpg" },
+        { small: "PRO-BDC286153-04-s.jpg", medium: "PRO-BDC286153-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR4"],
@@ -880,6 +632,7 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus prime b760 plus intel lga 1700 d4 ddr4 atx",
   },
   {
     id: "PRO-7554C4CF6",
@@ -895,26 +648,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7554C4CF6-thumb.jpg",
       images: [
-        {
-          small: "PRO-7554C4CF6-00-s.jpg",
-          medium: "PRO-7554C4CF6-00-m.jpg",
-        },
-        {
-          small: "PRO-7554C4CF6-01-s.jpg",
-          medium: "PRO-7554C4CF6-01-m.jpg",
-        },
-        {
-          small: "PRO-7554C4CF6-02-s.jpg",
-          medium: "PRO-7554C4CF6-02-m.jpg",
-        },
-        {
-          small: "PRO-7554C4CF6-03-s.jpg",
-          medium: "PRO-7554C4CF6-03-m.jpg",
-        },
-        {
-          small: "PRO-7554C4CF6-04-s.jpg",
-          medium: "PRO-7554C4CF6-04-m.jpg",
-        },
+        { small: "PRO-7554C4CF6-00-s.jpg", medium: "PRO-7554C4CF6-00-m.jpg" },
+        { small: "PRO-7554C4CF6-01-s.jpg", medium: "PRO-7554C4CF6-01-m.jpg" },
+        { small: "PRO-7554C4CF6-02-s.jpg", medium: "PRO-7554C4CF6-02-m.jpg" },
+        { small: "PRO-7554C4CF6-03-s.jpg", medium: "PRO-7554C4CF6-03-m.jpg" },
+        { small: "PRO-7554C4CF6-04-s.jpg", medium: "PRO-7554C4CF6-04-m.jpg" },
       ],
     },
     tags: ["Asus", "Intel", "DDR5"],
@@ -927,6 +665,7 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae asus prime b760 plus intel lga 1700 intel atx ddr5",
   },
   {
     id: "PRO-7450A321B",
@@ -942,26 +681,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7450A321B-thumb.jpg",
       images: [
-        {
-          small: "PRO-7450A321B-00-s.jpg",
-          medium: "PRO-7450A321B-00-m.jpg",
-        },
-        {
-          small: "PRO-7450A321B-01-s.jpg",
-          medium: "PRO-7450A321B-01-m.jpg",
-        },
-        {
-          small: "PRO-7450A321B-02-s.jpg",
-          medium: "PRO-7450A321B-02-m.jpg",
-        },
-        {
-          small: "PRO-7450A321B-03-s.jpg",
-          medium: "PRO-7450A321B-03-m.jpg",
-        },
-        {
-          small: "PRO-7450A321B-04-s.jpg",
-          medium: "PRO-7450A321B-04-m.jpg",
-        },
+        { small: "PRO-7450A321B-00-s.jpg", medium: "PRO-7450A321B-00-m.jpg" },
+        { small: "PRO-7450A321B-01-s.jpg", medium: "PRO-7450A321B-01-m.jpg" },
+        { small: "PRO-7450A321B-02-s.jpg", medium: "PRO-7450A321B-02-m.jpg" },
+        { small: "PRO-7450A321B-03-s.jpg", medium: "PRO-7450A321B-03-m.jpg" },
+        { small: "PRO-7450A321B-04-s.jpg", medium: "PRO-7450A321B-04-m.jpg" },
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
@@ -974,6 +698,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae msi a520m a pro amd am4 matx ddr4",
   },
   {
     id: "PRO-248299B87",
@@ -989,26 +714,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-248299B87-thumb.jpg",
       images: [
-        {
-          small: "PRO-248299B87-00-s.jpg",
-          medium: "PRO-248299B87-00-m.jpg",
-        },
-        {
-          small: "PRO-248299B87-01-s.jpg",
-          medium: "PRO-248299B87-01-m.jpg",
-        },
-        {
-          small: "PRO-248299B87-02-s.jpg",
-          medium: "PRO-248299B87-02-m.jpg",
-        },
-        {
-          small: "PRO-248299B87-03-s.jpg",
-          medium: "PRO-248299B87-03-m.jpg",
-        },
-        {
-          small: "PRO-248299B87-04-s.jpg",
-          medium: "PRO-248299B87-04-m.jpg",
-        },
+        { small: "PRO-248299B87-00-s.jpg", medium: "PRO-248299B87-00-m.jpg" },
+        { small: "PRO-248299B87-01-s.jpg", medium: "PRO-248299B87-01-m.jpg" },
+        { small: "PRO-248299B87-02-s.jpg", medium: "PRO-248299B87-02-m.jpg" },
+        { small: "PRO-248299B87-03-s.jpg", medium: "PRO-248299B87-03-m.jpg" },
+        { small: "PRO-248299B87-04-s.jpg", medium: "PRO-248299B87-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1021,6 +731,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus tuf gaming a520m plus ii amd am4 matx ddr4",
   },
   {
     id: "PRO-F9C97BA04",
@@ -1036,26 +747,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-F9C97BA04-thumb.jpg",
       images: [
-        {
-          small: "PRO-F9C97BA04-00-s.jpg",
-          medium: "PRO-F9C97BA04-00-m.jpg",
-        },
-        {
-          small: "PRO-F9C97BA04-01-s.jpg",
-          medium: "PRO-F9C97BA04-01-m.jpg",
-        },
-        {
-          small: "PRO-F9C97BA04-02-s.jpg",
-          medium: "PRO-F9C97BA04-02-m.jpg",
-        },
-        {
-          small: "PRO-F9C97BA04-03-s.jpg",
-          medium: "PRO-F9C97BA04-03-m.jpg",
-        },
-        {
-          small: "PRO-F9C97BA04-04-s.jpg",
-          medium: "PRO-F9C97BA04-04-m.jpg",
-        },
+        { small: "PRO-F9C97BA04-00-s.jpg", medium: "PRO-F9C97BA04-00-m.jpg" },
+        { small: "PRO-F9C97BA04-01-s.jpg", medium: "PRO-F9C97BA04-01-m.jpg" },
+        { small: "PRO-F9C97BA04-02-s.jpg", medium: "PRO-F9C97BA04-02-m.jpg" },
+        { small: "PRO-F9C97BA04-03-s.jpg", medium: "PRO-F9C97BA04-03-m.jpg" },
+        { small: "PRO-F9C97BA04-04-s.jpg", medium: "PRO-F9C97BA04-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
@@ -1068,6 +764,8 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae gigabyte b550m aorus elite rev 1 3 amd am4 micro atx ddr4",
   },
   {
     id: "PRO-06AE48775",
@@ -1083,26 +781,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-06AE48775-thumb.jpg",
       images: [
-        {
-          small: "PRO-06AE48775-00-s.jpg",
-          medium: "PRO-06AE48775-00-m.jpg",
-        },
-        {
-          small: "PRO-06AE48775-01-s.jpg",
-          medium: "PRO-06AE48775-01-m.jpg",
-        },
-        {
-          small: "PRO-06AE48775-02-s.jpg",
-          medium: "PRO-06AE48775-02-m.jpg",
-        },
-        {
-          small: "PRO-06AE48775-03-s.jpg",
-          medium: "PRO-06AE48775-03-m.jpg",
-        },
-        {
-          small: "PRO-06AE48775-04-s.jpg",
-          medium: "PRO-06AE48775-04-m.jpg",
-        },
+        { small: "PRO-06AE48775-00-s.jpg", medium: "PRO-06AE48775-00-m.jpg" },
+        { small: "PRO-06AE48775-01-s.jpg", medium: "PRO-06AE48775-01-m.jpg" },
+        { small: "PRO-06AE48775-02-s.jpg", medium: "PRO-06AE48775-02-m.jpg" },
+        { small: "PRO-06AE48775-03-s.jpg", medium: "PRO-06AE48775-03-m.jpg" },
+        { small: "PRO-06AE48775-04-s.jpg", medium: "PRO-06AE48775-04-m.jpg" },
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
@@ -1115,6 +798,7 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae msi mpg b550 gaming plus amd am4 atx ddr4",
   },
   {
     id: "PRO-CAD5BEDDF",
@@ -1130,26 +814,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CAD5BEDDF-thumb.jpg",
       images: [
-        {
-          small: "PRO-CAD5BEDDF-00-s.jpg",
-          medium: "PRO-CAD5BEDDF-00-m.jpg",
-        },
-        {
-          small: "PRO-CAD5BEDDF-01-s.jpg",
-          medium: "PRO-CAD5BEDDF-01-m.jpg",
-        },
-        {
-          small: "PRO-CAD5BEDDF-02-s.jpg",
-          medium: "PRO-CAD5BEDDF-02-m.jpg",
-        },
-        {
-          small: "PRO-CAD5BEDDF-03-s.jpg",
-          medium: "PRO-CAD5BEDDF-03-m.jpg",
-        },
-        {
-          small: "PRO-CAD5BEDDF-04-s.jpg",
-          medium: "PRO-CAD5BEDDF-04-m.jpg",
-        },
+        { small: "PRO-CAD5BEDDF-00-s.jpg", medium: "PRO-CAD5BEDDF-00-m.jpg" },
+        { small: "PRO-CAD5BEDDF-01-s.jpg", medium: "PRO-CAD5BEDDF-01-m.jpg" },
+        { small: "PRO-CAD5BEDDF-02-s.jpg", medium: "PRO-CAD5BEDDF-02-m.jpg" },
+        { small: "PRO-CAD5BEDDF-03-s.jpg", medium: "PRO-CAD5BEDDF-03-m.jpg" },
+        { small: "PRO-CAD5BEDDF-04-s.jpg", medium: "PRO-CAD5BEDDF-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1162,6 +831,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus tuf gaming b550m plus amd am4 matx ddr4",
   },
   {
     id: "PRO-148CA535D",
@@ -1177,26 +847,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-148CA535D-thumb.jpg",
       images: [
-        {
-          small: "PRO-148CA535D-00-s.jpg",
-          medium: "PRO-148CA535D-00-m.jpg",
-        },
-        {
-          small: "PRO-148CA535D-01-s.jpg",
-          medium: "PRO-148CA535D-01-m.jpg",
-        },
-        {
-          small: "PRO-148CA535D-02-s.jpg",
-          medium: "PRO-148CA535D-02-m.jpg",
-        },
-        {
-          small: "PRO-148CA535D-03-s.jpg",
-          medium: "PRO-148CA535D-03-m.jpg",
-        },
-        {
-          small: "PRO-148CA535D-04-s.jpg",
-          medium: "PRO-148CA535D-04-m.jpg",
-        },
+        { small: "PRO-148CA535D-00-s.jpg", medium: "PRO-148CA535D-00-m.jpg" },
+        { small: "PRO-148CA535D-01-s.jpg", medium: "PRO-148CA535D-01-m.jpg" },
+        { small: "PRO-148CA535D-02-s.jpg", medium: "PRO-148CA535D-02-m.jpg" },
+        { small: "PRO-148CA535D-03-s.jpg", medium: "PRO-148CA535D-03-m.jpg" },
+        { small: "PRO-148CA535D-04-s.jpg", medium: "PRO-148CA535D-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR5"],
@@ -1209,6 +864,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae asus tuf gaming b650m plus amd am5 b650 matx ddr5",
   },
   {
     id: "PRO-CB446899E",
@@ -1224,26 +880,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CB446899E-thumb.jpg",
       images: [
-        {
-          small: "PRO-CB446899E-00-s.jpg",
-          medium: "PRO-CB446899E-00-m.jpg",
-        },
-        {
-          small: "PRO-CB446899E-01-s.jpg",
-          medium: "PRO-CB446899E-01-m.jpg",
-        },
-        {
-          small: "PRO-CB446899E-02-s.jpg",
-          medium: "PRO-CB446899E-02-m.jpg",
-        },
-        {
-          small: "PRO-CB446899E-03-s.jpg",
-          medium: "PRO-CB446899E-03-m.jpg",
-        },
-        {
-          small: "PRO-CB446899E-04-s.jpg",
-          medium: "PRO-CB446899E-04-m.jpg",
-        },
+        { small: "PRO-CB446899E-00-s.jpg", medium: "PRO-CB446899E-00-m.jpg" },
+        { small: "PRO-CB446899E-01-s.jpg", medium: "PRO-CB446899E-01-m.jpg" },
+        { small: "PRO-CB446899E-02-s.jpg", medium: "PRO-CB446899E-02-m.jpg" },
+        { small: "PRO-CB446899E-03-s.jpg", medium: "PRO-CB446899E-03-m.jpg" },
+        { small: "PRO-CB446899E-04-s.jpg", medium: "PRO-CB446899E-04-m.jpg" },
       ],
     },
     tags: ["MSI", "AMD", "DDR4"],
@@ -1256,6 +897,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae msi b550m pro vdh wifi amd am4 matx ddr4",
   },
   {
     id: "PRO-C45F042A9",
@@ -1271,26 +913,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C45F042A9-thumb.jpg",
       images: [
-        {
-          small: "PRO-C45F042A9-00-s.jpg",
-          medium: "PRO-C45F042A9-00-m.jpg",
-        },
-        {
-          small: "PRO-C45F042A9-01-s.jpg",
-          medium: "PRO-C45F042A9-01-m.jpg",
-        },
-        {
-          small: "PRO-C45F042A9-02-s.jpg",
-          medium: "PRO-C45F042A9-02-m.jpg",
-        },
-        {
-          small: "PRO-C45F042A9-03-s.jpg",
-          medium: "PRO-C45F042A9-03-m.jpg",
-        },
-        {
-          small: "PRO-C45F042A9-04-s.jpg",
-          medium: "PRO-C45F042A9-04-m.jpg",
-        },
+        { small: "PRO-C45F042A9-00-s.jpg", medium: "PRO-C45F042A9-00-m.jpg" },
+        { small: "PRO-C45F042A9-01-s.jpg", medium: "PRO-C45F042A9-01-m.jpg" },
+        { small: "PRO-C45F042A9-02-s.jpg", medium: "PRO-C45F042A9-02-m.jpg" },
+        { small: "PRO-C45F042A9-03-s.jpg", medium: "PRO-C45F042A9-03-m.jpg" },
+        { small: "PRO-C45F042A9-04-s.jpg", medium: "PRO-C45F042A9-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "AMD", "DDR4"],
@@ -1303,6 +930,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asrock b450m steel legend amd am4 matx ddr4",
   },
   {
     id: "PRO-7CF7FE5D3",
@@ -1318,26 +946,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7CF7FE5D3-thumb.jpg",
       images: [
-        {
-          small: "PRO-7CF7FE5D3-00-s.jpg",
-          medium: "PRO-7CF7FE5D3-00-m.jpg",
-        },
-        {
-          small: "PRO-7CF7FE5D3-01-s.jpg",
-          medium: "PRO-7CF7FE5D3-01-m.jpg",
-        },
-        {
-          small: "PRO-7CF7FE5D3-02-s.jpg",
-          medium: "PRO-7CF7FE5D3-02-m.jpg",
-        },
-        {
-          small: "PRO-7CF7FE5D3-03-s.jpg",
-          medium: "PRO-7CF7FE5D3-03-m.jpg",
-        },
-        {
-          small: "PRO-7CF7FE5D3-04-s.jpg",
-          medium: "PRO-7CF7FE5D3-04-m.jpg",
-        },
+        { small: "PRO-7CF7FE5D3-00-s.jpg", medium: "PRO-7CF7FE5D3-00-m.jpg" },
+        { small: "PRO-7CF7FE5D3-01-s.jpg", medium: "PRO-7CF7FE5D3-01-m.jpg" },
+        { small: "PRO-7CF7FE5D3-02-s.jpg", medium: "PRO-7CF7FE5D3-02-m.jpg" },
+        { small: "PRO-7CF7FE5D3-03-s.jpg", medium: "PRO-7CF7FE5D3-03-m.jpg" },
+        { small: "PRO-7CF7FE5D3-04-s.jpg", medium: "PRO-7CF7FE5D3-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1350,6 +963,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus prime b550m a amd am4 matx ddr4",
   },
   {
     id: "PRO-B415C97A3",
@@ -1365,26 +979,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B415C97A3-thumb.jpg",
       images: [
-        {
-          small: "PRO-B415C97A3-00-s.jpg",
-          medium: "PRO-B415C97A3-00-m.jpg",
-        },
-        {
-          small: "PRO-B415C97A3-01-s.jpg",
-          medium: "PRO-B415C97A3-01-m.jpg",
-        },
-        {
-          small: "PRO-B415C97A3-02-s.jpg",
-          medium: "PRO-B415C97A3-02-m.jpg",
-        },
-        {
-          small: "PRO-B415C97A3-03-s.jpg",
-          medium: "PRO-B415C97A3-03-m.jpg",
-        },
-        {
-          small: "PRO-B415C97A3-04-s.jpg",
-          medium: "PRO-B415C97A3-04-m.jpg",
-        },
+        { small: "PRO-B415C97A3-00-s.jpg", medium: "PRO-B415C97A3-00-m.jpg" },
+        { small: "PRO-B415C97A3-01-s.jpg", medium: "PRO-B415C97A3-01-m.jpg" },
+        { small: "PRO-B415C97A3-02-s.jpg", medium: "PRO-B415C97A3-02-m.jpg" },
+        { small: "PRO-B415C97A3-03-s.jpg", medium: "PRO-B415C97A3-03-m.jpg" },
+        { small: "PRO-B415C97A3-04-s.jpg", medium: "PRO-B415C97A3-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "AMD", "DDR5"],
@@ -1396,6 +995,7 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae asrock b650m pg riptide amd micro atx ddr5",
   },
   {
     id: "PRO-AFFBDC087",
@@ -1411,26 +1011,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-AFFBDC087-thumb.jpg",
       images: [
-        {
-          small: "PRO-AFFBDC087-00-s.jpg",
-          medium: "PRO-AFFBDC087-00-m.jpg",
-        },
-        {
-          small: "PRO-AFFBDC087-01-s.jpg",
-          medium: "PRO-AFFBDC087-01-m.jpg",
-        },
-        {
-          small: "PRO-AFFBDC087-02-s.jpg",
-          medium: "PRO-AFFBDC087-02-m.jpg",
-        },
-        {
-          small: "PRO-AFFBDC087-03-s.jpg",
-          medium: "PRO-AFFBDC087-03-m.jpg",
-        },
-        {
-          small: "PRO-AFFBDC087-04-s.jpg",
-          medium: "PRO-AFFBDC087-04-m.jpg",
-        },
+        { small: "PRO-AFFBDC087-00-s.jpg", medium: "PRO-AFFBDC087-00-m.jpg" },
+        { small: "PRO-AFFBDC087-01-s.jpg", medium: "PRO-AFFBDC087-01-m.jpg" },
+        { small: "PRO-AFFBDC087-02-s.jpg", medium: "PRO-AFFBDC087-02-m.jpg" },
+        { small: "PRO-AFFBDC087-03-s.jpg", medium: "PRO-AFFBDC087-03-m.jpg" },
+        { small: "PRO-AFFBDC087-04-s.jpg", medium: "PRO-AFFBDC087-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1443,6 +1028,8 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asus tuf gaming a520m plus wifi amd am4 rgb matx ddr4",
   },
   {
     id: "PRO-229E292D5",
@@ -1458,18 +1045,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-229E292D5-thumb.jpg",
       images: [
-        {
-          small: "PRO-229E292D5-00-s.jpg",
-          medium: "PRO-229E292D5-00-m.jpg",
-        },
-        {
-          small: "PRO-229E292D5-01-s.jpg",
-          medium: "PRO-229E292D5-01-m.jpg",
-        },
-        {
-          small: "PRO-229E292D5-02-s.jpg",
-          medium: "PRO-229E292D5-02-m.jpg",
-        },
+        { small: "PRO-229E292D5-00-s.jpg", medium: "PRO-229E292D5-00-m.jpg" },
+        { small: "PRO-229E292D5-01-s.jpg", medium: "PRO-229E292D5-01-m.jpg" },
+        { small: "PRO-229E292D5-02-s.jpg", medium: "PRO-229E292D5-02-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
@@ -1482,6 +1060,8 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae gigabyte b550m ds3h ac rev 1 4 amd am4 micro atx ddr4 wi fi bluetooth",
   },
   {
     id: "PRO-002A74962",
@@ -1497,22 +1077,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-002A74962-thumb.jpg",
       images: [
-        {
-          small: "PRO-002A74962-00-s.jpg",
-          medium: "PRO-002A74962-00-m.jpg",
-        },
-        {
-          small: "PRO-002A74962-01-s.jpg",
-          medium: "PRO-002A74962-01-m.jpg",
-        },
-        {
-          small: "PRO-002A74962-02-s.jpg",
-          medium: "PRO-002A74962-02-m.jpg",
-        },
-        {
-          small: "PRO-002A74962-03-s.jpg",
-          medium: "PRO-002A74962-03-m.jpg",
-        },
+        { small: "PRO-002A74962-00-s.jpg", medium: "PRO-002A74962-00-m.jpg" },
+        { small: "PRO-002A74962-01-s.jpg", medium: "PRO-002A74962-01-m.jpg" },
+        { small: "PRO-002A74962-02-s.jpg", medium: "PRO-002A74962-02-m.jpg" },
+        { small: "PRO-002A74962-03-s.jpg", medium: "PRO-002A74962-03-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR5"],
@@ -1524,6 +1092,7 @@ const products: FAProduct[] = [
       ["Socket", "AM5"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae asus tuf gaming x670e plus amd x670 am5 ddr5",
   },
   {
     id: "PRO-7A476C4D5",
@@ -1539,26 +1108,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7A476C4D5-thumb.jpg",
       images: [
-        {
-          small: "PRO-7A476C4D5-00-s.jpg",
-          medium: "PRO-7A476C4D5-00-m.jpg",
-        },
-        {
-          small: "PRO-7A476C4D5-01-s.jpg",
-          medium: "PRO-7A476C4D5-01-m.jpg",
-        },
-        {
-          small: "PRO-7A476C4D5-02-s.jpg",
-          medium: "PRO-7A476C4D5-02-m.jpg",
-        },
-        {
-          small: "PRO-7A476C4D5-03-s.jpg",
-          medium: "PRO-7A476C4D5-03-m.jpg",
-        },
-        {
-          small: "PRO-7A476C4D5-04-s.jpg",
-          medium: "PRO-7A476C4D5-04-m.jpg",
-        },
+        { small: "PRO-7A476C4D5-00-s.jpg", medium: "PRO-7A476C4D5-00-m.jpg" },
+        { small: "PRO-7A476C4D5-01-s.jpg", medium: "PRO-7A476C4D5-01-m.jpg" },
+        { small: "PRO-7A476C4D5-02-s.jpg", medium: "PRO-7A476C4D5-02-m.jpg" },
+        { small: "PRO-7A476C4D5-03-s.jpg", medium: "PRO-7A476C4D5-03-m.jpg" },
+        { small: "PRO-7A476C4D5-04-s.jpg", medium: "PRO-7A476C4D5-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1571,6 +1125,8 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName:
+      "placa mae asus rog strix b550 f gaming ii amd am4 aura sync rgb atx ddr4 wi fi",
   },
   {
     id: "PRO-7D6BE3AA2",
@@ -1586,26 +1142,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7D6BE3AA2-thumb.jpg",
       images: [
-        {
-          small: "PRO-7D6BE3AA2-00-s.jpg",
-          medium: "PRO-7D6BE3AA2-00-m.jpg",
-        },
-        {
-          small: "PRO-7D6BE3AA2-01-s.jpg",
-          medium: "PRO-7D6BE3AA2-01-m.jpg",
-        },
-        {
-          small: "PRO-7D6BE3AA2-02-s.jpg",
-          medium: "PRO-7D6BE3AA2-02-m.jpg",
-        },
-        {
-          small: "PRO-7D6BE3AA2-03-s.jpg",
-          medium: "PRO-7D6BE3AA2-03-m.jpg",
-        },
-        {
-          small: "PRO-7D6BE3AA2-04-s.jpg",
-          medium: "PRO-7D6BE3AA2-04-m.jpg",
-        },
+        { small: "PRO-7D6BE3AA2-00-s.jpg", medium: "PRO-7D6BE3AA2-00-m.jpg" },
+        { small: "PRO-7D6BE3AA2-01-s.jpg", medium: "PRO-7D6BE3AA2-01-m.jpg" },
+        { small: "PRO-7D6BE3AA2-02-s.jpg", medium: "PRO-7D6BE3AA2-02-m.jpg" },
+        { small: "PRO-7D6BE3AA2-03-s.jpg", medium: "PRO-7D6BE3AA2-03-m.jpg" },
+        { small: "PRO-7D6BE3AA2-04-s.jpg", medium: "PRO-7D6BE3AA2-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR4"],
@@ -1617,6 +1158,7 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae gigabyte a520m k v2 rev 1 0 amd micro atx ddr4",
   },
   {
     id: "PRO-360C64357",
@@ -1632,26 +1174,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-360C64357-thumb.jpg",
       images: [
-        {
-          small: "PRO-360C64357-00-s.jpg",
-          medium: "PRO-360C64357-00-m.jpg",
-        },
-        {
-          small: "PRO-360C64357-01-s.jpg",
-          medium: "PRO-360C64357-01-m.jpg",
-        },
-        {
-          small: "PRO-360C64357-02-s.jpg",
-          medium: "PRO-360C64357-02-m.jpg",
-        },
-        {
-          small: "PRO-360C64357-03-s.jpg",
-          medium: "PRO-360C64357-03-m.jpg",
-        },
-        {
-          small: "PRO-360C64357-04-s.jpg",
-          medium: "PRO-360C64357-04-m.jpg",
-        },
+        { small: "PRO-360C64357-00-s.jpg", medium: "PRO-360C64357-00-m.jpg" },
+        { small: "PRO-360C64357-01-s.jpg", medium: "PRO-360C64357-01-m.jpg" },
+        { small: "PRO-360C64357-02-s.jpg", medium: "PRO-360C64357-02-m.jpg" },
+        { small: "PRO-360C64357-03-s.jpg", medium: "PRO-360C64357-03-m.jpg" },
+        { small: "PRO-360C64357-04-s.jpg", medium: "PRO-360C64357-04-m.jpg" },
       ],
     },
     tags: ["Asus", "AMD", "DDR4"],
@@ -1664,6 +1191,7 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR4"],
     ],
+    searchName: "placa mae asus tuf gaming b550 pro amd am4 atx ddr4",
   },
   {
     id: "PRO-9CE8E8E5A",
@@ -1679,22 +1207,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9CE8E8E5A-thumb.jpg",
       images: [
-        {
-          small: "PRO-9CE8E8E5A-00-s.jpg",
-          medium: "PRO-9CE8E8E5A-00-m.jpg",
-        },
-        {
-          small: "PRO-9CE8E8E5A-01-s.jpg",
-          medium: "PRO-9CE8E8E5A-01-m.jpg",
-        },
-        {
-          small: "PRO-9CE8E8E5A-02-s.jpg",
-          medium: "PRO-9CE8E8E5A-02-m.jpg",
-        },
-        {
-          small: "PRO-9CE8E8E5A-03-s.jpg",
-          medium: "PRO-9CE8E8E5A-03-m.jpg",
-        },
+        { small: "PRO-9CE8E8E5A-00-s.jpg", medium: "PRO-9CE8E8E5A-00-m.jpg" },
+        { small: "PRO-9CE8E8E5A-01-s.jpg", medium: "PRO-9CE8E8E5A-01-m.jpg" },
+        { small: "PRO-9CE8E8E5A-02-s.jpg", medium: "PRO-9CE8E8E5A-02-m.jpg" },
+        { small: "PRO-9CE8E8E5A-03-s.jpg", medium: "PRO-9CE8E8E5A-03-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
@@ -1707,6 +1223,8 @@ const products: FAProduct[] = [
       ["Formato", "ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName:
+      "placa mae gigabyte b850 eagle wifi6e amd am5 atx ddr5 rgb wi fi 6e bluetooth",
   },
   {
     id: "PRO-272C4B402",
@@ -1722,26 +1240,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-272C4B402-thumb.jpg",
       images: [
-        {
-          small: "PRO-272C4B402-00-s.jpg",
-          medium: "PRO-272C4B402-00-m.jpg",
-        },
-        {
-          small: "PRO-272C4B402-01-s.jpg",
-          medium: "PRO-272C4B402-01-m.jpg",
-        },
-        {
-          small: "PRO-272C4B402-02-s.jpg",
-          medium: "PRO-272C4B402-02-m.jpg",
-        },
-        {
-          small: "PRO-272C4B402-03-s.jpg",
-          medium: "PRO-272C4B402-03-m.jpg",
-        },
-        {
-          small: "PRO-272C4B402-04-s.jpg",
-          medium: "PRO-272C4B402-04-m.jpg",
-        },
+        { small: "PRO-272C4B402-00-s.jpg", medium: "PRO-272C4B402-00-m.jpg" },
+        { small: "PRO-272C4B402-01-s.jpg", medium: "PRO-272C4B402-01-m.jpg" },
+        { small: "PRO-272C4B402-02-s.jpg", medium: "PRO-272C4B402-02-m.jpg" },
+        { small: "PRO-272C4B402-03-s.jpg", medium: "PRO-272C4B402-03-m.jpg" },
+        { small: "PRO-272C4B402-04-s.jpg", medium: "PRO-272C4B402-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
@@ -1754,6 +1257,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae gigabyte a620m ds3h amd am5 matx ddr5 rgb",
   },
   {
     id: "PRO-7CDF50E24",
@@ -1769,26 +1273,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7CDF50E24-thumb.jpg",
       images: [
-        {
-          small: "PRO-7CDF50E24-00-s.jpg",
-          medium: "PRO-7CDF50E24-00-m.jpg",
-        },
-        {
-          small: "PRO-7CDF50E24-01-s.jpg",
-          medium: "PRO-7CDF50E24-01-m.jpg",
-        },
-        {
-          small: "PRO-7CDF50E24-02-s.jpg",
-          medium: "PRO-7CDF50E24-02-m.jpg",
-        },
-        {
-          small: "PRO-7CDF50E24-03-s.jpg",
-          medium: "PRO-7CDF50E24-03-m.jpg",
-        },
-        {
-          small: "PRO-7CDF50E24-04-s.jpg",
-          medium: "PRO-7CDF50E24-04-m.jpg",
-        },
+        { small: "PRO-7CDF50E24-00-s.jpg", medium: "PRO-7CDF50E24-00-m.jpg" },
+        { small: "PRO-7CDF50E24-01-s.jpg", medium: "PRO-7CDF50E24-01-m.jpg" },
+        { small: "PRO-7CDF50E24-02-s.jpg", medium: "PRO-7CDF50E24-02-m.jpg" },
+        { small: "PRO-7CDF50E24-03-s.jpg", medium: "PRO-7CDF50E24-03-m.jpg" },
+        { small: "PRO-7CDF50E24-04-s.jpg", medium: "PRO-7CDF50E24-04-m.jpg" },
       ],
     },
     tags: ["MSI", "AMD", "DDR5"],
@@ -1801,6 +1290,7 @@ const products: FAProduct[] = [
       ["Formato", "mATX"],
       ["Memória", "DDR5"],
     ],
+    searchName: "placa mae msi pro b760m g intel lga 1700 matx ddr5",
   },
   {
     id: "PRO-13944B524",
@@ -1816,22 +1306,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-13944B524-thumb.jpg",
       images: [
-        {
-          small: "PRO-13944B524-00-s.jpg",
-          medium: "PRO-13944B524-00-m.jpg",
-        },
-        {
-          small: "PRO-13944B524-01-s.jpg",
-          medium: "PRO-13944B524-01-m.jpg",
-        },
-        {
-          small: "PRO-13944B524-02-s.jpg",
-          medium: "PRO-13944B524-02-m.jpg",
-        },
-        {
-          small: "PRO-13944B524-03-s.jpg",
-          medium: "PRO-13944B524-03-m.jpg",
-        },
+        { small: "PRO-13944B524-00-s.jpg", medium: "PRO-13944B524-00-m.jpg" },
+        { small: "PRO-13944B524-01-s.jpg", medium: "PRO-13944B524-01-m.jpg" },
+        { small: "PRO-13944B524-02-s.jpg", medium: "PRO-13944B524-02-m.jpg" },
+        { small: "PRO-13944B524-03-s.jpg", medium: "PRO-13944B524-03-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "AMD", "DDR5"],
@@ -1844,6 +1322,8 @@ const products: FAProduct[] = [
       ["Formato", "Micro ATX"],
       ["Memória", "DDR5"],
     ],
+    searchName:
+      "placa mae gigabyte b650m ds3h rev 1 0 rgb amd micro atx ddr5 am5",
   },
   {
     id: "PRO-026333169",
@@ -1859,26 +1339,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-026333169-thumb.jpg",
       images: [
-        {
-          small: "PRO-026333169-00-s.jpg",
-          medium: "PRO-026333169-00-m.jpg",
-        },
-        {
-          small: "PRO-026333169-01-s.jpg",
-          medium: "PRO-026333169-01-m.jpg",
-        },
-        {
-          small: "PRO-026333169-02-s.jpg",
-          medium: "PRO-026333169-02-m.jpg",
-        },
-        {
-          small: "PRO-026333169-03-s.jpg",
-          medium: "PRO-026333169-03-m.jpg",
-        },
-        {
-          small: "PRO-026333169-04-s.jpg",
-          medium: "PRO-026333169-04-m.jpg",
-        },
+        { small: "PRO-026333169-00-s.jpg", medium: "PRO-026333169-00-m.jpg" },
+        { small: "PRO-026333169-01-s.jpg", medium: "PRO-026333169-01-m.jpg" },
+        { small: "PRO-026333169-02-s.jpg", medium: "PRO-026333169-02-m.jpg" },
+        { small: "PRO-026333169-03-s.jpg", medium: "PRO-026333169-03-m.jpg" },
+        { small: "PRO-026333169-04-s.jpg", medium: "PRO-026333169-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "6GB", "NVidia"],
@@ -1891,6 +1356,8 @@ const products: FAProduct[] = [
       ["Memória", "6GB GDDR6"],
       ["Recursos informados", "DLSS, Ray Tracing, OC"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 3050 windforce oc nvidia geforce 6gb gddr6 dlss ray tracing",
   },
   {
     id: "PRO-688377899",
@@ -1906,26 +1373,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-688377899-thumb.jpg",
       images: [
-        {
-          small: "PRO-688377899-00-s.jpg",
-          medium: "PRO-688377899-00-m.jpg",
-        },
-        {
-          small: "PRO-688377899-01-s.jpg",
-          medium: "PRO-688377899-01-m.jpg",
-        },
-        {
-          small: "PRO-688377899-02-s.jpg",
-          medium: "PRO-688377899-02-m.jpg",
-        },
-        {
-          small: "PRO-688377899-03-s.jpg",
-          medium: "PRO-688377899-03-m.jpg",
-        },
-        {
-          small: "PRO-688377899-04-s.jpg",
-          medium: "PRO-688377899-04-m.jpg",
-        },
+        { small: "PRO-688377899-00-s.jpg", medium: "PRO-688377899-00-m.jpg" },
+        { small: "PRO-688377899-01-s.jpg", medium: "PRO-688377899-01-m.jpg" },
+        { small: "PRO-688377899-02-s.jpg", medium: "PRO-688377899-02-m.jpg" },
+        { small: "PRO-688377899-03-s.jpg", medium: "PRO-688377899-03-m.jpg" },
+        { small: "PRO-688377899-04-s.jpg", medium: "PRO-688377899-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
@@ -1938,6 +1390,8 @@ const products: FAProduct[] = [
       ["Memória", "12GB GDDR7"],
       ["Barramento de memória", "192 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5070 windforce oc sff 12g nvidia geforce 12gb gddr7 192bits dlss ray tracing",
   },
   {
     id: "PRO-002350C9D",
@@ -1953,26 +1407,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-002350C9D-thumb.jpg",
       images: [
-        {
-          small: "PRO-002350C9D-00-s.jpg",
-          medium: "PRO-002350C9D-00-m.jpg",
-        },
-        {
-          small: "PRO-002350C9D-01-s.jpg",
-          medium: "PRO-002350C9D-01-m.jpg",
-        },
-        {
-          small: "PRO-002350C9D-02-s.jpg",
-          medium: "PRO-002350C9D-02-m.jpg",
-        },
-        {
-          small: "PRO-002350C9D-03-s.jpg",
-          medium: "PRO-002350C9D-03-m.jpg",
-        },
-        {
-          small: "PRO-002350C9D-04-s.jpg",
-          medium: "PRO-002350C9D-04-m.jpg",
-        },
+        { small: "PRO-002350C9D-00-s.jpg", medium: "PRO-002350C9D-00-m.jpg" },
+        { small: "PRO-002350C9D-01-s.jpg", medium: "PRO-002350C9D-01-m.jpg" },
+        { small: "PRO-002350C9D-02-s.jpg", medium: "PRO-002350C9D-02-m.jpg" },
+        { small: "PRO-002350C9D-03-s.jpg", medium: "PRO-002350C9D-03-m.jpg" },
+        { small: "PRO-002350C9D-04-s.jpg", medium: "PRO-002350C9D-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
@@ -1985,6 +1424,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5060 windforce oc 8g nvidia geforce 8gb gddr7 128bits dlss ray tracing",
   },
   {
     id: "PRO-2107D4DB3",
@@ -2000,26 +1441,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2107D4DB3-thumb.jpg",
       images: [
-        {
-          small: "PRO-2107D4DB3-00-s.jpg",
-          medium: "PRO-2107D4DB3-00-m.jpg",
-        },
-        {
-          small: "PRO-2107D4DB3-01-s.jpg",
-          medium: "PRO-2107D4DB3-01-m.jpg",
-        },
-        {
-          small: "PRO-2107D4DB3-02-s.jpg",
-          medium: "PRO-2107D4DB3-02-m.jpg",
-        },
-        {
-          small: "PRO-2107D4DB3-03-s.jpg",
-          medium: "PRO-2107D4DB3-03-m.jpg",
-        },
-        {
-          small: "PRO-2107D4DB3-04-s.jpg",
-          medium: "PRO-2107D4DB3-04-m.jpg",
-        },
+        { small: "PRO-2107D4DB3-00-s.jpg", medium: "PRO-2107D4DB3-00-m.jpg" },
+        { small: "PRO-2107D4DB3-01-s.jpg", medium: "PRO-2107D4DB3-01-m.jpg" },
+        { small: "PRO-2107D4DB3-02-s.jpg", medium: "PRO-2107D4DB3-02-m.jpg" },
+        { small: "PRO-2107D4DB3-03-s.jpg", medium: "PRO-2107D4DB3-03-m.jpg" },
+        { small: "PRO-2107D4DB3-04-s.jpg", medium: "PRO-2107D4DB3-04-m.jpg" },
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
@@ -2032,6 +1458,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Recursos informados", "DLSS, Ray Tracing, OC"],
     ],
+    searchName:
+      "placa de video rtx 4060 ventus 2x black oc msi nvidia geforce 8gb gddr6 dlss ray tracing",
   },
   {
     id: "PRO-9C0DAC9F7",
@@ -2047,26 +1475,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9C0DAC9F7-thumb.jpg",
       images: [
-        {
-          small: "PRO-9C0DAC9F7-00-s.jpg",
-          medium: "PRO-9C0DAC9F7-00-m.jpg",
-        },
-        {
-          small: "PRO-9C0DAC9F7-01-s.jpg",
-          medium: "PRO-9C0DAC9F7-01-m.jpg",
-        },
-        {
-          small: "PRO-9C0DAC9F7-02-s.jpg",
-          medium: "PRO-9C0DAC9F7-02-m.jpg",
-        },
-        {
-          small: "PRO-9C0DAC9F7-03-s.jpg",
-          medium: "PRO-9C0DAC9F7-03-m.jpg",
-        },
-        {
-          small: "PRO-9C0DAC9F7-04-s.jpg",
-          medium: "PRO-9C0DAC9F7-04-m.jpg",
-        },
+        { small: "PRO-9C0DAC9F7-00-s.jpg", medium: "PRO-9C0DAC9F7-00-m.jpg" },
+        { small: "PRO-9C0DAC9F7-01-s.jpg", medium: "PRO-9C0DAC9F7-01-m.jpg" },
+        { small: "PRO-9C0DAC9F7-02-s.jpg", medium: "PRO-9C0DAC9F7-02-m.jpg" },
+        { small: "PRO-9C0DAC9F7-03-s.jpg", medium: "PRO-9C0DAC9F7-03-m.jpg" },
+        { small: "PRO-9C0DAC9F7-04-s.jpg", medium: "PRO-9C0DAC9F7-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
@@ -2079,6 +1492,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5060 gaming oc 8g nvidia geforce 8gb gddr7 128bits dlss triple fan ray tracing",
   },
   {
     id: "PRO-E01929272",
@@ -2094,26 +1509,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-E01929272-thumb.jpg",
       images: [
-        {
-          small: "PRO-E01929272-00-s.jpg",
-          medium: "PRO-E01929272-00-m.jpg",
-        },
-        {
-          small: "PRO-E01929272-01-s.jpg",
-          medium: "PRO-E01929272-01-m.jpg",
-        },
-        {
-          small: "PRO-E01929272-02-s.jpg",
-          medium: "PRO-E01929272-02-m.jpg",
-        },
-        {
-          small: "PRO-E01929272-03-s.jpg",
-          medium: "PRO-E01929272-03-m.jpg",
-        },
-        {
-          small: "PRO-E01929272-04-s.jpg",
-          medium: "PRO-E01929272-04-m.jpg",
-        },
+        { small: "PRO-E01929272-00-s.jpg", medium: "PRO-E01929272-00-m.jpg" },
+        { small: "PRO-E01929272-01-s.jpg", medium: "PRO-E01929272-01-m.jpg" },
+        { small: "PRO-E01929272-02-s.jpg", medium: "PRO-E01929272-02-m.jpg" },
+        { small: "PRO-E01929272-03-s.jpg", medium: "PRO-E01929272-03-m.jpg" },
+        { small: "PRO-E01929272-04-s.jpg", medium: "PRO-E01929272-04-m.jpg" },
       ],
     },
     tags: ["Asus", "8GB", "NVidia"],
@@ -2126,6 +1526,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video asus dual rtx 5060 o8g nvidia geforce 8gb gddr7 2565mhz 128 bits opengl 4 6 dlss 4 ray tracing",
   },
   {
     id: "PRO-2FD400729",
@@ -2141,26 +1543,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2FD400729-thumb.jpg",
       images: [
-        {
-          small: "PRO-2FD400729-00-s.jpg",
-          medium: "PRO-2FD400729-00-m.jpg",
-        },
-        {
-          small: "PRO-2FD400729-01-s.jpg",
-          medium: "PRO-2FD400729-01-m.jpg",
-        },
-        {
-          small: "PRO-2FD400729-02-s.jpg",
-          medium: "PRO-2FD400729-02-m.jpg",
-        },
-        {
-          small: "PRO-2FD400729-03-s.jpg",
-          medium: "PRO-2FD400729-03-m.jpg",
-        },
-        {
-          small: "PRO-2FD400729-04-s.jpg",
-          medium: "PRO-2FD400729-04-m.jpg",
-        },
+        { small: "PRO-2FD400729-00-s.jpg", medium: "PRO-2FD400729-00-m.jpg" },
+        { small: "PRO-2FD400729-01-s.jpg", medium: "PRO-2FD400729-01-m.jpg" },
+        { small: "PRO-2FD400729-02-s.jpg", medium: "PRO-2FD400729-02-m.jpg" },
+        { small: "PRO-2FD400729-03-s.jpg", medium: "PRO-2FD400729-03-m.jpg" },
+        { small: "PRO-2FD400729-04-s.jpg", medium: "PRO-2FD400729-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "16GB", "NVidia"],
@@ -2173,6 +1560,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR7"],
       ["Barramento de memória", "256 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5070 ti windforce sff 16g nvidia geforce 16gb gddr7 256bits dlss ray tracing",
   },
   {
     id: "PRO-B7FA0718A",
@@ -2188,26 +1577,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B7FA0718A-thumb.jpg",
       images: [
-        {
-          small: "PRO-B7FA0718A-00-s.jpg",
-          medium: "PRO-B7FA0718A-00-m.jpg",
-        },
-        {
-          small: "PRO-B7FA0718A-01-s.jpg",
-          medium: "PRO-B7FA0718A-01-m.jpg",
-        },
-        {
-          small: "PRO-B7FA0718A-02-s.jpg",
-          medium: "PRO-B7FA0718A-02-m.jpg",
-        },
-        {
-          small: "PRO-B7FA0718A-03-s.jpg",
-          medium: "PRO-B7FA0718A-03-m.jpg",
-        },
-        {
-          small: "PRO-B7FA0718A-04-s.jpg",
-          medium: "PRO-B7FA0718A-04-m.jpg",
-        },
+        { small: "PRO-B7FA0718A-00-s.jpg", medium: "PRO-B7FA0718A-00-m.jpg" },
+        { small: "PRO-B7FA0718A-01-s.jpg", medium: "PRO-B7FA0718A-01-m.jpg" },
+        { small: "PRO-B7FA0718A-02-s.jpg", medium: "PRO-B7FA0718A-02-m.jpg" },
+        { small: "PRO-B7FA0718A-03-s.jpg", medium: "PRO-B7FA0718A-03-m.jpg" },
+        { small: "PRO-B7FA0718A-04-s.jpg", medium: "PRO-B7FA0718A-04-m.jpg" },
       ],
     },
     tags: ["MSI", "12GB", "NVidia"],
@@ -2220,6 +1594,8 @@ const products: FAProduct[] = [
       ["Memória", "12GB GDDR7"],
       ["Velocidade informada", "28 Gbps"],
     ],
+    searchName:
+      "placa de video msi geforce rtx 5070 12g ventus 2x oc 12 gb gddr7 28gbps nvidia geforce rtx 5070",
   },
   {
     id: "PRO-3709D4A9F",
@@ -2235,26 +1611,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3709D4A9F-thumb.jpg",
       images: [
-        {
-          small: "PRO-3709D4A9F-00-s.jpg",
-          medium: "PRO-3709D4A9F-00-m.jpg",
-        },
-        {
-          small: "PRO-3709D4A9F-01-s.jpg",
-          medium: "PRO-3709D4A9F-01-m.jpg",
-        },
-        {
-          small: "PRO-3709D4A9F-02-s.jpg",
-          medium: "PRO-3709D4A9F-02-m.jpg",
-        },
-        {
-          small: "PRO-3709D4A9F-03-s.jpg",
-          medium: "PRO-3709D4A9F-03-m.jpg",
-        },
-        {
-          small: "PRO-3709D4A9F-04-s.jpg",
-          medium: "PRO-3709D4A9F-04-m.jpg",
-        },
+        { small: "PRO-3709D4A9F-00-s.jpg", medium: "PRO-3709D4A9F-00-m.jpg" },
+        { small: "PRO-3709D4A9F-01-s.jpg", medium: "PRO-3709D4A9F-01-m.jpg" },
+        { small: "PRO-3709D4A9F-02-s.jpg", medium: "PRO-3709D4A9F-02-m.jpg" },
+        { small: "PRO-3709D4A9F-03-s.jpg", medium: "PRO-3709D4A9F-03-m.jpg" },
+        { small: "PRO-3709D4A9F-04-s.jpg", medium: "PRO-3709D4A9F-04-m.jpg" },
       ],
     },
     tags: ["Asus", "16GB", "NVidia"],
@@ -2267,6 +1628,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video asus dual rtx 5060 ti o16g nvidia geforce 16gb gddr7 2602mhz 128 bits opengl4 6 dlss 4 ray tracing",
   },
   {
     id: "PRO-4E0235EDE",
@@ -2282,26 +1645,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-4E0235EDE-thumb.jpg",
       images: [
-        {
-          small: "PRO-4E0235EDE-00-s.jpg",
-          medium: "PRO-4E0235EDE-00-m.jpg",
-        },
-        {
-          small: "PRO-4E0235EDE-01-s.jpg",
-          medium: "PRO-4E0235EDE-01-m.jpg",
-        },
-        {
-          small: "PRO-4E0235EDE-02-s.jpg",
-          medium: "PRO-4E0235EDE-02-m.jpg",
-        },
-        {
-          small: "PRO-4E0235EDE-03-s.jpg",
-          medium: "PRO-4E0235EDE-03-m.jpg",
-        },
-        {
-          small: "PRO-4E0235EDE-04-s.jpg",
-          medium: "PRO-4E0235EDE-04-m.jpg",
-        },
+        { small: "PRO-4E0235EDE-00-s.jpg", medium: "PRO-4E0235EDE-00-m.jpg" },
+        { small: "PRO-4E0235EDE-01-s.jpg", medium: "PRO-4E0235EDE-01-m.jpg" },
+        { small: "PRO-4E0235EDE-02-s.jpg", medium: "PRO-4E0235EDE-02-m.jpg" },
+        { small: "PRO-4E0235EDE-03-s.jpg", medium: "PRO-4E0235EDE-03-m.jpg" },
+        { small: "PRO-4E0235EDE-04-s.jpg", medium: "PRO-4E0235EDE-04-m.jpg" },
       ],
     },
     tags: ["Asus", "12GB", "NVidia"],
@@ -2314,6 +1662,8 @@ const products: FAProduct[] = [
       ["Memória", "12GB GDDR7"],
       ["Recursos informados", "DLSS4, DLSS, Ray Tracing, Edição OC"],
     ],
+    searchName:
+      "placa de video asus prime rtx 5070 o12g nvidia geforce 12gb gddr7 blackwell e dlss4 ray tracing edicao oc",
   },
   {
     id: "PRO-998112857",
@@ -2329,22 +1679,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-998112857-thumb.jpg",
       images: [
-        {
-          small: "PRO-998112857-00-s.jpg",
-          medium: "PRO-998112857-00-m.jpg",
-        },
-        {
-          small: "PRO-998112857-01-s.jpg",
-          medium: "PRO-998112857-01-m.jpg",
-        },
-        {
-          small: "PRO-998112857-02-s.jpg",
-          medium: "PRO-998112857-02-m.jpg",
-        },
-        {
-          small: "PRO-998112857-03-s.jpg",
-          medium: "PRO-998112857-03-m.jpg",
-        },
+        { small: "PRO-998112857-00-s.jpg", medium: "PRO-998112857-00-m.jpg" },
+        { small: "PRO-998112857-01-s.jpg", medium: "PRO-998112857-01-m.jpg" },
+        { small: "PRO-998112857-02-s.jpg", medium: "PRO-998112857-02-m.jpg" },
+        { small: "PRO-998112857-03-s.jpg", medium: "PRO-998112857-03-m.jpg" },
       ],
     },
     tags: ["PCyes", "2GB", "NVidia"],
@@ -2356,6 +1694,8 @@ const products: FAProduct[] = [
       ["Linha gráfica", "NVIDIA GeForce"],
       ["Memória", "2GB DDR3"],
     ],
+    searchName:
+      "placa de video g610 projeto edge low profile pcyes nvidia geforce 2gb ddr3",
   },
   {
     id: "PRO-B36AB2296",
@@ -2371,26 +1711,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B36AB2296-thumb.jpg",
       images: [
-        {
-          small: "PRO-B36AB2296-00-s.jpg",
-          medium: "PRO-B36AB2296-00-m.jpg",
-        },
-        {
-          small: "PRO-B36AB2296-01-s.jpg",
-          medium: "PRO-B36AB2296-01-m.jpg",
-        },
-        {
-          small: "PRO-B36AB2296-02-s.jpg",
-          medium: "PRO-B36AB2296-02-m.jpg",
-        },
-        {
-          small: "PRO-B36AB2296-03-s.jpg",
-          medium: "PRO-B36AB2296-03-m.jpg",
-        },
-        {
-          small: "PRO-B36AB2296-04-s.jpg",
-          medium: "PRO-B36AB2296-04-m.jpg",
-        },
+        { small: "PRO-B36AB2296-00-s.jpg", medium: "PRO-B36AB2296-00-m.jpg" },
+        { small: "PRO-B36AB2296-01-s.jpg", medium: "PRO-B36AB2296-01-m.jpg" },
+        { small: "PRO-B36AB2296-02-s.jpg", medium: "PRO-B36AB2296-02-m.jpg" },
+        { small: "PRO-B36AB2296-03-s.jpg", medium: "PRO-B36AB2296-03-m.jpg" },
+        { small: "PRO-B36AB2296-04-s.jpg", medium: "PRO-B36AB2296-04-m.jpg" },
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
@@ -2403,6 +1728,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video msi rtx 5060 8g ventus 2x oc geforce nvidia 8gb gddr7 128 bits 2535 mhz dlss 4 ray tracing",
   },
   {
     id: "PRO-AB0449CE8",
@@ -2418,26 +1745,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-AB0449CE8-thumb.jpg",
       images: [
-        {
-          small: "PRO-AB0449CE8-00-s.jpg",
-          medium: "PRO-AB0449CE8-00-m.jpg",
-        },
-        {
-          small: "PRO-AB0449CE8-01-s.jpg",
-          medium: "PRO-AB0449CE8-01-m.jpg",
-        },
-        {
-          small: "PRO-AB0449CE8-02-s.jpg",
-          medium: "PRO-AB0449CE8-02-m.jpg",
-        },
-        {
-          small: "PRO-AB0449CE8-03-s.jpg",
-          medium: "PRO-AB0449CE8-03-m.jpg",
-        },
-        {
-          small: "PRO-AB0449CE8-04-s.jpg",
-          medium: "PRO-AB0449CE8-04-m.jpg",
-        },
+        { small: "PRO-AB0449CE8-00-s.jpg", medium: "PRO-AB0449CE8-00-m.jpg" },
+        { small: "PRO-AB0449CE8-01-s.jpg", medium: "PRO-AB0449CE8-01-m.jpg" },
+        { small: "PRO-AB0449CE8-02-s.jpg", medium: "PRO-AB0449CE8-02-m.jpg" },
+        { small: "PRO-AB0449CE8-03-s.jpg", medium: "PRO-AB0449CE8-03-m.jpg" },
+        { small: "PRO-AB0449CE8-04-s.jpg", medium: "PRO-AB0449CE8-04-m.jpg" },
       ],
     },
     tags: ["MSI", "8GB", "NVidia"],
@@ -2450,6 +1762,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video msi rtx 5060 ti 8g ventus 2x oc plus nvidia geforce 8gb gddr7 128 bit 2617 mhz fp4 e dlss 4 ray tracing",
   },
   {
     id: "PRO-6B1349768",
@@ -2465,18 +1779,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6B1349768-thumb.jpg",
       images: [
-        {
-          small: "PRO-6B1349768-00-s.jpg",
-          medium: "PRO-6B1349768-00-m.jpg",
-        },
-        {
-          small: "PRO-6B1349768-01-s.jpg",
-          medium: "PRO-6B1349768-01-m.jpg",
-        },
-        {
-          small: "PRO-6B1349768-02-s.jpg",
-          medium: "PRO-6B1349768-02-m.jpg",
-        },
+        { small: "PRO-6B1349768-00-s.jpg", medium: "PRO-6B1349768-00-m.jpg" },
+        { small: "PRO-6B1349768-01-s.jpg", medium: "PRO-6B1349768-01-m.jpg" },
+        { small: "PRO-6B1349768-02-s.jpg", medium: "PRO-6B1349768-02-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "16GB", "NVidia"],
@@ -2489,6 +1794,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video rtx 5060 ti gaming oc 16g gigabyte nvidia geforce 16gb gddr7 128bits rgb dlss ray tracing",
   },
   {
     id: "PRO-D0986A8D9",
@@ -2504,26 +1811,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-D0986A8D9-thumb.jpg",
       images: [
-        {
-          small: "PRO-D0986A8D9-00-s.jpg",
-          medium: "PRO-D0986A8D9-00-m.jpg",
-        },
-        {
-          small: "PRO-D0986A8D9-01-s.jpg",
-          medium: "PRO-D0986A8D9-01-m.jpg",
-        },
-        {
-          small: "PRO-D0986A8D9-02-s.jpg",
-          medium: "PRO-D0986A8D9-02-m.jpg",
-        },
-        {
-          small: "PRO-D0986A8D9-03-s.jpg",
-          medium: "PRO-D0986A8D9-03-m.jpg",
-        },
-        {
-          small: "PRO-D0986A8D9-04-s.jpg",
-          medium: "PRO-D0986A8D9-04-m.jpg",
-        },
+        { small: "PRO-D0986A8D9-00-s.jpg", medium: "PRO-D0986A8D9-00-m.jpg" },
+        { small: "PRO-D0986A8D9-01-s.jpg", medium: "PRO-D0986A8D9-01-m.jpg" },
+        { small: "PRO-D0986A8D9-02-s.jpg", medium: "PRO-D0986A8D9-02-m.jpg" },
+        { small: "PRO-D0986A8D9-03-s.jpg", medium: "PRO-D0986A8D9-03-m.jpg" },
+        { small: "PRO-D0986A8D9-04-s.jpg", medium: "PRO-D0986A8D9-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "8GB", "NVidia"],
@@ -2536,6 +1828,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR7"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5060 eagle oc 8g nvidia geforce 8gb gddr7 128bits dlss ray tracing",
   },
   {
     id: "PRO-4860CF473",
@@ -2551,26 +1845,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-4860CF473-thumb.jpg",
       images: [
-        {
-          small: "PRO-4860CF473-00-s.jpg",
-          medium: "PRO-4860CF473-00-m.jpg",
-        },
-        {
-          small: "PRO-4860CF473-01-s.jpg",
-          medium: "PRO-4860CF473-01-m.jpg",
-        },
-        {
-          small: "PRO-4860CF473-02-s.jpg",
-          medium: "PRO-4860CF473-02-m.jpg",
-        },
-        {
-          small: "PRO-4860CF473-03-s.jpg",
-          medium: "PRO-4860CF473-03-m.jpg",
-        },
-        {
-          small: "PRO-4860CF473-04-s.jpg",
-          medium: "PRO-4860CF473-04-m.jpg",
-        },
+        { small: "PRO-4860CF473-00-s.jpg", medium: "PRO-4860CF473-00-m.jpg" },
+        { small: "PRO-4860CF473-01-s.jpg", medium: "PRO-4860CF473-01-m.jpg" },
+        { small: "PRO-4860CF473-02-s.jpg", medium: "PRO-4860CF473-02-m.jpg" },
+        { small: "PRO-4860CF473-03-s.jpg", medium: "PRO-4860CF473-03-m.jpg" },
+        { small: "PRO-4860CF473-04-s.jpg", medium: "PRO-4860CF473-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
@@ -2583,6 +1862,8 @@ const products: FAProduct[] = [
       ["Memória", "12GB GDDR7"],
       ["Barramento de memória", "192 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rtx 5070 gaming oc 12g nvidia geforce 12gb gddr7 192bits rgb dlss ray tracing",
   },
   {
     id: "PRO-033FFE1A6",
@@ -2598,26 +1879,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-033FFE1A6-thumb.jpg",
       images: [
-        {
-          small: "PRO-033FFE1A6-00-s.jpg",
-          medium: "PRO-033FFE1A6-00-m.jpg",
-        },
-        {
-          small: "PRO-033FFE1A6-01-s.jpg",
-          medium: "PRO-033FFE1A6-01-m.jpg",
-        },
-        {
-          small: "PRO-033FFE1A6-02-s.jpg",
-          medium: "PRO-033FFE1A6-02-m.jpg",
-        },
-        {
-          small: "PRO-033FFE1A6-03-s.jpg",
-          medium: "PRO-033FFE1A6-03-m.jpg",
-        },
-        {
-          small: "PRO-033FFE1A6-04-s.jpg",
-          medium: "PRO-033FFE1A6-04-m.jpg",
-        },
+        { small: "PRO-033FFE1A6-00-s.jpg", medium: "PRO-033FFE1A6-00-m.jpg" },
+        { small: "PRO-033FFE1A6-01-s.jpg", medium: "PRO-033FFE1A6-01-m.jpg" },
+        { small: "PRO-033FFE1A6-02-s.jpg", medium: "PRO-033FFE1A6-02-m.jpg" },
+        { small: "PRO-033FFE1A6-03-s.jpg", medium: "PRO-033FFE1A6-03-m.jpg" },
+        { small: "PRO-033FFE1A6-04-s.jpg", medium: "PRO-033FFE1A6-04-m.jpg" },
       ],
     },
     tags: ["PCyes", "6GB", "NVidia"],
@@ -2629,6 +1895,8 @@ const products: FAProduct[] = [
       ["Linha gráfica", "NVIDIA GeForce"],
       ["Memória", "6GB GDDR6"],
     ],
+    searchName:
+      "placa de video pcyes nvidia rtx 2060 graffiti series 6gb gddr6",
   },
   {
     id: "PRO-8B5C16E0F",
@@ -2644,26 +1912,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-8B5C16E0F-thumb.jpg",
       images: [
-        {
-          small: "PRO-8B5C16E0F-00-s.jpg",
-          medium: "PRO-8B5C16E0F-00-m.jpg",
-        },
-        {
-          small: "PRO-8B5C16E0F-01-s.jpg",
-          medium: "PRO-8B5C16E0F-01-m.jpg",
-        },
-        {
-          small: "PRO-8B5C16E0F-02-s.jpg",
-          medium: "PRO-8B5C16E0F-02-m.jpg",
-        },
-        {
-          small: "PRO-8B5C16E0F-03-s.jpg",
-          medium: "PRO-8B5C16E0F-03-m.jpg",
-        },
-        {
-          small: "PRO-8B5C16E0F-04-s.jpg",
-          medium: "PRO-8B5C16E0F-04-m.jpg",
-        },
+        { small: "PRO-8B5C16E0F-00-s.jpg", medium: "PRO-8B5C16E0F-00-m.jpg" },
+        { small: "PRO-8B5C16E0F-01-s.jpg", medium: "PRO-8B5C16E0F-01-m.jpg" },
+        { small: "PRO-8B5C16E0F-02-s.jpg", medium: "PRO-8B5C16E0F-02-m.jpg" },
+        { small: "PRO-8B5C16E0F-03-s.jpg", medium: "PRO-8B5C16E0F-03-m.jpg" },
+        { small: "PRO-8B5C16E0F-04-s.jpg", medium: "PRO-8B5C16E0F-04-m.jpg" },
       ],
     },
     tags: ["Palit", "16GB", "NVidia"],
@@ -2676,6 +1929,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR7"],
       ["Recursos informados", "DLSS 4, DLSS, Ray Tracing, RGB"],
     ],
+    searchName:
+      "placa de video palit rtx 5070 ti gamerock nvidia geforce 16gb gddr7 argb sync evo g sync ray tracing dlss 4",
   },
   {
     id: "PRO-68010B73A",
@@ -2691,26 +1946,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-68010B73A-thumb.jpg",
       images: [
-        {
-          small: "PRO-68010B73A-00-s.jpg",
-          medium: "PRO-68010B73A-00-m.jpg",
-        },
-        {
-          small: "PRO-68010B73A-01-s.jpg",
-          medium: "PRO-68010B73A-01-m.jpg",
-        },
-        {
-          small: "PRO-68010B73A-02-s.jpg",
-          medium: "PRO-68010B73A-02-m.jpg",
-        },
-        {
-          small: "PRO-68010B73A-03-s.jpg",
-          medium: "PRO-68010B73A-03-m.jpg",
-        },
-        {
-          small: "PRO-68010B73A-04-s.jpg",
-          medium: "PRO-68010B73A-04-m.jpg",
-        },
+        { small: "PRO-68010B73A-00-s.jpg", medium: "PRO-68010B73A-00-m.jpg" },
+        { small: "PRO-68010B73A-01-s.jpg", medium: "PRO-68010B73A-01-m.jpg" },
+        { small: "PRO-68010B73A-02-s.jpg", medium: "PRO-68010B73A-02-m.jpg" },
+        { small: "PRO-68010B73A-03-s.jpg", medium: "PRO-68010B73A-03-m.jpg" },
+        { small: "PRO-68010B73A-04-s.jpg", medium: "PRO-68010B73A-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "12GB", "NVidia"],
@@ -2723,6 +1963,8 @@ const products: FAProduct[] = [
       ["Memória", "12GB GDDR7"],
       ["Barramento de memória", "192 bits"],
     ],
+    searchName:
+      "placa de video rtx 5070 windforce sff 12g gigabyte nvidia geforce 12gb gddr7 192bits dlss ray tracing",
   },
   {
     id: "PRO-15F1FF047",
@@ -2738,26 +1980,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-15F1FF047-thumb.jpg",
       images: [
-        {
-          small: "PRO-15F1FF047-00-s.jpg",
-          medium: "PRO-15F1FF047-00-m.jpg",
-        },
-        {
-          small: "PRO-15F1FF047-01-s.jpg",
-          medium: "PRO-15F1FF047-01-m.jpg",
-        },
-        {
-          small: "PRO-15F1FF047-02-s.jpg",
-          medium: "PRO-15F1FF047-02-m.jpg",
-        },
-        {
-          small: "PRO-15F1FF047-03-s.jpg",
-          medium: "PRO-15F1FF047-03-m.jpg",
-        },
-        {
-          small: "PRO-15F1FF047-04-s.jpg",
-          medium: "PRO-15F1FF047-04-m.jpg",
-        },
+        { small: "PRO-15F1FF047-00-s.jpg", medium: "PRO-15F1FF047-00-m.jpg" },
+        { small: "PRO-15F1FF047-01-s.jpg", medium: "PRO-15F1FF047-01-m.jpg" },
+        { small: "PRO-15F1FF047-02-s.jpg", medium: "PRO-15F1FF047-02-m.jpg" },
+        { small: "PRO-15F1FF047-03-s.jpg", medium: "PRO-15F1FF047-03-m.jpg" },
+        { small: "PRO-15F1FF047-04-s.jpg", medium: "PRO-15F1FF047-04-m.jpg" },
       ],
     },
     tags: ["PCyes", "4GB", "NVidia"],
@@ -2770,6 +1997,8 @@ const products: FAProduct[] = [
       ["Memória", "4GB GDDR5"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video gtx 750 ti pcyes nvidia geforce 4gb gddr5 128 bit full size",
   },
   {
     id: "PRO-AD8E593EB",
@@ -2785,26 +2014,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-AD8E593EB-thumb.jpg",
       images: [
-        {
-          small: "PRO-AD8E593EB-00-s.jpg",
-          medium: "PRO-AD8E593EB-00-m.jpg",
-        },
-        {
-          small: "PRO-AD8E593EB-01-s.jpg",
-          medium: "PRO-AD8E593EB-01-m.jpg",
-        },
-        {
-          small: "PRO-AD8E593EB-02-s.jpg",
-          medium: "PRO-AD8E593EB-02-m.jpg",
-        },
-        {
-          small: "PRO-AD8E593EB-03-s.jpg",
-          medium: "PRO-AD8E593EB-03-m.jpg",
-        },
-        {
-          small: "PRO-AD8E593EB-04-s.jpg",
-          medium: "PRO-AD8E593EB-04-m.jpg",
-        },
+        { small: "PRO-AD8E593EB-00-s.jpg", medium: "PRO-AD8E593EB-00-m.jpg" },
+        { small: "PRO-AD8E593EB-01-s.jpg", medium: "PRO-AD8E593EB-01-m.jpg" },
+        { small: "PRO-AD8E593EB-02-s.jpg", medium: "PRO-AD8E593EB-02-m.jpg" },
+        { small: "PRO-AD8E593EB-03-s.jpg", medium: "PRO-AD8E593EB-03-m.jpg" },
+        { small: "PRO-AD8E593EB-04-s.jpg", medium: "PRO-AD8E593EB-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
@@ -2817,6 +2031,7 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Recursos informados", "OC"],
     ],
+    searchName: "placa de video rx 6600 cld 8g asrock amd radeon 8gb gddr6",
   },
   {
     id: "PRO-D55645F74",
@@ -2832,26 +2047,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-D55645F74-thumb.jpg",
       images: [
-        {
-          small: "PRO-D55645F74-00-s.jpg",
-          medium: "PRO-D55645F74-00-m.jpg",
-        },
-        {
-          small: "PRO-D55645F74-01-s.jpg",
-          medium: "PRO-D55645F74-01-m.jpg",
-        },
-        {
-          small: "PRO-D55645F74-02-s.jpg",
-          medium: "PRO-D55645F74-02-m.jpg",
-        },
-        {
-          small: "PRO-D55645F74-03-s.jpg",
-          medium: "PRO-D55645F74-03-m.jpg",
-        },
-        {
-          small: "PRO-D55645F74-04-s.jpg",
-          medium: "PRO-D55645F74-04-m.jpg",
-        },
+        { small: "PRO-D55645F74-00-s.jpg", medium: "PRO-D55645F74-00-m.jpg" },
+        { small: "PRO-D55645F74-01-s.jpg", medium: "PRO-D55645F74-01-m.jpg" },
+        { small: "PRO-D55645F74-02-s.jpg", medium: "PRO-D55645F74-02-m.jpg" },
+        { small: "PRO-D55645F74-03-s.jpg", medium: "PRO-D55645F74-03-m.jpg" },
+        { small: "PRO-D55645F74-04-s.jpg", medium: "PRO-D55645F74-04-m.jpg" },
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
@@ -2863,6 +2063,8 @@ const products: FAProduct[] = [
       ["Linha gráfica", "AMD Radeon"],
       ["Memória", "8GB GDDR6"],
     ],
+    searchName:
+      "placa de video xfx amd radeon rx 7600 gaming graphics card 8gb gddr6",
   },
   {
     id: "PRO-9A524C334",
@@ -2878,26 +2080,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9A524C334-thumb.jpg",
       images: [
-        {
-          small: "PRO-9A524C334-00-s.jpg",
-          medium: "PRO-9A524C334-00-m.jpg",
-        },
-        {
-          small: "PRO-9A524C334-01-s.jpg",
-          medium: "PRO-9A524C334-01-m.jpg",
-        },
-        {
-          small: "PRO-9A524C334-02-s.jpg",
-          medium: "PRO-9A524C334-02-m.jpg",
-        },
-        {
-          small: "PRO-9A524C334-03-s.jpg",
-          medium: "PRO-9A524C334-03-m.jpg",
-        },
-        {
-          small: "PRO-9A524C334-04-s.jpg",
-          medium: "PRO-9A524C334-04-m.jpg",
-        },
+        { small: "PRO-9A524C334-00-s.jpg", medium: "PRO-9A524C334-00-m.jpg" },
+        { small: "PRO-9A524C334-01-s.jpg", medium: "PRO-9A524C334-01-m.jpg" },
+        { small: "PRO-9A524C334-02-s.jpg", medium: "PRO-9A524C334-02-m.jpg" },
+        { small: "PRO-9A524C334-03-s.jpg", medium: "PRO-9A524C334-03-m.jpg" },
+        { small: "PRO-9A524C334-04-s.jpg", medium: "PRO-9A524C334-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
@@ -2910,6 +2097,7 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Recursos informados", "OC"],
     ],
+    searchName: "placa de video rx 7600 challenger asrock amd radeon 8gb gddr6",
   },
   {
     id: "PRO-288D0B161",
@@ -2925,26 +2113,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-288D0B161-thumb.jpg",
       images: [
-        {
-          small: "PRO-288D0B161-00-s.jpg",
-          medium: "PRO-288D0B161-00-m.jpg",
-        },
-        {
-          small: "PRO-288D0B161-01-s.jpg",
-          medium: "PRO-288D0B161-01-m.jpg",
-        },
-        {
-          small: "PRO-288D0B161-02-s.jpg",
-          medium: "PRO-288D0B161-02-m.jpg",
-        },
-        {
-          small: "PRO-288D0B161-03-s.jpg",
-          medium: "PRO-288D0B161-03-m.jpg",
-        },
-        {
-          small: "PRO-288D0B161-04-s.jpg",
-          medium: "PRO-288D0B161-04-m.jpg",
-        },
+        { small: "PRO-288D0B161-00-s.jpg", medium: "PRO-288D0B161-00-m.jpg" },
+        { small: "PRO-288D0B161-01-s.jpg", medium: "PRO-288D0B161-01-m.jpg" },
+        { small: "PRO-288D0B161-02-s.jpg", medium: "PRO-288D0B161-02-m.jpg" },
+        { small: "PRO-288D0B161-03-s.jpg", medium: "PRO-288D0B161-03-m.jpg" },
+        { small: "PRO-288D0B161-04-s.jpg", medium: "PRO-288D0B161-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "8GB", "AMD"],
@@ -2957,6 +2130,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video rx 7600 gaming oc 8g amd radeon gigabyte 8gb gddr6 128bits rgb",
   },
   {
     id: "PRO-C9E5FE2A5",
@@ -2972,26 +2147,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C9E5FE2A5-thumb.jpg",
       images: [
-        {
-          small: "PRO-C9E5FE2A5-00-s.jpg",
-          medium: "PRO-C9E5FE2A5-00-m.jpg",
-        },
-        {
-          small: "PRO-C9E5FE2A5-01-s.jpg",
-          medium: "PRO-C9E5FE2A5-01-m.jpg",
-        },
-        {
-          small: "PRO-C9E5FE2A5-02-s.jpg",
-          medium: "PRO-C9E5FE2A5-02-m.jpg",
-        },
-        {
-          small: "PRO-C9E5FE2A5-03-s.jpg",
-          medium: "PRO-C9E5FE2A5-03-m.jpg",
-        },
-        {
-          small: "PRO-C9E5FE2A5-04-s.jpg",
-          medium: "PRO-C9E5FE2A5-04-m.jpg",
-        },
+        { small: "PRO-C9E5FE2A5-00-s.jpg", medium: "PRO-C9E5FE2A5-00-m.jpg" },
+        { small: "PRO-C9E5FE2A5-01-s.jpg", medium: "PRO-C9E5FE2A5-01-m.jpg" },
+        { small: "PRO-C9E5FE2A5-02-s.jpg", medium: "PRO-C9E5FE2A5-02-m.jpg" },
+        { small: "PRO-C9E5FE2A5-03-s.jpg", medium: "PRO-C9E5FE2A5-03-m.jpg" },
+        { small: "PRO-C9E5FE2A5-04-s.jpg", medium: "PRO-C9E5FE2A5-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "16GB", "AMD"],
@@ -3004,6 +2164,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video asrock rx 9060 xt cl 16go amd radeon 16gb gddr6 128bits opengl 4 6 rdna 4",
   },
   {
     id: "PRO-61CBA0795",
@@ -3019,26 +2181,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-61CBA0795-thumb.jpg",
       images: [
-        {
-          small: "PRO-61CBA0795-00-s.jpg",
-          medium: "PRO-61CBA0795-00-m.jpg",
-        },
-        {
-          small: "PRO-61CBA0795-01-s.jpg",
-          medium: "PRO-61CBA0795-01-m.jpg",
-        },
-        {
-          small: "PRO-61CBA0795-02-s.jpg",
-          medium: "PRO-61CBA0795-02-m.jpg",
-        },
-        {
-          small: "PRO-61CBA0795-03-s.jpg",
-          medium: "PRO-61CBA0795-03-m.jpg",
-        },
-        {
-          small: "PRO-61CBA0795-04-s.jpg",
-          medium: "PRO-61CBA0795-04-m.jpg",
-        },
+        { small: "PRO-61CBA0795-00-s.jpg", medium: "PRO-61CBA0795-00-m.jpg" },
+        { small: "PRO-61CBA0795-01-s.jpg", medium: "PRO-61CBA0795-01-m.jpg" },
+        { small: "PRO-61CBA0795-02-s.jpg", medium: "PRO-61CBA0795-02-m.jpg" },
+        { small: "PRO-61CBA0795-03-s.jpg", medium: "PRO-61CBA0795-03-m.jpg" },
+        { small: "PRO-61CBA0795-04-s.jpg", medium: "PRO-61CBA0795-04-m.jpg" },
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
@@ -3050,6 +2197,8 @@ const products: FAProduct[] = [
       ["Linha gráfica", "AMD Radeon"],
       ["Memória", "8GB GDDR6"],
     ],
+    searchName:
+      "placa de video rx 7600 series graphics cards xfx amd radeon 8gb gddr6",
   },
   {
     id: "PRO-14B7D0E88",
@@ -3065,26 +2214,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-14B7D0E88-thumb.jpg",
       images: [
-        {
-          small: "PRO-14B7D0E88-00-s.jpg",
-          medium: "PRO-14B7D0E88-00-m.jpg",
-        },
-        {
-          small: "PRO-14B7D0E88-01-s.jpg",
-          medium: "PRO-14B7D0E88-01-m.jpg",
-        },
-        {
-          small: "PRO-14B7D0E88-02-s.jpg",
-          medium: "PRO-14B7D0E88-02-m.jpg",
-        },
-        {
-          small: "PRO-14B7D0E88-03-s.jpg",
-          medium: "PRO-14B7D0E88-03-m.jpg",
-        },
-        {
-          small: "PRO-14B7D0E88-04-s.jpg",
-          medium: "PRO-14B7D0E88-04-m.jpg",
-        },
+        { small: "PRO-14B7D0E88-00-s.jpg", medium: "PRO-14B7D0E88-00-m.jpg" },
+        { small: "PRO-14B7D0E88-01-s.jpg", medium: "PRO-14B7D0E88-01-m.jpg" },
+        { small: "PRO-14B7D0E88-02-s.jpg", medium: "PRO-14B7D0E88-02-m.jpg" },
+        { small: "PRO-14B7D0E88-03-s.jpg", medium: "PRO-14B7D0E88-03-m.jpg" },
+        { small: "PRO-14B7D0E88-04-s.jpg", medium: "PRO-14B7D0E88-04-m.jpg" },
       ],
     },
     tags: ["XFX", "8GB", "AMD"],
@@ -3097,6 +2231,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Conexões informadas", "HDMI e 3x DP"],
     ],
+    searchName:
+      "placa de video rx 6650xt xfx speedster swft210 amd radeon 8gb gddr6 hdmi 3xdp 2 fan",
   },
   {
     id: "PRO-88E5CD51A",
@@ -3112,26 +2248,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-88E5CD51A-thumb.jpg",
       images: [
-        {
-          small: "PRO-88E5CD51A-00-s.jpg",
-          medium: "PRO-88E5CD51A-00-m.jpg",
-        },
-        {
-          small: "PRO-88E5CD51A-01-s.jpg",
-          medium: "PRO-88E5CD51A-01-m.jpg",
-        },
-        {
-          small: "PRO-88E5CD51A-02-s.jpg",
-          medium: "PRO-88E5CD51A-02-m.jpg",
-        },
-        {
-          small: "PRO-88E5CD51A-03-s.jpg",
-          medium: "PRO-88E5CD51A-03-m.jpg",
-        },
-        {
-          small: "PRO-88E5CD51A-04-s.jpg",
-          medium: "PRO-88E5CD51A-04-m.jpg",
-        },
+        { small: "PRO-88E5CD51A-00-s.jpg", medium: "PRO-88E5CD51A-00-m.jpg" },
+        { small: "PRO-88E5CD51A-01-s.jpg", medium: "PRO-88E5CD51A-01-m.jpg" },
+        { small: "PRO-88E5CD51A-02-s.jpg", medium: "PRO-88E5CD51A-02-m.jpg" },
+        { small: "PRO-88E5CD51A-03-s.jpg", medium: "PRO-88E5CD51A-03-m.jpg" },
+        { small: "PRO-88E5CD51A-04-s.jpg", medium: "PRO-88E5CD51A-04-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3144,6 +2265,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video xfx rx 9060 xt oc amd radeon 16gb gddr6 128bits 20 gbps triple fan rdna 4",
   },
   {
     id: "PRO-4B8E02B92",
@@ -3159,26 +2282,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-4B8E02B92-thumb.jpg",
       images: [
-        {
-          small: "PRO-4B8E02B92-00-s.jpg",
-          medium: "PRO-4B8E02B92-00-m.jpg",
-        },
-        {
-          small: "PRO-4B8E02B92-01-s.jpg",
-          medium: "PRO-4B8E02B92-01-m.jpg",
-        },
-        {
-          small: "PRO-4B8E02B92-02-s.jpg",
-          medium: "PRO-4B8E02B92-02-m.jpg",
-        },
-        {
-          small: "PRO-4B8E02B92-03-s.jpg",
-          medium: "PRO-4B8E02B92-03-m.jpg",
-        },
-        {
-          small: "PRO-4B8E02B92-04-s.jpg",
-          medium: "PRO-4B8E02B92-04-m.jpg",
-        },
+        { small: "PRO-4B8E02B92-00-s.jpg", medium: "PRO-4B8E02B92-00-m.jpg" },
+        { small: "PRO-4B8E02B92-01-s.jpg", medium: "PRO-4B8E02B92-01-m.jpg" },
+        { small: "PRO-4B8E02B92-02-s.jpg", medium: "PRO-4B8E02B92-02-m.jpg" },
+        { small: "PRO-4B8E02B92-03-s.jpg", medium: "PRO-4B8E02B92-03-m.jpg" },
+        { small: "PRO-4B8E02B92-04-s.jpg", medium: "PRO-4B8E02B92-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "16GB", "AMD"],
@@ -3191,6 +2299,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video asrock rx 9060 xt sl 16go amd radeon 16gb gddr6 128bits triple fan opengl 4 6 rdna 4",
   },
   {
     id: "PRO-3744553B7",
@@ -3206,26 +2316,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3744553B7-thumb.jpg",
       images: [
-        {
-          small: "PRO-3744553B7-00-s.jpg",
-          medium: "PRO-3744553B7-00-m.jpg",
-        },
-        {
-          small: "PRO-3744553B7-01-s.jpg",
-          medium: "PRO-3744553B7-01-m.jpg",
-        },
-        {
-          small: "PRO-3744553B7-02-s.jpg",
-          medium: "PRO-3744553B7-02-m.jpg",
-        },
-        {
-          small: "PRO-3744553B7-03-s.jpg",
-          medium: "PRO-3744553B7-03-m.jpg",
-        },
-        {
-          small: "PRO-3744553B7-04-s.jpg",
-          medium: "PRO-3744553B7-04-m.jpg",
-        },
+        { small: "PRO-3744553B7-00-s.jpg", medium: "PRO-3744553B7-00-m.jpg" },
+        { small: "PRO-3744553B7-01-s.jpg", medium: "PRO-3744553B7-01-m.jpg" },
+        { small: "PRO-3744553B7-02-s.jpg", medium: "PRO-3744553B7-02-m.jpg" },
+        { small: "PRO-3744553B7-03-s.jpg", medium: "PRO-3744553B7-03-m.jpg" },
+        { small: "PRO-3744553B7-04-s.jpg", medium: "PRO-3744553B7-04-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3238,6 +2333,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB DDR6"],
       ["Conexões informadas", "HDMI e 3x DP"],
     ],
+    searchName:
+      "placa de video rx 7800xt gaming 16g xfx speedster qick319 amd radeon 16gb ddr6 hdmi 3xdp 3 fan",
   },
   {
     id: "PRO-019F41CA9",
@@ -3253,26 +2350,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-019F41CA9-thumb.jpg",
       images: [
-        {
-          small: "PRO-019F41CA9-00-s.jpg",
-          medium: "PRO-019F41CA9-00-m.jpg",
-        },
-        {
-          small: "PRO-019F41CA9-01-s.jpg",
-          medium: "PRO-019F41CA9-01-m.jpg",
-        },
-        {
-          small: "PRO-019F41CA9-02-s.jpg",
-          medium: "PRO-019F41CA9-02-m.jpg",
-        },
-        {
-          small: "PRO-019F41CA9-03-s.jpg",
-          medium: "PRO-019F41CA9-03-m.jpg",
-        },
-        {
-          small: "PRO-019F41CA9-04-s.jpg",
-          medium: "PRO-019F41CA9-04-m.jpg",
-        },
+        { small: "PRO-019F41CA9-00-s.jpg", medium: "PRO-019F41CA9-00-m.jpg" },
+        { small: "PRO-019F41CA9-01-s.jpg", medium: "PRO-019F41CA9-01-m.jpg" },
+        { small: "PRO-019F41CA9-02-s.jpg", medium: "PRO-019F41CA9-02-m.jpg" },
+        { small: "PRO-019F41CA9-03-s.jpg", medium: "PRO-019F41CA9-03-m.jpg" },
+        { small: "PRO-019F41CA9-04-s.jpg", medium: "PRO-019F41CA9-04-m.jpg" },
       ],
     },
     tags: ["PCyes", "4GB", "AMD"],
@@ -3285,6 +2367,8 @@ const products: FAProduct[] = [
       ["Memória", "4GB GDDR5"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video rx 550 amd pcyes dual fan projeto edge 4gb gddr5 128 bits",
   },
   {
     id: "PRO-987CC9C3E",
@@ -3300,26 +2384,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-987CC9C3E-thumb.jpg",
       images: [
-        {
-          small: "PRO-987CC9C3E-00-s.jpg",
-          medium: "PRO-987CC9C3E-00-m.jpg",
-        },
-        {
-          small: "PRO-987CC9C3E-01-s.jpg",
-          medium: "PRO-987CC9C3E-01-m.jpg",
-        },
-        {
-          small: "PRO-987CC9C3E-02-s.jpg",
-          medium: "PRO-987CC9C3E-02-m.jpg",
-        },
-        {
-          small: "PRO-987CC9C3E-03-s.jpg",
-          medium: "PRO-987CC9C3E-03-m.jpg",
-        },
-        {
-          small: "PRO-987CC9C3E-04-s.jpg",
-          medium: "PRO-987CC9C3E-04-m.jpg",
-        },
+        { small: "PRO-987CC9C3E-00-s.jpg", medium: "PRO-987CC9C3E-00-m.jpg" },
+        { small: "PRO-987CC9C3E-01-s.jpg", medium: "PRO-987CC9C3E-01-m.jpg" },
+        { small: "PRO-987CC9C3E-02-s.jpg", medium: "PRO-987CC9C3E-02-m.jpg" },
+        { small: "PRO-987CC9C3E-03-s.jpg", medium: "PRO-987CC9C3E-03-m.jpg" },
+        { small: "PRO-987CC9C3E-04-s.jpg", medium: "PRO-987CC9C3E-04-m.jpg" },
       ],
     },
     tags: ["Sapphire", "8GB", "AMD"],
@@ -3332,6 +2401,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Clock informado", "2855 MHz"],
     ],
+    searchName:
+      "placa de video sapphire pulse rx 6500 xt gaming oc amd 8gb gddr6 2855mhz hdmi e dp",
   },
   {
     id: "PRO-BFA35D503",
@@ -3347,26 +2418,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-BFA35D503-thumb.jpg",
       images: [
-        {
-          small: "PRO-BFA35D503-00-s.jpg",
-          medium: "PRO-BFA35D503-00-m.jpg",
-        },
-        {
-          small: "PRO-BFA35D503-01-s.jpg",
-          medium: "PRO-BFA35D503-01-m.jpg",
-        },
-        {
-          small: "PRO-BFA35D503-02-s.jpg",
-          medium: "PRO-BFA35D503-02-m.jpg",
-        },
-        {
-          small: "PRO-BFA35D503-03-s.jpg",
-          medium: "PRO-BFA35D503-03-m.jpg",
-        },
-        {
-          small: "PRO-BFA35D503-04-s.jpg",
-          medium: "PRO-BFA35D503-04-m.jpg",
-        },
+        { small: "PRO-BFA35D503-00-s.jpg", medium: "PRO-BFA35D503-00-m.jpg" },
+        { small: "PRO-BFA35D503-01-s.jpg", medium: "PRO-BFA35D503-01-m.jpg" },
+        { small: "PRO-BFA35D503-02-s.jpg", medium: "PRO-BFA35D503-02-m.jpg" },
+        { small: "PRO-BFA35D503-03-s.jpg", medium: "PRO-BFA35D503-03-m.jpg" },
+        { small: "PRO-BFA35D503-04-s.jpg", medium: "PRO-BFA35D503-04-m.jpg" },
       ],
     },
     tags: ["ASRock", "8GB", "AMD"],
@@ -3379,6 +2435,8 @@ const products: FAProduct[] = [
       ["Memória", "8GB GDDR6"],
       ["Recursos informados", "RDNA 2, DirectX 12 Ultimate, OC"],
     ],
+    searchName:
+      "placa de video asrock rx 6600 challenger white amd radeon 8gb gddr6 directx 12 ultimate rdna 2",
   },
   {
     id: "PRO-F188B319E",
@@ -3394,26 +2452,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-F188B319E-thumb.jpg",
       images: [
-        {
-          small: "PRO-F188B319E-00-s.jpg",
-          medium: "PRO-F188B319E-00-m.jpg",
-        },
-        {
-          small: "PRO-F188B319E-01-s.jpg",
-          medium: "PRO-F188B319E-01-m.jpg",
-        },
-        {
-          small: "PRO-F188B319E-02-s.jpg",
-          medium: "PRO-F188B319E-02-m.jpg",
-        },
-        {
-          small: "PRO-F188B319E-03-s.jpg",
-          medium: "PRO-F188B319E-03-m.jpg",
-        },
-        {
-          small: "PRO-F188B319E-04-s.jpg",
-          medium: "PRO-F188B319E-04-m.jpg",
-        },
+        { small: "PRO-F188B319E-00-s.jpg", medium: "PRO-F188B319E-00-m.jpg" },
+        { small: "PRO-F188B319E-01-s.jpg", medium: "PRO-F188B319E-01-m.jpg" },
+        { small: "PRO-F188B319E-02-s.jpg", medium: "PRO-F188B319E-02-m.jpg" },
+        { small: "PRO-F188B319E-03-s.jpg", medium: "PRO-F188B319E-03-m.jpg" },
+        { small: "PRO-F188B319E-04-s.jpg", medium: "PRO-F188B319E-04-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3426,6 +2469,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video xfx rx 9060 xt oc white amd radeon 16gb gddr6 128bits 20 gbps triple fan fidelityfx rdna 4",
   },
   {
     id: "PRO-2D5EA13C6",
@@ -3441,26 +2486,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2D5EA13C6-thumb.jpg",
       images: [
-        {
-          small: "PRO-2D5EA13C6-00-s.jpg",
-          medium: "PRO-2D5EA13C6-00-m.jpg",
-        },
-        {
-          small: "PRO-2D5EA13C6-01-s.jpg",
-          medium: "PRO-2D5EA13C6-01-m.jpg",
-        },
-        {
-          small: "PRO-2D5EA13C6-02-s.jpg",
-          medium: "PRO-2D5EA13C6-02-m.jpg",
-        },
-        {
-          small: "PRO-2D5EA13C6-03-s.jpg",
-          medium: "PRO-2D5EA13C6-03-m.jpg",
-        },
-        {
-          small: "PRO-2D5EA13C6-04-s.jpg",
-          medium: "PRO-2D5EA13C6-04-m.jpg",
-        },
+        { small: "PRO-2D5EA13C6-00-s.jpg", medium: "PRO-2D5EA13C6-00-m.jpg" },
+        { small: "PRO-2D5EA13C6-01-s.jpg", medium: "PRO-2D5EA13C6-01-m.jpg" },
+        { small: "PRO-2D5EA13C6-02-s.jpg", medium: "PRO-2D5EA13C6-02-m.jpg" },
+        { small: "PRO-2D5EA13C6-03-s.jpg", medium: "PRO-2D5EA13C6-03-m.jpg" },
+        { small: "PRO-2D5EA13C6-04-s.jpg", medium: "PRO-2D5EA13C6-04-m.jpg" },
       ],
     },
     tags: ["Gigabyte", "16GB", "AMD"],
@@ -3473,6 +2503,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Barramento de memória", "128 bits"],
     ],
+    searchName:
+      "placa de video gigabyte rx 9060 xt gaming oc amd radeon 16gb gddr6 128bits triple fan opengl 4 6",
   },
   {
     id: "PRO-F8E91AFF4",
@@ -3488,26 +2520,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-F8E91AFF4-thumb.jpg",
       images: [
-        {
-          small: "PRO-F8E91AFF4-00-s.jpg",
-          medium: "PRO-F8E91AFF4-00-m.jpg",
-        },
-        {
-          small: "PRO-F8E91AFF4-01-s.jpg",
-          medium: "PRO-F8E91AFF4-01-m.jpg",
-        },
-        {
-          small: "PRO-F8E91AFF4-02-s.jpg",
-          medium: "PRO-F8E91AFF4-02-m.jpg",
-        },
-        {
-          small: "PRO-F8E91AFF4-03-s.jpg",
-          medium: "PRO-F8E91AFF4-03-m.jpg",
-        },
-        {
-          small: "PRO-F8E91AFF4-04-s.jpg",
-          medium: "PRO-F8E91AFF4-04-m.jpg",
-        },
+        { small: "PRO-F8E91AFF4-00-s.jpg", medium: "PRO-F8E91AFF4-00-m.jpg" },
+        { small: "PRO-F8E91AFF4-01-s.jpg", medium: "PRO-F8E91AFF4-01-m.jpg" },
+        { small: "PRO-F8E91AFF4-02-s.jpg", medium: "PRO-F8E91AFF4-02-m.jpg" },
+        { small: "PRO-F8E91AFF4-03-s.jpg", medium: "PRO-F8E91AFF4-03-m.jpg" },
+        { small: "PRO-F8E91AFF4-04-s.jpg", medium: "PRO-F8E91AFF4-04-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3520,6 +2537,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Recursos informados", "Freesync"],
     ],
+    searchName:
+      "placa de video rx 7800 xt magnetic air gaming graphics card with xfx qicksilver white amd radeon 16gb gddr6 freesync",
   },
   {
     id: "PRO-9764E9629",
@@ -3535,22 +2554,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9764E9629-thumb.jpg",
       images: [
-        {
-          small: "PRO-9764E9629-00-s.jpg",
-          medium: "PRO-9764E9629-00-m.jpg",
-        },
-        {
-          small: "PRO-9764E9629-01-s.jpg",
-          medium: "PRO-9764E9629-01-m.jpg",
-        },
-        {
-          small: "PRO-9764E9629-02-s.jpg",
-          medium: "PRO-9764E9629-02-m.jpg",
-        },
-        {
-          small: "PRO-9764E9629-03-s.jpg",
-          medium: "PRO-9764E9629-03-m.jpg",
-        },
+        { small: "PRO-9764E9629-00-s.jpg", medium: "PRO-9764E9629-00-m.jpg" },
+        { small: "PRO-9764E9629-01-s.jpg", medium: "PRO-9764E9629-01-m.jpg" },
+        { small: "PRO-9764E9629-02-s.jpg", medium: "PRO-9764E9629-02-m.jpg" },
+        { small: "PRO-9764E9629-03-s.jpg", medium: "PRO-9764E9629-03-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3563,6 +2570,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Conexões informadas", "HDMI e 3x DP"],
     ],
+    searchName:
+      "placa de video xfx mercury rx 9070 xt oc gaming edition with amd radeon rgb 16gb gddr6 hdmi 3xdp rdna 4",
   },
   {
     id: "PRO-E377796B0",
@@ -3578,26 +2587,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-E377796B0-thumb.jpg",
       images: [
-        {
-          small: "PRO-E377796B0-00-s.jpg",
-          medium: "PRO-E377796B0-00-m.jpg",
-        },
-        {
-          small: "PRO-E377796B0-01-s.jpg",
-          medium: "PRO-E377796B0-01-m.jpg",
-        },
-        {
-          small: "PRO-E377796B0-02-s.jpg",
-          medium: "PRO-E377796B0-02-m.jpg",
-        },
-        {
-          small: "PRO-E377796B0-03-s.jpg",
-          medium: "PRO-E377796B0-03-m.jpg",
-        },
-        {
-          small: "PRO-E377796B0-04-s.jpg",
-          medium: "PRO-E377796B0-04-m.jpg",
-        },
+        { small: "PRO-E377796B0-00-s.jpg", medium: "PRO-E377796B0-00-m.jpg" },
+        { small: "PRO-E377796B0-01-s.jpg", medium: "PRO-E377796B0-01-m.jpg" },
+        { small: "PRO-E377796B0-02-s.jpg", medium: "PRO-E377796B0-02-m.jpg" },
+        { small: "PRO-E377796B0-03-s.jpg", medium: "PRO-E377796B0-03-m.jpg" },
+        { small: "PRO-E377796B0-04-s.jpg", medium: "PRO-E377796B0-04-m.jpg" },
       ],
     },
     tags: ["Asus", "16GB", "AMD"],
@@ -3610,6 +2604,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Recursos informados", "OC"],
     ],
+    searchName:
+      "placa de video rx 7600 xt oc asus amd radeon dual o16g 16gb gddr6",
   },
   {
     id: "PRO-89282152C",
@@ -3625,26 +2621,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-89282152C-thumb.jpg",
       images: [
-        {
-          small: "PRO-89282152C-00-s.jpg",
-          medium: "PRO-89282152C-00-m.jpg",
-        },
-        {
-          small: "PRO-89282152C-01-s.jpg",
-          medium: "PRO-89282152C-01-m.jpg",
-        },
-        {
-          small: "PRO-89282152C-02-s.jpg",
-          medium: "PRO-89282152C-02-m.jpg",
-        },
-        {
-          small: "PRO-89282152C-03-s.jpg",
-          medium: "PRO-89282152C-03-m.jpg",
-        },
-        {
-          small: "PRO-89282152C-04-s.jpg",
-          medium: "PRO-89282152C-04-m.jpg",
-        },
+        { small: "PRO-89282152C-00-s.jpg", medium: "PRO-89282152C-00-m.jpg" },
+        { small: "PRO-89282152C-01-s.jpg", medium: "PRO-89282152C-01-m.jpg" },
+        { small: "PRO-89282152C-02-s.jpg", medium: "PRO-89282152C-02-m.jpg" },
+        { small: "PRO-89282152C-03-s.jpg", medium: "PRO-89282152C-03-m.jpg" },
+        { small: "PRO-89282152C-04-s.jpg", medium: "PRO-89282152C-04-m.jpg" },
       ],
     },
     tags: ["XFX", "16GB", "AMD"],
@@ -3657,6 +2638,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB"],
       ["Conexões informadas", "HDMI e 3x DP"],
     ],
+    searchName:
+      "placa de video xfx quicksilver rx 9070 xt gaming edition with 16gb amd radeon gddr6 hdmi 3xdp rdna 4",
   },
   {
     id: "PRO-ED5A3A0E1",
@@ -3672,26 +2655,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-ED5A3A0E1-thumb.jpg",
       images: [
-        {
-          small: "PRO-ED5A3A0E1-00-s.jpg",
-          medium: "PRO-ED5A3A0E1-00-m.jpg",
-        },
-        {
-          small: "PRO-ED5A3A0E1-01-s.jpg",
-          medium: "PRO-ED5A3A0E1-01-m.jpg",
-        },
-        {
-          small: "PRO-ED5A3A0E1-02-s.jpg",
-          medium: "PRO-ED5A3A0E1-02-m.jpg",
-        },
-        {
-          small: "PRO-ED5A3A0E1-03-s.jpg",
-          medium: "PRO-ED5A3A0E1-03-m.jpg",
-        },
-        {
-          small: "PRO-ED5A3A0E1-04-s.jpg",
-          medium: "PRO-ED5A3A0E1-04-m.jpg",
-        },
+        { small: "PRO-ED5A3A0E1-00-s.jpg", medium: "PRO-ED5A3A0E1-00-m.jpg" },
+        { small: "PRO-ED5A3A0E1-01-s.jpg", medium: "PRO-ED5A3A0E1-01-m.jpg" },
+        { small: "PRO-ED5A3A0E1-02-s.jpg", medium: "PRO-ED5A3A0E1-02-m.jpg" },
+        { small: "PRO-ED5A3A0E1-03-s.jpg", medium: "PRO-ED5A3A0E1-03-m.jpg" },
+        { small: "PRO-ED5A3A0E1-04-s.jpg", medium: "PRO-ED5A3A0E1-04-m.jpg" },
       ],
     },
     tags: ["Sapphire", "16GB", "AMD"],
@@ -3704,6 +2672,8 @@ const products: FAProduct[] = [
       ["Memória", "16GB GDDR6"],
       ["Conexões informadas", "Dual HDMI e Dual DP"],
     ],
+    searchName:
+      "placa de video sapphire pulse rx 9070 xt gaming amd radeon 16gb gddr6 dual hdmi dual dp rdna 4",
   },
   {
     id: "PRO-7EDCF5AAF",
@@ -3719,18 +2689,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7EDCF5AAF-thumb.jpg",
       images: [
-        {
-          small: "PRO-7EDCF5AAF-00-s.jpg",
-          medium: "PRO-7EDCF5AAF-00-m.jpg",
-        },
-        {
-          small: "PRO-7EDCF5AAF-01-s.jpg",
-          medium: "PRO-7EDCF5AAF-01-m.jpg",
-        },
-        {
-          small: "PRO-7EDCF5AAF-02-s.jpg",
-          medium: "PRO-7EDCF5AAF-02-m.jpg",
-        },
+        { small: "PRO-7EDCF5AAF-00-s.jpg", medium: "PRO-7EDCF5AAF-00-m.jpg" },
+        { small: "PRO-7EDCF5AAF-01-s.jpg", medium: "PRO-7EDCF5AAF-01-m.jpg" },
+        { small: "PRO-7EDCF5AAF-02-s.jpg", medium: "PRO-7EDCF5AAF-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3742,6 +2703,8 @@ const products: FAProduct[] = [
       ["Frequência", "2.5GHz (4.4GHz máximo)"],
       ["Cache", "18MB"],
     ],
+    searchName:
+      "processador intel core i5 12400f 2 5ghz 4 4ghz max turbo cache 18mb lga 1700",
   },
   {
     id: "PRO-E48931615",
@@ -3757,10 +2720,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-E48931615-thumb.jpg",
       images: [
-        {
-          small: "PRO-E48931615-00-s.jpg",
-          medium: "PRO-E48931615-00-m.jpg",
-        },
+        { small: "PRO-E48931615-00-s.jpg", medium: "PRO-E48931615-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3773,6 +2733,8 @@ const products: FAProduct[] = [
       ["Frequência", "5.3GHz máximo"],
       ["Cache", "24MB"],
     ],
+    searchName:
+      "processador intel core i5 14600kf 14ª geracao 5 3 ghz max turbo cache 24mb 14 nucleos 20 threads lga1700",
   },
   {
     id: "PRO-2C450F25B",
@@ -3788,10 +2750,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2C450F25B-thumb.jpg",
       images: [
-        {
-          small: "PRO-2C450F25B-00-s.jpg",
-          medium: "PRO-2C450F25B-00-m.jpg",
-        },
+        { small: "PRO-2C450F25B-00-s.jpg", medium: "PRO-2C450F25B-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3804,6 +2763,8 @@ const products: FAProduct[] = [
       ["Frequência", "5.3GHz máximo"],
       ["Cache", "24MB"],
     ],
+    searchName:
+      "processador intel core i5 14600k 14ª geracao 5 3 ghz max turbo cache 24mb 14 nucleos 20 threads lga1700",
   },
   {
     id: "PRO-C6A62DCBE",
@@ -3819,10 +2780,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C6A62DCBE-thumb.jpg",
       images: [
-        {
-          small: "PRO-C6A62DCBE-00-s.jpg",
-          medium: "PRO-C6A62DCBE-00-m.jpg",
-        },
+        { small: "PRO-C6A62DCBE-00-s.jpg", medium: "PRO-C6A62DCBE-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3835,6 +2793,8 @@ const products: FAProduct[] = [
       ["Cache", "30MB"],
       ["Vídeo", "Vídeo integrado"],
     ],
+    searchName:
+      "processador intel core i9 12900ks 3 4ghz 5 5ghz max turbo cache 30mb lga 1700 video integrado",
   },
   {
     id: "PRO-EA86C3F67",
@@ -3850,18 +2810,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-EA86C3F67-thumb.jpg",
       images: [
-        {
-          small: "PRO-EA86C3F67-00-s.jpg",
-          medium: "PRO-EA86C3F67-00-m.jpg",
-        },
-        {
-          small: "PRO-EA86C3F67-01-s.jpg",
-          medium: "PRO-EA86C3F67-01-m.jpg",
-        },
-        {
-          small: "PRO-EA86C3F67-02-s.jpg",
-          medium: "PRO-EA86C3F67-02-m.jpg",
-        },
+        { small: "PRO-EA86C3F67-00-s.jpg", medium: "PRO-EA86C3F67-00-m.jpg" },
+        { small: "PRO-EA86C3F67-01-s.jpg", medium: "PRO-EA86C3F67-01-m.jpg" },
+        { small: "PRO-EA86C3F67-02-s.jpg", medium: "PRO-EA86C3F67-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3873,6 +2824,8 @@ const products: FAProduct[] = [
       ["Frequência", "2.5GHz (4.4GHz máximo)"],
       ["Cache", "18MB"],
     ],
+    searchName:
+      "processador intel core i5 12400 2 5ghz 4 4ghz max turbo cache 18mb lga 1700",
   },
   {
     id: "PRO-CD85811AE",
@@ -3888,18 +2841,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CD85811AE-thumb.jpg",
       images: [
-        {
-          small: "PRO-CD85811AE-00-s.jpg",
-          medium: "PRO-CD85811AE-00-m.jpg",
-        },
-        {
-          small: "PRO-CD85811AE-01-s.jpg",
-          medium: "PRO-CD85811AE-01-m.jpg",
-        },
-        {
-          small: "PRO-CD85811AE-02-s.jpg",
-          medium: "PRO-CD85811AE-02-m.jpg",
-        },
+        { small: "PRO-CD85811AE-00-s.jpg", medium: "PRO-CD85811AE-00-m.jpg" },
+        { small: "PRO-CD85811AE-01-s.jpg", medium: "PRO-CD85811AE-01-m.jpg" },
+        { small: "PRO-CD85811AE-02-s.jpg", medium: "PRO-CD85811AE-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3912,6 +2856,8 @@ const products: FAProduct[] = [
       ["Cache", "25MB"],
       ["Núcleos/Threads", "12 núcleos / 20 threads"],
     ],
+    searchName:
+      "processador intel core i7 12700kf 3 6ghz 5 0ghz max turbo cache 25mb 12 nucleos 20 threads lga 1700",
   },
   {
     id: "PRO-3F0567CD0",
@@ -3927,10 +2873,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3F0567CD0-thumb.jpg",
       images: [
-        {
-          small: "PRO-3F0567CD0-00-s.jpg",
-          medium: "PRO-3F0567CD0-00-m.jpg",
-        },
+        { small: "PRO-3F0567CD0-00-s.jpg", medium: "PRO-3F0567CD0-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -3943,6 +2886,8 @@ const products: FAProduct[] = [
       ["Frequência", "6GHz máximo"],
       ["Cache", "36MB"],
     ],
+    searchName:
+      "processador intel core i9 14900k 14ª geracao 6ghz max turbo cache 36mb 24 nucleos 32 threads lga1700",
   },
   {
     id: "PRO-708CC838A",
@@ -3958,14 +2903,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-708CC838A-thumb.jpg",
       images: [
-        {
-          small: "PRO-708CC838A-00-s.jpg",
-          medium: "PRO-708CC838A-00-m.jpg",
-        },
-        {
-          small: "PRO-708CC838A-01-s.jpg",
-          medium: "PRO-708CC838A-01-m.jpg",
-        },
+        { small: "PRO-708CC838A-00-s.jpg", medium: "PRO-708CC838A-00-m.jpg" },
+        { small: "PRO-708CC838A-01-s.jpg", medium: "PRO-708CC838A-01-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1200"],
@@ -3978,6 +2917,8 @@ const products: FAProduct[] = [
       ["Cache", "6MB"],
       ["Núcleos/Threads", "4 núcleos / 8 threads"],
     ],
+    searchName:
+      "processador intel core i3 10105 3 7ghz 4 4ghz max turbo cache 6mb quad core 8 threads lga 1200 video integrado",
   },
   {
     id: "PRO-392C3C74B",
@@ -3993,10 +2934,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-392C3C74B-thumb.jpg",
       images: [
-        {
-          small: "PRO-392C3C74B-00-s.jpg",
-          medium: "PRO-392C3C74B-00-m.jpg",
-        },
+        { small: "PRO-392C3C74B-00-s.jpg", medium: "PRO-392C3C74B-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4009,6 +2947,8 @@ const products: FAProduct[] = [
       ["Frequência", "5.6GHz máximo"],
       ["Cache", "33MB"],
     ],
+    searchName:
+      "processador intel core i7 14700kf 14ª geracao 5 6 ghz max turbo cache 33mb 20 nucleos 28 threads lga1700",
   },
   {
     id: "PRO-9CA1977D6",
@@ -4024,18 +2964,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9CA1977D6-thumb.jpg",
       images: [
-        {
-          small: "PRO-9CA1977D6-00-s.jpg",
-          medium: "PRO-9CA1977D6-00-m.jpg",
-        },
-        {
-          small: "PRO-9CA1977D6-01-s.jpg",
-          medium: "PRO-9CA1977D6-01-m.jpg",
-        },
-        {
-          small: "PRO-9CA1977D6-02-s.jpg",
-          medium: "PRO-9CA1977D6-02-m.jpg",
-        },
+        { small: "PRO-9CA1977D6-00-s.jpg", medium: "PRO-9CA1977D6-00-m.jpg" },
+        { small: "PRO-9CA1977D6-01-s.jpg", medium: "PRO-9CA1977D6-01-m.jpg" },
+        { small: "PRO-9CA1977D6-02-s.jpg", medium: "PRO-9CA1977D6-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1200"],
@@ -4047,6 +2978,8 @@ const products: FAProduct[] = [
       ["Frequência", "2.9GHz (4.3GHz máximo)"],
       ["Cache", "12MB"],
     ],
+    searchName:
+      "processador intel core i5 10400 2 9ghz 4 3ghz max turbo cache 12mb lga 1200",
   },
   {
     id: "PRO-9B37E4868",
@@ -4062,10 +2995,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9B37E4868-thumb.jpg",
       images: [
-        {
-          small: "PRO-9B37E4868-00-s.jpg",
-          medium: "PRO-9B37E4868-00-m.jpg",
-        },
+        { small: "PRO-9B37E4868-00-s.jpg", medium: "PRO-9B37E4868-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4078,6 +3008,8 @@ const products: FAProduct[] = [
       ["Frequência", "6GHz máximo"],
       ["Cache", "36MB"],
     ],
+    searchName:
+      "processador intel core i9 14900kf 14ª geracao 6ghz max turbo cache 36mb 24 nucleos 32 threads lga1700",
   },
   {
     id: "PRO-2F9B652E8",
@@ -4093,18 +3025,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2F9B652E8-thumb.jpg",
       images: [
-        {
-          small: "PRO-2F9B652E8-00-s.jpg",
-          medium: "PRO-2F9B652E8-00-m.jpg",
-        },
-        {
-          small: "PRO-2F9B652E8-01-s.jpg",
-          medium: "PRO-2F9B652E8-01-m.jpg",
-        },
-        {
-          small: "PRO-2F9B652E8-02-s.jpg",
-          medium: "PRO-2F9B652E8-02-m.jpg",
-        },
+        { small: "PRO-2F9B652E8-00-s.jpg", medium: "PRO-2F9B652E8-00-m.jpg" },
+        { small: "PRO-2F9B652E8-01-s.jpg", medium: "PRO-2F9B652E8-01-m.jpg" },
+        { small: "PRO-2F9B652E8-02-s.jpg", medium: "PRO-2F9B652E8-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4117,6 +3040,8 @@ const products: FAProduct[] = [
       ["Núcleos/Threads", "12 núcleos / 20 threads"],
       ["Vídeo", "Vídeo integrado"],
     ],
+    searchName:
+      "processador intel core i7 12700k 3 6ghz 5 0ghz max turbo 12 nucleos 20 threads lga 1700 video integrado",
   },
   {
     id: "PRO-A3B151AB2",
@@ -4132,10 +3057,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A3B151AB2-thumb.jpg",
       images: [
-        {
-          small: "PRO-A3B151AB2-00-s.jpg",
-          medium: "PRO-A3B151AB2-00-m.jpg",
-        },
+        { small: "PRO-A3B151AB2-00-s.jpg", medium: "PRO-A3B151AB2-00-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4148,6 +3070,8 @@ const products: FAProduct[] = [
       ["Frequência", "5.6GHz máximo"],
       ["Cache", "33MB"],
     ],
+    searchName:
+      "processador intel core i7 14700k 14ª geracao 5 6 ghz max turbo cache 33mb 20 nucleos 28 threads lga1700",
   },
   {
     id: "PRO-AF1DFCD36",
@@ -4163,18 +3087,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-AF1DFCD36-thumb.jpg",
       images: [
-        {
-          small: "PRO-AF1DFCD36-00-s.jpg",
-          medium: "PRO-AF1DFCD36-00-m.jpg",
-        },
-        {
-          small: "PRO-AF1DFCD36-02-s.jpg",
-          medium: "PRO-AF1DFCD36-02-m.jpg",
-        },
-        {
-          small: "PRO-AF1DFCD36-03-s.jpg",
-          medium: "PRO-AF1DFCD36-03-m.jpg",
-        },
+        { small: "PRO-AF1DFCD36-00-s.jpg", medium: "PRO-AF1DFCD36-00-m.jpg" },
+        { small: "PRO-AF1DFCD36-02-s.jpg", medium: "PRO-AF1DFCD36-02-m.jpg" },
+        { small: "PRO-AF1DFCD36-03-s.jpg", medium: "PRO-AF1DFCD36-03-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4187,6 +3102,8 @@ const products: FAProduct[] = [
       ["Cache", "20MB"],
       ["Núcleos/Threads", "10 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador intel core i5 13400f 4 6ghz max turbo cache 20mb 10 nucleos 16 threads lga 1700",
   },
   {
     id: "PRO-3206A3A20",
@@ -4202,26 +3119,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3206A3A20-thumb.jpg",
       images: [
-        {
-          small: "PRO-3206A3A20-00-s.jpg",
-          medium: "PRO-3206A3A20-00-m.jpg",
-        },
-        {
-          small: "PRO-3206A3A20-01-s.jpg",
-          medium: "PRO-3206A3A20-01-m.jpg",
-        },
-        {
-          small: "PRO-3206A3A20-02-s.jpg",
-          medium: "PRO-3206A3A20-02-m.jpg",
-        },
-        {
-          small: "PRO-3206A3A20-03-s.jpg",
-          medium: "PRO-3206A3A20-03-m.jpg",
-        },
-        {
-          small: "PRO-3206A3A20-04-s.jpg",
-          medium: "PRO-3206A3A20-04-m.jpg",
-        },
+        { small: "PRO-3206A3A20-00-s.jpg", medium: "PRO-3206A3A20-00-m.jpg" },
+        { small: "PRO-3206A3A20-01-s.jpg", medium: "PRO-3206A3A20-01-m.jpg" },
+        { small: "PRO-3206A3A20-02-s.jpg", medium: "PRO-3206A3A20-02-m.jpg" },
+        { small: "PRO-3206A3A20-03-s.jpg", medium: "PRO-3206A3A20-03-m.jpg" },
+        { small: "PRO-3206A3A20-04-s.jpg", medium: "PRO-3206A3A20-04-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1200"],
@@ -4234,6 +3136,8 @@ const products: FAProduct[] = [
       ["Cache", "12MB"],
       ["Núcleos/Threads", "6 núcleos / 12 threads"],
     ],
+    searchName:
+      "processador intel core i5 10400f 2 9ghz 4 3ghz max turbo cache 12mb 6 nucleos 12 threads lga 1200",
   },
   {
     id: "PRO-17256E1C0",
@@ -4249,18 +3153,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-17256E1C0-thumb.jpg",
       images: [
-        {
-          small: "PRO-17256E1C0-00-s.jpg",
-          medium: "PRO-17256E1C0-00-m.jpg",
-        },
-        {
-          small: "PRO-17256E1C0-02-s.jpg",
-          medium: "PRO-17256E1C0-02-m.jpg",
-        },
-        {
-          small: "PRO-17256E1C0-03-s.jpg",
-          medium: "PRO-17256E1C0-03-m.jpg",
-        },
+        { small: "PRO-17256E1C0-00-s.jpg", medium: "PRO-17256E1C0-00-m.jpg" },
+        { small: "PRO-17256E1C0-02-s.jpg", medium: "PRO-17256E1C0-02-m.jpg" },
+        { small: "PRO-17256E1C0-03-s.jpg", medium: "PRO-17256E1C0-03-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4273,6 +3168,8 @@ const products: FAProduct[] = [
       ["Cache", "12MB"],
       ["Núcleos/Threads", "4 núcleos / 8 threads"],
     ],
+    searchName:
+      "processador intel core i3 13100 4 5ghz max turbo cache 12mb 4 nucleos 8 threads lga 1700 video integrado",
   },
   {
     id: "PRO-91022DA09",
@@ -4288,18 +3185,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-91022DA09-thumb.jpg",
       images: [
-        {
-          small: "PRO-91022DA09-00-s.jpg",
-          medium: "PRO-91022DA09-00-m.jpg",
-        },
-        {
-          small: "PRO-91022DA09-01-s.jpg",
-          medium: "PRO-91022DA09-01-m.jpg",
-        },
-        {
-          small: "PRO-91022DA09-02-s.jpg",
-          medium: "PRO-91022DA09-02-m.jpg",
-        },
+        { small: "PRO-91022DA09-00-s.jpg", medium: "PRO-91022DA09-00-m.jpg" },
+        { small: "PRO-91022DA09-01-s.jpg", medium: "PRO-91022DA09-01-m.jpg" },
+        { small: "PRO-91022DA09-02-s.jpg", medium: "PRO-91022DA09-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4312,6 +3200,8 @@ const products: FAProduct[] = [
       ["Cache", "12MB"],
       ["Vídeo", "Vídeo integrado"],
     ],
+    searchName:
+      "processador intel core i3 12100 cache 12mb 3 3ghz 4 3ghz max turbo lga 1700 video integrado com cooler",
   },
   {
     id: "PRO-04AA22ED2",
@@ -4327,14 +3217,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-04AA22ED2-thumb.jpg",
       images: [
-        {
-          small: "PRO-04AA22ED2-00-s.jpg",
-          medium: "PRO-04AA22ED2-00-m.jpg",
-        },
-        {
-          small: "PRO-04AA22ED2-02-s.jpg",
-          medium: "PRO-04AA22ED2-02-m.jpg",
-        },
+        { small: "PRO-04AA22ED2-00-s.jpg", medium: "PRO-04AA22ED2-00-m.jpg" },
+        { small: "PRO-04AA22ED2-02-s.jpg", medium: "PRO-04AA22ED2-02-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1200"],
@@ -4347,6 +3231,8 @@ const products: FAProduct[] = [
       ["Cache", "6MB"],
       ["Núcleos/Threads", "4 núcleos / 8 threads"],
     ],
+    searchName:
+      "processador intel core i3 10100f 3 6ghz 4 3ghz max boost cache 6mb quad core 8 threads lga 1200",
   },
   {
     id: "PRO-65DD0D1EF",
@@ -4362,18 +3248,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-65DD0D1EF-thumb.jpg",
       images: [
-        {
-          small: "PRO-65DD0D1EF-00-s.jpg",
-          medium: "PRO-65DD0D1EF-00-m.jpg",
-        },
-        {
-          small: "PRO-65DD0D1EF-02-s.jpg",
-          medium: "PRO-65DD0D1EF-02-m.jpg",
-        },
-        {
-          small: "PRO-65DD0D1EF-03-s.jpg",
-          medium: "PRO-65DD0D1EF-03-m.jpg",
-        },
+        { small: "PRO-65DD0D1EF-00-s.jpg", medium: "PRO-65DD0D1EF-00-m.jpg" },
+        { small: "PRO-65DD0D1EF-02-s.jpg", medium: "PRO-65DD0D1EF-02-m.jpg" },
+        { small: "PRO-65DD0D1EF-03-s.jpg", medium: "PRO-65DD0D1EF-03-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4386,6 +3263,8 @@ const products: FAProduct[] = [
       ["Cache", "20MB"],
       ["Núcleos/Threads", "10 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador intel core i5 13400 4 6ghz max turbo cache 20mb 10 nucleos 16 threads lga 1700 video integrado",
   },
   {
     id: "PRO-6C2EE352C",
@@ -4401,18 +3280,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6C2EE352C-thumb.jpg",
       images: [
-        {
-          small: "PRO-6C2EE352C-00-s.jpg",
-          medium: "PRO-6C2EE352C-00-m.jpg",
-        },
-        {
-          small: "PRO-6C2EE352C-02-s.jpg",
-          medium: "PRO-6C2EE352C-02-m.jpg",
-        },
-        {
-          small: "PRO-6C2EE352C-03-s.jpg",
-          medium: "PRO-6C2EE352C-03-m.jpg",
-        },
+        { small: "PRO-6C2EE352C-00-s.jpg", medium: "PRO-6C2EE352C-00-m.jpg" },
+        { small: "PRO-6C2EE352C-02-s.jpg", medium: "PRO-6C2EE352C-02-m.jpg" },
+        { small: "PRO-6C2EE352C-03-s.jpg", medium: "PRO-6C2EE352C-03-m.jpg" },
       ],
     },
     tags: ["Intel", "LGA1700"],
@@ -4424,6 +3294,8 @@ const products: FAProduct[] = [
       ["Frequência", "3.3GHz (4.3GHz máximo)"],
       ["Cache", "12MB"],
     ],
+    searchName:
+      "processador intel core i3 12100f 3 3ghz 4 3ghz max turbo cache 12mb lga 1700",
   },
   {
     id: "PRO-A5EDC5457",
@@ -4439,14 +3311,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A5EDC5457-thumb.jpg",
       images: [
-        {
-          small: "PRO-A5EDC5457-00-s.jpg",
-          medium: "PRO-A5EDC5457-00-m.jpg",
-        },
-        {
-          small: "PRO-A5EDC5457-01-s.jpg",
-          medium: "PRO-A5EDC5457-01-m.jpg",
-        },
+        { small: "PRO-A5EDC5457-00-s.jpg", medium: "PRO-A5EDC5457-00-m.jpg" },
+        { small: "PRO-A5EDC5457-01-s.jpg", medium: "PRO-A5EDC5457-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4459,6 +3325,8 @@ const products: FAProduct[] = [
       ["Cache", "4MB"],
       ["Núcleos/Threads", "6 núcleos / 12 threads"],
     ],
+    searchName:
+      "processador amd ryzen 5 5600gt 3 6 ghz 4 6ghz max turbo cache 4mb 6 nucleos 12 threads am4",
   },
   {
     id: "PRO-6AF14669F",
@@ -4474,14 +3342,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6AF14669F-thumb.jpg",
       images: [
-        {
-          small: "PRO-6AF14669F-00-s.jpg",
-          medium: "PRO-6AF14669F-00-m.jpg",
-        },
-        {
-          small: "PRO-6AF14669F-01-s.jpg",
-          medium: "PRO-6AF14669F-01-m.jpg",
-        },
+        { small: "PRO-6AF14669F-00-s.jpg", medium: "PRO-6AF14669F-00-m.jpg" },
+        { small: "PRO-6AF14669F-01-s.jpg", medium: "PRO-6AF14669F-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4494,6 +3356,8 @@ const products: FAProduct[] = [
       ["Cache", "4MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 5700x3d 3 0 ghz 4 1ghz max turbo cache 4mb 8 nucleos 16 threads am4",
   },
   {
     id: "PRO-CC5BF03BA",
@@ -4509,14 +3373,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CC5BF03BA-thumb.jpg",
       images: [
-        {
-          small: "PRO-CC5BF03BA-00-s.jpg",
-          medium: "PRO-CC5BF03BA-00-m.jpg",
-        },
-        {
-          small: "PRO-CC5BF03BA-01-s.jpg",
-          medium: "PRO-CC5BF03BA-01-m.jpg",
-        },
+        { small: "PRO-CC5BF03BA-00-s.jpg", medium: "PRO-CC5BF03BA-00-m.jpg" },
+        { small: "PRO-CC5BF03BA-01-s.jpg", medium: "PRO-CC5BF03BA-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4529,6 +3387,8 @@ const products: FAProduct[] = [
       ["Cache", "19MB"],
       ["Vídeo", "Sem vídeo integrado"],
     ],
+    searchName:
+      "processador amd ryzen 5 5500 3 6ghz 4 2ghz max turbo cache 19mb am4 sem video",
   },
   {
     id: "PRO-A02EECCAA",
@@ -4544,22 +3404,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A02EECCAA-thumb.jpg",
       images: [
-        {
-          small: "PRO-A02EECCAA-00-s.jpg",
-          medium: "PRO-A02EECCAA-00-m.jpg",
-        },
-        {
-          small: "PRO-A02EECCAA-01-s.jpg",
-          medium: "PRO-A02EECCAA-01-m.jpg",
-        },
-        {
-          small: "PRO-A02EECCAA-02-s.jpg",
-          medium: "PRO-A02EECCAA-02-m.jpg",
-        },
-        {
-          small: "PRO-A02EECCAA-03-s.jpg",
-          medium: "PRO-A02EECCAA-03-m.jpg",
-        },
+        { small: "PRO-A02EECCAA-00-s.jpg", medium: "PRO-A02EECCAA-00-m.jpg" },
+        { small: "PRO-A02EECCAA-01-s.jpg", medium: "PRO-A02EECCAA-01-m.jpg" },
+        { small: "PRO-A02EECCAA-02-s.jpg", medium: "PRO-A02EECCAA-02-m.jpg" },
+        { small: "PRO-A02EECCAA-03-s.jpg", medium: "PRO-A02EECCAA-03-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4572,6 +3420,8 @@ const products: FAProduct[] = [
       ["Cache", "36MB"],
       ["Vídeo", "Sem vídeo integrado"],
     ],
+    searchName:
+      "processador amd ryzen 7 5700x 3 4ghz 4 6ghz max turbo cache 36mb am4 sem video",
   },
   {
     id: "PRO-3CDAB42EA",
@@ -4587,18 +3437,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3CDAB42EA-thumb.jpg",
       images: [
-        {
-          small: "PRO-3CDAB42EA-00-s.jpg",
-          medium: "PRO-3CDAB42EA-00-m.jpg",
-        },
-        {
-          small: "PRO-3CDAB42EA-01-s.jpg",
-          medium: "PRO-3CDAB42EA-01-m.jpg",
-        },
-        {
-          small: "PRO-3CDAB42EA-02-s.jpg",
-          medium: "PRO-3CDAB42EA-02-m.jpg",
-        },
+        { small: "PRO-3CDAB42EA-00-s.jpg", medium: "PRO-3CDAB42EA-00-m.jpg" },
+        { small: "PRO-3CDAB42EA-01-s.jpg", medium: "PRO-3CDAB42EA-01-m.jpg" },
+        { small: "PRO-3CDAB42EA-02-s.jpg", medium: "PRO-3CDAB42EA-02-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -4610,6 +3451,8 @@ const products: FAProduct[] = [
       ["Cache", "8MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 9800x3d cache 8mb 8 nucleos 16 threads am5",
   },
   {
     id: "PRO-A244D6ACD",
@@ -4625,22 +3468,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A244D6ACD-thumb.jpg",
       images: [
-        {
-          small: "PRO-A244D6ACD-00-s.jpg",
-          medium: "PRO-A244D6ACD-00-m.jpg",
-        },
-        {
-          small: "PRO-A244D6ACD-01-s.jpg",
-          medium: "PRO-A244D6ACD-01-m.jpg",
-        },
-        {
-          small: "PRO-A244D6ACD-02-s.jpg",
-          medium: "PRO-A244D6ACD-02-m.jpg",
-        },
-        {
-          small: "PRO-A244D6ACD-03-s.jpg",
-          medium: "PRO-A244D6ACD-03-m.jpg",
-        },
+        { small: "PRO-A244D6ACD-00-s.jpg", medium: "PRO-A244D6ACD-00-m.jpg" },
+        { small: "PRO-A244D6ACD-01-s.jpg", medium: "PRO-A244D6ACD-01-m.jpg" },
+        { small: "PRO-A244D6ACD-02-s.jpg", medium: "PRO-A244D6ACD-02-m.jpg" },
+        { small: "PRO-A244D6ACD-03-s.jpg", medium: "PRO-A244D6ACD-03-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -4653,6 +3484,8 @@ const products: FAProduct[] = [
       ["Cache", "38MB"],
       ["Núcleos/Threads", "6 núcleos"],
     ],
+    searchName:
+      "processador amd ryzen 5 7600 5 1ghz max turbo cache 38mb am5 6 nucleos video integrado",
   },
   {
     id: "PRO-E060FA226",
@@ -4668,10 +3501,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-E060FA226-thumb.jpg",
       images: [
-        {
-          small: "PRO-E060FA226-00-s.jpg",
-          medium: "PRO-E060FA226-00-m.jpg",
-        },
+        { small: "PRO-E060FA226-00-s.jpg", medium: "PRO-E060FA226-00-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -4684,6 +3514,8 @@ const products: FAProduct[] = [
       ["Cache", "104MB"],
       ["Núcleos/Threads", "8 núcleos"],
     ],
+    searchName:
+      "processador amd ryzen 7 7800x3d 5 0ghz max turbo cache 104mb am5 8 nucleos video integrado",
   },
   {
     id: "PRO-3F6BC274A",
@@ -4699,18 +3531,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3F6BC274A-thumb.jpg",
       images: [
-        {
-          small: "PRO-3F6BC274A-00-s.jpg",
-          medium: "PRO-3F6BC274A-00-m.jpg",
-        },
-        {
-          small: "PRO-3F6BC274A-01-s.jpg",
-          medium: "PRO-3F6BC274A-01-m.jpg",
-        },
-        {
-          small: "PRO-3F6BC274A-02-s.jpg",
-          medium: "PRO-3F6BC274A-02-m.jpg",
-        },
+        { small: "PRO-3F6BC274A-00-s.jpg", medium: "PRO-3F6BC274A-00-m.jpg" },
+        { small: "PRO-3F6BC274A-01-s.jpg", medium: "PRO-3F6BC274A-01-m.jpg" },
+        { small: "PRO-3F6BC274A-02-s.jpg", medium: "PRO-3F6BC274A-02-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4723,6 +3546,8 @@ const products: FAProduct[] = [
       ["Cache", "4MB"],
       ["Núcleos/Threads", "4 núcleos / 4 threads"],
     ],
+    searchName:
+      "processador amd ryzen 3 3200g 3 6ghz 4ghz max turbo cache 4mb quad core 4 threads am4",
   },
   {
     id: "PRO-1C33B2AF2",
@@ -4738,14 +3563,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-1C33B2AF2-thumb.jpg",
       images: [
-        {
-          small: "PRO-1C33B2AF2-00-s.jpg",
-          medium: "PRO-1C33B2AF2-00-m.jpg",
-        },
-        {
-          small: "PRO-1C33B2AF2-01-s.jpg",
-          medium: "PRO-1C33B2AF2-01-m.jpg",
-        },
+        { small: "PRO-1C33B2AF2-00-s.jpg", medium: "PRO-1C33B2AF2-00-m.jpg" },
+        { small: "PRO-1C33B2AF2-01-s.jpg", medium: "PRO-1C33B2AF2-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4758,6 +3577,8 @@ const products: FAProduct[] = [
       ["Cache", "35MB"],
       ["Vídeo", "Sem vídeo integrado"],
     ],
+    searchName:
+      "processador amd ryzen 5 5600 3 5ghz 4 4ghz max turbo cache 35mb am4 sem video",
   },
   {
     id: "PRO-2356B623A",
@@ -4773,26 +3594,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2356B623A-thumb.jpg",
       images: [
-        {
-          small: "PRO-2356B623A-00-s.jpg",
-          medium: "PRO-2356B623A-00-m.jpg",
-        },
-        {
-          small: "PRO-2356B623A-01-s.jpg",
-          medium: "PRO-2356B623A-01-m.jpg",
-        },
-        {
-          small: "PRO-2356B623A-02-s.jpg",
-          medium: "PRO-2356B623A-02-m.jpg",
-        },
-        {
-          small: "PRO-2356B623A-03-s.jpg",
-          medium: "PRO-2356B623A-03-m.jpg",
-        },
-        {
-          small: "PRO-2356B623A-04-s.jpg",
-          medium: "PRO-2356B623A-04-m.jpg",
-        },
+        { small: "PRO-2356B623A-00-s.jpg", medium: "PRO-2356B623A-00-m.jpg" },
+        { small: "PRO-2356B623A-01-s.jpg", medium: "PRO-2356B623A-01-m.jpg" },
+        { small: "PRO-2356B623A-02-s.jpg", medium: "PRO-2356B623A-02-m.jpg" },
+        { small: "PRO-2356B623A-03-s.jpg", medium: "PRO-2356B623A-03-m.jpg" },
+        { small: "PRO-2356B623A-04-s.jpg", medium: "PRO-2356B623A-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -4805,6 +3611,8 @@ const products: FAProduct[] = [
       ["Cache", "32MB"],
       ["Núcleos/Threads", "6 núcleos / 12 threads"],
     ],
+    searchName:
+      "processador amd ryzen 5 9600x 3 9 ghz 5 4 ghz cache 32 mb 6 nucleos 12 threads am5",
   },
   {
     id: "PRO-B5009B531",
@@ -4820,26 +3628,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B5009B531-thumb.jpg",
       images: [
-        {
-          small: "PRO-B5009B531-00-s.jpg",
-          medium: "PRO-B5009B531-00-m.jpg",
-        },
-        {
-          small: "PRO-B5009B531-01-s.jpg",
-          medium: "PRO-B5009B531-01-m.jpg",
-        },
-        {
-          small: "PRO-B5009B531-02-s.jpg",
-          medium: "PRO-B5009B531-02-m.jpg",
-        },
-        {
-          small: "PRO-B5009B531-03-s.jpg",
-          medium: "PRO-B5009B531-03-m.jpg",
-        },
-        {
-          small: "PRO-B5009B531-04-s.jpg",
-          medium: "PRO-B5009B531-04-m.jpg",
-        },
+        { small: "PRO-B5009B531-00-s.jpg", medium: "PRO-B5009B531-00-m.jpg" },
+        { small: "PRO-B5009B531-01-s.jpg", medium: "PRO-B5009B531-01-m.jpg" },
+        { small: "PRO-B5009B531-02-s.jpg", medium: "PRO-B5009B531-02-m.jpg" },
+        { small: "PRO-B5009B531-03-s.jpg", medium: "PRO-B5009B531-03-m.jpg" },
+        { small: "PRO-B5009B531-04-s.jpg", medium: "PRO-B5009B531-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -4852,6 +3645,8 @@ const products: FAProduct[] = [
       ["Cache", "6MB"],
       ["Núcleos/Threads", "6 núcleos / 12 threads"],
     ],
+    searchName:
+      "processador amd ryzen 5 8600g 4 3 ghz 5 0ghz max turbo cache 6mb 6 nucleos 12 threads am5 video integrado",
   },
   {
     id: "PRO-EA4386256",
@@ -4867,14 +3662,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-EA4386256-thumb.jpg",
       images: [
-        {
-          small: "PRO-EA4386256-00-s.jpg",
-          medium: "PRO-EA4386256-00-m.jpg",
-        },
-        {
-          small: "PRO-EA4386256-01-s.jpg",
-          medium: "PRO-EA4386256-01-m.jpg",
-        },
+        { small: "PRO-EA4386256-00-s.jpg", medium: "PRO-EA4386256-00-m.jpg" },
+        { small: "PRO-EA4386256-01-s.jpg", medium: "PRO-EA4386256-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4887,6 +3676,8 @@ const products: FAProduct[] = [
       ["Cache", "4MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 5700 3 7 ghz 4 6ghz max turbo cache 4mb 8 nucleos 16 threads am4",
   },
   {
     id: "PRO-68C6F5693",
@@ -4902,22 +3693,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-68C6F5693-thumb.jpg",
       images: [
-        {
-          small: "PRO-68C6F5693-00-s.jpg",
-          medium: "PRO-68C6F5693-00-m.jpg",
-        },
-        {
-          small: "PRO-68C6F5693-02-s.jpg",
-          medium: "PRO-68C6F5693-02-m.jpg",
-        },
-        {
-          small: "PRO-68C6F5693-03-s.jpg",
-          medium: "PRO-68C6F5693-03-m.jpg",
-        },
-        {
-          small: "PRO-68C6F5693-04-s.jpg",
-          medium: "PRO-68C6F5693-04-m.jpg",
-        },
+        { small: "PRO-68C6F5693-00-s.jpg", medium: "PRO-68C6F5693-00-m.jpg" },
+        { small: "PRO-68C6F5693-02-s.jpg", medium: "PRO-68C6F5693-02-m.jpg" },
+        { small: "PRO-68C6F5693-03-s.jpg", medium: "PRO-68C6F5693-03-m.jpg" },
+        { small: "PRO-68C6F5693-04-s.jpg", medium: "PRO-68C6F5693-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4930,6 +3709,8 @@ const products: FAProduct[] = [
       ["Cache", "35MB"],
       ["Núcleos/Threads", "6 núcleos / 12 threads"],
     ],
+    searchName:
+      "processador amd ryzen 5 5600x 3 7ghz 4 6ghz max turbo cache 35mb 6 nucleos 12 threads am4",
   },
   {
     id: "PRO-FB98CE8C2",
@@ -4945,14 +3726,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-FB98CE8C2-thumb.jpg",
       images: [
-        {
-          small: "PRO-FB98CE8C2-00-s.jpg",
-          medium: "PRO-FB98CE8C2-00-m.jpg",
-        },
-        {
-          small: "PRO-FB98CE8C2-01-s.jpg",
-          medium: "PRO-FB98CE8C2-01-m.jpg",
-        },
+        { small: "PRO-FB98CE8C2-00-s.jpg", medium: "PRO-FB98CE8C2-00-m.jpg" },
+        { small: "PRO-FB98CE8C2-01-s.jpg", medium: "PRO-FB98CE8C2-01-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -4965,6 +3740,8 @@ const products: FAProduct[] = [
       ["Cache", "8MB"],
       ["Núcleos/Threads", "4 núcleos / 8 threads"],
     ],
+    searchName:
+      "processador amd ryzen 3 5300g 4ghz 4 2ghz max turbo cache 8mb am4 4 nucleos 8 threads video integrado",
   },
   {
     id: "PRO-8557A6F68",
@@ -4980,22 +3757,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-8557A6F68-thumb.jpg",
       images: [
-        {
-          small: "PRO-8557A6F68-00-s.jpg",
-          medium: "PRO-8557A6F68-00-m.jpg",
-        },
-        {
-          small: "PRO-8557A6F68-02-s.jpg",
-          medium: "PRO-8557A6F68-02-m.jpg",
-        },
-        {
-          small: "PRO-8557A6F68-03-s.jpg",
-          medium: "PRO-8557A6F68-03-m.jpg",
-        },
-        {
-          small: "PRO-8557A6F68-04-s.jpg",
-          medium: "PRO-8557A6F68-04-m.jpg",
-        },
+        { small: "PRO-8557A6F68-00-s.jpg", medium: "PRO-8557A6F68-00-m.jpg" },
+        { small: "PRO-8557A6F68-02-s.jpg", medium: "PRO-8557A6F68-02-m.jpg" },
+        { small: "PRO-8557A6F68-03-s.jpg", medium: "PRO-8557A6F68-03-m.jpg" },
+        { small: "PRO-8557A6F68-04-s.jpg", medium: "PRO-8557A6F68-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -5008,6 +3773,8 @@ const products: FAProduct[] = [
       ["Cache", "11MB"],
       ["Vídeo", "Sem vídeo integrado"],
     ],
+    searchName:
+      "processador amd ryzen 5 4500 3 6ghz 4 1ghz max turbo cache 11mb am4 sem video",
   },
   {
     id: "PRO-3E82487D7",
@@ -5023,22 +3790,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3E82487D7-thumb.jpg",
       images: [
-        {
-          small: "PRO-3E82487D7-00-s.jpg",
-          medium: "PRO-3E82487D7-00-m.jpg",
-        },
-        {
-          small: "PRO-3E82487D7-02-s.jpg",
-          medium: "PRO-3E82487D7-02-m.jpg",
-        },
-        {
-          small: "PRO-3E82487D7-03-s.jpg",
-          medium: "PRO-3E82487D7-03-m.jpg",
-        },
-        {
-          small: "PRO-3E82487D7-04-s.jpg",
-          medium: "PRO-3E82487D7-04-m.jpg",
-        },
+        { small: "PRO-3E82487D7-00-s.jpg", medium: "PRO-3E82487D7-00-m.jpg" },
+        { small: "PRO-3E82487D7-02-s.jpg", medium: "PRO-3E82487D7-02-m.jpg" },
+        { small: "PRO-3E82487D7-03-s.jpg", medium: "PRO-3E82487D7-03-m.jpg" },
+        { small: "PRO-3E82487D7-04-s.jpg", medium: "PRO-3E82487D7-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -5051,6 +3806,8 @@ const products: FAProduct[] = [
       ["Cache", "32MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 5800xt 3 8 ghz 4 8 ghz max turbo cache 32 mb 8 nucleos 16 threads am4 com cooler",
   },
   {
     id: "PRO-A8D4D200D",
@@ -5066,18 +3823,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A8D4D200D-thumb.jpg",
       images: [
-        {
-          small: "PRO-A8D4D200D-00-s.jpg",
-          medium: "PRO-A8D4D200D-00-m.jpg",
-        },
-        {
-          small: "PRO-A8D4D200D-01-s.jpg",
-          medium: "PRO-A8D4D200D-01-m.jpg",
-        },
-        {
-          small: "PRO-A8D4D200D-02-s.jpg",
-          medium: "PRO-A8D4D200D-02-m.jpg",
-        },
+        { small: "PRO-A8D4D200D-00-s.jpg", medium: "PRO-A8D4D200D-00-m.jpg" },
+        { small: "PRO-A8D4D200D-01-s.jpg", medium: "PRO-A8D4D200D-01-m.jpg" },
+        { small: "PRO-A8D4D200D-02-s.jpg", medium: "PRO-A8D4D200D-02-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -5090,6 +3838,8 @@ const products: FAProduct[] = [
       ["Cache", "144MB"],
       ["Núcleos/Threads", "16 núcleos / 32 threads"],
     ],
+    searchName:
+      "processador amd ryzen 9 9950x3d 4 4 ghz max boos clock ate 5 5 ghz cache 144mb 16 nucleos threads 32 am5",
   },
   {
     id: "PRO-5065428A7",
@@ -5105,26 +3855,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-5065428A7-thumb.jpg",
       images: [
-        {
-          small: "PRO-5065428A7-00-s.jpg",
-          medium: "PRO-5065428A7-00-m.jpg",
-        },
-        {
-          small: "PRO-5065428A7-01-s.jpg",
-          medium: "PRO-5065428A7-01-m.jpg",
-        },
-        {
-          small: "PRO-5065428A7-02-s.jpg",
-          medium: "PRO-5065428A7-02-m.jpg",
-        },
-        {
-          small: "PRO-5065428A7-03-s.jpg",
-          medium: "PRO-5065428A7-03-m.jpg",
-        },
-        {
-          small: "PRO-5065428A7-04-s.jpg",
-          medium: "PRO-5065428A7-04-m.jpg",
-        },
+        { small: "PRO-5065428A7-00-s.jpg", medium: "PRO-5065428A7-00-m.jpg" },
+        { small: "PRO-5065428A7-01-s.jpg", medium: "PRO-5065428A7-01-m.jpg" },
+        { small: "PRO-5065428A7-02-s.jpg", medium: "PRO-5065428A7-02-m.jpg" },
+        { small: "PRO-5065428A7-03-s.jpg", medium: "PRO-5065428A7-03-m.jpg" },
+        { small: "PRO-5065428A7-04-s.jpg", medium: "PRO-5065428A7-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM4"],
@@ -5137,6 +3872,8 @@ const products: FAProduct[] = [
       ["Cache", "20MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 5700g 3 8ghz 4 6ghz max turbo cache 20mb 8 nucleos 16 threads video integrado am4",
   },
   {
     id: "PRO-9C19C1D01",
@@ -5152,10 +3889,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-9C19C1D01-thumb.jpg",
       images: [
-        {
-          small: "PRO-9C19C1D01-00-s.jpg",
-          medium: "PRO-9C19C1D01-00-m.jpg",
-        },
+        { small: "PRO-9C19C1D01-00-s.jpg", medium: "PRO-9C19C1D01-00-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -5168,6 +3902,8 @@ const products: FAProduct[] = [
       ["Cache", "38MB"],
       ["Núcleos/Threads", "6 núcleos"],
     ],
+    searchName:
+      "processador amd ryzen 5 7600x 5 3ghz max turbo cache 38mb am5 6 nucleos video integrado",
   },
   {
     id: "PRO-D23C4039A",
@@ -5183,26 +3919,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-D23C4039A-thumb.jpg",
       images: [
-        {
-          small: "PRO-D23C4039A-00-s.jpg",
-          medium: "PRO-D23C4039A-00-m.jpg",
-        },
-        {
-          small: "PRO-D23C4039A-01-s.jpg",
-          medium: "PRO-D23C4039A-01-m.jpg",
-        },
-        {
-          small: "PRO-D23C4039A-02-s.jpg",
-          medium: "PRO-D23C4039A-02-m.jpg",
-        },
-        {
-          small: "PRO-D23C4039A-03-s.jpg",
-          medium: "PRO-D23C4039A-03-m.jpg",
-        },
-        {
-          small: "PRO-D23C4039A-04-s.jpg",
-          medium: "PRO-D23C4039A-04-m.jpg",
-        },
+        { small: "PRO-D23C4039A-00-s.jpg", medium: "PRO-D23C4039A-00-m.jpg" },
+        { small: "PRO-D23C4039A-01-s.jpg", medium: "PRO-D23C4039A-01-m.jpg" },
+        { small: "PRO-D23C4039A-02-s.jpg", medium: "PRO-D23C4039A-02-m.jpg" },
+        { small: "PRO-D23C4039A-03-s.jpg", medium: "PRO-D23C4039A-03-m.jpg" },
+        { small: "PRO-D23C4039A-04-s.jpg", medium: "PRO-D23C4039A-04-m.jpg" },
       ],
     },
     tags: ["AMD", "AM5"],
@@ -5215,6 +3936,8 @@ const products: FAProduct[] = [
       ["Cache", "32MB"],
       ["Núcleos/Threads", "8 núcleos / 16 threads"],
     ],
+    searchName:
+      "processador amd ryzen 7 9700x 3 8 ghz 5 5 ghz cache 32 mb 8 nucleos 16 threads am5",
   },
   {
     id: "PRO-A1778579C",
@@ -5230,22 +3953,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A1778579C-thumb.jpg",
       images: [
-        {
-          small: "PRO-A1778579C-00-s.jpg",
-          medium: "PRO-A1778579C-00-m.jpg",
-        },
-        {
-          small: "PRO-A1778579C-01-s.jpg",
-          medium: "PRO-A1778579C-01-m.jpg",
-        },
-        {
-          small: "PRO-A1778579C-02-s.jpg",
-          medium: "PRO-A1778579C-02-m.jpg",
-        },
-        {
-          small: "PRO-A1778579C-03-s.jpg",
-          medium: "PRO-A1778579C-03-m.jpg",
-        },
+        { small: "PRO-A1778579C-00-s.jpg", medium: "PRO-A1778579C-00-m.jpg" },
+        { small: "PRO-A1778579C-01-s.jpg", medium: "PRO-A1778579C-01-m.jpg" },
+        { small: "PRO-A1778579C-02-s.jpg", medium: "PRO-A1778579C-02-m.jpg" },
+        { small: "PRO-A1778579C-03-s.jpg", medium: "PRO-A1778579C-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "DDR4", "8GB"],
@@ -5258,6 +3969,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram kingston fury beast 8gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-B5BF88FD0",
@@ -5273,22 +3985,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B5BF88FD0-thumb.jpg",
       images: [
-        {
-          small: "PRO-B5BF88FD0-00-s.jpg",
-          medium: "PRO-B5BF88FD0-00-m.jpg",
-        },
-        {
-          small: "PRO-B5BF88FD0-01-s.jpg",
-          medium: "PRO-B5BF88FD0-01-m.jpg",
-        },
-        {
-          small: "PRO-B5BF88FD0-02-s.jpg",
-          medium: "PRO-B5BF88FD0-02-m.jpg",
-        },
-        {
-          small: "PRO-B5BF88FD0-03-s.jpg",
-          medium: "PRO-B5BF88FD0-03-m.jpg",
-        },
+        { small: "PRO-B5BF88FD0-00-s.jpg", medium: "PRO-B5BF88FD0-00-m.jpg" },
+        { small: "PRO-B5BF88FD0-01-s.jpg", medium: "PRO-B5BF88FD0-01-m.jpg" },
+        { small: "PRO-B5BF88FD0-02-s.jpg", medium: "PRO-B5BF88FD0-02-m.jpg" },
+        { small: "PRO-B5BF88FD0-03-s.jpg", medium: "PRO-B5BF88FD0-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "DDR4", "16GB"],
@@ -5301,6 +4001,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram kingston fury beast 16gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-75BD37021",
@@ -5316,22 +4017,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-75BD37021-thumb.jpg",
       images: [
-        {
-          small: "PRO-75BD37021-00-s.jpg",
-          medium: "PRO-75BD37021-00-m.jpg",
-        },
-        {
-          small: "PRO-75BD37021-01-s.jpg",
-          medium: "PRO-75BD37021-01-m.jpg",
-        },
-        {
-          small: "PRO-75BD37021-02-s.jpg",
-          medium: "PRO-75BD37021-02-m.jpg",
-        },
-        {
-          small: "PRO-75BD37021-03-s.jpg",
-          medium: "PRO-75BD37021-03-m.jpg",
-        },
+        { small: "PRO-75BD37021-00-s.jpg", medium: "PRO-75BD37021-00-m.jpg" },
+        { small: "PRO-75BD37021-01-s.jpg", medium: "PRO-75BD37021-01-m.jpg" },
+        { small: "PRO-75BD37021-02-s.jpg", medium: "PRO-75BD37021-02-m.jpg" },
+        { small: "PRO-75BD37021-03-s.jpg", medium: "PRO-75BD37021-03-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
@@ -5344,6 +4033,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName:
+      "memoria ram corsair vengeance lpx 32gb 2x16gb 3200mhz ddr4 cl16 black",
   },
   {
     id: "PRO-C1AC2DA5A",
@@ -5359,18 +4050,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C1AC2DA5A-thumb.jpg",
       images: [
-        {
-          small: "PRO-C1AC2DA5A-00-s.jpg",
-          medium: "PRO-C1AC2DA5A-00-m.jpg",
-        },
-        {
-          small: "PRO-C1AC2DA5A-02-s.jpg",
-          medium: "PRO-C1AC2DA5A-02-m.jpg",
-        },
-        {
-          small: "PRO-C1AC2DA5A-03-s.jpg",
-          medium: "PRO-C1AC2DA5A-03-m.jpg",
-        },
+        { small: "PRO-C1AC2DA5A-00-s.jpg", medium: "PRO-C1AC2DA5A-00-m.jpg" },
+        { small: "PRO-C1AC2DA5A-02-s.jpg", medium: "PRO-C1AC2DA5A-02-m.jpg" },
+        { small: "PRO-C1AC2DA5A-03-s.jpg", medium: "PRO-C1AC2DA5A-03-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
@@ -5383,6 +4065,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR3"],
       ["Latência", "CL11"],
     ],
+    searchName: "memoria ram rise mode 8gb 1600mhz ddr3 cl11",
   },
   {
     id: "PRO-FFD3EBEAB",
@@ -5398,18 +4081,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-FFD3EBEAB-thumb.jpg",
       images: [
-        {
-          small: "PRO-FFD3EBEAB-00-s.jpg",
-          medium: "PRO-FFD3EBEAB-00-m.jpg",
-        },
-        {
-          small: "PRO-FFD3EBEAB-01-s.jpg",
-          medium: "PRO-FFD3EBEAB-01-m.jpg",
-        },
-        {
-          small: "PRO-FFD3EBEAB-02-s.jpg",
-          medium: "PRO-FFD3EBEAB-02-m.jpg",
-        },
+        { small: "PRO-FFD3EBEAB-00-s.jpg", medium: "PRO-FFD3EBEAB-00-m.jpg" },
+        { small: "PRO-FFD3EBEAB-01-s.jpg", medium: "PRO-FFD3EBEAB-01-m.jpg" },
+        { small: "PRO-FFD3EBEAB-02-s.jpg", medium: "PRO-FFD3EBEAB-02-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
@@ -5422,6 +4096,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR3"],
       ["Latência", "CL11"],
     ],
+    searchName:
+      "memoria ram para notebook rise mode value series 8gb 1600mhz ddr3 cl11",
   },
   {
     id: "PRO-6BC10434B",
@@ -5437,26 +4113,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6BC10434B-thumb.jpg",
       images: [
-        {
-          small: "PRO-6BC10434B-00-s.jpg",
-          medium: "PRO-6BC10434B-00-m.jpg",
-        },
-        {
-          small: "PRO-6BC10434B-01-s.jpg",
-          medium: "PRO-6BC10434B-01-m.jpg",
-        },
-        {
-          small: "PRO-6BC10434B-02-s.jpg",
-          medium: "PRO-6BC10434B-02-m.jpg",
-        },
-        {
-          small: "PRO-6BC10434B-03-s.jpg",
-          medium: "PRO-6BC10434B-03-m.jpg",
-        },
-        {
-          small: "PRO-6BC10434B-04-s.jpg",
-          medium: "PRO-6BC10434B-04-m.jpg",
-        },
+        { small: "PRO-6BC10434B-00-s.jpg", medium: "PRO-6BC10434B-00-m.jpg" },
+        { small: "PRO-6BC10434B-01-s.jpg", medium: "PRO-6BC10434B-01-m.jpg" },
+        { small: "PRO-6BC10434B-02-s.jpg", medium: "PRO-6BC10434B-02-m.jpg" },
+        { small: "PRO-6BC10434B-03-s.jpg", medium: "PRO-6BC10434B-03-m.jpg" },
+        { small: "PRO-6BC10434B-04-s.jpg", medium: "PRO-6BC10434B-04-m.jpg" },
       ],
     },
     tags: ["XPG", "DDR5", "32GB (2x16GB)"],
@@ -5469,6 +4130,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR5"],
       ["Latência", "CL30"],
     ],
+    searchName: "memoria ram xpg lancer rgb 32gb 2x16gb 6000mhz ddr5 cl30",
   },
   {
     id: "PRO-733D51022",
@@ -5484,18 +4146,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-733D51022-thumb.jpg",
       images: [
-        {
-          small: "PRO-733D51022-00-s.jpg",
-          medium: "PRO-733D51022-00-m.jpg",
-        },
-        {
-          small: "PRO-733D51022-01-s.jpg",
-          medium: "PRO-733D51022-01-m.jpg",
-        },
-        {
-          small: "PRO-733D51022-02-s.jpg",
-          medium: "PRO-733D51022-02-m.jpg",
-        },
+        { small: "PRO-733D51022-00-s.jpg", medium: "PRO-733D51022-00-m.jpg" },
+        { small: "PRO-733D51022-01-s.jpg", medium: "PRO-733D51022-01-m.jpg" },
+        { small: "PRO-733D51022-02-s.jpg", medium: "PRO-733D51022-02-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "DDR3", "8GB"],
@@ -5508,6 +4161,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR3L"],
       ["Latência", "CL11"],
     ],
+    searchName: "memoria ram gamer rise mode value 8gb 1600mhz ddr3l cl11",
   },
   {
     id: "PRO-4974DEDF2",
@@ -5523,14 +4177,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-4974DEDF2-thumb.jpg",
       images: [
-        {
-          small: "PRO-4974DEDF2-00-s.jpg",
-          medium: "PRO-4974DEDF2-00-m.jpg",
-        },
-        {
-          small: "PRO-4974DEDF2-01-s.jpg",
-          medium: "PRO-4974DEDF2-01-m.jpg",
-        },
+        { small: "PRO-4974DEDF2-00-s.jpg", medium: "PRO-4974DEDF2-00-m.jpg" },
+        { small: "PRO-4974DEDF2-01-s.jpg", medium: "PRO-4974DEDF2-01-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "16GB"],
@@ -5543,6 +4191,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram corsair vengeance lpx 16gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-C865124A7",
@@ -5558,18 +4207,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C865124A7-thumb.jpg",
       images: [
-        {
-          small: "PRO-C865124A7-00-s.jpg",
-          medium: "PRO-C865124A7-00-m.jpg",
-        },
-        {
-          small: "PRO-C865124A7-02-s.jpg",
-          medium: "PRO-C865124A7-02-m.jpg",
-        },
-        {
-          small: "PRO-C865124A7-03-s.jpg",
-          medium: "PRO-C865124A7-03-m.jpg",
-        },
+        { small: "PRO-C865124A7-00-s.jpg", medium: "PRO-C865124A7-00-m.jpg" },
+        { small: "PRO-C865124A7-02-s.jpg", medium: "PRO-C865124A7-02-m.jpg" },
+        { small: "PRO-C865124A7-03-s.jpg", medium: "PRO-C865124A7-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "DDR4", "16GB"],
@@ -5582,6 +4222,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL20"],
     ],
+    searchName:
+      "memoria ram para notebook kingston fury impact 16gb 3200mhz ddr4 cl20",
   },
   {
     id: "PRO-2FBB2DCA5",
@@ -5597,18 +4239,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2FBB2DCA5-thumb.jpg",
       images: [
-        {
-          small: "PRO-2FBB2DCA5-00-s.jpg",
-          medium: "PRO-2FBB2DCA5-00-m.jpg",
-        },
-        {
-          small: "PRO-2FBB2DCA5-01-s.jpg",
-          medium: "PRO-2FBB2DCA5-01-m.jpg",
-        },
-        {
-          small: "PRO-2FBB2DCA5-02-s.jpg",
-          medium: "PRO-2FBB2DCA5-02-m.jpg",
-        },
+        { small: "PRO-2FBB2DCA5-00-s.jpg", medium: "PRO-2FBB2DCA5-00-m.jpg" },
+        { small: "PRO-2FBB2DCA5-01-s.jpg", medium: "PRO-2FBB2DCA5-01-m.jpg" },
+        { small: "PRO-2FBB2DCA5-02-s.jpg", medium: "PRO-2FBB2DCA5-02-m.jpg" },
       ],
     },
     tags: ["XPG", "DDR4", "16GB"],
@@ -5621,6 +4254,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram xpg spectrix d35g rgb 16gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-604F24FD4",
@@ -5636,18 +4270,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-604F24FD4-thumb.jpg",
       images: [
-        {
-          small: "PRO-604F24FD4-00-s.jpg",
-          medium: "PRO-604F24FD4-00-m.jpg",
-        },
-        {
-          small: "PRO-604F24FD4-02-s.jpg",
-          medium: "PRO-604F24FD4-02-m.jpg",
-        },
-        {
-          small: "PRO-604F24FD4-03-s.jpg",
-          medium: "PRO-604F24FD4-03-m.jpg",
-        },
+        { small: "PRO-604F24FD4-00-s.jpg", medium: "PRO-604F24FD4-00-m.jpg" },
+        { small: "PRO-604F24FD4-02-s.jpg", medium: "PRO-604F24FD4-02-m.jpg" },
+        { small: "PRO-604F24FD4-03-s.jpg", medium: "PRO-604F24FD4-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "DDR4", "8GB"],
@@ -5660,6 +4285,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL20"],
     ],
+    searchName:
+      "memoria ram para notebook kingston fury impact 8gb 3200mhz ddr4 cl20",
   },
   {
     id: "PRO-08E19C717",
@@ -5675,22 +4302,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-08E19C717-thumb.jpg",
       images: [
-        {
-          small: "PRO-08E19C717-00-s.jpg",
-          medium: "PRO-08E19C717-00-m.jpg",
-        },
-        {
-          small: "PRO-08E19C717-02-s.jpg",
-          medium: "PRO-08E19C717-02-m.jpg",
-        },
-        {
-          small: "PRO-08E19C717-03-s.jpg",
-          medium: "PRO-08E19C717-03-m.jpg",
-        },
-        {
-          small: "PRO-08E19C717-04-s.jpg",
-          medium: "PRO-08E19C717-04-m.jpg",
-        },
+        { small: "PRO-08E19C717-00-s.jpg", medium: "PRO-08E19C717-00-m.jpg" },
+        { small: "PRO-08E19C717-02-s.jpg", medium: "PRO-08E19C717-02-m.jpg" },
+        { small: "PRO-08E19C717-03-s.jpg", medium: "PRO-08E19C717-03-m.jpg" },
+        { small: "PRO-08E19C717-04-s.jpg", medium: "PRO-08E19C717-04-m.jpg" },
       ],
     },
     tags: ["Kingston", "DDR5", "16GB"],
@@ -5703,6 +4318,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR5"],
       ["Latência", "CL40"],
     ],
+    searchName:
+      "memoria ram kingston fury beast 16gb 5600mhz ddr5 cl40 para intel xmp",
   },
   {
     id: "PRO-72D59C617",
@@ -5718,18 +4335,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-72D59C617-thumb.jpg",
       images: [
-        {
-          small: "PRO-72D59C617-00-s.jpg",
-          medium: "PRO-72D59C617-00-m.jpg",
-        },
-        {
-          small: "PRO-72D59C617-01-s.jpg",
-          medium: "PRO-72D59C617-01-m.jpg",
-        },
-        {
-          small: "PRO-72D59C617-02-s.jpg",
-          medium: "PRO-72D59C617-02-m.jpg",
-        },
+        { small: "PRO-72D59C617-00-s.jpg", medium: "PRO-72D59C617-00-m.jpg" },
+        { small: "PRO-72D59C617-01-s.jpg", medium: "PRO-72D59C617-01-m.jpg" },
+        { small: "PRO-72D59C617-02-s.jpg", medium: "PRO-72D59C617-02-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
@@ -5742,6 +4350,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL18"],
     ],
+    searchName:
+      "memoria ram corsair vengeance lpx 32gb 2x16gb 3600mhz ddr4 cl18",
   },
   {
     id: "PRO-402F93251",
@@ -5757,26 +4367,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-402F93251-thumb.jpg",
       images: [
-        {
-          small: "PRO-402F93251-00-s.jpg",
-          medium: "PRO-402F93251-00-m.jpg",
-        },
-        {
-          small: "PRO-402F93251-01-s.jpg",
-          medium: "PRO-402F93251-01-m.jpg",
-        },
-        {
-          small: "PRO-402F93251-02-s.jpg",
-          medium: "PRO-402F93251-02-m.jpg",
-        },
-        {
-          small: "PRO-402F93251-03-s.jpg",
-          medium: "PRO-402F93251-03-m.jpg",
-        },
-        {
-          small: "PRO-402F93251-04-s.jpg",
-          medium: "PRO-402F93251-04-m.jpg",
-        },
+        { small: "PRO-402F93251-00-s.jpg", medium: "PRO-402F93251-00-m.jpg" },
+        { small: "PRO-402F93251-01-s.jpg", medium: "PRO-402F93251-01-m.jpg" },
+        { small: "PRO-402F93251-02-s.jpg", medium: "PRO-402F93251-02-m.jpg" },
+        { small: "PRO-402F93251-03-s.jpg", medium: "PRO-402F93251-03-m.jpg" },
+        { small: "PRO-402F93251-04-s.jpg", medium: "PRO-402F93251-04-m.jpg" },
       ],
     },
     tags: ["XPG", "DDR4", "16GB"],
@@ -5789,6 +4384,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram xpg spectrix d35g rgb 16gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-B447CB386",
@@ -5804,22 +4400,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B447CB386-thumb.jpg",
       images: [
-        {
-          small: "PRO-B447CB386-00-s.jpg",
-          medium: "PRO-B447CB386-00-m.jpg",
-        },
-        {
-          small: "PRO-B447CB386-01-s.jpg",
-          medium: "PRO-B447CB386-01-m.jpg",
-        },
-        {
-          small: "PRO-B447CB386-02-s.jpg",
-          medium: "PRO-B447CB386-02-m.jpg",
-        },
-        {
-          small: "PRO-B447CB386-03-s.jpg",
-          medium: "PRO-B447CB386-03-m.jpg",
-        },
+        { small: "PRO-B447CB386-00-s.jpg", medium: "PRO-B447CB386-00-m.jpg" },
+        { small: "PRO-B447CB386-01-s.jpg", medium: "PRO-B447CB386-01-m.jpg" },
+        { small: "PRO-B447CB386-02-s.jpg", medium: "PRO-B447CB386-02-m.jpg" },
+        { small: "PRO-B447CB386-03-s.jpg", medium: "PRO-B447CB386-03-m.jpg" },
       ],
     },
     tags: ["Lexar", "DDR4", "8GB"],
@@ -5832,6 +4416,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL22"],
     ],
+    searchName: "memoria ram lexar 8gb 3200mhz ddr4 cl22",
   },
   {
     id: "PRO-6C2275D04",
@@ -5847,22 +4432,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6C2275D04-thumb.jpg",
       images: [
-        {
-          small: "PRO-6C2275D04-00-s.jpg",
-          medium: "PRO-6C2275D04-00-m.jpg",
-        },
-        {
-          small: "PRO-6C2275D04-01-s.jpg",
-          medium: "PRO-6C2275D04-01-m.jpg",
-        },
-        {
-          small: "PRO-6C2275D04-02-s.jpg",
-          medium: "PRO-6C2275D04-02-m.jpg",
-        },
-        {
-          small: "PRO-6C2275D04-03-s.jpg",
-          medium: "PRO-6C2275D04-03-m.jpg",
-        },
+        { small: "PRO-6C2275D04-00-s.jpg", medium: "PRO-6C2275D04-00-m.jpg" },
+        { small: "PRO-6C2275D04-01-s.jpg", medium: "PRO-6C2275D04-01-m.jpg" },
+        { small: "PRO-6C2275D04-02-s.jpg", medium: "PRO-6C2275D04-02-m.jpg" },
+        { small: "PRO-6C2275D04-03-s.jpg", medium: "PRO-6C2275D04-03-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "16GB (2x8GB)"],
@@ -5875,6 +4448,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName:
+      "memoria ram corsair vengeance lpx 16gb 2x8gb 3200mhz ddr4 cl16 black",
   },
   {
     id: "PRO-98DAA2CA8",
@@ -5890,22 +4465,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-98DAA2CA8-thumb.jpg",
       images: [
-        {
-          small: "PRO-98DAA2CA8-00-s.jpg",
-          medium: "PRO-98DAA2CA8-00-m.jpg",
-        },
-        {
-          small: "PRO-98DAA2CA8-02-s.jpg",
-          medium: "PRO-98DAA2CA8-02-m.jpg",
-        },
-        {
-          small: "PRO-98DAA2CA8-03-s.jpg",
-          medium: "PRO-98DAA2CA8-03-m.jpg",
-        },
-        {
-          small: "PRO-98DAA2CA8-04-s.jpg",
-          medium: "PRO-98DAA2CA8-04-m.jpg",
-        },
+        { small: "PRO-98DAA2CA8-00-s.jpg", medium: "PRO-98DAA2CA8-00-m.jpg" },
+        { small: "PRO-98DAA2CA8-02-s.jpg", medium: "PRO-98DAA2CA8-02-m.jpg" },
+        { small: "PRO-98DAA2CA8-03-s.jpg", medium: "PRO-98DAA2CA8-03-m.jpg" },
+        { small: "PRO-98DAA2CA8-04-s.jpg", medium: "PRO-98DAA2CA8-04-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "8GB"],
@@ -5918,6 +4481,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram corsair vengeance lpx 8gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-CAEC08EE2",
@@ -5933,26 +4497,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CAEC08EE2-thumb.jpg",
       images: [
-        {
-          small: "PRO-CAEC08EE2-00-s.jpg",
-          medium: "PRO-CAEC08EE2-00-m.jpg",
-        },
-        {
-          small: "PRO-CAEC08EE2-01-s.jpg",
-          medium: "PRO-CAEC08EE2-01-m.jpg",
-        },
-        {
-          small: "PRO-CAEC08EE2-02-s.jpg",
-          medium: "PRO-CAEC08EE2-02-m.jpg",
-        },
-        {
-          small: "PRO-CAEC08EE2-03-s.jpg",
-          medium: "PRO-CAEC08EE2-03-m.jpg",
-        },
-        {
-          small: "PRO-CAEC08EE2-04-s.jpg",
-          medium: "PRO-CAEC08EE2-04-m.jpg",
-        },
+        { small: "PRO-CAEC08EE2-00-s.jpg", medium: "PRO-CAEC08EE2-00-m.jpg" },
+        { small: "PRO-CAEC08EE2-01-s.jpg", medium: "PRO-CAEC08EE2-01-m.jpg" },
+        { small: "PRO-CAEC08EE2-02-s.jpg", medium: "PRO-CAEC08EE2-02-m.jpg" },
+        { small: "PRO-CAEC08EE2-03-s.jpg", medium: "PRO-CAEC08EE2-03-m.jpg" },
+        { small: "PRO-CAEC08EE2-04-s.jpg", medium: "PRO-CAEC08EE2-04-m.jpg" },
       ],
     },
     tags: ["Corsair", "DDR4", "32GB (2x16GB)"],
@@ -5965,6 +4514,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL18"],
     ],
+    searchName:
+      "memoria ram corsair vengeance rgb rs 32gb 2x16gb 3600mhz ddr4 cl18",
   },
   {
     id: "PRO-1534C6DB6",
@@ -5980,14 +4531,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-1534C6DB6-thumb.jpg",
       images: [
-        {
-          small: "PRO-1534C6DB6-00-s.jpg",
-          medium: "PRO-1534C6DB6-00-m.jpg",
-        },
-        {
-          small: "PRO-1534C6DB6-01-s.jpg",
-          medium: "PRO-1534C6DB6-01-m.jpg",
-        },
+        { small: "PRO-1534C6DB6-00-s.jpg", medium: "PRO-1534C6DB6-00-m.jpg" },
+        { small: "PRO-1534C6DB6-01-s.jpg", medium: "PRO-1534C6DB6-01-m.jpg" },
       ],
     },
     tags: ["XPG", "DDR4", "8GB"],
@@ -6000,6 +4545,7 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL16"],
     ],
+    searchName: "memoria ram xpg gammix d10 8gb 3200mhz ddr4 cl16",
   },
   {
     id: "PRO-40B904113",
@@ -6015,22 +4561,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-40B904113-thumb.jpg",
       images: [
-        {
-          small: "PRO-40B904113-00-s.jpg",
-          medium: "PRO-40B904113-00-m.jpg",
-        },
-        {
-          small: "PRO-40B904113-02-s.jpg",
-          medium: "PRO-40B904113-02-m.jpg",
-        },
-        {
-          small: "PRO-40B904113-03-s.jpg",
-          medium: "PRO-40B904113-03-m.jpg",
-        },
-        {
-          small: "PRO-40B904113-04-s.jpg",
-          medium: "PRO-40B904113-04-m.jpg",
-        },
+        { small: "PRO-40B904113-00-s.jpg", medium: "PRO-40B904113-00-m.jpg" },
+        { small: "PRO-40B904113-02-s.jpg", medium: "PRO-40B904113-02-m.jpg" },
+        { small: "PRO-40B904113-03-s.jpg", medium: "PRO-40B904113-03-m.jpg" },
+        { small: "PRO-40B904113-04-s.jpg", medium: "PRO-40B904113-04-m.jpg" },
       ],
     },
     tags: ["Husky", "DDR4", "8GB"],
@@ -6043,6 +4577,8 @@ const products: FAProduct[] = [
       ["Tipo de memória", "DDR4"],
       ["Latência", "CL19"],
     ],
+    searchName:
+      "memoria ram para notebook husky technologies 8gb 2666mhz ddr4 cl19",
   },
   {
     id: "PRO-816D1CD88",
@@ -6058,10 +4594,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-816D1CD88-thumb.jpg",
       images: [
-        {
-          small: "PRO-816D1CD88-00-s.jpg",
-          medium: "PRO-816D1CD88-00-m.jpg",
-        },
+        { small: "PRO-816D1CD88-00-s.jpg", medium: "PRO-816D1CD88-00-m.jpg" },
       ],
     },
     tags: ["Corsair", "4TB"],
@@ -6074,6 +4607,8 @@ const products: FAProduct[] = [
       ["Leitura", "5000MB/s"],
       ["Gravação", "4400MB/s"],
     ],
+    searchName:
+      "ssd corsair mp600 core xt 4tb pcie gen 4 0 x4 nvme m 2 leitura 5000mb s e gravacao 4400mb s",
   },
   {
     id: "PRO-FF4ED3B46",
@@ -6089,18 +4624,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-FF4ED3B46-thumb.jpg",
       images: [
-        {
-          small: "PRO-FF4ED3B46-00-s.jpg",
-          medium: "PRO-FF4ED3B46-00-m.jpg",
-        },
-        {
-          small: "PRO-FF4ED3B46-01-s.jpg",
-          medium: "PRO-FF4ED3B46-01-m.jpg",
-        },
-        {
-          small: "PRO-FF4ED3B46-02-s.jpg",
-          medium: "PRO-FF4ED3B46-02-m.jpg",
-        },
+        { small: "PRO-FF4ED3B46-00-s.jpg", medium: "PRO-FF4ED3B46-00-m.jpg" },
+        { small: "PRO-FF4ED3B46-01-s.jpg", medium: "PRO-FF4ED3B46-01-m.jpg" },
+        { small: "PRO-FF4ED3B46-02-s.jpg", medium: "PRO-FF4ED3B46-02-m.jpg" },
       ],
     },
     tags: ["Kingston", "2TB"],
@@ -6113,6 +4639,8 @@ const products: FAProduct[] = [
       ["Leitura", "14.700MB/s"],
       ["Gravação", "14.000MB/s"],
     ],
+    searchName:
+      "ssd kingston fury renegade 2048gb g5 pcie m 2 nvme leitura 14 700mbs e gravacao 14 000mbs compativel com ps5",
   },
   {
     id: "PRO-BAF255869",
@@ -6128,26 +4656,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-BAF255869-thumb.jpg",
       images: [
-        {
-          small: "PRO-BAF255869-00-s.jpg",
-          medium: "PRO-BAF255869-00-m.jpg",
-        },
-        {
-          small: "PRO-BAF255869-01-s.jpg",
-          medium: "PRO-BAF255869-01-m.jpg",
-        },
-        {
-          small: "PRO-BAF255869-02-s.jpg",
-          medium: "PRO-BAF255869-02-m.jpg",
-        },
-        {
-          small: "PRO-BAF255869-03-s.jpg",
-          medium: "PRO-BAF255869-03-m.jpg",
-        },
-        {
-          small: "PRO-BAF255869-04-s.jpg",
-          medium: "PRO-BAF255869-04-m.jpg",
-        },
+        { small: "PRO-BAF255869-00-s.jpg", medium: "PRO-BAF255869-00-m.jpg" },
+        { small: "PRO-BAF255869-01-s.jpg", medium: "PRO-BAF255869-01-m.jpg" },
+        { small: "PRO-BAF255869-02-s.jpg", medium: "PRO-BAF255869-02-m.jpg" },
+        { small: "PRO-BAF255869-03-s.jpg", medium: "PRO-BAF255869-03-m.jpg" },
+        { small: "PRO-BAF255869-04-s.jpg", medium: "PRO-BAF255869-04-m.jpg" },
       ],
     },
     tags: ["Corsair", "1TB"],
@@ -6160,6 +4673,8 @@ const products: FAProduct[] = [
       ["Leitura", "7000MB/s"],
       ["Gravação", "6200MB/s"],
     ],
+    searchName:
+      "ssd corsair mp600 elite 1tb m 2 nvme leitura 7000mb s e gravacao 6200mb s para ps5",
   },
   {
     id: "PRO-F7CFE3A61",
@@ -6175,14 +4690,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-F7CFE3A61-thumb.jpg",
       images: [
-        {
-          small: "PRO-F7CFE3A61-00-s.jpg",
-          medium: "PRO-F7CFE3A61-00-m.jpg",
-        },
-        {
-          small: "PRO-F7CFE3A61-01-s.jpg",
-          medium: "PRO-F7CFE3A61-01-m.jpg",
-        },
+        { small: "PRO-F7CFE3A61-00-s.jpg", medium: "PRO-F7CFE3A61-00-m.jpg" },
+        { small: "PRO-F7CFE3A61-01-s.jpg", medium: "PRO-F7CFE3A61-01-m.jpg" },
       ],
     },
     tags: ["Kingston", "2TB"],
@@ -6195,6 +4704,8 @@ const products: FAProduct[] = [
       ["Leitura", "1050 MB/s"],
       ["Gravação", "1000 MB/s"],
     ],
+    searchName:
+      "ssd externo kingston xs1000 2 tb usb 3 2 gen 2x2 portatil leitura 1050 mb s gravacao 1000 mb s",
   },
   {
     id: "PRO-B1D7800F9",
@@ -6210,18 +4721,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-B1D7800F9-thumb.jpg",
       images: [
-        {
-          small: "PRO-B1D7800F9-00-s.jpg",
-          medium: "PRO-B1D7800F9-00-m.jpg",
-        },
-        {
-          small: "PRO-B1D7800F9-01-s.jpg",
-          medium: "PRO-B1D7800F9-01-m.jpg",
-        },
-        {
-          small: "PRO-B1D7800F9-02-s.jpg",
-          medium: "PRO-B1D7800F9-02-m.jpg",
-        },
+        { small: "PRO-B1D7800F9-00-s.jpg", medium: "PRO-B1D7800F9-00-m.jpg" },
+        { small: "PRO-B1D7800F9-01-s.jpg", medium: "PRO-B1D7800F9-01-m.jpg" },
+        { small: "PRO-B1D7800F9-02-s.jpg", medium: "PRO-B1D7800F9-02-m.jpg" },
       ],
     },
     tags: ["Kingston", "1TB"],
@@ -6234,6 +4736,8 @@ const products: FAProduct[] = [
       ["Leitura", "6000 MB/s"],
       ["Gravação", "4000 MB/s"],
     ],
+    searchName:
+      "ssd kingston nv3 1 tb m 2 2280 pcie 4 0 x4 nvme leitura 6000 mb s gravacao 4000 mb s",
   },
   {
     id: "PRO-D400AD244",
@@ -6249,22 +4753,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-D400AD244-thumb.jpg",
       images: [
-        {
-          small: "PRO-D400AD244-00-s.jpg",
-          medium: "PRO-D400AD244-00-m.jpg",
-        },
-        {
-          small: "PRO-D400AD244-01-s.jpg",
-          medium: "PRO-D400AD244-01-m.jpg",
-        },
-        {
-          small: "PRO-D400AD244-02-s.jpg",
-          medium: "PRO-D400AD244-02-m.jpg",
-        },
-        {
-          small: "PRO-D400AD244-03-s.jpg",
-          medium: "PRO-D400AD244-03-m.jpg",
-        },
+        { small: "PRO-D400AD244-00-s.jpg", medium: "PRO-D400AD244-00-m.jpg" },
+        { small: "PRO-D400AD244-01-s.jpg", medium: "PRO-D400AD244-01-m.jpg" },
+        { small: "PRO-D400AD244-02-s.jpg", medium: "PRO-D400AD244-02-m.jpg" },
+        { small: "PRO-D400AD244-03-s.jpg", medium: "PRO-D400AD244-03-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "256GB"],
@@ -6277,6 +4769,8 @@ const products: FAProduct[] = [
       ["Leitura", "530MB/s"],
       ["Gravação", "520MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer line 256gb sata iii leitura 530mb s gravacao 520mb s",
   },
   {
     id: "PRO-CDF12A42D",
@@ -6292,22 +4786,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-CDF12A42D-thumb.jpg",
       images: [
-        {
-          small: "PRO-CDF12A42D-00-s.jpg",
-          medium: "PRO-CDF12A42D-00-m.jpg",
-        },
-        {
-          small: "PRO-CDF12A42D-02-s.jpg",
-          medium: "PRO-CDF12A42D-02-m.jpg",
-        },
-        {
-          small: "PRO-CDF12A42D-03-s.jpg",
-          medium: "PRO-CDF12A42D-03-m.jpg",
-        },
-        {
-          small: "PRO-CDF12A42D-04-s.jpg",
-          medium: "PRO-CDF12A42D-04-m.jpg",
-        },
+        { small: "PRO-CDF12A42D-00-s.jpg", medium: "PRO-CDF12A42D-00-m.jpg" },
+        { small: "PRO-CDF12A42D-02-s.jpg", medium: "PRO-CDF12A42D-02-m.jpg" },
+        { small: "PRO-CDF12A42D-03-s.jpg", medium: "PRO-CDF12A42D-03-m.jpg" },
+        { small: "PRO-CDF12A42D-04-s.jpg", medium: "PRO-CDF12A42D-04-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "1TB"],
@@ -6320,6 +4802,8 @@ const products: FAProduct[] = [
       ["Leitura", "530MB/s"],
       ["Gravação", "520MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer line 1tb sata iii leitura 530mb s gravacao 520mb s",
   },
   {
     id: "PRO-EDA4ADBC5",
@@ -6335,14 +4819,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-EDA4ADBC5-thumb.jpg",
       images: [
-        {
-          small: "PRO-EDA4ADBC5-00-s.jpg",
-          medium: "PRO-EDA4ADBC5-00-m.jpg",
-        },
-        {
-          small: "PRO-EDA4ADBC5-01-s.jpg",
-          medium: "PRO-EDA4ADBC5-01-m.jpg",
-        },
+        { small: "PRO-EDA4ADBC5-00-s.jpg", medium: "PRO-EDA4ADBC5-00-m.jpg" },
+        { small: "PRO-EDA4ADBC5-01-s.jpg", medium: "PRO-EDA4ADBC5-01-m.jpg" },
       ],
     },
     tags: ["Kingston", "1TB"],
@@ -6355,6 +4833,8 @@ const products: FAProduct[] = [
       ["Leitura", "1050 MB/s"],
       ["Gravação", "1000 MB/s"],
     ],
+    searchName:
+      "ssd externo kingston xs1000 1tb usb 3 2 gen 2x2 portatil leitura 1050 mb s gravacao 1000 mb s",
   },
   {
     id: "PRO-361C6F5F2",
@@ -6370,22 +4850,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-361C6F5F2-thumb.jpg",
       images: [
-        {
-          small: "PRO-361C6F5F2-00-s.jpg",
-          medium: "PRO-361C6F5F2-00-m.jpg",
-        },
-        {
-          small: "PRO-361C6F5F2-01-s.jpg",
-          medium: "PRO-361C6F5F2-01-m.jpg",
-        },
-        {
-          small: "PRO-361C6F5F2-02-s.jpg",
-          medium: "PRO-361C6F5F2-02-m.jpg",
-        },
-        {
-          small: "PRO-361C6F5F2-03-s.jpg",
-          medium: "PRO-361C6F5F2-03-m.jpg",
-        },
+        { small: "PRO-361C6F5F2-00-s.jpg", medium: "PRO-361C6F5F2-00-m.jpg" },
+        { small: "PRO-361C6F5F2-01-s.jpg", medium: "PRO-361C6F5F2-01-m.jpg" },
+        { small: "PRO-361C6F5F2-02-s.jpg", medium: "PRO-361C6F5F2-02-m.jpg" },
+        { small: "PRO-361C6F5F2-03-s.jpg", medium: "PRO-361C6F5F2-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "480GB"],
@@ -6398,6 +4866,8 @@ const products: FAProduct[] = [
       ["Leitura", "500MB/s"],
       ["Gravação", "450MB/s"],
     ],
+    searchName:
+      "ssd kingston a400 480gb sata iii 2 5 leitura 500mb s gravacao 450mb s",
   },
   {
     id: "PRO-EE4536A5F",
@@ -6413,18 +4883,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-EE4536A5F-thumb.jpg",
       images: [
-        {
-          small: "PRO-EE4536A5F-00-s.jpg",
-          medium: "PRO-EE4536A5F-00-m.jpg",
-        },
-        {
-          small: "PRO-EE4536A5F-01-s.jpg",
-          medium: "PRO-EE4536A5F-01-m.jpg",
-        },
-        {
-          small: "PRO-EE4536A5F-02-s.jpg",
-          medium: "PRO-EE4536A5F-02-m.jpg",
-        },
+        { small: "PRO-EE4536A5F-00-s.jpg", medium: "PRO-EE4536A5F-00-m.jpg" },
+        { small: "PRO-EE4536A5F-01-s.jpg", medium: "PRO-EE4536A5F-01-m.jpg" },
+        { small: "PRO-EE4536A5F-02-s.jpg", medium: "PRO-EE4536A5F-02-m.jpg" },
       ],
     },
     tags: ["Kingston", "500GB"],
@@ -6437,6 +4898,8 @@ const products: FAProduct[] = [
       ["Leitura", "5000 MB/s"],
       ["Gravação", "3000 MB/s"],
     ],
+    searchName:
+      "ssd kingston nv3 500 gb m 2 2280 pcie 4 0 x4 nvme leitura 5000 mb s gravacao 3000 mb s",
   },
   {
     id: "PRO-0B19040BB",
@@ -6452,26 +4915,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-0B19040BB-thumb.jpg",
       images: [
-        {
-          small: "PRO-0B19040BB-00-s.jpg",
-          medium: "PRO-0B19040BB-00-m.jpg",
-        },
-        {
-          small: "PRO-0B19040BB-01-s.jpg",
-          medium: "PRO-0B19040BB-01-m.jpg",
-        },
-        {
-          small: "PRO-0B19040BB-02-s.jpg",
-          medium: "PRO-0B19040BB-02-m.jpg",
-        },
-        {
-          small: "PRO-0B19040BB-03-s.jpg",
-          medium: "PRO-0B19040BB-03-m.jpg",
-        },
-        {
-          small: "PRO-0B19040BB-04-s.jpg",
-          medium: "PRO-0B19040BB-04-m.jpg",
-        },
+        { small: "PRO-0B19040BB-00-s.jpg", medium: "PRO-0B19040BB-00-m.jpg" },
+        { small: "PRO-0B19040BB-01-s.jpg", medium: "PRO-0B19040BB-01-m.jpg" },
+        { small: "PRO-0B19040BB-02-s.jpg", medium: "PRO-0B19040BB-02-m.jpg" },
+        { small: "PRO-0B19040BB-03-s.jpg", medium: "PRO-0B19040BB-03-m.jpg" },
+        { small: "PRO-0B19040BB-04-s.jpg", medium: "PRO-0B19040BB-04-m.jpg" },
       ],
     },
     tags: ["Husky", "128GB"],
@@ -6484,6 +4932,7 @@ const products: FAProduct[] = [
       ["Leitura", "500MB/s"],
       ["Gravação", "450MB/s"],
     ],
+    searchName: "ssd husky 128gb sata iii 2 5 leitura 500mb s gravacao 450mb s",
   },
   {
     id: "PRO-E137E0887",
@@ -6499,22 +4948,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-E137E0887-thumb.jpg",
       images: [
-        {
-          small: "PRO-E137E0887-00-s.jpg",
-          medium: "PRO-E137E0887-00-m.jpg",
-        },
-        {
-          small: "PRO-E137E0887-01-s.jpg",
-          medium: "PRO-E137E0887-01-m.jpg",
-        },
-        {
-          small: "PRO-E137E0887-03-s.jpg",
-          medium: "PRO-E137E0887-03-m.jpg",
-        },
-        {
-          small: "PRO-E137E0887-04-s.jpg",
-          medium: "PRO-E137E0887-04-m.jpg",
-        },
+        { small: "PRO-E137E0887-00-s.jpg", medium: "PRO-E137E0887-00-m.jpg" },
+        { small: "PRO-E137E0887-01-s.jpg", medium: "PRO-E137E0887-01-m.jpg" },
+        { small: "PRO-E137E0887-03-s.jpg", medium: "PRO-E137E0887-03-m.jpg" },
+        { small: "PRO-E137E0887-04-s.jpg", medium: "PRO-E137E0887-04-m.jpg" },
       ],
     },
     tags: ["Kingston", "240GB"],
@@ -6527,6 +4964,8 @@ const products: FAProduct[] = [
       ["Leitura", "500MB/s"],
       ["Gravação", "350MB/s"],
     ],
+    searchName:
+      "ssd kingston a400 240gb sata iii 2 5 leitura 500mb s gravacao 350mb s",
   },
   {
     id: "PRO-6CDB4C194",
@@ -6542,22 +4981,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6CDB4C194-thumb.jpg",
       images: [
-        {
-          small: "PRO-6CDB4C194-00-s.jpg",
-          medium: "PRO-6CDB4C194-00-m.jpg",
-        },
-        {
-          small: "PRO-6CDB4C194-01-s.jpg",
-          medium: "PRO-6CDB4C194-01-m.jpg",
-        },
-        {
-          small: "PRO-6CDB4C194-02-s.jpg",
-          medium: "PRO-6CDB4C194-02-m.jpg",
-        },
-        {
-          small: "PRO-6CDB4C194-03-s.jpg",
-          medium: "PRO-6CDB4C194-03-m.jpg",
-        },
+        { small: "PRO-6CDB4C194-00-s.jpg", medium: "PRO-6CDB4C194-00-m.jpg" },
+        { small: "PRO-6CDB4C194-01-s.jpg", medium: "PRO-6CDB4C194-01-m.jpg" },
+        { small: "PRO-6CDB4C194-02-s.jpg", medium: "PRO-6CDB4C194-02-m.jpg" },
+        { small: "PRO-6CDB4C194-03-s.jpg", medium: "PRO-6CDB4C194-03-m.jpg" },
       ],
     },
     tags: ["Kingston", "1TB"],
@@ -6570,6 +4997,8 @@ const products: FAProduct[] = [
       ["Leitura", "6000 MB/s"],
       ["Gravação", "4000 MB/s"],
     ],
+    searchName:
+      "ssd kingston 1tb padrao nv3 m 2 2280 nvme 4 0 gen 4x4 leitura 6000 e gravacao 4000mbps ultra rapido",
   },
   {
     id: "PRO-95CD1B55D",
@@ -6585,22 +5014,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-95CD1B55D-thumb.jpg",
       images: [
-        {
-          small: "PRO-95CD1B55D-00-s.jpg",
-          medium: "PRO-95CD1B55D-00-m.jpg",
-        },
-        {
-          small: "PRO-95CD1B55D-02-s.jpg",
-          medium: "PRO-95CD1B55D-02-m.jpg",
-        },
-        {
-          small: "PRO-95CD1B55D-03-s.jpg",
-          medium: "PRO-95CD1B55D-03-m.jpg",
-        },
-        {
-          small: "PRO-95CD1B55D-04-s.jpg",
-          medium: "PRO-95CD1B55D-04-m.jpg",
-        },
+        { small: "PRO-95CD1B55D-00-s.jpg", medium: "PRO-95CD1B55D-00-m.jpg" },
+        { small: "PRO-95CD1B55D-02-s.jpg", medium: "PRO-95CD1B55D-02-m.jpg" },
+        { small: "PRO-95CD1B55D-03-s.jpg", medium: "PRO-95CD1B55D-03-m.jpg" },
+        { small: "PRO-95CD1B55D-04-s.jpg", medium: "PRO-95CD1B55D-04-m.jpg" },
       ],
     },
     tags: ["Kingston", "960GB"],
@@ -6613,6 +5030,8 @@ const products: FAProduct[] = [
       ["Leitura", "500MB/s"],
       ["Gravação", "450MB/s"],
     ],
+    searchName:
+      "ssd kingston a400 960gb sata iii 2 5 leitura 500mb s gravacao 450mb s",
   },
   {
     id: "PRO-08EE20680",
@@ -6628,14 +5047,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-08EE20680-thumb.jpg",
       images: [
-        {
-          small: "PRO-08EE20680-00-s.jpg",
-          medium: "PRO-08EE20680-00-m.jpg",
-        },
-        {
-          small: "PRO-08EE20680-01-s.jpg",
-          medium: "PRO-08EE20680-01-m.jpg",
-        },
+        { small: "PRO-08EE20680-00-s.jpg", medium: "PRO-08EE20680-00-m.jpg" },
+        { small: "PRO-08EE20680-01-s.jpg", medium: "PRO-08EE20680-01-m.jpg" },
       ],
     },
     tags: ["Kingston", "1TB"],
@@ -6648,6 +5061,8 @@ const products: FAProduct[] = [
       ["Leitura", "7300 MB/s"],
       ["Gravação", "6000 MB/s"],
     ],
+    searchName:
+      "ssd kingston fury renegade 1tb m 2 2280 pcie 4 0 x4 nvme leitura 7300 mb s gravacao 6000 mb s compativel com ps5",
   },
   {
     id: "PRO-5AA51FA88",
@@ -6663,26 +5078,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-5AA51FA88-thumb.jpg",
       images: [
-        {
-          small: "PRO-5AA51FA88-00-s.jpg",
-          medium: "PRO-5AA51FA88-00-m.jpg",
-        },
-        {
-          small: "PRO-5AA51FA88-01-s.jpg",
-          medium: "PRO-5AA51FA88-01-m.jpg",
-        },
-        {
-          small: "PRO-5AA51FA88-02-s.jpg",
-          medium: "PRO-5AA51FA88-02-m.jpg",
-        },
-        {
-          small: "PRO-5AA51FA88-03-s.jpg",
-          medium: "PRO-5AA51FA88-03-m.jpg",
-        },
-        {
-          small: "PRO-5AA51FA88-04-s.jpg",
-          medium: "PRO-5AA51FA88-04-m.jpg",
-        },
+        { small: "PRO-5AA51FA88-00-s.jpg", medium: "PRO-5AA51FA88-00-m.jpg" },
+        { small: "PRO-5AA51FA88-01-s.jpg", medium: "PRO-5AA51FA88-01-m.jpg" },
+        { small: "PRO-5AA51FA88-02-s.jpg", medium: "PRO-5AA51FA88-02-m.jpg" },
+        { small: "PRO-5AA51FA88-03-s.jpg", medium: "PRO-5AA51FA88-03-m.jpg" },
+        { small: "PRO-5AA51FA88-04-s.jpg", medium: "PRO-5AA51FA88-04-m.jpg" },
       ],
     },
     tags: ["Adata", "256GB"],
@@ -6695,6 +5095,8 @@ const products: FAProduct[] = [
       ["Leitura", "2.400MB/s"],
       ["Gravação", "1.800MB/s"],
     ],
+    searchName:
+      "ssd pcie adata 256gb nvme leitura 2 400mb s e gravacao 1 800mb s",
   },
   {
     id: "PRO-49717C095",
@@ -6710,22 +5112,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-49717C095-thumb.jpg",
       images: [
-        {
-          small: "PRO-49717C095-00-s.jpg",
-          medium: "PRO-49717C095-00-m.jpg",
-        },
-        {
-          small: "PRO-49717C095-01-s.jpg",
-          medium: "PRO-49717C095-01-m.jpg",
-        },
-        {
-          small: "PRO-49717C095-02-s.jpg",
-          medium: "PRO-49717C095-02-m.jpg",
-        },
-        {
-          small: "PRO-49717C095-03-s.jpg",
-          medium: "PRO-49717C095-03-m.jpg",
-        },
+        { small: "PRO-49717C095-00-s.jpg", medium: "PRO-49717C095-00-m.jpg" },
+        { small: "PRO-49717C095-01-s.jpg", medium: "PRO-49717C095-01-m.jpg" },
+        { small: "PRO-49717C095-02-s.jpg", medium: "PRO-49717C095-02-m.jpg" },
+        { small: "PRO-49717C095-03-s.jpg", medium: "PRO-49717C095-03-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "480GB"],
@@ -6738,6 +5128,8 @@ const products: FAProduct[] = [
       ["Leitura", "530MB/s"],
       ["Gravação", "520MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer line 480gb sata iii leitura 530mb s gravacao 520mb s",
   },
   {
     id: "PRO-95640912B",
@@ -6753,22 +5145,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-95640912B-thumb.jpg",
       images: [
-        {
-          small: "PRO-95640912B-00-s.jpg",
-          medium: "PRO-95640912B-00-m.jpg",
-        },
-        {
-          small: "PRO-95640912B-01-s.jpg",
-          medium: "PRO-95640912B-01-m.jpg",
-        },
-        {
-          small: "PRO-95640912B-02-s.jpg",
-          medium: "PRO-95640912B-02-m.jpg",
-        },
-        {
-          small: "PRO-95640912B-03-s.jpg",
-          medium: "PRO-95640912B-03-m.jpg",
-        },
+        { small: "PRO-95640912B-00-s.jpg", medium: "PRO-95640912B-00-m.jpg" },
+        { small: "PRO-95640912B-01-s.jpg", medium: "PRO-95640912B-01-m.jpg" },
+        { small: "PRO-95640912B-02-s.jpg", medium: "PRO-95640912B-02-m.jpg" },
+        { small: "PRO-95640912B-03-s.jpg", medium: "PRO-95640912B-03-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "120GB"],
@@ -6781,6 +5161,8 @@ const products: FAProduct[] = [
       ["Leitura", "530MB/s"],
       ["Gravação", "520MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer line 120gb sata iii leitura 530mb s gravacao 520mb s",
   },
   {
     id: "PRO-147367BC3",
@@ -6796,22 +5178,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-147367BC3-thumb.jpg",
       images: [
-        {
-          small: "PRO-147367BC3-00-s.jpg",
-          medium: "PRO-147367BC3-00-m.jpg",
-        },
-        {
-          small: "PRO-147367BC3-01-s.jpg",
-          medium: "PRO-147367BC3-01-m.jpg",
-        },
-        {
-          small: "PRO-147367BC3-02-s.jpg",
-          medium: "PRO-147367BC3-02-m.jpg",
-        },
-        {
-          small: "PRO-147367BC3-03-s.jpg",
-          medium: "PRO-147367BC3-03-m.jpg",
-        },
+        { small: "PRO-147367BC3-00-s.jpg", medium: "PRO-147367BC3-00-m.jpg" },
+        { small: "PRO-147367BC3-01-s.jpg", medium: "PRO-147367BC3-01-m.jpg" },
+        { small: "PRO-147367BC3-02-s.jpg", medium: "PRO-147367BC3-02-m.jpg" },
+        { small: "PRO-147367BC3-03-s.jpg", medium: "PRO-147367BC3-03-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "128GB"],
@@ -6824,6 +5194,8 @@ const products: FAProduct[] = [
       ["Leitura", "530MB/s"],
       ["Gravação", "520MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer line 128gb sata iii leitura 530mb s gravacao 520mb s",
   },
   {
     id: "PRO-2E4A7B4E1",
@@ -6839,22 +5211,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2E4A7B4E1-thumb.jpg",
       images: [
-        {
-          small: "PRO-2E4A7B4E1-00-s.jpg",
-          medium: "PRO-2E4A7B4E1-00-m.jpg",
-        },
-        {
-          small: "PRO-2E4A7B4E1-01-s.jpg",
-          medium: "PRO-2E4A7B4E1-01-m.jpg",
-        },
-        {
-          small: "PRO-2E4A7B4E1-02-s.jpg",
-          medium: "PRO-2E4A7B4E1-02-m.jpg",
-        },
-        {
-          small: "PRO-2E4A7B4E1-03-s.jpg",
-          medium: "PRO-2E4A7B4E1-03-m.jpg",
-        },
+        { small: "PRO-2E4A7B4E1-00-s.jpg", medium: "PRO-2E4A7B4E1-00-m.jpg" },
+        { small: "PRO-2E4A7B4E1-01-s.jpg", medium: "PRO-2E4A7B4E1-01-m.jpg" },
+        { small: "PRO-2E4A7B4E1-02-s.jpg", medium: "PRO-2E4A7B4E1-02-m.jpg" },
+        { small: "PRO-2E4A7B4E1-03-s.jpg", medium: "PRO-2E4A7B4E1-03-m.jpg" },
       ],
     },
     tags: ["Adata", "240GB"],
@@ -6867,6 +5227,8 @@ const products: FAProduct[] = [
       ["Leitura", "520MB/s"],
       ["Gravação", "450MB/s"],
     ],
+    searchName:
+      "ssd adata su650 sata 240gb 2 5 leitura 520mb s e gravacao 450mb s",
   },
   {
     id: "PRO-2E145E7AA",
@@ -6882,26 +5244,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-2E145E7AA-thumb.jpg",
       images: [
-        {
-          small: "PRO-2E145E7AA-00-s.jpg",
-          medium: "PRO-2E145E7AA-00-m.jpg",
-        },
-        {
-          small: "PRO-2E145E7AA-01-s.jpg",
-          medium: "PRO-2E145E7AA-01-m.jpg",
-        },
-        {
-          small: "PRO-2E145E7AA-02-s.jpg",
-          medium: "PRO-2E145E7AA-02-m.jpg",
-        },
-        {
-          small: "PRO-2E145E7AA-03-s.jpg",
-          medium: "PRO-2E145E7AA-03-m.jpg",
-        },
-        {
-          small: "PRO-2E145E7AA-04-s.jpg",
-          medium: "PRO-2E145E7AA-04-m.jpg",
-        },
+        { small: "PRO-2E145E7AA-00-s.jpg", medium: "PRO-2E145E7AA-00-m.jpg" },
+        { small: "PRO-2E145E7AA-01-s.jpg", medium: "PRO-2E145E7AA-01-m.jpg" },
+        { small: "PRO-2E145E7AA-02-s.jpg", medium: "PRO-2E145E7AA-02-m.jpg" },
+        { small: "PRO-2E145E7AA-03-s.jpg", medium: "PRO-2E145E7AA-03-m.jpg" },
+        { small: "PRO-2E145E7AA-04-s.jpg", medium: "PRO-2E145E7AA-04-m.jpg" },
       ],
     },
     tags: ["Lexar", "256GB"],
@@ -6914,6 +5261,8 @@ const products: FAProduct[] = [
       ["Leitura", "3500MB/s"],
       ["Gravação", "1300MB/s"],
     ],
+    searchName:
+      "ssd pcie lexar internal nm620 256gb leitura 3500mb s e gravacao 1300mb s",
   },
   {
     id: "PRO-1DFBADD9A",
@@ -6929,22 +5278,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-1DFBADD9A-thumb.jpg",
       images: [
-        {
-          small: "PRO-1DFBADD9A-00-s.jpg",
-          medium: "PRO-1DFBADD9A-00-m.jpg",
-        },
-        {
-          small: "PRO-1DFBADD9A-01-s.jpg",
-          medium: "PRO-1DFBADD9A-01-m.jpg",
-        },
-        {
-          small: "PRO-1DFBADD9A-02-s.jpg",
-          medium: "PRO-1DFBADD9A-02-m.jpg",
-        },
-        {
-          small: "PRO-1DFBADD9A-03-s.jpg",
-          medium: "PRO-1DFBADD9A-03-m.jpg",
-        },
+        { small: "PRO-1DFBADD9A-00-s.jpg", medium: "PRO-1DFBADD9A-00-m.jpg" },
+        { small: "PRO-1DFBADD9A-01-s.jpg", medium: "PRO-1DFBADD9A-01-m.jpg" },
+        { small: "PRO-1DFBADD9A-02-s.jpg", medium: "PRO-1DFBADD9A-02-m.jpg" },
+        { small: "PRO-1DFBADD9A-03-s.jpg", medium: "PRO-1DFBADD9A-03-m.jpg" },
       ],
     },
     tags: ["WD", "480GB"],
@@ -6957,6 +5294,8 @@ const products: FAProduct[] = [
       ["Leitura", "545MB/s"],
       ["Gravação", "430MB/s"],
     ],
+    searchName:
+      "ssd wd green 480gb sata iii 2 5 leitura 545mb s gravacao 430mb s",
   },
   {
     id: "PRO-440F91D6E",
@@ -6972,26 +5311,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-440F91D6E-thumb.jpg",
       images: [
-        {
-          small: "PRO-440F91D6E-00-s.jpg",
-          medium: "PRO-440F91D6E-00-m.jpg",
-        },
-        {
-          small: "PRO-440F91D6E-01-s.jpg",
-          medium: "PRO-440F91D6E-01-m.jpg",
-        },
-        {
-          small: "PRO-440F91D6E-02-s.jpg",
-          medium: "PRO-440F91D6E-02-m.jpg",
-        },
-        {
-          small: "PRO-440F91D6E-03-s.jpg",
-          medium: "PRO-440F91D6E-03-m.jpg",
-        },
-        {
-          small: "PRO-440F91D6E-04-s.jpg",
-          medium: "PRO-440F91D6E-04-m.jpg",
-        },
+        { small: "PRO-440F91D6E-00-s.jpg", medium: "PRO-440F91D6E-00-m.jpg" },
+        { small: "PRO-440F91D6E-01-s.jpg", medium: "PRO-440F91D6E-01-m.jpg" },
+        { small: "PRO-440F91D6E-02-s.jpg", medium: "PRO-440F91D6E-02-m.jpg" },
+        { small: "PRO-440F91D6E-03-s.jpg", medium: "PRO-440F91D6E-03-m.jpg" },
+        { small: "PRO-440F91D6E-04-s.jpg", medium: "PRO-440F91D6E-04-m.jpg" },
       ],
     },
     tags: ["Kingston", "1TB"],
@@ -7004,6 +5328,8 @@ const products: FAProduct[] = [
       ["Leitura", "6000MB/s"],
       ["Gravação", "4000MB/s"],
     ],
+    searchName:
+      "ssd kingston 1tb nv3 m 2 nvme pcie 4 leitura 6000mb s gravacao 4000mb s",
   },
   {
     id: "PRO-5FFBA85B9",
@@ -7019,18 +5345,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-5FFBA85B9-thumb.jpg",
       images: [
-        {
-          small: "PRO-5FFBA85B9-00-s.jpg",
-          medium: "PRO-5FFBA85B9-00-m.jpg",
-        },
-        {
-          small: "PRO-5FFBA85B9-01-s.jpg",
-          medium: "PRO-5FFBA85B9-01-m.jpg",
-        },
-        {
-          small: "PRO-5FFBA85B9-02-s.jpg",
-          medium: "PRO-5FFBA85B9-02-m.jpg",
-        },
+        { small: "PRO-5FFBA85B9-00-s.jpg", medium: "PRO-5FFBA85B9-00-m.jpg" },
+        { small: "PRO-5FFBA85B9-01-s.jpg", medium: "PRO-5FFBA85B9-01-m.jpg" },
+        { small: "PRO-5FFBA85B9-02-s.jpg", medium: "PRO-5FFBA85B9-02-m.jpg" },
       ],
     },
     tags: ["WD", "240GB"],
@@ -7043,6 +5360,8 @@ const products: FAProduct[] = [
       ["Leitura", "545MB/s"],
       ["Gravação", "430MB/s"],
     ],
+    searchName:
+      "ssd wd green 240gb sata iii 2 5 leitura 545mb s gravacao 430mb s",
   },
   {
     id: "PRO-F734C50BF",
@@ -7058,18 +5377,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-F734C50BF-thumb.jpg",
       images: [
-        {
-          small: "PRO-F734C50BF-00-s.jpg",
-          medium: "PRO-F734C50BF-00-m.jpg",
-        },
-        {
-          small: "PRO-F734C50BF-02-s.jpg",
-          medium: "PRO-F734C50BF-02-m.jpg",
-        },
-        {
-          small: "PRO-F734C50BF-03-s.jpg",
-          medium: "PRO-F734C50BF-03-m.jpg",
-        },
+        { small: "PRO-F734C50BF-00-s.jpg", medium: "PRO-F734C50BF-00-m.jpg" },
+        { small: "PRO-F734C50BF-02-s.jpg", medium: "PRO-F734C50BF-02-m.jpg" },
+        { small: "PRO-F734C50BF-03-s.jpg", medium: "PRO-F734C50BF-03-m.jpg" },
       ],
     },
     tags: ["Sandisk", "1TB"],
@@ -7082,6 +5392,8 @@ const products: FAProduct[] = [
       ["Leitura", "3200MB/s"],
       ["Gravação", "2500MB/s"],
     ],
+    searchName:
+      "ssd sandisk plus 1tb m 2 2280 nvme pcie gen 3 0 leitura 3200mb s e gravacao 2500mb s",
   },
   {
     id: "PRO-81F2F1B97",
@@ -7097,14 +5409,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-81F2F1B97-thumb.jpg",
       images: [
-        {
-          small: "PRO-81F2F1B97-00-s.jpg",
-          medium: "PRO-81F2F1B97-00-m.jpg",
-        },
-        {
-          small: "PRO-81F2F1B97-01-s.jpg",
-          medium: "PRO-81F2F1B97-01-m.jpg",
-        },
+        { small: "PRO-81F2F1B97-00-s.jpg", medium: "PRO-81F2F1B97-00-m.jpg" },
+        { small: "PRO-81F2F1B97-01-s.jpg", medium: "PRO-81F2F1B97-01-m.jpg" },
       ],
     },
     tags: ["Rise Mode", "1TB"],
@@ -7117,6 +5423,8 @@ const products: FAProduct[] = [
       ["Leitura", "2200MB/s"],
       ["Gravação", "1800MB/s"],
     ],
+    searchName:
+      "ssd rise mode gamer m 2 z series 1tb m 2 nvme leitura 2200mb s e gravacao 1800mb s",
   },
   {
     id: "PRO-6895E14E6",
@@ -7132,14 +5440,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6895E14E6-thumb.jpg",
       images: [
-        {
-          small: "PRO-6895E14E6-00-s.jpg",
-          medium: "PRO-6895E14E6-00-m.jpg",
-        },
-        {
-          small: "PRO-6895E14E6-01-s.jpg",
-          medium: "PRO-6895E14E6-01-m.jpg",
-        },
+        { small: "PRO-6895E14E6-00-s.jpg", medium: "PRO-6895E14E6-00-m.jpg" },
+        { small: "PRO-6895E14E6-01-s.jpg", medium: "PRO-6895E14E6-01-m.jpg" },
       ],
     },
     tags: ["WD", "Externo", "2TB"],
@@ -7151,6 +5453,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo wd elements 2tb usb 3 0",
   },
   {
     id: "PRO-A875C63EF",
@@ -7166,22 +5469,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A875C63EF-thumb.jpg",
       images: [
-        {
-          small: "PRO-A875C63EF-00-s.jpg",
-          medium: "PRO-A875C63EF-00-m.jpg",
-        },
-        {
-          small: "PRO-A875C63EF-01-s.jpg",
-          medium: "PRO-A875C63EF-01-m.jpg",
-        },
-        {
-          small: "PRO-A875C63EF-02-s.jpg",
-          medium: "PRO-A875C63EF-02-m.jpg",
-        },
-        {
-          small: "PRO-A875C63EF-03-s.jpg",
-          medium: "PRO-A875C63EF-03-m.jpg",
-        },
+        { small: "PRO-A875C63EF-00-s.jpg", medium: "PRO-A875C63EF-00-m.jpg" },
+        { small: "PRO-A875C63EF-01-s.jpg", medium: "PRO-A875C63EF-01-m.jpg" },
+        { small: "PRO-A875C63EF-02-s.jpg", medium: "PRO-A875C63EF-02-m.jpg" },
+        { small: "PRO-A875C63EF-03-s.jpg", medium: "PRO-A875C63EF-03-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "1TB"],
@@ -7194,6 +5485,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Formato físico", "3.5"],
     ],
+    searchName: "hd interno wd blue 1tb sata 3 5",
   },
   {
     id: "PRO-831F1A91E",
@@ -7209,18 +5501,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-831F1A91E-thumb.jpg",
       images: [
-        {
-          small: "PRO-831F1A91E-00-s.jpg",
-          medium: "PRO-831F1A91E-00-m.jpg",
-        },
-        {
-          small: "PRO-831F1A91E-01-s.jpg",
-          medium: "PRO-831F1A91E-01-m.jpg",
-        },
-        {
-          small: "PRO-831F1A91E-02-s.jpg",
-          medium: "PRO-831F1A91E-02-m.jpg",
-        },
+        { small: "PRO-831F1A91E-00-s.jpg", medium: "PRO-831F1A91E-00-m.jpg" },
+        { small: "PRO-831F1A91E-01-s.jpg", medium: "PRO-831F1A91E-01-m.jpg" },
+        { small: "PRO-831F1A91E-02-s.jpg", medium: "PRO-831F1A91E-02-m.jpg" },
       ],
     },
     tags: ["Seagate", "Interno", "16TB"],
@@ -7233,6 +5516,8 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "270MB"],
     ],
+    searchName:
+      "hd seagate ironwolf pro nas 16tb cache 270mb 7 200rpm 3 5 sata",
   },
   {
     id: "PRO-3D519B88D",
@@ -7248,14 +5533,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3D519B88D-thumb.jpg",
       images: [
-        {
-          small: "PRO-3D519B88D-00-s.jpg",
-          medium: "PRO-3D519B88D-00-m.jpg",
-        },
-        {
-          small: "PRO-3D519B88D-01-s.jpg",
-          medium: "PRO-3D519B88D-01-m.jpg",
-        },
+        { small: "PRO-3D519B88D-00-s.jpg", medium: "PRO-3D519B88D-00-m.jpg" },
+        { small: "PRO-3D519B88D-01-s.jpg", medium: "PRO-3D519B88D-01-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "4TB"],
@@ -7268,6 +5547,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "64MB"],
     ],
+    searchName: "hd surveillance wd purple 4tb 5400rpm cache 64mb 3 5 sata",
   },
   {
     id: "PRO-24B6D4F89",
@@ -7283,22 +5563,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-24B6D4F89-thumb.jpg",
       images: [
-        {
-          small: "PRO-24B6D4F89-00-s.jpg",
-          medium: "PRO-24B6D4F89-00-m.jpg",
-        },
-        {
-          small: "PRO-24B6D4F89-01-s.jpg",
-          medium: "PRO-24B6D4F89-01-m.jpg",
-        },
-        {
-          small: "PRO-24B6D4F89-02-s.jpg",
-          medium: "PRO-24B6D4F89-02-m.jpg",
-        },
-        {
-          small: "PRO-24B6D4F89-03-s.jpg",
-          medium: "PRO-24B6D4F89-03-m.jpg",
-        },
+        { small: "PRO-24B6D4F89-00-s.jpg", medium: "PRO-24B6D4F89-00-m.jpg" },
+        { small: "PRO-24B6D4F89-01-s.jpg", medium: "PRO-24B6D4F89-01-m.jpg" },
+        { small: "PRO-24B6D4F89-02-s.jpg", medium: "PRO-24B6D4F89-02-m.jpg" },
+        { small: "PRO-24B6D4F89-03-s.jpg", medium: "PRO-24B6D4F89-03-m.jpg" },
       ],
     },
     tags: ["WD", "Externo", "5TB"],
@@ -7310,6 +5578,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo wd elements 5tb usb 3 0",
   },
   {
     id: "PRO-909DEC392",
@@ -7325,22 +5594,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-909DEC392-thumb.jpg",
       images: [
-        {
-          small: "PRO-909DEC392-00-s.jpg",
-          medium: "PRO-909DEC392-00-m.jpg",
-        },
-        {
-          small: "PRO-909DEC392-01-s.jpg",
-          medium: "PRO-909DEC392-01-m.jpg",
-        },
-        {
-          small: "PRO-909DEC392-02-s.jpg",
-          medium: "PRO-909DEC392-02-m.jpg",
-        },
-        {
-          small: "PRO-909DEC392-03-s.jpg",
-          medium: "PRO-909DEC392-03-m.jpg",
-        },
+        { small: "PRO-909DEC392-00-s.jpg", medium: "PRO-909DEC392-00-m.jpg" },
+        { small: "PRO-909DEC392-01-s.jpg", medium: "PRO-909DEC392-01-m.jpg" },
+        { small: "PRO-909DEC392-02-s.jpg", medium: "PRO-909DEC392-02-m.jpg" },
+        { small: "PRO-909DEC392-03-s.jpg", medium: "PRO-909DEC392-03-m.jpg" },
       ],
     },
     tags: ["Seagate", "Externo", "4TB"],
@@ -7352,6 +5609,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo seagate 4tb usb 3 0",
   },
   {
     id: "PRO-C09F90AB6",
@@ -7367,18 +5625,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-C09F90AB6-thumb.jpg",
       images: [
-        {
-          small: "PRO-C09F90AB6-00-s.jpg",
-          medium: "PRO-C09F90AB6-00-m.jpg",
-        },
-        {
-          small: "PRO-C09F90AB6-01-s.jpg",
-          medium: "PRO-C09F90AB6-01-m.jpg",
-        },
-        {
-          small: "PRO-C09F90AB6-02-s.jpg",
-          medium: "PRO-C09F90AB6-02-m.jpg",
-        },
+        { small: "PRO-C09F90AB6-00-s.jpg", medium: "PRO-C09F90AB6-00-m.jpg" },
+        { small: "PRO-C09F90AB6-01-s.jpg", medium: "PRO-C09F90AB6-01-m.jpg" },
+        { small: "PRO-C09F90AB6-02-s.jpg", medium: "PRO-C09F90AB6-02-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "8TB"],
@@ -7391,6 +5640,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Formato físico", "3.5"],
     ],
+    searchName: "hd wd red plus 8tb 3 5 sata",
   },
   {
     id: "PRO-80687D50E",
@@ -7406,18 +5656,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-80687D50E-thumb.jpg",
       images: [
-        {
-          small: "PRO-80687D50E-00-s.jpg",
-          medium: "PRO-80687D50E-00-m.jpg",
-        },
-        {
-          small: "PRO-80687D50E-01-s.jpg",
-          medium: "PRO-80687D50E-01-m.jpg",
-        },
-        {
-          small: "PRO-80687D50E-02-s.jpg",
-          medium: "PRO-80687D50E-02-m.jpg",
-        },
+        { small: "PRO-80687D50E-00-s.jpg", medium: "PRO-80687D50E-00-m.jpg" },
+        { small: "PRO-80687D50E-01-s.jpg", medium: "PRO-80687D50E-01-m.jpg" },
+        { small: "PRO-80687D50E-02-s.jpg", medium: "PRO-80687D50E-02-m.jpg" },
       ],
     },
     tags: ["Seagate", "Interno", "4TB"],
@@ -7430,6 +5671,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Formato físico", "3.5"],
     ],
+    searchName: "hd interno seagate barracuda 4tb sata 3 5",
   },
   {
     id: "PRO-959DDA8A6",
@@ -7445,22 +5687,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-959DDA8A6-thumb.jpg",
       images: [
-        {
-          small: "PRO-959DDA8A6-00-s.jpg",
-          medium: "PRO-959DDA8A6-00-m.jpg",
-        },
-        {
-          small: "PRO-959DDA8A6-01-s.jpg",
-          medium: "PRO-959DDA8A6-01-m.jpg",
-        },
-        {
-          small: "PRO-959DDA8A6-02-s.jpg",
-          medium: "PRO-959DDA8A6-02-m.jpg",
-        },
-        {
-          small: "PRO-959DDA8A6-03-s.jpg",
-          medium: "PRO-959DDA8A6-03-m.jpg",
-        },
+        { small: "PRO-959DDA8A6-00-s.jpg", medium: "PRO-959DDA8A6-00-m.jpg" },
+        { small: "PRO-959DDA8A6-01-s.jpg", medium: "PRO-959DDA8A6-01-m.jpg" },
+        { small: "PRO-959DDA8A6-02-s.jpg", medium: "PRO-959DDA8A6-02-m.jpg" },
+        { small: "PRO-959DDA8A6-03-s.jpg", medium: "PRO-959DDA8A6-03-m.jpg" },
       ],
     },
     tags: ["Seagate", "Externo", "1TB"],
@@ -7472,6 +5702,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo seagate 1tb usb 3 0",
   },
   {
     id: "PRO-90D0A03BA",
@@ -7487,22 +5718,10 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-90D0A03BA-thumb.jpg",
       images: [
-        {
-          small: "PRO-90D0A03BA-00-s.jpg",
-          medium: "PRO-90D0A03BA-00-m.jpg",
-        },
-        {
-          small: "PRO-90D0A03BA-01-s.jpg",
-          medium: "PRO-90D0A03BA-01-m.jpg",
-        },
-        {
-          small: "PRO-90D0A03BA-02-s.jpg",
-          medium: "PRO-90D0A03BA-02-m.jpg",
-        },
-        {
-          small: "PRO-90D0A03BA-03-s.jpg",
-          medium: "PRO-90D0A03BA-03-m.jpg",
-        },
+        { small: "PRO-90D0A03BA-00-s.jpg", medium: "PRO-90D0A03BA-00-m.jpg" },
+        { small: "PRO-90D0A03BA-01-s.jpg", medium: "PRO-90D0A03BA-01-m.jpg" },
+        { small: "PRO-90D0A03BA-02-s.jpg", medium: "PRO-90D0A03BA-02-m.jpg" },
+        { small: "PRO-90D0A03BA-03-s.jpg", medium: "PRO-90D0A03BA-03-m.jpg" },
       ],
     },
     tags: ["Seagate", "Externo", "2TB"],
@@ -7514,6 +5733,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo seagate 2tb usb 3 0",
   },
   {
     id: "PRO-46FCACB03",
@@ -7529,10 +5749,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-46FCACB03-thumb.jpg",
       images: [
-        {
-          small: "PRO-46FCACB03-00-s.jpg",
-          medium: "PRO-46FCACB03-00-m.jpg",
-        },
+        { small: "PRO-46FCACB03-00-s.jpg", medium: "PRO-46FCACB03-00-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "4TB"],
@@ -7545,6 +5762,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "256MB"],
     ],
+    searchName: "hd wd red plus nas 4tb 3 5 cache 256mb 5400rpm sata",
   },
   {
     id: "PRO-460E13F00",
@@ -7560,26 +5778,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-460E13F00-thumb.jpg",
       images: [
-        {
-          small: "PRO-460E13F00-00-s.jpg",
-          medium: "PRO-460E13F00-00-m.jpg",
-        },
-        {
-          small: "PRO-460E13F00-01-s.jpg",
-          medium: "PRO-460E13F00-01-m.jpg",
-        },
-        {
-          small: "PRO-460E13F00-02-s.jpg",
-          medium: "PRO-460E13F00-02-m.jpg",
-        },
-        {
-          small: "PRO-460E13F00-03-s.jpg",
-          medium: "PRO-460E13F00-03-m.jpg",
-        },
-        {
-          small: "PRO-460E13F00-04-s.jpg",
-          medium: "PRO-460E13F00-04-m.jpg",
-        },
+        { small: "PRO-460E13F00-00-s.jpg", medium: "PRO-460E13F00-00-m.jpg" },
+        { small: "PRO-460E13F00-01-s.jpg", medium: "PRO-460E13F00-01-m.jpg" },
+        { small: "PRO-460E13F00-02-s.jpg", medium: "PRO-460E13F00-02-m.jpg" },
+        { small: "PRO-460E13F00-03-s.jpg", medium: "PRO-460E13F00-03-m.jpg" },
+        { small: "PRO-460E13F00-04-s.jpg", medium: "PRO-460E13F00-04-m.jpg" },
       ],
     },
     tags: ["Seagate", "Externo", "8TB"],
@@ -7591,6 +5794,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB"],
     ],
+    searchName: "hd externo seagate expansion 8tb usb",
   },
   {
     id: "PRO-11CE6718F",
@@ -7606,18 +5810,9 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-11CE6718F-thumb.jpg",
       images: [
-        {
-          small: "PRO-11CE6718F-00-s.jpg",
-          medium: "PRO-11CE6718F-00-m.jpg",
-        },
-        {
-          small: "PRO-11CE6718F-01-s.jpg",
-          medium: "PRO-11CE6718F-01-m.jpg",
-        },
-        {
-          small: "PRO-11CE6718F-02-s.jpg",
-          medium: "PRO-11CE6718F-02-m.jpg",
-        },
+        { small: "PRO-11CE6718F-00-s.jpg", medium: "PRO-11CE6718F-00-m.jpg" },
+        { small: "PRO-11CE6718F-01-s.jpg", medium: "PRO-11CE6718F-01-m.jpg" },
+        { small: "PRO-11CE6718F-02-s.jpg", medium: "PRO-11CE6718F-02-m.jpg" },
       ],
     },
     tags: ["Toshiba", "Interno", "4TB"],
@@ -7630,6 +5825,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Rotação", "7200 RPM"],
     ],
+    searchName: "hd toshiba n300 4tb 7200 rpm nas 3 5 sata",
   },
   {
     id: "PRO-7FE03DF56",
@@ -7645,26 +5841,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-7FE03DF56-thumb.jpg",
       images: [
-        {
-          small: "PRO-7FE03DF56-00-s.jpg",
-          medium: "PRO-7FE03DF56-00-m.jpg",
-        },
-        {
-          small: "PRO-7FE03DF56-01-s.jpg",
-          medium: "PRO-7FE03DF56-01-m.jpg",
-        },
-        {
-          small: "PRO-7FE03DF56-02-s.jpg",
-          medium: "PRO-7FE03DF56-02-m.jpg",
-        },
-        {
-          small: "PRO-7FE03DF56-03-s.jpg",
-          medium: "PRO-7FE03DF56-03-m.jpg",
-        },
-        {
-          small: "PRO-7FE03DF56-04-s.jpg",
-          medium: "PRO-7FE03DF56-04-m.jpg",
-        },
+        { small: "PRO-7FE03DF56-00-s.jpg", medium: "PRO-7FE03DF56-00-m.jpg" },
+        { small: "PRO-7FE03DF56-01-s.jpg", medium: "PRO-7FE03DF56-01-m.jpg" },
+        { small: "PRO-7FE03DF56-02-s.jpg", medium: "PRO-7FE03DF56-02-m.jpg" },
+        { small: "PRO-7FE03DF56-03-s.jpg", medium: "PRO-7FE03DF56-03-m.jpg" },
+        { small: "PRO-7FE03DF56-04-s.jpg", medium: "PRO-7FE03DF56-04-m.jpg" },
       ],
     },
     tags: ["WD", "Externo", "4TB"],
@@ -7676,6 +5857,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo wd elements 4tb usb 3 0",
   },
   {
     id: "PRO-0BD230E7D",
@@ -7691,14 +5873,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-0BD230E7D-thumb.jpg",
       images: [
-        {
-          small: "PRO-0BD230E7D-00-s.jpg",
-          medium: "PRO-0BD230E7D-00-m.jpg",
-        },
-        {
-          small: "PRO-0BD230E7D-01-s.jpg",
-          medium: "PRO-0BD230E7D-01-m.jpg",
-        },
+        { small: "PRO-0BD230E7D-00-s.jpg", medium: "PRO-0BD230E7D-00-m.jpg" },
+        { small: "PRO-0BD230E7D-01-s.jpg", medium: "PRO-0BD230E7D-01-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "2TB"],
@@ -7711,6 +5887,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Formato físico", "3.5"],
     ],
+    searchName: "hd interno wd red plus 2tb sata 3 5",
   },
   {
     id: "PRO-3F32F454C",
@@ -7726,10 +5903,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-3F32F454C-thumb.jpg",
       images: [
-        {
-          small: "PRO-3F32F454C-00-s.jpg",
-          medium: "PRO-3F32F454C-00-m.jpg",
-        },
+        { small: "PRO-3F32F454C-00-s.jpg", medium: "PRO-3F32F454C-00-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "22TB"],
@@ -7742,6 +5916,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "512MB"],
     ],
+    searchName: "hd wd purple pro 22tb 7200 rpm cache 512mb 3 5 sata",
   },
   {
     id: "PRO-228E8C0E5",
@@ -7757,14 +5932,8 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-228E8C0E5-thumb.jpg",
       images: [
-        {
-          small: "PRO-228E8C0E5-00-s.jpg",
-          medium: "PRO-228E8C0E5-00-m.jpg",
-        },
-        {
-          small: "PRO-228E8C0E5-01-s.jpg",
-          medium: "PRO-228E8C0E5-01-m.jpg",
-        },
+        { small: "PRO-228E8C0E5-00-s.jpg", medium: "PRO-228E8C0E5-00-m.jpg" },
+        { small: "PRO-228E8C0E5-01-s.jpg", medium: "PRO-228E8C0E5-01-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "18TB"],
@@ -7777,6 +5946,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "512MB"],
     ],
+    searchName: "hd wd purple pro 18tb 3 5 7200rpm cache 512mb sata",
   },
   {
     id: "PRO-8299D69CA",
@@ -7792,10 +5962,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-8299D69CA-thumb.jpg",
       images: [
-        {
-          small: "PRO-8299D69CA-00-s.jpg",
-          medium: "PRO-8299D69CA-00-m.jpg",
-        },
+        { small: "PRO-8299D69CA-00-s.jpg", medium: "PRO-8299D69CA-00-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "6TB"],
@@ -7808,6 +5975,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Cache", "256MB"],
     ],
+    searchName: "hd wd red plus nas 6tb 3 5 cache 256mb 5400rpm sata",
   },
   {
     id: "PRO-6120A4610",
@@ -7823,10 +5991,7 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-6120A4610-thumb.jpg",
       images: [
-        {
-          small: "PRO-6120A4610-00-s.jpg",
-          medium: "PRO-6120A4610-00-m.jpg",
-        },
+        { small: "PRO-6120A4610-00-s.jpg", medium: "PRO-6120A4610-00-m.jpg" },
       ],
     },
     tags: ["WD", "Interno", "8TB"],
@@ -7839,6 +6004,7 @@ const products: FAProduct[] = [
       ["Interface", "SATA"],
       ["Formato físico", "3.5"],
     ],
+    searchName: "hd interno wd purple pro smart 8tb sata 3 5",
   },
   {
     id: "PRO-A6E3C5D08",
@@ -7854,26 +6020,11 @@ const products: FAProduct[] = [
     media: {
       thumb: "PRO-A6E3C5D08-thumb.jpg",
       images: [
-        {
-          small: "PRO-A6E3C5D08-00-s.jpg",
-          medium: "PRO-A6E3C5D08-00-m.jpg",
-        },
-        {
-          small: "PRO-A6E3C5D08-01-s.jpg",
-          medium: "PRO-A6E3C5D08-01-m.jpg",
-        },
-        {
-          small: "PRO-A6E3C5D08-02-s.jpg",
-          medium: "PRO-A6E3C5D08-02-m.jpg",
-        },
-        {
-          small: "PRO-A6E3C5D08-03-s.jpg",
-          medium: "PRO-A6E3C5D08-03-m.jpg",
-        },
-        {
-          small: "PRO-A6E3C5D08-04-s.jpg",
-          medium: "PRO-A6E3C5D08-04-m.jpg",
-        },
+        { small: "PRO-A6E3C5D08-00-s.jpg", medium: "PRO-A6E3C5D08-00-m.jpg" },
+        { small: "PRO-A6E3C5D08-01-s.jpg", medium: "PRO-A6E3C5D08-01-m.jpg" },
+        { small: "PRO-A6E3C5D08-02-s.jpg", medium: "PRO-A6E3C5D08-02-m.jpg" },
+        { small: "PRO-A6E3C5D08-03-s.jpg", medium: "PRO-A6E3C5D08-03-m.jpg" },
+        { small: "PRO-A6E3C5D08-04-s.jpg", medium: "PRO-A6E3C5D08-04-m.jpg" },
       ],
     },
     tags: ["WD", "Externo", "4TB"],
@@ -7885,6 +6036,7 @@ const products: FAProduct[] = [
       ["Uso/Tipo", "Externo"],
       ["Interface", "USB 3.0"],
     ],
+    searchName: "hd externo wd 4tb my passport usb 3 0",
   },
 ] as const;
 

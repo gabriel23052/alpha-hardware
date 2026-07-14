@@ -18,7 +18,7 @@ import urlParamsValidations from "@utils/urlParamsValidations";
 import classes from "./Catalog.module.css";
 
 export type FilterFormFields = {
-  name: string;
+  search: string;
   saleId: string;
   category: string;
   minPrice: string;
@@ -45,7 +45,7 @@ const Catalog = () => {
 
   const filterForm = useJafh<FilterFormFields>(
     {
-      name: { value: "", validation: null },
+      search: { value: "", validation: null },
       saleId: { value: "", validation: null },
       category: { value: "", validation: null },
       minPrice: { value: "", validation: fieldValidations.priceFilter },
@@ -60,7 +60,7 @@ const Catalog = () => {
     if (!filterForm.isValid) return;
     const formData = filterForm.getData();
     const filter: IProductFilter = {};
-    if (formData.name !== "") filter.name = formData.name;
+    if (formData.search !== "") filter.search = formData.search;
     if (formData.saleId !== "") filter.saleId = formData.saleId;
     if (formData.category !== "") filter.category = formData.category;
     if (formData.minPrice !== "")
@@ -120,7 +120,7 @@ const Catalog = () => {
   const updateFieldsFromQueryParams = () => {
     const category = params.get("category");
     const sale = params.get("sale");
-    const name = params.get("name");
+    const search = params.get("search");
     if (category) {
       if (!urlParamsValidations.productCategory(category)) {
         setInvalidFilter(true);
@@ -135,12 +135,12 @@ const Catalog = () => {
       }
       filterForm.updateField("saleId", sale);
     }
-    if (name) {
-      if (!urlParamsValidations.productName(name)) {
+    if (search) {
+      if (!urlParamsValidations.productName(search)) {
         setInvalidFilter(true);
         return;
       }
-      filterForm.updateField("name", name);
+      filterForm.updateField("search", search);
     }
   };
 

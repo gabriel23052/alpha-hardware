@@ -11,6 +11,8 @@ const productsFixtures = {
         {
           id: "PRO-6BC10434B",
           name: "Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30",
+          searchName:
+            "memoria ram xpg lancer rgb 32gb 2x16gb 6000mhz ddr5 cl30",
           category: "ram",
           prices: {
             full: 107777,
@@ -63,6 +65,8 @@ const productsFixtures = {
         {
           id: "PRO-688377899",
           name: "Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing",
+          searchName:
+            "placa de video gigabyte rtx 5070 windforce oc sff 12g nvidia geforce 12gb gddr7 192bits dlss ray tracing",
           category: "gpu",
           prices: {
             full: 499999,
@@ -110,6 +114,8 @@ const productsFixtures = {
         {
           id: "PRO-A5EDC5457",
           name: "Processador AMD Ryzen 5 5600GT, 3.6 GHz, (4.6GHz Max Turbo), Cache 4MB, 6 Núcleos, 12 Threads, AM4",
+          searchName:
+            "processador amd ryzen 5 5600gt 3 6 ghz 4 6ghz max turbo cache 4mb 6 nucleos 12 threads am4",
           category: "cpu",
           prices: {
             full: 88888,
@@ -145,6 +151,7 @@ const productsFixtures = {
         {
           id: "PRO-98DAA2CA8",
           name: "Memória RAM Corsair Vengeance LPX, 8GB, 3200MHz, DDR4, CL16",
+          searchName: "memoria ram corsair vengeance lpx 8gb 3200mhz ddr4 cl16",
           category: "ram",
           prices: {
             full: 17058,
@@ -193,6 +200,8 @@ const productsFixtures = {
         {
           id: "PRO-6BC10434B",
           name: "Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30",
+          searchName:
+            "memoria ram xpg lancer rgb 32gb 2x16gb 6000mhz ddr5 cl30",
           category: "ram",
           prices: {
             full: 107777,
@@ -273,6 +282,8 @@ const productsFixtures = {
         {
           id: "PRO-6BC10434B",
           name: "Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30",
+          searchName:
+            "memoria ram xpg lancer rgb 32gb 2x16gb 6000mhz ddr5 cl30",
         },
       ],
     },
@@ -282,6 +293,8 @@ const productsFixtures = {
         {
           id: "PRO-688377899",
           name: "Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing",
+          searchName:
+            "placa de video gigabyte rtx 5070 windforce oc sff 12g nvidia geforce 12gb gddr7 192bits dlss ray tracing",
           category: "gpu",
           prices: {
             full: 450000,
@@ -341,6 +354,8 @@ const productsFixtures = {
         {
           id: "PRO-002350C9D",
           name: "Placa de Vídeo Gigabyte RTX 5060 WINDFORCE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing",
+          searchName:
+            "placa de video gigabyte rtx 5060 windforce oc 8g nvidia geforce 8gb gddr7 128bits dlss ray tracing",
           category: "gpu",
           prices: {
             full: 245555,
@@ -395,6 +410,8 @@ const productsFixtures = {
         {
           id: "PRO-2FD400729",
           name: "Placa de Vídeo Gigabyte RTX 5070 Ti WINDFORCE SFF 16G NVIDIA GeForce, 16GB, GDDR7, 256bits, DLSS, Ray Tracing",
+          searchName:
+            "placa de video gigabyte rtx 5070 ti windforce sff 16g nvidia geforce 16gb gddr7 256bits dlss ray tracing",
           category: "gpu",
           prices: {
             full: 623333,
@@ -449,6 +466,8 @@ const productsFixtures = {
         {
           id: "PRO-B7FA0718A",
           name: "Placa de Vídeo MSI GeForce RTX 5070 12G VENTUS 2X OC,12 GB GDDR7, 28Gbps, NVIDIA GeForce RTX 5070",
+          searchName:
+            "placa de video msi geforce rtx 5070 12g ventus 2x oc 12 gb gddr7 28gbps nvidia geforce rtx 5070",
           category: "gpu",
           prices: {
             full: 409999,
@@ -738,7 +757,7 @@ const productsFixtures = {
   filters: {
     name: [
       {
-        filter: { name: "gigabyte" },
+        filter: { search: "gigabyte" },
         expectedIds: [
           "PRO-2F61C7214",
           "PRO-3F55E68AA",
@@ -764,7 +783,7 @@ const productsFixtures = {
         ],
       },
       {
-        filter: { name: "GIGABYTE" },
+        filter: { search: "GIGABYTE" },
         expectedIds: [
           "PRO-2F61C7214",
           "PRO-3F55E68AA",
@@ -790,7 +809,7 @@ const productsFixtures = {
         ],
       },
       {
-        filter: { name: "gIgAByTe" },
+        filter: { search: "gIgAByTe" },
         expectedIds: [
           "PRO-2F61C7214",
           "PRO-3F55E68AA",
@@ -817,22 +836,39 @@ const productsFixtures = {
       },
       {
         filter: {
-          name: "Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, Intel, ATX, DDR5",
+          search:
+            "Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, Intel, ATX, DDR5",
         },
         expectedIds: ["PRO-7554C4CF6"],
       },
       {
-        filter: {
-          name: "Placa-Mae ASUS Prime B760-Plus, Intel LGA 1700, Intel, ATX, DDR5",
-        },
-        expectedIds: [],
+        filter: { search: "   gigabyte" },
+        expectedIds: [
+          "PRO-2F61C7214",
+          "PRO-3F55E68AA",
+          "PRO-67E2FEC06",
+          "PRO-19BD26348",
+          "PRO-F9C97BA04",
+          "PRO-229E292D5",
+          "PRO-7D6BE3AA2",
+          "PRO-9CE8E8E5A",
+          "PRO-272C4B402",
+          "PRO-13944B524",
+          "PRO-026333169",
+          "PRO-688377899",
+          "PRO-002350C9D",
+          "PRO-9C0DAC9F7",
+          "PRO-2FD400729",
+          "PRO-6B1349768",
+          "PRO-D0986A8D9",
+          "PRO-4860CF473",
+          "PRO-68010B73A",
+          "PRO-288D0B161",
+          "PRO-2D5EA13C6",
+        ],
       },
       {
-        filter: { name: "   gigabyte" },
-        expectedIds: [],
-      },
-      {
-        filter: { name: "test" },
+        filter: { search: "test" },
         expectedIds: [],
       },
     ],
@@ -1079,7 +1115,7 @@ const productsFixtures = {
     multiples: [
       {
         filter: {
-          name: "gigabyte",
+          search: "gigabyte",
           category: "moba",
         },
         expectedIds: [
@@ -1126,7 +1162,7 @@ const productsFixtures = {
       },
       {
         filter: {
-          name: "Memória",
+          search: "Memória",
           minPrice: 30000,
           maxPrice: 60000,
         },
@@ -1189,7 +1225,7 @@ const productsFixtures = {
       },
       {
         filter: {
-          name: "kingston",
+          search: "kingston",
         },
         expectedIds: [
           "PRO-FF4ED3B46",
@@ -1212,7 +1248,7 @@ const productsFixtures = {
       },
       {
         filter: {
-          name: "msi",
+          search: "msi",
           category: "moba",
           minPrice: 50000,
           maxPrice: 100000,
@@ -1222,7 +1258,7 @@ const productsFixtures = {
       },
       {
         filter: {
-          name: "16",
+          search: "16",
           category: "cpu",
           minPrice: 150000,
           maxPrice: 250000,

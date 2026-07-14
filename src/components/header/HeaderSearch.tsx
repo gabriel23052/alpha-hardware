@@ -16,6 +16,8 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
 
+import { normalizeSearchText } from "@utils/normalizeSearchText";
+
 import classes from "./HeaderSearch.module.css";
 
 const SEARCH_MAX_LENGTH = 100;
@@ -44,7 +46,7 @@ const HeaderSearch = () => {
     lastSearchFetch.current = search;
     request.fetch({
       filter: {
-        name: search.trim(),
+        search: search.trim(),
       },
       format: "suggestion",
       sort: "alphabetical",
@@ -60,8 +62,8 @@ const HeaderSearch = () => {
     }
     if (search === lastSearchFetch.current) return request.data;
     if (search.startsWith(lastSearchFetch.current)) {
-      return request.data.filter((suggestion) => {
-        return suggestion.name.toLowerCase().includes(search.toLowerCase());
+      return request.data.filter(({searchName}) => {
+        return searchName.includes(normalizeSearchText(search));
       });
     }
     fetchSuggestions();
@@ -94,7 +96,7 @@ const HeaderSearch = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     navigate(
-      `/catalog?name=${encodeURIComponent(searchForm.fields.search.value.trim())}`,
+      `/catalog?search=${encodeURIComponent(searchForm.fields.search.value.trim())}`,
     );
   };
 

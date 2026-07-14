@@ -50,6 +50,7 @@ type FABanner_Full = FABanner;
 type FAProduct = {
   id: string;
   name: string;
+  searchName: string;
   category: string;
   prices: FAProductPrice;
   media: FAProductMedia;
@@ -68,7 +69,7 @@ type FAProduct_Price = {
   id: string;
   pixPrice: number;
 };
-type FAProduct_Suggestion = Pick<FAProduct, "id" | "name">;
+type FAProduct_Suggestion = Pick<FAProduct, "id" | "name" | "searchName">;
 type FAProduct_Card = {
   id: string;
   name: string;
@@ -105,7 +106,7 @@ type FAProductQuery = {
 };
 
 type FAProductFilter = {
-  name?: string;
+  search?: string;
   saleId?: string;
   category?: string;
   minPrice?: number;

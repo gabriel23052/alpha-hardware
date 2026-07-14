@@ -15,7 +15,7 @@ const errorsEntries = [
   ["PRODUCT_QUERY_INVALID_FORMAT", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_SORT", "Falha ao buscar produto"],
   ["PRODUCT_FILTER_INVALID_FILTER", "Falha ao buscar produto"],
-  ["PRODUCT_FILTER_INVALID_NAME", "Falha ao buscar produto"],
+  ["PRODUCT_FILTER_INVALID_SEARCH", "Falha ao buscar produto"],
   ["PRODUCT_FILTER_INVALID_SALE_ID", "Falha ao buscar produto"],
   ["PRODUCT_FILTER_INVALID_CATEGORY", "Falha ao buscar produto"],
   ["PRODUCT_FILTER_INVALID_MIN_PRICE", "Falha ao buscar produto"],
@@ -52,4 +52,3 @@ function getFakeAPIError(id: ErrorID): FAResponseError {
 }
 
 export { getFakeAPIError };
-

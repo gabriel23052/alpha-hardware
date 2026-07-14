@@ -38,6 +38,7 @@ type IBanner = {
 type IProduct = {
   id: string;
   name: string;
+  searchName: string;
   category: string;
   prices: IProductPrices;
   sale?: IProductSale;
@@ -65,6 +66,7 @@ type IProduct_Card = {
 type IProduct_Suggestion = {
   id: string;
   name: string;
+  searchName: string;
 };
 
 type IProductPrices = {
@@ -115,7 +117,7 @@ interface IFreight {
 type IProductFormatOptions = "full" | "price" | "card" | "suggestion";
 
 type IProductFilter = {
-  name?: string;
+  search?: string;
   saleId?: string;
   category?: string;
   minPrice?: number;

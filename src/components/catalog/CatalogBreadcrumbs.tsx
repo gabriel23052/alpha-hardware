@@ -9,7 +9,7 @@ import { CATEGORIES } from "../../config";
 import classes from "./CatalogBreadcrumbs.module.css";
 
 type Props = {
-  name: string;
+  search: string;
   category: string;
   saleId: string;
   updateFormField: JafhUpdateField<string>;
@@ -17,7 +17,7 @@ type Props = {
 };
 
 const CatalogBreadcrumbs = ({
-  name,
+  search,
   category,
   saleId,
   updateFormField,
@@ -25,7 +25,7 @@ const CatalogBreadcrumbs = ({
 }: Props) => {
   const [params] = useSearchParams();
 
-  const removeFilter = (formId: "saleId" | "name" | "category") => {
+  const removeFilter = (formId: "saleId" | "search" | "category") => {
     if (formId === "category") {
       updateCategory("");
       return;
@@ -40,12 +40,12 @@ const CatalogBreadcrumbs = ({
           {params.get("saleName") || `Promoção ${saleId}`}
         </CatalogBreadcrumb>
       )}
-      {name !== "" && (
-        <CatalogBreadcrumb close={() => removeFilter("name")}>
-          {`Busca por: "${name}"`}
+      {search !== "" && (
+        <CatalogBreadcrumb close={() => removeFilter("search")}>
+          {`Busca por: "${search}"`}
         </CatalogBreadcrumb>
       )}
-      {CATEGORIES.map(c => c.name).includes(category) && (
+      {CATEGORIES.map((c) => c.name).includes(category) && (
         <CatalogBreadcrumb close={() => removeFilter("category")}>
           {CATEGORIES.find((cat) => cat.name === category)?.label}
         </CatalogBreadcrumb>
@@ -55,4 +55,3 @@ const CatalogBreadcrumbs = ({
 };
 
 export default CatalogBreadcrumbs;
-

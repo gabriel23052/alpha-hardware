@@ -21,13 +21,13 @@ const CatalogTopMenu = ({
   openMobileFilter,
   filterContainerId,
   productsAmount,
-  updateCategory
+  updateCategory,
 }: Props) => {
   return (
     <div className={classes.container}>
       <CatalogBreadcrumbs
         category={filterForm.fields.category.value}
-        name={filterForm.fields.name.value}
+        search={filterForm.fields.search.value}
         saleId={filterForm.fields.saleId.value}
         updateFormField={filterForm.updateField}
         updateCategory={updateCategory}
@@ -52,4 +52,3 @@ const CatalogTopMenu = ({
 };
 
 export default CatalogTopMenu;
-

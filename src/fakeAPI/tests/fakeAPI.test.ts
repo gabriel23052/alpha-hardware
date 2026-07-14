@@ -608,36 +608,36 @@ describe("PrimitiveValidations", () => {
   });
   describe("productFilterName", () => {
     it("Retorna true para nomes de produto válidos", () => {
-      expect(PrimitiveValidations.productFilterName("valid product")).toBe(
+      expect(PrimitiveValidations.productFilterSearch("valid product")).toBe(
         true,
       );
-      expect(PrimitiveValidations.productFilterName("12")).toBe(true);
+      expect(PrimitiveValidations.productFilterSearch("12")).toBe(true);
       expect(
-        PrimitiveValidations.productFilterName(Array(200).fill("a").join("")),
+        PrimitiveValidations.productFilterSearch(Array(200).fill("a").join("")),
       ).toBe(true);
     });
 
     it("Retorna false para nomes de produto inválidos", () => {
-      expect(PrimitiveValidations.productFilterName(12)).toBe(false);
-      expect(PrimitiveValidations.productFilterName(false)).toBe(false);
-      expect(PrimitiveValidations.productFilterName(true)).toBe(false);
-      expect(PrimitiveValidations.productFilterName(["wrong"])).toBe(false);
-      expect(PrimitiveValidations.productFilterName("")).toBe(false);
-      expect(PrimitiveValidations.productFilterName("A")).toBe(false);
-      expect(PrimitiveValidations.productFilterName(" valid product")).toBe(
+      expect(PrimitiveValidations.productFilterSearch(12)).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch(false)).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch(true)).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch(["wrong"])).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch("")).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch("A")).toBe(false);
+      expect(PrimitiveValidations.productFilterSearch(" valid product")).toBe(
         false,
       );
-      expect(PrimitiveValidations.productFilterName("valid product ")).toBe(
+      expect(PrimitiveValidations.productFilterSearch("valid product ")).toBe(
         false,
       );
-      expect(PrimitiveValidations.productFilterName(" valid product ")).toBe(
+      expect(PrimitiveValidations.productFilterSearch(" valid product ")).toBe(
         false,
       );
       expect(
-        PrimitiveValidations.productFilterName(Array(201).fill("a").join("")),
+        PrimitiveValidations.productFilterSearch(Array(201).fill("a").join("")),
       ).toBe(false);
       expect(
-        PrimitiveValidations.productFilterName(Array(250).fill("a").join("")),
+        PrimitiveValidations.productFilterSearch(Array(250).fill("a").join("")),
       ).toBe(false);
     });
   });
@@ -968,9 +968,9 @@ describe("Validations", () => {
       );
 
       // @ts-expect-error test
-      expect(Validations.productQueryFilter(res, { name: "w" })).toBe(false);
+      expect(Validations.productQueryFilter(res, { search: "w" })).toBe(false);
       expect(responseErrorMessage(res)).toBe(
-        getFakeAPIError("PRODUCT_FILTER_INVALID_NAME").message,
+        getFakeAPIError("PRODUCT_FILTER_INVALID_SEARCH").message,
       );
 
       expect(

@@ -1,5 +1,6 @@
 import { products, productsIdMap } from "@fakeAPI/data/products";
 import { saleModifierMap } from "@fakeAPI/data/sales";
+import { normalizeSearchText } from "@fakeAPI/utils/normalizeSearchText";
 
 import { SalesTable } from "./SalesTable";
 
@@ -28,12 +29,11 @@ class ProductsTable {
 
   public searchByFilter(filter: FAProductFilter) {
     let filteredProducts: FAProduct[] = products;
-    if ("name" in filter) {
-      filteredProducts = filteredProducts.filter((product) =>
-        product.name
-          .toLowerCase()
-          .includes((filter.name as string).toLowerCase()),
-      );
+    if ("search" in filter) {
+      const searchName = normalizeSearchText(filter.search as string);
+      filteredProducts = filteredProducts.filter((p) => {
+        return p.searchName.includes(searchName);
+      });
     }
     if ("saleId" in filter) {
       filteredProducts = filteredProducts.filter(
@@ -118,10 +118,13 @@ class ProductsTable {
   }
 
   public getInSuggestionFormat() {
-    return this.products.map<FAProduct_Suggestion>(({ id, name }) => ({
-      id,
-      name,
-    }));
+    return this.products.map<FAProduct_Suggestion>(
+      ({ id, name, searchName }) => ({
+        id,
+        name,
+        searchName,
+      }),
+    );
   }
 
   public getInCardFormat() {

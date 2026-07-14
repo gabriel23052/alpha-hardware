@@ -23,11 +23,11 @@ class PrimitiveValidations {
     return /^SAL-[0-9A-F]{6}$/.test(id);
   }
 
-  public static productFilterName(name: unknown): name is string {
-    if (typeof name !== "string" || !this.isTrimmed(name)) return false;
-    const maxLength = config.validationsRules.productQueryNameMaxLength;
-    const minLength = config.validationsRules.productQueryNameMinLength;
-    return this.stringLength(name, minLength, maxLength);
+  public static productFilterSearch(search: unknown): search is string {
+    if (typeof search !== "string" || !this.isTrimmed(search)) return false;
+    const maxLength = config.validationsRules.productQuerySearchMaxLength;
+    const minLength = config.validationsRules.productQuerySearchMinLength;
+    return this.stringLength(search, minLength, maxLength);
   }
 
   public static productFilterCategory(category: unknown): category is string {

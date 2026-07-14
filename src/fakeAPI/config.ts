@@ -14,8 +14,8 @@ const config = {
     sessionFakeCookie: "fakeCookie-session",
   },
   validationsRules: {
-    productQueryNameMaxLength: 200,
-    productQueryNameMinLength: 2,
+    productQuerySearchMaxLength: 200,
+    productQuerySearchMinLength: 2,
     productQueryCategoryMaxLength: 30,
     productQueryCategoryMinLength: 2,
     productQueryMinPrice: 0,

@@ -56,10 +56,10 @@ class Validations {
       return response.setError("PRODUCT_FILTER_INVALID_FILTER");
 
     if (
-      "name" in queryFilter &&
-      !PrimitiveValidations.productFilterName(queryFilter.name)
+      "search" in queryFilter &&
+      !PrimitiveValidations.productFilterSearch(queryFilter.search)
     )
-      return response.setError("PRODUCT_FILTER_INVALID_NAME");
+      return response.setError("PRODUCT_FILTER_INVALID_SEARCH");
 
     if (
       "saleId" in queryFilter &&

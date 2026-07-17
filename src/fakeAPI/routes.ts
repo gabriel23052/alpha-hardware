@@ -68,13 +68,6 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
     return response.getResponse();
   },
 
-  "GET api/products/recentlyViewed": (): FAResponse<FAProduct_Card[]> => {
-    const productsHandler = new ProductsHandler();
-    const response = new FakeAPIResponse<FAProduct_Card[]>();
-    productsHandler.getRecentlyViewed(response);
-    return response.getResponse();
-  },
-
   "POST api/auth/register": (params): FAResponse<FAUser_WithoutPassword> => {
     const usersHandler = new UsersHandler();
     const response = new FakeAPIResponse<FAUser_WithoutPassword>();

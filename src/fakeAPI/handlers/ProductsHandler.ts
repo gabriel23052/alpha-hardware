@@ -53,19 +53,6 @@ class ProductsHandler {
     productsTable.searchByIdList(relatedProductsIds);
     response.setData(productsTable.getInCardFormat());
   }
-
-  // Temporário
-  public getRecentlyViewed(response: FakeAPIResponse<FAProduct_Card[]>) {
-    const productsTable = new ProductsTable();
-    const idList = [
-      "PRO-026333169",
-      "PRO-688377899",
-      "PRO-002350C9D",
-      "PRO-2107D4DB3",
-    ];
-    productsTable.searchByIdList(idList);
-    return response.setData(productsTable.getInCardFormat());
-  }
 }
 
 export { ProductsHandler };

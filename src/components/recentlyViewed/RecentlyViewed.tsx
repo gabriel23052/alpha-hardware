@@ -1,43 +1,34 @@
-import { useEffect } from "react";
-
-import ErrorMessage from "@components/ui/ErrorMessage";
 import ProductList from "@components/product/ProductList";
-import RecentlyViewedSkeleton from "./RecentlyViewedSkeleton";
-
-import useFakeAPI from "@hooks/useFakeAPI";
 
 import SVGRecently from "@svg/recently.svg?react";
+
+import { useRecentlyViewedStore } from "@stores/useRecentlyViewedStore";
 
 import classes from "./RecentlyViewed.module.css";
 
 const RecentlyViewed = () => {
-  const request = useFakeAPI<IProduct_Card[]>(
-    "GET api/products/recentlyViewed",
+  const recentlyViewedProducts = useRecentlyViewedStore(
+    (state) => state.products,
   );
 
-  useEffect(() => {
-    request.fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  if (!recentlyViewedProducts || recentlyViewedProducts.length === 0) {
+    return null;
+  }
 
   return (
     <section className={`bg-lneutral-xlight ${classes.container}`}>
       <div className={`defaultContainer ${classes.wrapper}`}>
         <div className={classes.title}>
-          <SVGRecently width={32} height={34}/>
+          <SVGRecently width={32} height={34} />
           <h2 className="text-verylarge-m dneutral">
             Produtos que você viu recentemente
           </h2>
         </div>
-        {request.loading && <RecentlyViewedSkeleton />}
-        {request.error && <ErrorMessage>{request.error.message}</ErrorMessage>}
-        {request.data && (
-          <ProductList
-            className={classes.products}
-            products={request.data}
-            mode="default"
-          />
-        )}
+        <ProductList
+          className={classes.products}
+          products={recentlyViewedProducts}
+          mode="default"
+        />
       </div>
     </section>
   );

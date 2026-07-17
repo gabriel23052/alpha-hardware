@@ -11,6 +11,8 @@ import ProductSkeleton from "./ProductSkeleton";
 import useFakeAPI from "@hooks/useFakeAPI";
 import usePageTitle from "@hooks/usePageTitle";
 
+import { recentlyViewedHandler } from "@stores/useRecentlyViewedStore";
+
 import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
@@ -27,8 +29,13 @@ const Product = ({ productId }: { productId: string }) => {
   const location = useLocation();
 
   useEffect(() => {
-    productRequest.fetch({ id: productId.trim() });
-    relatedProductsRequest.fetch({ id: productId.trim() });
+    const asyncFetch = async () => {
+      const response = await productRequest.fetch({ id: productId.trim() });
+      relatedProductsRequest.fetch({ id: productId.trim() });
+      if (!response.success || !response.data) return;
+      recentlyViewedHandler.addProduct(response.data);
+    };
+    asyncFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 

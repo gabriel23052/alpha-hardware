@@ -1,0 +1,10 @@
+.container {
+  width: min(100%, 360px);
+  display: block;
+  position: fixed;
+  z-index: 12;
+  left: 50%;
+  bottom: var(--px16);
+  translate: -50% 0;
+}
+

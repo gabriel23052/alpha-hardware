@@ -15,12 +15,12 @@ import { useSessionStore } from "@stores/useSessionStore";
 import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./AuthLogin.module.css";
+import { toastHandler } from "@utils/toastHandler";
 
 const AuthLogin = () => {
   usePageTitle("Alpha Hardware | Login");
 
   const navigate = useNavigate();
-
   const sessionStore = useSessionStore();
 
   const loginForm = useJafh(
@@ -44,6 +44,7 @@ const AuthLogin = () => {
       id: response.data.id,
       username: response.data.username,
     });
+    toastHandler.success("Login efetuado com sucesso");
     navigate("/");
   };
 

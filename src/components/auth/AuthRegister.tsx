@@ -15,6 +15,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import { useSessionStore } from "@stores/useSessionStore";
 
 import fieldValidations from "@utils/fieldValidations";
+import { toastHandler } from "@utils/toastHandler";
 
 import classes from "./AuthRegister.module.css";
 
@@ -64,6 +65,7 @@ const AuthRegister = () => {
     });
     if (response.success && response.data) {
       sessionStore.login(response.data);
+      toastHandler.success("Registro efetuado com sucesso");
       navigate("/");
       return;
     }

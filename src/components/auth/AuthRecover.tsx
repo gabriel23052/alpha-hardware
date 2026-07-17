@@ -13,6 +13,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import { useNavigate } from "react-router";
 
 import fieldValidations from "@utils/fieldValidations";
+import { toastHandler } from "@utils/toastHandler";
 
 import classes from "./AuthRecover.module.css";
 
@@ -58,6 +59,7 @@ const AuthRecover = () => {
       newPassword: recoverForm.fields.newPassword.value.trim(),
     });
     if (response.success) {
+      toastHandler.success("Senha alterada com sucesso");
       navigate("/auth/login");
       return;
     }

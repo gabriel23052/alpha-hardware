@@ -51,8 +51,12 @@ html {
   --dneutral: #3f3c3c;
   --dneutral-dark: #2c2a2a;
   --dneutral-xdark: #222020;
-  --feedback-positive: #31bc07;
+
+  --feedback-positive: #44a310;
+  --feedback-positive-hover: #398c0c;
   --feedback-negative: #ff2e27;
+  --feedback-negative-hover: #b81c16;
+
   --primary-gradient: linear-gradient(to bottom, #ffc107, #f29603);
 
   --px4: 0.25rem;

@@ -6,6 +6,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import SVGUser from "@svg/user.svg?react";
 
 import classes from "./HeaderUserLinks.module.css";
+import { toastHandler } from "@utils/toastHandler";
 
 type Props = {
   containerId: string;
@@ -20,8 +21,12 @@ const HeaderUserLinks = ({ containerId }: Props) => {
   const handleExit: React.MouseEventHandler<HTMLAnchorElement> = async (e) => {
     e.preventDefault();
     const response = await api.fetch();
-    if (!response.success) return;
+    if (!response.success) {
+      toastHandler.fail("Falha ao sair da conta");
+      return;
+    }
     sessionStore.logout();
+    toastHandler.success("Você saiu de sua conta");
   };
 
   const getReducedUsername = () => {

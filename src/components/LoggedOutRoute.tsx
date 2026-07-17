@@ -15,7 +15,7 @@ const LoggedOutRoute = ({ redirectTo, children }: Props) => {
     return <Navigate to={redirectTo} replace />;
   }
 
-  return children
+  return children;
 };
 
 export default LoggedOutRoute;

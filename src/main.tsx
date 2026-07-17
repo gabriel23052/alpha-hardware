@@ -17,6 +17,7 @@ import InstitutionalPrivacy from "@components/institutional/InstitutionalPrivacy
 import InstitutionalCookies from "@components/institutional/InstitutionalCookies";
 import InstitutionalReturns from "@components/institutional/InstitutionalReturns";
 import NotFound from "@components/NotFound";
+import Toasts from "@components/toasts/Toasts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -45,6 +46,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <Toasts />
       </ScrollToTop>
     </BrowserRouter>
   </StrictMode>,

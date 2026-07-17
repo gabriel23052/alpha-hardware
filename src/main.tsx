@@ -17,6 +17,7 @@ import InstitutionalPrivacy from "@components/institutional/InstitutionalPrivacy
 import InstitutionalCookies from "@components/institutional/InstitutionalCookies";
 import InstitutionalReturns from "@components/institutional/InstitutionalReturns";
 import NotFound from "@components/NotFound";
+import Dashboard from "@components/dashboard/Dashboard";
 import Toasts from "@components/toasts/Toasts";
 
 createRoot(document.getElementById("root")!).render(
@@ -30,6 +31,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth/*" element={<Auth />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/institutional/about" element={<InstitutionalAbout />} />
           <Route
             path="/institutional/privacy"

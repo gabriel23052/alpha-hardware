@@ -5,7 +5,6 @@
   align-items: start;
   gap: var(--px16);
   padding-block: var(--px64);
-  padding-block: var(--px64);
 }
 
 .container > img {

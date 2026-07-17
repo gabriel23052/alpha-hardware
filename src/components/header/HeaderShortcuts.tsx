@@ -13,13 +13,13 @@ type Props = {
 const HeaderShortcuts = ({ shortcutsId }: Props) => {
   return (
     <nav className={classes.container} id={shortcutsId} aria-label="Atalhos">
-      <Link to="/" title="Favoritos">
+      <Link to="/dashboard/favorites" title="Favoritos">
         <SVGFavorite aria-hidden="true" width={32} height={32} />
       </Link>
-      <Link to="/" title="Minhas compras">
+      <Link to="/dashboard/orders" title="Minhas compras">
         <SVGMyPurchases aria-hidden="true" width={32} height={32} />
       </Link>
-      <Link to="/" title="Carrinho">
+      <Link to="/dashboard/cart" title="Carrinho">
         <SVGCart aria-hidden="true" width={32} height={32} />
       </Link>
     </nav>

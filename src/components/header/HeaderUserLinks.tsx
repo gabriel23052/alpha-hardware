@@ -50,7 +50,7 @@ const HeaderUserLinks = ({ containerId }: Props) => {
             Olá{" "}
             <Link
               className="text-default lneutral-xlight"
-              to="/"
+              to="/dashboard/orders"
               title={sessionStore.user.username}
             >
               {getReducedUsername()}

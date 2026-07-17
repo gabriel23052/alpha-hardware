@@ -10,6 +10,10 @@ import SVGFacebook from "@svg/facebook.svg?react";
 import SVGInstagramDark from "@svg/instagramDark.svg?react";
 import SVGXDark from "@svg/xDark.svg?react";
 import SVGFacebookDark from "@svg/facebookDark.svg?react";
+import SVGMyPurchases from "@svg/myPurchases.svg?react";
+import SVGCart from "@svg/cart.svg?react";
+import SVGFavorite from "@svg/favoriteDashboard.svg?react";
+import SVGUser from "@svg/user.svg?react";
 
 const VALIDATIONS_RULES = {
   productCategoryMaxLength: 30,
@@ -93,10 +97,34 @@ const TAGS = {
   ],
 };
 
+const DASHBOARD_SECTIONS = [
+  {
+    name: "orders",
+    label: "Pedidos",
+    Icon: SVGMyPurchases,
+  },
+  {
+    name: "cart",
+    label: "Carrinho",
+    Icon: SVGCart,
+  },
+  {
+    name: "favorites",
+    label: "Favoritos",
+    Icon: SVGFavorite,
+  },
+  {
+    name: "account",
+    label: "Minha conta",
+    Icon: SVGUser,
+  },
+] as const;
+
 export {
   VALIDATIONS_RULES,
   CATEGORIES,
   SOCIAL_MEDIA,
   TAGS,
   INSTITUTIONAL_LINKS,
+  DASHBOARD_SECTIONS,
 };

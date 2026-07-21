@@ -182,3 +182,8 @@ type FARecoverPayload = {
   username: string;
   newPassword: string;
 };
+
+type FAUpdatePasswordPayload = {
+  password: string;
+  newPassword: string;
+};

@@ -60,6 +60,28 @@ class UsersHandler {
 
     usersTable.updatePassword(user.id, recoverPayload.newPassword);
   }
+
+  public updatePassword(
+    response: FakeAPIResponse<null>,
+    updatePasswordPayload: FAUpdatePasswordPayload,
+  ) {
+    const sessionsHandler = new SessionsHandler();
+    const usersTable = new UsersTable();
+    const sessionData = sessionsHandler.getSessionData(response);
+
+    if (!sessionData) return;
+    usersTable.searchById(sessionData.userId);
+
+    const user = usersTable.get()[0];
+    if (!user) {
+      return response.setError("AUTH_UPDATE_PASSWORD_USER_NOT_FOUND");
+    }
+    if (user.password !== updatePasswordPayload.password) {
+      return response.setError("AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD");
+    }
+    
+    usersTable.updatePassword(user.id, updatePasswordPayload.newPassword);
+  }
 }
 
 export { UsersHandler };

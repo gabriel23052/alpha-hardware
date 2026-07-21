@@ -1240,4 +1240,51 @@ describe("Validations", () => {
       );
     });
   });
+
+  describe("updatePasswordPayload", () => {
+    const res = new FakeAPIResponse();
+
+    it("Retorna true para payloads de troca de senha válidos", () => {
+      expect(
+        Validations.updatePasswordPayload(res, {
+          password: "1234",
+          newPassword: "5678",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna false para payloads de troca de senha inválidos", () => {
+      expect(Validations.updatePasswordPayload(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("AUTH_UPDATE_PASSWORD_PAYLOAD_NOT_FOUND").message,
+      );
+
+      expect(
+        Validations.updatePasswordPayload(res, {
+          password: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD").message,
+      );
+
+      expect(
+        Validations.updatePasswordPayload(res, {
+          newPassword: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD").message,
+      );
+
+      expect(
+        Validations.updatePasswordPayload(res, {
+          invalidProp: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD").message,
+      );
+    });
+  });
 });

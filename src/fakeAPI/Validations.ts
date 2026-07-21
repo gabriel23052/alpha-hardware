@@ -175,6 +175,30 @@ class Validations {
 
     return true;
   }
+
+  public static updatePasswordPayload(
+    response: FakeAPIResponse,
+    updatePasswordPayload: FARequestParameterData,
+  ): updatePasswordPayload is FAUpdatePasswordPayload {
+    
+    if (!this.isValidParamRecord(updatePasswordPayload)) {
+      return response.setError("AUTH_UPDATE_PASSWORD_PAYLOAD_NOT_FOUND");
+    }
+
+    if (
+      !("password" in updatePasswordPayload) ||
+      !PrimitiveValidations.password(updatePasswordPayload.password)
+    )
+      return response.setError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD");
+
+    if (
+      !("newPassword" in updatePasswordPayload) ||
+      !PrimitiveValidations.password(updatePasswordPayload.newPassword)
+    )
+      return response.setError("AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD");
+
+    return true;
+  }
 }
 
 export { Validations };

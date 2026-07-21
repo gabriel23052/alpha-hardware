@@ -23,17 +23,34 @@ class SessionsHandler {
     localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
   }
 
-  public verifySession(response: FakeAPIResponse<null>) {
+  public isAuthenticated(response: FakeAPIResponse) {
     const sessionsTable = new SessionsTable();
 
     const currentSessionId = localStorage.getItem(
       config.localStorageKeys.sessionFakeCookie,
     );
 
-    if (!currentSessionId || !sessionsTable.verifyIfExistsById(currentSessionId)) {
+    if (
+      !currentSessionId ||
+      !sessionsTable.verifyIfExistsById(currentSessionId)
+    ) {
       localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
       return response.setError("AUTH_INVALID_SESSION");
     }
+  }
+
+  public getSessionData(response: FakeAPIResponse) {
+    const sessionsTable = new SessionsTable();
+    const currentSessionId = localStorage.getItem(
+      config.localStorageKeys.sessionFakeCookie,
+    );
+    sessionsTable.searchById(currentSessionId || "");
+    const sessionData = sessionsTable.get()[0];
+    if (!sessionData) {
+      response.setError("AUTH_INVALID_SESSION");
+      return null;
+    }
+    return sessionData;
   }
 }
 

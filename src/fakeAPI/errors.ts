@@ -37,6 +37,12 @@ const errorsEntries = [
   ["AUTH_RECOVER_INVALID_USERNAME", "Falha ao recuperar a senha"],
   ["AUTH_RECOVER_INVALID_PASSWORD", "Falha ao recuperar a senha"],
   ["AUTH_RECOVER_USER_NOT_FOUND", "Usuário não encontrado"],
+  ["AUTH_UPDATE_PASSWORD_PAYLOAD_NOT_FOUND", "Falha ao atualizar a senha"],
+  ["AUTH_UPDATE_PASSWORD_INVALID_PASSWORD", "Falha ao atualizar a senha"],
+  ["AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD", "Falha ao atualizar a senha"],
+  ["AUTH_UPDATE_PASSWORD_USER_NOT_FOUND", "Falha ao atualizar a senha"],
+  ["AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD", "Senha incorreta"],
+
 ] as const;
 
 export type ErrorID = (typeof errorsEntries)[number][0];

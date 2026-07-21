@@ -23,7 +23,7 @@ const Dashboard = () => {
           <nav>
             <ul>
               {DASHBOARD_SECTIONS.map((ds) => (
-                <li className={classes.listItem}>
+                <li className={classes.listItem} key={ds.name}>
                   <NavLink
                     className={({ isActive }) =>
                       `text-default-b dneutral ${isActive ? classes.active : ""}`

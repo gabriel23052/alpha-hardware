@@ -1,2 +1,26 @@
 .container {
+  padding: var(--px32);
+  border: 1px solid var(--lneutral-light);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px16);
+  margin-bottom: var(--px32);
+}
+
+.title {
+  margin-bottom: var(--px32);
+}
+
+.form {
+  width: min(100%, 400px);
+}
+
+.alert {
+  margin-bottom: var(--px16);
+}
+

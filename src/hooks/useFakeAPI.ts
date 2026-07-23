@@ -4,7 +4,7 @@ import { routes } from "@fakeAPI/routes";
 import { request } from "@fakeAPI/request";
 
 type FakeAPIRequest = {
-  response: Promise<IFakeApiResponse | void>;
+  response: Promise<IFakeApiResponse>;
   cancel: () => void;
 };
 
@@ -21,19 +21,13 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
     setLoading(true);
     setError(null);
     const response = await activeRequest.current.response;
-    if (!response) {
-      if (activeRequest.current === null) setLoading(false);
-      return {
-        success: false,
-        error: {
-          id: "REQUEST_CANCELLED",
-          message: "Requisição cancelada",
-        },
-      };
-    }
     activeRequest.current = null;
     if (!response.success) {
       console.error(response.error.id);
+      if (response.error.id === "REQUEST_CANCELLED") {
+        if (activeRequest.current === null) setLoading(false);
+        return response;
+      }
       setError(response.error);
       setLoading(false);
       return response;

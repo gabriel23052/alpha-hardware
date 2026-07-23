@@ -8,10 +8,15 @@ function request(route: keyof typeof routes, body?: unknown) {
   const minResponseTime = config.minResponseTime;
   let abort = false;
 
-  const response = new Promise<FAResponse | void>((resolve) => {
+  const response = new Promise<FAResponse>((resolve) => {
     window.setTimeout(
       () => {
-        if (abort) resolve();
+        if (abort) {
+          return resolve({
+            success: false,
+            error: getFakeAPIError("REQUEST_CANCELLED"),
+          });
+        }
 
         if (!(route in routes)) {
           return resolve({

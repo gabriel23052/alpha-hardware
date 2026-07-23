@@ -85,6 +85,10 @@ class PrimitiveValidations {
     if (typeof password !== "string") return false;
     return /^\d{4}$/.test(password);
   }
+
+  public static favoriteFormat(format: unknown): format is string {
+    return format === "onlyIds" || format === "products";
+  }
 }
 
 export { PrimitiveValidations };

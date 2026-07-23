@@ -1,5 +1,6 @@
 import { FakeAPIResponse } from "./FakeAPIResponse";
 import { Validations } from "./Validations";
+import { FavoritesHandler } from "./handlers/FavoritesHandler";
 import { HomepageHandler } from "./handlers/HomepageHandler";
 import { ProductsHandler } from "./handlers/ProductsHandler";
 import { SessionsHandler } from "./handlers/SessionsHandler";
@@ -148,6 +149,57 @@ const routes: Record<string, (params?: FARequestParameter) => FAResponse> = {
       return response.getResponse();
 
     usersHandler.updatePassword(response, params);
+
+    return response.getResponse();
+  },
+
+  "GET api/favorites": (params): FAResponse<string[] | FAProduct_Card[]> => {
+    const response = new FakeAPIResponse<string[] | FAProduct_Card[]>();
+    const favoritesHandler = new FavoritesHandler();
+
+    if (!params) {
+      response.setError("FAVORITE_GET_PAYLOAD_NOT_FOUND");
+      return response.getResponse();
+    }
+
+    if (!Validations.favoriteGet(response, params))
+      return response.getResponse();
+
+    favoritesHandler.getFromUser(response, params.format);
+
+    return response.getResponse();
+  },
+
+  "POST api/favorites": (params): FAResponse<null> => {
+    const response = new FakeAPIResponse<null>();
+    const favoritesHandler = new FavoritesHandler();
+
+    if (!params) {
+      response.setError("FAVORITE_ADD_PAYLOAD_NOT_FOUND");
+      return response.getResponse();
+    }
+
+    if (!Validations.favoritePostOrDelete(response, params))
+      return response.getResponse();
+
+    favoritesHandler.addFavorite(response, params.productId);
+
+    return response.getResponse();
+  },
+
+  "DELETE api/favorites": (params): FAResponse<null> => {
+    const response = new FakeAPIResponse<null>();
+    const favoritesHandler = new FavoritesHandler();
+
+    if (!params) {
+      response.setError("FAVORITE_ADD_PAYLOAD_NOT_FOUND");
+      return response.getResponse();
+    }
+
+    if (!Validations.favoritePostOrDelete(response, params))
+      return response.getResponse();
+
+    favoritesHandler.removeFavorite(response, params.productId);
 
     return response.getResponse();
   },

@@ -79,9 +79,10 @@ class UsersHandler {
     if (user.password !== updatePasswordPayload.password) {
       return response.setError("AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD");
     }
-    
+
     usersTable.updatePassword(user.id, updatePasswordPayload.newPassword);
   }
+
 }
 
 export { UsersHandler };

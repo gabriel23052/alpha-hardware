@@ -2,6 +2,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import { useSessionStore } from "@stores/useSessionStore";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import { favorites } from "../features/favorites";
 
 const SessionValidator = () => {
   const api = useFakeAPI<null>("POST api/auth/verifySession");
@@ -16,6 +17,7 @@ const SessionValidator = () => {
         response.error.message === "Seção inexistente ou inválida"
       ) {
         sessionStore.logout();
+        favorites.clear();
       }
     };
     if (sessionStore.isLoggedIn) {

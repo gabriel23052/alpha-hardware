@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import SVGFavorite from "@svg/favorite.svg?react";
+import SVGFavorite from "@svg/favoriteHeader.svg?react";
 import SVGMyPurchases from "@svg/myPurchases.svg?react";
 import SVGCart from "@svg/cart.svg?react";
 

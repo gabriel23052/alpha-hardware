@@ -48,7 +48,7 @@ class SessionsHandler {
     const sessionData = sessionsTable.get()[0];
     if (!sessionData) {
       response.setError("AUTH_INVALID_SESSION");
-      return null;
+        return null;
     }
     return sessionData;
   }

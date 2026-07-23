@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import ProductCardPrice from "./ProductCardPrice";
 import ProductSaleStrip from "../ProductSaleStrip";
 import ProductCardActions from "./ProductCardActions";
+import ProductFavoriteButton from "../ProductFavoriteButton";
 
 import classes from "./ProductCard.module.css";
 
@@ -16,6 +17,12 @@ type Props = {
 const ProductCard = ({ product, mode }: Props) => {
   return (
     <article className={`bg-white ${classes.container}`}>
+      <ProductFavoriteButton
+        productId={product.id}
+        mode="inCard"
+        saleOffset={mode === "sale"}
+        classname={classes.favoriteButton}
+      />
       <Link
         className={classes.link}
         to={`/product/${product.id}`}

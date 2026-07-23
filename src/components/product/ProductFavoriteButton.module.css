@@ -1,0 +1,62 @@
+.button {
+  padding: var(--px8);
+  line-height: 0;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  transition:
+    transform 300ms,
+    opacity 300ms;
+}
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
+}
+
+.button[data-mode="inCard"] {
+  position: absolute;
+  right: var(--px8);
+  top: var(--px8);
+  opacity: 0;
+  pointer-events: none;
+}
+.button[data-mode="inCard"][data-saleoffset="true"] {
+  top: 3rem;
+}
+
+.button svg {
+  width: var(--px32);
+  height: var(--px32);
+}
+.button svg[data-isfavorite="true"] {
+  fill: url(#gradient);
+}
+
+.button svg[data-isfavorite="true"] path {
+  stroke: url(#gradient);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .button[data-mode="inCard"] {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+@media (max-width: 500px) {
+  .button[data-mode="inCard"] {
+    padding: var(--px12);
+    top: unset;
+    bottom: 3.5rem;
+    right: var(--px12);
+  }
+  .button[data-mode="inCard"][data-saleoffset="true"] {
+    top: unset;
+  }
+
+  .button[data-mode="inCard"] svg {
+    width: var(--px40);
+    height: var(--px40);
+  }
+}
+

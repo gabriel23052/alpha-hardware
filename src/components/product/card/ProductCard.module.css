@@ -13,6 +13,11 @@
   outline-offset: 2px;
 }
 
+.container:hover .favoriteButton {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .link {
   display: block;
   padding-bottom: var(--px20);

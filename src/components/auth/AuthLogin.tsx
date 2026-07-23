@@ -10,12 +10,13 @@ import Alert from "@components/ui/Alert";
 import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
-import { useSessionStore } from "@stores/useSessionStore";
 
 import fieldValidations from "@utils/fieldValidations";
+import { toastHandler } from "@utils/toastHandler";
+import { useSessionStore } from "@stores/useSessionStore";
+import { favorites } from "../../features/favorites";
 
 import classes from "./AuthLogin.module.css";
-import { toastHandler } from "@utils/toastHandler";
 
 const AuthLogin = () => {
   usePageTitle("Alpha Hardware | Login");
@@ -44,6 +45,7 @@ const AuthLogin = () => {
       id: response.data.id,
       username: response.data.username,
     });
+    favorites.requestAllFromUser();
     toastHandler.success("Login efetuado com sucesso");
     navigate("/");
   };

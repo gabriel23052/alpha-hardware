@@ -42,7 +42,14 @@ const errorsEntries = [
   ["AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD", "Falha ao atualizar a senha"],
   ["AUTH_UPDATE_PASSWORD_USER_NOT_FOUND", "Falha ao atualizar a senha"],
   ["AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD", "Senha incorreta"],
-
+  ["FAVORITE_ADD_PRODUCT_NOT_FOUND", "Produto não encontrado"],
+  ["FAVORITE_ADD_PAYLOAD_NOT_FOUND", "Falha ao adicionar produto aos favoritos"],
+  ["FAVORITE_ADD_INVALID_PAYLOAD", "Falha ao adicionar produto aos favoritos"],
+  ["FAVORITE_ADD_PRODUCT_ID_NOT_FOUND", "Falha ao adicionar produto aos favoritos"],
+  ["FAVORITE_REMOVE_PRODUCT_ID_NOT_FOUND", "Falha ao remover o produto dos favoritos"],
+  ["FAVORITE_GET_PAYLOAD_NOT_FOUND", "Falha buscar os produtos favoritos"],
+  ["FAVORITE_GET_INVALID_PAYLOAD", "Falha buscar os produtos favoritos"],
+  ["FAVORITE_GET_FORMAT_NOT_FOUND", "Falha buscar os produtos favoritos"]
 ] as const;
 
 export type ErrorID = (typeof errorsEntries)[number][0];

@@ -3,9 +3,9 @@ import { Link } from "react-router";
 import ProductActionsPrice from "./ProductActionsPrice";
 import ProductFreight from "./ProductFreight";
 import ProductSaleStrip from "./ProductSaleStrip";
+import ProductFavoriteButton from "./ProductFavoriteButton";
 
 import SVGCartAdd from "@svg/cartAdd.svg?react";
-import SVGFavorite from "@svg/favorite.svg?react";
 
 import classes from "./ProductActions.module.css";
 
@@ -33,12 +33,7 @@ const ProductActions = ({ product }: Props) => {
             >
               <SVGCartAdd aria-hidden="true" width={36} height={24} />
             </button>
-            <button
-              className={classes.favoriteButton}
-              title="Adicionar aos favoritos"
-            >
-              <SVGFavorite aria-hidden="true" width={32} height={32} />
-            </button>
+            <ProductFavoriteButton productId={product.id} mode="default" />
           </div>
         </div>
         <ProductFreight />

@@ -60,29 +60,3 @@
 .cartButton:focus svg {
   transform: scale(1.05);
 }
-
-.favoriteButton {
-  padding: var(--px4);
-  line-height: 0;
-  border-radius: 4px;
-  background: none;
-  cursor: pointer;
-  transition: transform 300ms;
-}
-.favoriteButton:hover {
-  transform: scale(1.1);
-}
-.favoriteButton:focus {
-  outline: 2px solid #ff7700;
-}
-
-.favoriteButton svg {
-  width: var(--px32);
-  height: var(--px32);
-  fill: url(#gradient);
-}
-
-.favoriteButton svg path {
-  stroke: url(#gradient);
-  stroke-width: 1;
-}

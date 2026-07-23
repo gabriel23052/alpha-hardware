@@ -7,7 +7,7 @@ function request(route: keyof typeof routes, params?: FARequestParameter) {
   const minResponseTime = config.minResponseTime;
   let abort = false;
 
-  const promise = new Promise<FAResponse | void>((resolve) => {
+  const response = new Promise<FAResponse | void>((resolve) => {
     window.setTimeout(
       () => {
         if (abort) resolve();
@@ -28,7 +28,7 @@ function request(route: keyof typeof routes, params?: FARequestParameter) {
     abort = true;
   }
 
-  return { promise, cancel };
+  return { response, cancel };
 }
 
 export { request };

@@ -7,6 +7,7 @@ import SVGUser from "@svg/user.svg?react";
 
 import classes from "./HeaderUserLinks.module.css";
 import { toastHandler } from "@utils/toastHandler";
+import { favorites } from "../../features/favorites";
 
 type Props = {
   containerId: string;
@@ -26,6 +27,7 @@ const HeaderUserLinks = ({ containerId }: Props) => {
       return;
     }
     sessionStore.logout();
+    favorites.clear();
     toastHandler.success("Você saiu de sua conta");
   };
 

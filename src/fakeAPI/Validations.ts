@@ -180,7 +180,6 @@ class Validations {
     response: FakeAPIResponse,
     updatePasswordPayload: FARequestParameterData,
   ): updatePasswordPayload is FAUpdatePasswordPayload {
-    
     if (!this.isValidParamRecord(updatePasswordPayload)) {
       return response.setError("AUTH_UPDATE_PASSWORD_PAYLOAD_NOT_FOUND");
     }
@@ -196,6 +195,42 @@ class Validations {
       !PrimitiveValidations.password(updatePasswordPayload.newPassword)
     )
       return response.setError("AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD");
+
+    return true;
+  }
+
+  public static favoritePostOrDelete(
+    response: FakeAPIResponse,
+    payload: FARequestParameterData,
+  ): payload is FAFavoritePostOrDeletePayload {
+    if (!this.isValidParamRecord(payload)) {
+      return response.setError("FAVORITE_ADD_INVALID_PAYLOAD");
+    }
+
+    if (
+      !("productId" in payload) ||
+      !PrimitiveValidations.productId(payload.productId)
+    ) {
+      return response.setError("FAVORITE_ADD_PRODUCT_ID_NOT_FOUND");
+    }
+
+    return true;
+  }
+
+  public static favoriteGet(
+    response: FakeAPIResponse,
+    payload: FARequestParameterData,
+  ): payload is FAFavoriteGetPayload {
+    if (!this.isValidParamRecord(payload)) {
+      return response.setError("FAVORITE_GET_INVALID_PAYLOAD");
+    }
+
+    if (
+      !("format" in payload) ||
+      !PrimitiveValidations.favoriteFormat(payload.format)
+    ) {
+      return response.setError("FAVORITE_GET_FORMAT_NOT_FOUND");
+    }
 
     return true;
   }

@@ -187,3 +187,18 @@ type FAUpdatePasswordPayload = {
   password: string;
   newPassword: string;
 };
+
+type FAFavorite = {
+  userId: string;
+  productId: string;
+};
+
+type FAFavoritePostOrDeletePayload = {
+  productId: string;
+};
+
+type FAFavoriteFormats = "onlyIds" | "products";
+
+type FAFavoriteGetPayload = {
+  format: FAFavoriteFormats;
+};

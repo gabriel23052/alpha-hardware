@@ -20,6 +20,7 @@ import { Validations } from "@fakeAPI/Validations";
 import { config } from "@fakeAPI/config";
 import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
 import { sessionsFixture } from "./fixtures/sessions";
+import { FavoritesTable } from "@fakeAPI/tables/FavoritesTable";
 
 function createLocalStorageMock() {
   let store: Record<string, string> = {};
@@ -559,6 +560,94 @@ describe("tables", () => {
       expect(sessionsTable.verifyIfExistsById("SES-000000000")).toBe(false);
     });
   });
+
+  describe("FavoritesTable", () => {
+    const localStorageKey = config.localStorageKeys.favorites;
+    beforeEach(() => {
+      vi.stubGlobal("localStorage", createLocalStorageMock());
+    });
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it("Inicia localStorage vazio quando não existem favoritos", () => {
+      new FavoritesTable();
+      expect(localStorage.getItem(localStorageKey)).toEqual("[]");
+    });
+
+    it("Adiciona novo favorito", () => {
+      const favoritesTable = new FavoritesTable();
+
+      const expectedFavorite = {
+        userId: "USR-123456789",
+        productId: "PRO-123456789",
+      };
+      const expectedJson = JSON.stringify([expectedFavorite]);
+
+      favoritesTable.addFavorite(expectedFavorite);
+
+      expect(localStorage.getItem(localStorageKey)).toEqual(expectedJson);
+    });
+
+    it("Remove favorito", () => {
+      const favoritesTable = new FavoritesTable();
+
+      const favorite = {
+        userId: "USR-123456789",
+        productId: "PRO-123456789",
+      };
+      favoritesTable.addFavorite(favorite);
+
+      favoritesTable.removeFavorite(favorite);
+
+      expect(localStorage.getItem(localStorageKey)).toEqual("[]");
+    });
+
+    it("Não se altera caso tente adicionar favorito já existente", () => {
+      const favoritesTable = new FavoritesTable();
+
+      const favorite = {
+        userId: "USR-123456789",
+        productId: "PRO-123456789",
+      };
+
+      const expectedJson = JSON.stringify([favorite]);
+
+      favoritesTable.addFavorite(favorite);
+      favoritesTable.addFavorite(favorite);
+
+      expect(localStorage.getItem(localStorageKey)).toEqual(expectedJson);
+    });
+
+    it("Busca corretamente pelo id de usuário", () => {
+      const favoritesTable = new FavoritesTable();
+
+      const expectedFavorite = {
+        userId: "USR-123456789",
+        productId: "PRO-123456789",
+      };
+
+      favoritesTable.addFavorite(expectedFavorite);
+      favoritesTable.searchByUserId(expectedFavorite.userId);
+      const favorite = favoritesTable.get()[0];
+
+      expect(expectedFavorite).toEqual(favorite);
+    });
+
+    it("Retorna array vazio para favorito inexistente", () => {
+      const favoritesTable = new FavoritesTable();
+
+      const favorite = {
+        userId: "USR-123456789",
+        productId: "PRO-123456789",
+      };
+
+      favoritesTable.addFavorite(favorite);
+      favoritesTable.searchByUserId("USR-987654321");
+
+      expect(favoritesTable.get()).toEqual([]);
+    });
+  });
 });
 
 describe("PrimitiveValidations", () => {
@@ -825,6 +914,27 @@ describe("PrimitiveValidations", () => {
       expect(PrimitiveValidations.password(" 1234")).toBe(false);
       expect(PrimitiveValidations.password(" 1234 ")).toBe(false);
       expect(PrimitiveValidations.password("1234 ")).toBe(false);
+    });
+  });
+
+  describe("favoriteFormat", () => {
+    it("Retorna true para formatos válidos", () => {
+      expect(PrimitiveValidations.favoriteFormat("onlyIds")).toBe(true);
+      expect(PrimitiveValidations.favoriteFormat("products")).toBe(true);
+    });
+
+    it("Retorna false para formatos inválidas", () => {
+      expect(PrimitiveValidations.favoriteFormat(12)).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(1234)).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(false)).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(true)).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(["wrong"])).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat("")).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat("123")).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(" onlyIds")).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat(" onlyIds ")).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat("onlyIds ")).toBe(false);
+      expect(PrimitiveValidations.favoriteFormat("OnlyIds")).toBe(false);
     });
   });
 });
@@ -1284,6 +1394,62 @@ describe("Validations", () => {
       ).toBe(false);
       expect(responseErrorMessage(res)).toBe(
         getFakeAPIError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD").message,
+      );
+    });
+  });
+
+  describe("favoritePostOrDelete", () => {
+    const res = new FakeAPIResponse();
+
+    it("Retorna true para payloads de adição e remoção de favoritos válidos", () => {
+      expect(
+        Validations.favoritePostOrDelete(res, {
+          productId: "PRO-123456789",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna false para payloads de adição e remoção de favoritos inválidos", () => {
+      expect(Validations.favoritePostOrDelete(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("FAVORITE_ADD_INVALID_PAYLOAD").message,
+      );
+
+      expect(
+        Validations.favoritePostOrDelete(res, {
+          invalidProp: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("FAVORITE_ADD_PRODUCT_ID_NOT_FOUND").message,
+      );
+    });
+  });
+
+  describe("favoriteGet", () => {
+    const res = new FakeAPIResponse();
+
+    it("Retorna true para payloads de busca de favoritos válidos", () => {
+      expect(
+        Validations.favoriteGet(res, {
+          format: "onlyIds",
+        }),
+      ).toBe(true);
+    });
+
+    it("Retorna false para payloads de busca de favoritos inválidos", () => {
+      expect(Validations.favoriteGet(res, {})).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("FAVORITE_GET_INVALID_PAYLOAD").message,
+      );
+
+      expect(
+        Validations.favoriteGet(res, {
+          invalidProp: "1234",
+        }),
+      ).toBe(false);
+      expect(responseErrorMessage(res)).toBe(
+        getFakeAPIError("FAVORITE_GET_FORMAT_NOT_FOUND").message,
       );
     });
   });

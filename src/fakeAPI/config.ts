@@ -11,6 +11,7 @@ const config = {
   localStorageKeys: {
     users: "fakeAPI-users",
     sessions: "fakeAPI-sessions",
+    favorites: "fakeAPI-favorites",
     sessionFakeCookie: "fakeCookie-session",
   },
   validationsRules: {

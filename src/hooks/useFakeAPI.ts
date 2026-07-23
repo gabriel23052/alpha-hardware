@@ -4,7 +4,7 @@ import { routes } from "@fakeAPI/routes";
 import { request } from "@fakeAPI/request";
 
 type FakeAPIRequest = {
-  promise: Promise<IFakeApiResponse | void>;
+  response: Promise<IFakeApiResponse | void>;
   cancel: () => void;
 };
 
@@ -22,7 +22,7 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
     activeRequest.current = request(route, params);
     setLoading(true);
     setError(null);
-    const response = await activeRequest.current.promise;
+    const response = await activeRequest.current.response;
     if (!response) {
       if (activeRequest.current === null) setLoading(false);
       return {

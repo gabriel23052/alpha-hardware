@@ -15,11 +15,9 @@ export default function useFakeAPI<T>(route: keyof typeof routes) {
 
   const activeRequest = useRef<null | FakeAPIRequest>(null);
 
-  async function fetch(
-    params?: IFakeApiReqParams,
-  ): Promise<IFakeApiResponse<T>> {
+  async function fetch(body?: IFakeApiBody): Promise<IFakeApiResponse<T>> {
     activeRequest.current?.cancel();
-    activeRequest.current = request(route, params);
+    activeRequest.current = request(route, body);
     setLoading(true);
     setError(null);
     const response = await activeRequest.current.response;

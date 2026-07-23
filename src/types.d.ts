@@ -1,11 +1,11 @@
-type IFakeApiReqParams = Record<string, IFakeApiReqParam>;
+type IFakeApiBody = Record<string, IFakeApiBodyData>;
 
-type IFakeApiReqParam =
+type IFakeApiBodyData =
   | number
   | string
   | boolean
-  | IFakeApiReqParam[]
-  | { [key: string]: IFakeApiReqParam };
+  | IFakeApiBodyData[]
+  | { [key: string]: IFakeApiBodyData };
 
 type IFakeApiResponse<T = unknown> =
   | {
@@ -123,7 +123,7 @@ type IProductFilter = {
   minPrice?: number;
   maxPrice?: number;
   tags?: string[];
-}
+};
 
 type IProductSort = "alphabetical" | "increasingPrice" | "decreasingPrice";
 
@@ -131,10 +131,9 @@ type IProductQuery = {
   filter: IProductFilter;
   format: IProductFormatOptions;
   sort?: IProductSort;
-}
+};
 
 type IUser = {
   id: string;
   username: string;
-}
-
+};

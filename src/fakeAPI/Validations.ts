@@ -5,43 +5,30 @@ import { PrimitiveValidations } from "./PrimitiveValidations";
 import type { FakeAPIResponse } from "./FakeAPIResponse";
 
 class Validations {
-  private static isValidParamRecord(
-    requestParam: FARequestParameterData,
-  ): requestParam is { [key: string]: FARequestParameterData } {
-    return (
-      typeof requestParam === "object" &&
-      !Array.isArray(requestParam) &&
-      Object.keys(requestParam).length !== 0
-    );
-  }
-
   public static productById(
     response: FakeAPIResponse,
-    params: FARequestParameter,
-  ): params is { id: string } {
-    if (!("id" in params)) return response.setError("PRODUCT_WITHOUT_ID");
-    if (!PrimitiveValidations.productId(params.id))
+    body: FARequestBody,
+  ): body is { id: string } {
+    if (!("id" in body)) return response.setError("PRODUCT_WITHOUT_ID");
+    if (!PrimitiveValidations.productId(body.id))
       return response.setError("PRODUCT_INVALID_ID");
     return true;
   }
 
   public static productQuery(
     response: FakeAPIResponse,
-    params: FARequestParameterData,
-  ): params is FAProductQuery {
-    if (!this.isValidParamRecord(params))
-      return response.setError("PRODUCT_QUERY_INVALID");
-
-    if (!("filter" in params))
+    body: FARequestBody,
+  ): body is FAProductQuery {
+    if (!("filter" in body))
       return response.setError("PRODUCT_QUERY_WITHOUT_FILTER");
-    if (!this.productQueryFilter(response, params.filter)) return false;
+    if (!this.productQueryFilter(response, body.filter)) return false;
 
-    if (!("format" in params))
+    if (!("format" in body))
       return response.setError("PRODUCT_QUERY_WITHOUT_FORMAT");
-    if (!PrimitiveValidations.productFormat(params.format))
+    if (!PrimitiveValidations.productFormat(body.format))
       return response.setError("PRODUCT_QUERY_INVALID_FORMAT");
 
-    if ("sort" in params && !PrimitiveValidations.productSort(params.sort)) {
+    if ("sort" in body && !PrimitiveValidations.productSort(body.sort)) {
       return response.setError("PRODUCT_QUERY_INVALID_SORT");
     }
 
@@ -50,50 +37,45 @@ class Validations {
 
   private static productQueryFilter(
     response: FakeAPIResponse,
-    queryFilter: FARequestParameterData,
-  ): queryFilter is FAProductFilter {
-    if (!this.isValidParamRecord(queryFilter))
-      return response.setError("PRODUCT_FILTER_INVALID_FILTER");
+    body: FARequestBodyData,
+  ): body is FAProductFilter {
+    if (typeof body !== "object" || body === null) {
+      return response.setError("PRODUCT_QUERY_WITHOUT_FILTER");
+    }
 
     if (
-      "search" in queryFilter &&
-      !PrimitiveValidations.productFilterSearch(queryFilter.search)
+      "search" in body &&
+      !PrimitiveValidations.productFilterSearch(body.search)
     )
       return response.setError("PRODUCT_FILTER_INVALID_SEARCH");
 
-    if (
-      "saleId" in queryFilter &&
-      !PrimitiveValidations.saleId(queryFilter.saleId)
-    )
+    if ("saleId" in body && !PrimitiveValidations.saleId(body.saleId))
       return response.setError("PRODUCT_FILTER_INVALID_SALE_ID");
 
     if (
-      "category" in queryFilter &&
-      !PrimitiveValidations.productFilterCategory(queryFilter.category)
+      "category" in body &&
+      !PrimitiveValidations.productFilterCategory(body.category)
     )
       return response.setError("PRODUCT_FILTER_INVALID_CATEGORY");
 
     if (
-      "minPrice" in queryFilter &&
-      !PrimitiveValidations.productFilterPrice(queryFilter.minPrice)
+      "minPrice" in body &&
+      !PrimitiveValidations.productFilterPrice(body.minPrice)
     )
       return response.setError("PRODUCT_FILTER_INVALID_MIN_PRICE");
 
     if (
-      "maxPrice" in queryFilter &&
-      !PrimitiveValidations.productFilterPrice(queryFilter.maxPrice)
+      "maxPrice" in body &&
+      !PrimitiveValidations.productFilterPrice(body.maxPrice)
     )
       return response.setError("PRODUCT_FILTER_INVALID_MAX_PRICE");
 
-    if ("tags" in queryFilter) {
+    if ("tags" in body) {
       const maxTagArrayLength =
         config.validationsRules.productQueryMaxTagArraySize;
-      if (
-        !Array.isArray(queryFilter.tags) ||
-        queryFilter.tags.length > maxTagArrayLength
-      )
+      if (!Array.isArray(body.tags) || body.tags.length > maxTagArrayLength)
         return response.setError("PRODUCT_FILTER_INVALID_TAGS");
-      for (const tag of queryFilter.tags) {
+      for (const tag of body.tags) {
         if (!PrimitiveValidations.productFilterTag(tag))
           return response.setError("PRODUCT_FILTER_INVALID_TAGS");
       }
@@ -103,22 +85,18 @@ class Validations {
 
   public static userCreationPayload(
     response: FakeAPIResponse,
-    userCreationPayload: FARequestParameterData,
-  ): userCreationPayload is FAUserCreationPayload {
-    if (!this.isValidParamRecord(userCreationPayload)) {
-      return response.setError("AUTH_REGISTER_INVALID_PAYLOAD");
-    }
-
+    body: FARequestBody,
+  ): body is FAUserCreationPayload {
     if (
-      !("username" in userCreationPayload) ||
-      !PrimitiveValidations.username(userCreationPayload.username)
+      !("username" in body) ||
+      !PrimitiveValidations.username(body.username)
     ) {
       return response.setError("AUTH_REGISTER_INVALID_USERNAME");
     }
 
     if (
-      !("password" in userCreationPayload) ||
-      !PrimitiveValidations.password(userCreationPayload.password)
+      !("password" in body) ||
+      !PrimitiveValidations.password(body.password)
     ) {
       return response.setError("AUTH_REGISTER_INVALID_PASSWORD");
     }
@@ -128,22 +106,18 @@ class Validations {
 
   public static loginPayload(
     response: FakeAPIResponse,
-    loginPayload: FARequestParameterData,
-  ): loginPayload is FALoginPayload {
-    if (!this.isValidParamRecord(loginPayload)) {
-      return response.setError("AUTH_LOGIN_INVALID_PAYLOAD");
-    }
-
+    body: FARequestBody,
+  ): body is FALoginPayload {
     if (
-      !("username" in loginPayload) ||
-      !PrimitiveValidations.username(loginPayload.username)
+      !("username" in body) ||
+      !PrimitiveValidations.username(body.username)
     ) {
       return response.setError("AUTH_LOGIN_INVALID_USERNAME");
     }
 
     if (
-      !("password" in loginPayload) ||
-      !PrimitiveValidations.password(loginPayload.password)
+      !("password" in body) ||
+      !PrimitiveValidations.password(body.password)
     ) {
       return response.setError("AUTH_LOGIN_INVALID_PASSWORD");
     }
@@ -153,22 +127,18 @@ class Validations {
 
   public static recoverPayload(
     response: FakeAPIResponse,
-    recoverPayload: FARequestParameterData,
-  ): recoverPayload is FARecoverPayload {
-    if (!this.isValidParamRecord(recoverPayload)) {
-      return response.setError("AUTH_RECOVER_INVALID_PAYLOAD");
-    }
-
+    body: FARequestBody,
+  ): body is FARecoverPayload {
     if (
-      !("username" in recoverPayload) ||
-      !PrimitiveValidations.username(recoverPayload.username)
+      !("username" in body) ||
+      !PrimitiveValidations.username(body.username)
     ) {
       return response.setError("AUTH_RECOVER_INVALID_USERNAME");
     }
 
     if (
-      !("newPassword" in recoverPayload) ||
-      !PrimitiveValidations.password(recoverPayload.newPassword)
+      !("newPassword" in body) ||
+      !PrimitiveValidations.password(body.newPassword)
     ) {
       return response.setError("AUTH_RECOVER_INVALID_PASSWORD");
     }
@@ -178,21 +148,14 @@ class Validations {
 
   public static updatePasswordPayload(
     response: FakeAPIResponse,
-    updatePasswordPayload: FARequestParameterData,
-  ): updatePasswordPayload is FAUpdatePasswordPayload {
-    if (!this.isValidParamRecord(updatePasswordPayload)) {
-      return response.setError("AUTH_UPDATE_PASSWORD_PAYLOAD_NOT_FOUND");
-    }
-
-    if (
-      !("password" in updatePasswordPayload) ||
-      !PrimitiveValidations.password(updatePasswordPayload.password)
-    )
+    body: FARequestBody,
+  ): body is FAUpdatePasswordPayload {
+    if (!("password" in body) || !PrimitiveValidations.password(body.password))
       return response.setError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD");
 
     if (
-      !("newPassword" in updatePasswordPayload) ||
-      !PrimitiveValidations.password(updatePasswordPayload.newPassword)
+      !("newPassword" in body) ||
+      !PrimitiveValidations.password(body.newPassword)
     )
       return response.setError("AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD");
 
@@ -201,12 +164,8 @@ class Validations {
 
   public static favoritePostOrDelete(
     response: FakeAPIResponse,
-    payload: FARequestParameterData,
+    payload: FARequestBody,
   ): payload is FAFavoritePostOrDeletePayload {
-    if (!this.isValidParamRecord(payload)) {
-      return response.setError("FAVORITE_ADD_INVALID_PAYLOAD");
-    }
-
     if (
       !("productId" in payload) ||
       !PrimitiveValidations.productId(payload.productId)
@@ -219,12 +178,8 @@ class Validations {
 
   public static favoriteGet(
     response: FakeAPIResponse,
-    payload: FARequestParameterData,
+    payload: FARequestBody,
   ): payload is FAFavoriteGetPayload {
-    if (!this.isValidParamRecord(payload)) {
-      return response.setError("FAVORITE_GET_INVALID_PAYLOAD");
-    }
-
     if (
       !("format" in payload) ||
       !PrimitiveValidations.favoriteFormat(payload.format)

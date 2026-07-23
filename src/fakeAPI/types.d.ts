@@ -13,16 +13,18 @@ type FAResponseError = {
   message: string;
 };
 
-type FARequestParameterData =
+type FARequestBodyData =
   | number
   | string
   | boolean
-  | FARequestParameterData[]
-  | { [key: string]: FARequestParameterData };
+  | null
+  | FARequestBodyData[]
+  | { [key: string]: FARequestBodyData };
 
-type FARequestParameter = Record<string, FARequestParameterData>;
+type FARequestBody = Record<string, FARequestBodyData>;
 
 type FAHomepageBanners_Full = {
+  
   sale: FABanner;
   ad: FABanner;
 };

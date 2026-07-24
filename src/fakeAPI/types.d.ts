@@ -24,7 +24,6 @@ type FARequestBodyData =
 type FARequestBody = Record<string, FARequestBodyData>;
 
 type FAHomepageBanners_Full = {
-  
   sale: FABanner;
   ad: FABanner;
 };
@@ -101,6 +100,10 @@ type FAProductMedia = {
   }[];
 };
 
+type FAProductIdQuery = {
+  id: string
+}
+
 type FAProductQuery = {
   filter: FAProductFilter;
   format: FAProductFormatOptions;
@@ -164,12 +167,12 @@ type FAUser = {
 type FAUser_Complete = FAUser;
 type FAUser_WithoutPassword = Omit<FAUser, "password">;
 
-type FAUserCreationPayload = {
+type FAAuthRegister = {
   username: string;
   password: string;
 };
 
-type FALoginPayload = {
+type FAAuthLogin = {
   username: string;
   password: string;
 };
@@ -180,12 +183,12 @@ type FASession = {
   startedAt: number;
 };
 
-type FARecoverPayload = {
+type FAAuthRecover = {
   username: string;
   newPassword: string;
 };
 
-type FAUpdatePasswordPayload = {
+type FAAuthUpdatePassword = {
   password: string;
   newPassword: string;
 };
@@ -195,12 +198,12 @@ type FAFavorite = {
   productId: string;
 };
 
-type FAFavoritePostOrDeletePayload = {
+type FAFavoriteAddOrRemove = {
   productId: string;
 };
 
 type FAFavoriteFormats = "onlyIds" | "products";
 
-type FAFavoriteGetPayload = {
+type FAFavoriteGet = {
   format: FAFavoriteFormats;
 };

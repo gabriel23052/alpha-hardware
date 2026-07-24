@@ -27,7 +27,7 @@ class UsersTable {
     );
   }
 
-  public createUser(id: string, userCreationPayload: FAUserCreationPayload) {
+  public createUser(id: string, userCreationPayload: FAAuthRegister) {
     if (
       this.data.has(id) ||
       this.getUserByUsername(userCreationPayload.username)

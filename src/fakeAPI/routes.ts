@@ -1,5 +1,5 @@
 import { FakeAPIResponse } from "./FakeAPIResponse";
-import { Validations } from "./Validations";
+import { payloadValidators } from "./payloadValidators";
 
 import { FavoritesHandler } from "./handlers/FavoritesHandler";
 import { HomepageHandler } from "./handlers/HomepageHandler";
@@ -40,7 +40,8 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsHandler();
-    if (!Validations.productById(response, body)) return response.getResponse();
+    if (!payloadValidators.productIdQuery(response, body))
+      return response.getResponse();
     productsHandler.getProductById(response, body.id);
     return response.getResponse();
   },
@@ -53,7 +54,7 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsHandler();
-    if (!Validations.productQuery(response, body)) {
+    if (!payloadValidators.productQuery(response, body)) {
       return response.getResponse();
     }
     productsHandler.getByQuery(response, body);
@@ -68,7 +69,8 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsHandler();
-    if (!Validations.productById(response, body)) return response.getResponse();
+    if (!payloadValidators.productIdQuery(response, body))
+      return response.getResponse();
     productsHandler.getRelated(response, body.id);
     return response.getResponse();
   },
@@ -82,7 +84,7 @@ const routes: RouteHandler = {
 
     const usersHandler = new UsersHandler();
 
-    if (!Validations.userCreationPayload(response, body))
+    if (!payloadValidators.authRegister(response, body))
       return response.getResponse();
 
     usersHandler.createUser(response, body);
@@ -99,7 +101,7 @@ const routes: RouteHandler = {
 
     const usersHandler = new UsersHandler();
 
-    if (!Validations.loginPayload(response, body))
+    if (!payloadValidators.authLogin(response, body))
       return response.getResponse();
 
     usersHandler.login(response, body);
@@ -132,7 +134,7 @@ const routes: RouteHandler = {
 
     const usersHandler = new UsersHandler();
 
-    if (!Validations.recoverPayload(response, body))
+    if (!payloadValidators.authRecover(response, body))
       return response.getResponse();
 
     usersHandler.recoverPassword(response, body);
@@ -149,7 +151,7 @@ const routes: RouteHandler = {
 
     const usersHandler = new UsersHandler();
 
-    if (!Validations.updatePasswordPayload(response, body))
+    if (!payloadValidators.authUpdatePassword(response, body))
       return response.getResponse();
 
     usersHandler.updatePassword(response, body);
@@ -166,7 +168,8 @@ const routes: RouteHandler = {
 
     const favoritesHandler = new FavoritesHandler();
 
-    if (!Validations.favoriteGet(response, body)) return response.getResponse();
+    if (!payloadValidators.favoriteGet(response, body))
+      return response.getResponse();
 
     favoritesHandler.getFromUser(response, body.format);
 
@@ -181,7 +184,7 @@ const routes: RouteHandler = {
       return response.getResponse();
     }
 
-    if (!Validations.favoritePostOrDelete(response, body))
+    if (!payloadValidators.favoriteAdd(response, body))
       return response.getResponse();
 
     favoritesHandler.addFavorite(response, body.productId);
@@ -198,7 +201,7 @@ const routes: RouteHandler = {
 
     const favoritesHandler = new FavoritesHandler();
 
-    if (!Validations.favoritePostOrDelete(response, body))
+    if (!payloadValidators.favoriteRemove(response, body))
       return response.getResponse();
 
     favoritesHandler.removeFavorite(response, body.productId);

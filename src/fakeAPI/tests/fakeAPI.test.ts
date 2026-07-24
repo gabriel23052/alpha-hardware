@@ -2,6 +2,8 @@ import { describe, expect, test } from "vitest";
 
 import { isRequestBody } from "@fakeAPI/isRequestBody";
 import { primitiveValidators } from "@fakeAPI/primitiveValidators";
+import { payloadValidators } from "@fakeAPI/payloadValidators";
+import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -341,11 +343,12 @@ describe("Validações primitivas", () => {
     });
 
     describe("Senha", () => {
-      test.each([
-        ["com quatro números", "1234"],
-      ])("aceita se testar uma senha %s", (_, value) => {
-        expect(primitiveValidators.password(value)).toBe(true);
-      });
+      test.each([["com quatro números", "1234"]])(
+        "aceita se testar uma senha %s",
+        (_, value) => {
+          expect(primitiveValidators.password(value)).toBe(true);
+        },
+      );
 
       test.each([
         ["vazia", ""],
@@ -379,6 +382,650 @@ describe("Validações primitivas", () => {
       ])("rejeita se testar um formato de favorito %s", (_, value) => {
         expect(primitiveValidators.favoriteFormat(value)).toBe(false);
       });
+    });
+  });
+});
+
+describe("Validações de payloads", () => {
+  describe("Busca de produto por ID", () => {
+    test.each([
+      [
+        "conter um id de produto válido",
+        {
+          id: "PRO-123456789",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.productIdQuery(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "PRODUCT_ID_QUERY_ID_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter um id de produto inválido",
+        value: {
+          id: "PRO-123456789A",
+        },
+        error: "PRODUCT_ID_QUERY_INVALID_ID",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.productIdQuery(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Busca de produto por consulta", () => {
+    test.each([
+      [
+        "conter uma busca válida sem ordenamento",
+        {
+          format: "full",
+          filter: {
+            search: "product",
+          },
+        },
+      ],
+      [
+        "conter uma busca válida com ordenamento",
+        {
+          format: "full",
+          filter: {
+            search: "product",
+          },
+          sort: "increasingPrice",
+        },
+      ],
+      [
+        "conter uma busca válida com múltiplos filtros e ordenamento",
+        {
+          format: "full",
+          filter: {
+            search: "product",
+            saleId: "SAL-123456",
+            minPrice: 20000,
+            maxPrice: 80000,
+            category: "cat",
+            tags: ["tagA", "tagB"],
+          },
+          sort: "increasingPrice",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.productQuery(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "PRODUCT_QUERY_FILTER_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter formato",
+        value: {
+          filter: {
+            search: "product",
+          },
+        },
+        error: "PRODUCT_QUERY_FORMAT_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter filtro vazio",
+        value: {
+          filter: {},
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_EMPTY_FILTER",
+      },
+      {
+        description: "o filtro for um number",
+        value: {
+          filter: 123,
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_FILTER",
+      },
+      {
+        description: "o filtro for uma string",
+        value: {
+          filter: "invalid",
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_FILTER",
+      },
+      {
+        description: "o filtro for um boolean",
+        value: {
+          filter: "invalid",
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_FILTER",
+      },
+      {
+        description: "o filtro for um array",
+        value: {
+          filter: ["invalid"],
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_FILTER",
+      },
+      {
+        description: "o filtro conter uma busca inválida",
+        value: {
+          filter: {
+            search: "a",
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_SEARCH",
+      },
+      {
+        description: "o filtro conter um id de promoção inválido",
+        value: {
+          filter: {
+            saleId: "a",
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_SALE_ID",
+      },
+      {
+        description: "o filtro conter uma categoria inválida",
+        value: {
+          filter: {
+            category: "a",
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_CATEGORY",
+      },
+      {
+        description: "o filtro conter um preço mínimo inválido",
+        value: {
+          filter: {
+            minPrice: -1,
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_MIN_PRICE",
+      },
+      {
+        description: "o filtro conter um preço máximo inválido",
+        value: {
+          filter: {
+            maxPrice: 99999999,
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_MAX_PRICE",
+      },
+      {
+        description: "o filtro conter tags em forma de number",
+        value: {
+          filter: {
+            tags: 123,
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter tags em forma de string",
+        value: {
+          filter: {
+            tags: "invalid",
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter tags em forma de boolean",
+        value: {
+          filter: {
+            tags: true,
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter tags em forma de objeto",
+        value: {
+          filter: {
+            tags: {
+              prop: "tag",
+            },
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter um array de numbers",
+        value: {
+          filter: {
+            tags: [123],
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter um array de booleans",
+        value: {
+          filter: {
+            tags: [true],
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter um array de arrays",
+        value: {
+          filter: {
+            tags: [["tag"]],
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "o filtro conter tags inválidas",
+        value: {
+          filter: {
+            tags: ["a"],
+          },
+          format: "full",
+        },
+        error: "PRODUCT_QUERY_INVALID_TAGS",
+      },
+      {
+        description: "conter um ordenamento inválido",
+        value: {
+          filter: {
+            search: "product",
+          },
+          format: "full",
+          sort: "increasingPRice",
+        },
+        error: "PRODUCT_QUERY_INVALID_SORT",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.productQuery(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Cadastro de usuário", () => {
+    test.each([
+      [
+        "conter um nome de usuário e senha válidos",
+        {
+          username: "username",
+          password: "1234",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.authRegister(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter nome de usuário",
+        value: {
+          password: "1234",
+        },
+        error: "AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter senha",
+        value: {
+          username: "username",
+        },
+        error: "AUTH_REGISTER_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter nome de usuário inválido",
+        value: {
+          username: "a",
+          password: "1234",
+        },
+        error: "AUTH_REGISTER_INVALID_USERNAME",
+      },
+      {
+        description: "conter senha inválida",
+        value: {
+          username: "username",
+          password: "a234",
+        },
+        error: "AUTH_REGISTER_INVALID_PASSWORD",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.authRegister(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Login de usuário", () => {
+    test.each([
+      [
+        "conter um nome de usuário e senha válidos",
+        {
+          username: "username",
+          password: "1234",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.authLogin(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "AUTH_LOGIN_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter nome de usuário",
+        value: {
+          password: "1234",
+        },
+        error: "AUTH_LOGIN_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter senha",
+        value: {
+          username: "username",
+        },
+        error: "AUTH_LOGIN_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter nome de usuário inválido",
+        value: {
+          username: "a",
+          password: "1234",
+        },
+        error: "AUTH_LOGIN_INVALID_USERNAME",
+      },
+      {
+        description: "conter senha inválida",
+        value: {
+          username: "username",
+          password: "a234",
+        },
+        error: "AUTH_LOGIN_INVALID_PASSWORD",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.authLogin(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Recuperação de senha", () => {
+    test.each([
+      [
+        "conter um nome de usuário e uma nova senha válidos",
+        {
+          username: "username",
+          newPassword: "1234",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.authRecover(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "AUTH_RECOVER_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter nome de usuário",
+        value: {
+          newPassword: "1234",
+        },
+        error: "AUTH_RECOVER_USERNAME_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter nova senha",
+        value: {
+          username: "username",
+        },
+        error: "AUTH_RECOVER_NEW_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter nome de usuário inválido",
+        value: {
+          username: "a",
+          newPassword: "1234",
+        },
+        error: "AUTH_RECOVER_INVALID_USERNAME",
+      },
+      {
+        description: "conter senha inválida",
+        value: {
+          username: "username",
+          newPassword: "a234",
+        },
+        error: "AUTH_RECOVER_INVALID_NEW_PASSWORD",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.authRecover(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Atualização de senha", () => {
+    test.each([
+      [
+        "conter uma senha e uma senha nova válidas",
+        {
+          password: "1234",
+          newPassword: "1234",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.authUpdatePassword(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "AUTH_UPDATE_PASSWORD_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter senha",
+        value: {
+          newPassword: "1234",
+        },
+        error: "AUTH_UPDATE_PASSWORD_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "não conter nova senha",
+        value: {
+          password: "1234",
+        },
+        error: "AUTH_UPDATE_PASSWORD_NEW_PASSWORD_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter uma senha inválida",
+        value: {
+          password: "a234",
+          newPassword: "1234",
+        },
+        error: "AUTH_UPDATE_PASSWORD_INVALID_PASSWORD",
+      },
+      {
+        description: "conter uma nova senha inválida",
+        value: {
+          password: "1234",
+          newPassword: "a234",
+        },
+        error: "AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.authUpdatePassword(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Adição de favorito", () => {
+    test.each([
+      [
+        "conter um id de produto válido",
+        {
+          productId: "PRO-123456789",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.favoriteAdd(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "FAVORITE_ADD_PRODUCT_ID_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter um id de produto inválido",
+        value: {
+          productId: "PRO-123456789A",
+        },
+        error: "FAVORITE_ADD_INVALID_PRODUCT_ID",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.favoriteAdd(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Remoção de favorito", () => {
+    test.each([
+      [
+        "conter um id de produto válido",
+        {
+          productId: "PRO-123456789",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.favoriteRemove(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "FAVORITE_REMOVE_PRODUCT_ID_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter um id de produto inválido",
+        value: {
+          productId: "PRO-123456789A",
+        },
+        error: "FAVORITE_REMOVE_INVALID_PRODUCT_ID",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.favoriteRemove(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
+    });
+  });
+
+  describe("Consulta de favoritos", () => {
+    test.each([
+      [
+        "conter um formato de favorito válido",
+        {
+          format: "onlyIds",
+        },
+      ],
+    ])("aceita se %s", (_, value) => {
+      const response = new FakeAPIResponse();
+      expect(payloadValidators.favoriteGet(response, value)).toBe(true);
+    });
+
+    test.each([
+      {
+        description: "for um objeto vazio",
+        value: {},
+        error: "FAVORITE_GET_FORMAT_FIELD_NOT_FOUND",
+      },
+      {
+        description: "conter um formato de favorito inválido",
+        value: {
+          format: "onlyId",
+        },
+        error: "FAVORITE_GET_INVALID_FORMAT",
+      },
+    ])("rejeita se $description", ({ value, error }) => {
+      const response = new FakeAPIResponse();
+      expect(
+        payloadValidators.favoriteGet(response, value as FARequestBody),
+      ).toBe(false);
+      const responseData = response.getResponse();
+      expect(responseData.success).toBe(false);
+      if (!responseData.success) expect(responseData.error.id).toBe(error);
     });
   });
 });

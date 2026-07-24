@@ -6,7 +6,7 @@ import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 class UsersHandler {
   public createUser(
     response: FakeAPIResponse<FAUser_WithoutPassword | null>,
-    userCreationPayload: FAUserCreationPayload,
+    userCreationPayload: FAAuthRegister,
   ) {
     const usersTable = new UsersTable();
     const sessionsHandler = new SessionsHandler();
@@ -26,7 +26,7 @@ class UsersHandler {
 
   public login(
     response: FakeAPIResponse<FAUser_WithoutPassword>,
-    loginPayload: FALoginPayload,
+    loginPayload: FAAuthLogin,
   ) {
     const usersTable = new UsersTable();
     usersTable.searchByUsername(loginPayload.username);
@@ -47,7 +47,7 @@ class UsersHandler {
 
   public recoverPassword(
     response: FakeAPIResponse<null>,
-    recoverPayload: FARecoverPayload,
+    recoverPayload: FAAuthRecover,
   ) {
     const usersTable = new UsersTable();
 
@@ -63,7 +63,7 @@ class UsersHandler {
 
   public updatePassword(
     response: FakeAPIResponse<null>,
-    updatePasswordPayload: FAUpdatePasswordPayload,
+    updatePasswordPayload: FAAuthUpdatePassword,
   ) {
     const sessionsHandler = new SessionsHandler();
     const usersTable = new UsersTable();
@@ -82,7 +82,6 @@ class UsersHandler {
 
     usersTable.updatePassword(user.id, updatePasswordPayload.newPassword);
   }
-
 }
 
 export { UsersHandler };

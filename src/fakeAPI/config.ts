@@ -14,7 +14,7 @@ const config = {
     favorites: "fakeAPI-favorites",
     sessionFakeCookie: "fakeCookie-session",
   },
-  validationsRules: {
+  validatorsRules: {
     productQuerySearchMaxLength: 200,
     productQuerySearchMinLength: 2,
     productQueryCategoryMaxLength: 30,

@@ -2,20 +2,26 @@ import { config } from "@fakeAPI/config";
 
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
-import { BannersTable } from "@fakeAPI/queries/BannersTable";
+import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsTable } from "@fakeAPI/queries/CollectionsTable";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 
 class HomepageHandler {
   public getHomepageBanners(response: FakeAPIResponse<FAHomepageBanners_Full>) {
-    const bannersTable = new BannersTable();
-    bannersTable.searchById(config.homepage.saleBannerId);
-    if (bannersTable.empty)
-      return response.setError("HP_SALE_BANNER_NOT_FOUND");
-    const saleBanner = bannersTable.getInFullFormat()[0];
-    bannersTable.searchById(config.homepage.adBannerId);
-    if (bannersTable.empty) return response.setError("HP_AD_BANNER_NOT_FOUND");
-    const adBanner = bannersTable.getInFullFormat()[0];
+    const bannersQuery = new BannersQuery();
+
+    const saleBanner = bannersQuery
+      .selectById(config.homepage.saleBannerId)
+      .getUnique();
+    if (!saleBanner) return response.setError("HP_SALE_BANNER_NOT_FOUND");
+
+    bannersQuery.clear();
+
+    const adBanner = bannersQuery
+      .selectById(config.homepage.adBannerId)
+      .getUnique();
+    if (!adBanner) return response.setError("HP_AD_BANNER_NOT_FOUND");
+
     response.setData({ sale: saleBanner, ad: adBanner });
   }
 

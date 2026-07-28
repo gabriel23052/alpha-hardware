@@ -35,11 +35,7 @@ class SalesQuery extends Query<Sale> {
   }
 
   private inDefaultPattern(): SalePatterns["default"][] {
-    return this.buffer.map((s) => ({
-      id: s.id,
-      name: s.name,
-      productModifiers: structuredClone(s.productModifiers),
-    }));
+    return this.buffer.map((s) => structuredClone(s));
   }
 
   private inResolvedProductsPattern(): SalePatterns["resolvedProducts"][] {

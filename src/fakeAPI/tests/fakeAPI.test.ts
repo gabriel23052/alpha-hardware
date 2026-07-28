@@ -6,6 +6,7 @@ import { payloadValidators } from "@fakeAPI/payloadValidators";
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
+import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1666,6 +1667,50 @@ describe("Consultas", () => {
       const sale = salesQuery.selectById(saleId).getUnique("resolvedProducts");
 
       expect(sale?.products[0]).toEqual(expectedFristResolvedProduct);
+    });
+  });
+
+  describe("Banners", () => {
+    const bannerQuery = new BannersQuery();
+    beforeEach(() => {
+      bannerQuery.clear();
+    });
+
+    it("seleciona banner por id", () => {
+      const bannerId = "BAN-1AF1AC";
+      const banner = bannerQuery.selectById(bannerId).getUnique();
+      expect(banner?.id).toBe(bannerId);
+    });
+
+    it("retorna banner no formato 'default'", () => {
+      const expectedProduct = {
+        id: "BAN-1AF1AC",
+        link: "/catalog?sale=SAL-15AFC6&saleName=Festival%20das%20Placas%20de%20Vídeo",
+        baseSrc: "./img/banners/BAN-1AF1AC.jpg",
+        baseWidth: 3840,
+        baseHeight: 200,
+        alt: "Festival das Placas de Vídeo",
+        responsiveVersions: [
+          {
+            width: 768,
+            height: 300,
+            src: "./img/banners/BAN-1AF1AC-768px.jpg",
+          },
+          {
+            width: 1366,
+            height: 250,
+            src: "./img/banners/BAN-1AF1AC-1366px.jpg",
+          },
+          {
+            width: 1920,
+            height: 200,
+            src: "./img/banners/BAN-1AF1AC-1920px.jpg",
+          },
+        ],
+      };
+      const bannerId = "BAN-1AF1AC";
+      const banner = bannerQuery.selectById(bannerId).getUnique();
+      expect(banner).toEqual(expectedProduct);
     });
   });
 });

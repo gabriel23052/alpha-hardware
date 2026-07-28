@@ -1,4 +1,18 @@
-const banners: FABanner[] = [
+export type Banner = {
+  id: string;
+  link: string;
+  alt: string;
+  baseSrc: string;
+  baseWidth: number;
+  baseHeight: number;
+  responsiveVersions: {
+    width: number;
+    height: number;
+    src: string;
+  }[];
+};
+
+const data: Banner[] = [
   {
     id: "BAN-1AF1AC",
     link: "/catalog?sale=SAL-15AFC6&saleName=Festival%20das%20Placas%20de%20Vídeo",
@@ -51,4 +65,8 @@ const banners: FABanner[] = [
   },
 ] as const;
 
-export { banners };
+const bannersTable = {
+  data,
+};
+
+export { bannersTable };

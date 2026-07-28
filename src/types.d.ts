@@ -40,7 +40,7 @@ type IProduct = {
   name: string;
   searchName: string;
   category: string;
-  prices: IProductPrices;
+  price: IProductPrices;
   sale?: IProductSale;
   media: IProductMedia;
   tags: string[];
@@ -53,7 +53,7 @@ type IProduct_Full = IProduct;
 type IProduct_Card = {
   id: string;
   name: string;
-  prices: IProductPrices;
+  price: IProductPrices;
   media: { thumb: string };
   sale?: {
     id: string;

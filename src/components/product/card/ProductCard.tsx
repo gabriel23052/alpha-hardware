@@ -51,7 +51,7 @@ const ProductCard = ({ product, mode }: Props) => {
             {product.name}
           </p>
         </div>
-        <ProductCardPrice prices={product.prices} />
+        <ProductCardPrice prices={product.price} />
       </Link>
       {mode !== "hideActions" && <ProductCardActions />}
     </article>

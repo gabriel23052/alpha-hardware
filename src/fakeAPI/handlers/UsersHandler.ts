@@ -1,6 +1,6 @@
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { SessionsHandler } from "./SessionsHandler";
-import { UsersTable } from "@fakeAPI/tables/UsersTable";
+import { UsersTable } from "@fakeAPI/queries/UsersTable";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class UsersHandler {

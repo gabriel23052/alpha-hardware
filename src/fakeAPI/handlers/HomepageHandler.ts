@@ -2,9 +2,9 @@ import { config } from "@fakeAPI/config";
 
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
-import { BannersTable } from "@fakeAPI/tables/BannersTable";
-import { CollectionsTable } from "@fakeAPI/tables/CollectionsTable";
-import { SalesTable } from "@fakeAPI/tables/SalesTable";
+import { BannersTable } from "@fakeAPI/queries/BannersTable";
+import { CollectionsTable } from "@fakeAPI/queries/CollectionsTable";
+import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 
 class HomepageHandler {
   public getHomepageBanners(response: FakeAPIResponse<FAHomepageBanners_Full>) {
@@ -14,18 +14,18 @@ class HomepageHandler {
       return response.setError("HP_SALE_BANNER_NOT_FOUND");
     const saleBanner = bannersTable.getInFullFormat()[0];
     bannersTable.searchById(config.homepage.adBannerId);
-    if (bannersTable.empty)
-      return response.setError("HP_AD_BANNER_NOT_FOUND");
+    if (bannersTable.empty) return response.setError("HP_AD_BANNER_NOT_FOUND");
     const adBanner = bannersTable.getInFullFormat()[0];
     response.setData({ sale: saleBanner, ad: adBanner });
   }
 
   public getHomepageSale(response: FakeAPIResponse<FASale_PrCard>) {
-    const salesTable = new SalesTable();
-    salesTable.searchById(config.homepage.saleId);
-    if (salesTable.empty)
-      return response.setError("HP_SALE_NOT_FOUND");
-    response.setData(salesTable.getInPrCardFormat()[0]);
+    const salesQuery = new SalesQuery();
+    const sale = salesQuery
+      .selectById(config.homepage.saleId)
+      .getUnique("resolvedProducts");
+    if (!sale) return response.setError("HP_SALE_NOT_FOUND");
+    response.setData(sale);
   }
 
   public getHomepageCollections(

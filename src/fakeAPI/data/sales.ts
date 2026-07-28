@@ -1,18 +1,50 @@
-const expirationDate = new Date();
-expirationDate.setDate(expirationDate.getDate() + 1);
-expirationDate.setHours(0, 0, 0, 0);
-const expiration = Math.floor(expirationDate.getTime() / 1000);
+export type Sale = {
+  id: string;
+  name: string;
+  productModifiers: {
+    productId: string;
+    expiration: number;
+    discont: number;
+    price: SalePrice;
+  }[];
+};
 
-const sales: FASale[] = [
+type SalePrice = {
+  full: number;
+  pix: number;
+  pixDiscont: number;
+  maxInstallments: number;
+  installments: number;
+  previous: number;
+};
+
+type SaleProduct = {
+  sale: {
+    id: string;
+    name: string;
+    expiration: number;
+    discont: number;
+  };
+  price: SalePrice;
+};
+
+const fakeExpiration = (() => {
+  const expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + 1);
+  expirationDate.setHours(0, 0, 0, 0);
+  return Math.floor(expirationDate.getTime() / 1000);
+})();
+
+const data: Sale[] = [
   {
     id: "SAL-15AFC6",
     name: "Festival das Placas de Vídeo",
-    saleModifiers: [
+    productModifiers: [
       {
         productId: "PRO-026333169",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 139990,
           pix: 131591,
           pixDiscont: 6,
@@ -23,9 +55,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-688377899",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 450000,
           pix: 423000,
           pixDiscont: 6,
@@ -36,9 +68,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-002350C9D",
-        expiration,
+        expiration: fakeExpiration,
         discont: 15,
-        salePrices: {
+        price: {
           full: 245555,
           pix: 230822,
           pixDiscont: 6,
@@ -49,9 +81,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-2107D4DB3",
-        expiration,
+        expiration: fakeExpiration,
         discont: 15,
-        salePrices: {
+        price: {
           full: 226667,
           pix: 213067,
           pixDiscont: 6,
@@ -62,9 +94,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-9C0DAC9F7",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 250000,
           pix: 235000,
           pixDiscont: 6,
@@ -75,9 +107,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-E01929272",
-        expiration,
+        expiration: fakeExpiration,
         discont: 15,
-        salePrices: {
+        price: {
           full: 245555,
           pix: 230822,
           pixDiscont: 6,
@@ -88,9 +120,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-2FD400729",
-        expiration,
+        expiration: fakeExpiration,
         discont: 15,
-        salePrices: {
+        price: {
           full: 623333,
           pix: 573467,
           pixDiscont: 8,
@@ -101,9 +133,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-B7FA0718A",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 409999,
           pix: 385400,
           pixDiscont: 6,
@@ -114,9 +146,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-3709D4A9F",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 399999,
           pix: 376000,
           pixDiscont: 6,
@@ -127,9 +159,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-4E0235EDE",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 469999,
           pix: 432400,
           pixDiscont: 8,
@@ -140,9 +172,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-019F41CA9",
-        expiration,
+        expiration: fakeExpiration,
         discont: 10,
-        salePrices: {
+        price: {
           full: 58224,
           pix: 53566,
           pixDiscont: 8,
@@ -153,9 +185,9 @@ const sales: FASale[] = [
       },
       {
         productId: "PRO-AD8E593EB",
-        expiration,
+        expiration: fakeExpiration,
         discont: 15,
-        salePrices: {
+        price: {
           full: 143149,
           pix: 134560,
           pixDiscont: 6,
@@ -168,19 +200,33 @@ const sales: FASale[] = [
   },
 ] as const;
 
-const saleModifierMap = new Map<
-  string,
-  { id: string; name: string; modifier: FASaleModifier }
->();
+const salesTable = {
+  data,
+  saleProductMap: new Map<string, string[]>(
+    data.map((s) => [s.id, s.productModifiers.map((spm) => spm.productId)]),
+  ),
+  productModifierMap: new Map<string, SaleProduct>(
+    (() => {
+      const arr: [string, SaleProduct][] = [];
+      for (const sale of data) {
+        for (const productModifier of sale.productModifiers) {
+          arr.push([
+            productModifier.productId,
+            {
+              sale: {
+                id: sale.id,
+                name: sale.name,
+                discont: productModifier.discont,
+                expiration: productModifier.expiration,
+              },
+              price: productModifier.price,
+            },
+          ]);
+        }
+      }
+      return arr;
+    })(),
+  ),
+};
 
-for (const sale of sales) {
-  for (const modifier of sale.saleModifiers) {
-    saleModifierMap.set(modifier.productId, {
-      id: sale.id,
-      name: sale.name,
-      modifier,
-    });
-  }
-}
-
-export { sales, saleModifierMap };
+export { salesTable };

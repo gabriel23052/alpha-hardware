@@ -1,6 +1,6 @@
 import { config } from "@fakeAPI/config";
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
-import { SessionsTable } from "@fakeAPI/tables/SessionsTable";
+import { SessionsTable } from "@fakeAPI/queries/SessionsTable";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class SessionsHandler {
@@ -48,7 +48,7 @@ class SessionsHandler {
     const sessionData = sessionsTable.get()[0];
     if (!sessionData) {
       response.setError("AUTH_INVALID_SESSION");
-        return null;
+      return null;
     }
     return sessionData;
   }

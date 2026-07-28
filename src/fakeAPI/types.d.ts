@@ -53,7 +53,7 @@ type FAProduct = {
   name: string;
   searchName: string;
   category: string;
-  prices: FAProductPrice;
+  price: FAProductPrice;
   media: FAProductMedia;
   tags: string[];
   sale?: {
@@ -74,7 +74,7 @@ type FAProduct_Suggestion = Pick<FAProduct, "id" | "name" | "searchName">;
 type FAProduct_Card = {
   id: string;
   name: string;
-  prices: FAProductPrice;
+  price: FAProductPrice;
   media: { thumb: string };
   sale?: {
     id: string;
@@ -101,8 +101,8 @@ type FAProductMedia = {
 };
 
 type FAProductIdQuery = {
-  id: string
-}
+  id: string;
+};
 
 type FAProductQuery = {
   filter: FAProductFilter;

@@ -1,34 +1,66 @@
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
-import { ProductsTable } from "@fakeAPI/tables/ProductsTable";
+import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 
 class ProductsHandler {
   public getProductById(
     response: FakeAPIResponse<FAProduct | null>,
     productId: string,
   ) {
-    const productsTable = new ProductsTable();
-    productsTable.searchById(productId);
-    if (productsTable.empty) {
+    const productsQuery = new ProductsQuery();
+    const product = productsQuery.selectById(productId).getUnique("default");
+    if (!product) {
       return response.setData(null);
     }
-    return response.setData(productsTable.getInFullFormat()[0]);
+    return response.setData(product);
+  }
+
+  private getFilteredQuery(filter: FAProductFilter) {
+    const productsQuery = new ProductsQuery();
+
+    if (filter.search !== undefined) {
+      productsQuery.selectByName(filter.search);
+    }
+    if (filter.saleId !== undefined) {
+      productsQuery.selectBySaleId(filter.saleId);
+    }
+    if (filter.category !== undefined) {
+      productsQuery.selectByCategory(filter.category);
+    }
+    if (filter.maxPrice !== undefined) {
+      productsQuery.selectByMaxPrice(filter.maxPrice);
+    }
+    if (filter.minPrice !== undefined) {
+      productsQuery.selectByMaxPrice(filter.minPrice);
+    }
+    if (filter.tags !== undefined) {
+      productsQuery.selectByTags(filter.tags);
+    }
+
+    return productsQuery;
   }
 
   public getByQuery(
     response: FakeAPIResponse<FAProductFormats[]>,
     query: FAProductQuery,
   ) {
-    const productsTable = new ProductsTable();
-    productsTable.searchByFilter(query.filter);
-    if (productsTable.empty) return response.setData([]);
-    if (query.sort) productsTable.sort(query.sort);
+    const filteredQuery = this.getFilteredQuery(query.filter);
+    switch (query.sort) {
+      case "alphabetical":
+        filteredQuery.sortByName();
+        break;
+      case "decreasingPrice":
+        filteredQuery.sortByDecreasingPrice();
+        break;
+      default:
+        filteredQuery.sortByIncreasingPrice();
+    }
     switch (query.format) {
       case "full":
-        return response.setData(productsTable.getInFullFormat());
+        return response.setData(filteredQuery.get("default"));
       case "card":
-        return response.setData(productsTable.getInCardFormat());
+        return response.setData(filteredQuery.get("card"));
       case "suggestion":
-        return response.setData(productsTable.getInSuggestionFormat());
+        return response.setData(filteredQuery.get("suggestion"));
     }
   }
 
@@ -36,22 +68,23 @@ class ProductsHandler {
     response: FakeAPIResponse<FAProduct_Card[]>,
     productId: string,
   ) {
-    const productsTable = new ProductsTable();
-    productsTable.searchById(productId);
-    if (productsTable.empty) return response.setData([]);
-    const product = productsTable.getInFullFormat()[0];
-    productsTable.searchByFilter({ category: product.category });
-    const sameCategoryProducts = productsTable.getInPriceFormat();
-    const relatedProductsIds = sameCategoryProducts
-      .map(({ id, pixPrice }) => ({
-        id,
-        difference: Math.abs(pixPrice - product.prices.pix),
-      }))
-      .sort((difA, difB) => difA.difference - difB.difference)
-      .slice(1, 5)
-      .map(({ id }) => id);
-    productsTable.searchByIdList(relatedProductsIds);
-    response.setData(productsTable.getInCardFormat());
+    const productsQuery = new ProductsQuery();
+    const product = productsQuery
+      .selectById(productId)
+      .getUnique("relatedNeeds");
+    if (!product) return response.setData([]);
+
+    const relatedProducts = productsQuery
+      .clear()
+      .selectByCategory(product.category)
+      .get("card")
+      .sort(
+        (pA, pB) =>
+          Math.abs(pA.price.pix - product.pixPrice) -
+          Math.abs(pB.price.pix - product.pixPrice),
+      )
+      .slice(1, 5);
+    response.setData(relatedProducts);
   }
 }
 

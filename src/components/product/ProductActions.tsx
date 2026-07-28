@@ -19,7 +19,7 @@ const ProductActions = ({ product }: Props) => {
       {product.sale && <ProductSaleStrip sale={product.sale} mode="fullPage" />}
       <div className={classes.wrapper}>
         <div className={classes.topWrapper}>
-          <ProductActionsPrice prices={product.prices} />
+          <ProductActionsPrice prices={product.price} />
           <div className={classes.buttons}>
             <Link
               className={`text-default-b bg-primary lneutral-xlight ${classes.buyButton}`}

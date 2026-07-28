@@ -1,20 +1,19 @@
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
-import { ProductsTable } from "@fakeAPI/tables/ProductsTable";
+import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SessionsHandler } from "./SessionsHandler";
-import { FavoritesTable } from "@fakeAPI/tables/FavoritesTable";
+import { FavoritesTable } from "@fakeAPI/queries/FavoritesTable";
 
 class FavoritesHandler {
   public addFavorite(response: FakeAPIResponse, productId: string) {
     const sessionsHandler = new SessionsHandler();
-    const productTable = new ProductsTable();
+    const productQuery = new ProductsQuery();
     const favoritesTable = new FavoritesTable();
 
     const sessionData = sessionsHandler.getSessionData(response);
     if (!sessionData) return;
 
-    productTable.searchById(productId);
-    const product = productTable.getInFullFormat()[0];
+    const product = productQuery.selectById(productId).getUnique("default");
     if (!product) {
       return response.setError("FAVORITE_ADD_PRODUCT_NOT_FOUND");
     }
@@ -27,14 +26,13 @@ class FavoritesHandler {
 
   public removeFavorite(response: FakeAPIResponse, productId: string) {
     const sessionsHandler = new SessionsHandler();
-    const productTable = new ProductsTable();
+    const productQuery = new ProductsQuery();
     const favoritesTable = new FavoritesTable();
 
     const sessionData = sessionsHandler.getSessionData(response);
     if (!sessionData) return;
 
-    productTable.searchById(productId);
-    const product = productTable.getInFullFormat()[0];
+    const product = productQuery.selectById(productId).getUnique("default");
     if (!product) {
       return response.setError("FAVORITE_REMOVE_PRODUCT_ID_NOT_FOUND");
     }
@@ -62,10 +60,8 @@ class FavoritesHandler {
       return response.setData(ids);
     }
 
-    const productsTable = new ProductsTable();
-    productsTable.searchByIdList(ids);
-
-    return response.setData(productsTable.getInCardFormat());
+    const productsQuery = new ProductsQuery();
+    return response.setData(productsQuery.selectByIdList(ids).get("card"));
   }
 }
 

@@ -1,9 +1,33 @@
-const products: FAProduct[] = [
+export type Product = {
+  id: string;
+  name: string;
+  searchName: string;
+  category: string;
+  price: {
+    full: number;
+    pix: number;
+    pixDiscont: number;
+    maxInstallments: number;
+    installments: number;
+  };
+  media: {
+    thumb: string;
+    images: {
+      small: string;
+      medium: string;
+    }[];
+  };
+  tags: string[];
+  description: string;
+  specs: [string, string][];
+};
+
+const data: Product[] = [
   {
     id: "PRO-010A562D2",
     name: "Placa-Mãe ASUS TUF GAMING B760M-PLUS WIFI II, Intel, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 152173,
       pix: 139999,
       pixDiscont: 8,
@@ -35,7 +59,7 @@ const products: FAProduct[] = [
     id: "PRO-B290D11D5",
     name: "Placa-Mãe ASUS Prime H510M-A R2.0, Intel, ATX, DDR4, LGA 1200, H470",
     category: "moba",
-    prices: {
+    price: {
       full: 64587,
       pix: 59420,
       pixDiscont: 8,
@@ -69,7 +93,7 @@ const products: FAProduct[] = [
     id: "PRO-1D70EA474",
     name: "Placa Mãe ASUS PRIME H610M-CS D4, LGA 1700, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 77110,
       pix: 72483,
       pixDiscont: 6,
@@ -102,7 +126,7 @@ const products: FAProduct[] = [
     id: "PRO-2F61C7214",
     name: "Placa-Mãe Gigabyte H510M H V2, Intel LGA 1200, 10ª E 11ª Geração, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 66469,
       pix: 61151,
       pixDiscont: 8,
@@ -136,7 +160,7 @@ const products: FAProduct[] = [
     id: "PRO-57CEA8CF9",
     name: "Placa-Mãe MSI B760M Gaming Plus, Intel LGA 1700, M-ATX, DDR5, Wi-Fi",
     category: "moba",
-    prices: {
+    price: {
       full: 141175,
       pix: 129881,
       pixDiscont: 8,
@@ -170,7 +194,7 @@ const products: FAProduct[] = [
     id: "PRO-8268BB4FD",
     name: "Placa-Mãe ASUS Tuf Gaming Z790-Plus, Intel, ATX, DDR5, RGB, Wi-Fi, Bluetooth",
     category: "moba",
-    prices: {
+    price: {
       full: 241175,
       pix: 221881,
       pixDiscont: 8,
@@ -202,7 +226,7 @@ const products: FAProduct[] = [
     id: "PRO-03A80EEF0",
     name: "Placa-Mãe MSI Pro B760M-E, Intel LGA 1700, M-ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 83293,
       pix: 76629,
       pixDiscont: 8,
@@ -235,7 +259,7 @@ const products: FAProduct[] = [
     id: "PRO-3F55E68AA",
     name: "Placa-Mãe Gigabyte B760M GAMING AC Rev. 1.x, Intel LGA1700, Micro ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 111109,
       pix: 102220,
       pixDiscont: 8,
@@ -269,7 +293,7 @@ const products: FAProduct[] = [
     id: "PRO-67E2FEC06",
     name: "Placa-Mãe Gigabyte B760M Gaming X Rev. 1.0, Intel, Micro ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 142469,
       pix: 131071,
       pixDiscont: 8,
@@ -302,7 +326,7 @@ const products: FAProduct[] = [
     id: "PRO-DC7818A33",
     name: "Placa-Mãe Colorful BATTLE-AX H610M-E, Intel LGA1700, H610, DDR4, WIFI V20",
     category: "moba",
-    prices: {
+    price: {
       full: 75293,
       pix: 70775,
       pixDiscont: 6,
@@ -336,7 +360,7 @@ const products: FAProduct[] = [
     id: "PRO-5E19C6A23",
     name: "Placa-Mãe ASUS Prime B760M-A, Intel LGA 1700, D4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 117646,
       pix: 108234,
       pixDiscont: 8,
@@ -369,7 +393,7 @@ const products: FAProduct[] = [
     id: "PRO-FF124E82F",
     name: "Placa Mãe ASRock H610M-HVS M.2 Intel, M-ATX, DDR4, Socket LGA 1700, HDMI, D-Sub",
     category: "moba",
-    prices: {
+    price: {
       full: 76666,
       pix: 70532,
       pixDiscont: 8,
@@ -403,7 +427,7 @@ const products: FAProduct[] = [
     id: "PRO-325DAC618",
     name: "Placa-Mãe ASUS TUF GAMING B760M-Plus, Intel LGA 1700, mATX, D4, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 159999,
       pix: 150399,
       pixDiscont: 6,
@@ -437,7 +461,7 @@ const products: FAProduct[] = [
     id: "PRO-07262B83C",
     name: "Placa-Mãe ASUS Prime B760M-A Wi-Fi, Intel LGA 1700, mATX, D4,DDR4, Wi-Fi",
     category: "moba",
-    prices: {
+    price: {
       full: 139999,
       pix: 128799,
       pixDiscont: 8,
@@ -471,7 +495,7 @@ const products: FAProduct[] = [
     id: "PRO-5ADE4DBBF",
     name: "Placa-Mãe ASUS ROG STRIX B760-F Gaming Wi-Fi, Intel LGA 1700, ATX, DDR5, Wi-Fi",
     category: "moba",
-    prices: {
+    price: {
       full: 230767,
       pix: 212305,
       pixDiscont: 8,
@@ -505,7 +529,7 @@ const products: FAProduct[] = [
     id: "PRO-19BD26348",
     name: "Placa-Mãe Gigabyte Z790 Aorus Elite AX, LGA 1700, ATX, DDR5, Wi-Fi",
     category: "moba",
-    prices: {
+    price: {
       full: 257646,
       pix: 242187,
       pixDiscont: 6,
@@ -539,7 +563,7 @@ const products: FAProduct[] = [
     id: "PRO-D85B8DB40",
     name: "Placa-Mãe ASUS PRIME H510M-K R2.0, INTEL, H470, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 62920,
       pix: 57886,
       pixDiscont: 8,
@@ -571,7 +595,7 @@ const products: FAProduct[] = [
     id: "PRO-471741A0B",
     name: "Placa Mãe MSI PRO H610M-S Intel Core, DDR4, mATX, Realtek ALC897 Codec",
     category: "moba",
-    prices: {
+    price: {
       full: 63332,
       pix: 58265,
       pixDiscont: 8,
@@ -605,7 +629,7 @@ const products: FAProduct[] = [
     id: "PRO-BDC286153",
     name: "Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, D4,DDR4, ATX",
     category: "moba",
-    prices: {
+    price: {
       full: 147058,
       pix: 138234,
       pixDiscont: 6,
@@ -638,7 +662,7 @@ const products: FAProduct[] = [
     id: "PRO-7554C4CF6",
     name: "Placa-Mãe ASUS Prime B760-Plus, Intel LGA 1700, Intel, ATX, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 132291,
       pix: 121707,
       pixDiscont: 8,
@@ -671,7 +695,7 @@ const products: FAProduct[] = [
     id: "PRO-7450A321B",
     name: "Placa-Mãe MSI A520M-A PRO, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 48862,
       pix: 44953,
       pixDiscont: 8,
@@ -704,7 +728,7 @@ const products: FAProduct[] = [
     id: "PRO-248299B87",
     name: "Placa-Mãe ASUS TUF GAMING A520M-PLUS II, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 72940,
       pix: 67104,
       pixDiscont: 8,
@@ -737,7 +761,7 @@ const products: FAProduct[] = [
     id: "PRO-F9C97BA04",
     name: "Placa-Mãe Gigabyte B550M Aorus Elite Rev. 1.3, AMD AM4, Micro ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 105881,
       pix: 97410,
       pixDiscont: 8,
@@ -771,7 +795,7 @@ const products: FAProduct[] = [
     id: "PRO-06AE48775",
     name: "Placa-Mãe MSI MPG B550 Gaming Plus, AMD AM4, ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 117646,
       pix: 110587,
       pixDiscont: 6,
@@ -804,7 +828,7 @@ const products: FAProduct[] = [
     id: "PRO-CAD5BEDDF",
     name: "Placa-Mãe ASUS TUF Gaming B550M-Plus, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 110586,
       pix: 101739,
       pixDiscont: 8,
@@ -837,7 +861,7 @@ const products: FAProduct[] = [
     id: "PRO-148CA535D",
     name: "Placa-Mãe ASUS TUF Gaming B650M-Plus, AMD AM5 B650, mATX, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 167058,
       pix: 157034,
       pixDiscont: 6,
@@ -870,7 +894,7 @@ const products: FAProduct[] = [
     id: "PRO-CB446899E",
     name: "Placa-Mãe MSI B550M Pro-VDH WiFi, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 104705,
       pix: 98422,
       pixDiscont: 6,
@@ -903,7 +927,7 @@ const products: FAProduct[] = [
     id: "PRO-C45F042A9",
     name: "Placa-Mãe ASRock B450M Steel Legend, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 85881,
       pix: 79010,
       pixDiscont: 8,
@@ -936,7 +960,7 @@ const products: FAProduct[] = [
     id: "PRO-7CF7FE5D3",
     name: "Placa-Mãe ASUS Prime B550M-A, AMD AM4, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 91764,
       pix: 86258,
       pixDiscont: 6,
@@ -969,7 +993,7 @@ const products: FAProduct[] = [
     id: "PRO-B415C97A3",
     name: "Placa-Mãe ASRock B650M PG Riptide, AMD, Micro ATX, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 161175,
       pix: 148281,
       pixDiscont: 8,
@@ -1001,7 +1025,7 @@ const products: FAProduct[] = [
     id: "PRO-AFFBDC087",
     name: "Placa-Mãe ASUS TUF GAMING A520M-PLUS WIFI, AMD AM4, RGB, mATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 77646,
       pix: 72987,
       pixDiscont: 6,
@@ -1035,7 +1059,7 @@ const products: FAProduct[] = [
     id: "PRO-229E292D5",
     name: "Placa Mãe Gigabyte B550M DS3H AC, Rev 1.4, AMD AM4, Micro ATX, DDR4, Wi-Fi, Bluetooth",
     category: "moba",
-    prices: {
+    price: {
       full: 86666,
       pix: 79732,
       pixDiscont: 8,
@@ -1067,7 +1091,7 @@ const products: FAProduct[] = [
     id: "PRO-002A74962",
     name: "Placa Mae ASUS TUF Gaming X670E-Plus, AMD X670, AM5, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 257646,
       pix: 237034,
       pixDiscont: 8,
@@ -1098,7 +1122,7 @@ const products: FAProduct[] = [
     id: "PRO-7A476C4D5",
     name: "Placa-Mãe ASUS ROG Strix B550-F Gaming II, AMD AM4, Aura Sync RGB, ATX, DDR4, Wi-Fi",
     category: "moba",
-    prices: {
+    price: {
       full: 164285,
       pix: 154427,
       pixDiscont: 6,
@@ -1132,7 +1156,7 @@ const products: FAProduct[] = [
     id: "PRO-7D6BE3AA2",
     name: "Placa-Mãe Gigabyte A520M K V2 Rev. 1.0, AMD, Micro ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 49411,
       pix: 46446,
       pixDiscont: 6,
@@ -1164,7 +1188,7 @@ const products: FAProduct[] = [
     id: "PRO-360C64357",
     name: "Placa-Mãe ASUS TUF Gaming B550-PRO, AMD AM4, ATX, DDR4",
     category: "moba",
-    prices: {
+    price: {
       full: 135293,
       pix: 127175,
       pixDiscont: 6,
@@ -1197,7 +1221,7 @@ const products: FAProduct[] = [
     id: "PRO-9CE8E8E5A",
     name: "Placa Mãe Gigabyte B850 EAGLE WIFI6E, AMD AM5, ATX, DDR5, RGB, Wi-Fi 6E, Bluetooth",
     category: "moba",
-    prices: {
+    price: {
       full: 178888,
       pix: 164576,
       pixDiscont: 8,
@@ -1230,7 +1254,7 @@ const products: FAProduct[] = [
     id: "PRO-272C4B402",
     name: "Placa-Mãe Gigabyte A620M DS3H, AMD AM5, mATX, DDR5, RGB",
     category: "moba",
-    prices: {
+    price: {
       full: 88541,
       pix: 81457,
       pixDiscont: 8,
@@ -1263,7 +1287,7 @@ const products: FAProduct[] = [
     id: "PRO-7CDF50E24",
     name: "Placa Mãe MSI PRO B760M-G, Intel LGA 1700, mATX, DDR5",
     category: "moba",
-    prices: {
+    price: {
       full: 97777,
       pix: 91910,
       pixDiscont: 6,
@@ -1296,7 +1320,7 @@ const products: FAProduct[] = [
     id: "PRO-13944B524",
     name: "Placa-Mãe Gigabyte B650M DS3H Rev. 1.0, RGB, AMD, Micro ATX, DDR5, AM5",
     category: "moba",
-    prices: {
+    price: {
       full: 178313,
       pix: 167614,
       pixDiscont: 6,
@@ -1329,7 +1353,7 @@ const products: FAProduct[] = [
     id: "PRO-026333169",
     name: "Placa de Vídeo Gigabyte RTX 3050 Windforce OC NVIDIA GeForce, 6GB, GDDR6, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 155544,
       pix: 146211,
       pixDiscont: 6,
@@ -1363,7 +1387,7 @@ const products: FAProduct[] = [
     id: "PRO-688377899",
     name: "Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 499999,
       pix: 469999,
       pixDiscont: 6,
@@ -1397,7 +1421,7 @@ const products: FAProduct[] = [
     id: "PRO-002350C9D",
     name: "Placa de Vídeo Gigabyte RTX 5060 WINDFORCE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 288888,
       pix: 271554,
       pixDiscont: 6,
@@ -1431,7 +1455,7 @@ const products: FAProduct[] = [
     id: "PRO-2107D4DB3",
     name: "Placa de Vídeo RTX 4060 VENTUS 2x Black OC MSI NVIDIA GeForce, 8GB GDDR6, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 266666,
       pix: 250666,
       pixDiscont: 6,
@@ -1465,7 +1489,7 @@ const products: FAProduct[] = [
     id: "PRO-9C0DAC9F7",
     name: "Placa de Vídeo Gigabyte RTX 5060 GAMING OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Triple Fan, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 277777,
       pix: 261110,
       pixDiscont: 6,
@@ -1499,7 +1523,7 @@ const products: FAProduct[] = [
     id: "PRO-E01929272",
     name: "Placa de Vídeo ASUS DUAL RTX 5060 O8G NVIDIA GeForce, 8GB GDDR7, 2565MHz, 128 bits, OpenGL 4.6, DLSS 4, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 288888,
       pix: 271554,
       pixDiscont: 6,
@@ -1533,7 +1557,7 @@ const products: FAProduct[] = [
     id: "PRO-2FD400729",
     name: "Placa de Vídeo Gigabyte RTX 5070 Ti WINDFORCE SFF 16G NVIDIA GeForce, 16GB, GDDR7, 256bits, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 733332,
       pix: 674665,
       pixDiscont: 8,
@@ -1567,7 +1591,7 @@ const products: FAProduct[] = [
     id: "PRO-B7FA0718A",
     name: "Placa de Vídeo MSI GeForce RTX 5070 12G VENTUS 2X OC,12 GB GDDR7, 28Gbps, NVIDIA GeForce RTX 5070",
     category: "gpu",
-    prices: {
+    price: {
       full: 455554,
       pix: 428220,
       pixDiscont: 6,
@@ -1601,7 +1625,7 @@ const products: FAProduct[] = [
     id: "PRO-3709D4A9F",
     name: "Placa de Vídeo ASUS DUAL RTX 5060 TI O16G NVIDIA GeForce, 16GB GDDR7, 2602MHz, 128 bits, OpenGL4.6, DLSS 4, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 444443,
       pix: 417776,
       pixDiscont: 6,
@@ -1635,7 +1659,7 @@ const products: FAProduct[] = [
     id: "PRO-4E0235EDE",
     name: "Placa de Vídeo ASUS PRIME RTX 5070 O12G NVIDIA Geforce, 12GB, GDDR7, Blackwell e DLSS4, Ray Tracing, Edição OC",
     category: "gpu",
-    prices: {
+    price: {
       full: 522221,
       pix: 480443,
       pixDiscont: 8,
@@ -1669,7 +1693,7 @@ const products: FAProduct[] = [
     id: "PRO-998112857",
     name: "Placa de Vídeo G610 Projeto Edge Low Profile PCYes NVIDIA GeForce, 2GB, DDR3",
     category: "gpu",
-    prices: {
+    price: {
       full: 22351,
       pix: 20562,
       pixDiscont: 8,
@@ -1701,7 +1725,7 @@ const products: FAProduct[] = [
     id: "PRO-B36AB2296",
     name: "Placa de Vídeo MSI RTX 5060 8G VENTUS 2X OC Geforce NVIDIA, 8GB, GDDR7, 128 bits, 2535 MHz, DLSS 4, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 288888,
       pix: 265776,
       pixDiscont: 8,
@@ -1735,7 +1759,7 @@ const products: FAProduct[] = [
     id: "PRO-AB0449CE8",
     name: "Placa de Vídeo MSI RTX 5060 Ti 8G VENTUS 2X OC PLUS NVIDIA GeForce, 8GB GDDR7, 128-bit, 2617 MHz, FP4 e DLSS 4, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 333332,
       pix: 313332,
       pixDiscont: 6,
@@ -1769,7 +1793,7 @@ const products: FAProduct[] = [
     id: "PRO-6B1349768",
     name: "Placa de Vídeo RTX 5060 Ti GAMING OC 16G Gigabyte NVIDIA GeForce, 16GB GDDR7, 128bits, RGB, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 432221,
       pix: 406287,
       pixDiscont: 6,
@@ -1801,7 +1825,7 @@ const products: FAProduct[] = [
     id: "PRO-D0986A8D9",
     name: "Placa de Vídeo Gigabyte RTX 5060 EAGLE OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 266666,
       pix: 245332,
       pixDiscont: 8,
@@ -1835,7 +1859,7 @@ const products: FAProduct[] = [
     id: "PRO-4860CF473",
     name: "Placa de Vídeo Gigabyte RTX 5070 GAMING OC 12G NVIDIA GeForce, 12GB GDDR7, 192bits, RGB, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 541175,
       pix: 508704,
       pixDiscont: 6,
@@ -1869,7 +1893,7 @@ const products: FAProduct[] = [
     id: "PRO-033FFE1A6",
     name: "Placa de Vídeo PCyes NVIDIA RTX 2060 Graffiti Series, 6GB, GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 188777,
       pix: 177450,
       pixDiscont: 6,
@@ -1902,7 +1926,7 @@ const products: FAProduct[] = [
     id: "PRO-8B5C16E0F",
     name: "Placa de Vídeo Palit RTX 5070 Ti GameRock NVIDIA GeForce, 16GB, GDDR7, ARGB SYNC EVO, G-Sync, Ray Tracing, DLSS 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 929411,
       pix: 873646,
       pixDiscont: 6,
@@ -1936,7 +1960,7 @@ const products: FAProduct[] = [
     id: "PRO-68010B73A",
     name: "Placa de Vídeo RTX 5070 WINDFORCE SFF 12G Gigabyte NVIDIA GeForce, 12GB, GDDR7, 192bits, DLSS, Ray Tracing",
     category: "gpu",
-    prices: {
+    price: {
       full: 488888,
       pix: 459554,
       pixDiscont: 6,
@@ -1970,7 +1994,7 @@ const products: FAProduct[] = [
     id: "PRO-15F1FF047",
     name: "Placa de Vídeo GTX 750 TI PCYes NVIDIA GeForce, 4GB GDDR5, 128 Bit, Full Size",
     category: "gpu",
-    prices: {
+    price: {
       full: 70587,
       pix: 66351,
       pixDiscont: 6,
@@ -2004,7 +2028,7 @@ const products: FAProduct[] = [
     id: "PRO-AD8E593EB",
     name: "Placa de Vídeo RX 6600 CLD 8G ASRock AMD Radeon, 8GB, GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 168411,
       pix: 158306,
       pixDiscont: 6,
@@ -2037,7 +2061,7 @@ const products: FAProduct[] = [
     id: "PRO-D55645F74",
     name: "Placa de Vídeo XFX AMD RADEON RX 7600 Gaming Graphics Card, 8GB, GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 210576,
       pix: 197941,
       pixDiscont: 6,
@@ -2070,7 +2094,7 @@ const products: FAProduct[] = [
     id: "PRO-9A524C334",
     name: "Placa de Vídeo RX 7600 Challenger ASRock AMD Radeon, 8GB GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 223528,
       pix: 210116,
       pixDiscont: 6,
@@ -2103,7 +2127,7 @@ const products: FAProduct[] = [
     id: "PRO-288D0B161",
     name: "Placa de Vídeo RX 7600 GAMING OC 8G AMD Radeon Gigabyte, 8GB, GDDR6, 128bits, RGB",
     category: "gpu",
-    prices: {
+    price: {
       full: 223528,
       pix: 210116,
       pixDiscont: 6,
@@ -2137,7 +2161,7 @@ const products: FAProduct[] = [
     id: "PRO-C9E5FE2A5",
     name: "Placa de Vídeo ASRock RX 9060 XT CL 16GO AMD Radeon, 16GB, GDDR6, 128bits, OpenGL 4.6, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 377777,
       pix: 347554,
       pixDiscont: 8,
@@ -2171,7 +2195,7 @@ const products: FAProduct[] = [
     id: "PRO-61CBA0795",
     name: "Placa de Vídeo RX 7600 Series Graphics Cards XFX AMD Radeon, 8GB GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 223528,
       pix: 205645,
       pixDiscont: 8,
@@ -2204,7 +2228,7 @@ const products: FAProduct[] = [
     id: "PRO-14B7D0E88",
     name: "Placa de Vídeo RX 6650XT XFX Speedster SWFT210 AMD Radeon, 8GB GDDR6, HDMI 3xDP 2 FAN",
     category: "gpu",
-    prices: {
+    price: {
       full: 223528,
       pix: 210116,
       pixDiscont: 6,
@@ -2238,7 +2262,7 @@ const products: FAProduct[] = [
     id: "PRO-88E5CD51A",
     name: "Placa de Vídeo XFX RX 9060 XT OC AMD Radeon, 16GB, GDDR6, 128bits, 20 Gbps, Triple Fan, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 369989,
       pix: 347789,
       pixDiscont: 6,
@@ -2272,7 +2296,7 @@ const products: FAProduct[] = [
     id: "PRO-4B8E02B92",
     name: "Placa de Vídeo ASRock RX 9060 XT SL 16GO AMD Radeon, 16GB, GDDR6, 128bits, Triple Fan, OpenGL 4.6, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 358878,
       pix: 330167,
       pixDiscont: 8,
@@ -2306,7 +2330,7 @@ const products: FAProduct[] = [
     id: "PRO-3744553B7",
     name: "Placa de Vídeo RX 7800XT Gaming 16G XFX Speedster QICK319 AMD Radeon, 16GB DDR6, HDMI 3xDP 3 FAN",
     category: "gpu",
-    prices: {
+    price: {
       full: 435293,
       pix: 409175,
       pixDiscont: 6,
@@ -2340,7 +2364,7 @@ const products: FAProduct[] = [
     id: "PRO-019F41CA9",
     name: "Placa de Vídeo RX 550 AMD PCYes Dual Fan Projeto Edge, 4GB GDDR5, 128 BITS",
     category: "gpu",
-    prices: {
+    price: {
       full: 64691,
       pix: 59515,
       pixDiscont: 8,
@@ -2374,7 +2398,7 @@ const products: FAProduct[] = [
     id: "PRO-987CC9C3E",
     name: "Placa de Vídeo Sapphire Pulse RX 6500 XT Gaming OC AMD, 8GB, GDDR6, 2855MHz, HDMI e DP",
     category: "gpu",
-    prices: {
+    price: {
       full: 152940,
       pix: 140704,
       pixDiscont: 8,
@@ -2408,7 +2432,7 @@ const products: FAProduct[] = [
     id: "PRO-BFA35D503",
     name: "Placa de Vídeo ASRock RX 6600 Challenger White AMD Radeon, 8GB, GDDR6, DirectX 12 Ultimate, RDNA 2",
     category: "gpu",
-    prices: {
+    price: {
       full: 222221,
       pix: 204443,
       pixDiscont: 8,
@@ -2442,7 +2466,7 @@ const products: FAProduct[] = [
     id: "PRO-F188B319E",
     name: "Placa de Vídeo XFX RX 9060 XT OC White AMD Radeon, 16GB, GDDR6, 128bits, 20 Gbps, Triple Fan, FidelityFX, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 359989,
       pix: 338389,
       pixDiscont: 6,
@@ -2476,7 +2500,7 @@ const products: FAProduct[] = [
     id: "PRO-2D5EA13C6",
     name: "Placa de Vídeo Gigabyte RX 9060 XT Gaming OC AMD Radeon, 16GB, GDDR6, 128bits, Triple Fan, OpenGL 4.6",
     category: "gpu",
-    prices: {
+    price: {
       full: 388888,
       pix: 365554,
       pixDiscont: 6,
@@ -2510,7 +2534,7 @@ const products: FAProduct[] = [
     id: "PRO-F8E91AFF4",
     name: "Placa de Vídeo RX 7800 XT Magnetic Air Gaming Graphics Card with XFX Qicksilver White AMD Radeon, 16GB GDDR6, Freesync",
     category: "gpu",
-    prices: {
+    price: {
       full: 447058,
       pix: 411293,
       pixDiscont: 8,
@@ -2544,7 +2568,7 @@ const products: FAProduct[] = [
     id: "PRO-9764E9629",
     name: "Placa de Vídeo XFX Mercury RX 9070 XT OC GAMING EDITION WITH AMD Radeon, RGB, 16GB, GDDR6, HDMI 3xDP, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 666666,
       pix: 626666,
       pixDiscont: 6,
@@ -2577,7 +2601,7 @@ const products: FAProduct[] = [
     id: "PRO-E377796B0",
     name: "Placa de Vídeo RX 7600 XT OC ASUS AMD Radeon Dual O16G, 16GB GDDR6",
     category: "gpu",
-    prices: {
+    price: {
       full: 313952,
       pix: 288835,
       pixDiscont: 8,
@@ -2611,7 +2635,7 @@ const products: FAProduct[] = [
     id: "PRO-89282152C",
     name: "Placa de Vídeo XFX Quicksilver RX 9070 XT GAMING EDITION WITH 16GB AMD Radeon, GDDR6, HDMI 3xDP, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 611110,
       pix: 562221,
       pixDiscont: 8,
@@ -2645,7 +2669,7 @@ const products: FAProduct[] = [
     id: "PRO-ED5A3A0E1",
     name: "Placa de Vídeo Sapphire PULSE RX 9070 XT GAMING AMD Radeon, 16GB, GDDR6, Dual HDMI, Dual DP, RDNA 4",
     category: "gpu",
-    prices: {
+    price: {
       full: 699999,
       pix: 657999,
       pixDiscont: 6,
@@ -2679,7 +2703,7 @@ const products: FAProduct[] = [
     id: "PRO-7EDCF5AAF",
     name: "Processador Intel Core i5-12400F, 2.5GHz (4.4GHz Max Turbo), Cache 18MB, LGA 1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 79544,
       pix: 73180,
       pixDiscont: 8,
@@ -2710,7 +2734,7 @@ const products: FAProduct[] = [
     id: "PRO-E48931615",
     name: "Processador Intel Core i5-14600KF, 14ª Geração, 5.3 GHz Max Turbo, Cache 24MB, 14 Núcleos, 20 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 135868,
       pix: 127715,
       pixDiscont: 6,
@@ -2740,7 +2764,7 @@ const products: FAProduct[] = [
     id: "PRO-2C450F25B",
     name: "Processador Intel Core i5-14600K, 14ª Geração, 5.3 GHz Max Turbo, Cache 24MB, 14 Núcleos, 20 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 159090,
       pix: 149544,
       pixDiscont: 6,
@@ -2770,7 +2794,7 @@ const products: FAProduct[] = [
     id: "PRO-C6A62DCBE",
     name: "Processador Intel Core i9-12900KS, 3.4GHz (5.5GHz Max Turbo), Cache 30MB, LGA 1700, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 198863,
       pix: 182953,
       pixDiscont: 8,
@@ -2800,7 +2824,7 @@ const products: FAProduct[] = [
     id: "PRO-EA86C3F67",
     name: "Processador Intel Core i5-12400, 2.5GHz (4.4GHz Max Turbo), Cache 18MB, LGA 1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 113634,
       pix: 106815,
       pixDiscont: 6,
@@ -2831,7 +2855,7 @@ const products: FAProduct[] = [
     id: "PRO-CD85811AE",
     name: "Processador Intel Core i7-12700KF, 3.6GHz (5.0GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 174443,
       pix: 163976,
       pixDiscont: 6,
@@ -2863,7 +2887,7 @@ const products: FAProduct[] = [
     id: "PRO-3F0567CD0",
     name: "Processador Intel Core i9-14900K, 14ª Geração, 6GHz Max Turbo, Cache 36MB, 24 Núcleos, 32 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 344443,
       pix: 316887,
       pixDiscont: 8,
@@ -2893,7 +2917,7 @@ const products: FAProduct[] = [
     id: "PRO-708CC838A",
     name: "Processador Intel Core i3-10105, 3.7GHz (4.4GHz Max Turbo), Cache 6MB, Quad Core, 8 Threads, LGA 1200, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 68888,
       pix: 63376,
       pixDiscont: 8,
@@ -2924,7 +2948,7 @@ const products: FAProduct[] = [
     id: "PRO-392C3C74B",
     name: "Processador Intel Core i7-14700KF, 14ª Geração, 5.6 GHz Max Turbo, Cache 33MB, 20 Núcleos, 28 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 255554,
       pix: 235109,
       pixDiscont: 8,
@@ -2954,7 +2978,7 @@ const products: FAProduct[] = [
     id: "PRO-9CA1977D6",
     name: "Processador Intel Core i5-10400, 2.9GHz (4.3GHz Max Turbo), Cache 12MB, LGA 1200",
     category: "cpu",
-    prices: {
+    price: {
       full: 96666,
       pix: 88932,
       pixDiscont: 8,
@@ -2985,7 +3009,7 @@ const products: FAProduct[] = [
     id: "PRO-9B37E4868",
     name: "Processador Intel Core i9-14900KF, 14ª Geração, 6GHz Max Turbo, Cache 36MB, 24 Núcleos, 32 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 333332,
       pix: 313332,
       pixDiscont: 6,
@@ -3015,7 +3039,7 @@ const products: FAProduct[] = [
     id: "PRO-2F9B652E8",
     name: "Processador Intel Core i7-12700K, 3.6GHz (5.0GHz Max Turbo), 12 Núcleos, 20 Threads, LGA 1700, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 177777,
       pix: 167110,
       pixDiscont: 6,
@@ -3047,7 +3071,7 @@ const products: FAProduct[] = [
     id: "PRO-A3B151AB2",
     name: "Processador Intel Core i7-14700K, 14ª Geração, 5.6 GHz Max Turbo, Cache 33MB, 20 Núcleos, 28 Threads, LGA1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 272726,
       pix: 256362,
       pixDiscont: 6,
@@ -3077,7 +3101,7 @@ const products: FAProduct[] = [
     id: "PRO-AF1DFCD36",
     name: "Processador Intel Core i5-13400F, 4.6GHz Max Turbo, Cache 20MB, 10 Núcleos, 16 Threads, LGA 1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 108695,
       pix: 99999,
       pixDiscont: 8,
@@ -3109,7 +3133,7 @@ const products: FAProduct[] = [
     id: "PRO-3206A3A20",
     name: "Processador Intel Core i5-10400F, 2.9GHz (4.3GHz Max Turbo), Cache 12MB, 6 Núcleos, 12 Threads, LGA 1200",
     category: "cpu",
-    prices: {
+    price: {
       full: 79544,
       pix: 74771,
       pixDiscont: 6,
@@ -3143,7 +3167,7 @@ const products: FAProduct[] = [
     id: "PRO-17256E1C0",
     name: "Processador Intel Core i3-13100, 4.5GHz Max Turbo, Cache 12MB, 4 Núcleos, 8 Threads, LGA 1700, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 80434,
       pix: 73999,
       pixDiscont: 8,
@@ -3175,7 +3199,7 @@ const products: FAProduct[] = [
     id: "PRO-91022DA09",
     name: "Processador Intel Core i3-12100, Cache 12MB, 3.3GHz (4.3GHz Max Turbo), LGA 1700, Vídeo Integrado, com Cooler",
     category: "cpu",
-    prices: {
+    price: {
       full: 87058,
       pix: 80093,
       pixDiscont: 8,
@@ -3207,7 +3231,7 @@ const products: FAProduct[] = [
     id: "PRO-04AA22ED2",
     name: "Processador Intel Core i3-10100F, 3.6GHz (4.3GHz Max Boost), Cache 6MB, Quad Core, 8 Threads, LGA 1200",
     category: "cpu",
-    prices: {
+    price: {
       full: 51135,
       pix: 47044,
       pixDiscont: 8,
@@ -3238,7 +3262,7 @@ const products: FAProduct[] = [
     id: "PRO-65DD0D1EF",
     name: "Processador Intel Core i5-13400, 4.6GHz Max Turbo, Cache 20MB, 10 Núcleos, 16 Threads, LGA 1700, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 164772,
       pix: 154885,
       pixDiscont: 6,
@@ -3270,7 +3294,7 @@ const products: FAProduct[] = [
     id: "PRO-6C2EE352C",
     name: "Processador Intel Core i3-12100F, 3.3GHz (4.3GHz Max Turbo), Cache 12MB, LGA 1700",
     category: "cpu",
-    prices: {
+    price: {
       full: 65554,
       pix: 60309,
       pixDiscont: 8,
@@ -3301,7 +3325,7 @@ const products: FAProduct[] = [
     id: "PRO-A5EDC5457",
     name: "Processador AMD Ryzen 5 5600GT, 3.6 GHz, (4.6GHz Max Turbo), Cache 4MB, 6 Núcleos, 12 Threads, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 88888,
       pix: 83554,
       pixDiscont: 6,
@@ -3332,7 +3356,7 @@ const products: FAProduct[] = [
     id: "PRO-6AF14669F",
     name: "Processador AMD Ryzen 7 5700X3D, 3.0 GHz, (4.1GHz Max Turbo), Cache 4MB, 8 Núcleos, 16 Threads, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 211110,
       pix: 194221,
       pixDiscont: 8,
@@ -3363,7 +3387,7 @@ const products: FAProduct[] = [
     id: "PRO-CC5BF03BA",
     name: "Processador AMD Ryzen 5 5500, 3.6GHz (4.2GHz Max Turbo), Cache 19MB, AM4, Sem Vídeo",
     category: "cpu",
-    prices: {
+    price: {
       full: 61110,
       pix: 57443,
       pixDiscont: 6,
@@ -3394,7 +3418,7 @@ const products: FAProduct[] = [
     id: "PRO-A02EECCAA",
     name: "Processador AMD Ryzen 7 5700X, 3.4GHz (4.6GHz Max Turbo), Cache 36MB, AM4, Sem Vídeo",
     category: "cpu",
-    prices: {
+    price: {
       full: 132953,
       pix: 122316,
       pixDiscont: 8,
@@ -3427,7 +3451,7 @@ const products: FAProduct[] = [
     id: "PRO-3CDAB42EA",
     name: "Processador AMD Ryzen 7 9800X3D, Cache 8MB, 8 Núcleos, 16 Threads, AM5",
     category: "cpu",
-    prices: {
+    price: {
       full: 322221,
       pix: 296443,
       pixDiscont: 8,
@@ -3458,7 +3482,7 @@ const products: FAProduct[] = [
     id: "PRO-A244D6ACD",
     name: "Processador AMD Ryzen 5 7600, 5.1GHz Max Turbo, Cache 38MB, AM5, 6 Núcleos, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 138888,
       pix: 130554,
       pixDiscont: 6,
@@ -3491,7 +3515,7 @@ const products: FAProduct[] = [
     id: "PRO-E060FA226",
     name: "Processador AMD Ryzen 7 7800X3D, 5.0GHz Max Turbo, Cache 104MB, AM5, 8 Núcleos, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 272726,
       pix: 250907,
       pixDiscont: 8,
@@ -3521,7 +3545,7 @@ const products: FAProduct[] = [
     id: "PRO-3F6BC274A",
     name: "Processador AMD Ryzen 3 3200G, 3.6GHz (4GHz Max Turbo), Cache 4MB, Quad Core, 4 Threads, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 46738,
       pix: 43933,
       pixDiscont: 6,
@@ -3553,7 +3577,7 @@ const products: FAProduct[] = [
     id: "PRO-1C33B2AF2",
     name: "Processador AMD Ryzen 5 5600, 3.5GHz (4.4GHz Max Turbo), Cache 35MB, AM4, Sem Vídeo",
     category: "cpu",
-    prices: {
+    price: {
       full: 83332,
       pix: 76665,
       pixDiscont: 8,
@@ -3584,7 +3608,7 @@ const products: FAProduct[] = [
     id: "PRO-2356B623A",
     name: "Processador AMD Ryzen 5 9600X, 3.9 GHz (5.4 GHz), Cache 32 MB, 6 Núcleos, 12 Threads, AM5",
     category: "cpu",
-    prices: {
+    price: {
       full: 167390,
       pix: 153998,
       pixDiscont: 8,
@@ -3618,7 +3642,7 @@ const products: FAProduct[] = [
     id: "PRO-B5009B531",
     name: "Processador AMD Ryzen 5 8600G, 4.3 GHz (5.0GHz Max Turbo), Cache 6MB, 6 Núcleos, 12 Threads, AM5, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 146738,
       pix: 137933,
       pixDiscont: 6,
@@ -3652,7 +3676,7 @@ const products: FAProduct[] = [
     id: "PRO-EA4386256",
     name: "Processador AMD Ryzen 7 5700, 3.7 GHz (4.6GHz Max Turbo), Cache 4MB, 8 Núcleos, 16 Threads, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 116666,
       pix: 107332,
       pixDiscont: 8,
@@ -3683,7 +3707,7 @@ const products: FAProduct[] = [
     id: "PRO-68C6F5693",
     name: "Processador AMD Ryzen 5 5600X, 3.7GHz (4.6GHz Max Turbo), Cache 35MB, 6 Núcleos, 12 Threads, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 119564,
       pix: 112390,
       pixDiscont: 6,
@@ -3716,7 +3740,7 @@ const products: FAProduct[] = [
     id: "PRO-FB98CE8C2",
     name: "Processador AMD Ryzen 3 5300G, 4GHz (4.2GHz Max Turbo), Cache 8MB, AM4, 4 Núcleos, 8 Threads, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 59782,
       pix: 54999,
       pixDiscont: 8,
@@ -3747,7 +3771,7 @@ const products: FAProduct[] = [
     id: "PRO-8557A6F68",
     name: "Processador AMD Ryzen 5 4500, 3.6GHz (4.1GHz Max Turbo) Cache 11MB, AM4, Sem Vídeo",
     category: "cpu",
-    prices: {
+    price: {
       full: 61363,
       pix: 56453,
       pixDiscont: 8,
@@ -3780,7 +3804,7 @@ const products: FAProduct[] = [
     id: "PRO-3E82487D7",
     name: "Processador AMD Ryzen 7 5800XT, 3.8 GHz (4.8 GHz Max Turbo), Cache 32 MB, 8 Núcleos, 16 Threads, AM4, Com Cooler",
     category: "cpu",
-    prices: {
+    price: {
       full: 155681,
       pix: 143226,
       pixDiscont: 8,
@@ -3813,7 +3837,7 @@ const products: FAProduct[] = [
     id: "PRO-A8D4D200D",
     name: "Processador AMD Ryzen 9 9950x3d, 4,4 GHz, (Máx Boos Clock Até 5,5 GHz), Cache 144MB, 16 Núcleos, Threads 32, AM5",
     category: "cpu",
-    prices: {
+    price: {
       full: 499999,
       pix: 459999,
       pixDiscont: 8,
@@ -3845,7 +3869,7 @@ const products: FAProduct[] = [
     id: "PRO-5065428A7",
     name: "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Max Turbo), Cache 20MB, 8 Núcleos, 16 Threads, Vídeo Integrado, AM4",
     category: "cpu",
-    prices: {
+    price: {
       full: 141175,
       pix: 129881,
       pixDiscont: 8,
@@ -3879,7 +3903,7 @@ const products: FAProduct[] = [
     id: "PRO-9C19C1D01",
     name: "Processador AMD Ryzen 5 7600X, 5.3GHz  Max Turbo, Cache 38MB, AM5, 6 Núcleos, Vídeo Integrado",
     category: "cpu",
-    prices: {
+    price: {
       full: 166666,
       pix: 153332,
       pixDiscont: 8,
@@ -3909,7 +3933,7 @@ const products: FAProduct[] = [
     id: "PRO-D23C4039A",
     name: "Processador AMD Ryzen 7 9700X, 3.8 GHz (5.5 GHz), Cache 32 MB, 8 Núcleos, 16 Threads, AM5",
     category: "cpu",
-    prices: {
+    price: {
       full: 247058,
       pix: 232234,
       pixDiscont: 6,
@@ -3943,7 +3967,7 @@ const products: FAProduct[] = [
     id: "PRO-A1778579C",
     name: "Memória RAM Kingston Fury Beast, 8GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 15384,
       pix: 14460,
       pixDiscont: 6,
@@ -3975,7 +3999,7 @@ const products: FAProduct[] = [
     id: "PRO-B5BF88FD0",
     name: "Memória RAM Kingston Fury Beast, 16GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 25772,
       pix: 24225,
       pixDiscont: 6,
@@ -4007,7 +4031,7 @@ const products: FAProduct[] = [
     id: "PRO-75BD37021",
     name: "Memória RAM Corsair Vengeance LPX, 32GB (2x16GB) 3200Mhz DDR4 CL16 Black",
     category: "ram",
-    prices: {
+    price: {
       full: 51175,
       pix: 47081,
       pixDiscont: 8,
@@ -4040,7 +4064,7 @@ const products: FAProduct[] = [
     id: "PRO-C1AC2DA5A",
     name: "Memória RAM Rise Mode, 8GB, 1600MHz, DDR3, CL11",
     category: "ram",
-    prices: {
+    price: {
       full: 6352,
       pix: 5970,
       pixDiscont: 6,
@@ -4071,7 +4095,7 @@ const products: FAProduct[] = [
     id: "PRO-FFD3EBEAB",
     name: "Memória RAM para Notebook Rise Mode Value Series, 8GB, 1600MHz, DDR3, CL11",
     category: "ram",
-    prices: {
+    price: {
       full: 6469,
       pix: 6080,
       pixDiscont: 6,
@@ -4103,7 +4127,7 @@ const products: FAProduct[] = [
     id: "PRO-6BC10434B",
     name: "Memória RAM XPG Lancer, RGB, 32GB (2x16GB), 6000MHz, DDR5, CL30",
     category: "ram",
-    prices: {
+    price: {
       full: 107777,
       pix: 99154,
       pixDiscont: 8,
@@ -4136,7 +4160,7 @@ const products: FAProduct[] = [
     id: "PRO-733D51022",
     name: "Memória RAM Gamer Rise Mode Value, 8GB, 1600MHz, DDR3L, CL11",
     category: "ram",
-    prices: {
+    price: {
       full: 6352,
       pix: 5970,
       pixDiscont: 6,
@@ -4167,7 +4191,7 @@ const products: FAProduct[] = [
     id: "PRO-4974DEDF2",
     name: "Memória RAM Corsair Vengeance LPX, 16GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 27645,
       pix: 25986,
       pixDiscont: 6,
@@ -4197,7 +4221,7 @@ const products: FAProduct[] = [
     id: "PRO-C865124A7",
     name: "Memória RAM para Notebook Kingston Fury Impact, 16GB, 3200MHz, DDR4, CL20",
     category: "ram",
-    prices: {
+    price: {
       full: 31473,
       pix: 28955,
       pixDiscont: 8,
@@ -4229,7 +4253,7 @@ const products: FAProduct[] = [
     id: "PRO-2FBB2DCA5",
     name: "Memória RAM XPG Spectrix D35G, RGB, 16GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 32352,
       pix: 29763,
       pixDiscont: 8,
@@ -4260,7 +4284,7 @@ const products: FAProduct[] = [
     id: "PRO-604F24FD4",
     name: "Memória RAM Para Notebook Kingston Fury Impact, 8GB, 3200MHz, DDR4, CL20",
     category: "ram",
-    prices: {
+    price: {
       full: 18131,
       pix: 16680,
       pixDiscont: 8,
@@ -4292,7 +4316,7 @@ const products: FAProduct[] = [
     id: "PRO-08E19C717",
     name: "Memória RAM Kingston Fury Beast, 16GB, 5600MHz, DDR5, CL40, para Intel XMP",
     category: "ram",
-    prices: {
+    price: {
       full: 41764,
       pix: 39258,
       pixDiscont: 6,
@@ -4325,7 +4349,7 @@ const products: FAProduct[] = [
     id: "PRO-72D59C617",
     name: "Memória RAM Corsair Vengeance LPX, 32GB (2x16GB), 3600MHz, DDR4, CL18",
     category: "ram",
-    prices: {
+    price: {
       full: 54838,
       pix: 50450,
       pixDiscont: 8,
@@ -4357,7 +4381,7 @@ const products: FAProduct[] = [
     id: "PRO-402F93251",
     name: "Memória RAM XPG Spectrix D35G, RGB, 16GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 28332,
       pix: 26632,
       pixDiscont: 6,
@@ -4390,7 +4414,7 @@ const products: FAProduct[] = [
     id: "PRO-B447CB386",
     name: "Memória RAM Lexar 8GB, 3200MHz, DDR4, CL22",
     category: "ram",
-    prices: {
+    price: {
       full: 10908,
       pix: 10035,
       pixDiscont: 8,
@@ -4422,7 +4446,7 @@ const products: FAProduct[] = [
     id: "PRO-6C2275D04",
     name: "Memória RAM Corsair Vengeance LPX, 16GB (2x8GB), 3200MHz, DDR4, CL16, Black",
     category: "ram",
-    prices: {
+    price: {
       full: 33695,
       pix: 31673,
       pixDiscont: 6,
@@ -4455,7 +4479,7 @@ const products: FAProduct[] = [
     id: "PRO-98DAA2CA8",
     name: "Memória RAM Corsair Vengeance LPX, 8GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 17058,
       pix: 15693,
       pixDiscont: 8,
@@ -4487,7 +4511,7 @@ const products: FAProduct[] = [
     id: "PRO-CAEC08EE2",
     name: "Memória RAM Corsair Vengeance RGB RS, 32GB (2x16GB), 3600MHz, DDR4, CL18",
     category: "ram",
-    prices: {
+    price: {
       full: 59673,
       pix: 54899,
       pixDiscont: 8,
@@ -4521,7 +4545,7 @@ const products: FAProduct[] = [
     id: "PRO-1534C6DB6",
     name: "Memória RAM XPG Gammix D10, 8GB, 3200MHz, DDR4, CL16",
     category: "ram",
-    prices: {
+    price: {
       full: 15881,
       pix: 14928,
       pixDiscont: 6,
@@ -4551,7 +4575,7 @@ const products: FAProduct[] = [
     id: "PRO-40B904113",
     name: "Memória RAM para Notebook Husky Technologies, 8GB, 2666MHz, DDR4, CL19",
     category: "ram",
-    prices: {
+    price: {
       full: 12621,
       pix: 11611,
       pixDiscont: 8,
@@ -4584,7 +4608,7 @@ const products: FAProduct[] = [
     id: "PRO-816D1CD88",
     name: "SSD Corsair MP600 CORE XT, 4TB, PCIe Gen 4.0 x4 NVMe M.2, Leitura: 5000MB/s e Gravação: 4400MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 283528,
       pix: 266516,
       pixDiscont: 6,
@@ -4614,7 +4638,7 @@ const products: FAProduct[] = [
     id: "PRO-FF4ED3B46",
     name: "SSD Kingston FURY Renegade, 2048GB, G5, PCIe, M.2 NVMe, Leitura 14.700MBs e Gravação 14.000MBs, Compatível com PS5",
     category: "ssd",
-    prices: {
+    price: {
       full: 288888,
       pix: 265776,
       pixDiscont: 8,
@@ -4646,7 +4670,7 @@ const products: FAProduct[] = [
     id: "PRO-BAF255869",
     name: "SSD Corsair MP600 Elite, 1TB, M.2 NVMe, Leitura 7000MB/s e Gravação 6200MB/s, Para PS5",
     category: "ssd",
-    prices: {
+    price: {
       full: 88234,
       pix: 81175,
       pixDiscont: 8,
@@ -4680,7 +4704,7 @@ const products: FAProduct[] = [
     id: "PRO-F7CFE3A61",
     name: "SSD Externo Kingston XS1000, 2 TB, USB 3.2 Gen 2x2, Portátil, Leitura: 1050 MB/s, Gravação: 1000 MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 94116,
       pix: 86586,
       pixDiscont: 8,
@@ -4711,7 +4735,7 @@ const products: FAProduct[] = [
     id: "PRO-B1D7800F9",
     name: "SSD Kingston NV3, 1 TB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 6000 MB/s, Gravação: 4000 MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 47058,
       pix: 44234,
       pixDiscont: 6,
@@ -4743,7 +4767,7 @@ const products: FAProduct[] = [
     id: "PRO-D400AD244",
     name: "SSD Rise Mode Gamer Line, 256GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 19881,
       pix: 18688,
       pixDiscont: 6,
@@ -4776,7 +4800,7 @@ const products: FAProduct[] = [
     id: "PRO-CDF12A42D",
     name: "SSD Rise Mode Gamer Line, 1TB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 52940,
       pix: 49763,
       pixDiscont: 6,
@@ -4809,7 +4833,7 @@ const products: FAProduct[] = [
     id: "PRO-EDA4ADBC5",
     name: "SSD Externo Kingston XS1000, 1TB, USB 3.2 Gen 2x2, Portátil, Leitura: 1050 MB/s, Gravação: 1000 MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 91764,
       pix: 84422,
       pixDiscont: 8,
@@ -4840,7 +4864,7 @@ const products: FAProduct[] = [
     id: "PRO-361C6F5F2",
     name: 'SSD Kingston A400, 480GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 450MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 31175,
       pix: 28681,
       pixDiscont: 8,
@@ -4873,7 +4897,7 @@ const products: FAProduct[] = [
     id: "PRO-EE4536A5F",
     name: "SSD Kingston NV3, 500 GB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 5000 MB/s, Gravação: 3000 MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 34705,
       pix: 32622,
       pixDiscont: 6,
@@ -4905,7 +4929,7 @@ const products: FAProduct[] = [
     id: "PRO-0B19040BB",
     name: 'SSD Husky 128GB, SATA III, 2.5", Leitura 500MB/s, Gravação 450MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 8411,
       pix: 7906,
       pixDiscont: 6,
@@ -4938,7 +4962,7 @@ const products: FAProduct[] = [
     id: "PRO-E137E0887",
     name: 'SSD Kingston A400, 240GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 350MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 22352,
       pix: 21010,
       pixDiscont: 6,
@@ -4971,7 +4995,7 @@ const products: FAProduct[] = [
     id: "PRO-6CDB4C194",
     name: "SSD Kingston 1TB Padrão Nv3, M.2 2280 NVMe 4.0 Gen 4x4, Leitura: 6000 e Gravação/4000MBps, Ultra Rápido",
     category: "ssd",
-    prices: {
+    price: {
       full: 44333,
       pix: 41673,
       pixDiscont: 6,
@@ -5004,7 +5028,7 @@ const products: FAProduct[] = [
     id: "PRO-95CD1B55D",
     name: 'SSD Kingston A400, 960GB, SATA III, 2.5", Leitura: 500MB/s, Gravação: 450MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 47058,
       pix: 43293,
       pixDiscont: 8,
@@ -5037,7 +5061,7 @@ const products: FAProduct[] = [
     id: "PRO-08EE20680",
     name: "SSD Kingston Fury Renegade, 1TB, M.2 2280, PCIe 4.0 x4, NVMe, Leitura: 7300 MB/s, Gravação: 6000 MB/s, Compatível com PS5",
     category: "ssd",
-    prices: {
+    price: {
       full: 76469,
       pix: 71880,
       pixDiscont: 6,
@@ -5068,7 +5092,7 @@ const products: FAProduct[] = [
     id: "PRO-5AA51FA88",
     name: "SSD PCIe ADATA, 256GB, NVMe, Leitura: 2.400MB/s e Gravação: 1.800MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 18234,
       pix: 16775,
       pixDiscont: 8,
@@ -5102,7 +5126,7 @@ const products: FAProduct[] = [
     id: "PRO-49717C095",
     name: "SSD Rise Mode Gamer Line, 480GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 25293,
       pix: 23269,
       pixDiscont: 8,
@@ -5135,7 +5159,7 @@ const products: FAProduct[] = [
     id: "PRO-95640912B",
     name: "SSD Rise Mode Gamer Line, 120GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 10705,
       pix: 9848,
       pixDiscont: 8,
@@ -5168,7 +5192,7 @@ const products: FAProduct[] = [
     id: "PRO-147367BC3",
     name: "SSD Rise Mode Gamer Line, 128GB, SATA III, Leitura: 530MB/s, Gravação: 520MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 9999,
       pix: 9399,
       pixDiscont: 6,
@@ -5201,7 +5225,7 @@ const products: FAProduct[] = [
     id: "PRO-2E4A7B4E1",
     name: 'SSD Adata SU650, SATA, 240GB, 2.5", Leitura: 520MB/s e Gravação: 450MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 15293,
       pix: 14069,
       pixDiscont: 8,
@@ -5234,7 +5258,7 @@ const products: FAProduct[] = [
     id: "PRO-2E145E7AA",
     name: "SSD PCIe Lexar Internal NM620, 256GB, Leitura 3500MB/s e Gravação 1300MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 18234,
       pix: 16775,
       pixDiscont: 8,
@@ -5268,7 +5292,7 @@ const products: FAProduct[] = [
     id: "PRO-1DFBADD9A",
     name: 'SSD WD Green, 480GB, SATA III, 2.5", Leitura: 545MB/s, Gravação: 430MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 26352,
       pix: 24770,
       pixDiscont: 6,
@@ -5301,7 +5325,7 @@ const products: FAProduct[] = [
     id: "PRO-440F91D6E",
     name: "SSD Kingston 1TB Nv3 M.2 Nvme PCIe 4, Leitura 6000MB/s, Gravação 4000MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 44111,
       pix: 40582,
       pixDiscont: 8,
@@ -5335,7 +5359,7 @@ const products: FAProduct[] = [
     id: "PRO-5FFBA85B9",
     name: 'SSD WD Green, 240GB, SATA III, 2.5", Leitura: 545MB/s, Gravação: 430MB/s',
     category: "ssd",
-    prices: {
+    price: {
       full: 22352,
       pix: 20563,
       pixDiscont: 8,
@@ -5367,7 +5391,7 @@ const products: FAProduct[] = [
     id: "PRO-F734C50BF",
     name: "SSD Sandisk Plus 1TB, M.2 2280 NVMe Pcie Gen 3.0, Leitura 3200MB/s E Gravação 2500MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 62497,
       pix: 57497,
       pixDiscont: 8,
@@ -5399,7 +5423,7 @@ const products: FAProduct[] = [
     id: "PRO-81F2F1B97",
     name: "SSD Rise Mode Gamer M.2 Z Series, 1TB, M.2, NVMe, Leitura: 2200MB/s e Gravação: 1800MB/s",
     category: "ssd",
-    prices: {
+    price: {
       full: 54116,
       pix: 50869,
       pixDiscont: 6,
@@ -5430,7 +5454,7 @@ const products: FAProduct[] = [
     id: "PRO-6895E14E6",
     name: "HD Externo WD Elements, 2TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 55292,
       pix: 51974,
       pixDiscont: 6,
@@ -5459,7 +5483,7 @@ const products: FAProduct[] = [
     id: "PRO-A875C63EF",
     name: "HD Interno WD Blue, 1TB, SATA, 3.5'",
     category: "hdd",
-    prices: {
+    price: {
       full: 41175,
       pix: 37881,
       pixDiscont: 8,
@@ -5491,7 +5515,7 @@ const products: FAProduct[] = [
     id: "PRO-831F1A91E",
     name: "HD Seagate IronWolf Pro, NAS, 16TB, Cache 270MB, 7.200RPM, 3.5', SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 282352,
       pix: 265410,
       pixDiscont: 6,
@@ -5523,7 +5547,7 @@ const products: FAProduct[] = [
     id: "PRO-3D519B88D",
     name: "HD Surveillance WD Purple, 4TB, 5400RPM, Cache 64MB, 3.5', SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 77646,
       pix: 72987,
       pixDiscont: 6,
@@ -5553,7 +5577,7 @@ const products: FAProduct[] = [
     id: "PRO-24B6D4F89",
     name: "HD Externo WD Elements, 5TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 109410,
       pix: 102845,
       pixDiscont: 6,
@@ -5584,7 +5608,7 @@ const products: FAProduct[] = [
     id: "PRO-909DEC392",
     name: "HD Externo Seagate, 4TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 91764,
       pix: 84422,
       pixDiscont: 8,
@@ -5615,7 +5639,7 @@ const products: FAProduct[] = [
     id: "PRO-C09F90AB6",
     name: 'HD WD Red Plus, 8TB, 3.5", SATA',
     category: "hdd",
-    prices: {
+    price: {
       full: 155293,
       pix: 142869,
       pixDiscont: 8,
@@ -5646,7 +5670,7 @@ const products: FAProduct[] = [
     id: "PRO-80687D50E",
     name: "HD Interno Seagate BarraCuda, 4TB, SATA, 3.5'",
     category: "hdd",
-    prices: {
+    price: {
       full: 77646,
       pix: 71434,
       pixDiscont: 8,
@@ -5677,7 +5701,7 @@ const products: FAProduct[] = [
     id: "PRO-959DDA8A6",
     name: "HD Externo Seagate, 1TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 51764,
       pix: 48658,
       pixDiscont: 6,
@@ -5708,7 +5732,7 @@ const products: FAProduct[] = [
     id: "PRO-90D0A03BA",
     name: "HD Externo Seagate, 2TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 68234,
       pix: 62775,
       pixDiscont: 8,
@@ -5739,7 +5763,7 @@ const products: FAProduct[] = [
     id: "PRO-46FCACB03",
     name: "HD WD Red Plus, NAS, 4TB, 3.5', Cache 256MB, 5400RPM, SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 94234,
       pix: 86695,
       pixDiscont: 8,
@@ -5768,7 +5792,7 @@ const products: FAProduct[] = [
     id: "PRO-460E13F00",
     name: "HD Externo Seagate Expansion, 8TB, USB",
     category: "hdd",
-    prices: {
+    price: {
       full: 145881,
       pix: 134210,
       pixDiscont: 8,
@@ -5800,7 +5824,7 @@ const products: FAProduct[] = [
     id: "PRO-11CE6718F",
     name: "HD Toshiba N300, 4TB, 7200 RPM, NAS, 3.5', SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 98822,
       pix: 90916,
       pixDiscont: 8,
@@ -5831,7 +5855,7 @@ const products: FAProduct[] = [
     id: "PRO-7FE03DF56",
     name: "HD Externo WD Elements, 4TB, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 92940,
       pix: 85504,
       pixDiscont: 8,
@@ -5863,7 +5887,7 @@ const products: FAProduct[] = [
     id: "PRO-0BD230E7D",
     name: "HD Interno WD Red Plus,  2TB, SATA, 3.5'",
     category: "hdd",
-    prices: {
+    price: {
       full: 83528,
       pix: 78516,
       pixDiscont: 6,
@@ -5893,7 +5917,7 @@ const products: FAProduct[] = [
     id: "PRO-3F32F454C",
     name: "HD WD Purple Pro, 22TB, 7200 RPM, Cache 512MB, 3.5, SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 411764,
       pix: 387058,
       pixDiscont: 6,
@@ -5922,7 +5946,7 @@ const products: FAProduct[] = [
     id: "PRO-228E8C0E5",
     name: "HD WD Purple Pro 18TB, 3.5, 7200RPM, Cache 512MB, SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 325293,
       pix: 299269,
       pixDiscont: 8,
@@ -5952,7 +5976,7 @@ const products: FAProduct[] = [
     id: "PRO-8299D69CA",
     name: "HD WD Red Plus, NAS, 6TB, 3.5', Cache 256MB, 5400RPM, SATA",
     category: "hdd",
-    prices: {
+    price: {
       full: 138822,
       pix: 130492,
       pixDiscont: 6,
@@ -5981,7 +6005,7 @@ const products: FAProduct[] = [
     id: "PRO-6120A4610",
     name: "HD Interno WD Purple Pro Smart, 8TB, SATA, 3.5'",
     category: "hdd",
-    prices: {
+    price: {
       full: 217881,
       pix: 204808,
       pixDiscont: 6,
@@ -6010,7 +6034,7 @@ const products: FAProduct[] = [
     id: "PRO-A6E3C5D08",
     name: "HD Externo WD 4TB My Passport, USB 3.0",
     category: "hdd",
-    prices: {
+    price: {
       full: 101175,
       pix: 93081,
       pixDiscont: 8,
@@ -6040,9 +6064,9 @@ const products: FAProduct[] = [
   },
 ] as const;
 
-const productsIdMap = new Map<string, FAProduct>();
-for (const product of products) {
-  productsIdMap.set(product.id, product);
-}
+const productsTable = {
+  data,
+  indexMap: new Map<string, Product>(data.map((p) => [p.id, p])),
+} as const;
 
-export { products, productsIdMap };
+export { productsTable };

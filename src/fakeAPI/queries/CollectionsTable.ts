@@ -1,6 +1,6 @@
 import { collections } from "@fakeAPI/data/collections";
 
-import { ProductsTable } from "./ProductsTable";
+import { ProductsQuery } from "./ProductsQuery";
 
 class CollectionsTable {
   public empty = true;
@@ -21,13 +21,13 @@ class CollectionsTable {
 
   public getInPrCardFormat() {
     const collectionsInCardFormat: FACollection_PrCard[] = [];
-    const productsTable = new ProductsTable();
+    const productsQuery = new ProductsQuery();
     for (const collection of this.collections) {
-      productsTable.searchByIdList(collection.productsId);
+      productsQuery.selectByIdList(collection.productsId);
       collectionsInCardFormat.push({
         id: collection.id,
         name: collection.name,
-        products: productsTable.getInCardFormat(),
+        products: productsQuery.get("card"),
       });
     }
     return collectionsInCardFormat;

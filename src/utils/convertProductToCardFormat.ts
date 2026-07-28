@@ -4,7 +4,7 @@ export function convertProductToCardFormat(
   const result: IProduct_Card = {
     id: product.id,
     name: product.name,
-    prices: product.prices,
+    price: product.price,
     media: {
       thumb: product.media.thumb,
     },

@@ -7,6 +7,7 @@ import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
+import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1711,6 +1712,42 @@ describe("Consultas", () => {
       const bannerId = "BAN-1AF1AC";
       const banner = bannerQuery.selectById(bannerId).getUnique();
       expect(banner).toEqual(expectedProduct);
+    });
+  });
+
+  describe("Coleções", () => {
+    const collectionsQuery = new CollectionsQuery();
+    beforeEach(() => {
+      collectionsQuery.clear();
+    });
+
+    it("retorna coleção por id", () => {
+      const collectionId = "COL-16C9A2";
+      const collection = collectionsQuery.selectById(collectionId).getUnique();
+      expect(collection?.id).toBe(collectionId);
+    });
+
+    it("retorna coleção no formato 'default'", () => {
+      const collectionId = "COL-16C9A2";
+      const collectionName = "Novidades";
+      const expectedFristResolvedProduct = {
+        id: "PRO-D55645F74",
+        name: "Placa de Vídeo XFX AMD RADEON RX 7600 Gaming Graphics Card, 8GB, GDDR6",
+        price: {
+          full: 210576,
+          pix: 197941,
+          pixDiscont: 6,
+          maxInstallments: 12,
+          installments: 17548,
+        },
+        media: {
+          thumb: "PRO-D55645F74-thumb.jpg",
+        },
+      };
+      const collection = collectionsQuery.selectById(collectionId).getUnique();
+      expect(collection?.id).toBe(collectionId);
+      expect(collection?.name).toBe(collectionName);
+      expect(collection?.products[0]).toEqual(expectedFristResolvedProduct);
     });
   });
 });

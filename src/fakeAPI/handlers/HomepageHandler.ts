@@ -3,7 +3,7 @@ import { config } from "@fakeAPI/config";
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
-import { CollectionsTable } from "@fakeAPI/queries/CollectionsTable";
+import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 
 class HomepageHandler {
@@ -37,17 +37,26 @@ class HomepageHandler {
   public getHomepageCollections(
     response: FakeAPIResponse<FAHomepageCollections_Full>,
   ) {
-    const collectionsTable = new CollectionsTable();
+    const collectionsQuery = new CollectionsQuery();
     const { firstCollectionId, secondCollectionId } = config.homepage;
-    collectionsTable.searchById(firstCollectionId);
-    if (collectionsTable.empty)
+
+    const firstCollection = collectionsQuery
+      .selectById(firstCollectionId)
+      .getUnique();
+    if (!firstCollection) {
       return response.setError("HP_FIRST_COLLECTION_NOT_FOUND");
-    const first = collectionsTable.getInPrCardFormat()[0];
-    collectionsTable.searchById(secondCollectionId);
-    if (collectionsTable.empty)
-      return response.setError("HP_FIRST_COLLECTION_NOT_FOUND");
-    const second = collectionsTable.getInPrCardFormat()[0];
-    response.setData({ first, second });
+    }
+
+    collectionsQuery.clear();
+
+    const secondCollection = collectionsQuery
+      .selectById(secondCollectionId)
+      .getUnique();
+    if (!secondCollection) {
+      return response.setError("HP_SECOND_COLLECTION_NOT_FOUND");
+    }
+
+    response.setData({ first: firstCollection, second: secondCollection });
   }
 }
 

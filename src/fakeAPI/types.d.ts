@@ -133,7 +133,7 @@ type FAProductPrice = {
 type FACollection = {
   id: string;
   name: string;
-  productsId: string[];
+  products: string[];
 };
 type FACollection_PrCard = {
   id: string;

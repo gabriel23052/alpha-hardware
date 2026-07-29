@@ -1,8 +1,14 @@
-const collections: FACollection[] = [
+export type Collection = {
+  id: string;
+  name: string;
+  products: string[];
+};
+
+const data: Collection[] = [
   {
     id: "COL-16C9A2",
     name: "Novidades",
-    productsId: [
+    products: [
       "PRO-D55645F74",
       "PRO-46FCACB03",
       "PRO-BDC286153",
@@ -20,7 +26,7 @@ const collections: FACollection[] = [
   {
     id: "COL-B6876C",
     name: "Chega de lag",
-    productsId: [
+    products: [
       "PRO-2F9B652E8",
       "PRO-A8D4D200D",
       "PRO-5065428A7",
@@ -37,4 +43,8 @@ const collections: FACollection[] = [
   },
 ] as const;
 
-export { collections };
+const collectionsTable = {
+  data,
+};
+
+export { collectionsTable };

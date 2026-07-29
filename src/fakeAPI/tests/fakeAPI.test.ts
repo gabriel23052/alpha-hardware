@@ -9,6 +9,7 @@ import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
+import { UsersQuery } from "@fakeAPI/queries/UsersQuery";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1823,6 +1824,152 @@ describe("Consultas", () => {
           startedAt: newSession?.startedAt,
         },
       ]);
+    });
+  });
+
+  describe("Usuários", () => {
+    const LOCAL_STORAGE_KEY = "fakeAPI-users";
+    beforeEach(() => {
+      localStorage.clear();
+    });
+    const getUsersFromLS = () => {
+      const users = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) || "null",
+      );
+      if (!users) {
+        return null;
+      }
+      return users.data;
+    };
+
+    it("cria e insere usuário", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      const createdUser = userQuery.createAndInsert(
+        user.id,
+        user.username,
+        user.password,
+      );
+      expect(createdUser).toBeDefined();
+      expect(getUsersFromLS()).toEqual([user]);
+    });
+
+    it("verifica se usuário existe pelo id", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+
+      expect(userQuery.existsById("USR-000000000")).toBe(false);
+      expect(userQuery.existsById(user.id)).toBe(true);
+    });
+
+    it("verifica se usuário existe pelo nome de usuário", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+
+      expect(userQuery.existsByUsername("noname")).toBe(false);
+      expect(userQuery.existsByUsername(user.username)).toBe(true);
+    });
+
+    it("atualiza a senha", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      userQuery.updatePassword(user.id, "4321");
+
+      expect(getUsersFromLS()).toEqual([
+        {
+          id: user.id,
+          username: user.username,
+          password: "4321",
+        },
+      ]);
+    });
+
+    it("seleciona pelo id", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      const selectedUser = userQuery.selectById(user.id).getUnique("default");
+
+      expect(selectedUser?.id).toBe(user.id);
+    });
+
+    it("seleciona pelo nome de usuário", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      const selectedUser = userQuery
+        .selectByUsername(user.username)
+        .getUnique("default");
+
+      expect(selectedUser?.id).toBe(user.id);
+    });
+
+    it("retorna usuário no padrão 'default'", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      const selectedUser = userQuery
+        .selectById("USR-0123456789")
+        .getUnique("default");
+
+      expect(selectedUser).toEqual(user);
+    });
+
+    it("retorna usuário no padrão 'private'", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      const selectedUser = userQuery
+        .selectById("USR-0123456789")
+        .getUnique("private");
+
+      expect(selectedUser).toEqual({
+        id: user.id,
+        username: user.username,
+      });
     });
   });
 });

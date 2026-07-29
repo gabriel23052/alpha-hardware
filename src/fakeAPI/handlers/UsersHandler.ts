@@ -1,6 +1,6 @@
 import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { SessionsHandler } from "./SessionsHandler";
-import { UsersTable } from "@fakeAPI/queries/UsersTable";
+import { UsersQuery } from "@fakeAPI/queries/UsersQuery";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class UsersHandler {
@@ -8,36 +8,45 @@ class UsersHandler {
     response: FakeAPIResponse<FAUser_WithoutPassword | null>,
     userCreationPayload: FAAuthRegister,
   ) {
-    const usersTable = new UsersTable();
+    const usersQuery = new UsersQuery();
     const sessionsHandler = new SessionsHandler();
+    const id = createRandomHexId("USR", 9);
+    const user = usersQuery.createAndInsert(
+      id,
+      userCreationPayload.username,
+      userCreationPayload.password,
+    );
 
-    if (usersTable.verifyIfExistsByUsername(userCreationPayload.username)) {
+    if (!user) {
       return response.setError("AUTH_REGISTER_USER_ALREADY_REGISTERED");
     }
 
-    const id = createRandomHexId("USR", 9);
-    usersTable.createUser(id, userCreationPayload);
-    usersTable.searchById(id);
+    sessionsHandler.createNewSession(user.id);
 
-    sessionsHandler.createNewSession(id);
-
-    return response.setData(usersTable.getInWithoutPasswordFormat()[0]);
+    return response.setData({
+      id: user.id,
+      username: user.username,
+    });
   }
 
   public login(
     response: FakeAPIResponse<FAUser_WithoutPassword>,
     loginPayload: FAAuthLogin,
   ) {
-    const usersTable = new UsersTable();
-    usersTable.searchByUsername(loginPayload.username);
-    const user = usersTable.get()[0];
+    const usersQuery = new UsersQuery();
+    const user = usersQuery
+      .selectByUsername(loginPayload.username)
+      .getUnique("default");
     if (!user || user.password !== loginPayload.password) {
       return response.setError("AUTH_LOGIN_INCORRECT_CREDENTIALS");
     }
+
     const sessionsHandler = new SessionsHandler();
     sessionsHandler.createNewSession(user.id);
 
-    return response.setData(usersTable.getInWithoutPasswordFormat()[0]);
+    return response.setData(
+      usersQuery.getUnique("private") as FAUser_WithoutPassword,
+    );
   }
 
   public logout() {
@@ -49,16 +58,16 @@ class UsersHandler {
     response: FakeAPIResponse<null>,
     recoverPayload: FAAuthRecover,
   ) {
-    const usersTable = new UsersTable();
+    const usersQuery = new UsersQuery();
+    const user = usersQuery
+      .selectByUsername(recoverPayload.username)
+      .getUnique("private");
 
-    if (!usersTable.verifyIfExistsByUsername(recoverPayload.username)) {
+    if (!user) {
       return response.setError("AUTH_RECOVER_USER_NOT_FOUND");
     }
 
-    usersTable.searchByUsername(recoverPayload.username);
-    const user = usersTable.get()[0];
-
-    usersTable.updatePassword(user.id, recoverPayload.newPassword);
+    usersQuery.updatePassword(user.id, recoverPayload.newPassword);
   }
 
   public updatePassword(
@@ -66,13 +75,12 @@ class UsersHandler {
     updatePasswordPayload: FAAuthUpdatePassword,
   ) {
     const sessionsHandler = new SessionsHandler();
-    const usersTable = new UsersTable();
+    const usersQuery = new UsersQuery();
     const sessionData = sessionsHandler.getSessionData(response);
 
     if (!sessionData) return;
-    usersTable.searchById(sessionData.userId);
 
-    const user = usersTable.get()[0];
+    const user = usersQuery.selectById(sessionData.userId).getUnique("default");
     if (!user) {
       return response.setError("AUTH_UPDATE_PASSWORD_USER_NOT_FOUND");
     }
@@ -80,7 +88,7 @@ class UsersHandler {
       return response.setError("AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD");
     }
 
-    usersTable.updatePassword(user.id, updatePasswordPayload.newPassword);
+    usersQuery.updatePassword(user.id, updatePasswordPayload.newPassword);
   }
 }
 

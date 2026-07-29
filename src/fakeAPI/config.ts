@@ -9,7 +9,7 @@ const config = {
     secondCollectionId: "COL-B6876C",
   },
   localStorageKeys: {
-    users: "fakeAPI-users",
+    users: "users",
     sessions: "sessions",
     favorites: "fakeAPI-favorites",
     sessionFakeCookie: "fakeCookie-session",

@@ -1,51 +1,49 @@
 import { config } from "@fakeAPI/config";
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
-import { SessionsTable } from "@fakeAPI/queries/SessionsTable";
+import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
 
 class SessionsHandler {
   public createNewSession(userId: string) {
-    const sessionsTable = new SessionsTable();
+    const sessionsQuery = new SessionsQuery();
     const sessionId = createRandomHexId("SES", 9);
-    sessionsTable.createSession(sessionId, userId);
-    sessionsTable.searchById(sessionId);
-    const session = sessionsTable.get()[0];
+    const session = sessionsQuery.createAndInsert(sessionId, userId);
+    // TODO: error
+    if (!session) return;
     localStorage.setItem(config.localStorageKeys.sessionFakeCookie, session.id);
   }
 
   public finishCurrentSession() {
-    const sessionsTable = new SessionsTable();
-    const currentSession = localStorage.getItem(
+    const sessionsQuery = new SessionsQuery();
+    const currentSessionId = localStorage.getItem(
       config.localStorageKeys.sessionFakeCookie,
     );
-    if (!currentSession) return;
-    sessionsTable.removeSession(currentSession);
     localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
+    if (!currentSessionId) return;
+    sessionsQuery.deleteById(currentSessionId);
   }
 
   public isAuthenticated(response: FakeAPIResponse) {
-    const sessionsTable = new SessionsTable();
+    const sessionsQuery = new SessionsQuery();
 
     const currentSessionId = localStorage.getItem(
       config.localStorageKeys.sessionFakeCookie,
     );
 
-    if (
-      !currentSessionId ||
-      !sessionsTable.verifyIfExistsById(currentSessionId)
-    ) {
+    if (!currentSessionId || !sessionsQuery.existsById(currentSessionId)) {
       localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
       return response.setError("AUTH_INVALID_SESSION");
     }
   }
 
   public getSessionData(response: FakeAPIResponse) {
-    const sessionsTable = new SessionsTable();
+    const sessionsQuery = new SessionsQuery();
     const currentSessionId = localStorage.getItem(
       config.localStorageKeys.sessionFakeCookie,
     );
-    sessionsTable.searchById(currentSessionId || "");
-    const sessionData = sessionsTable.get()[0];
+    const sessionData = sessionsQuery
+      .selectById(currentSessionId || "")
+      .getUnique();
     if (!sessionData) {
       response.setError("AUTH_INVALID_SESSION");
       return null;

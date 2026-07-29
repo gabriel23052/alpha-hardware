@@ -10,7 +10,7 @@ const config = {
   },
   localStorageKeys: {
     users: "fakeAPI-users",
-    sessions: "fakeAPI-sessions",
+    sessions: "sessions",
     favorites: "fakeAPI-favorites",
     sessionFakeCookie: "fakeCookie-session",
   },

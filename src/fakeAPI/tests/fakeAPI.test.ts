@@ -8,6 +8,7 @@ import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
+import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1748,6 +1749,80 @@ describe("Consultas", () => {
       expect(collection?.id).toBe(collectionId);
       expect(collection?.name).toBe(collectionName);
       expect(collection?.products[0]).toEqual(expectedFristResolvedProduct);
+    });
+  });
+
+  describe("Sessões", () => {
+    const LOCAL_STORAGE_KEY = "fakeAPI-sessions";
+    beforeEach(() => {
+      localStorage.clear();
+    });
+    const getSessionsFromLS = () => {
+      const sessions = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) || "null",
+      );
+      if (!sessions) {
+        return null;
+      }
+      return sessions.data;
+    };
+
+    it("cria e insere sessão", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      const newSession = sessionsQuery.createAndInsert(sessionId, userId);
+      expect(getSessionsFromLS()).toEqual([
+        {
+          id: sessionId,
+          userId,
+          startedAt: newSession?.startedAt,
+        },
+      ]);
+    });
+
+    it("remove sessão", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      sessionsQuery.createAndInsert(sessionId, userId);
+      sessionsQuery.deleteById(sessionId);
+      expect(getSessionsFromLS()).toEqual([]);
+    });
+
+    it("verifica se sessão existe", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      sessionsQuery.createAndInsert(sessionId, userId);
+      expect(sessionsQuery.existsById("SES-000000000")).toBe(false);
+      expect(sessionsQuery.existsById(sessionId)).toBe(true);
+    });
+
+    it("seleciona sessão por id", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      sessionsQuery.createAndInsert(sessionId, userId);
+
+      const session = sessionsQuery.selectById(sessionId).getUnique();
+      expect(session?.id).toBe(sessionId);
+    });
+
+    it("retorna sessão no padrão 'default'", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      const newSession = sessionsQuery.createAndInsert(sessionId, userId);
+
+      const session = sessionsQuery.selectById(sessionId).getUnique();
+      expect([session]).toEqual([
+        {
+          id: sessionId,
+          userId,
+          startedAt: newSession?.startedAt,
+        },
+      ]);
     });
   });
 });

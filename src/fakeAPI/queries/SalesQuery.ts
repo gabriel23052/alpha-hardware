@@ -1,4 +1,4 @@
-import { salesTable, type Sale } from "@fakeAPI/data/sales";
+import { SalesTable, type Sale } from "@fakeAPI/tables/SalesTable";
 import { Query } from "./Query";
 import { ProductsQuery, type ProductPatterns } from "./ProductsQuery";
 
@@ -29,7 +29,7 @@ type SalePatterns = {
 
 class SalesQuery extends Query<Sale> {
   public selectById(id: string) {
-    const origin = this.externalSelect ? salesTable.data : this.buffer;
+    const origin = this.externalSelect ? SalesTable.data : this.buffer;
     this.setBuffer(origin.find((s) => s.id === id));
     return this;
   }

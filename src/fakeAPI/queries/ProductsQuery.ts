@@ -1,7 +1,7 @@
-import { productsTable, type Product } from "@fakeAPI/data/products";
-import { salesTable } from "@fakeAPI/data/sales";
-import { normalizeSearchText } from "@utils/normalizeSearchText";
+import { ProductsTable, type Product } from "@fakeAPI/tables/ProductsTable";
+import { SalesTable } from "@fakeAPI/tables/SalesTable";
 import { Query } from "./Query";
+import { normalizeSearchText } from "@utils/normalizeSearchText";
 
 export type ProductPatterns = {
   default: {
@@ -67,7 +67,7 @@ export type ProductPatterns = {
 class ProductsQuery extends Query<Product> {
   public selectById(id: string) {
     if (this.externalSelect) {
-      this.setBuffer(productsTable.indexMap.get(id));
+      this.setBuffer(ProductsTable.indexMap.get(id));
     } else {
       this.setBuffer(this.buffer.find((p) => p.id == id));
     }
@@ -78,7 +78,7 @@ class ProductsQuery extends Query<Product> {
     if (this.externalSelect) {
       this.setBuffer(
         idList
-          .map((id) => productsTable.indexMap.get(id))
+          .map((id) => ProductsTable.indexMap.get(id))
           .filter((p) => p !== undefined),
       );
     } else {
@@ -88,17 +88,17 @@ class ProductsQuery extends Query<Product> {
   }
 
   public selectByName(search: string) {
-    const origin = this.externalSelect ? productsTable.data : this.buffer;
+    const origin = this.externalSelect ? ProductsTable.data : this.buffer;
     const searchName = normalizeSearchText(search);
     this.setBuffer(origin.filter((p) => p.searchName.includes(searchName)));
     return this;
   }
 
   public selectBySaleId(saleId: string) {
-    const origin = this.externalSelect ? productsTable.data : this.buffer;
+    const origin = this.externalSelect ? ProductsTable.data : this.buffer;
     this.setBuffer(
       origin.filter((p) => {
-        const saleProducts = salesTable.saleProductMap.get(saleId);
+        const saleProducts = SalesTable.saleProductMap.get(saleId);
         if (!saleProducts || !saleProducts.includes(p.id)) return false;
         return true;
       }),
@@ -107,19 +107,19 @@ class ProductsQuery extends Query<Product> {
   }
 
   public selectByCategory(category: string) {
-    const origin = this.externalSelect ? productsTable.data : this.buffer;
+    const origin = this.externalSelect ? ProductsTable.data : this.buffer;
     this.setBuffer(origin.filter((p) => p.category === category));
     return this;
   }
 
   public selectByMinPrice(minPrice: number) {
-    const origin = this.externalSelect ? productsTable.data : this.buffer;
+    const origin = this.externalSelect ? ProductsTable.data : this.buffer;
     this.setBuffer(origin.filter((p) => this.getFinalPrice(p).pix >= minPrice));
     return this;
   }
 
   public selectByMaxPrice(maxPrice: number) {
-    const origin = this.externalSelect ? productsTable.data : this.buffer;
+    const origin = this.externalSelect ? ProductsTable.data : this.buffer;
     this.setBuffer(origin.filter((p) => this.getFinalPrice(p).pix <= maxPrice));
     return this;
   }
@@ -129,7 +129,7 @@ class ProductsQuery extends Query<Product> {
       this.setBuffer(null);
       return this;
     }
-    let buffer = this.externalSelect ? productsTable.data : this.buffer;
+    let buffer = this.externalSelect ? ProductsTable.data : this.buffer;
     tags.forEach((tag) => {
       buffer = buffer.filter((p) => p.tags.includes(tag));
     });
@@ -169,7 +169,7 @@ class ProductsQuery extends Query<Product> {
   }
 
   private getFinalPrice(product: Product) {
-    const salePrice = salesTable.productModifierMap.get(product.id);
+    const salePrice = SalesTable.productModifierMap.get(product.id);
     if (salePrice) return salePrice.price;
     return product.price;
   }
@@ -187,7 +187,7 @@ class ProductsQuery extends Query<Product> {
         description: p.description,
         specs: p.specs,
       };
-      const productModifier = salesTable.productModifierMap.get(p.id);
+      const productModifier = SalesTable.productModifierMap.get(p.id);
       if (productModifier) result.sale = productModifier.sale;
       return result;
     });
@@ -203,7 +203,7 @@ class ProductsQuery extends Query<Product> {
           thumb: p.media.thumb,
         },
       };
-      const productModifier = salesTable.productModifierMap.get(p.id);
+      const productModifier = SalesTable.productModifierMap.get(p.id);
       if (productModifier) result.sale = productModifier.sale;
       return result;
     });

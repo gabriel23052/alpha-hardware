@@ -1,4 +1,4 @@
-import { bannersTable, type Banner } from "@fakeAPI/data/banners";
+import { BannersTable, type Banner } from "@fakeAPI/tables/BannersTable";
 import { Query } from "./Query";
 
 type BannerPatterns = {
@@ -19,7 +19,7 @@ type BannerPatterns = {
 
 class BannersQuery extends Query<Banner> {
   public selectById(id: string) {
-    const origin = this.externalSelect ? bannersTable.data : this.buffer;
+    const origin = this.externalSelect ? BannersTable.data : this.buffer;
     this.setBuffer(origin.find((b) => b.id === id));
     return this;
   }

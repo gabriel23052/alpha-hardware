@@ -1,4 +1,4 @@
-import { LocalStorageTable } from "@fakeAPI/data/LocalStorageTable";
+import { LocalStorageTable } from "@fakeAPI/tables/LocalStorageTable";
 import { Query } from "./Query";
 import { config } from "@fakeAPI/config";
 

@@ -1,5 +1,4 @@
-import { collectionsTable, type Collection } from "@fakeAPI/data/collections";
-
+import { CollectionsTable, type Collection } from "@fakeAPI/tables/CollectionsTable";
 import { ProductsQuery, type ProductPatterns } from "./ProductsQuery";
 import { Query } from "./Query";
 
@@ -13,7 +12,7 @@ type CollectionPatterns = {
 
 class CollectionsQuery extends Query<Collection> {
   public selectById(id: string) {
-    const origin = this.externalSelect ? collectionsTable.data : this.buffer;
+    const origin = this.externalSelect ? CollectionsTable.data : this.buffer;
     this.setBuffer(origin.find((c) => c.id === id));
     return this;
   }

@@ -2,13 +2,13 @@ import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SessionsHandler } from "./SessionsHandler";
-import { FavoritesTable } from "@fakeAPI/queries/FavoritesTable";
+import { FavoritesQuery } from "@fakeAPI/queries/FavoritesQuery";
 
 class FavoritesHandler {
   public addFavorite(response: FakeAPIResponse, productId: string) {
     const sessionsHandler = new SessionsHandler();
     const productQuery = new ProductsQuery();
-    const favoritesTable = new FavoritesTable();
+    const favoritesTable = new FavoritesQuery();
 
     const sessionData = sessionsHandler.getSessionData(response);
     if (!sessionData) return;
@@ -18,16 +18,13 @@ class FavoritesHandler {
       return response.setError("FAVORITE_ADD_PRODUCT_NOT_FOUND");
     }
 
-    favoritesTable.addFavorite({
-      productId: product.id,
-      userId: sessionData.userId,
-    });
+    favoritesTable.createAndInsert(sessionData.userId, product.id);
   }
 
   public removeFavorite(response: FakeAPIResponse, productId: string) {
     const sessionsHandler = new SessionsHandler();
     const productQuery = new ProductsQuery();
-    const favoritesTable = new FavoritesTable();
+    const favoritesQuery = new FavoritesQuery();
 
     const sessionData = sessionsHandler.getSessionData(response);
     if (!sessionData) return;
@@ -37,10 +34,7 @@ class FavoritesHandler {
       return response.setError("FAVORITE_REMOVE_PRODUCT_ID_NOT_FOUND");
     }
 
-    favoritesTable.removeFavorite({
-      productId: product.id,
-      userId: sessionData.userId,
-    });
+    favoritesQuery.delete(product.id, sessionData.userId);
   }
 
   public getFromUser(
@@ -48,20 +42,19 @@ class FavoritesHandler {
     format: FAFavoriteFormats,
   ) {
     const sessionsHandler = new SessionsHandler();
-    const favoritesTable = new FavoritesTable();
+    const favoritesQuery = new FavoritesQuery();
 
     const sessionData = sessionsHandler.getSessionData(response);
     if (!sessionData) return;
 
-    favoritesTable.searchByUserId(sessionData.userId);
-    const ids = favoritesTable.get().map((f) => f.productId);
+    const data =
+      format === "onlyIds"
+        ? favoritesQuery.selectByUserId(sessionData.userId).get("productId")
+        : favoritesQuery
+            .selectByUserId(sessionData.userId)
+            .get("resolvedProduct");
 
-    if (format === "onlyIds") {
-      return response.setData(ids);
-    }
-
-    const productsQuery = new ProductsQuery();
-    return response.setData(productsQuery.selectByIdList(ids).get("card"));
+    return response.setData(data);
   }
 }
 

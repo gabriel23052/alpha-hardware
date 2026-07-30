@@ -10,6 +10,7 @@ import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 import { UsersQuery } from "@fakeAPI/queries/UsersQuery";
+import { FavoritesQuery } from "@fakeAPI/queries/FavoritesQuery";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1824,6 +1825,157 @@ describe("Consultas", () => {
           startedAt: newSession?.startedAt,
         },
       ]);
+    });
+  });
+
+  describe("Favoritos", () => {
+    const LOCAL_STORAGE_KEY = "fakeAPI-favorites";
+    beforeEach(() => {
+      localStorage.clear();
+    });
+    const getFavoritesFromLS = () => {
+      const favorites = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) || "null",
+      );
+      if (!favorites) {
+        return null;
+      }
+      return favorites.data;
+    };
+
+    it("cria e insere favorito", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      const favorite = favoritesQuery.createAndInsert(userId, productId);
+
+      expect(favorite).toEqual({
+        userId,
+        productId,
+      });
+      expect(getFavoritesFromLS()).toEqual([
+        {
+          userId,
+          productId,
+        },
+      ]);
+    });
+
+    it("não insere favorito duplicado", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      favoritesQuery.createAndInsert(userId, productId);
+      const duplicateFavorite = favoritesQuery.createAndInsert(
+        userId,
+        productId,
+      );
+
+      expect(duplicateFavorite).toBeNull();
+      expect(getFavoritesFromLS()).toEqual([
+        {
+          userId,
+          productId,
+        },
+      ]);
+    });
+
+    it("remove favorito", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      favoritesQuery.createAndInsert(userId, productId);
+      favoritesQuery.delete(userId, productId);
+
+      expect(getFavoritesFromLS()).toEqual([]);
+    });
+
+    it("verifica se favorito existe", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      favoritesQuery.createAndInsert(userId, productId);
+
+      expect(favoritesQuery.exists(userId, "PRO-000000000")).toBe(false);
+      expect(favoritesQuery.exists(userId, productId)).toBe(true);
+    });
+
+    it("seleciona favoritos por id de usuário", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const otherUserId = "USR-9876543210";
+      favoritesQuery.createAndInsert(userId, "PRO-010A562D2");
+      favoritesQuery.createAndInsert(userId, "PRO-B290D11D5");
+      favoritesQuery.createAndInsert(otherUserId, "PRO-A3B151AB2");
+
+      const favorites = favoritesQuery.selectByUserId(userId).get("default");
+
+      expect(favorites).toEqual([
+        {
+          userId,
+          productId: "PRO-010A562D2",
+        },
+        {
+          userId,
+          productId: "PRO-B290D11D5",
+        },
+      ]);
+    });
+
+    it("retorna favorito no padrão 'default'", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      favoritesQuery.createAndInsert(userId, productId);
+
+      const favorite = favoritesQuery
+        .selectByUserId(userId)
+        .getUnique("default");
+
+      expect(favorite).toEqual({
+        userId,
+        productId,
+      });
+    });
+
+    it("retorna favorito no padrão 'productId'", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      favoritesQuery.createAndInsert(userId, productId);
+
+      const favoriteProductId = favoritesQuery
+        .selectByUserId(userId)
+        .getUnique("productId");
+
+      expect(favoriteProductId).toBe(productId);
+    });
+
+    it("retorna favorito no padrão 'resolvedProduct'", () => {
+      const favoritesQuery = new FavoritesQuery();
+      const userId = "USR-0123456789";
+      const productId = "PRO-010A562D2";
+      const expectedProduct = {
+        id: "PRO-010A562D2",
+        name: "Placa-Mãe ASUS TUF GAMING B760M-PLUS WIFI II, Intel, DDR5",
+        price: {
+          full: 152173,
+          pix: 139999,
+          pixDiscont: 8,
+          maxInstallments: 12,
+          installments: 12682,
+        },
+        media: {
+          thumb: "PRO-010A562D2-thumb.jpg",
+        },
+      };
+      favoritesQuery.createAndInsert(userId, productId);
+
+      const favoriteProduct = favoritesQuery
+        .selectByUserId(userId)
+        .getUnique("resolvedProduct");
+
+      expect(favoriteProduct).toEqual(expectedProduct);
     });
   });
 

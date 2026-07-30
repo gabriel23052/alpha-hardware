@@ -54,6 +54,11 @@ class LocalStorageTable<T extends object> {
     this.save();
   }
 
+  public delete(index: number) {
+    this.data.splice(index, 1);
+    this.save();
+  }
+
   public setData(data: T[]) {
     this.data = data;
     this.save();

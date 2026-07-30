@@ -1783,6 +1783,26 @@ describe("Consultas", () => {
       ]);
     });
 
+    it("não insere sessão duplicada", () => {
+      const sessionsQuery = new SessionsQuery();
+      const sessionId = "SES-0123456789";
+      const userId = "USR-012345678";
+      const newSession = sessionsQuery.createAndInsert(sessionId, userId);
+      const duplicateSession = sessionsQuery.createAndInsert(
+        sessionId,
+        userId,
+      );
+
+      expect(duplicateSession).toBeNull();
+      expect(getSessionsFromLS()).toEqual([
+        {
+          id: sessionId,
+          userId,
+          startedAt: newSession?.startedAt,
+        },
+      ]);
+    });
+
     it("remove sessão", () => {
       const sessionsQuery = new SessionsQuery();
       const sessionId = "SES-0123456789";
@@ -2008,6 +2028,25 @@ describe("Consultas", () => {
         user.password,
       );
       expect(createdUser).toBeDefined();
+      expect(getUsersFromLS()).toEqual([user]);
+    });
+
+    it("não insere usuário duplicado", () => {
+      const userQuery = new UsersQuery();
+
+      const user = {
+        id: "USR-0123456789",
+        username: "username",
+        password: "1234",
+      };
+      userQuery.createAndInsert(user.id, user.username, user.password);
+      const duplicateUser = userQuery.createAndInsert(
+        user.id,
+        user.username,
+        user.password,
+      );
+
+      expect(duplicateUser).toBeNull();
       expect(getUsersFromLS()).toEqual([user]);
     });
 

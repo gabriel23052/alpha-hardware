@@ -28,6 +28,6 @@ const config = {
     usernameMaxLength: 30,
     passwordLength: 4,
   },
-} as const;
+};
 
 export { config };

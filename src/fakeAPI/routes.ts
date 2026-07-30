@@ -2,35 +2,39 @@ import { FakeAPIResponse } from "./FakeAPIResponse";
 import { payloadValidators } from "./payloadValidators";
 
 import { FavoritesHandler } from "./handlers/FavoritesHandler";
-import { HomepageHandler } from "./handlers/HomepageHandler";
+import {
+  HomepageService,
+  type HomepageBanners,
+  type HomepageCollections,
+} from "./services/HomepageService";
 import { ProductsHandler } from "./handlers/ProductsHandler";
 import { SessionsHandler } from "./handlers/SessionsHandler";
 import { UsersHandler } from "./handlers/UsersHandler";
+import type { Sale } from "./tables/SalesTable";
 
 type RouteHandler = Record<string, (body?: FARequestBody) => FAResponse>;
 
 const routes: RouteHandler = {
-  "GET api/homepage/banners": (): FAResponse<FAHomepageBanners_Full> => {
-    const response = new FakeAPIResponse<FAHomepageBanners_Full>();
-    const homepageHandler = new HomepageHandler();
-    homepageHandler.getHomepageBanners(response);
+  "GET api/homepage/banners": (): FAResponse<HomepageBanners> => {
+    const response = new FakeAPIResponse<HomepageBanners>();
+    const homepageService = new HomepageService();
+    homepageService.getBanners(response);
     return response.getResponse();
   },
 
-  "GET api/homepage/sale": (): FAResponse<FASale_PrCard> => {
+  "GET api/homepage/sale": (): FAResponse<Sale["resolvedProducts"]> => {
     const response = new FakeAPIResponse<FASale_PrCard>();
-    const homepageHandler = new HomepageHandler();
-    homepageHandler.getHomepageSale(response);
+    const homepageService = new HomepageService();
+    homepageService.getSale(response);
     return response.getResponse();
   },
 
-  "GET api/homepage/collections":
-    (): FAResponse<FAHomepageCollections_Full> => {
-      const response = new FakeAPIResponse<FAHomepageCollections_Full>();
-      const homepageHandler = new HomepageHandler();
-      homepageHandler.getHomepageCollections(response);
-      return response.getResponse();
-    },
+  "GET api/homepage/collections": (): FAResponse<HomepageCollections> => {
+    const response = new FakeAPIResponse<HomepageCollections>();
+    const homepageService = new HomepageService();
+    homepageService.getCollections(response);
+    return response.getResponse();
+  },
 
   "GET api/products/id": (body): FAResponse<FAProduct_Full> => {
     const response = new FakeAPIResponse<FAProduct_Full>();

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, test } from "vitest";
+import { beforeEach, describe, expect, it, test, vi } from "vitest";
 
 import { isRequestBody } from "@fakeAPI/isRequestBody";
 import { primitiveValidators } from "@fakeAPI/primitiveValidators";
@@ -11,6 +11,12 @@ import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 import { UsersQuery } from "@fakeAPI/queries/UsersQuery";
 import { FavoritesQuery } from "@fakeAPI/queries/FavoritesQuery";
+import {
+  type HomepageBanners,
+  type HomepageCollections,
+  HomepageService,
+} from "@fakeAPI/services/HomepageService";
+import type { Sale } from "@fakeAPI/tables/SalesTable";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -1795,10 +1801,7 @@ describe("Consultas", () => {
       const sessionId = "SES-0123456789";
       const userId = "USR-012345678";
       const newSession = sessionsQuery.createAndInsert(sessionId, userId);
-      const duplicateSession = sessionsQuery.createAndInsert(
-        sessionId,
-        userId,
-      );
+      const duplicateSession = sessionsQuery.createAndInsert(sessionId, userId);
 
       expect(duplicateSession).toBeNull();
       expect(getSessionsFromLS()).toEqual([
@@ -2168,6 +2171,139 @@ describe("Consultas", () => {
         id: user.id,
         username: user.username,
       });
+    });
+  });
+});
+
+describe("Serviços", () => {
+  describe("Homepage", () => {
+    it("retorna os banners", () => {
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageBanners>();
+      homepageService.getBanners(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(true);
+      if (!responseResult.success) return;
+      expect(responseResult.data).toBeDefined();
+    });
+
+    it("retorna a promoção", () => {
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
+      homepageService.getSale(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(true);
+      if (!responseResult.success) return;
+      expect(responseResult.data).toBeDefined();
+    });
+
+    it("retorna as coleções", () => {
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageCollections>();
+      homepageService.getCollections(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(true);
+      if (!responseResult.success) return;
+      expect(responseResult.data).toBeDefined();
+    });
+
+    it("retorna erro se o id do banner de promoção é inexistente", async () => {
+      vi.resetModules();
+      vi.doMock("../config", () => ({
+        config: {
+          homepage: {
+            saleBannerId: "BAN-000000",
+            adBannerId: "BAN-54C86E",
+          },
+        },
+      }));
+      const { HomepageService } = await import("../services/HomepageService");
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageBanners>();
+      homepageService.getBanners(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(false);
+      if (responseResult.success) return;
+      expect(responseResult.error.id).toBe("HP_SALE_BANNER_NOT_FOUND");
+    });
+
+    it("retorna erro se o id do banner de propaganda é inexistente", async () => {
+      vi.resetModules();
+      vi.doMock("../config", () => ({
+        config: {
+          homepage: {
+            saleBannerId: "BAN-1AF1AC",
+            adBannerId: "BAN-000000",
+          },
+        },
+      }));
+      const { HomepageService } = await import("../services/HomepageService");
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageBanners>();
+      homepageService.getBanners(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(false);
+      if (responseResult.success) return;
+      expect(responseResult.error.id).toBe("HP_AD_BANNER_NOT_FOUND");
+    });
+
+    it("retorna erro se o id da promoção é inexistente", async () => {
+      vi.resetModules();
+      vi.doMock("../config", () => ({
+        config: {
+          homepage: {
+            saleId: "SAL-000000",
+          },
+        },
+      }));
+      const { HomepageService } = await import("../services/HomepageService");
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
+      homepageService.getSale(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(false);
+      if (responseResult.success) return;
+      expect(responseResult.error.id).toBe("HP_SALE_NOT_FOUND");
+    });
+
+    it("retorna erro se o id da primeira coleção é inexistente", async () => {
+      vi.resetModules();
+      vi.doMock("../config", () => ({
+        config: {
+          homepage: {
+            firstCollectionId: "COL-16C9A2",
+            secondCollectionId: "COL-000000",
+          },
+        },
+      }));
+      const { HomepageService } = await import("../services/HomepageService");
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageCollections>();
+      homepageService.getCollections(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(false);
+      if (responseResult.success) return;
+      expect(responseResult.error.id).toBe("HP_SECOND_COLLECTION_NOT_FOUND");
+    });
+
+    it("retorna erro se o id da segunda coleção é inexistente", async () => {
+      vi.resetModules();
+      vi.doMock("../config", () => ({
+        config: {
+          homepage: {
+            firstCollectionId: "COL-000000",
+            secondCollectionId: "COL-B6876C",
+          },
+        },
+      }));
+      const { HomepageService } = await import("../services/HomepageService");
+      const homepageService = new HomepageService();
+      const response = new FakeAPIResponse<HomepageCollections>();
+      homepageService.getCollections(response);
+      const responseResult = response.getResponse();
+      expect(responseResult.success).toBe(false);
+      if (responseResult.success) return;
+      expect(responseResult.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
     });
   });
 });

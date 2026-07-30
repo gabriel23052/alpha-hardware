@@ -1,19 +1,21 @@
 export type Banner = {
-  id: string;
-  link: string;
-  alt: string;
-  baseSrc: string;
-  baseWidth: number;
-  baseHeight: number;
-  responsiveVersions: {
-    width: number;
-    height: number;
-    src: string;
-  }[];
+  default: {
+    id: string;
+    link: string;
+    alt: string;
+    baseSrc: string;
+    baseWidth: number;
+    baseHeight: number;
+    responsiveVersions: {
+      width: number;
+      height: number;
+      src: string;
+    }[];
+  };
 };
 
 class BannersTable {
-  public static data: Banner[] = [
+  public static data: Banner["default"][] = [
     {
       id: "BAN-1AF1AC",
       link: "/catalog?sale=SAL-15AFC6&saleName=Festival%20das%20Placas%20de%20Vídeo",

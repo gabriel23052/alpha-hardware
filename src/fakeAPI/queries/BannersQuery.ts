@@ -1,30 +1,14 @@
 import { BannersTable, type Banner } from "@fakeAPI/tables/BannersTable";
 import { Query } from "./Query";
 
-type BannerPatterns = {
-  default: {
-    id: string;
-    link: string;
-    alt: string;
-    baseSrc: string;
-    baseWidth: number;
-    baseHeight: number;
-    responsiveVersions: {
-      width: number;
-      height: number;
-      src: string;
-    }[];
-  };
-};
-
-class BannersQuery extends Query<Banner> {
+class BannersQuery extends Query<Banner["default"]> {
   public selectById(id: string) {
     const origin = this.externalSelect ? BannersTable.data : this.buffer;
     this.setBuffer(origin.find((b) => b.id === id));
     return this;
   }
 
-  private inDefaultPattern(): BannerPatterns["default"][] {
+  private inDefaultPattern(): Banner["default"][] {
     return this.buffer.map((b) => structuredClone(b));
   }
 
@@ -32,9 +16,9 @@ class BannersQuery extends Query<Banner> {
     return this.inDefaultPattern();
   }
 
-  public getUnique(): BannerPatterns["default"] | undefined {
+  public getUnique(): Banner["default"] | undefined {
     return this.inDefaultPattern()[0];
   }
-} 
+}
 
 export { BannersQuery };

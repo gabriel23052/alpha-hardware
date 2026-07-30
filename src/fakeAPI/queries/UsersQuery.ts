@@ -3,27 +3,21 @@ import { Query } from "./Query";
 import { config } from "@fakeAPI/config";
 
 type User = {
-  id: string;
-  username: string;
-  password: string;
-};
-
-type UserPatterns = {
   default: { id: string; username: string; password: string };
   private: { id: string; username: string };
 };
 
 const SCHEMA_VERSION = 1;
 
-class UsersQuery extends Query<User> {
-  private localStorageTable = new LocalStorageTable<User>(
+class UsersQuery extends Query<User["default"]> {
+  private localStorageTable = new LocalStorageTable<User["default"]>(
     config.localStorageKeys.users,
     SCHEMA_VERSION,
   );
 
   public createAndInsert(id: string, username: string, password: string) {
     if (this.existsById(id) || this.existsByUsername(username)) return null;
-    const user: User = {
+    const user: User["default"] = {
       id,
       username,
       password,
@@ -73,20 +67,20 @@ class UsersQuery extends Query<User> {
     return this;
   }
 
-  private inDefaultPattern(): UserPatterns["default"][] {
+  private inDefaultPattern(): User["default"][] {
     return structuredClone(this.buffer);
   }
 
-  private inPrivatePattern(): UserPatterns["private"][] {
+  private inPrivatePattern(): User["private"][] {
     return this.buffer.map((u) => ({
       id: u.id,
       username: u.username,
     }));
   }
 
-  public get(pattern: "default"): UserPatterns["default"][];
-  public get(pattern: "private"): UserPatterns["private"][];
-  public get(pattern: keyof UserPatterns): UserPatterns[keyof UserPatterns][] {
+  public get(pattern: "default"): User["default"][];
+  public get(pattern: "private"): User["private"][];
+  public get(pattern: keyof User): User[keyof User][] {
     if (pattern === "default") {
       return this.inDefaultPattern();
     }
@@ -96,11 +90,9 @@ class UsersQuery extends Query<User> {
     return this.inDefaultPattern();
   }
 
-  public getUnique(pattern: "default"): UserPatterns["default"] | undefined;
-  public getUnique(pattern: "private"): UserPatterns["private"] | undefined;
-  public getUnique(
-    pattern: keyof UserPatterns,
-  ): UserPatterns[keyof UserPatterns] | undefined {
+  public getUnique(pattern: "default"): User["default"] | undefined;
+  public getUnique(pattern: "private"): User["private"] | undefined;
+  public getUnique(pattern: keyof User): User[keyof User] | undefined {
     if (pattern === "default") {
       return this.inDefaultPattern()[0];
     }

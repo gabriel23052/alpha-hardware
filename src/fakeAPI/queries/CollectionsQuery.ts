@@ -1,23 +1,18 @@
-import { CollectionsTable, type Collection } from "@fakeAPI/tables/CollectionsTable";
-import { ProductsQuery, type ProductPatterns } from "./ProductsQuery";
+import {
+  CollectionsTable,
+  type Collection,
+} from "@fakeAPI/tables/CollectionsTable";
+import { ProductsQuery } from "./ProductsQuery";
 import { Query } from "./Query";
 
-type CollectionPatterns = {
-  default: {
-    id: string;
-    name: string;
-    products: ProductPatterns["card"][];
-  };
-};
-
-class CollectionsQuery extends Query<Collection> {
+class CollectionsQuery extends Query<Collection["default"]> {
   public selectById(id: string) {
     const origin = this.externalSelect ? CollectionsTable.data : this.buffer;
     this.setBuffer(origin.find((c) => c.id === id));
     return this;
   }
 
-  private inDefaultPattern(): CollectionPatterns["default"][] {
+  private inResolvedProductsPattern(): Collection["resolvedProducts"][] {
     const productQuery = new ProductsQuery();
     return this.buffer.map((c) => {
       productQuery.clear();
@@ -29,12 +24,12 @@ class CollectionsQuery extends Query<Collection> {
     });
   }
 
-  public get(): CollectionPatterns["default"][] {
-    return this.inDefaultPattern();
+  public get(): Collection["resolvedProducts"][] {
+    return this.inResolvedProductsPattern();
   }
 
-  public getUnique(): CollectionPatterns["default"] | undefined {
-    return this.inDefaultPattern()[0];
+  public getUnique(): Collection["resolvedProducts"] | undefined {
+    return this.inResolvedProductsPattern()[0];
   }
 }
 

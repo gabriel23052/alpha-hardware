@@ -1,26 +1,22 @@
 import { LocalStorageTable } from "@fakeAPI/tables/LocalStorageTable";
 import { Query } from "./Query";
 import { config } from "@fakeAPI/config";
-import { ProductsQuery, type ProductPatterns } from "./ProductsQuery";
+import { ProductsQuery } from "./ProductsQuery";
+import type { Product } from "@fakeAPI/tables/ProductsTable";
 
 type Favorite = {
-  userId: string;
-  productId: string;
-};
-
-type FavoritePatterns = {
   default: {
     userId: string;
     productId: string;
   };
   productId: string;
-  resolvedProduct: ProductPatterns["card"];
+  resolvedProduct: Product["card"];
 };
 
 const SCHEMA_VERSION = 1;
 
-class FavoritesQuery extends Query<Favorite> {
-  private table = new LocalStorageTable<Favorite>(
+class FavoritesQuery extends Query<Favorite["default"]> {
+  private table = new LocalStorageTable<Favorite["default"]>(
     config.localStorageKeys.favorites,
     SCHEMA_VERSION,
   );
@@ -57,11 +53,11 @@ class FavoritesQuery extends Query<Favorite> {
     return this;
   }
 
-  private inDefaultPattern(): FavoritePatterns["default"][] {
+  private inDefaultPattern(): Favorite["default"][] {
     return structuredClone(this.buffer);
   }
 
-  private inResolvedProductPattern(): FavoritePatterns["resolvedProduct"][] {
+  private inResolvedProductPattern(): Favorite["resolvedProduct"][] {
     const productQuery = new ProductsQuery();
     return this.buffer.map((f) => {
       const product = productQuery.selectById(f.productId).getUnique("card");
@@ -71,14 +67,14 @@ class FavoritesQuery extends Query<Favorite> {
     });
   }
 
-  private inProductIdPattern(): FavoritePatterns["productId"][] {
+  private inProductIdPattern(): Favorite["productId"][] {
     return this.buffer.map((f) => f.productId);
   }
 
-  public get(pattern: "default"): FavoritePatterns["default"][];
-  public get(pattern: "resolvedProduct"): FavoritePatterns["resolvedProduct"][];
-  public get(pattern: "productId"): FavoritePatterns["productId"][];
-  public get(pattern: keyof FavoritePatterns) {
+  public get(pattern: "default"): Favorite["default"][];
+  public get(pattern: "resolvedProduct"): Favorite["resolvedProduct"][];
+  public get(pattern: "productId"): Favorite["productId"][];
+  public get(pattern: keyof Favorite) {
     if (pattern === "default") {
       return this.inDefaultPattern();
     }
@@ -91,16 +87,14 @@ class FavoritesQuery extends Query<Favorite> {
     return this.inDefaultPattern();
   }
 
-  public getUnique(pattern: "default"): FavoritePatterns["default"] | undefined;
+  public getUnique(pattern: "default"): Favorite["default"] | undefined;
   public getUnique(
     pattern: "resolvedProduct",
-  ): FavoritePatterns["resolvedProduct"] | undefined;
+  ): Favorite["resolvedProduct"] | undefined;
+  public getUnique(pattern: "productId"): Favorite["productId"] | undefined;
   public getUnique(
-    pattern: "productId",
-  ): FavoritePatterns["productId"] | undefined;
-  public getUnique(
-    pattern: keyof FavoritePatterns,
-  ): FavoritePatterns[keyof FavoritePatterns] | undefined {
+    pattern: keyof Favorite,
+  ): Favorite[keyof Favorite] | undefined {
     if (pattern === "default") {
       return this.inDefaultPattern()[0];
     }

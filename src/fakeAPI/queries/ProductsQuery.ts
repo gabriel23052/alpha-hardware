@@ -3,68 +3,7 @@ import { SalesTable } from "@fakeAPI/tables/SalesTable";
 import { Query } from "./Query";
 import { normalizeSearchText } from "@utils/normalizeSearchText";
 
-export type ProductPatterns = {
-  default: {
-    id: string;
-    name: string;
-    searchName: string;
-    category: string;
-    sale?: {
-      id: string;
-      name: string;
-      expiration: number;
-      discont: number;
-    };
-    price: {
-      full: number;
-      pix: number;
-      pixDiscont: number;
-      maxInstallments: number;
-      installments: number;
-      previous?: number;
-    };
-    media: {
-      thumb: string;
-      images: {
-        small: string;
-        medium: string;
-      }[];
-    };
-    tags: string[];
-    description: string;
-    specs: [string, string][];
-  };
-  card: {
-    id: string;
-    name: string;
-    price: {
-      full: number;
-      pix: number;
-      pixDiscont: number;
-      maxInstallments: number;
-      installments: number;
-      previous?: number;
-    };
-    media: { thumb: string };
-    sale?: {
-      id: string;
-      name: string;
-      expiration: number;
-      discont: number;
-    };
-  };
-  suggestion: {
-    id: string;
-    name: string;
-    searchName: string;
-  };
-  relatedNeeds: {
-    category: string;
-    pixPrice: number;
-  };
-};
-
-class ProductsQuery extends Query<Product> {
+class ProductsQuery extends Query<Product["default"]> {
   public existsById(id: string) {
     return ProductsTable.indexMap.has(id);
   }
@@ -172,15 +111,15 @@ class ProductsQuery extends Query<Product> {
     return this;
   }
 
-  private getFinalPrice(product: Product) {
+  private getFinalPrice(product: Product["default"]) {
     const salePrice = SalesTable.productModifierMap.get(product.id);
     if (salePrice) return salePrice.price;
     return product.price;
   }
 
-  private inDefaultPattern(): ProductPatterns["default"][] {
+  private inDefaultPattern(): Product["default"][] {
     return this.buffer.map((p) => {
-      const result: ProductPatterns["default"] = {
+      const result: Product["default"] = {
         id: p.id,
         name: p.name,
         searchName: p.searchName,
@@ -197,9 +136,9 @@ class ProductsQuery extends Query<Product> {
     });
   }
 
-  private inCardPattern(): ProductPatterns["card"][] {
+  private inCardPattern(): Product["card"][] {
     return this.buffer.map((p) => {
-      const result: ProductPatterns["card"] = {
+      const result: Product["card"] = {
         id: p.id,
         name: p.name,
         price: structuredClone(this.getFinalPrice(p)),
@@ -213,7 +152,7 @@ class ProductsQuery extends Query<Product> {
     });
   }
 
-  private inSuggestionPattern(): ProductPatterns["suggestion"][] {
+  private inSuggestionPattern(): Product["suggestion"][] {
     return this.buffer.map((p) => ({
       id: p.id,
       name: p.name,
@@ -221,18 +160,18 @@ class ProductsQuery extends Query<Product> {
     }));
   }
 
-  private inRelatedNeedsPattern(): ProductPatterns["relatedNeeds"][] {
+  private inRelatedNeedsPattern(): Product["relatedNeeds"][] {
     return this.buffer.map((p) => ({
       category: p.category,
       pixPrice: this.getFinalPrice(p).pix,
     }));
   }
 
-  public get(pattern: "default"): ProductPatterns["default"][];
-  public get(pattern: "card"): ProductPatterns["card"][];
-  public get(pattern: "suggestion"): ProductPatterns["suggestion"][];
-  public get(pattern: "relatedNeeds"): ProductPatterns["relatedNeeds"][];
-  public get(pattern: keyof ProductPatterns) {
+  public get(pattern: "default"): Product["default"][];
+  public get(pattern: "card"): Product["card"][];
+  public get(pattern: "suggestion"): Product["suggestion"][];
+  public get(pattern: "relatedNeeds"): Product["relatedNeeds"][];
+  public get(pattern: keyof Product) {
     if (pattern === "default") {
       return this.inDefaultPattern();
     }
@@ -248,17 +187,15 @@ class ProductsQuery extends Query<Product> {
     return this.inDefaultPattern();
   }
 
-  public getUnique(pattern: "default"): ProductPatterns["default"] | undefined;
-  public getUnique(pattern: "card"): ProductPatterns["card"] | undefined;
-  public getUnique(
-    pattern: "suggestion",
-  ): ProductPatterns["suggestion"] | undefined;
+  public getUnique(pattern: "default"): Product["default"] | undefined;
+  public getUnique(pattern: "card"): Product["card"] | undefined;
+  public getUnique(pattern: "suggestion"): Product["suggestion"] | undefined;
   public getUnique(
     pattern: "relatedNeeds",
-  ): ProductPatterns["relatedNeeds"] | undefined;
+  ): Product["relatedNeeds"] | undefined;
   public getUnique(
-    pattern: keyof ProductPatterns,
-  ): ProductPatterns[keyof ProductPatterns] | undefined {
+    pattern: keyof Product,
+  ): Product[keyof Product] | undefined {
     if (pattern === "default") {
       return this.inDefaultPattern()[0];
     }

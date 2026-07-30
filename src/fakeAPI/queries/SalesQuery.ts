@@ -1,44 +1,19 @@
 import { SalesTable, type Sale } from "@fakeAPI/tables/SalesTable";
 import { Query } from "./Query";
-import { ProductsQuery, type ProductPatterns } from "./ProductsQuery";
+import { ProductsQuery } from "./ProductsQuery";
 
-type SalePatterns = {
-  default: {
-    id: string;
-    name: string;
-    productModifiers: {
-      productId: string;
-      expiration: number;
-      discont: number;
-      price: {
-        full: number;
-        pix: number;
-        pixDiscont: number;
-        maxInstallments: number;
-        installments: number;
-        previous: number;
-      };
-    }[];
-  };
-  resolvedProducts: {
-    id: string;
-    name: string;
-    products: ProductPatterns["card"][];
-  };
-};
-
-class SalesQuery extends Query<Sale> {
+class SalesQuery extends Query<Sale["default"]> {
   public selectById(id: string) {
     const origin = this.externalSelect ? SalesTable.data : this.buffer;
     this.setBuffer(origin.find((s) => s.id === id));
     return this;
   }
 
-  private inDefaultPattern(): SalePatterns["default"][] {
+  private inDefaultPattern(): Sale["default"][] {
     return this.buffer.map((s) => structuredClone(s));
   }
 
-  private inResolvedProductsPattern(): SalePatterns["resolvedProducts"][] {
+  private inResolvedProductsPattern(): Sale["resolvedProducts"][] {
     const productQuery = new ProductsQuery();
     return this.buffer.map((s) => {
       const productIds = s.productModifiers.map((pM) => pM.productId);
@@ -52,9 +27,9 @@ class SalesQuery extends Query<Sale> {
     });
   }
 
-  public get(pattern: "default"): SalePatterns["default"][];
-  public get(pattern: "resolvedProducts"): SalePatterns["resolvedProducts"][];
-  public get(pattern: keyof SalePatterns) {
+  public get(pattern: "default"): Sale["default"][];
+  public get(pattern: "resolvedProducts"): Sale["resolvedProducts"][];
+  public get(pattern: keyof Sale) {
     if (pattern === "default") {
       return this.inDefaultPattern();
     }
@@ -64,13 +39,13 @@ class SalesQuery extends Query<Sale> {
     return this.inDefaultPattern();
   }
 
-  public getUnique(pattern: "default"): SalePatterns["default"] | undefined;
+  public getUnique(pattern: "default"): Sale["default"] | undefined;
   public getUnique(
     pattern: "resolvedProducts",
-  ): SalePatterns["resolvedProducts"] | undefined;
+  ): Sale["resolvedProducts"] | undefined;
   public getUnique(
-    pattern: keyof SalePatterns,
-  ): SalePatterns[keyof SalePatterns] | undefined {
+    pattern: keyof Sale,
+  ): Sale[keyof Sale] | undefined {
     if (pattern === "default") {
       return this.inDefaultPattern()[0];
     }

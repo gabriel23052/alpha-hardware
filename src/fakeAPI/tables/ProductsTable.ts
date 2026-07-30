@@ -1,29 +1,66 @@
 export type Product = {
-  id: string;
-  name: string;
-  searchName: string;
-  category: string;
-  price: {
-    full: number;
-    pix: number;
-    pixDiscont: number;
-    maxInstallments: number;
-    installments: number;
+  default: {
+    id: string;
+    name: string;
+    searchName: string;
+    category: string;
+    sale?: {
+      id: string;
+      name: string;
+      expiration: number;
+      discont: number;
+    };
+    price: {
+      full: number;
+      pix: number;
+      pixDiscont: number;
+      maxInstallments: number;
+      installments: number;
+      previous?: number;
+    };
+    media: {
+      thumb: string;
+      images: {
+        small: string;
+        medium: string;
+      }[];
+    };
+    tags: string[];
+    description: string;
+    specs: [string, string][];
   };
-  media: {
-    thumb: string;
-    images: {
-      small: string;
-      medium: string;
-    }[];
+  card: {
+    id: string;
+    name: string;
+    price: {
+      full: number;
+      pix: number;
+      pixDiscont: number;
+      maxInstallments: number;
+      installments: number;
+      previous?: number;
+    };
+    media: { thumb: string };
+    sale?: {
+      id: string;
+      name: string;
+      expiration: number;
+      discont: number;
+    };
   };
-  tags: string[];
-  description: string;
-  specs: [string, string][];
+  suggestion: {
+    id: string;
+    name: string;
+    searchName: string;
+  };
+  relatedNeeds: {
+    category: string;
+    pixPrice: number;
+  };
 };
 
 class ProductsTable {
-  public static data: Product[] = [
+  public static data: Product["default"][] = [
     {
       id: "PRO-010A562D2",
       name: "Placa-Mãe ASUS TUF GAMING B760M-PLUS WIFI II, Intel, DDR5",
@@ -6067,7 +6104,7 @@ class ProductsTable {
       searchName: "hd externo wd 4tb my passport usb 3 0",
     },
   ];
-  public static indexMap = new Map<string, Product>(
+  public static indexMap = new Map<string, Product["default"]>(
     this.data.map((p) => [p.id, p]),
   );
 }

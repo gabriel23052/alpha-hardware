@@ -1,11 +1,20 @@
+import type { Product } from "./ProductsTable";
+
 export type Collection = {
-  id: string;
-  name: string;
-  products: string[];
+  default: {
+    id: string;
+    name: string;
+    products: string[];
+  };
+  resolvedProducts: {
+    id: string;
+    name: string;
+    products: Product["card"][];
+  };
 };
 
 class CollectionsTable {
-  public static data: Collection[] = [
+  public static data: Collection["default"][] = [
     {
       id: "COL-16C9A2",
       name: "Novidades",

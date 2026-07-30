@@ -1,31 +1,44 @@
+import type { Product } from "./ProductsTable";
+
 export type Sale = {
-  id: string;
-  name: string;
-  productModifiers: {
-    productId: string;
-    expiration: number;
-    discont: number;
-    price: SalePrice;
-  }[];
-};
-
-type SalePrice = {
-  full: number;
-  pix: number;
-  pixDiscont: number;
-  maxInstallments: number;
-  installments: number;
-  previous: number;
-};
-
-type SaleProduct = {
-  sale: {
+  default: {
     id: string;
     name: string;
-    expiration: number;
-    discont: number;
+    productModifiers: {
+      productId: string;
+      expiration: number;
+      discont: number;
+      price: {
+        full: number;
+        pix: number;
+        pixDiscont: number;
+        maxInstallments: number;
+        installments: number;
+        previous: number;
+      };
+    }[];
   };
-  price: SalePrice;
+  resolvedProducts: {
+    id: string;
+    name: string;
+    products: Product["card"][];
+  };
+  productModifier: {
+    sale: {
+      id: string;
+      name: string;
+      expiration: number;
+      discont: number;
+    };
+    price: {
+      full: number;
+      pix: number;
+      pixDiscont: number;
+      maxInstallments: number;
+      installments: number;
+      previous: number;
+    };
+  };
 };
 
 const fakeExpiration = (() => {
@@ -36,7 +49,7 @@ const fakeExpiration = (() => {
 })();
 
 class SalesTable {
-  public static data: Sale[] = [
+  public static data: Sale["default"][] = [
     {
       id: "SAL-15AFC6",
       name: "Festival das Placas de Vídeo",
@@ -208,9 +221,9 @@ class SalesTable {
     ]),
   );
 
-  public static productModifierMap = new Map<string, SaleProduct>(
+  public static productModifierMap = new Map<string, Sale["productModifier"]>(
     (() => {
-      const arr: [string, SaleProduct][] = [];
+      const arr: [string, Sale["productModifier"]][] = [];
       for (const sale of this.data) {
         for (const productModifier of sale.productModifiers) {
           arr.push([

@@ -3,12 +3,6 @@ import { Query } from "./Query";
 import { config } from "@fakeAPI/config";
 
 type Session = {
-  id: string;
-  userId: string;
-  startedAt: number;
-};
-
-type SessionPatterns = {
   default: {
     id: string;
     userId: string;
@@ -18,8 +12,8 @@ type SessionPatterns = {
 
 const SCHEMA_VERSION = 1;
 
-class SessionsQuery extends Query<Session> {
-  private localStorageTable = new LocalStorageTable<Session>(
+class SessionsQuery extends Query<Session["default"]> {
+  private localStorageTable = new LocalStorageTable<Session["default"]>(
     config.localStorageKeys.sessions,
     SCHEMA_VERSION,
   );
@@ -27,7 +21,7 @@ class SessionsQuery extends Query<Session> {
   public createAndInsert(
     id: string,
     userId: string,
-  ): SessionPatterns["default"] | null {
+  ): Session["default"] | null {
     if (this.existsById(id)) return null;
     const session = {
       id,
@@ -56,15 +50,15 @@ class SessionsQuery extends Query<Session> {
     return this;
   }
 
-  private inDefaultPattern(): SessionPatterns["default"][] {
+  private inDefaultPattern(): Session["default"][] {
     return structuredClone(this.buffer);
   }
 
-  public get(): SessionPatterns["default"][] {
+  public get(): Session["default"][] {
     return this.inDefaultPattern();
   }
 
-  public getUnique(): SessionPatterns["default"] | undefined {
+  public getUnique(): Session["default"] | undefined {
     return this.inDefaultPattern()[0];
   }
 }

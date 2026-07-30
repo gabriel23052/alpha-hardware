@@ -1,20 +1,39 @@
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
+import type { Product } from "@fakeAPI/tables/ProductsTable";
 
-class ProductsHandler {
-  public getProductById(
-    response: FakeAPIResponse<FAProduct | null>,
-    productId: string,
-  ) {
-    const productsQuery = new ProductsQuery();
-    const product = productsQuery.selectById(productId).getUnique("default");
-    if (!product) {
-      return response.setData(null);
-    }
-    return response.setData(product);
-  }
+export type ProductFilter = {
+  search?: string;
+  saleId?: string;
+  category?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  tags?: string[];
+};
 
-  private getFilteredQuery(filter: FAProductFilter) {
+export type ProductAllPatterns =
+  | Product["default"]
+  | Product["card"]
+  | Product["relatedNeeds"]
+  | Product["suggestion"];
+
+export type ProductSort =
+  | "alphabetical"
+  | "increasingPrice"
+  | "decreasingPrice";
+
+export type ProductQuery = {
+  filter: ProductFilter;
+  pattern: keyof Product;
+  sort?: ProductSort;
+};
+
+export type ProductIdQuery = {
+  id: string;
+};
+
+class ProductsService {
+  private getFilteredQuery(filter: ProductFilter) {
     const productsQuery = new ProductsQuery();
 
     if (filter.search !== undefined) {
@@ -39,9 +58,21 @@ class ProductsHandler {
     return productsQuery;
   }
 
+  public getProductById(
+    response: FakeAPIResponse<Product["default"] | null>,
+    productId: string,
+  ) {
+    const productsQuery = new ProductsQuery();
+    const product = productsQuery.selectById(productId).getUnique("default");
+    if (!product) {
+      return response.setData(null);
+    }
+    return response.setData(product);
+  }
+
   public getByQuery(
-    response: FakeAPIResponse<FAProductFormats[]>,
-    query: FAProductQuery,
+    response: FakeAPIResponse<ProductAllPatterns[]>,
+    query: ProductQuery,
   ) {
     const filteredQuery = this.getFilteredQuery(query.filter);
     switch (query.sort) {
@@ -51,11 +82,11 @@ class ProductsHandler {
       case "decreasingPrice":
         filteredQuery.sortByDecreasingPrice();
         break;
-      default:
+      case "increasingPrice":
         filteredQuery.sortByIncreasingPrice();
     }
-    switch (query.format) {
-      case "full":
+    switch (query.pattern) {
+      case "default":
         return response.setData(filteredQuery.get("default"));
       case "card":
         return response.setData(filteredQuery.get("card"));
@@ -65,14 +96,16 @@ class ProductsHandler {
   }
 
   public getRelated(
-    response: FakeAPIResponse<FAProduct_Card[]>,
+    response: FakeAPIResponse<Product["card"][]>,
     productId: string,
   ) {
     const productsQuery = new ProductsQuery();
     const product = productsQuery
       .selectById(productId)
       .getUnique("relatedNeeds");
-    if (!product) return response.setData([]);
+    if (!product) {
+      return response.setError("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
+    }
 
     const relatedProducts = productsQuery
       .clear()
@@ -88,4 +121,4 @@ class ProductsHandler {
   }
 }
 
-export { ProductsHandler };
+export { ProductsService };

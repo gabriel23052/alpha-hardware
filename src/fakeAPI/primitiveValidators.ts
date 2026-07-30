@@ -1,4 +1,6 @@
 import { config } from "./config";
+import type { ProductSort } from "./services/ProductsService";
+import type { Product } from "./tables/ProductsTable";
 
 function stringLength(target: string, min: number, max: number) {
   return target.length >= min && target.length <= max;
@@ -51,16 +53,16 @@ const primitiveValidators = {
     return stringLength(tag, minLength, maxLength);
   },
 
-  productFormat(format: unknown): format is FAProductFormatOptions {
+  productPattern(pattern: unknown): pattern is keyof Product {
     return (
-      format === "full" ||
-      format === "price" ||
-      format === "suggestion" ||
-      format === "card"
+      pattern === "default" ||
+      pattern === "relatedNeeds" ||
+      pattern === "suggestion" ||
+      pattern === "card"
     );
   },
 
-  productSort(sort: unknown): sort is FAProductSort {
+  productSort(sort: unknown): sort is ProductSort {
     return (
       sort === "increasingPrice" ||
       sort === "decreasingPrice" ||

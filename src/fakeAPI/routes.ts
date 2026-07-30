@@ -7,10 +7,11 @@ import {
   type HomepageBanners,
   type HomepageCollections,
 } from "./services/HomepageService";
-import { ProductsHandler } from "./handlers/ProductsHandler";
+import { ProductsService, type ProductAllPatterns } from "./services/ProductsService";
 import { SessionsHandler } from "./handlers/SessionsHandler";
 import { UsersHandler } from "./handlers/UsersHandler";
 import type { Sale } from "./tables/SalesTable";
+import type { Product } from "./tables/ProductsTable";
 
 type RouteHandler = Record<string, (body?: FARequestBody) => FAResponse>;
 
@@ -36,28 +37,30 @@ const routes: RouteHandler = {
     return response.getResponse();
   },
 
-  "GET api/products/id": (body): FAResponse<FAProduct_Full> => {
-    const response = new FakeAPIResponse<FAProduct_Full>();
+  "GET api/products/id": (body): FAResponse<Product["default"]> => {
+    const response = new FakeAPIResponse<Product["default"]>();
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const productsHandler = new ProductsHandler();
-    if (!payloadValidators.productIdQuery(response, body))
+    const productsHandler = new ProductsService();
+    if (!payloadValidators.productIdQuery(response, body)) {
       return response.getResponse();
+    }
+
     productsHandler.getProductById(response, body.id);
     return response.getResponse();
   },
 
-  "GET api/products/query": (body): FAResponse<FAProductFormats[]> => {
-    const response = new FakeAPIResponse<FAProductFormats[]>();
+  "GET api/products/query": (body): FAResponse<ProductAllPatterns[]> => {
+    const response = new FakeAPIResponse<ProductAllPatterns[]>();
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const productsHandler = new ProductsHandler();
+    const productsHandler = new ProductsService();
     if (!payloadValidators.productQuery(response, body)) {
       return response.getResponse();
     }
@@ -72,7 +75,7 @@ const routes: RouteHandler = {
       return response.getResponse();
     }
 
-    const productsHandler = new ProductsHandler();
+    const productsHandler = new ProductsService();
     if (!payloadValidators.productIdQuery(response, body))
       return response.getResponse();
     productsHandler.getRelated(response, body.id);

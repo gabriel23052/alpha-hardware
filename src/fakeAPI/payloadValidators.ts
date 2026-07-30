@@ -1,13 +1,13 @@
 import { config } from "./config";
 import { primitiveValidators } from "./primitiveValidators";
 import type { FakeAPIResponse } from "./FakeAPIResponse";
+import type { ProductFilter, ProductIdQuery, ProductQuery } from "./services/ProductsService";
 
 const payloadValidators = {
-
   productIdQuery(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAProductIdQuery {
+  ): body is ProductIdQuery {
     if (!("id" in body)) {
       return response.setError("PRODUCT_ID_QUERY_ID_FIELD_NOT_FOUND");
     }
@@ -20,19 +20,19 @@ const payloadValidators = {
   productQuery(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAProductQuery {
+  ): body is ProductQuery {
     if (!("filter" in body)) {
       return response.setError("PRODUCT_QUERY_FILTER_FIELD_NOT_FOUND");
     }
-    if (!("format" in body)) {
-      return response.setError("PRODUCT_QUERY_FORMAT_FIELD_NOT_FOUND");
+    if (!("pattern" in body)) {
+      return response.setError("PRODUCT_QUERY_PATTERN_FIELD_NOT_FOUND");
     }
 
     if (!this.productQueryFilter(response, body.filter)) {
       return false;
     }
-    if (!primitiveValidators.productFormat(body.format)) {
-      return response.setError("PRODUCT_QUERY_INVALID_FORMAT");
+    if (!primitiveValidators.productPattern(body.pattern)) {
+      return response.setError("PRODUCT_QUERY_INVALID_PATTERN");
     }
 
     if ("sort" in body && !primitiveValidators.productSort(body.sort)) {
@@ -45,7 +45,7 @@ const payloadValidators = {
   productQueryFilter(
     response: FakeAPIResponse,
     body: FARequestBodyData,
-  ): body is FAProductFilter {
+  ): body is ProductFilter {
     if (typeof body !== "object" || body === null || Array.isArray(body)) {
       return response.setError("PRODUCT_QUERY_INVALID_FILTER");
     }
@@ -231,7 +231,6 @@ const payloadValidators = {
 
     return true;
   },
-
 } as const;
 
 export { payloadValidators };

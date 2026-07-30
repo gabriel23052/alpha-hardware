@@ -15,10 +15,10 @@ const errorsEntries = [
   ["PRODUCT_ID_QUERY_INVALID_ID", "Produto não encontrado"],
 
   ["PRODUCT_QUERY_FILTER_FIELD_NOT_FOUND", "Falha ao buscar produto"],
-  ["PRODUCT_QUERY_FORMAT_FIELD_NOT_FOUND", "Falha ao buscar produto"],
+  ["PRODUCT_QUERY_PATTERN_FIELD_NOT_FOUND", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_FILTER", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_SORT", "Falha ao buscar produto"],
-  ["PRODUCT_QUERY_INVALID_FORMAT", "Falha ao buscar produto"],
+  ["PRODUCT_QUERY_INVALID_PATTERN", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_EMPTY_FILTER", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_SEARCH", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_SALE_ID", "Falha ao buscar produto"],
@@ -26,6 +26,8 @@ const errorsEntries = [
   ["PRODUCT_QUERY_INVALID_MIN_PRICE", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_MAX_PRICE", "Falha ao buscar produto"],
   ["PRODUCT_QUERY_INVALID_TAGS", "Falha ao buscar produto"],
+
+  ["PRODUCT_RELATED_PRODUCT_NOT_FOUND", "Falha ao buscar produtos relacionados"],
  
   ["AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND", "Falha ao cadastrar usuário"],
   ["AUTH_REGISTER_PASSWORD_FIELD_NOT_FOUND", "Falha ao cadastrar usuário"],

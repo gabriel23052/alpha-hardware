@@ -17,6 +17,12 @@ import {
   HomepageService,
 } from "@fakeAPI/services/HomepageService";
 import type { Sale } from "@fakeAPI/tables/SalesTable";
+import {
+  ProductsService,
+  type ProductAllPatterns,
+  type ProductQuery,
+} from "@fakeAPI/services/ProductsService";
+import type { Product } from "@fakeAPI/tables/ProductsTable";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -135,7 +141,7 @@ describe("Validações primitivas", () => {
       "productFilterSearch",
       "productFilterCategory",
       "productFilterTag",
-      "productFormat",
+      "productPattern",
       "productSort",
       "username",
       "password",
@@ -285,25 +291,25 @@ describe("Validações primitivas", () => {
       });
     });
 
-    describe("Formato de produto", () => {
+    describe("Padrão de produto", () => {
       test.each([
-        ["'full'", "full"],
-        ["'price'", "price"],
+        ["'default'", "default"],
+        ["'relatedNeeds'", "relatedNeeds"],
         ["'suggestion'", "suggestion"],
         ["'card'", "card"],
-      ])("aceita se testar o formato %s", (_, value) => {
-        expect(primitiveValidators.productFormat(value)).toBe(true);
+      ])("aceita se testar o padrão %s", (_, value) => {
+        expect(primitiveValidators.productPattern(value)).toBe(true);
       });
 
       test.each([
         ["vazio", ""],
-        ["com espaço no ínicio", " full"],
-        ["com espaço no fim", "full "],
-        ["com espaços no ínicio e no fim", " full "],
-        ["com espaço no meio", "increasing Price"],
-        ["com letras maíusculas", "FULL"],
-      ])("rejeita se testar um formato %s", (_, value) => {
-        expect(primitiveValidators.productFormat(value)).toBe(false);
+        ["com espaço no ínicio", " default"],
+        ["com espaço no fim", "default "],
+        ["com espaços no ínicio e no fim", " default "],
+        ["com espaço no meio", "def ault"],
+        ["com letras maíusculas", "DEFAULT"],
+      ])("rejeita se testar um padrão %s", (_, value) => {
+        expect(primitiveValidators.productPattern(value)).toBe(false);
       });
     });
 
@@ -442,7 +448,7 @@ describe("Validações de payloads", () => {
       [
         "conter uma busca válida sem ordenamento",
         {
-          format: "full",
+          pattern: "default",
           filter: {
             search: "product",
           },
@@ -451,7 +457,7 @@ describe("Validações de payloads", () => {
       [
         "conter uma busca válida com ordenamento",
         {
-          format: "full",
+          pattern: "default",
           filter: {
             search: "product",
           },
@@ -461,7 +467,7 @@ describe("Validações de payloads", () => {
       [
         "conter uma busca válida com múltiplos filtros e ordenamento",
         {
-          format: "full",
+          pattern: "default",
           filter: {
             search: "product",
             saleId: "SAL-123456",
@@ -485,19 +491,19 @@ describe("Validações de payloads", () => {
         error: "PRODUCT_QUERY_FILTER_FIELD_NOT_FOUND",
       },
       {
-        description: "não conter formato",
+        description: "não conter padrão",
         value: {
           filter: {
             search: "product",
           },
         },
-        error: "PRODUCT_QUERY_FORMAT_FIELD_NOT_FOUND",
+        error: "PRODUCT_QUERY_PATTERN_FIELD_NOT_FOUND",
       },
       {
         description: "conter filtro vazio",
         value: {
           filter: {},
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_EMPTY_FILTER",
       },
@@ -505,7 +511,7 @@ describe("Validações de payloads", () => {
         description: "o filtro for um number",
         value: {
           filter: 123,
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_FILTER",
       },
@@ -513,7 +519,7 @@ describe("Validações de payloads", () => {
         description: "o filtro for uma string",
         value: {
           filter: "invalid",
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_FILTER",
       },
@@ -521,7 +527,7 @@ describe("Validações de payloads", () => {
         description: "o filtro for um boolean",
         value: {
           filter: "invalid",
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_FILTER",
       },
@@ -529,7 +535,7 @@ describe("Validações de payloads", () => {
         description: "o filtro for um array",
         value: {
           filter: ["invalid"],
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_FILTER",
       },
@@ -539,7 +545,7 @@ describe("Validações de payloads", () => {
           filter: {
             search: "a",
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_SEARCH",
       },
@@ -549,7 +555,7 @@ describe("Validações de payloads", () => {
           filter: {
             saleId: "a",
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_SALE_ID",
       },
@@ -559,7 +565,7 @@ describe("Validações de payloads", () => {
           filter: {
             category: "a",
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_CATEGORY",
       },
@@ -569,7 +575,7 @@ describe("Validações de payloads", () => {
           filter: {
             minPrice: -1,
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_MIN_PRICE",
       },
@@ -579,7 +585,7 @@ describe("Validações de payloads", () => {
           filter: {
             maxPrice: 99999999,
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_MAX_PRICE",
       },
@@ -589,7 +595,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: 123,
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -599,7 +605,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: "invalid",
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -609,7 +615,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: true,
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -621,7 +627,7 @@ describe("Validações de payloads", () => {
               prop: "tag",
             },
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -631,7 +637,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: [123],
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -641,7 +647,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: [true],
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -651,7 +657,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: [["tag"]],
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -661,7 +667,7 @@ describe("Validações de payloads", () => {
           filter: {
             tags: ["a"],
           },
-          format: "full",
+          pattern: "default",
         },
         error: "PRODUCT_QUERY_INVALID_TAGS",
       },
@@ -671,7 +677,7 @@ describe("Validações de payloads", () => {
           filter: {
             search: "product",
           },
-          format: "full",
+          pattern: "default",
           sort: "increasingPRice",
         },
         error: "PRODUCT_QUERY_INVALID_SORT",
@@ -2304,6 +2310,64 @@ describe("Serviços", () => {
       expect(responseResult.success).toBe(false);
       if (responseResult.success) return;
       expect(responseResult.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
+    });
+  });
+
+  describe("Produtos", () => {
+    let productsService = new ProductsService();
+    beforeEach(() => {
+      productsService = new ProductsService();
+    });
+
+    it("retorna produto pelo id", () => {
+      const response = new FakeAPIResponse<Product["default"] | null>();
+      const productId = "PRO-010A562D2";
+      productsService.getProductById(response, productId);
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeDefined();
+    });
+
+    it("retorna produto por consulta", () => {
+      const response = new FakeAPIResponse<ProductAllPatterns[]>();
+      const query: ProductQuery = {
+        pattern: "default",
+        filter: {
+          search: "product",
+        },
+      };
+      productsService.getByQuery(response, query);
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeDefined();
+    });
+
+    it("retorna produtos relacionados baseado na diferença de preço", () => {
+      const response = new FakeAPIResponse<Product["card"][]>();
+      const productId = "PRO-010A562D2";
+      const expectedProducts = [
+        "PRO-BDC286153",
+        "PRO-B415C97A3",
+        "PRO-67E2FEC06",
+        "PRO-57CEA8CF9",
+      ];
+      productsService.getRelated(response, productId);
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data?.map((p) => p.id)).toEqual(expectedProducts);
+    });
+
+    it("retorna erro se tentar buscar produtos relacionados com id inexistente", () => {
+      const response = new FakeAPIResponse<Product["card"][]>();
+      const productId = "PRO-000000000";
+      productsService.getRelated(response, productId);
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
     });
   });
 });

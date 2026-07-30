@@ -65,6 +65,10 @@ export type ProductPatterns = {
 };
 
 class ProductsQuery extends Query<Product> {
+  public existsById(id: string) {
+    return ProductsTable.indexMap.has(id);
+  }
+
   public selectById(id: string) {
     if (this.externalSelect) {
       this.setBuffer(ProductsTable.indexMap.get(id));

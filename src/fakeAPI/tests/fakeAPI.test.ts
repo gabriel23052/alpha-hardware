@@ -1057,6 +1057,13 @@ describe("Consultas", () => {
       expect(product?.id).toBe(productId);
     });
 
+    it("verifica se produto existe pelo id", () => {
+      const productId = "PRO-010A562D2";
+
+      expect(productQuery.existsById("PRO-000000000")).toBe(false);
+      expect(productQuery.existsById(productId)).toBe(true);
+    });
+
     it("seleciona produtos por lista de ids", () => {
       const productIdList = [
         "PRO-010A562D2",

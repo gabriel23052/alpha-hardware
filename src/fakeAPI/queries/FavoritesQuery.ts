@@ -61,7 +61,7 @@ class FavoritesQuery extends Query<Favorite["default"]> {
     const productQuery = new ProductsQuery();
     return this.buffer.map((f) => {
       const product = productQuery.selectById(f.productId).getUnique("card");
-      if (!product) throw new Error("Product mismatch in favorite");
+      if (!product) throw new Error("Favorite product not found");
       productQuery.clear();
       return product;
     });

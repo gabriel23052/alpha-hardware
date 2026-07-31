@@ -18,6 +18,9 @@ class SalesQuery extends Query<Sale["default"]> {
     return this.buffer.map((s) => {
       const productIds = s.productModifiers.map((pM) => pM.productId);
       const products = productQuery.selectByIdList(productIds).get("card");
+      if (productIds.length !== products.length) {
+        throw new Error("Product not found in sale");
+      }
       productQuery.clear();
       return {
         id: s.id,
@@ -43,9 +46,7 @@ class SalesQuery extends Query<Sale["default"]> {
   public getUnique(
     pattern: "resolvedProducts",
   ): Sale["resolvedProducts"] | undefined;
-  public getUnique(
-    pattern: keyof Sale,
-  ): Sale[keyof Sale] | undefined {
+  public getUnique(pattern: keyof Sale): Sale[keyof Sale] | undefined {
     if (pattern === "default") {
       return this.inDefaultPattern()[0];
     }

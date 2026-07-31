@@ -15,11 +15,15 @@ class CollectionsQuery extends Query<Collection["default"]> {
   private inResolvedProductsPattern(): Collection["resolvedProducts"][] {
     const productQuery = new ProductsQuery();
     return this.buffer.map((c) => {
+      const products = productQuery.selectByIdList(c.products).get("card");
+      if (products.length !== c.products.length) {
+        throw new Error("Product not found in collection");
+      }
       productQuery.clear();
       return {
         id: c.id,
         name: c.name,
-        products: productQuery.selectByIdList(c.products).get("card"),
+        products,
       };
     });
   }

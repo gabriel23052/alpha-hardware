@@ -44,7 +44,6 @@ const favorites = {
     const response = await fakeApiFetch.response;
 
     if (response) {
-      console.log(response);
       if (response.success) {
         favoritesStore.set(response.data as string[]);
         return;

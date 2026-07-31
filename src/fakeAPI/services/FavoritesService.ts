@@ -1,7 +1,7 @@
 import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
 
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
-import { SessionsHandler } from "../handlers/SessionsHandler";
+import { AuthService } from "./AuthService";
 import { FavoritesQuery, type Favorite } from "@fakeAPI/queries/FavoritesQuery";
 
 export type FavoriteGetPayload = {
@@ -22,12 +22,12 @@ export type FavoriteAllPatterns =
   | Favorite["productId"];
 
 class FavoritesService {
-  public addFavorite(response: FakeAPIResponse, productId: string) {
-    const sessionsHandler = new SessionsHandler();
+  public addFavorite(response: FakeAPIResponse<null>, productId: string) {
+    const authService = new AuthService();
     const productQuery = new ProductsQuery();
     const favoritesTable = new FavoritesQuery();
 
-    const sessionData = sessionsHandler.getSessionData(response);
+    const sessionData = authService.getSessionData(response);
     if (!sessionData) return;
 
     const product = productQuery.selectById(productId).getUnique("default");
@@ -39,11 +39,11 @@ class FavoritesService {
   }
 
   public removeFavorite(response: FakeAPIResponse, productId: string) {
-    const sessionsHandler = new SessionsHandler();
+    const authService = new AuthService();
     const productQuery = new ProductsQuery();
     const favoritesQuery = new FavoritesQuery();
 
-    const sessionData = sessionsHandler.getSessionData(response);
+    const sessionData = authService.getSessionData(response);
     if (!sessionData) return;
 
     const product = productQuery.selectById(productId).getUnique("default");
@@ -58,10 +58,10 @@ class FavoritesService {
     response: FakeAPIResponse<FavoriteAllPatterns[]>,
     pattern: keyof Favorite,
   ) {
-    const sessionsHandler = new SessionsHandler();
+    const authService = new AuthService();
     const favoritesQuery = new FavoritesQuery();
 
-    const sessionData = sessionsHandler.getSessionData(response);
+    const sessionData = authService.getSessionData(response);
     if (!sessionData) return;
 
     const data =

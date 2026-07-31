@@ -12,10 +12,7 @@ const SessionValidator = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await api.fetch();
-      if (
-        !response.success &&
-        response.error.message === "Seção inexistente ou inválida"
-      ) {
+      if (!response.success && response.error.id === "AUTH_UNAUTHENTICATED") {
         sessionStore.logout();
         favorites.clear();
       }

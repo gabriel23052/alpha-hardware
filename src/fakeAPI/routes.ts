@@ -14,10 +14,10 @@ import {
   ProductsService,
   type ProductAllPatterns,
 } from "./services/ProductsService";
-import { SessionsHandler } from "./handlers/SessionsHandler";
-import { UsersHandler } from "./handlers/UsersHandler";
+import { AuthService } from "./services/AuthService";
 import type { Sale } from "./tables/SalesTable";
 import type { Product } from "./tables/ProductsTable";
+import type { User } from "./queries/UsersQuery";
 
 type RouteHandler = Record<string, (body?: FARequestBody) => FAResponse>;
 
@@ -88,69 +88,76 @@ const routes: RouteHandler = {
     return response.getResponse();
   },
 
-  "POST api/auth/register": (body): FAResponse<FAUser_WithoutPassword> => {
-    const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+  "POST api/auth/register": (body): FAResponse<User["private"]> => {
+    const response = new FakeAPIResponse<User["private"]>();
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const usersHandler = new UsersHandler();
+    const authService = new AuthService();
 
-    if (!payloadValidators.authRegister(response, body))
+    if (!payloadValidators.authRegister(response, body)) {
       return response.getResponse();
+    }
 
-    usersHandler.createUser(response, body);
+    authService.register(response, body);
 
     return response.getResponse();
   },
 
-  "POST api/auth/login": (body): FAResponse<FAUser_WithoutPassword> => {
-    const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+  "POST api/auth/login": (body): FAResponse<User["private"]> => {
+    const response = new FakeAPIResponse<User["private"]>();
+
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const usersHandler = new UsersHandler();
+    const authService = new AuthService();
 
-    if (!payloadValidators.authLogin(response, body))
+    if (!payloadValidators.authLogin(response, body)) {
       return response.getResponse();
+    }
 
-    usersHandler.login(response, body);
+    authService.login(response, body);
 
     return response.getResponse();
   },
 
   "POST api/auth/logout": (): FAResponse<null> => {
     const response = new FakeAPIResponse<null>();
-    const usersHandler = new UsersHandler();
+    const authService = new AuthService();
 
-    usersHandler.logout();
+    authService.logout();
 
     return response.getResponse();
   },
 
   "POST api/auth/verifySession": (): FAResponse<null> => {
     const response = new FakeAPIResponse<null>();
-    const sessionsHandler = new SessionsHandler();
-    sessionsHandler.isAuthenticated(response);
+    const authService = new AuthService();
+
+    authService.validateSession(response);
+
     return response.getResponse();
   },
 
   "POST api/auth/recoverPassword": (body): FAResponse<null> => {
     const response = new FakeAPIResponse<null>();
+
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const usersHandler = new UsersHandler();
+    const authService = new AuthService();
 
-    if (!payloadValidators.authRecover(response, body))
+    if (!payloadValidators.authRecover(response, body)) {
       return response.getResponse();
+    }
 
-    usersHandler.recoverPassword(response, body);
+    authService.recover(response, body);
 
     return response.getResponse();
   },
@@ -162,12 +169,13 @@ const routes: RouteHandler = {
       return response.getResponse();
     }
 
-    const usersHandler = new UsersHandler();
+    const authService = new AuthService();
 
-    if (!payloadValidators.authUpdatePassword(response, body))
+    if (!payloadValidators.authUpdatePassword(response, body)) {
       return response.getResponse();
+    }
 
-    usersHandler.updatePassword(response, body);
+    authService.updatePassword(response, body);
 
     return response.getResponse();
   },

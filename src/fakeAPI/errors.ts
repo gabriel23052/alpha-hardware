@@ -29,20 +29,22 @@ const errorsEntries = [
 
   ["PRODUCT_RELATED_PRODUCT_NOT_FOUND", "Falha ao buscar produtos relacionados"],
  
+  ["AUTH_UNAUTHENTICATED", "Usuário não autenticado"],
+
   ["AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND", "Falha ao cadastrar usuário"],
   ["AUTH_REGISTER_PASSWORD_FIELD_NOT_FOUND", "Falha ao cadastrar usuário"],
   ["AUTH_REGISTER_INVALID_USERNAME", "Falha ao cadastrar usuário"],
   ["AUTH_REGISTER_INVALID_PASSWORD", "Falha ao cadastrar usuário"],
   ["AUTH_REGISTER_USER_ALREADY_REGISTERED", "Esse usuário já está cadastrado"],
+  ["AUTH_REGISTER_DUPLICATED_SESSION", "Falha ao entrar na conta"],
   
   ["AUTH_LOGIN_USERNAME_FIELD_NOT_FOUND", "Falha ao entrar na conta"],
   ["AUTH_LOGIN_PASSWORD_FIELD_NOT_FOUND", "Falha ao entrar na conta"],
   ["AUTH_LOGIN_INVALID_USERNAME", "Falha ao entrar na conta"],
   ["AUTH_LOGIN_INVALID_PASSWORD", "Falha ao entrar na conta"],
+  ["AUTH_LOGIN_DUPLICATED_SESSION", "Falha ao entrar na conta"],
   ["AUTH_LOGIN_INCORRECT_CREDENTIALS", "O nome de usuário ou senha estão incorretos"],
 
-  ["AUTH_INVALID_SESSION", "Falha ao validar a sessão"],
-  
   ["AUTH_RECOVER_USERNAME_FIELD_NOT_FOUND", "Falha ao recuperar a senha"],
   ["AUTH_RECOVER_NEW_PASSWORD_FIELD_NOT_FOUND", "Falha ao recuperar a senha"],
   ["AUTH_RECOVER_INVALID_USERNAME", "Falha ao recuperar a senha"],

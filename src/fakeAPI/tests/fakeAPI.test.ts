@@ -9,7 +9,7 @@ import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
-import { UsersQuery } from "@fakeAPI/queries/UsersQuery";
+import { UsersQuery, type User } from "@fakeAPI/queries/UsersQuery";
 import { FavoritesQuery } from "@fakeAPI/queries/FavoritesQuery";
 import {
   type HomepageBanners,
@@ -23,11 +23,12 @@ import {
   type ProductQuery,
 } from "@fakeAPI/services/ProductsService";
 import type { Product } from "@fakeAPI/tables/ProductsTable";
-import { UsersHandler } from "@fakeAPI/handlers/UsersHandler";
 import {
   FavoritesService,
   type FavoriteAllPatterns,
 } from "@fakeAPI/services/FavoritesService";
+import { AuthService } from "@fakeAPI/services/AuthService";
+import { config } from "@fakeAPI/config";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -2189,17 +2190,22 @@ describe("Consultas", () => {
 
 describe("Serviços", () => {
   function simulateAuthentication() {
-    const usersHandler = new UsersHandler();
-    const res = new FakeAPIResponse<FAUser_WithoutPassword | null>();
-    usersHandler.createUser(res, {
+    const authService = new AuthService();
+    const res = new FakeAPIResponse<User["default"]>();
+    const user = {
       username: "test",
       password: "1234",
-    });
+    };
+    authService.register(res, user);
     const response = res.getResponse();
     if (!response.success || !response.data) {
       throw new Error("Authentication failed");
     }
-    return response.data;
+    return {
+      id: response.data.id,
+      username: user.username,
+      password: user.password,
+    };
   }
 
   beforeEach(() => {
@@ -2411,7 +2417,7 @@ describe("Serviços", () => {
     it("adiciona favorito", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const response = new FakeAPIResponse<null>();
 
       favoritesService.addFavorite(response, productId);
 
@@ -2424,7 +2430,7 @@ describe("Serviços", () => {
     it("remove favorito", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const responseA = new FakeAPIResponse<null>();
       favoritesService.addFavorite(responseA, productId);
 
       const responseB = new FakeAPIResponse<null>();
@@ -2439,7 +2445,7 @@ describe("Serviços", () => {
     it("retorna favoritos", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const responseA = new FakeAPIResponse<null>();
       favoritesService.addFavorite(responseA, productId);
 
       const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
@@ -2454,7 +2460,7 @@ describe("Serviços", () => {
     it("retorna erro se adicionar favorito com id de produto inexistente", () => {
       simulateAuthentication();
       const productId = "PRO-000000000";
-      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const response = new FakeAPIResponse<null>();
 
       favoritesService.addFavorite(response, productId);
 
@@ -2466,14 +2472,14 @@ describe("Serviços", () => {
 
     it("retorna erro se adiciona favorito sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const response = new FakeAPIResponse<null>();
 
       favoritesService.addFavorite(response, productId);
 
       const res = response.getResponse();
       expect(res.success).toBe(false);
       if (res.success) return;
-      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar remover favorito com id de produto inexistente", () => {
@@ -2491,7 +2497,7 @@ describe("Serviços", () => {
 
     it("retorna erro se tentar remover favorito sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const responseA = new FakeAPIResponse<null>();
       favoritesService.addFavorite(responseA, productId);
 
       const responseB = new FakeAPIResponse<null>();
@@ -2500,12 +2506,12 @@ describe("Serviços", () => {
       const res = responseB.getResponse();
       expect(res.success).toBe(false);
       if (res.success) return;
-      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar buscar favoritos sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      const responseA = new FakeAPIResponse<null>();
       favoritesService.addFavorite(responseA, productId);
 
       const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
@@ -2514,7 +2520,232 @@ describe("Serviços", () => {
       const res = responseB.getResponse();
       expect(res.success).toBe(false);
       if (res.success) return;
-      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+    });
+  });
+
+  describe("Autenticação", () => {
+    let authService = new AuthService();
+    beforeEach(() => {
+      authService = new AuthService();
+    });
+
+    function registerFakeUser() {
+      const response = new FakeAPIResponse<User["private"]>();
+      const authService = new AuthService();
+      const user = {
+        username: "username",
+        password: "1234",
+      };
+      authService.register(response, user);
+      localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
+      return user;
+    }
+
+    it("registra usuário", () => {
+      const response = new FakeAPIResponse<User["private"]>();
+
+      authService.register(response, {
+        username: "username",
+        password: "1234",
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+
+      expect(
+        localStorage.getItem(config.localStorageKeys.sessionFakeCookie),
+      ).toBeDefined();
+      expect(typeof res.data).toBe("object");
+      expect(res.data).not.toBe(null);
+      expect(Array.isArray(res.data)).toBe(false);
+    });
+
+    it("efetua login", () => {
+      const fakeUser = registerFakeUser();
+      const response = new FakeAPIResponse<User["private"]>();
+
+      authService.login(response, fakeUser);
+
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+
+      expect(
+        localStorage.getItem(config.localStorageKeys.sessionFakeCookie),
+      ).toBeDefined();
+      expect(typeof res.data).toBe("object");
+      expect(res.data).not.toBe(null);
+      expect(Array.isArray(res.data)).toBe(false);
+    });
+
+    it("efetua logout", () => {
+      simulateAuthentication();
+      authService.logout();
+      expect(
+        localStorage.getItem(config.localStorageKeys.sessionFakeCookie),
+      ).toBeNull();
+    });
+
+    it("recupera senha", () => {
+      const response = new FakeAPIResponse<null>();
+      const fakeUser = registerFakeUser();
+
+      authService.recover(response, {
+        username: fakeUser.username,
+        newPassword: "4321",
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("atualiza senha", () => {
+      const response = new FakeAPIResponse<null>();
+      const fakeUser = simulateAuthentication();
+
+      authService.updatePassword(response, {
+        password: fakeUser.password,
+        newPassword: "4321",
+      });
+
+      const res = response.getResponse();
+
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("valida sessão", () => {
+      const response = new FakeAPIResponse<null>();
+      simulateAuthentication();
+
+      authService.validateSession(response);
+
+      const res = response.getResponse();
+
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("retorna dados da sessão", () => {
+      const response = new FakeAPIResponse<null>();
+      simulateAuthentication();
+
+      authService.getSessionData(response);
+
+      const res = response.getResponse();
+
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("retorna erro se tentar registrar usuário já cadastrado", () => {
+      const response = new FakeAPIResponse<User["private"]>();
+      const fakeUser = registerFakeUser();
+
+      authService.register(response, {
+        username: fakeUser.username,
+        password: fakeUser.password,
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+
+      expect(res.error.id).toBe("AUTH_REGISTER_USER_ALREADY_REGISTERED");
+    });
+
+    it("retorna erro se tentar logar com usuário incorreto", () => {
+      const response = new FakeAPIResponse<User["private"]>();
+      const fakeUser = registerFakeUser();
+
+      authService.login(response, {
+        username: "incorrect",
+        password: fakeUser.password,
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
+    });
+
+    it("retorna erro se tentar logar com senha incorreta", () => {
+      const response = new FakeAPIResponse<User["private"]>();
+      const fakeUser = registerFakeUser();
+
+      authService.login(response, {
+        username: fakeUser.username,
+        password: "0000",
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
+    });
+
+    it("retorna erro se tentar recuperar senha com usuário inexistente", () => {
+      const response = new FakeAPIResponse<null>();
+      registerFakeUser();
+
+      authService.recover(response, {
+        username: "incorrect",
+        newPassword: "1234",
+      });
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_RECOVER_USER_NOT_FOUND");
+    });
+
+    it("retorna erro se tentar atualizar senha sem estar autenticado", () => {
+      const response = new FakeAPIResponse<null>();
+      const fakeUser = registerFakeUser();
+
+      authService.updatePassword(response, {
+        password: fakeUser.password,
+        newPassword: "4321",
+      });
+
+      const res = response.getResponse();
+
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+    });
+
+    it("retorna erro se tentar atualizar senha com senha antiga incorreta", () => {
+      const response = new FakeAPIResponse<null>();
+      simulateAuthentication();
+
+      authService.updatePassword(response, {
+        password: "0000",
+        newPassword: "4321",
+      });
+
+      const res = response.getResponse();
+
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+    });
+
+    it("retorna erro se tentar validar sessão inexistente ou inválida", () => {
+      registerFakeUser();
+      const response = new FakeAPIResponse<null>();
+      authService.validateSession(response);
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
   });
 });

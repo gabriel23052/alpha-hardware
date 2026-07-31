@@ -2,7 +2,7 @@ import { LocalStorageTable } from "@fakeAPI/tables/LocalStorageTable";
 import { Query } from "./Query";
 import { config } from "@fakeAPI/config";
 
-type User = {
+export type User = {
   default: { id: string; username: string; password: string };
   private: { id: string; username: string };
 };

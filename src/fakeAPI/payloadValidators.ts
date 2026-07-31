@@ -11,6 +11,7 @@ import type {
   FavoriteInsertPayload,
   FavoriteRemovePayload,
 } from "./services/FavoritesService";
+import type { AuthLoginPayload, AuthRecoverPayload, AuthRegisterPayload, AuthUpdatePasswordPayload } from "./services/AuthService";
 
 const payloadValidators = {
   productIdQuery(
@@ -113,7 +114,7 @@ const payloadValidators = {
   authRegister(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAAuthRegister {
+  ): body is AuthRegisterPayload {
     if (!("username" in body)) {
       return response.setError("AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND");
     }
@@ -134,7 +135,7 @@ const payloadValidators = {
   authLogin(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAAuthLogin {
+  ): body is AuthLoginPayload {
     if (!("username" in body)) {
       return response.setError("AUTH_LOGIN_USERNAME_FIELD_NOT_FOUND");
     }
@@ -155,7 +156,7 @@ const payloadValidators = {
   authRecover(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAAuthRecover {
+  ): body is AuthRecoverPayload {
     if (!("username" in body)) {
       return response.setError("AUTH_RECOVER_USERNAME_FIELD_NOT_FOUND");
     }
@@ -176,7 +177,7 @@ const payloadValidators = {
   authUpdatePassword(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAAuthUpdatePassword {
+  ): body is AuthUpdatePasswordPayload {
     if (!("password" in body)) {
       return response.setError("AUTH_UPDATE_PASSWORD_PASSWORD_FIELD_NOT_FOUND");
     }

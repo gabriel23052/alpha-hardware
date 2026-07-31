@@ -4,7 +4,7 @@ import { config } from "@fakeAPI/config";
 import { ProductsQuery } from "./ProductsQuery";
 import type { Product } from "@fakeAPI/tables/ProductsTable";
 
-type Favorite = {
+export type Favorite = {
   default: {
     userId: string;
     productId: string;

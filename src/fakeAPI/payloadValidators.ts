@@ -1,7 +1,16 @@
 import { config } from "./config";
 import { primitiveValidators } from "./primitiveValidators";
 import type { FakeAPIResponse } from "./FakeAPIResponse";
-import type { ProductFilter, ProductIdQuery, ProductQuery } from "./services/ProductsService";
+import type {
+  ProductFilter,
+  ProductIdQuery,
+  ProductQuery,
+} from "./services/ProductsService";
+import type {
+  FavoriteGetPayload,
+  FavoriteInsertPayload,
+  FavoriteRemovePayload,
+} from "./services/FavoritesService";
 
 const payloadValidators = {
   productIdQuery(
@@ -190,7 +199,7 @@ const payloadValidators = {
   favoriteAdd(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAFavoriteAddOrRemove {
+  ): body is FavoriteInsertPayload {
     if (!("productId" in body)) {
       return response.setError("FAVORITE_ADD_PRODUCT_ID_FIELD_NOT_FOUND");
     }
@@ -205,7 +214,7 @@ const payloadValidators = {
   favoriteRemove(
     response: FakeAPIResponse,
     body: FARequestBody,
-  ): body is FAFavoriteAddOrRemove {
+  ): body is FavoriteRemovePayload {
     if (!("productId" in body)) {
       return response.setError("FAVORITE_REMOVE_PRODUCT_ID_FIELD_NOT_FOUND");
     }
@@ -220,13 +229,13 @@ const payloadValidators = {
   favoriteGet(
     response: FakeAPIResponse,
     payload: FARequestBody,
-  ): payload is FAFavoriteGet {
-    if (!("format" in payload)) {
-      return response.setError("FAVORITE_GET_FORMAT_FIELD_NOT_FOUND");
+  ): payload is FavoriteGetPayload {
+    if (!("pattern" in payload)) {
+      return response.setError("FAVORITE_GET_PATTERN_FIELD_NOT_FOUND");
     }
 
-    if (!primitiveValidators.favoriteFormat(payload.format)) {
-      return response.setError("FAVORITE_GET_INVALID_FORMAT");
+    if (!primitiveValidators.favoritePattern(payload.pattern)) {
+      return response.setError("FAVORITE_GET_INVALID_PATTERN");
     }
 
     return true;

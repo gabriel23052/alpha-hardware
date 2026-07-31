@@ -40,7 +40,7 @@ const favorites = {
 
   requestAllFromUser: async () => {
     const favoritesStore = useFavoritesStore.getState();
-    const fakeApiFetch = request("GET api/favorites", { format: "onlyIds" });
+    const fakeApiFetch = request("GET api/favorites", { pattern: "productId" });
     const response = await fakeApiFetch.response;
 
     if (response) {

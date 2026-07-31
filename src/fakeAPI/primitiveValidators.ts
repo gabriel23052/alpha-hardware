@@ -1,4 +1,5 @@
 import { config } from "./config";
+import type { Favorite } from "./queries/FavoritesQuery";
 import type { ProductSort } from "./services/ProductsService";
 import type { Product } from "./tables/ProductsTable";
 
@@ -86,8 +87,12 @@ const primitiveValidators = {
     return /^\d{4}$/.test(password);
   },
 
-  favoriteFormat(format: unknown): format is string {
-    return format === "onlyIds" || format === "products";
+  favoritePattern(pattern: unknown): pattern is keyof Favorite {
+    return (
+      pattern === "default" ||
+      pattern === "productId" ||
+      pattern === "resolvedProduct"
+    );
   },
 };
 

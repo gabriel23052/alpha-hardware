@@ -23,6 +23,11 @@ import {
   type ProductQuery,
 } from "@fakeAPI/services/ProductsService";
 import type { Product } from "@fakeAPI/tables/ProductsTable";
+import { UsersHandler } from "@fakeAPI/handlers/UsersHandler";
+import {
+  FavoritesService,
+  type FavoriteAllPatterns,
+} from "@fakeAPI/services/FavoritesService";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -145,7 +150,7 @@ describe("Validações primitivas", () => {
       "productSort",
       "username",
       "password",
-      "favoriteFormat",
+      "favoritePattern",
     ] as const;
 
     const validatorsThatExpectNumber = ["productFilterPrice"] as const;
@@ -385,21 +390,22 @@ describe("Validações primitivas", () => {
 
     describe("Formato de favorito", () => {
       test.each([
-        ["onlyIds", "onlyIds"],
-        ["products", "products"],
-      ])("aceita se testar o formato de favorito '%s'", (_, value) => {
-        expect(primitiveValidators.favoriteFormat(value)).toBe(true);
+        ["default", "default"],
+        ["resolvedProduct", "resolvedProduct"],
+        ["productId", "productId"],
+      ])("aceita se testar o padrão de favorito '%s'", (_, value) => {
+        expect(primitiveValidators.favoritePattern(value)).toBe(true);
       });
 
       test.each([
         ["vazio", ""],
-        ["com espaço no ínicio", " onlyIds"],
-        ["com espaço no fim", "onlyIds "],
-        ["com espaços no ínicio e no fim", " onlyIds "],
-        ["com espaço no meio", "only Ids"],
-        ["com letras maíusculas", "PRODUCTS"],
-      ])("rejeita se testar um formato de favorito %s", (_, value) => {
-        expect(primitiveValidators.favoriteFormat(value)).toBe(false);
+        ["com espaço no ínicio", " default"],
+        ["com espaço no fim", "default "],
+        ["com espaços no ínicio e no fim", " default "],
+        ["com espaço no meio", "def ault"],
+        ["com letras maíusculas", "DEFAULT"],
+      ])("rejeita se testar um padrão de favorito %s", (_, value) => {
+        expect(primitiveValidators.favoritePattern(value)).toBe(false);
       });
     });
   });
@@ -1014,9 +1020,9 @@ describe("Validações de payloads", () => {
   describe("Consulta de favoritos", () => {
     test.each([
       [
-        "conter um formato de favorito válido",
+        "conter um padrão de favorito válido",
         {
-          format: "onlyIds",
+          pattern: "productId",
         },
       ],
     ])("aceita se %s", (_, value) => {
@@ -1028,14 +1034,14 @@ describe("Validações de payloads", () => {
       {
         description: "for um objeto vazio",
         value: {},
-        error: "FAVORITE_GET_FORMAT_FIELD_NOT_FOUND",
+        error: "FAVORITE_GET_PATTERN_FIELD_NOT_FOUND",
       },
       {
-        description: "conter um formato de favorito inválido",
+        description: "conter um padrão de favorito inválido",
         value: {
-          format: "onlyId",
+          pattern: "productIdd",
         },
-        error: "FAVORITE_GET_INVALID_FORMAT",
+        error: "FAVORITE_GET_INVALID_PATTERN",
       },
     ])("rejeita se $description", ({ value, error }) => {
       const response = new FakeAPIResponse();
@@ -1705,7 +1711,7 @@ describe("Consultas", () => {
       expect(banner?.id).toBe(bannerId);
     });
 
-    it("retorna banner no formato 'default'", () => {
+    it("retorna banner no padrão 'default'", () => {
       const expectedProduct = {
         id: "BAN-1AF1AC",
         link: "/catalog?sale=SAL-15AFC6&saleName=Festival%20das%20Placas%20de%20Vídeo",
@@ -2182,35 +2188,58 @@ describe("Consultas", () => {
 });
 
 describe("Serviços", () => {
+  function simulateAuthentication() {
+    const usersHandler = new UsersHandler();
+    const res = new FakeAPIResponse<FAUser_WithoutPassword | null>();
+    usersHandler.createUser(res, {
+      username: "test",
+      password: "1234",
+    });
+    const response = res.getResponse();
+    if (!response.success || !response.data) {
+      throw new Error("Authentication failed");
+    }
+    return response.data;
+  }
+
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   describe("Homepage", () => {
     it("retorna os banners", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageBanners>();
       homepageService.getBanners(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(true);
-      if (!responseResult.success) return;
-      expect(responseResult.data).toBeDefined();
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(typeof res.data).toBe("object");
+      expect(res.data).not.toBe(null);
+      expect(Array.isArray(res.data)).toBe(false);
     });
 
     it("retorna a promoção", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
       homepageService.getSale(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(true);
-      if (!responseResult.success) return;
-      expect(responseResult.data).toBeDefined();
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(typeof res.data).toBe("object");
+      expect(res.data).not.toBe(null);
+      expect(Array.isArray(res.data)).toBe(false);
     });
 
     it("retorna as coleções", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageCollections>();
       homepageService.getCollections(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(true);
-      if (!responseResult.success) return;
-      expect(responseResult.data).toBeDefined();
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(typeof res.data).toBe("object");
+      expect(Array.isArray(res.data)).toBe(false);
     });
 
     it("retorna erro se o id do banner de promoção é inexistente", async () => {
@@ -2227,10 +2256,10 @@ describe("Serviços", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageBanners>();
       homepageService.getBanners(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(false);
-      if (responseResult.success) return;
-      expect(responseResult.error.id).toBe("HP_SALE_BANNER_NOT_FOUND");
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("HP_SALE_BANNER_NOT_FOUND");
     });
 
     it("retorna erro se o id do banner de propaganda é inexistente", async () => {
@@ -2247,10 +2276,10 @@ describe("Serviços", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageBanners>();
       homepageService.getBanners(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(false);
-      if (responseResult.success) return;
-      expect(responseResult.error.id).toBe("HP_AD_BANNER_NOT_FOUND");
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("HP_AD_BANNER_NOT_FOUND");
     });
 
     it("retorna erro se o id da promoção é inexistente", async () => {
@@ -2266,10 +2295,10 @@ describe("Serviços", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
       homepageService.getSale(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(false);
-      if (responseResult.success) return;
-      expect(responseResult.error.id).toBe("HP_SALE_NOT_FOUND");
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("HP_SALE_NOT_FOUND");
     });
 
     it("retorna erro se o id da primeira coleção é inexistente", async () => {
@@ -2286,10 +2315,10 @@ describe("Serviços", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageCollections>();
       homepageService.getCollections(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(false);
-      if (responseResult.success) return;
-      expect(responseResult.error.id).toBe("HP_SECOND_COLLECTION_NOT_FOUND");
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("HP_SECOND_COLLECTION_NOT_FOUND");
     });
 
     it("retorna erro se o id da segunda coleção é inexistente", async () => {
@@ -2306,10 +2335,10 @@ describe("Serviços", () => {
       const homepageService = new HomepageService();
       const response = new FakeAPIResponse<HomepageCollections>();
       homepageService.getCollections(response);
-      const responseResult = response.getResponse();
-      expect(responseResult.success).toBe(false);
-      if (responseResult.success) return;
-      expect(responseResult.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
     });
   });
 
@@ -2326,7 +2355,9 @@ describe("Serviços", () => {
       const res = response.getResponse();
       expect(res.success).toBe(true);
       if (!res.success) return;
-      expect(res.data).toBeDefined();
+      expect(typeof res.data).toBe("object");
+      expect(res.data).not.toBe(null);
+      expect(Array.isArray(res.data)).toBe(false);
     });
 
     it("retorna produto por consulta", () => {
@@ -2341,7 +2372,7 @@ describe("Serviços", () => {
       const res = response.getResponse();
       expect(res.success).toBe(true);
       if (!res.success) return;
-      expect(res.data).toBeDefined();
+      expect(Array.isArray(res.data)).toBe(true);
     });
 
     it("retorna produtos relacionados baseado na diferença de preço", () => {
@@ -2368,6 +2399,122 @@ describe("Serviços", () => {
       expect(res.success).toBe(false);
       if (res.success) return;
       expect(res.error.id).toBe("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
+    });
+  });
+
+  describe("Favoritos", () => {
+    let favoritesService = new FavoritesService();
+    beforeEach(() => {
+      favoritesService = new FavoritesService();
+    });
+
+    it("adiciona favorito", () => {
+      simulateAuthentication();
+      const productId = "PRO-010A562D2";
+      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+
+      favoritesService.addFavorite(response, productId);
+
+      const res = response.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("remove favorito", () => {
+      simulateAuthentication();
+      const productId = "PRO-010A562D2";
+      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      favoritesService.addFavorite(responseA, productId);
+
+      const responseB = new FakeAPIResponse<null>();
+      favoritesService.removeFavorite(responseB, productId);
+
+      const res = responseB.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(res.data).toBeNull();
+    });
+
+    it("retorna favoritos", () => {
+      simulateAuthentication();
+      const productId = "PRO-010A562D2";
+      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      favoritesService.addFavorite(responseA, productId);
+
+      const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
+      favoritesService.getFromUser(responseB, "default");
+
+      const res = responseB.getResponse();
+      expect(res.success).toBe(true);
+      if (!res.success) return;
+      expect(Array.isArray(res.data)).toBe(true);
+    });
+
+    it("retorna erro se adicionar favorito com id de produto inexistente", () => {
+      simulateAuthentication();
+      const productId = "PRO-000000000";
+      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+
+      favoritesService.addFavorite(response, productId);
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("FAVORITE_ADD_PRODUCT_NOT_FOUND");
+    });
+
+    it("retorna erro se adiciona favorito sem autenticar", () => {
+      const productId = "PRO-010A562D2";
+      const response = new FakeAPIResponse<FAUser_WithoutPassword>();
+
+      favoritesService.addFavorite(response, productId);
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
+    });
+
+    it("retorna erro se tentar remover favorito com id de produto inexistente", () => {
+      simulateAuthentication();
+      const productId = "PRO-000000000";
+
+      const response = new FakeAPIResponse<null>();
+      favoritesService.removeFavorite(response, productId);
+
+      const res = response.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("FAVORITE_REMOVE_PRODUCT_NOT_FOUND");
+    });
+
+    it("retorna erro se tentar remover favorito sem autenticar", () => {
+      const productId = "PRO-010A562D2";
+      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      favoritesService.addFavorite(responseA, productId);
+
+      const responseB = new FakeAPIResponse<null>();
+      favoritesService.removeFavorite(responseB, productId);
+
+      const res = responseB.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
+    });
+
+    it("retorna erro se tentar buscar favoritos sem autenticar", () => {
+      const productId = "PRO-010A562D2";
+      const responseA = new FakeAPIResponse<FAUser_WithoutPassword>();
+      favoritesService.addFavorite(responseA, productId);
+
+      const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
+      favoritesService.getFromUser(responseB, "default");
+
+      const res = responseB.getResponse();
+      expect(res.success).toBe(false);
+      if (res.success) return;
+      expect(res.error.id).toBe("AUTH_INVALID_SESSION");
     });
   });
 });

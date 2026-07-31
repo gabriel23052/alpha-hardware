@@ -1,13 +1,19 @@
 import { FakeAPIResponse } from "./FakeAPIResponse";
 import { payloadValidators } from "./payloadValidators";
 
-import { FavoritesHandler } from "./handlers/FavoritesHandler";
+import {
+  FavoritesService,
+  type FavoriteAllPatterns,
+} from "./services/FavoritesService";
 import {
   HomepageService,
   type HomepageBanners,
   type HomepageCollections,
 } from "./services/HomepageService";
-import { ProductsService, type ProductAllPatterns } from "./services/ProductsService";
+import {
+  ProductsService,
+  type ProductAllPatterns,
+} from "./services/ProductsService";
 import { SessionsHandler } from "./handlers/SessionsHandler";
 import { UsersHandler } from "./handlers/UsersHandler";
 import type { Sale } from "./tables/SalesTable";
@@ -166,35 +172,37 @@ const routes: RouteHandler = {
     return response.getResponse();
   },
 
-  "GET api/favorites": (body): FAResponse<string[] | FAProduct_Card[]> => {
-    const response = new FakeAPIResponse<string[] | FAProduct_Card[]>();
+  "GET api/favorites": (body): FAResponse<FavoriteAllPatterns[]> => {
+    const response = new FakeAPIResponse<FavoriteAllPatterns[]>();
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    const favoritesHandler = new FavoritesHandler();
+    const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteGet(response, body))
+    if (!payloadValidators.favoriteGet(response, body)) {
       return response.getResponse();
+    }
 
-    favoritesHandler.getFromUser(response, body.format);
+    favoritesService.getFromUser(response, body.pattern);
 
     return response.getResponse();
   },
 
   "POST api/favorites": (body): FAResponse<null> => {
     const response = new FakeAPIResponse<null>();
-    const favoritesHandler = new FavoritesHandler();
+    const favoritesService = new FavoritesService();
     if (!body) {
       response.setError("BODY_NOT_FOUND");
       return response.getResponse();
     }
 
-    if (!payloadValidators.favoriteAdd(response, body))
+    if (!payloadValidators.favoriteAdd(response, body)) {
       return response.getResponse();
+    }
 
-    favoritesHandler.addFavorite(response, body.productId);
+    favoritesService.addFavorite(response, body.productId);
 
     return response.getResponse();
   },
@@ -206,12 +214,13 @@ const routes: RouteHandler = {
       return response.getResponse();
     }
 
-    const favoritesHandler = new FavoritesHandler();
+    const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteRemove(response, body))
+    if (!payloadValidators.favoriteRemove(response, body)) {
       return response.getResponse();
+    }
 
-    favoritesHandler.removeFavorite(response, body.productId);
+    favoritesService.removeFavorite(response, body.productId);
 
     return response.getResponse();
   },

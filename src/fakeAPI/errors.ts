@@ -63,10 +63,10 @@ const errorsEntries = [
 
   ["FAVORITE_REMOVE_PRODUCT_ID_FIELD_NOT_FOUND", "Produto não encontrado"],
   ["FAVORITE_REMOVE_INVALID_PRODUCT_ID", "Produto não encontrado"],
-  ["FAVORITE_REMOVE_PRODUCT_ID_NOT_FOUND", "Falha ao remover o produto dos favoritos"],
+  ["FAVORITE_REMOVE_PRODUCT_NOT_FOUND", "Falha ao remover o produto dos favoritos"],
 
-  ["FAVORITE_GET_FORMAT_FIELD_NOT_FOUND", "Falha buscar os produtos favoritos"],
-  ["FAVORITE_GET_INVALID_FORMAT", "Falha buscar os produtos favoritos"],
+  ["FAVORITE_GET_PATTERN_FIELD_NOT_FOUND", "Falha buscar os produtos favoritos"],
+  ["FAVORITE_GET_INVALID_PATTERN", "Falha buscar os produtos favoritos"],
 
 ] as const;
 

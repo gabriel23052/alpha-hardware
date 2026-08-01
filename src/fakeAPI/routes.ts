@@ -1,4 +1,4 @@
-import { FakeAPIResponse } from "./FakeAPIResponse";
+import { ResponseBuilder } from "./ResponseBuilder";
 import { payloadValidators } from "./payloadValidators";
 
 import {
@@ -18,219 +18,212 @@ import { AuthService } from "./services/AuthService";
 import type { Sale } from "./tables/SalesTable";
 import type { Product } from "./tables/ProductsTable";
 import type { User } from "./queries/UsersQuery";
+import type { Response } from "./ResponseBuilder";
 
-type RouteHandler = Record<string, (body?: FARequestBody) => FAResponse>;
+type RouteHandler = Record<string, (body?: FARequestBody) => Response>;
 
 const routes: RouteHandler = {
-  "GET api/homepage/banners": (): FAResponse<HomepageBanners> => {
-    const response = new FakeAPIResponse<HomepageBanners>();
+  "GET api/homepage/banners": (): Response<HomepageBanners> => {
+    const resBuilder = new ResponseBuilder<HomepageBanners>();
     const homepageService = new HomepageService();
-    homepageService.getBanners(response);
-    return response.getResponse();
+    homepageService.getBanners(resBuilder);
+    return resBuilder.build();
   },
 
-  "GET api/homepage/sale": (): FAResponse<Sale["resolvedProducts"]> => {
-    const response = new FakeAPIResponse<FASale_PrCard>();
+  "GET api/homepage/sale": (): Response<Sale["resolvedProducts"]> => {
+    const resBuilder = new ResponseBuilder<FASale_PrCard>();
     const homepageService = new HomepageService();
-    homepageService.getSale(response);
-    return response.getResponse();
+    homepageService.getSale(resBuilder);
+    return resBuilder.build();
   },
 
-  "GET api/homepage/collections": (): FAResponse<HomepageCollections> => {
-    const response = new FakeAPIResponse<HomepageCollections>();
+  "GET api/homepage/collections": (): Response<HomepageCollections> => {
+    const resBuilder = new ResponseBuilder<HomepageCollections>();
     const homepageService = new HomepageService();
-    homepageService.getCollections(response);
-    return response.getResponse();
+    homepageService.getCollections(resBuilder);
+    return resBuilder.build();
   },
 
-  "GET api/products/id": (body): FAResponse<Product["default"]> => {
-    const response = new FakeAPIResponse<Product["default"]>();
+  "GET api/products/id": (body): Response<Product["default"]> => {
+    const resBuilder = new ResponseBuilder<Product["default"]>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productIdQuery(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.productIdQuery(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    productsHandler.getProductById(response, body.id);
-    return response.getResponse();
+    productsHandler.getProductById(resBuilder, body.id);
+    return resBuilder.build();
   },
 
-  "GET api/products/query": (body): FAResponse<ProductAllPatterns[]> => {
-    const response = new FakeAPIResponse<ProductAllPatterns[]>();
+  "GET api/products/query": (body): Response<ProductAllPatterns[]> => {
+    const resBuilder = new ResponseBuilder<ProductAllPatterns[]>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productQuery(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.productQuery(resBuilder, body)) {
+      return resBuilder.build();
     }
-    productsHandler.getByQuery(response, body);
-    return response.getResponse();
+    productsHandler.getByQuery(resBuilder, body);
+    return resBuilder.build();
   },
 
-  "GET api/products/related": (body): FAResponse<FAProduct_Card[]> => {
-    const response = new FakeAPIResponse<FAProduct_Card[]>();
+  "GET api/products/related": (body): Response<FAProduct_Card[]> => {
+    const resBuilder = new ResponseBuilder<FAProduct_Card[]>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productIdQuery(response, body))
-      return response.getResponse();
-    productsHandler.getRelated(response, body.id);
-    return response.getResponse();
+    if (!payloadValidators.productIdQuery(resBuilder, body)) {
+      return resBuilder.build();
+    }
+
+    productsHandler.getRelated(resBuilder, body.id);
+    return resBuilder.build();
   },
 
-  "POST api/auth/register": (body): FAResponse<User["private"]> => {
-    const response = new FakeAPIResponse<User["private"]>();
+  "POST api/auth/register": (body): Response<User["private"]> => {
+    const resBuilder = new ResponseBuilder<User["private"]>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authRegister(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.authRegister(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    authService.register(response, body);
+    authService.register(resBuilder, body);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "POST api/auth/login": (body): FAResponse<User["private"]> => {
-    const response = new FakeAPIResponse<User["private"]>();
+  "POST api/auth/login": (body): Response<User["private"]> => {
+    const resBuilder = new ResponseBuilder<User["private"]>();
 
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authLogin(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.authLogin(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    authService.login(response, body);
+    authService.login(resBuilder, body);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "POST api/auth/logout": (): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
+  "POST api/auth/logout": (): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
     const authService = new AuthService();
 
     authService.logout();
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "POST api/auth/verifySession": (): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
+  "POST api/auth/verifySession": (): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
     const authService = new AuthService();
 
-    authService.validateSession(response);
+    authService.validateSession(resBuilder);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "POST api/auth/recoverPassword": (body): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
+  "POST api/auth/recoverPassword": (body): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
 
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
-    }
-
-    const authService = new AuthService();
-
-    if (!payloadValidators.authRecover(response, body)) {
-      return response.getResponse();
-    }
-
-    authService.recover(response, body);
-
-    return response.getResponse();
-  },
-
-  "POST api/auth/updatePassword": (body): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
-    if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authUpdatePassword(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.authRecover(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    authService.updatePassword(response, body);
+    authService.recover(resBuilder, body);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "GET api/favorites": (body): FAResponse<FavoriteAllPatterns[]> => {
-    const response = new FakeAPIResponse<FavoriteAllPatterns[]>();
+  "POST api/auth/updatePassword": (body): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
+    }
+
+    const authService = new AuthService();
+
+    if (!payloadValidators.authUpdatePassword(resBuilder, body)) {
+      return resBuilder.build();
+    }
+
+    authService.updatePassword(resBuilder, body);
+
+    return resBuilder.build();
+  },
+
+  "GET api/favorites": (body): Response<FavoriteAllPatterns[]> => {
+    const resBuilder = new ResponseBuilder<FavoriteAllPatterns[]>();
+    if (!body) {
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteGet(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.favoriteGet(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    favoritesService.getFromUser(response, body.pattern);
+    favoritesService.getFromUser(resBuilder, body.pattern);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "POST api/favorites": (body): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
+  "POST api/favorites": (body): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
     const favoritesService = new FavoritesService();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
-    if (!payloadValidators.favoriteAdd(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.favoriteAdd(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    favoritesService.addFavorite(response, body.productId);
+    favoritesService.addFavorite(resBuilder, body.productId);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 
-  "DELETE api/favorites": (body): FAResponse<null> => {
-    const response = new FakeAPIResponse<null>();
+  "DELETE api/favorites": (body): Response<null> => {
+    const resBuilder = new ResponseBuilder<null>();
     if (!body) {
-      response.setError("BODY_NOT_FOUND");
-      return response.getResponse();
+      return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
     const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteRemove(response, body)) {
-      return response.getResponse();
+    if (!payloadValidators.favoriteRemove(resBuilder, body)) {
+      return resBuilder.build();
     }
 
-    favoritesService.removeFavorite(response, body.productId);
+    favoritesService.removeFavorite(resBuilder, body.productId);
 
-    return response.getResponse();
+    return resBuilder.build();
   },
 };
 

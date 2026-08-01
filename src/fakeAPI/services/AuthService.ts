@@ -1,5 +1,5 @@
 import { config } from "@fakeAPI/config";
-import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import type { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 import { UsersQuery, type User } from "@fakeAPI/queries/UsersQuery";
 import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
@@ -45,21 +45,21 @@ class AuthService {
     return sessionsQuery.existsById(sessionId);
   }
 
-  public getSessionData(response?: FakeAPIResponse) {
+  public getSessionData(resBuilder?: ResponseBuilder) {
     const sessionsQuery = new SessionsQuery();
     const currentSessionId = localStorage.getItem(
       config.localStorageKeys.sessionFakeCookie,
     );
     if (!currentSessionId) {
-      if (response) {
-        response.setError("AUTH_UNAUTHENTICATED");
+      if (resBuilder) {
+        resBuilder.setError("AUTH_UNAUTHENTICATED");
       }
       return null;
     }
     const sessionData = sessionsQuery.selectById(currentSessionId).getUnique();
     if (!sessionData) {
-      if (response) {
-        response.setError("AUTH_UNAUTHENTICATED");
+      if (resBuilder) {
+        resBuilder.setError("AUTH_UNAUTHENTICATED");
       }
       return null;
     }
@@ -67,7 +67,7 @@ class AuthService {
   }
 
   public register(
-    response: FakeAPIResponse<User["private"]>,
+    resBuilder: ResponseBuilder<User["private"]>,
     payload: AuthRegisterPayload,
   ) {
     const usersQuery = new UsersQuery();
@@ -76,22 +76,22 @@ class AuthService {
     const userId = createRandomHexId("USR", 9);
     const user = usersQuery.createAndInsert(userId, username, password);
     if (!user) {
-      return response.setError("AUTH_REGISTER_USER_ALREADY_REGISTERED");
+      return resBuilder.setError("AUTH_REGISTER_USER_ALREADY_REGISTERED");
     }
 
     const session = this.createSession(user.id);
     if (!session) {
-      return response.setError("AUTH_REGISTER_DUPLICATED_SESSION");
+      return resBuilder.setError("AUTH_REGISTER_DUPLICATED_SESSION");
     }
 
-    return response.setData({
+    return resBuilder.setData({
       id: user.id,
       username: user.username,
     });
   }
 
   public login(
-    response: FakeAPIResponse<User["private"]>,
+    resBuilder: ResponseBuilder<User["private"]>,
     payload: AuthLoginPayload,
   ) {
     const usersQuery = new UsersQuery();
@@ -99,15 +99,15 @@ class AuthService {
 
     const user = usersQuery.selectByUsername(username).getUnique("default");
     if (!user || user.password !== password) {
-      return response.setError("AUTH_LOGIN_INCORRECT_CREDENTIALS");
+      return resBuilder.setError("AUTH_LOGIN_INCORRECT_CREDENTIALS");
     }
 
     const session = this.createSession(user.id);
     if (!session) {
-      return response.setError("AUTH_LOGIN_DUPLICATED_SESSION");
+      return resBuilder.setError("AUTH_LOGIN_DUPLICATED_SESSION");
     }
 
-    return response.setData(user);
+    return resBuilder.setData(user);
   }
 
   public logout() {
@@ -120,21 +120,24 @@ class AuthService {
     sessionsQuery.deleteById(currentSessionId);
   }
 
-  public recover(response: FakeAPIResponse<null>, payload: AuthRecoverPayload) {
+  public recover(
+    resBuilder: ResponseBuilder<null>,
+    payload: AuthRecoverPayload,
+  ) {
     const usersQuery = new UsersQuery();
     const user = usersQuery
       .selectByUsername(payload.username)
       .getUnique("private");
 
     if (!user) {
-      return response.setError("AUTH_RECOVER_USER_NOT_FOUND");
+      return resBuilder.setError("AUTH_RECOVER_USER_NOT_FOUND");
     }
 
     usersQuery.updatePassword(user.id, payload.newPassword);
   }
 
   public updatePassword(
-    response: FakeAPIResponse<null>,
+    resBuilder: ResponseBuilder<null>,
     payload: AuthUpdatePasswordPayload,
   ) {
     const usersQuery = new UsersQuery();
@@ -142,20 +145,20 @@ class AuthService {
 
     const sessionData = this.getSessionData();
     if (!sessionData) {
-      return response.setError("AUTH_UNAUTHENTICATED");
+      return resBuilder.setError("AUTH_UNAUTHENTICATED");
     }
 
     const user = usersQuery.selectById(sessionData.userId).getUnique("default");
     if (!user || user.password !== password) {
-      return response.setError("AUTH_UNAUTHENTICATED");
+      return resBuilder.setError("AUTH_UNAUTHENTICATED");
     }
 
     usersQuery.updatePassword(user.id, newPassword);
   }
 
-  public validateSession(response: FakeAPIResponse<null>) {
+  public validateSession(resBuilder: ResponseBuilder<null>) {
     if (!this.isAuthenticated()) {
-      return response.setError("AUTH_UNAUTHENTICATED");
+      return resBuilder.setError("AUTH_UNAUTHENTICATED");
     }
     return;
   }

@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, test, vi } from "vitest";
 import { isRequestBody } from "@fakeAPI/isRequestBody";
 import { primitiveValidators } from "@fakeAPI/primitiveValidators";
 import { payloadValidators } from "@fakeAPI/payloadValidators";
-import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
@@ -422,8 +422,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.productIdQuery(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.productIdQuery(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -440,13 +440,13 @@ describe("Validações de payloads", () => {
         error: "PRODUCT_ID_QUERY_INVALID_ID",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.productIdQuery(response, value as FARequestBody),
+        payloadValidators.productIdQuery(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) expect(response.error.id).toBe(error);
     });
   });
 
@@ -487,8 +487,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.productQuery(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.productQuery(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -690,13 +690,15 @@ describe("Validações de payloads", () => {
         error: "PRODUCT_QUERY_INVALID_SORT",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.productQuery(response, value as FARequestBody),
+        payloadValidators.productQuery(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -710,8 +712,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.authRegister(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.authRegister(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -751,13 +753,15 @@ describe("Validações de payloads", () => {
         error: "AUTH_REGISTER_INVALID_PASSWORD",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authRegister(response, value as FARequestBody),
+        payloadValidators.authRegister(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -771,8 +775,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.authLogin(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.authLogin(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -812,13 +816,15 @@ describe("Validações de payloads", () => {
         error: "AUTH_LOGIN_INVALID_PASSWORD",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authLogin(response, value as FARequestBody),
+        payloadValidators.authLogin(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -832,8 +838,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.authRecover(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.authRecover(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -873,13 +879,15 @@ describe("Validações de payloads", () => {
         error: "AUTH_RECOVER_INVALID_NEW_PASSWORD",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authRecover(response, value as FARequestBody),
+        payloadValidators.authRecover(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -893,8 +901,10 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.authUpdatePassword(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.authUpdatePassword(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -934,13 +944,18 @@ describe("Validações de payloads", () => {
         error: "AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authUpdatePassword(response, value as FARequestBody),
+        payloadValidators.authUpdatePassword(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
-      const responseData = response.getResponse();
+      const responseData = resBuilder.build();
       expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      if (!responseData.success) {
+        expect(responseData.error.id).toBe(error);
+      }
     });
   });
 
@@ -953,8 +968,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.favoriteAdd(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.favoriteAdd(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -971,13 +986,15 @@ describe("Validações de payloads", () => {
         error: "FAVORITE_ADD_INVALID_PRODUCT_ID",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteAdd(response, value as FARequestBody),
+        payloadValidators.favoriteAdd(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -990,8 +1007,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.favoriteRemove(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.favoriteRemove(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -1008,13 +1025,15 @@ describe("Validações de payloads", () => {
         error: "FAVORITE_REMOVE_INVALID_PRODUCT_ID",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteRemove(response, value as FARequestBody),
+        payloadValidators.favoriteRemove(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
-      expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (!response.success) {
+        expect(response.error.id).toBe(error);
+      }
     });
   });
 
@@ -1027,8 +1046,8 @@ describe("Validações de payloads", () => {
         },
       ],
     ])("aceita se %s", (_, value) => {
-      const response = new FakeAPIResponse();
-      expect(payloadValidators.favoriteGet(response, value)).toBe(true);
+      const resBuilder = new ResponseBuilder();
+      expect(payloadValidators.favoriteGet(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -1045,13 +1064,15 @@ describe("Validações de payloads", () => {
         error: "FAVORITE_GET_INVALID_PATTERN",
       },
     ])("rejeita se $description", ({ value, error }) => {
-      const response = new FakeAPIResponse();
+      const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteGet(response, value as FARequestBody),
+        payloadValidators.favoriteGet(resBuilder, value as FARequestBody),
       ).toBe(false);
-      const responseData = response.getResponse();
+      const responseData = resBuilder.build();
       expect(responseData.success).toBe(false);
-      if (!responseData.success) expect(responseData.error.id).toBe(error);
+      if (!responseData.success) {
+        expect(responseData.error.id).toBe(error);
+      }
     });
   });
 });
@@ -2191,13 +2212,13 @@ describe("Consultas", () => {
 describe("Serviços", () => {
   function simulateAuthentication() {
     const authService = new AuthService();
-    const res = new FakeAPIResponse<User["default"]>();
+    const resBuilder = new ResponseBuilder<User["default"]>();
     const user = {
       username: "test",
       password: "1234",
     };
-    authService.register(res, user);
-    const response = res.getResponse();
+    authService.register(resBuilder, user);
+    const response = resBuilder.build();
     if (!response.success || !response.data) {
       throw new Error("Authentication failed");
     }
@@ -2215,37 +2236,37 @@ describe("Serviços", () => {
   describe("Homepage", () => {
     it("retorna os banners", () => {
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageBanners>();
-      homepageService.getBanners(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(typeof res.data).toBe("object");
-      expect(res.data).not.toBe(null);
-      expect(Array.isArray(res.data)).toBe(false);
+      const resBuilder = new ResponseBuilder<HomepageBanners>();
+      homepageService.getBanners(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(typeof response.data).toBe("object");
+      expect(response.data).not.toBe(null);
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("retorna a promoção", () => {
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
-      homepageService.getSale(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(typeof res.data).toBe("object");
-      expect(res.data).not.toBe(null);
-      expect(Array.isArray(res.data)).toBe(false);
+      const resBuilder = new ResponseBuilder<Sale["resolvedProducts"]>();
+      homepageService.getSale(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(typeof response.data).toBe("object");
+      expect(response.data).not.toBe(null);
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("retorna as coleções", () => {
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageCollections>();
-      homepageService.getCollections(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(typeof res.data).toBe("object");
-      expect(Array.isArray(res.data)).toBe(false);
+      const resBuilder = new ResponseBuilder<HomepageCollections>();
+      homepageService.getCollections(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(typeof response.data).toBe("object");
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("retorna erro se o id do banner de promoção é inexistente", async () => {
@@ -2260,12 +2281,12 @@ describe("Serviços", () => {
       }));
       const { HomepageService } = await import("../services/HomepageService");
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageBanners>();
-      homepageService.getBanners(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("HP_SALE_BANNER_NOT_FOUND");
+      const resBuilder = new ResponseBuilder<HomepageBanners>();
+      homepageService.getBanners(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("HP_SALE_BANNER_NOT_FOUND");
     });
 
     it("retorna erro se o id do banner de propaganda é inexistente", async () => {
@@ -2280,12 +2301,12 @@ describe("Serviços", () => {
       }));
       const { HomepageService } = await import("../services/HomepageService");
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageBanners>();
-      homepageService.getBanners(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("HP_AD_BANNER_NOT_FOUND");
+      const resBuilder = new ResponseBuilder<HomepageBanners>();
+      homepageService.getBanners(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("HP_AD_BANNER_NOT_FOUND");
     });
 
     it("retorna erro se o id da promoção é inexistente", async () => {
@@ -2299,12 +2320,12 @@ describe("Serviços", () => {
       }));
       const { HomepageService } = await import("../services/HomepageService");
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<Sale["resolvedProducts"]>();
-      homepageService.getSale(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("HP_SALE_NOT_FOUND");
+      const resBuilder = new ResponseBuilder<Sale["resolvedProducts"]>();
+      homepageService.getSale(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("HP_SALE_NOT_FOUND");
     });
 
     it("retorna erro se o id da primeira coleção é inexistente", async () => {
@@ -2319,12 +2340,12 @@ describe("Serviços", () => {
       }));
       const { HomepageService } = await import("../services/HomepageService");
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageCollections>();
-      homepageService.getCollections(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("HP_SECOND_COLLECTION_NOT_FOUND");
+      const resBuilder = new ResponseBuilder<HomepageCollections>();
+      homepageService.getCollections(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("HP_SECOND_COLLECTION_NOT_FOUND");
     });
 
     it("retorna erro se o id da segunda coleção é inexistente", async () => {
@@ -2339,12 +2360,12 @@ describe("Serviços", () => {
       }));
       const { HomepageService } = await import("../services/HomepageService");
       const homepageService = new HomepageService();
-      const response = new FakeAPIResponse<HomepageCollections>();
-      homepageService.getCollections(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
+      const resBuilder = new ResponseBuilder<HomepageCollections>();
+      homepageService.getCollections(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("HP_FIRST_COLLECTION_NOT_FOUND");
     });
   });
 
@@ -2355,34 +2376,34 @@ describe("Serviços", () => {
     });
 
     it("retorna produto pelo id", () => {
-      const response = new FakeAPIResponse<Product["default"] | null>();
+      const resBuilder = new ResponseBuilder<Product["default"] | null>();
       const productId = "PRO-010A562D2";
-      productsService.getProductById(response, productId);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(typeof res.data).toBe("object");
-      expect(res.data).not.toBe(null);
-      expect(Array.isArray(res.data)).toBe(false);
+      productsService.getProductById(resBuilder, productId);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(typeof response.data).toBe("object");
+      expect(response.data).not.toBe(null);
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("retorna produto por consulta", () => {
-      const response = new FakeAPIResponse<ProductAllPatterns[]>();
+      const resBuilder = new ResponseBuilder<ProductAllPatterns[]>();
       const query: ProductQuery = {
         pattern: "default",
         filter: {
           search: "product",
         },
       };
-      productsService.getByQuery(response, query);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(Array.isArray(res.data)).toBe(true);
+      productsService.getByQuery(resBuilder, query);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(Array.isArray(response.data)).toBe(true);
     });
 
     it("retorna produtos relacionados baseado na diferença de preço", () => {
-      const response = new FakeAPIResponse<Product["card"][]>();
+      const resBuilder = new ResponseBuilder<Product["card"][]>();
       const productId = "PRO-010A562D2";
       const expectedProducts = [
         "PRO-BDC286153",
@@ -2390,21 +2411,21 @@ describe("Serviços", () => {
         "PRO-67E2FEC06",
         "PRO-57CEA8CF9",
       ];
-      productsService.getRelated(response, productId);
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data?.map((p) => p.id)).toEqual(expectedProducts);
+      productsService.getRelated(resBuilder, productId);
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data?.map((p) => p.id)).toEqual(expectedProducts);
     });
 
     it("retorna erro se tentar buscar produtos relacionados com id inexistente", () => {
-      const response = new FakeAPIResponse<Product["card"][]>();
+      const resBuilder = new ResponseBuilder<Product["card"][]>();
       const productId = "PRO-000000000";
-      productsService.getRelated(response, productId);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
+      productsService.getRelated(resBuilder, productId);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
     });
   });
 
@@ -2417,110 +2438,110 @@ describe("Serviços", () => {
     it("adiciona favorito", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
 
-      favoritesService.addFavorite(response, productId);
+      favoritesService.addFavorite(resBuilder, productId);
 
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data).toBeNull();
     });
 
     it("remove favorito", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<null>();
-      favoritesService.addFavorite(responseA, productId);
+      const resBuilderA = new ResponseBuilder<null>();
+      favoritesService.addFavorite(resBuilderA, productId);
 
-      const responseB = new FakeAPIResponse<null>();
-      favoritesService.removeFavorite(responseB, productId);
+      const resBuilderB = new ResponseBuilder<null>();
+      favoritesService.removeFavorite(resBuilderB, productId);
 
-      const res = responseB.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      const responseB = resBuilderB.build();
+      expect(responseB.success).toBe(true);
+      if (!responseB.success) return;
+      expect(responseB.data).toBeNull();
     });
 
     it("retorna favoritos", () => {
       simulateAuthentication();
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<null>();
-      favoritesService.addFavorite(responseA, productId);
+      const resBuilderA = new ResponseBuilder<null>();
+      favoritesService.addFavorite(resBuilderA, productId);
 
-      const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
-      favoritesService.getFromUser(responseB, "default");
+      const resBuilderB = new ResponseBuilder<FavoriteAllPatterns[]>();
+      favoritesService.getFromUser(resBuilderB, "default");
 
-      const res = responseB.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(Array.isArray(res.data)).toBe(true);
+      const responseB = resBuilderB.build();
+      expect(responseB.success).toBe(true);
+      if (!responseB.success) return;
+      expect(Array.isArray(responseB.data)).toBe(true);
     });
 
     it("retorna erro se adicionar favorito com id de produto inexistente", () => {
       simulateAuthentication();
       const productId = "PRO-000000000";
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
 
-      favoritesService.addFavorite(response, productId);
+      favoritesService.addFavorite(resBuilder, productId);
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("FAVORITE_ADD_PRODUCT_NOT_FOUND");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("FAVORITE_ADD_PRODUCT_NOT_FOUND");
     });
 
     it("retorna erro se adiciona favorito sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
 
-      favoritesService.addFavorite(response, productId);
+      favoritesService.addFavorite(resBuilder, productId);
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar remover favorito com id de produto inexistente", () => {
       simulateAuthentication();
       const productId = "PRO-000000000";
 
-      const response = new FakeAPIResponse<null>();
-      favoritesService.removeFavorite(response, productId);
+      const resBuilder = new ResponseBuilder<null>();
+      favoritesService.removeFavorite(resBuilder, productId);
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("FAVORITE_REMOVE_PRODUCT_NOT_FOUND");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("FAVORITE_REMOVE_PRODUCT_NOT_FOUND");
     });
 
     it("retorna erro se tentar remover favorito sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<null>();
-      favoritesService.addFavorite(responseA, productId);
+      const resBuilderA = new ResponseBuilder<null>();
+      favoritesService.addFavorite(resBuilderA, productId);
 
-      const responseB = new FakeAPIResponse<null>();
-      favoritesService.removeFavorite(responseB, productId);
+      const resBuilderB = new ResponseBuilder<null>();
+      favoritesService.removeFavorite(resBuilderB, productId);
 
-      const res = responseB.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      const responseB = resBuilderB.build();
+      expect(responseB.success).toBe(false);
+      if (responseB.success) return;
+      expect(responseB.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar buscar favoritos sem autenticar", () => {
       const productId = "PRO-010A562D2";
-      const responseA = new FakeAPIResponse<null>();
-      favoritesService.addFavorite(responseA, productId);
+      const resBuilderA = new ResponseBuilder<null>();
+      favoritesService.addFavorite(resBuilderA, productId);
 
-      const responseB = new FakeAPIResponse<FavoriteAllPatterns[]>();
-      favoritesService.getFromUser(responseB, "default");
+      const resBuilderB = new ResponseBuilder<FavoriteAllPatterns[]>();
+      favoritesService.getFromUser(resBuilderB, "default");
 
-      const res = responseB.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      const responseB = resBuilderB.build();
+      expect(responseB.success).toBe(false);
+      if (responseB.success) return;
+      expect(responseB.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
   });
 
@@ -2531,53 +2552,53 @@ describe("Serviços", () => {
     });
 
     function registerFakeUser() {
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
       const authService = new AuthService();
       const user = {
         username: "username",
         password: "1234",
       };
-      authService.register(response, user);
+      authService.register(resBuilder, user);
       localStorage.removeItem(config.localStorageKeys.sessionFakeCookie);
       return user;
     }
 
     it("registra usuário", () => {
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
 
-      authService.register(response, {
+      authService.register(resBuilder, {
         username: "username",
         password: "1234",
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
 
       expect(
         localStorage.getItem(config.localStorageKeys.sessionFakeCookie),
       ).toBeDefined();
-      expect(typeof res.data).toBe("object");
-      expect(res.data).not.toBe(null);
-      expect(Array.isArray(res.data)).toBe(false);
+      expect(typeof response.data).toBe("object");
+      expect(response.data).not.toBe(null);
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("efetua login", () => {
       const fakeUser = registerFakeUser();
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
 
-      authService.login(response, fakeUser);
+      authService.login(resBuilder, fakeUser);
 
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
 
       expect(
         localStorage.getItem(config.localStorageKeys.sessionFakeCookie),
       ).toBeDefined();
-      expect(typeof res.data).toBe("object");
-      expect(res.data).not.toBe(null);
-      expect(Array.isArray(res.data)).toBe(false);
+      expect(typeof response.data).toBe("object");
+      expect(response.data).not.toBe(null);
+      expect(Array.isArray(response.data)).toBe(false);
     });
 
     it("efetua logout", () => {
@@ -2589,163 +2610,163 @@ describe("Serviços", () => {
     });
 
     it("recupera senha", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       const fakeUser = registerFakeUser();
 
-      authService.recover(response, {
+      authService.recover(resBuilder, {
         username: fakeUser.username,
         newPassword: "4321",
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      const response = resBuilder.build();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data).toBeNull();
     });
 
     it("atualiza senha", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       const fakeUser = simulateAuthentication();
 
-      authService.updatePassword(response, {
+      authService.updatePassword(resBuilder, {
         password: fakeUser.password,
         newPassword: "4321",
       });
 
-      const res = response.getResponse();
+      const response = resBuilder.build();
 
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data).toBeNull();
     });
 
     it("valida sessão", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       simulateAuthentication();
 
-      authService.validateSession(response);
+      authService.validateSession(resBuilder);
 
-      const res = response.getResponse();
+      const response = resBuilder.build();
 
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data).toBeNull();
     });
 
     it("retorna dados da sessão", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       simulateAuthentication();
 
-      authService.getSessionData(response);
+      authService.getSessionData(resBuilder);
 
-      const res = response.getResponse();
+      const response = resBuilder.build();
 
-      expect(res.success).toBe(true);
-      if (!res.success) return;
-      expect(res.data).toBeNull();
+      expect(response.success).toBe(true);
+      if (!response.success) return;
+      expect(response.data).toBeNull();
     });
 
     it("retorna erro se tentar registrar usuário já cadastrado", () => {
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
       const fakeUser = registerFakeUser();
 
-      authService.register(response, {
+      authService.register(resBuilder, {
         username: fakeUser.username,
         password: fakeUser.password,
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
 
-      expect(res.error.id).toBe("AUTH_REGISTER_USER_ALREADY_REGISTERED");
+      expect(response.error.id).toBe("AUTH_REGISTER_USER_ALREADY_REGISTERED");
     });
 
     it("retorna erro se tentar logar com usuário incorreto", () => {
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
       const fakeUser = registerFakeUser();
 
-      authService.login(response, {
+      authService.login(resBuilder, {
         username: "incorrect",
         password: fakeUser.password,
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
     });
 
     it("retorna erro se tentar logar com senha incorreta", () => {
-      const response = new FakeAPIResponse<User["private"]>();
+      const resBuilder = new ResponseBuilder<User["private"]>();
       const fakeUser = registerFakeUser();
 
-      authService.login(response, {
+      authService.login(resBuilder, {
         username: fakeUser.username,
         password: "0000",
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_LOGIN_INCORRECT_CREDENTIALS");
     });
 
     it("retorna erro se tentar recuperar senha com usuário inexistente", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       registerFakeUser();
 
-      authService.recover(response, {
+      authService.recover(resBuilder, {
         username: "incorrect",
         newPassword: "1234",
       });
 
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_RECOVER_USER_NOT_FOUND");
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_RECOVER_USER_NOT_FOUND");
     });
 
     it("retorna erro se tentar atualizar senha sem estar autenticado", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       const fakeUser = registerFakeUser();
 
-      authService.updatePassword(response, {
+      authService.updatePassword(resBuilder, {
         password: fakeUser.password,
         newPassword: "4321",
       });
 
-      const res = response.getResponse();
+      const response = resBuilder.build();
 
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar atualizar senha com senha antiga incorreta", () => {
-      const response = new FakeAPIResponse<null>();
+      const resBuilder = new ResponseBuilder<null>();
       simulateAuthentication();
 
-      authService.updatePassword(response, {
+      authService.updatePassword(resBuilder, {
         password: "0000",
         newPassword: "4321",
       });
 
-      const res = response.getResponse();
+      const response = resBuilder.build();
 
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
 
     it("retorna erro se tentar validar sessão inexistente ou inválida", () => {
       registerFakeUser();
-      const response = new FakeAPIResponse<null>();
-      authService.validateSession(response);
-      const res = response.getResponse();
-      expect(res.success).toBe(false);
-      if (res.success) return;
-      expect(res.error.id).toBe("AUTH_UNAUTHENTICATED");
+      const resBuilder = new ResponseBuilder<null>();
+      authService.validateSession(resBuilder);
+      const response = resBuilder.build();
+      expect(response.success).toBe(false);
+      if (response.success) return;
+      expect(response.error.id).toBe("AUTH_UNAUTHENTICATED");
     });
   });
 });

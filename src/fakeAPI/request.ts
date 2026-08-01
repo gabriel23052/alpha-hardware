@@ -1,6 +1,7 @@
 import { config } from "./config";
-import { getFakeAPIError } from "./errors";
+import { Errors } from "./Errors";
 import { isRequestBody } from "./isRequestBody";
+import type { Response } from "./ResponseBuilder";
 import { routes } from "./routes";
 
 function request(route: keyof typeof routes, body?: unknown) {
@@ -8,27 +9,27 @@ function request(route: keyof typeof routes, body?: unknown) {
   const minResponseTime = config.minResponseTime;
   let abort = false;
 
-  const response = new Promise<FAResponse>((resolve) => {
+  const response = new Promise<Response>((resolve) => {
     window.setTimeout(
       () => {
         if (abort) {
           return resolve({
             success: false,
-            error: getFakeAPIError("REQUEST_CANCELLED"),
+            error: Errors.get("REQUEST_CANCELLED"),
           });
         }
 
         if (!(route in routes)) {
           return resolve({
             success: false,
-            error: getFakeAPIError("ROUTE_NOT_FOUND"),
+            error: Errors.get("ROUTE_NOT_FOUND"),
           });
         }
 
         if (body !== undefined && !isRequestBody(body)) {
           return resolve({
             success: false,
-            error: getFakeAPIError("INVALID_BODY"),
+            error: Errors.get("INVALID_BODY"),
           });
         }
 

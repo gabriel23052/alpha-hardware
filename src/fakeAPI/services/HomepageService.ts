@@ -1,6 +1,6 @@
 import { config } from "@fakeAPI/config";
 
-import { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import type { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { BannersQuery } from "@fakeAPI/queries/BannersQuery";
 import { CollectionsQuery } from "@fakeAPI/queries/CollectionsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
@@ -20,33 +20,33 @@ export type HomepageCollections = {
 };
 
 class HomepageService {
-  public getBanners(response: FakeAPIResponse<HomepageBanners>) {
+  public getBanners(resBuilder: ResponseBuilder<HomepageBanners>) {
     const bannersQuery = new BannersQuery();
     const { saleBannerId, adBannerId } = config.homepage;
 
     const saleBanner = bannersQuery.selectById(saleBannerId).getUnique();
-    if (!saleBanner) return response.setError("HP_SALE_BANNER_NOT_FOUND");
+    if (!saleBanner) return resBuilder.setError("HP_SALE_BANNER_NOT_FOUND");
 
     bannersQuery.clear();
 
     const adBanner = bannersQuery.selectById(adBannerId).getUnique();
-    if (!adBanner) return response.setError("HP_AD_BANNER_NOT_FOUND");
+    if (!adBanner) return resBuilder.setError("HP_AD_BANNER_NOT_FOUND");
 
-    response.setData({ sale: saleBanner, ad: adBanner });
+    resBuilder.setData({ sale: saleBanner, ad: adBanner });
   }
 
-  public getSale(response: FakeAPIResponse<Sale["resolvedProducts"]>) {
+  public getSale(resBuilder: ResponseBuilder<Sale["resolvedProducts"]>) {
     const salesQuery = new SalesQuery();
 
     const sale = salesQuery
       .selectById(config.homepage.saleId)
       .getUnique("resolvedProducts");
-    if (!sale) return response.setError("HP_SALE_NOT_FOUND");
+    if (!sale) return resBuilder.setError("HP_SALE_NOT_FOUND");
 
-    response.setData(sale);
+    resBuilder.setData(sale);
   }
 
-  public getCollections(response: FakeAPIResponse<HomepageCollections>) {
+  public getCollections(resBuilder: ResponseBuilder<HomepageCollections>) {
     const collectionsQuery = new CollectionsQuery();
     const { firstCollectionId, secondCollectionId } = config.homepage;
 
@@ -54,7 +54,7 @@ class HomepageService {
       .selectById(firstCollectionId)
       .getUnique();
     if (!firstCollection) {
-      return response.setError("HP_FIRST_COLLECTION_NOT_FOUND");
+      return resBuilder.setError("HP_FIRST_COLLECTION_NOT_FOUND");
     }
 
     collectionsQuery.clear();
@@ -63,10 +63,10 @@ class HomepageService {
       .selectById(secondCollectionId)
       .getUnique();
     if (!secondCollection) {
-      return response.setError("HP_SECOND_COLLECTION_NOT_FOUND");
+      return resBuilder.setError("HP_SECOND_COLLECTION_NOT_FOUND");
     }
 
-    response.setData({ first: firstCollection, second: secondCollection });
+    resBuilder.setData({ first: firstCollection, second: secondCollection });
   }
 }
 

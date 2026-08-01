@@ -1,4 +1,4 @@
-import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import type { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { AuthService } from "./AuthService";
@@ -22,46 +22,46 @@ export type FavoriteAllPatterns =
   | Favorite["productId"];
 
 class FavoritesService {
-  public addFavorite(response: FakeAPIResponse<null>, productId: string) {
+  public addFavorite(resBuilder: ResponseBuilder<null>, productId: string) {
     const authService = new AuthService();
     const productQuery = new ProductsQuery();
     const favoritesTable = new FavoritesQuery();
 
-    const sessionData = authService.getSessionData(response);
+    const sessionData = authService.getSessionData(resBuilder);
     if (!sessionData) return;
 
     const product = productQuery.selectById(productId).getUnique("default");
     if (!product) {
-      return response.setError("FAVORITE_ADD_PRODUCT_NOT_FOUND");
+      return resBuilder.setError("FAVORITE_ADD_PRODUCT_NOT_FOUND");
     }
 
     favoritesTable.createAndInsert(sessionData.userId, product.id);
   }
 
-  public removeFavorite(response: FakeAPIResponse, productId: string) {
+  public removeFavorite(resBuilder: ResponseBuilder, productId: string) {
     const authService = new AuthService();
     const productQuery = new ProductsQuery();
     const favoritesQuery = new FavoritesQuery();
 
-    const sessionData = authService.getSessionData(response);
+    const sessionData = authService.getSessionData(resBuilder);
     if (!sessionData) return;
 
     const product = productQuery.selectById(productId).getUnique("default");
     if (!product) {
-      return response.setError("FAVORITE_REMOVE_PRODUCT_NOT_FOUND");
+      return resBuilder.setError("FAVORITE_REMOVE_PRODUCT_NOT_FOUND");
     }
 
     favoritesQuery.delete(sessionData.userId, product.id);
   }
 
   public getFromUser(
-    response: FakeAPIResponse<FavoriteAllPatterns[]>,
+    resBuilder: ResponseBuilder<FavoriteAllPatterns[]>,
     pattern: keyof Favorite,
   ) {
     const authService = new AuthService();
     const favoritesQuery = new FavoritesQuery();
 
-    const sessionData = authService.getSessionData(response);
+    const sessionData = authService.getSessionData(resBuilder);
     if (!sessionData) return;
 
     const data =
@@ -73,7 +73,7 @@ class FavoritesService {
               .selectByUserId(sessionData.userId)
               .get("resolvedProduct");
 
-    return response.setData(data);
+    return resBuilder.setData(data);
   }
 }
 

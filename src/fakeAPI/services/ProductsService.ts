@@ -1,4 +1,4 @@
-import type { FakeAPIResponse } from "@fakeAPI/FakeAPIResponse";
+import type { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import type { Product } from "@fakeAPI/tables/ProductsTable";
 
@@ -59,19 +59,19 @@ class ProductsService {
   }
 
   public getProductById(
-    response: FakeAPIResponse<Product["default"] | null>,
+    resBuilder: ResponseBuilder<Product["default"] | null>,
     productId: string,
   ) {
     const productsQuery = new ProductsQuery();
     const product = productsQuery.selectById(productId).getUnique("default");
     if (!product) {
-      return response.setData(null);
+      return resBuilder.setData(null);
     }
-    return response.setData(product);
+    return resBuilder.setData(product);
   }
 
   public getByQuery(
-    response: FakeAPIResponse<ProductAllPatterns[]>,
+    resBuilder: ResponseBuilder<ProductAllPatterns[]>,
     query: ProductQuery,
   ) {
     const filteredQuery = this.getFilteredQuery(query.filter);
@@ -87,16 +87,16 @@ class ProductsService {
     }
     switch (query.pattern) {
       case "default":
-        return response.setData(filteredQuery.get("default"));
+        return resBuilder.setData(filteredQuery.get("default"));
       case "card":
-        return response.setData(filteredQuery.get("card"));
+        return resBuilder.setData(filteredQuery.get("card"));
       case "suggestion":
-        return response.setData(filteredQuery.get("suggestion"));
+        return resBuilder.setData(filteredQuery.get("suggestion"));
     }
   }
 
   public getRelated(
-    response: FakeAPIResponse<Product["card"][]>,
+    resBuilder: ResponseBuilder<Product["card"][]>,
     productId: string,
   ) {
     const productsQuery = new ProductsQuery();
@@ -104,7 +104,7 @@ class ProductsService {
       .selectById(productId)
       .getUnique("relatedNeeds");
     if (!product) {
-      return response.setError("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
+      return resBuilder.setError("PRODUCT_RELATED_PRODUCT_NOT_FOUND");
     }
 
     const relatedProducts = productsQuery
@@ -117,7 +117,7 @@ class ProductsService {
           Math.abs(pB.price.pix - product.pixPrice),
       )
       .slice(1, 5);
-    response.setData(relatedProducts);
+    resBuilder.setData(relatedProducts);
   }
 }
 

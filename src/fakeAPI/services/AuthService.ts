@@ -2,7 +2,7 @@ import { config } from "@fakeAPI/config";
 import type { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { SessionsQuery } from "@fakeAPI/queries/SessionsQuery";
 import { UsersQuery, type User } from "@fakeAPI/queries/UsersQuery";
-import { createRandomHexId } from "@fakeAPI/utils/createRandomHexId";
+import { Utils } from "@fakeAPI/Utils";
 
 export type AuthLoginPayload = {
   username: string;
@@ -27,7 +27,7 @@ export type AuthUpdatePasswordPayload = {
 class AuthService {
   private createSession(userId: string) {
     const sessionsQuery = new SessionsQuery();
-    const sessionId = createRandomHexId("SES", 9);
+    const sessionId = Utils.createRandomHexId("SES", 9);
 
     const session = sessionsQuery.createAndInsert(sessionId, userId);
     if (!session) return null;
@@ -73,7 +73,7 @@ class AuthService {
     const usersQuery = new UsersQuery();
     const { username, password } = payload;
 
-    const userId = createRandomHexId("USR", 9);
+    const userId = Utils.createRandomHexId("USR", 9);
     const user = usersQuery.createAndInsert(userId, username, password);
     if (!user) {
       return resBuilder.setError("AUTH_REGISTER_USER_ALREADY_REGISTERED");

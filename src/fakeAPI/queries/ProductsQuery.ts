@@ -1,7 +1,7 @@
 import { ProductsTable, type Product } from "@fakeAPI/tables/ProductsTable";
 import { SalesTable } from "@fakeAPI/tables/SalesTable";
 import { Query } from "./Query";
-import { normalizeSearchText } from "@utils/normalizeSearchText";
+import { Utils } from "@fakeAPI/Utils";
 
 class ProductsQuery extends Query<Product["default"]> {
   public existsById(id: string) {
@@ -32,7 +32,7 @@ class ProductsQuery extends Query<Product["default"]> {
 
   public selectByName(search: string) {
     const origin = this.externalSelect ? ProductsTable.data : this.buffer;
-    const searchName = normalizeSearchText(search);
+    const searchName = Utils.normalizeSearchText(search);
     this.setBuffer(origin.filter((p) => p.searchName.includes(searchName)));
     return this;
   }

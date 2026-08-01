@@ -1,8 +1,8 @@
 import { config } from "./config";
 import { Errors } from "./Errors";
-import { isRequestBody } from "./isRequestBody";
 import type { Response } from "./ResponseBuilder";
 import { routes } from "./routes";
+import { Utils } from "./Utils";
 
 function request(route: keyof typeof routes, body?: unknown) {
   const maxResponseTime = config.maxResponseTime;
@@ -26,7 +26,7 @@ function request(route: keyof typeof routes, body?: unknown) {
           });
         }
 
-        if (body !== undefined && !isRequestBody(body)) {
+        if (body !== undefined && !Utils.isRequestBody(body)) {
           return resolve({
             success: false,
             error: Errors.get("INVALID_BODY"),

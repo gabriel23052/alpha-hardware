@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, test, vi } from "vitest";
 
-import { isRequestBody } from "@fakeAPI/isRequestBody";
 import { primitiveValidators } from "@fakeAPI/primitiveValidators";
 import { payloadValidators } from "@fakeAPI/payloadValidators";
 import { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
@@ -29,6 +28,7 @@ import {
 } from "@fakeAPI/services/FavoritesService";
 import { AuthService } from "@fakeAPI/services/AuthService";
 import { config } from "@fakeAPI/config";
+import { Utils } from "@fakeAPI/Utils";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -88,7 +88,7 @@ describe("Validações de corpo de requisição", () => {
       },
     ],
   ])("aceita com %s", (_, body) => {
-    expect(isRequestBody(body)).toBe(true);
+    expect(Utils.isRequestBody(body)).toBe(true);
   });
 
   test.each([
@@ -135,7 +135,7 @@ describe("Validações de corpo de requisição", () => {
       },
     ],
   ])("rejeita se o corpo %s", (_, body) => {
-    expect(isRequestBody(body)).toBe(false);
+    expect(Utils.isRequestBody(body)).toBe(false);
   });
 });
 

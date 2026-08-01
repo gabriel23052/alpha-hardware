@@ -1,5 +1,5 @@
 import { ResponseBuilder } from "./ResponseBuilder";
-import { payloadValidators } from "./payloadValidators";
+import { PayloadValidators } from "./PayloadValidators";
 
 import {
   FavoritesService,
@@ -51,7 +51,7 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productIdQuery(resBuilder, body)) {
+    if (!PayloadValidators.productIdQuery(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -66,7 +66,7 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productQuery(resBuilder, body)) {
+    if (!PayloadValidators.productQuery(resBuilder, body)) {
       return resBuilder.build();
     }
     productsHandler.getByQuery(resBuilder, body);
@@ -80,7 +80,7 @@ const routes: RouteHandler = {
     }
 
     const productsHandler = new ProductsService();
-    if (!payloadValidators.productIdQuery(resBuilder, body)) {
+    if (!PayloadValidators.productIdQuery(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -96,7 +96,7 @@ const routes: RouteHandler = {
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authRegister(resBuilder, body)) {
+    if (!PayloadValidators.authRegisterPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -114,7 +114,7 @@ const routes: RouteHandler = {
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authLogin(resBuilder, body)) {
+    if (!PayloadValidators.authLoginPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -150,7 +150,7 @@ const routes: RouteHandler = {
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authRecover(resBuilder, body)) {
+    if (!PayloadValidators.authRecoverPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -167,7 +167,7 @@ const routes: RouteHandler = {
 
     const authService = new AuthService();
 
-    if (!payloadValidators.authUpdatePassword(resBuilder, body)) {
+    if (!PayloadValidators.authUpdatePasswordPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -184,7 +184,7 @@ const routes: RouteHandler = {
 
     const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteGet(resBuilder, body)) {
+    if (!PayloadValidators.favoriteGetPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -200,7 +200,7 @@ const routes: RouteHandler = {
       return resBuilder.setError("BODY_NOT_FOUND").build();
     }
 
-    if (!payloadValidators.favoriteAdd(resBuilder, body)) {
+    if (!PayloadValidators.favoriteInsertPayload(resBuilder, body)) {
       return resBuilder.build();
     }
 
@@ -217,7 +217,7 @@ const routes: RouteHandler = {
 
     const favoritesService = new FavoritesService();
 
-    if (!payloadValidators.favoriteRemove(resBuilder, body)) {
+    if (!PayloadValidators.favoriteRemovePayload(resBuilder, body)) {
       return resBuilder.build();
     }
 

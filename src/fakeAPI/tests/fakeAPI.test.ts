@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, test, vi } from "vitest";
 
-import { primitiveValidators } from "@fakeAPI/primitiveValidators";
-import { payloadValidators } from "@fakeAPI/payloadValidators";
+import { PrimitiveValidators } from "@fakeAPI/PrimitiveValidators";
+import { PayloadValidators } from "@fakeAPI/PayloadValidators";
 import { ResponseBuilder } from "@fakeAPI/ResponseBuilder";
 import { ProductsQuery } from "@fakeAPI/queries/ProductsQuery";
 import { SalesQuery } from "@fakeAPI/queries/SalesQuery";
@@ -160,7 +160,7 @@ describe("Validações primitivas", () => {
       test.each(validatorsThatExpectString)(
         "%s rejeita valores que não são string",
         (v) => {
-          const validator = primitiveValidators[v];
+          const validator = PrimitiveValidators[v];
           expect(validator(123)).toBe(false);
           expect(validator(true)).toBe(false);
           expect(validator(null)).toBe(false);
@@ -174,7 +174,7 @@ describe("Validações primitivas", () => {
       test.each(validatorsThatExpectNumber)(
         "%s rejeita valores que não são number",
         (v) => {
-          const validator = primitiveValidators[v];
+          const validator = PrimitiveValidators[v];
           expect(validator("abc")).toBe(false);
           expect(validator(true)).toBe(false);
           expect(validator(null)).toBe(false);
@@ -192,7 +192,7 @@ describe("Validações primitivas", () => {
         ["apenas com letras", "PRO-ABCDEFABC"],
         ["com letras e números", "PRO-ABC123456"],
       ])("aceita se testar um ID hexadecimal %s", (_, value) => {
-        expect(primitiveValidators.productId(value)).toBe(true);
+        expect(PrimitiveValidators.productId(value)).toBe(true);
       });
 
       test.each([
@@ -209,7 +209,7 @@ describe("Validações primitivas", () => {
         ["com caracteres faltando", "PRO-12345678"],
         ["com caracteres sobrando", "PRO-123456789A"],
       ])("rejeita se testar um ID %s", (_, value) => {
-        expect(primitiveValidators.productId(value)).toBe(false);
+        expect(PrimitiveValidators.productId(value)).toBe(false);
       });
     });
 
@@ -219,7 +219,7 @@ describe("Validações primitivas", () => {
         ["apenas com letras", "SAL-ABCDEF"],
         ["com letras e números", "SAL-ABC123"],
       ])("aceita se testar um ID hexadecimal %s", (_, value) => {
-        expect(primitiveValidators.saleId(value)).toBe(true);
+        expect(PrimitiveValidators.saleId(value)).toBe(true);
       });
 
       test.each([
@@ -236,7 +236,7 @@ describe("Validações primitivas", () => {
         ["com caracteres faltando", "SAL-12345"],
         ["com caracteres sobrando", "SAL-1234567"],
       ])("rejeita se testar um id %s", (_, value) => {
-        expect(primitiveValidators.saleId(value)).toBe(false);
+        expect(PrimitiveValidators.saleId(value)).toBe(false);
       });
     });
 
@@ -245,7 +245,7 @@ describe("Validações primitivas", () => {
         ["2 caracteres", "ab"],
         ["200 caracteres", Array(200).fill("a").join("")],
       ])("aceita se testar uma pesquisa com %s", (_, value) => {
-        expect(primitiveValidators.productFilterSearch(value)).toBe(true);
+        expect(PrimitiveValidators.productFilterSearch(value)).toBe(true);
       });
 
       test.each([
@@ -256,7 +256,7 @@ describe("Validações primitivas", () => {
         ["com 1 caractere", "a"],
         ["com 201 caracteres", Array(201).fill("a").join("")],
       ])("rejeita se testar uma pesquisa %s", (_, value) => {
-        expect(primitiveValidators.productFilterSearch(value)).toBe(false);
+        expect(PrimitiveValidators.productFilterSearch(value)).toBe(false);
       });
     });
 
@@ -265,7 +265,7 @@ describe("Validações primitivas", () => {
         ["R$ 0,00", 0],
         ["R$ 99999,99", 9999999],
       ])("aceita se testar um preço de %s", (_, value) => {
-        expect(primitiveValidators.productFilterPrice(value)).toBe(true);
+        expect(PrimitiveValidators.productFilterPrice(value)).toBe(true);
       });
 
       test.each([
@@ -273,7 +273,7 @@ describe("Validações primitivas", () => {
         ["maior que R$99.999,99", 10000000],
         ["decimal", 123.25],
       ])("rejeita se testar um preço %s", (_, value) => {
-        expect(primitiveValidators.productFilterPrice(value)).toBe(false);
+        expect(PrimitiveValidators.productFilterPrice(value)).toBe(false);
       });
     });
 
@@ -282,7 +282,7 @@ describe("Validações primitivas", () => {
         ["2 caracteres", "ab"],
         ["30 caracteres", Array(30).fill("a").join("")],
       ])("aceita se testar uma tag com %s", (_, value) => {
-        expect(primitiveValidators.productFilterTag(value)).toBe(true);
+        expect(PrimitiveValidators.productFilterTag(value)).toBe(true);
       });
 
       test.each([
@@ -293,7 +293,7 @@ describe("Validações primitivas", () => {
         ["com 1 caracter", "a"],
         ["com 31 caracteres", Array(31).fill("a").join("")],
       ])("rejeita se testar uma tag %s", (_, value) => {
-        expect(primitiveValidators.productFilterTag(value)).toBe(false);
+        expect(PrimitiveValidators.productFilterTag(value)).toBe(false);
       });
     });
 
@@ -304,7 +304,7 @@ describe("Validações primitivas", () => {
         ["'suggestion'", "suggestion"],
         ["'card'", "card"],
       ])("aceita se testar o padrão %s", (_, value) => {
-        expect(primitiveValidators.productPattern(value)).toBe(true);
+        expect(PrimitiveValidators.productPattern(value)).toBe(true);
       });
 
       test.each([
@@ -315,7 +315,7 @@ describe("Validações primitivas", () => {
         ["com espaço no meio", "def ault"],
         ["com letras maíusculas", "DEFAULT"],
       ])("rejeita se testar um padrão %s", (_, value) => {
-        expect(primitiveValidators.productPattern(value)).toBe(false);
+        expect(PrimitiveValidators.productPattern(value)).toBe(false);
       });
     });
 
@@ -325,7 +325,7 @@ describe("Validações primitivas", () => {
         ["'decreasingPrice'", "decreasingPrice"],
         ["'alphabetical'", "alphabetical"],
       ])("aceita se testar o ordenamento %s", (_, value) => {
-        expect(primitiveValidators.productSort(value)).toBe(true);
+        expect(PrimitiveValidators.productSort(value)).toBe(true);
       });
 
       test.each([
@@ -335,7 +335,7 @@ describe("Validações primitivas", () => {
         ["espaço no meio", "increasing Price"],
         ["letras maíusculas", "INCREASINGPRICE"],
       ])("rejeita se testar um ordenamento com %s", (_, value) => {
-        expect(primitiveValidators.productSort(value)).toBe(false);
+        expect(PrimitiveValidators.productSort(value)).toBe(false);
       });
     });
 
@@ -348,7 +348,7 @@ describe("Validações primitivas", () => {
         ["com 3 caracteres", "usr"],
         ["com 30 caracteres", Array(30).fill("a").join("")],
       ])("aceita se testar o nome de usuário %s", (_, value) => {
-        expect(primitiveValidators.username(value)).toBe(true);
+        expect(PrimitiveValidators.username(value)).toBe(true);
       });
 
       test.each([
@@ -363,7 +363,7 @@ describe("Validações primitivas", () => {
         ["com underline", "_username"],
         ["com outros caracteres especiais", "username_$^][{}()="],
       ])("rejeita se testar um nome de usuário %s", (_, value) => {
-        expect(primitiveValidators.username(value)).toBe(false);
+        expect(PrimitiveValidators.username(value)).toBe(false);
       });
     });
 
@@ -371,7 +371,7 @@ describe("Validações primitivas", () => {
       test.each([["com quatro números", "1234"]])(
         "aceita se testar uma senha %s",
         (_, value) => {
-          expect(primitiveValidators.password(value)).toBe(true);
+          expect(PrimitiveValidators.password(value)).toBe(true);
         },
       );
 
@@ -385,7 +385,7 @@ describe("Validações primitivas", () => {
         ["com 5 caracteres", "12345"],
         ["com letras", "a123"],
       ])("rejeita se testar uma senha %s", (_, value) => {
-        expect(primitiveValidators.password(value)).toBe(false);
+        expect(PrimitiveValidators.password(value)).toBe(false);
       });
     });
 
@@ -395,7 +395,7 @@ describe("Validações primitivas", () => {
         ["resolvedProduct", "resolvedProduct"],
         ["productId", "productId"],
       ])("aceita se testar o padrão de favorito '%s'", (_, value) => {
-        expect(primitiveValidators.favoritePattern(value)).toBe(true);
+        expect(PrimitiveValidators.favoritePattern(value)).toBe(true);
       });
 
       test.each([
@@ -406,7 +406,7 @@ describe("Validações primitivas", () => {
         ["com espaço no meio", "def ault"],
         ["com letras maíusculas", "DEFAULT"],
       ])("rejeita se testar um padrão de favorito %s", (_, value) => {
-        expect(primitiveValidators.favoritePattern(value)).toBe(false);
+        expect(PrimitiveValidators.favoritePattern(value)).toBe(false);
       });
     });
   });
@@ -423,7 +423,7 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.productIdQuery(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.productIdQuery(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -442,7 +442,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.productIdQuery(resBuilder, value as FARequestBody),
+        PayloadValidators.productIdQuery(resBuilder, value as FARequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -488,7 +488,7 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.productQuery(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.productQuery(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -692,7 +692,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.productQuery(resBuilder, value as FARequestBody),
+        PayloadValidators.productQuery(resBuilder, value as FARequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -713,7 +713,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.authRegister(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.authRegisterPayload(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -755,7 +757,10 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authRegister(resBuilder, value as FARequestBody),
+        PayloadValidators.authRegisterPayload(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -776,7 +781,7 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.authLogin(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.authLoginPayload(resBuilder, value)).toBe(true);
     });
 
     test.each([
@@ -818,7 +823,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authLogin(resBuilder, value as FARequestBody),
+        PayloadValidators.authLoginPayload(resBuilder, value as FARequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -839,7 +844,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.authRecover(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.authRecoverPayload(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -881,7 +888,10 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authRecover(resBuilder, value as FARequestBody),
+        PayloadValidators.authRecoverPayload(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -902,9 +912,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.authUpdatePassword(resBuilder, value)).toBe(
-        true,
-      );
+      expect(
+        PayloadValidators.authUpdatePasswordPayload(resBuilder, value),
+      ).toBe(true);
     });
 
     test.each([
@@ -946,7 +956,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.authUpdatePassword(
+        PayloadValidators.authUpdatePasswordPayload(
           resBuilder,
           value as FARequestBody,
         ),
@@ -969,7 +979,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.favoriteAdd(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.favoriteInsertPayload(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -988,7 +1000,10 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteAdd(resBuilder, value as FARequestBody),
+        PayloadValidators.favoriteInsertPayload(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -1008,7 +1023,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.favoriteRemove(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.favoriteRemovePayload(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -1027,7 +1044,10 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteRemove(resBuilder, value as FARequestBody),
+        PayloadValidators.favoriteRemovePayload(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -1047,7 +1067,9 @@ describe("Validações de payloads", () => {
       ],
     ])("aceita se %s", (_, value) => {
       const resBuilder = new ResponseBuilder();
-      expect(payloadValidators.favoriteGet(resBuilder, value)).toBe(true);
+      expect(PayloadValidators.favoriteGetPayload(resBuilder, value)).toBe(
+        true,
+      );
     });
 
     test.each([
@@ -1066,7 +1088,10 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        payloadValidators.favoriteGet(resBuilder, value as FARequestBody),
+        PayloadValidators.favoriteGetPayload(
+          resBuilder,
+          value as FARequestBody,
+        ),
       ).toBe(false);
       const responseData = resBuilder.build();
       expect(responseData.success).toBe(false);

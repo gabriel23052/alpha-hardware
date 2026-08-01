@@ -1,5 +1,5 @@
 import { config } from "./config";
-import { primitiveValidators } from "./primitiveValidators";
+import { PrimitiveValidators } from "./PrimitiveValidators";
 import type { ResponseBuilder } from "./ResponseBuilder";
 import type {
   ProductFilter,
@@ -18,8 +18,8 @@ import type {
   AuthUpdatePasswordPayload,
 } from "./services/AuthService";
 
-const payloadValidators = {
-  productIdQuery(
+class PayloadValidators {
+  public static productIdQuery(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is ProductIdQuery {
@@ -27,14 +27,14 @@ const payloadValidators = {
       response.setError("PRODUCT_ID_QUERY_ID_FIELD_NOT_FOUND");
       return false;
     }
-    if (!primitiveValidators.productId(body.id)) {
+    if (!PrimitiveValidators.productId(body.id)) {
       response.setError("PRODUCT_ID_QUERY_INVALID_ID");
       return false;
     }
     return true;
-  },
+  }
 
-  productQuery(
+  public static productQuery(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is ProductQuery {
@@ -50,20 +50,20 @@ const payloadValidators = {
     if (!this.productQueryFilter(response, body.filter)) {
       return false;
     }
-    if (!primitiveValidators.productPattern(body.pattern)) {
+    if (!PrimitiveValidators.productPattern(body.pattern)) {
       response.setError("PRODUCT_QUERY_INVALID_PATTERN");
       return false;
     }
 
-    if ("sort" in body && !primitiveValidators.productSort(body.sort)) {
+    if ("sort" in body && !PrimitiveValidators.productSort(body.sort)) {
       response.setError("PRODUCT_QUERY_INVALID_SORT");
       return false;
     }
 
     return true;
-  },
+  }
 
-  productQueryFilter(
+  public static productQueryFilter(
     response: ResponseBuilder,
     body: FARequestBodyData,
   ): body is ProductFilter {
@@ -79,20 +79,20 @@ const payloadValidators = {
 
     if (
       "search" in body &&
-      !primitiveValidators.productFilterSearch(body.search)
+      !PrimitiveValidators.productFilterSearch(body.search)
     ) {
       response.setError("PRODUCT_QUERY_INVALID_SEARCH");
       return false;
     }
 
-    if ("saleId" in body && !primitiveValidators.saleId(body.saleId)) {
+    if ("saleId" in body && !PrimitiveValidators.saleId(body.saleId)) {
       response.setError("PRODUCT_QUERY_INVALID_SALE_ID");
       return false;
     }
 
     if (
       "category" in body &&
-      !primitiveValidators.productFilterCategory(body.category)
+      !PrimitiveValidators.productFilterCategory(body.category)
     ) {
       response.setError("PRODUCT_QUERY_INVALID_CATEGORY");
       return false;
@@ -100,7 +100,7 @@ const payloadValidators = {
 
     if (
       "minPrice" in body &&
-      !primitiveValidators.productFilterPrice(body.minPrice)
+      !PrimitiveValidators.productFilterPrice(body.minPrice)
     ) {
       response.setError("PRODUCT_QUERY_INVALID_MIN_PRICE");
       return false;
@@ -108,7 +108,7 @@ const payloadValidators = {
 
     if (
       "maxPrice" in body &&
-      !primitiveValidators.productFilterPrice(body.maxPrice)
+      !PrimitiveValidators.productFilterPrice(body.maxPrice)
     ) {
       response.setError("PRODUCT_QUERY_INVALID_MAX_PRICE");
       return false;
@@ -122,16 +122,16 @@ const payloadValidators = {
         return false;
       }
       for (const tag of body.tags) {
-        if (!primitiveValidators.productFilterTag(tag)) {
+        if (!PrimitiveValidators.productFilterTag(tag)) {
           response.setError("PRODUCT_QUERY_INVALID_TAGS");
           return false;
         }
       }
     }
     return true;
-  },
+  }
 
-  authRegister(
+  public static authRegisterPayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is AuthRegisterPayload {
@@ -144,19 +144,19 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.username(body.username)) {
+    if (!PrimitiveValidators.username(body.username)) {
       response.setError("AUTH_REGISTER_INVALID_USERNAME");
       return false;
     }
-    if (!primitiveValidators.password(body.password)) {
+    if (!PrimitiveValidators.password(body.password)) {
       response.setError("AUTH_REGISTER_INVALID_PASSWORD");
       return false;
     }
 
     return true;
-  },
+  }
 
-  authLogin(
+  public static authLoginPayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is AuthLoginPayload {
@@ -169,19 +169,19 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.username(body.username)) {
+    if (!PrimitiveValidators.username(body.username)) {
       response.setError("AUTH_LOGIN_INVALID_USERNAME");
       return false;
     }
-    if (!primitiveValidators.password(body.password)) {
+    if (!PrimitiveValidators.password(body.password)) {
       response.setError("AUTH_LOGIN_INVALID_PASSWORD");
       return false;
     }
 
     return true;
-  },
+  }
 
-  authRecover(
+  public static authRecoverPayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is AuthRecoverPayload {
@@ -194,19 +194,19 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.username(body.username)) {
+    if (!PrimitiveValidators.username(body.username)) {
       response.setError("AUTH_RECOVER_INVALID_USERNAME");
       return false;
     }
-    if (!primitiveValidators.password(body.newPassword)) {
+    if (!PrimitiveValidators.password(body.newPassword)) {
       response.setError("AUTH_RECOVER_INVALID_NEW_PASSWORD");
       return false;
     }
 
     return true;
-  },
+  }
 
-  authUpdatePassword(
+  public static authUpdatePasswordPayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is AuthUpdatePasswordPayload {
@@ -215,25 +215,23 @@ const payloadValidators = {
       return false;
     }
     if (!("newPassword" in body)) {
-      response.setError(
-        "AUTH_UPDATE_PASSWORD_NEW_PASSWORD_FIELD_NOT_FOUND",
-      );
+      response.setError("AUTH_UPDATE_PASSWORD_NEW_PASSWORD_FIELD_NOT_FOUND");
       return false;
     }
 
-    if (!primitiveValidators.password(body.password)) {
+    if (!PrimitiveValidators.password(body.password)) {
       response.setError("AUTH_UPDATE_PASSWORD_INVALID_PASSWORD");
       return false;
     }
-    if (!primitiveValidators.password(body.newPassword)) {
+    if (!PrimitiveValidators.password(body.newPassword)) {
       response.setError("AUTH_UPDATE_PASSWORD_INVALID_NEW_PASSWORD");
       return false;
     }
 
     return true;
-  },
+  }
 
-  favoriteAdd(
+  public static favoriteInsertPayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is FavoriteInsertPayload {
@@ -242,15 +240,15 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.productId(body.productId)) {
+    if (!PrimitiveValidators.productId(body.productId)) {
       response.setError("FAVORITE_ADD_INVALID_PRODUCT_ID");
       return false;
     }
 
     return true;
-  },
+  }
 
-  favoriteRemove(
+  public static favoriteRemovePayload(
     response: ResponseBuilder,
     body: FARequestBody,
   ): body is FavoriteRemovePayload {
@@ -259,15 +257,15 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.productId(body.productId)) {
+    if (!PrimitiveValidators.productId(body.productId)) {
       response.setError("FAVORITE_REMOVE_INVALID_PRODUCT_ID");
       return false;
     }
 
     return true;
-  },
+  }
 
-  favoriteGet(
+  public static favoriteGetPayload(
     response: ResponseBuilder,
     payload: FARequestBody,
   ): payload is FavoriteGetPayload {
@@ -276,13 +274,13 @@ const payloadValidators = {
       return false;
     }
 
-    if (!primitiveValidators.favoritePattern(payload.pattern)) {
+    if (!PrimitiveValidators.favoritePattern(payload.pattern)) {
       response.setError("FAVORITE_GET_INVALID_PATTERN");
       return false;
     }
 
     return true;
-  },
-} as const;
+  }
+}
 
-export { payloadValidators };
+export { PayloadValidators };

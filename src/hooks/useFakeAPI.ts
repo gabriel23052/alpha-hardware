@@ -1,23 +1,35 @@
 import { useEffect, useRef, useState } from "react";
 
-import { routes } from "@fakeAPI/routes";
-import { request } from "@fakeAPI/request";
+import { Main, type Routes } from "@fakeAPI/Main";
+
+type Response<T = unknown> =
+  | {
+      success: true;
+      data: T | null;
+    }
+  | {
+      success: false;
+      error: {
+        id: string;
+        message: string;
+      };
+    };
 
 type FakeAPIRequest = {
-  response: Promise<IFakeApiResponse>;
+  response: Promise<Response>;
   cancel: () => void;
 };
 
-export default function useFakeAPI<T>(route: keyof typeof routes) {
+export default function useFakeAPI<T>(route: Routes) {
   const [data, setData] = useState<null | T>(null);
   const [error, setError] = useState<null | IFakeApiError>(null);
   const [loading, setLoading] = useState(false);
 
   const activeRequest = useRef<null | FakeAPIRequest>(null);
 
-  async function fetch(body?: IFakeApiBody): Promise<IFakeApiResponse<T>> {
+  async function fetch(body?: IFakeApiBody): Promise<Response<T>> {
     activeRequest.current?.cancel();
-    activeRequest.current = request(route, body);
+    activeRequest.current = Main.request(route, body);
     setLoading(true);
     setError(null);
     const response = await activeRequest.current.response;

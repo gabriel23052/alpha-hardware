@@ -10,8 +10,7 @@ import ProductSkeleton from "./ProductSkeleton";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 import usePageTitle from "@hooks/usePageTitle";
-
-import { recentlyViewedHandler } from "@stores/useRecentlyViewedStore";
+import { recentlyViewed } from "@features/recentlyViewed";
 
 import classes from "./Product.module.css";
 
@@ -33,7 +32,7 @@ const Product = ({ productId }: { productId: string }) => {
       const response = await productRequest.fetch({ id: productId.trim() });
       relatedProductsRequest.fetch({ id: productId.trim() });
       if (!response.success || !response.data) return;
-      recentlyViewedHandler.addProduct(response.data);
+      recentlyViewed.addProduct(response.data);
     };
     asyncFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps

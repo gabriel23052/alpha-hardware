@@ -29,6 +29,7 @@ import {
 import { AuthService } from "@fakeAPI/services/AuthService";
 import { config } from "@fakeAPI/config";
 import { Utils } from "@fakeAPI/Utils";
+import type { RequestBody } from "@fakeAPI/Main";
 
 describe("Validações de corpo de requisição", () => {
   test.each([
@@ -442,7 +443,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.productIdQuery(resBuilder, value as FARequestBody),
+        PayloadValidators.productIdQuery(resBuilder, value as RequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -692,7 +693,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.productQuery(resBuilder, value as FARequestBody),
+        PayloadValidators.productQuery(resBuilder, value as RequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -757,10 +758,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.authRegisterPayload(
-          resBuilder,
-          value as FARequestBody,
-        ),
+        PayloadValidators.authRegisterPayload(resBuilder, value as RequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -823,7 +821,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.authLoginPayload(resBuilder, value as FARequestBody),
+        PayloadValidators.authLoginPayload(resBuilder, value as RequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -888,10 +886,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.authRecoverPayload(
-          resBuilder,
-          value as FARequestBody,
-        ),
+        PayloadValidators.authRecoverPayload(resBuilder, value as RequestBody),
       ).toBe(false);
       const response = resBuilder.build();
       expect(response.success).toBe(false);
@@ -958,7 +953,7 @@ describe("Validações de payloads", () => {
       expect(
         PayloadValidators.authUpdatePasswordPayload(
           resBuilder,
-          value as FARequestBody,
+          value as RequestBody,
         ),
       ).toBe(false);
       const responseData = resBuilder.build();
@@ -1002,7 +997,7 @@ describe("Validações de payloads", () => {
       expect(
         PayloadValidators.favoriteInsertPayload(
           resBuilder,
-          value as FARequestBody,
+          value as RequestBody,
         ),
       ).toBe(false);
       const response = resBuilder.build();
@@ -1046,7 +1041,7 @@ describe("Validações de payloads", () => {
       expect(
         PayloadValidators.favoriteRemovePayload(
           resBuilder,
-          value as FARequestBody,
+          value as RequestBody,
         ),
       ).toBe(false);
       const response = resBuilder.build();
@@ -1088,10 +1083,7 @@ describe("Validações de payloads", () => {
     ])("rejeita se $description", ({ value, error }) => {
       const resBuilder = new ResponseBuilder();
       expect(
-        PayloadValidators.favoriteGetPayload(
-          resBuilder,
-          value as FARequestBody,
-        ),
+        PayloadValidators.favoriteGetPayload(resBuilder, value as RequestBody),
       ).toBe(false);
       const responseData = resBuilder.build();
       expect(responseData.success).toBe(false);

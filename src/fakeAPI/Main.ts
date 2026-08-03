@@ -23,6 +23,16 @@ import { Utils } from "./Utils";
 
 export type Routes = keyof (typeof Main)["routes"];
 
+export type RequestBodyData =
+  | number
+  | string
+  | boolean
+  | null
+  | RequestBodyData[]
+  | { [key: string]: RequestBodyData };
+
+export type RequestBody = Record<string, RequestBodyData>;
+
 class Main {
   public static request(route: Routes, body?: unknown) {
     const maxResponseTime = config.maxResponseTime;
@@ -52,7 +62,6 @@ class Main {
               error: Errors.get("INVALID_BODY"),
             });
           }
-
           resolve(this.routes[route](body));
         },
         Math.floor(Math.random() * maxResponseTime) + minResponseTime,
@@ -66,7 +75,7 @@ class Main {
     return { response, cancel };
   }
 
-  public static routes: Record<string, (body?: FARequestBody) => Response> = {
+  public static routes: Record<string, (body?: RequestBody) => Response> = {
     "GET api/homepage/banners": (): Response<HomepageBanners> => {
       const resBuilder = new ResponseBuilder<HomepageBanners>();
       const homepageService = new HomepageService();
@@ -75,7 +84,7 @@ class Main {
     },
 
     "GET api/homepage/sale": (): Response<Sale["resolvedProducts"]> => {
-      const resBuilder = new ResponseBuilder<FASale_PrCard>();
+      const resBuilder = new ResponseBuilder<Sale["resolvedProducts"]>();
       const homepageService = new HomepageService();
       homepageService.getSale(resBuilder);
       return resBuilder.build();
@@ -117,8 +126,8 @@ class Main {
       return resBuilder.build();
     },
 
-    "GET api/products/related": (body): Response<FAProduct_Card[]> => {
-      const resBuilder = new ResponseBuilder<FAProduct_Card[]>();
+    "GET api/products/related": (body): Response<Product["card"][]> => {
+      const resBuilder = new ResponseBuilder<Product["card"][]>();
       if (!body) {
         return resBuilder.setError("BODY_NOT_FOUND").build();
       }

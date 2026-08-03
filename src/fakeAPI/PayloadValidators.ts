@@ -17,11 +17,12 @@ import type {
   AuthRegisterPayload,
   AuthUpdatePasswordPayload,
 } from "./services/AuthService";
+import type { RequestBody, RequestBodyData } from "./Main";
 
 class PayloadValidators {
   public static productIdQuery(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is ProductIdQuery {
     if (!("id" in body)) {
       response.setError("PRODUCT_ID_QUERY_ID_FIELD_NOT_FOUND");
@@ -36,7 +37,7 @@ class PayloadValidators {
 
   public static productQuery(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is ProductQuery {
     if (!("filter" in body)) {
       response.setError("PRODUCT_QUERY_FILTER_FIELD_NOT_FOUND");
@@ -65,7 +66,7 @@ class PayloadValidators {
 
   public static productQueryFilter(
     response: ResponseBuilder,
-    body: FARequestBodyData,
+    body: RequestBodyData,
   ): body is ProductFilter {
     if (typeof body !== "object" || body === null || Array.isArray(body)) {
       response.setError("PRODUCT_QUERY_INVALID_FILTER");
@@ -133,7 +134,7 @@ class PayloadValidators {
 
   public static authRegisterPayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is AuthRegisterPayload {
     if (!("username" in body)) {
       response.setError("AUTH_REGISTER_USERNAME_FIELD_NOT_FOUND");
@@ -158,7 +159,7 @@ class PayloadValidators {
 
   public static authLoginPayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is AuthLoginPayload {
     if (!("username" in body)) {
       response.setError("AUTH_LOGIN_USERNAME_FIELD_NOT_FOUND");
@@ -183,7 +184,7 @@ class PayloadValidators {
 
   public static authRecoverPayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is AuthRecoverPayload {
     if (!("username" in body)) {
       response.setError("AUTH_RECOVER_USERNAME_FIELD_NOT_FOUND");
@@ -208,7 +209,7 @@ class PayloadValidators {
 
   public static authUpdatePasswordPayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is AuthUpdatePasswordPayload {
     if (!("password" in body)) {
       response.setError("AUTH_UPDATE_PASSWORD_PASSWORD_FIELD_NOT_FOUND");
@@ -233,7 +234,7 @@ class PayloadValidators {
 
   public static favoriteInsertPayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is FavoriteInsertPayload {
     if (!("productId" in body)) {
       response.setError("FAVORITE_ADD_PRODUCT_ID_FIELD_NOT_FOUND");
@@ -250,7 +251,7 @@ class PayloadValidators {
 
   public static favoriteRemovePayload(
     response: ResponseBuilder,
-    body: FARequestBody,
+    body: RequestBody,
   ): body is FavoriteRemovePayload {
     if (!("productId" in body)) {
       response.setError("FAVORITE_REMOVE_PRODUCT_ID_FIELD_NOT_FOUND");
@@ -267,7 +268,7 @@ class PayloadValidators {
 
   public static favoriteGetPayload(
     response: ResponseBuilder,
-    payload: FARequestBody,
+    payload: RequestBody,
   ): payload is FavoriteGetPayload {
     if (!("pattern" in payload)) {
       response.setError("FAVORITE_GET_PATTERN_FIELD_NOT_FOUND");

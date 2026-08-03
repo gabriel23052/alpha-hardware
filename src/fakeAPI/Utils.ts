@@ -1,3 +1,5 @@
+import type { RequestBody, RequestBodyData } from "./Main";
+
 class Utils {
   public static createRandomHexId(prefix: string, length: number) {
     const id = Array.from({ length }, () =>
@@ -19,7 +21,7 @@ class Utils {
       .trim();
   }
 
-  public static isRequestBodyData(value: unknown): value is FARequestBodyData {
+  public static isRequestBodyData(value: unknown): value is RequestBodyData {
     switch (typeof value) {
       case "string":
       case "number":
@@ -42,7 +44,7 @@ class Utils {
     }
   }
 
-  public static isRequestBody(value: unknown): value is FARequestBody {
+  public static isRequestBody(value: unknown): value is RequestBody {
     if (
       typeof value !== "object" ||
       value === null ||

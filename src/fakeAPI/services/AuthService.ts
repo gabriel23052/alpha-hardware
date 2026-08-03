@@ -107,7 +107,10 @@ class AuthService {
       return resBuilder.setError("AUTH_LOGIN_DUPLICATED_SESSION");
     }
 
-    return resBuilder.setData(user);
+    return resBuilder.setData({
+      id: user.id,
+      username: user.username,
+    });
   }
 
   public logout() {

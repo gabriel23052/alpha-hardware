@@ -10,7 +10,7 @@ import useJafh from "@hooks/useJafh";
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
 
-import { toastHandler } from "@utils/toastHandler";
+import { toasts } from "@features/toasts";
 import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./DashboardAccount.module.css";
@@ -44,7 +44,7 @@ const DashboardAccount = () => {
       newPassword: form.fields.newPassword.value,
     });
     if (!response.success) return;
-    toastHandler.success("Senha alterada com sucesso");
+    toasts.emit("Senha alterada com sucesso", "success");
     form.reset();
   };
 

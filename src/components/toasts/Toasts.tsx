@@ -8,8 +8,11 @@ const Toasts = () => {
   const toasts = useToastStore((state) => state.toasts);
 
   return (
-    <dialog className={classes.container} aria-hidden={toasts.length === 0}>
-      {toasts.map((t, i) => (
+    <dialog
+      className={classes.container}
+      aria-hidden={toasts.values.length === 0}
+    >
+      {[...toasts.values()].map((t, i) => (
         <Toast toast={t} key={t.id} pos={i} />
       ))}
     </dialog>
@@ -17,4 +20,3 @@ const Toasts = () => {
 };
 
 export default Toasts;
-

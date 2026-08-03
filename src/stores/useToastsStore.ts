@@ -1,7 +1,5 @@
 import { create } from "zustand";
 
-export type ToastType = "success" | "fail";
-
 export type ToastT = {
   id: number;
   message: string;
@@ -9,28 +7,14 @@ export type ToastT = {
   duration: number;
 };
 
+export type ToastType = "success" | "fail";
+
 type ToastStore = {
-  toasts: ToastT[];
-  add: (message: string, type: ToastType, duration: number) => number;
-  dismiss: (id: number) => void;
+  toasts: Map<number, ToastT>;
 };
 
-const useToastStore = create<ToastStore>((set) => ({
-  toasts: [],
-
-  add: (message, type, duration) => {
-    const id = Date.now();
-    set((state) => ({
-      toasts: [...state.toasts, { id, message, type, duration }],
-    }));
-    return id;
-  },
-
-  dismiss: (id) => {
-    set((state) => ({
-      toasts: state.toasts.filter((t) => t.id !== id),
-    }));
-  },
+const useToastStore = create<ToastStore>(() => ({
+  toasts: new Map<number, ToastT>(),
 }));
 
 export { useToastStore };

@@ -14,6 +14,7 @@ export default defineConfig({
       "@fakeAPI": path.resolve(__dirname, "./src/fakeAPI"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@stores": path.resolve(__dirname, "./src/stores"),
+      "@features": path.resolve(__dirname, "./src/features"),
     },
   },
   plugins: [react(), svgr()],

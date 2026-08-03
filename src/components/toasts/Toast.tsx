@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { type ToastT } from "@stores/useToastsStore";
 
-import { toastHandler } from "@utils/toastHandler";
+import { toasts } from "@features/toasts";
 
 import SVGSuccess from "@svg/success.svg?react";
 import SVGToastError from "@svg/fail.svg?react";
@@ -32,7 +32,7 @@ const Toast = ({ toast, pos }: Props) => {
     );
 
     const timeout = window.setTimeout(() => {
-      toastHandler.dismiss(toast.id);
+      toasts.dismiss(toast.id);
     }, toast.duration);
 
     return () => {
@@ -48,7 +48,7 @@ const Toast = ({ toast, pos }: Props) => {
     if (isRemoving) return;
     setIsRemoving(true);
     animationTimeout.current = window.setTimeout(() => {
-      toastHandler.dismiss(toast.id);
+      toasts.dismiss(toast.id);
     }, REMOVING_ANIMATION_DURATION);
   };
 
@@ -75,4 +75,3 @@ const Toast = ({ toast, pos }: Props) => {
 };
 
 export default Toast;
-

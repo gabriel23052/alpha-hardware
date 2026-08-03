@@ -1,6 +1,6 @@
 import { Main } from "@fakeAPI/Main";
 import { useFavoritesStore } from "@stores/useFavoritesStore";
-import { toastHandler } from "@utils/toastHandler";
+import { toasts } from "@features/toasts";
 
 const favorites = {
   addProduct: async (productId: string) => {
@@ -14,7 +14,7 @@ const favorites = {
     if (response) {
       useFavoritesStore.setState({ isBlockedToEdit: false });
       if (response.success) {
-        toastHandler.success("Produto adicionado aos favoritos");
+        toasts.emit("Produto adicionado aos favoritos", "success");
       } else {
         console.error(response.error.id);
         useFavoritesStore.setState((state) => {
@@ -22,7 +22,7 @@ const favorites = {
           newFavoritesSet.delete(productId);
           return { favorites: newFavoritesSet };
         });
-        toastHandler.fail(response.error.message);
+        toasts.emit(response.error.message, "fail");
       }
     }
   },
@@ -38,10 +38,10 @@ const favorites = {
     if (response) {
       useFavoritesStore.setState({ isBlockedToEdit: false });
       if (response.success) {
-        toastHandler.success("Produto removido dos favoritos");
+        toasts.emit("Produto removido dos favoritos", "success");
       } else {
         console.error(response.error.id);
-        toastHandler.fail(response.error.message);
+        toasts.emit(response.error.message, "fail");
       }
     }
   },
@@ -59,7 +59,7 @@ const favorites = {
         return;
       } else {
         console.error(response.error.id);
-        toastHandler.fail(response.error.message);
+        toasts.emit(response.error.message, "fail");
       }
     }
   },

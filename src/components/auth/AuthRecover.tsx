@@ -1,4 +1,5 @@
 import { useRef, type FocusEvent } from "react";
+import { useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
 import InputPassword from "@components/inputs/InputPassword";
@@ -10,10 +11,9 @@ import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
-import { useNavigate } from "react-router";
 
 import fieldValidations from "@utils/fieldValidations";
-import { toastHandler } from "@utils/toastHandler";
+import { toasts } from "@features/toasts";
 
 import classes from "./AuthRecover.module.css";
 
@@ -59,7 +59,7 @@ const AuthRecover = () => {
       newPassword: recoverForm.fields.newPassword.value.trim(),
     });
     if (response.success) {
-      toastHandler.success("Senha alterada com sucesso");
+      toasts.emit("Senha alterada com sucesso", "success");
       navigate("/auth/login");
       return;
     }

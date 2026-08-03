@@ -1,13 +1,14 @@
 import { Link } from "react-router";
 
-import { useSessionStore } from "@stores/useSessionStore";
 import useFakeAPI from "@hooks/useFakeAPI";
+
+import { useSessionStore } from "@stores/useSessionStore";
+import { toasts } from "@features/toasts";
+import { favorites } from "@features/favorites";
 
 import SVGUser from "@svg/user.svg?react";
 
 import classes from "./HeaderUserLinks.module.css";
-import { toastHandler } from "@utils/toastHandler";
-import { favorites } from "../../features/favorites";
 
 type Props = {
   containerId: string;
@@ -23,12 +24,12 @@ const HeaderUserLinks = ({ containerId }: Props) => {
     e.preventDefault();
     const response = await api.fetch();
     if (!response.success) {
-      toastHandler.fail("Falha ao sair da conta");
+      toasts.emit("Falha ao sair da conta", "fail");
       return;
     }
     sessionStore.logout();
     favorites.clear();
-    toastHandler.success("Você saiu de sua conta");
+    toasts.emit("Você saiu de sua conta", "success");
   };
 
   const getReducedUsername = () => {

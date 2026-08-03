@@ -1,9 +1,9 @@
 import { useFavoritesStore } from "@stores/useFavoritesStore";
 import { useNavigate } from "react-router";
 
-import { favorites } from "../../features/favorites";
+import { favorites } from "@features/favorites";
 import { useSessionStore } from "@stores/useSessionStore";
-import { toastHandler } from "@utils/toastHandler";
+import { toasts } from "@features/toasts";
 
 import SVGFavorite from "@svg/favorite.svg?react";
 
@@ -32,7 +32,7 @@ const ProductFavoriteButton = ({
     e.stopPropagation();
     if (isBlockedToEdit) return;
     if (!isLoggedIn) {
-      toastHandler.fail("Você precisa estar logado");
+      toasts.emit("Você precisa estar logado", "fail");
       navigate("/auth/login");
       return;
     }

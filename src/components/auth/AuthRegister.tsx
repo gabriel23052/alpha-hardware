@@ -12,10 +12,10 @@ import usePageTitle from "@hooks/usePageTitle";
 import useJafh from "@hooks/useJafh";
 import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
-import { useSessionStore } from "@stores/useSessionStore";
 
 import fieldValidations from "@utils/fieldValidations";
-import { toastHandler } from "@utils/toastHandler";
+import { useSessionStore } from "@stores/useSessionStore";
+import { toasts } from "@features/toasts";
 
 import classes from "./AuthRegister.module.css";
 
@@ -65,7 +65,7 @@ const AuthRegister = () => {
     });
     if (response.success && response.data) {
       sessionStore.login(response.data);
-      toastHandler.success("Registro efetuado com sucesso");
+      toasts.emit("Registro efetuado com sucesso", "success");
       navigate("/");
       return;
     }

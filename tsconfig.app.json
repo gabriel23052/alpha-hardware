@@ -29,7 +29,8 @@
       "@components/*": ["./src/components/*"],
       "@fakeAPI/*": ["./src/fakeAPI/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@stores/*": ["./src/stores/*"]
+      "@stores/*": ["./src/stores/*"],
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["src"]

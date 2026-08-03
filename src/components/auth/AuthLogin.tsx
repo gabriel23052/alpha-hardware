@@ -12,9 +12,9 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import fieldValidations from "@utils/fieldValidations";
-import { toastHandler } from "@utils/toastHandler";
 import { useSessionStore } from "@stores/useSessionStore";
-import { favorites } from "../../features/favorites";
+import { favorites } from "@features/favorites";
+import { toasts } from "@features/toasts";
 
 import classes from "./AuthLogin.module.css";
 
@@ -46,7 +46,7 @@ const AuthLogin = () => {
       username: response.data.username,
     });
     favorites.requestAllFromUser();
-    toastHandler.success("Login efetuado com sucesso");
+    toasts.emit("Login efetuado com sucesso", "success");
     navigate("/");
   };
 

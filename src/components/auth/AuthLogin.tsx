@@ -12,9 +12,9 @@ import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 import fieldValidations from "@utils/fieldValidations";
-import { useSessionStore } from "@stores/useSessionStore";
 import { favorites } from "@features/favorites";
 import { toasts } from "@features/toasts";
+import { session } from "@features/session";
 
 import classes from "./AuthLogin.module.css";
 
@@ -22,7 +22,6 @@ const AuthLogin = () => {
   usePageTitle("Alpha Hardware | Login");
 
   const navigate = useNavigate();
-  const sessionStore = useSessionStore();
 
   const loginForm = useJafh(
     {
@@ -41,10 +40,7 @@ const AuthLogin = () => {
       password: loginForm.fields.password.value.trim(),
     });
     if (!response.success || !response.data) return;
-    sessionStore.login({
-      id: response.data.id,
-      username: response.data.username,
-    });
+    session.start(response.data);
     favorites.requestAllFromUser();
     toasts.emit("Login efetuado com sucesso", "success");
     navigate("/");

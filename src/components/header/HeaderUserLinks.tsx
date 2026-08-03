@@ -5,6 +5,7 @@ import useFakeAPI from "@hooks/useFakeAPI";
 import { useSessionStore } from "@stores/useSessionStore";
 import { toasts } from "@features/toasts";
 import { favorites } from "@features/favorites";
+import { session } from "@features/session";
 
 import SVGUser from "@svg/user.svg?react";
 
@@ -27,7 +28,7 @@ const HeaderUserLinks = ({ containerId }: Props) => {
       toasts.emit("Falha ao sair da conta", "fail");
       return;
     }
-    sessionStore.logout();
+    session.finish();
     favorites.clear();
     toasts.emit("Você saiu de sua conta", "success");
   };

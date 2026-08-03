@@ -1,8 +1,11 @@
-import useFakeAPI from "@hooks/useFakeAPI";
-import { useSessionStore } from "@stores/useSessionStore";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { favorites } from "../features/favorites";
+
+import useFakeAPI from "@hooks/useFakeAPI";
+
+import { useSessionStore } from "@stores/useSessionStore";
+import { favorites } from "@features/favorites";
+import { session } from "@features/session";
 
 const SessionValidator = () => {
   const api = useFakeAPI<null>("POST api/auth/verifySession");
@@ -13,7 +16,7 @@ const SessionValidator = () => {
     const fetch = async () => {
       const response = await api.fetch();
       if (!response.success && response.error.id === "AUTH_UNAUTHENTICATED") {
-        sessionStore.logout();
+        session.finish();
         favorites.clear();
       }
     };

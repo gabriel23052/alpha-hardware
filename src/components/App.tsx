@@ -17,7 +17,7 @@ import Footer from "./Footer";
 import Toasts from "./toasts/Toasts";
 
 import { useEffect } from "react";
-import { favorites } from "../features/favorites";
+import { favorites } from "@features/favorites";
 import { useSessionStore } from "@stores/useSessionStore";
 
 const App = () => {

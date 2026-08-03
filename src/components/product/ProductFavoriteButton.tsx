@@ -24,7 +24,7 @@ const ProductFavoriteButton = ({
 }: Props) => {
   const isBlockedToEdit = useFavoritesStore((state) => state.isBlockedToEdit);
   const isLoggedIn = useSessionStore((state) => state.isLoggedIn);
-  const favoritesIds = useFavoritesStore((state) => state.favoritesIds);
+  const favoritesIds = useFavoritesStore((state) => state.favorites);
 
   const navigate = useNavigate();
 
@@ -37,10 +37,10 @@ const ProductFavoriteButton = ({
       return;
     }
     if (favoritesIds.has(productId)) {
-      favorites.remove(productId);
+      favorites.removeProduct(productId);
       return;
     }
-    favorites.add(productId);
+    favorites.addProduct(productId);
   };
 
   return (

@@ -1,34 +1,42 @@
-import { request } from "@fakeAPI/request";
+import { Main } from "@fakeAPI/Main";
 import { useFavoritesStore } from "@stores/useFavoritesStore";
 import { toastHandler } from "@utils/toastHandler";
 
 const favorites = {
-  add: async (productId: string) => {
-    const favoritesStore = useFavoritesStore.getState();
-    favoritesStore.add(productId);
-    favoritesStore.blockToEdit();
-    const fakeApiFetch = request("POST api/favorites", { productId });
+  addProduct: async (productId: string) => {
+    useFavoritesStore.setState((state) => {
+      const newFavoritesSet = new Set<string>(state.favorites);
+      newFavoritesSet.add(productId);
+      return { favorites: newFavoritesSet, isBlockedToEdit: true };
+    });
+    const fakeApiFetch = Main.request("POST api/favorites", { productId });
     const response = await fakeApiFetch.response;
     if (response) {
-      favoritesStore.unblockToEdit();
+      useFavoritesStore.setState({ isBlockedToEdit: false });
       if (response.success) {
         toastHandler.success("Produto adicionado aos favoritos");
       } else {
         console.error(response.error.id);
-        useFavoritesStore.getState().remove(productId);
+        useFavoritesStore.setState((state) => {
+          const newFavoritesSet = new Set<string>(state.favorites);
+          newFavoritesSet.delete(productId);
+          return { favorites: newFavoritesSet };
+        });
         toastHandler.fail(response.error.message);
       }
     }
   },
 
-  remove: async (productId: string) => {
-    const favoritesStore = useFavoritesStore.getState();
-    favoritesStore.remove(productId);
-    favoritesStore.blockToEdit();
-    const fakeApiFetch = request("DELETE api/favorites", { productId });
+  removeProduct: async (productId: string) => {
+    useFavoritesStore.setState((state) => {
+      const newFavoritesSet = new Set<string>(state.favorites);
+      newFavoritesSet.delete(productId);
+      return { favorites: newFavoritesSet, isBlockedToEdit: true };
+    });
+    const fakeApiFetch = Main.request("DELETE api/favorites", { productId });
     const response = await fakeApiFetch.response;
     if (response) {
-      favoritesStore.unblockToEdit();
+      useFavoritesStore.setState({ isBlockedToEdit: false });
       if (response.success) {
         toastHandler.success("Produto removido dos favoritos");
       } else {
@@ -39,13 +47,15 @@ const favorites = {
   },
 
   requestAllFromUser: async () => {
-    const favoritesStore = useFavoritesStore.getState();
-    const fakeApiFetch = request("GET api/favorites", { pattern: "productId" });
+    const fakeApiFetch = Main.request("GET api/favorites", {
+      pattern: "productId",
+    });
     const response = await fakeApiFetch.response;
-
     if (response) {
       if (response.success) {
-        favoritesStore.set(response.data as string[]);
+        useFavoritesStore.setState({
+          favorites: new Set(response.data as string[]),
+        });
         return;
       } else {
         console.error(response.error.id);
@@ -55,8 +65,7 @@ const favorites = {
   },
 
   clear: () => {
-    const favoritesStore = useFavoritesStore.getState();
-    favoritesStore.set([]);
+    useFavoritesStore.setState({ favorites: new Set() });
   },
 };
 

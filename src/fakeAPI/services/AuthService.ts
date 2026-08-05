@@ -153,7 +153,7 @@ class AuthService {
 
     const user = usersQuery.selectById(sessionData.userId).getUnique("default");
     if (!user || user.password !== password) {
-      return resBuilder.setError("AUTH_UNAUTHENTICATED");
+      return resBuilder.setError("AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD");
     }
 
     usersQuery.updatePassword(user.id, newPassword);

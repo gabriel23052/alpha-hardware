@@ -2773,7 +2773,7 @@ describe("Serviços", () => {
 
       expect(response.success).toBe(false);
       if (response.success) return;
-      expect(response.error.id).toBe("AUTH_UNAUTHENTICATED");
+      expect(response.error.id).toBe("AUTH_UPDATE_PASSWORD_INCORRECT_PASSWORD");
     });
 
     it("retorna erro se tentar validar sessão inexistente ou inválida", () => {

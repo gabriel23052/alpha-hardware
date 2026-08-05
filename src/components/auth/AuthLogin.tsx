@@ -1,20 +1,16 @@
-import type { FormEventHandler } from "react";
 import { Link, useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
-import InputDefault from "@components/inputs/InputDefault";
-import InputPassword from "@components/inputs/InputPassword";
-import FormButton from "@components/ui/FormButton";
 import Alert from "@components/ui/Alert";
 
 import usePageTitle from "@hooks/usePageTitle";
-import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
+import { useAppForm } from "@hooks/useAppForm";
 
-import fieldValidations from "@utils/fieldValidations";
+import { fieldValidators } from "@utils/fieldValidators";
+import { session } from "@features/session";
 import { favorites } from "@features/favorites";
 import { toasts } from "@features/toasts";
-import { session } from "@features/session";
 
 import classes from "./AuthLogin.module.css";
 
@@ -23,59 +19,63 @@ const AuthLogin = () => {
 
   const navigate = useNavigate();
 
-  const loginForm = useJafh(
-    {
-      username: { value: "", validation: fieldValidations.username },
-      password: { value: "", validation: fieldValidations.password },
-    },
-    "Erro na validação, tente novamente",
-  );
-
   const api = useFakeAPI<IUser>("POST api/auth/login");
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    const response = await api.fetch({
-      username: loginForm.fields.username.value.trim(),
-      password: loginForm.fields.password.value.trim(),
-    });
-    if (!response.success || !response.data) return;
-    session.start(response.data);
-    favorites.requestAllFromUser();
-    toasts.emit("Login efetuado com sucesso", "success");
-    navigate("/");
-  };
+  const form = useAppForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+    onSubmit: async ({ value }) => {
+      const response = await api.fetch(value);
+      if (!response.success || !response.data) return;
+      session.start(response.data);
+      favorites.requestAllFromUser();
+      toasts.emit("Login efetuado com sucesso", "success");
+      navigate("/");
+    },
+  });
 
   return (
     <AuthFormWrapper title="Entre na sua conta">
-      <form onSubmit={handleSubmit}>
-        <div className={classes.inputs}>
-          <InputDefault
-            label="Nome de usuário"
-            id="username"
-            field={loginForm.fields.username}
-            updateField={loginForm.updateField}
-          />
-          <InputPassword
-            label="Senha"
-            id="password"
-            field={loginForm.fields.password}
-            updateField={loginForm.updateField}
-            maxLength={4}
-          />
-        </div>
-        {api.error && (
-          <Alert className={classes.alert}>{api.error.message}</Alert>
-        )}
-        <FormButton
-          className={classes.submitBtn}
-          state={
-            api.loading ? "loading" : !loginForm.isValid ? "disable" : "enable"
-          }
+      <form.AppForm>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+          }}
         >
-          entrar
-        </FormButton>
-      </form>
+          <div className={classes.inputs}>
+            <form.AppField
+              name="username"
+              validators={{
+                onChange: ({ value }) => fieldValidators.username(value),
+                onMount: ({ value }) => fieldValidators.username(value),
+              }}
+              children={(field) => (
+                <field.FieldText label="Nome de usuário" maxLength={30} />
+              )}
+            />
+            <form.AppField
+              name="password"
+              validators={{
+                onChange: ({ value }) => fieldValidators.password(value),
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword label="Senha" maxLength={4} />
+              )}
+            />
+          </div>
+          {api.error && (
+            <Alert className={classes.alert}>{api.error.message}</Alert>
+          )}
+          <form.SubmitButton className={classes.submitBtn}>
+            Entrar
+          </form.SubmitButton>
+        </form>
+      </form.AppForm>
       <p className={`text-small dneutral ${classes.loginLink}`}>
         Não possuí uma conta? Crie{" "}
         <Link className="secondary-xdark" to="/auth/register">

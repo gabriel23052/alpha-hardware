@@ -15,6 +15,7 @@ export default defineConfig({
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@stores": path.resolve(__dirname, "./src/stores"),
       "@features": path.resolve(__dirname, "./src/features"),
+      "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },
   plugins: [react(), svgr()],

@@ -1,122 +1,108 @@
-import type { FocusEvent, FormEventHandler } from "react";
-
 import UnderlinedTitle from "@components/ui/UnderlinedTitle";
-import InputPassword from "@components/inputs/InputPassword";
-import FormButton from "@components/ui/FormButton";
 import Alert from "@components/ui/Alert";
 
-import usePasswordMatcher from "@hooks/usePasswordMatcher";
-import useJafh from "@hooks/useJafh";
 import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
+import { useAppForm } from "@hooks/useAppForm";
 
+import { fieldValidators } from "@utils/fieldValidators";
 import { toasts } from "@features/toasts";
-import fieldValidations from "@utils/fieldValidations";
 
 import classes from "./DashboardAccount.module.css";
 
 const DashboardAccount = () => {
   usePageTitle("Alpha Hardware | Minha conta");
 
-  const form = useJafh(
-    {
-      password: { value: "", validation: fieldValidations.password },
-      newPassword: { value: "", validation: fieldValidations.password },
-      confirmation: {
-        value: "",
-        validation: fieldValidations.password,
-      },
-    },
-    "Erro na validação, tente novamente",
-  );
-
   const api = useFakeAPI("POST api/auth/updatePassword");
 
-  const passwordMatcher = usePasswordMatcher(
-    form.fields.newPassword.value,
-    form.fields.confirmation.value,
-  );
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    const response = await api.fetch({
-      password: form.fields.password.value,
-      newPassword: form.fields.newPassword.value,
-    });
-    if (!response.success) return;
-    toasts.emit("Senha alterada com sucesso", "success");
-    form.reset();
-  };
-
-  const handlePasswordsBlur = (e: FocusEvent<HTMLInputElement>) => {
-    passwordMatcher.blurField(
-      e.target.id === "newPassword" ? "password" : "confirmation",
-    );
-  };
-
-  const isThePasswordsEqual =
-    form.fields.password.value !== "" &&
-    form.fields.password.value === form.fields.newPassword.value;
+  const form = useAppForm({
+    defaultValues: {
+      password: "",
+      newPassword: "",
+      confirmation: "",
+    },
+    onSubmit: async ({ value }) => {
+      const response = await api.fetch({
+        password: value.password,
+        newPassword: value.newPassword,
+      });
+      if (!response.success) return;
+      toasts.emit("Senha alterada com sucesso", "success");
+      form.reset();
+    },
+  });
 
   return (
     <section className={classes.container}>
       <UnderlinedTitle align="left" className={classes.title}>
         Altere sua senha
       </UnderlinedTitle>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <div className={classes.inputs}>
-          <InputPassword
-            containerClassName={classes.input}
-            label="Senha atual"
-            id="password"
-            maxLength={4}
-            field={form.fields.password}
-            updateField={form.updateField}
-          />
-          <InputPassword
-            containerClassName={classes.input}
-            label="Nova senha"
-            id="newPassword"
-            maxLength={4}
-            blurCallback={handlePasswordsBlur}
-            field={form.fields.newPassword}
-            updateField={form.updateField}
-          />
-          <InputPassword
-            containerClassName={classes.input}
-            label="Confirme sua nova senha"
-            id="confirmation"
-            maxLength={4}
-            blurCallback={handlePasswordsBlur}
-            field={form.fields.confirmation}
-            updateField={form.updateField}
-          />
-        </div>
-        {passwordMatcher.showError && (
-          <Alert className={classes.alert}>
-            A senha e a confirmação não são iguais
-          </Alert>
-        )}
-        {isThePasswordsEqual && (
-          <Alert className={classes.alert}>A nova senha é igual a atual</Alert>
-        )}
-        {api.error && (
-          <Alert className={classes.alert}>{api.error.message}</Alert>
-        )}
-        <FormButton
-          state={
-            api.loading
-              ? "loading"
-              : !form.isValid ||
-                  !passwordMatcher.areEqual ||
-                  isThePasswordsEqual
-                ? "disable"
-                : "enable"
-          }
+      <form.AppForm>
+        <form
+          className={classes.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+          }}
         >
-          Alterar
-        </FormButton>
-      </form>
+          <div className={classes.inputs}>
+            <form.AppField
+              name="password"
+              validators={{
+                onChange: ({ value }) => fieldValidators.password(value),
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword
+                  className={classes.input}
+                  label="Senha"
+                  maxLength={4}
+                />
+              )}
+            />
+            <form.AppField
+              name="newPassword"
+              validators={{
+                onChange: ({ value }) => fieldValidators.password(value),
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword
+                  className={classes.input}
+                  label="Nova senha"
+                  maxLength={4}
+                />
+              )}
+            />
+            <form.AppField
+              name="confirmation"
+              validators={{
+                onChangeListenTo: ["newPassword"],
+                onChange: ({ value, fieldApi }) => {
+                  const validation = fieldValidators.password(value);
+                  if (validation) return validation;
+                  const password = fieldApi.form.getFieldValue("newPassword");
+                  if (value !== password) return "As senhas são diferentes";
+                  return undefined;
+                },
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword
+                  className={classes.input}
+                  label="Confirme a nova senha"
+                  maxLength={4}
+                />
+              )}
+            />
+          </div>
+          {api.error && (
+            <Alert className={classes.alert}>{api.error.message}</Alert>
+          )}
+          <form.SubmitButton>alterar</form.SubmitButton>
+        </form>
+      </form.AppForm>
     </section>
   );
 };

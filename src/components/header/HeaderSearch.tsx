@@ -4,17 +4,16 @@ import {
   useMemo,
   useId,
   useRef,
-  type ChangeEventHandler,
-  type FormEventHandler,
   type KeyboardEventHandler,
 } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 import HeaderSearchSuggestions from "./HeaderSearchSuggestions";
 
-import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
 import useDebounce from "@hooks/useDebounce";
+import { useAppForm } from "@hooks/useAppForm";
+import { useSelector } from "@tanstack/react-form";
 
 import { normalizeSearchText } from "@utils/normalizeSearchText";
 
@@ -29,32 +28,33 @@ const HeaderSearch = () => {
   const [focused, setFocused] = useState(false);
   const lastSearchFetch = useRef<string>("");
   const blurTimeout = useRef<null | number>(null);
-  const request = useFakeAPI<IProduct_Suggestion[]>("GET api/products/query");
   const location = useLocation();
-  const navigate = useNavigate();
   const listId = useId();
 
-  const searchForm = useJafh(
-    {
-      search: { value: "", validation: null },
+  const navigate = useNavigate();
+
+  const request = useFakeAPI<IProduct_Suggestion[]>("GET api/products/query");
+
+  const form = useAppForm({
+    defaultValues: { search: "" },
+    onSubmit: ({ value }) => {
+      navigate(`/catalog?search=${encodeURIComponent(value.search.trim())}`);
     },
-    "Erro na validação, tente novamente",
-  );
+  });
+  const search = useSelector(form.store, (state) => state.values.search);
 
   const fetchSuggestions = useDebounce(() => {
-    const search = searchForm.fields.search.value;
     lastSearchFetch.current = search;
     request.fetch({
       filter: {
         search: search.trim(),
       },
-      format: "suggestion",
+      pattern: "suggestion",
       sort: "alphabetical",
     });
   }, DEBOUNCE_DELAY);
 
   const suggestions = useMemo(() => {
-    const search = searchForm.fields.search.value;
     if (search.length < MIN_SEARCH_LENGTH) return [];
     if (!request.data) {
       fetchSuggestions();
@@ -62,17 +62,17 @@ const HeaderSearch = () => {
     }
     if (search === lastSearchFetch.current) return request.data;
     if (search.startsWith(lastSearchFetch.current)) {
-      return request.data.filter(({searchName}) => {
+      return request.data.filter(({ searchName }) => {
         return searchName.includes(normalizeSearchText(search));
       });
     }
     fetchSuggestions();
     return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchForm.fields.search.value, request.data]);
+  }, [search, request.data]);
 
   useEffect(() => {
-    searchForm.updateField("search", "");
+    form.setFieldValue("search", "");
     setFocused(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
@@ -93,17 +93,6 @@ const HeaderSearch = () => {
     }, BLUR_DELAY);
   };
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    navigate(
-      `/catalog?search=${encodeURIComponent(searchForm.fields.search.value.trim())}`,
-    );
-  };
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    searchForm.updateField("search", e.target.value);
-  };
-
   const handleKeyDown: KeyboardEventHandler<HTMLFormElement> = (e) => {
     if (e.key === "Escape") {
       setFocused(false);
@@ -111,37 +100,50 @@ const HeaderSearch = () => {
   };
 
   return (
-    <form
-      className={classes.container}
-      onSubmit={handleSubmit}
-      data-loading={request.loading}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
-    >
-      <input
-        className={`text-default dneutral-dark bg-lneutral-light ${classes.input}`}
-        id="search"
-        name="search"
-        type="text"
-        maxLength={SEARCH_MAX_LENGTH}
-        role="combobox"
-        data-showingsuggestions={showSuggestions}
-        autoComplete="off"
-        aria-expanded={showSuggestions}
-        aria-controls={listId}
-        aria-autocomplete="list"
-        value={searchForm.fields.search.value}
-        placeholder="Buscar produtos"
-        onChange={handleChange}
-      />
-      <HeaderSearchSuggestions
-        listId={listId}
-        results={suggestions}
-        query={searchForm.fields.search.value}
-        show={showSuggestions}
-      />
-    </form>
+    <form.AppForm>
+      <form
+        className={classes.container}
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          form.handleSubmit();
+        }}
+        data-loading={request.loading}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+      >
+        <form.Field
+          name="search"
+          children={(field) => (
+            <input
+              className={`text-default dneutral-dark bg-lneutral-light ${classes.input}`}
+              id="search"
+              name="search"
+              type="text"
+              maxLength={SEARCH_MAX_LENGTH}
+              role="combobox"
+              data-showingsuggestions={showSuggestions}
+              autoComplete="off"
+              aria-expanded={showSuggestions}
+              aria-controls={listId}
+              aria-autocomplete="list"
+              placeholder="Buscar produtos"
+              value={field.state.value}
+              onChange={(e) => {
+                field.setValue(e.target.value);
+              }}
+            />
+          )}
+        />
+        <HeaderSearchSuggestions
+          listId={listId}
+          results={suggestions}
+          query={search}
+          show={showSuggestions}
+        />
+      </form>
+    </form.AppForm>
   );
 };
 

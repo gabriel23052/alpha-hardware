@@ -27,7 +27,10 @@ const AuthLogin = () => {
       password: "",
     },
     onSubmit: async ({ value }) => {
-      const response = await api.fetch(value);
+      const response = await api.fetch({
+        username: value.username.trim(),
+        password: value.password.trim(),
+      });
       if (!response.success || !response.data) return;
       session.start(response.data);
       favorites.requestAllFromUser();

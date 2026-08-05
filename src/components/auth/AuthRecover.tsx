@@ -1,75 +1,40 @@
-import { useRef, type FocusEvent } from "react";
 import { useNavigate } from "react-router";
 
 import AuthFormWrapper from "./AuthFormWrapper";
-import InputPassword from "@components/inputs/InputPassword";
-import InputDefault from "@components/inputs/InputDefault";
-import FormButton from "@components/ui/FormButton";
 import Alert from "@components/ui/Alert";
 
 import usePageTitle from "@hooks/usePageTitle";
-import useJafh from "@hooks/useJafh";
-import usePasswordMatcher from "@hooks/usePasswordMatcher";
 import useFakeAPI from "@hooks/useFakeAPI";
+import { useAppForm } from "@hooks/useAppForm";
 
-import fieldValidations from "@utils/fieldValidations";
 import { toasts } from "@features/toasts";
+import { fieldValidators } from "@utils/fieldValidators";
 
 import classes from "./AuthRecover.module.css";
-
-const USER_NOT_FOUND_ERROR_ID = "AUTH_RECOVER_USER_NOT_FOUND";
 
 const AuthRecover = () => {
   usePageTitle("Alpha Hardware | Recuperar conta");
 
   const navigate = useNavigate();
 
-  const lastUserNotRegistred = useRef<string | null>(null);
-
-  const recoverForm = useJafh(
-    {
-      username: { value: "", validation: fieldValidations.username },
-      newPassword: { value: "", validation: fieldValidations.password },
-      confirmation: {
-        value: "",
-        validation: fieldValidations.password,
-      },
-    },
-    "Erro na validação, tente novamente",
-  );
-
   const api = useFakeAPI<null>("POST api/auth/recoverPassword");
 
-  const passwordMatcher = usePasswordMatcher(
-    recoverForm.fields.newPassword.value,
-    recoverForm.fields.confirmation.value,
-  );
-
-  const handlePasswordsBlur = (e: FocusEvent<HTMLInputElement>) => {
-    passwordMatcher.blurField(
-      e.target.id === "newPassword" ? "password" : "confirmation",
-    );
-  };
-
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    if (!recoverForm.isValid) return;
-    const response = await api.fetch({
-      username: recoverForm.fields.username.value.trim(),
-      newPassword: recoverForm.fields.newPassword.value.trim(),
-    });
-    if (response.success) {
+  const form = useAppForm({
+    defaultValues: {
+      username: "",
+      newPassword: "",
+      confirmation: "",
+    },
+    onSubmit: async ({ value }) => {
+      const response = await api.fetch({
+        username: value.username.trim(),
+        newPassword: value.newPassword.trim(),
+      });
+      if (!response.success) return;
       toasts.emit("Senha alterada com sucesso", "success");
       navigate("/auth/login");
-      return;
-    }
-    if (!response.success && response.error.id === USER_NOT_FOUND_ERROR_ID) {
-      lastUserNotRegistred.current = recoverForm.fields.username.value;
-    }
-  };
-
-  const isUserNotRegistred =
-    recoverForm.fields.username.value === lastUserNotRegistred.current;
+    },
+  });
 
   return (
     <AuthFormWrapper title="Recupere sua senha">
@@ -77,60 +42,71 @@ const AuthRecover = () => {
         Para recuperar o acesso a conta, digite seu nome de usuário e atualize
         sua senha:
       </p>
-      <form onSubmit={handleSubmit}>
-        <div className={classes.inputs}>
-          <InputDefault
-            containerClassName={classes.input}
-            label="Nome de usuário"
-            id="username"
-            maxLength={30}
-            field={recoverForm.fields.username}
-            updateField={recoverForm.updateField}
-          />
-          <InputPassword
-            containerClassName={classes.input}
-            label="Nova senha"
-            id="newPassword"
-            maxLength={4}
-            blurCallback={handlePasswordsBlur}
-            field={recoverForm.fields.newPassword}
-            updateField={recoverForm.updateField}
-          />
-          <InputPassword
-            containerClassName={classes.input}
-            label="Confirme sua nova senha"
-            id="confirmation"
-            maxLength={4}
-            blurCallback={handlePasswordsBlur}
-            field={recoverForm.fields.confirmation}
-            updateField={recoverForm.updateField}
-          />
-        </div>
-        {passwordMatcher.showError && (
-          <Alert className={classes.alert}>As senhas são diferentes</Alert>
-        )}
-        {api.error &&
-          api.error.id === USER_NOT_FOUND_ERROR_ID &&
-          isUserNotRegistred && (
+      <form.AppForm>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+          }}
+        >
+          <div className={classes.inputs}>
+            <form.AppField
+              name="username"
+              validators={{
+                onChange: ({ value }) => fieldValidators.username(value),
+                onMount: ({ value }) => fieldValidators.username(value),
+              }}
+              children={(field) => (
+                <field.FieldText
+                  className={classes.input}
+                  label="Nome de usuário"
+                  maxLength={30}
+                />
+              )}
+            />
+            <form.AppField
+              name="newPassword"
+              validators={{
+                onChange: ({ value }) => fieldValidators.password(value),
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword
+                  className={classes.input}
+                  label="Senha"
+                  maxLength={4}
+                />
+              )}
+            />
+            <form.AppField
+              name="confirmation"
+              validators={{
+                onChangeListenTo: ["newPassword"],
+                onChange: ({ value, fieldApi }) => {
+                  const validation = fieldValidators.password(value);
+                  if (validation) return validation;
+                  const password = fieldApi.form.getFieldValue("newPassword");
+                  if (value !== password) return "As senhas são diferentes";
+                  return undefined;
+                },
+                onMount: ({ value }) => fieldValidators.password(value),
+              }}
+              children={(field) => (
+                <field.FieldPassword
+                  className={classes.input}
+                  label="Confirme sua senha"
+                  maxLength={4}
+                />
+              )}
+            />
+          </div>
+          {api.error && (
             <Alert className={classes.alert}>{api.error.message}</Alert>
           )}
-        {api.error && api.error.id !== USER_NOT_FOUND_ERROR_ID && (
-          <Alert className={classes.alert}>{api.error.message}</Alert>
-        )}
-        <FormButton
-          state={
-            api.loading
-              ? "loading"
-              : !recoverForm.isValid ||
-                  !passwordMatcher.areEqual ||
-                  isUserNotRegistred
-                ? "disable"
-                : "enable"
-          }
-        >
-          Atualizar
-        </FormButton>
-      </form>
+          <form.SubmitButton>atualizar</form.SubmitButton>
+        </form>
+      </form.AppForm>
     </AuthFormWrapper>
   );
 };

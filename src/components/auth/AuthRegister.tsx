@@ -27,14 +27,6 @@ const AuthRegister = () => {
       password: "",
       confirmation: "",
     },
-    validators: {
-      onChange: ({ value }) => {
-        if (value.password !== value.confirmation) {
-          return "As senhas não são iguais";
-        }
-        return undefined;
-      },
-    },
     onSubmit: async ({ value }) => {
       const response = await api.fetch({
         username: value.username.trim(),

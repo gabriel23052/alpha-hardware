@@ -80,7 +80,7 @@ const Catalog = () => {
     setInvalidFilter(false);
     const sort = filterForm.fields.sort.value;
     const query: IProductQuery = {
-      format: "card",
+      pattern: "card",
       filter,
     };
     if (sort !== "") query.sort = sort;

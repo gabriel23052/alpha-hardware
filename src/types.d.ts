@@ -114,7 +114,7 @@ interface IFreight {
   }[];
 }
 
-type IProductFormatOptions = "full" | "price" | "card" | "suggestion";
+type IProductPatternOptions = "full" | "price" | "card" | "suggestion";
 
 type IProductFilter = {
   search?: string;
@@ -129,7 +129,7 @@ type IProductSort = "alphabetical" | "increasingPrice" | "decreasingPrice";
 
 type IProductQuery = {
   filter: IProductFilter;
-  format: IProductFormatOptions;
+  pattern: IProductPatternOptions;
   sort?: IProductSort;
 };
 

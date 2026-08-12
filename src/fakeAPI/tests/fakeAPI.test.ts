@@ -1268,6 +1268,15 @@ describe("Consultas", () => {
       expect(products.map((p) => p.id).sort()).toEqual(expectedIds.sort());
     });
 
+    it("seleciona produtos dentro de uma faixa de preço", () => {
+      const expectedIds = ["PRO-010A562D2", "PRO-B5009B531", "PRO-BDC286153"];
+      const products = productQuery
+        .selectByMinPrice(135000)
+        .selectByMaxPrice(140000)
+        .get("default");
+      expect(products.map((p) => p.id).sort()).toEqual(expectedIds.sort());
+    });
+
     it("seleciona produtos por tags", () => {
       const tags = ["Intel", "Gigabyte"];
       const expectedIds = [

@@ -45,11 +45,11 @@ class ProductsService {
     if (filter.category !== undefined) {
       productsQuery.selectByCategory(filter.category);
     }
+    if (filter.minPrice !== undefined) {
+      productsQuery.selectByMinPrice(filter.minPrice);
+    }
     if (filter.maxPrice !== undefined) {
       productsQuery.selectByMaxPrice(filter.maxPrice);
-    }
-    if (filter.minPrice !== undefined) {
-      productsQuery.selectByMaxPrice(filter.minPrice);
     }
     if (filter.tags !== undefined) {
       productsQuery.selectByTags(filter.tags);

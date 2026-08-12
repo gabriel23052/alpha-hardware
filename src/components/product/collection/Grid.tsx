@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-const ProductList = ({ products, mode, className }: Props) => {
+const Grid = ({ products, mode, className }: Props) => {
   return (
     <ul className={className || ""}>
       {products.map((product) => (
@@ -18,4 +18,4 @@ const ProductList = ({ products, mode, className }: Props) => {
   );
 };
 
-export default ProductList;
+export default Grid;

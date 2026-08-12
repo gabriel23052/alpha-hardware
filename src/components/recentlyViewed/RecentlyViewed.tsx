@@ -1,4 +1,4 @@
-import ProductList from "@components/product/collection/Grid";
+import Grid from "@components/product/collection/Grid";
 
 import SVGRecently from "@svg/recently.svg?react";
 
@@ -24,7 +24,7 @@ const RecentlyViewed = () => {
             Produtos que você viu recentemente
           </h2>
         </div>
-        <ProductList
+        <Grid
           className={classes.products}
           products={recentlyViewedProducts}
           mode="default"

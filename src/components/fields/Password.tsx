@@ -25,6 +25,8 @@ const Password = ({ label, className, ...attr }: Props) => {
         name={field.name}
         type={showPassword ? "text" : "password"}
         value={field.state.value}
+        inputMode="numeric"
+        pattern="[0-9,]*"
         onChange={(e) => {
           field.handleChange(e.target.value);
         }}

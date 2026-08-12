@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 
 import ErrorMessage from "@components/ui/ErrorMessage";
-import ProductActions from "./ProductActions";
-import ProductGallery from "./ProductGallery";
-import ProductRelated from "./ProductRelated";
-import ProductInfo from "./ProductInfo";
-import ProductSkeleton from "./ProductSkeleton";
+import Actions from "./Actions";
+import Gallery from "./Gallery";
+import Related from "./collection/Related";
+import Info from "./Info";
+import Skeleton from "./Skeleton";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 import usePageTitle from "@hooks/usePageTitle";
@@ -39,7 +39,7 @@ const Product = ({ productId }: { productId: string }) => {
   }, [location]);
 
   if (productRequest.loading) {
-    return <ProductSkeleton />;
+    return <Skeleton />;
   }
 
   if (productRequest.error) {
@@ -59,18 +59,18 @@ const Product = ({ productId }: { productId: string }) => {
         <h1 className="text-verylarge dneutral ">{productRequest.data.name}</h1>
       </div>
       <div className={classes.main}>
-        <ProductGallery
+        <Gallery
           media={productRequest.data.media}
           alt={productRequest.data.name}
         />
-        <ProductActions product={productRequest.data} />
+        <Actions product={productRequest.data} />
       </div>
-      <ProductRelated
+      <Related
         data={relatedProductsRequest.data}
         loading={relatedProductsRequest.loading}
         error={relatedProductsRequest.error}
       />
-      <ProductInfo
+      <Info
         description={productRequest.data.description}
         specs={productRequest.data.specs}
       />

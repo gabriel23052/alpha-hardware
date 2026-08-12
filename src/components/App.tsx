@@ -3,15 +3,15 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Header from "./header/Header";
 import SessionValidator from "./SessionValidator";
 import ScrollToTop from "./ui/ScrollToTop";
-import Home from "./home/Home";
-import ProductPage from "./product/ProductPage";
+import Home from "./homepage/Homepage";
+import Page from "./product/Page";
 import Catalog from "./catalog/Catalog";
 import Auth from "./auth/Auth";
 import Dashboard from "./dashboard/Dashboard";
-import InstitutionalAbout from "./institutional/InstitutionalAbout";
-import InstitutionalPrivacy from "./institutional/InstitutionalPrivacy";
-import InstitutionalCookies from "./institutional/InstitutionalCookies";
-import InstitutionalReturns from "./institutional/InstitutionalReturns";
+import About from "./institutional/About";
+import Privacy from "./institutional/Privacy";
+import Cookies from "./institutional/Cookies";
+import Returns from "./institutional/Returns";
 import NotFound from "./NotFound";
 import Footer from "./Footer";
 import Toasts from "./toasts/Toasts";
@@ -38,14 +38,14 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path="/product/:productId" element={<Page />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth/*" element={<Auth />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/institutional/about" element={<InstitutionalAbout />} />
-          <Route path="/institutional/privacy" element={<InstitutionalPrivacy />} />
-          <Route path="/institutional/cookies" element={<InstitutionalCookies />} />
-          <Route path="/institutional/returns" element={<InstitutionalReturns />} />
+          <Route path="/institutional/about" element={<About />} />
+          <Route path="/institutional/privacy" element={<Privacy />} />
+          <Route path="/institutional/cookies" element={<Cookies />} />
+          <Route path="/institutional/returns" element={<Returns />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

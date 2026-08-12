@@ -1,10 +1,10 @@
 import { NavLink, Route, Routes } from "react-router";
 
 import ProtectedRoute from "@components/ProtectedRoute";
-import DashboardOrders from "./DashboardOrders";
-import DashboardCart from "./DashboardCart";
-import DashboardFavorites from "./DashboardFavorites";
-import DashboardAccount from "./DashboardAccount";
+import Orders from "./Orders";
+import Cart from "./Cart";
+import Favorites from "./Favorites";
+import Account from "./Account";
 
 import { useSessionStore } from "@stores/useSessionStore";
 
@@ -39,11 +39,11 @@ const Dashboard = () => {
           </nav>
         </section>
         <Routes>
-          <Route path="/" element={<DashboardOrders />} />
-          <Route path="/orders" element={<DashboardOrders />} />
-          <Route path="/cart" element={<DashboardCart />} />
-          <Route path="/favorites" element={<DashboardFavorites />} />
-          <Route path="/account" element={<DashboardAccount />} />
+          <Route path="/" element={<Orders />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </main>
     </ProtectedRoute>

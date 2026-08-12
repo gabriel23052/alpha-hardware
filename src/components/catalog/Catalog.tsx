@@ -2,10 +2,10 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
 
 import ErrorMessage from "@components/ui/ErrorMessage";
-import CatalogForm from "@components/catalog/CatalogForm";
-import ProductList from "@components/product/ProductList";
-import CatalogHeader from "./CatalogHeader";
-import CatalogSkeleton from "./CatalogSkeleton";
+import FilterForm from "@components/catalog/FilterForm";
+import Grid from "@components/product/collection/Grid";
+import Header from "./Header";
+import Skeleton from "./Skeleton";
 
 import useFakeAPI from "@hooks/useFakeAPI";
 import usePageTitle from "@hooks/usePageTitle";
@@ -122,14 +122,14 @@ const Catalog = () => {
 
   return (
     <main className={`defaultContainer ${classes.catalogRoute}`}>
-      <CatalogHeader
+      <Header
         sort={query.sort}
         setSort={setSort}
         openMobileFilter={openMobileFilter}
         productsAmount={api.data ? (isFilterEmpty ? 0 : api.data.length) : 0}
         filterContainerId={filterContainerID}
       />
-      <CatalogForm
+      <FilterForm
         showFilter={showFilter}
         setShowFilter={setShowFilter}
         setFilterForm={setFilterFormFields}
@@ -140,11 +140,11 @@ const Catalog = () => {
           Selecione um ou mais filtros para procurarmos os produtos
         </p>
       ) : api.loading ? (
-        <CatalogSkeleton />
+        <Skeleton />
       ) : api.error ? (
         <ErrorMessage>{api.error.message}</ErrorMessage>
       ) : api.data && api.data.length > 0 ? (
-        <ProductList
+        <Grid
           className={classes.products}
           products={api.data}
           mode="default"

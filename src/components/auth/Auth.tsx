@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
 
-import AuthRegister from "./AuthRegister";
-import AuthLogin from "./AuthLogin";
-import AuthRecover from "./AuthRecover";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
+import RecoverForm from "./RecoverForm";
 import LoggedOutRoute from "@components/LoggedOutRoute";
 
 import classes from "./Auth.module.css";
@@ -15,10 +15,10 @@ const Auth = () => {
       <main className={`defaultContainer ${classes.container}`}>
         <img src={loginImg} alt="Gamer Woman" width={683} height={604} />
         <Routes>
-          <Route path="/" element={<AuthLogin />} />
-          <Route path="/login" element={<AuthLogin />} />
-          <Route path="/register" element={<AuthRegister />} />
-          <Route path="/recover" element={<AuthRecover />} />
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/recover" element={<RecoverForm />} />
         </Routes>
       </main>
     </LoggedOutRoute>

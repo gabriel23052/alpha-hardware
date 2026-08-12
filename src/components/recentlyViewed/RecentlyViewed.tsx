@@ -1,4 +1,4 @@
-import ProductList from "@components/product/ProductList";
+import ProductList from "@components/product/collection/Grid";
 
 import SVGRecently from "@svg/recently.svg?react";
 

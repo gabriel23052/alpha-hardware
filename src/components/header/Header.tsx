@@ -1,10 +1,10 @@
 import { useEffect, useId, useState } from "react";
 import { Link, useLocation } from "react-router";
 
-import HeaderSearch from "./HeaderSearch";
-import HeaderUserLinks from "./HeaderUserLinks";
-import HeaderShortcuts from "./HeaderShortcuts";
-import HeaderNavBar from "./HeaderNavBar";
+import Search from "./Search";
+import AuthActions from "./AuthActions";
+import Shortcuts from "./Shortcuts";
+import NavigationBar from "./NavigationBar";
 
 import SVGLogo from "@svg/logo.svg?react";
 import SVGMenu from "@svg/menu.svg?react";
@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderSearch />
+      <Search />
       <div
         className={classes.shadow}
         aria-hidden="true"
@@ -55,11 +55,11 @@ const Header = () => {
             >
               <SVGMenu aria-hidden="true" width={32} height={32} />
             </button>
-            <HeaderUserLinks containerId={authId} />
-            <HeaderShortcuts shortcutsId={shortcutsId} />
+            <AuthActions containerId={authId} />
+            <Shortcuts shortcutsId={shortcutsId} />
           </div>
         </div>
-        <HeaderNavBar id={navigationId} />
+        <NavigationBar id={navigationId} />
       </header>
     </>
   );

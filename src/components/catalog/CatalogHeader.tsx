@@ -1,37 +1,28 @@
-import type { JafhForm } from "@hooks/useJafh";
-
-import type { FilterFormFields } from "./Catalog";
 import CatalogBreadcrumbs from "./CatalogBreadcrumbs";
 import CatalogSortSelect from "./CatalogSortSelect";
 
 import SVGFilter from "@svg/filter.svg?react";
 
-import classes from "./CatalogTopMenu.module.css";
+import classes from "./CatalogHeader.module.css";
 
 type Props = {
-  filterForm: JafhForm<FilterFormFields>;
-  openMobileFilter: () => void;
+  sort: IProductSort | undefined;
   filterContainerId: string;
   productsAmount: number;
-  updateCategory: (newCategory: string) => void;
+  setSort: (sort: IProductSort | "") => void;
+  openMobileFilter: () => void;
 };
 
-const CatalogTopMenu = ({
-  filterForm,
+const CatalogHeader = ({
+  sort,
+  setSort,
   openMobileFilter,
   filterContainerId,
   productsAmount,
-  updateCategory,
 }: Props) => {
   return (
     <div className={classes.container}>
-      <CatalogBreadcrumbs
-        category={filterForm.fields.category.value}
-        search={filterForm.fields.search.value}
-        saleId={filterForm.fields.saleId.value}
-        updateFormField={filterForm.updateField}
-        updateCategory={updateCategory}
-      />
+      <CatalogBreadcrumbs />
       <p className={`text-small lneutral-xdark ${classes.itemsDisplayed}`}>
         Exibindo {productsAmount} produtos
       </p>
@@ -43,12 +34,9 @@ const CatalogTopMenu = ({
       >
         <SVGFilter aria-hidden="true" width={20} height={20} />
       </button>
-      <CatalogSortSelect
-        field={filterForm.fields.sort}
-        updateField={filterForm.updateField}
-      />
+      <CatalogSortSelect sort={sort} setSort={setSort} />
     </div>
   );
 };
 
-export default CatalogTopMenu;
+export default CatalogHeader;

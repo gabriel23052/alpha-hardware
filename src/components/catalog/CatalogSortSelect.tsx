@@ -1,14 +1,10 @@
-import InputSelect from "@components/inputs/InputSelect";
-
-import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
-
 import SVGSort from "@svg/sort.svg?react";
 
 import classes from "./CatalogSortSelect.module.css";
 
 type Props = {
-  field: JafhField<string>;
-  updateField: JafhUpdateField<string>;
+  sort: IProductSort | undefined;
+  setSort: (sort: IProductSort | "") => void;
 };
 
 const SORT_OPTIONS = [
@@ -18,17 +14,25 @@ const SORT_OPTIONS = [
   { value: "decreasingPrice", label: "Preço decrescente" },
 ];
 
-const CatalogSortSelect = ({ field, updateField }: Props) => {
+const CatalogSortSelect = ({ sort, setSort }: Props) => {
+
   return (
     <div className={classes.container}>
-      <InputSelect
+      <select
         className={`text-small bg-lneutral-xlight dneutral-light ${classes.select}`}
-        options={SORT_OPTIONS}
         id="sort"
-        field={field}
-        updateField={updateField}
-        title="Ordenação dos produtos"
-      />
+        name="sort"
+        onChange={(e) => {
+          setSort(e.target.value as IProductSort);
+        }}
+        value={sort || ""}
+      >
+        {SORT_OPTIONS.map(({ value, label }) => (
+          <option value={value} key={value}>
+            {label}
+          </option>
+        ))}
+      </select>
       <SVGSort aria-hidden="true" width={20} height={20} />
     </div>
   );

@@ -1,14 +1,4 @@
-.container > h2 {
-  margin-bottom: var(--px8);
-}
-
-.container {
-  margin-bottom: var(--px16);
-  padding-bottom: var(--px16);
-  border-bottom: 1px solid var(--lneutral);
-}
-
-.input label {
+.container label {
   display: block;
   padding: var(--px4) var(--px8);
   border-radius: 4px;
@@ -16,17 +6,16 @@
   cursor: pointer;
   transition: background-color 300ms;
 }
-.input label:hover,
-.input label:focus {
+.container label:hover,
+.container label:focus {
   background-color: var(--lneutral-light);
 }
-
-.input label[data-ischecked="true"] {
+.container label[data-ischecked="true"] {
   background-color: var(--secondary-light);
   color: var(--secondary-xdark);
 }
 
-.input input {
+.container input {
   width: var(--px16);
   height: var(--px16);
   position: absolute;

@@ -2,9 +2,12 @@ import { createFormHook } from "@tanstack/react-form";
 
 import { fieldContext, formContext } from "@lib/form/formContexts";
 
-import FieldText from "@components/inputs/FieldText";
-import FieldPassword from "@components/inputs/FieldPassword";
 import SubmitButton from "@components/ui/SubmitButton";
+import FieldText from "@components/fields/FieldText";
+import FieldPassword from "@components/fields/FieldPassword";
+import FieldPrice from "@components/fields/FieldPrice";
+import FieldCategories from "@components/fields/FieldCategories";
+import FieldTags from "@components/fields/FieldTags";
 
 const { useAppForm } = createFormHook({
   fieldContext,
@@ -15,6 +18,9 @@ const { useAppForm } = createFormHook({
   fieldComponents: {
     FieldText,
     FieldPassword,
+    FieldCategories,
+    FieldPrice,
+    FieldTags,
   },
 });
 

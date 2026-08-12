@@ -1,37 +1,35 @@
 import type { ChangeEvent } from "react";
 
-import type { JafhField, JafhUpdateField } from "@hooks/useJafh";
+import { useFieldContext } from "@lib/form/formContexts";
 
-import classes from "./CatalogFilterTags.module.css";
+import classes from "./FieldTags.module.css";
 
 type Props = {
-  id: string;
   groups: { legend: string; values: string[] }[];
-  field: JafhField<[string, string][]>;
-  updateField: JafhUpdateField<[string, string][]>;
 };
 
-const CatalogFilterTags = ({ id, groups, field, updateField }: Props) => {
+const FieldTags = ({ groups }: Props) => {
+  const field = useFieldContext<[string, string][]>();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const tags = field.value;
+    const tags = field.state.value;
     const legend = e.target.dataset.legend;
     const value = e.target.dataset.value;
     if (value === undefined || legend === undefined) return;
     const index = tags.findIndex((tag) => tag[0] === legend);
     if (index === -1) {
-      tags.push([legend, value]);
+      field.pushValue([legend, value]);
     } else {
       if (tags[index][0] === legend && tags[index][1] === value) {
-        tags.splice(index, 1);
+        field.removeValue(index);
       } else {
-        tags[index] = [legend, value];
+        field.replaceValue(index, [legend, value])
       }
     }
-    updateField(id, tags);
   };
 
   const isChecked = (legend: string, value: string) =>
-    field.value.some((tag) => tag[0] === legend && tag[1] === value);
+    field.state.value.some((tag) => tag[0] === legend && tag[1] === value);
 
   return (
     <div className={classes.container}>
@@ -46,7 +44,7 @@ const CatalogFilterTags = ({ id, groups, field, updateField }: Props) => {
             >
               <input
                 type="checkbox"
-                name={`${id}-${group.legend}`}
+                name={`${field.name}-${group.legend}`}
                 checked={isChecked(group.legend, value)}
                 data-legend={group.legend}
                 data-value={value}
@@ -61,4 +59,4 @@ const CatalogFilterTags = ({ id, groups, field, updateField }: Props) => {
   );
 };
 
-export default CatalogFilterTags;
+export default FieldTags;

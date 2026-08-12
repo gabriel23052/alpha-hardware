@@ -1,147 +1,119 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { useLocation, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 
 import ErrorMessage from "@components/ui/ErrorMessage";
-import CatalogFilter from "@components/catalog/filter/CatalogFilter";
+import CatalogForm from "@components/catalog/CatalogForm";
 import ProductList from "@components/product/ProductList";
-import CatalogTopMenu from "./CatalogTopMenu";
+import CatalogHeader from "./CatalogHeader";
 import CatalogSkeleton from "./CatalogSkeleton";
 
-import useJafh from "@hooks/useJafh";
 import useFakeAPI from "@hooks/useFakeAPI";
-import useDebounce from "@hooks/useDebounce";
 import usePageTitle from "@hooks/usePageTitle";
-
-import fieldValidations from "@utils/fieldValidations";
-import urlParamsValidations from "@utils/urlParamsValidations";
+import useDebounce from "@hooks/useDebounce";
 
 import classes from "./Catalog.module.css";
 
-export type FilterFormFields = {
-  search: string;
-  saleId: string;
-  category: string;
-  minPrice: string;
-  maxPrice: string;
-  tags: [string, string][];
-  sort: "" | "increasingPrice" | "decreasingPrice" | "alphabetical";
-};
+export type FilterFormFields = Omit<IProductFilter, "saleId" | "search ">;
 
-const FILTER_UPDATE_DELAY = 1000;
+const FILTER_UPDATE_DELAY = 1500;
 
 const Catalog = () => {
-  const [showFilter, setShowFilter] = useState(false);
-  const [invalidFilter, setInvalidFilter] = useState(true);
-  const firstRender = useRef(true);
-  const bypassDebouncedUpdate = useRef(true);
-  const filterContainerID = useId();
-
-  const [params] = useSearchParams();
-  const location = useLocation();
-
   usePageTitle("Alpha Hardware | Catálogo");
+  const [showFilter, setShowFilter] = useState(false);
+  const [searchParams] = useSearchParams();
+  const firstRenderRef = useRef([true, true]);
+  const filterContainerID = useId();
 
   const api = useFakeAPI<IProduct_Card[]>("GET api/products/query");
 
-  const filterForm = useJafh<FilterFormFields>(
-    {
-      search: { value: "", validation: null },
-      saleId: { value: "", validation: null },
-      category: { value: "", validation: null },
-      minPrice: { value: "", validation: fieldValidations.priceFilter },
-      maxPrice: { value: "", validation: fieldValidations.priceFilter },
-      tags: { value: [], validation: null },
-      sort: { value: "", validation: null },
-    },
-    "Erro na validação, tente novamente",
-  );
-
-  const updateFilter = () => {
-    if (!filterForm.isValid) return;
-    const formData = filterForm.getData();
-    const filter: IProductFilter = {};
-    if (formData.search !== "") filter.search = formData.search;
-    if (formData.saleId !== "") filter.saleId = formData.saleId;
-    if (formData.category !== "") filter.category = formData.category;
-    if (formData.minPrice !== "")
-      filter.minPrice = Math.floor(
-        Number(formData.minPrice.replace(",", ".")) * 100,
-      );
-    if (formData.maxPrice !== "")
-      filter.maxPrice = Math.floor(
-        Number(formData.maxPrice.replace(",", ".")) * 100,
-      );
-    if (formData.tags.length !== 0)
-      filter.tags = formData.tags.map((tag) => tag[1]);
-    if (Object.keys(filter).length === 0) {
-      setInvalidFilter(true);
-      return;
-    }
-    setInvalidFilter(false);
-    const sort = filterForm.fields.sort.value;
-    const query: IProductQuery = {
-      pattern: "card",
-      filter,
-    };
-    if (sort !== "") query.sort = sort;
+  const debouncedFetchFilter = useDebounce(() => {
     api.fetch(query);
-  };
+  }, FILTER_UPDATE_DELAY);
 
-  const debouncedUpdateFilter = useDebounce(updateFilter, FILTER_UPDATE_DELAY);
+  const [query, setQuery] = useState<IProductQuery>(() => {
+    const category = searchParams.get("category");
+    const saleId = searchParams.get("sale");
+    const search = searchParams.get("search");
+    const filter: IProductFilter = {};
+    if (saleId) filter.saleId = saleId.trim();
+    if (search) filter.search = search.trim();
+    if (category) filter.category = category.trim();
+    return { filter, pattern: "card" };
+  });
 
-  const updateCategory = (newCategory: string) => {
-    filterForm.updateField<string>("category", newCategory);
-    filterForm.updateField<string[]>("tags", []);
-    filterForm.updateField<string>("minPrice", "");
-    filterForm.updateField<string>("maxPrice", "");
-    filterForm.updateField<string>("saleId", "");
-  };
-
-  useEffect(() => {
-    bypassDebouncedUpdate.current = true;
-    updateFieldsFromQueryParams();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+  const isFilterEmpty = Object.keys(query.filter).length === 0;
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
+    if (firstRenderRef.current[0]) {
+      firstRenderRef.current[0] = false;
+      if (!isFilterEmpty) api.fetch(query);
       return;
     }
-    if (bypassDebouncedUpdate.current) {
-      bypassDebouncedUpdate.current = false;
-      updateFilter();
-      return;
-    }
-    debouncedUpdateFilter();
+    if (isFilterEmpty) return;
+    debouncedFetchFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterForm.fields]);
+  }, [query]);
 
-  const updateFieldsFromQueryParams = () => {
-    const category = params.get("category");
-    const sale = params.get("sale");
-    const search = params.get("search");
-    if (category) {
-      if (!urlParamsValidations.productCategory(category)) {
-        setInvalidFilter(true);
-        return;
-      }
-      updateCategory(category);
+  useEffect(() => {
+    if (firstRenderRef.current[1]) {
+      firstRenderRef.current[1] = false;
+      return;
     }
-    if (sale) {
-      if (!urlParamsValidations.saleId(sale)) {
-        setInvalidFilter(true);
-        return;
+
+    const saleId = searchParams.get("sale") || undefined;
+    const search = searchParams.get("search") || undefined;
+
+    if (query.filter.saleId !== saleId) {
+      if (saleId === undefined) {
+        const newFilter = { ...query.filter };
+        delete newFilter.saleId;
+        setFilter(newFilter);
+      } else {
+        setFilter({ ...query.filter, saleId });
       }
-      filterForm.updateField("saleId", sale);
     }
-    if (search) {
-      if (!urlParamsValidations.productName(search)) {
-        setInvalidFilter(true);
-        return;
+    if (query.filter.search !== search) {
+      if (search === undefined) {
+        const newFilter = { ...query.filter };
+        delete newFilter.search;
+        setFilter(newFilter);
+      } else {
+        setFilter({ ...query.filter, search });
       }
-      filterForm.updateField("search", search);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  const setFilter = (filter: IProductFilter) => {
+    setQuery((prev) => {
+      if (prev.sort) {
+        return {
+          filter,
+          pattern: "card",
+          sort: prev.sort,
+        };
+      }
+      return {
+        filter,
+        pattern: "card",
+      };
+    });
+  };
+
+  const setFilterFormFields = (filterFormFields: FilterFormFields) => {
+    const newFilter: IProductFilter = { ...filterFormFields };
+    if (query.filter.saleId) newFilter.saleId = query.filter.saleId;
+    if (query.filter.search) newFilter.search = query.filter.search;
+    setFilter(newFilter);
+  };
+
+  const setSort = (sort: IProductSort | "") => {
+    setQuery((prev) => {
+      if (sort === "") {
+        return { filter: prev.filter, pattern: "card" };
+      }
+      return { filter: prev.filter, sort, pattern: "card" };
+    });
   };
 
   const openMobileFilter = () => {
@@ -150,29 +122,27 @@ const Catalog = () => {
 
   return (
     <main className={`defaultContainer ${classes.catalogRoute}`}>
-      <CatalogTopMenu
-        filterForm={filterForm}
+      <CatalogHeader
+        sort={query.sort}
+        setSort={setSort}
         openMobileFilter={openMobileFilter}
-        productsAmount={api.data ? (invalidFilter ? 0 : api.data.length) : 0}
+        productsAmount={api.data ? (isFilterEmpty ? 0 : api.data.length) : 0}
         filterContainerId={filterContainerID}
-        updateCategory={updateCategory}
       />
-      <CatalogFilter
-        filterForm={filterForm}
-        filterContainerID={filterContainerID}
-        updateCategory={updateCategory}
+      <CatalogForm
         showFilter={showFilter}
         setShowFilter={setShowFilter}
+        setFilterForm={setFilterFormFields}
+        filterContainerID={filterContainerID}
       />
-
-      {api.loading ? (
+      {isFilterEmpty ? (
+        <p className={`text-default dneutral-dark ${classes.badFilter}`}>
+          Selecione um ou mais filtros para procurarmos os produtos
+        </p>
+      ) : api.loading ? (
         <CatalogSkeleton />
       ) : api.error ? (
         <ErrorMessage>{api.error.message}</ErrorMessage>
-      ) : invalidFilter ? (
-        <p className={`text-default dneutral-dark ${classes.badFilter}`}>
-          Ops! Nenhum produto encontrado, verifique os filtros
-        </p>
       ) : api.data && api.data.length > 0 ? (
         <ProductList
           className={classes.products}

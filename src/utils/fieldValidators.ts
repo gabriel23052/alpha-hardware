@@ -23,6 +23,12 @@ const fieldValidators = {
     }
     return undefined;
   },
+
+  priceFilter: (value: string) => {
+    return value.length === 0 || /^\d{1,5}(,\d{1,2})?$/.test(value)
+      ? undefined
+      : "Valor inválido";
+  },
 };
 
 export { fieldValidators };

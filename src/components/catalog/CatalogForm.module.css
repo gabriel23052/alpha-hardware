@@ -22,6 +22,16 @@
   transform: translateX(-1px);
 }
 
+.categories {
+  margin-bottom: var(--px16);
+  padding-bottom: var(--px16);
+  border-bottom: 1px solid var(--lneutral);
+}
+
+.categories > h2 {
+  margin-bottom: var(--px8);
+}
+
 .cleanButton {
   width: 100%;
   margin-bottom: var(--px20);
@@ -34,6 +44,24 @@
 .cleanButton:focus {
   background-color: var(--lneutral);
   color: var(--dneutral);
+}
+
+.prices {
+  margin-bottom: var(--px16);
+}
+
+.prices > h2 {
+  margin-bottom: var(--px8);
+}
+
+.pricesFieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px4);
+}
+
+.prices > em {
+  text-align: right;
 }
 
 @media (max-width: 900px) {

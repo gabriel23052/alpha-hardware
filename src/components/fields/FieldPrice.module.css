@@ -1,30 +1,18 @@
 .container {
-  margin-bottom: var(--px16);
-}
-
-.container h2 {
-  margin-bottom: var(--px8);
-}
-
-.fields {
-  display: flex;
-  flex-direction: column;
-  gap: var(--px8);
-}
-
-.field {
   display: grid;
   grid-template-columns: 4rem auto;
   align-items: center;
   position: relative;
+  margin-bottom: var(--px8);
+  row-gap: var(--px4);
 }
 
-.field label {
+.container label {
   display: block;
   width: 100%;
   position: relative;
 }
-.field label::after {
+.container label::after {
   content: "R$";
   position: absolute;
   color: var(--lneutral-dark);
@@ -33,7 +21,7 @@
   left: calc(100% + var(--px8));
 }
 
-.field input {
+.container input {
   width: 100%;
   padding: var(--px4) var(--px8);
   padding-left: 1.8rem; /* ~ 29px */
@@ -41,22 +29,16 @@
   border-radius: 4px;
   transition: background-color 300ms;
 }
-.field input:hover,
-.field input:focus {
+.container input:hover,
+.container input:focus {
   background-color: white;
 }
-.field input::placeholder {
+.container input::placeholder {
   color: var(--lneutral-dark);
 }
 
-.field svg {
-  width: var(--px16);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--px8);
-}
-
-.fields span {
-  align-self: flex-end;
+.container em {
+  display: block;
+  grid-column: 1/-1;
+  text-align: right;
 }

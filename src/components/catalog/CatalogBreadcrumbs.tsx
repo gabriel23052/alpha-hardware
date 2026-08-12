@@ -2,51 +2,45 @@ import { useSearchParams } from "react-router";
 
 import CatalogBreadcrumb from "./CatalogBreadcrumb";
 
-import type { JafhUpdateField } from "@hooks/useJafh";
-
 import { CATEGORIES } from "../../config";
 
 import classes from "./CatalogBreadcrumbs.module.css";
 
-type Props = {
-  search: string;
-  category: string;
-  saleId: string;
-  updateFormField: JafhUpdateField<string>;
-  updateCategory: (newCategory: string) => void;
-};
+const CATEGORIES_NAMES = CATEGORIES.map((c) => c.name);
 
-const CatalogBreadcrumbs = ({
-  search,
-  category,
-  saleId,
-  updateFormField,
-  updateCategory,
-}: Props) => {
-  const [params] = useSearchParams();
+const CatalogBreadcrumbs = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const removeFilter = (formId: "saleId" | "search" | "category") => {
-    if (formId === "category") {
-      updateCategory("");
-      return;
-    }
-    updateFormField(formId, "");
+  const remove = (id: string) => {
+    setSearchParams((prev) => {
+      prev.delete(id);
+      return prev;
+    });
   };
+
+  const saleId = searchParams.get("sale");
+  const search = searchParams.get("search");
+  const category = searchParams.get("category");
 
   return (
     <div className={classes.container}>
-      {saleId !== "" && (
-        <CatalogBreadcrumb close={() => removeFilter("saleId")}>
-          {params.get("saleName") || `Promoção ${saleId}`}
+      {saleId && (
+        <CatalogBreadcrumb
+          close={() => {
+            remove("sale");
+            remove("saleName");
+          }}
+        >
+          {searchParams.get("saleName") || `Promoção ${saleId}`}
         </CatalogBreadcrumb>
       )}
-      {search !== "" && (
-        <CatalogBreadcrumb close={() => removeFilter("search")}>
+      {search && (
+        <CatalogBreadcrumb close={() => remove("search")}>
           {`Busca por: "${search}"`}
         </CatalogBreadcrumb>
       )}
-      {CATEGORIES.map((c) => c.name).includes(category) && (
-        <CatalogBreadcrumb close={() => removeFilter("category")}>
+      {CATEGORIES_NAMES.includes(category || "") && (
+        <CatalogBreadcrumb close={() => remove("category")}>
           {CATEGORIES.find((cat) => cat.name === category)?.label}
         </CatalogBreadcrumb>
       )}

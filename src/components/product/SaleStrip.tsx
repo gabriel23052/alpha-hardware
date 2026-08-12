@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
+import type { TProductSale } from "../../app.types";
+
 import { timeRemaining } from "@utils/timeRemaining";
 
 import classes from "./SaleStrip.module.css";
 
 type Props = {
-  sale: IProductSale;
+  sale: TProductSale;
   mode: "card" | "fullPage";
 };
 

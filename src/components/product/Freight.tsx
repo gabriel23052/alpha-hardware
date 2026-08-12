@@ -1,5 +1,7 @@
 import React from "react";
 
+import type { TFreight } from "../../app.types";
+
 import parsePrice from "@utils/parsePrice";
 
 import SVGDisclaimer from "@svg/disclaimer.svg?react";
@@ -7,7 +9,7 @@ import SVGDisclaimer from "@svg/disclaimer.svg?react";
 import classes from "./Freight.module.css";
 
 // Temporário
-const freightData: IFreight = {
+const freightData: TFreight = {
   cep: "12345-678",
   options: [
     {

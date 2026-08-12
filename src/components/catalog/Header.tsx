@@ -1,3 +1,5 @@
+import type { TCatalogSorts } from "../../app.types";
+
 import Breadcrumbs from "./Breadcrumbs";
 import SortSelect from "./SortSelect";
 
@@ -6,10 +8,10 @@ import SVGFilter from "@svg/filter.svg?react";
 import classes from "./Header.module.css";
 
 type Props = {
-  sort: IProductSort | undefined;
+  sort: TCatalogSorts | undefined;
   filterContainerId: string;
   productsAmount: number;
-  setSort: (sort: IProductSort | "") => void;
+  setSort: (sort: TCatalogSorts | "") => void;
   openMobileFilter: () => void;
 };
 

@@ -1,10 +1,12 @@
 import { Link } from "react-router";
 
+import type { TProduct } from "../../app.types";
+
 import classes from "./SearchSuggestions.module.css";
 
 type Props = {
   listId: string;
-  results: IProduct_Suggestion[];
+  results: TProduct["suggestion"][];
   query: string;
   show: boolean;
 };

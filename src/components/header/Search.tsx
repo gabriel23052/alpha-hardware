@@ -8,6 +8,8 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router";
 
+import type { TProduct } from "../../app.types";
+
 import SearchSuggestions from "./SearchSuggestions";
 
 import useFakeAPI from "@hooks/useFakeAPI";
@@ -33,7 +35,7 @@ const Search = () => {
 
   const navigate = useNavigate();
 
-  const request = useFakeAPI<IProduct_Suggestion[]>("GET api/products/query");
+  const request = useFakeAPI<TProduct["suggestion"][]>("GET api/products/query");
 
   const form = useAppForm({
     defaultValues: { search: "" },

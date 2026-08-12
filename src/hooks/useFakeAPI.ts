@@ -2,6 +2,15 @@ import { useEffect, useRef, useState } from "react";
 
 import { Main, type Routes } from "@fakeAPI/Main";
 
+type RequestBodyData =
+  | number
+  | string
+  | boolean
+  | RequestBodyData[]
+  | { [key: string]: RequestBodyData };
+
+type RequestBody = Record<string, RequestBodyData>;
+
 type Response<T = unknown> =
   | {
       success: true;
@@ -9,25 +18,27 @@ type Response<T = unknown> =
     }
   | {
       success: false;
-      error: {
-        id: string;
-        message: string;
-      };
+      error: ResponseError;
     };
 
-type FakeAPIRequest = {
+export type ResponseError = {
+  id: string;
+  message: string;
+};
+
+type Request = {
   response: Promise<Response>;
   cancel: () => void;
 };
 
 export default function useFakeAPI<T>(route: Routes) {
   const [data, setData] = useState<null | T>(null);
-  const [error, setError] = useState<null | IFakeApiError>(null);
+  const [error, setError] = useState<null | ResponseError>(null);
   const [loading, setLoading] = useState(false);
 
-  const activeRequest = useRef<null | FakeAPIRequest>(null);
+  const activeRequest = useRef<null | Request>(null);
 
-  async function fetch(body?: IFakeApiBody): Promise<Response<T>> {
+  async function fetch(body?: RequestBody): Promise<Response<T>> {
     activeRequest.current?.cancel();
     activeRequest.current = Main.request(route, body);
     setLoading(true);
@@ -46,7 +57,7 @@ export default function useFakeAPI<T>(route: Routes) {
     }
     setData(response.data as T);
     setLoading(false);
-    return response as IFakeApiResponse<T>;
+    return response as Response<T>;
   }
 
   function cancel() {

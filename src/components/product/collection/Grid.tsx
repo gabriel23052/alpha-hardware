@@ -1,7 +1,8 @@
+import type { TProduct } from "../../../app.types";
 import Card from "../card/Card";
 
 type Props = {
-  products: IProduct_Card[];
+  products: TProduct["card"][];
   mode: "default" | "sale" | "hideActions";
   className?: string;
 };

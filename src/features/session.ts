@@ -1,7 +1,9 @@
+import type { TUser } from "../app.types";
+
 import { useSessionStore } from "@stores/useSessionStore";
 
 const session = {
-  start: (user: IUser) => {
+  start: (user: TUser) => {
     useSessionStore.setState({ user, isLoggedIn: true });
   },
 

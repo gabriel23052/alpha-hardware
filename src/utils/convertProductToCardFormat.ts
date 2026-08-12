@@ -1,7 +1,9 @@
+import type { TProduct } from "../app.types";
+
 export function convertProductToCardFormat(
-  product: IProduct_Full,
-): IProduct_Card {
-  const result: IProduct_Card = {
+  product: TProduct["default"],
+): TProduct["card"] {
+  const result: TProduct["card"] = {
     id: product.id,
     name: product.name,
     price: product.price,

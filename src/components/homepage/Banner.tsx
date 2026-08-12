@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+import type { TBanner } from "../../app.types";
+import type { ResponseError } from "@hooks/useFakeAPI";
+
 import SkeletonLoading from "@components/ui/SkeletonLoading";
 import ErrorMessage from "@components/ui/ErrorMessage";
 
 import classes from "./Banner.module.css";
 
 type Props = {
-  data: IBanner | undefined;
+  data: TBanner | undefined;
   loading: boolean;
-  error: IFakeApiError | null;
+  error: ResponseError | null;
 };
 
 const Banner = ({ data, loading, error }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
 
   const sortResponsiveImages = () => {
-    return (data as IBanner).responsiveVersions.sort(
+    return (data as TBanner).responsiveVersions.sort(
       (a, b) => a.width - b.width,
     );
   };

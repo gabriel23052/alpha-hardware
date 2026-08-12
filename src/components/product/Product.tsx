@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
+import type { TProduct } from "../../app.types";
+
 import ErrorMessage from "@components/ui/ErrorMessage";
 import Actions from "./Actions";
 import Gallery from "./Gallery";
@@ -15,8 +17,8 @@ import { recentlyViewed } from "@features/recentlyViewed";
 import classes from "./Product.module.css";
 
 const Product = ({ productId }: { productId: string }) => {
-  const productRequest = useFakeAPI<IProduct_Full>("GET api/products/id");
-  const relatedProductsRequest = useFakeAPI<IProduct_Card[]>(
+  const productRequest = useFakeAPI<TProduct["default"]>("GET api/products/id");
+  const relatedProductsRequest = useFakeAPI<TProduct["card"][]>(
     "GET api/products/related",
   );
 

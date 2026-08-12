@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 
+import type { TProduct } from "../../app.types";
+
 import Price from "./Price";
 import Freight from "./Freight";
 import SaleStrip from "./SaleStrip";
@@ -10,7 +12,7 @@ import SVGCartAdd from "@svg/cartAdd.svg?react";
 import classes from "./Actions.module.css";
 
 type Props = {
-  product: IProduct_Full;
+  product: TProduct["default"];
 };
 
 const Actions = ({ product }: Props) => {

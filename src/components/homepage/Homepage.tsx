@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import type { TBanner, TCollection, TSale } from "../../app.types";
+
 import Banner from "./Banner";
 import Categories from "./Categories";
 import Social from "./Social";
@@ -11,20 +13,20 @@ import usePageTitle from "@hooks/usePageTitle";
 import useFakeAPI from "@hooks/useFakeAPI";
 
 type HomeBanners = {
-  sale: IBanner;
-  ad: IBanner;
+  sale: TBanner;
+  ad: TBanner;
 };
 
 type HomeCollections = {
-  first: IProductCollection;
-  second: IProductCollection;
+  first: TCollection;
+  second: TCollection;
 };
 
 const Homepage = () => {
   usePageTitle("Alpha Hardware");
 
   const bannersRequest = useFakeAPI<HomeBanners>("GET api/homepage/banners");
-  const saleRequest = useFakeAPI<ISale>("GET api/homepage/sale");
+  const saleRequest = useFakeAPI<TSale>("GET api/homepage/sale");
   const collectionsRequest = useFakeAPI<HomeCollections>(
     "GET api/homepage/collections",
   );

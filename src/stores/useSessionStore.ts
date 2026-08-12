@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import type { TUser } from "../app.types";
+
 const LOCAL_STORAGE_KEY = "session-persistence";
 
 type SessionStore =
@@ -10,7 +12,7 @@ type SessionStore =
     }
   | {
       isLoggedIn: true;
-      user: IUser;
+      user: TUser;
     };
 
 const useSessionStore = create(

@@ -1,3 +1,7 @@
+import type { TProduct } from "../../../app.types";
+
+import type { ResponseError } from "@hooks/useFakeAPI";
+
 import Grid from "./Grid";
 import RelatedSkeleton from "./RelatedSkeleton";
 import UnderlinedTitle from "@components/ui/UnderlinedTitle";
@@ -6,9 +10,9 @@ import ErrorMessage from "@components/ui/ErrorMessage";
 import classes from "./Related.module.css";
 
 type Props = {
-  data: IProduct_Card[] | null;
+  data: TProduct["card"][] | null;
   loading: boolean;
-  error: IFakeApiError | null;
+  error: ResponseError | null;
 };
 
 const Related = ({ data, loading, error }: Props) => {
@@ -22,11 +26,7 @@ const Related = ({ data, loading, error }: Props) => {
         Produtos relacionados
       </UnderlinedTitle>
       {data && (
-        <Grid
-          className={classes.list}
-          products={data}
-          mode="hideActions"
-        />
+        <Grid className={classes.list} products={data} mode="hideActions" />
       )}
     </div>
   );

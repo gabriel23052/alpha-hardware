@@ -1,9 +1,11 @@
+import type { TProductPrice } from "../../app.types";
+
 import parsePrice from "@utils/parsePrice";
 
 import classes from "./Price.module.css";
 
 type Props = {
-  prices: IProductPrices;
+  prices: TProductPrice;
 };
 
 const Price = ({ prices }: Props) => {

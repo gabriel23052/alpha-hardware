@@ -1,3 +1,6 @@
+import type { ResponseError } from "@hooks/useFakeAPI";
+import type { TCollection } from "../../../app.types";
+
 import ErrorMessage from "@components/ui/ErrorMessage";
 import Grid from "./Grid";
 import CollectionSkeleton from "./CollectionSkeleton";
@@ -5,9 +8,9 @@ import CollectionSkeleton from "./CollectionSkeleton";
 import classes from "./Collection.module.css";
 
 type Props = {
-  data: IProductCollection | undefined;
+  data: TCollection | undefined;
   loading: boolean;
-  error: IFakeApiError | null;
+  error: ResponseError | null;
 };
 
 const Collection = ({ data, loading, error }: Props) => {

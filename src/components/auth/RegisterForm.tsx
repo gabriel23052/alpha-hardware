@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router";
 
+import type { TUser } from "../../app.types";
+
 import FormWrapper from "./FormWrapper";
 import Notice from "./Notice";
 import Alert from "@components/ui/Alert";
@@ -19,7 +21,7 @@ const RegisterForm = () => {
 
   usePageTitle("Alpha Hardware | Cadastrar-se");
 
-  const api = useFakeAPI<IUser>("POST api/auth/register");
+  const api = useFakeAPI<TUser>("POST api/auth/register");
 
   const form = useAppForm({
     defaultValues: {

@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router";
 
+import type { TUser } from "../../app.types";
+
 import FormWrapper from "./FormWrapper";
 import Alert from "@components/ui/Alert";
 
@@ -19,7 +21,7 @@ const AuthLogin = () => {
 
   const navigate = useNavigate();
 
-  const api = useFakeAPI<IUser>("POST api/auth/login");
+  const api = useFakeAPI<TUser>("POST api/auth/login");
 
   const form = useAppForm({
     defaultValues: {

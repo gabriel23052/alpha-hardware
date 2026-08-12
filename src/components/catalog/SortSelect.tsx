@@ -1,10 +1,12 @@
+import type { TCatalogSorts } from "../../app.types";
+
 import SVGSort from "@svg/sort.svg?react";
 
 import classes from "./SortSelect.module.css";
 
 type Props = {
-  sort: IProductSort | undefined;
-  setSort: (sort: IProductSort | "") => void;
+  sort: TCatalogSorts | undefined;
+  setSort: (sort: TCatalogSorts | "") => void;
 };
 
 const SORT_OPTIONS = [
@@ -22,7 +24,7 @@ const SortSelect = ({ sort, setSort }: Props) => {
         id="sort"
         name="sort"
         onChange={(e) => {
-          setSort(e.target.value as IProductSort);
+          setSort(e.target.value as TCatalogSorts);
         }}
         value={sort || ""}
       >

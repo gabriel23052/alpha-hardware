@@ -1,6 +1,13 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
 
+import type {
+  TCatalogFilter,
+  TCatalogQuery,
+  TCatalogSorts,
+  TProduct,
+} from "../../app.types";
+
 import ErrorMessage from "@components/ui/ErrorMessage";
 import FilterForm from "@components/catalog/FilterForm";
 import Grid from "@components/product/collection/Grid";
@@ -13,7 +20,7 @@ import useDebounce from "@hooks/useDebounce";
 
 import classes from "./Catalog.module.css";
 
-export type FilterFormFields = Omit<IProductFilter, "saleId" | "search ">;
+export type FilterFormFields = Omit<TCatalogFilter, "saleId" | "search ">;
 
 const FILTER_UPDATE_DELAY = 1500;
 
@@ -24,22 +31,22 @@ const Catalog = () => {
   const firstRenderRef = useRef([true, true]);
   const filterContainerID = useId();
 
-  const api = useFakeAPI<IProduct_Card[]>("GET api/products/query");
+  const api = useFakeAPI<TProduct["card"][]>("GET api/products/query");
 
-  const debouncedFetchFilter = useDebounce(() => {
-    api.fetch(query);
-  }, FILTER_UPDATE_DELAY);
-
-  const [query, setQuery] = useState<IProductQuery>(() => {
+  const [query, setQuery] = useState<TCatalogQuery>(() => {
     const category = searchParams.get("category");
     const saleId = searchParams.get("sale");
     const search = searchParams.get("search");
-    const filter: IProductFilter = {};
+    const filter: TCatalogFilter = {};
     if (saleId) filter.saleId = saleId.trim();
     if (search) filter.search = search.trim();
     if (category) filter.category = category.trim();
     return { filter, pattern: "card" };
   });
+
+  const debouncedFetchFilter = useDebounce(() => {
+    api.fetch(query);
+  }, FILTER_UPDATE_DELAY);
 
   const isFilterEmpty = Object.keys(query.filter).length === 0;
 
@@ -84,7 +91,7 @@ const Catalog = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const setFilter = (filter: IProductFilter) => {
+  const setFilter = (filter: TCatalogFilter) => {
     setQuery((prev) => {
       if (prev.sort) {
         return {
@@ -101,13 +108,13 @@ const Catalog = () => {
   };
 
   const setFilterFormFields = (filterFormFields: FilterFormFields) => {
-    const newFilter: IProductFilter = { ...filterFormFields };
+    const newFilter: TCatalogFilter = { ...filterFormFields };
     if (query.filter.saleId) newFilter.saleId = query.filter.saleId;
     if (query.filter.search) newFilter.search = query.filter.search;
     setFilter(newFilter);
   };
 
-  const setSort = (sort: IProductSort | "") => {
+  const setSort = (sort: TCatalogSorts | "") => {
     setQuery((prev) => {
       if (sort === "") {
         return { filter: prev.filter, pattern: "card" };
@@ -144,11 +151,7 @@ const Catalog = () => {
       ) : api.error ? (
         <ErrorMessage>{api.error.message}</ErrorMessage>
       ) : api.data && api.data.length > 0 ? (
-        <Grid
-          className={classes.products}
-          products={api.data}
-          mode="default"
-        />
+        <Grid className={classes.products} products={api.data} mode="default" />
       ) : (
         <p className={`text-default dneutral-dark ${classes.badFilter}`}>
           Ops! Nenhum produto encontrado, verifique os filtros

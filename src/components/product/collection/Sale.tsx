@@ -1,5 +1,9 @@
 import { Link } from "react-router";
 
+import type { TSale } from "../../../app.types";
+
+import type { ResponseError } from "@hooks/useFakeAPI";
+
 import Grid from "./Grid";
 import SaleSkeleton from "./SaleSkeleton";
 import ErrorMessage from "@components/ui/ErrorMessage";
@@ -7,9 +11,9 @@ import ErrorMessage from "@components/ui/ErrorMessage";
 import classes from "./Sale.module.css";
 
 type Props = {
-  data: ISale | null;
+  data: TSale | null;
   loading: boolean;
-  error: IFakeApiError | null;
+  error: ResponseError | null;
 };
 
 const Sale = ({ data, loading, error }: Props) => {

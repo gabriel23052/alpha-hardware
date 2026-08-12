@@ -1,12 +1,14 @@
 import React from "react";
 
+import type { TProductMedia } from "../../app.types";
+
 import classes from "./Gallery.module.css";
 
 const PRODUCT_IMG_WIDTH_HEIGHT = 320;
 const PRODUCT_SELECT_IMG_WIDTH_HEIGHT = 74;
 
 type Props = {
-  media: IProductMedia;
+  media: TProductMedia;
   alt: string;
 };
 

@@ -6,11 +6,12 @@ import Actions from "./Actions";
 import FavoriteButton from "../FavoriteButton";
 
 import classes from "./Card.module.css";
+import type { TProduct } from "../../../app.types";
 
 const PRODUCT_THUMB_SIZE = 168;
 
 type Props = {
-  product: IProduct_Card;
+  product: TProduct["card"];
   mode: "default" | "sale" | "hideActions";
 };
 

@@ -1,2 +1,63 @@
 .container {
+  min-height: 30rem;
+  padding: var(--px24);
+  border: 1px solid var(--lneutral-light);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.container li[data-animated="true"] {
+  animation: fadeout 500ms ease-out forwards;
+}
+
+.spinner {
+  width: var(--px64);
+  aspect-ratio: 1/1;
+  margin-inline: auto;
+  margin-top: var(--px64);
+  border: 3px solid var(--lneutral);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-block: var(--px64);
+}
+
+.empty svg {
+  width: auto;
+  height: 10rem;
+  margin-bottom: var(--px24);
+}
+
+.empty p {
+  width: 30ch;
+  text-align: center;
+}
+
+@keyframes rotate {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes fadeout {
+  50% {
+    scale: 0.9;
+    opacity: 0;
+  }
+
+  to {
+    scale: 0.9;
+    opacity: 0;
+  }
 }

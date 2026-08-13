@@ -39,11 +39,14 @@ const favorites = {
       useFavoritesStore.setState({ isBlockedToEdit: false });
       if (response.success) {
         toasts.emit("Produto removido dos favoritos", "success");
+        return true;
       } else {
         console.error(response.error.id);
         toasts.emit(response.error.message, "fail");
+        return false;
       }
     }
+    return false;
   },
 
   requestAllFromUser: async () => {

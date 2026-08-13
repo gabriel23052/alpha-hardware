@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 
+import type { TProduct } from "../../../app.types";
+
 import Price from "./Price";
 import SaleStrip from "../SaleStrip";
-import Actions from "./Actions";
+import Actions from "../Actions";
 import FavoriteButton from "../FavoriteButton";
 
 import classes from "./Card.module.css";
-import type { TProduct } from "../../../app.types";
 
 const PRODUCT_THUMB_SIZE = 168;
 
@@ -33,7 +34,7 @@ const Card = ({ product, mode }: Props) => {
           <p
             className={`text-default secondary-xdark bg-secondary ${classes.saleDiscont}`}
           >
-            - {product.sale.discont}%
+            {product.sale.discont}%
           </p>
         )}
         {product.sale && mode === "sale" && (
@@ -52,9 +53,9 @@ const Card = ({ product, mode }: Props) => {
             {product.name}
           </p>
         </div>
-        <Price prices={product.price} />
+        <Price prices={product.price} className={classes.price} />
       </Link>
-      {mode !== "hideActions" && <Actions />}
+      {mode !== "hideActions" && <Actions className={classes.actions} mode="card" />}
     </article>
   );
 };

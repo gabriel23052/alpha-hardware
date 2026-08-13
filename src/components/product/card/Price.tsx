@@ -5,15 +5,19 @@ import parsePrice from "@utils/parsePrice";
 import classes from "./Price.module.css";
 
 interface Props {
+  className?: string;
   prices: TProductPrice;
+  hidePreviousPrice?: boolean;
 }
 
-const Price = ({ prices }: Props) => {
+const Price = ({ className, prices, hidePreviousPrice }: Props) => {
   return (
-    <div className={classes.container}>
-      <p className={`text-default dneutral-xlight ${classes.oldPrice}`}>
-        {prices.previous ? `R$ ${parsePrice(prices.previous)}` : ""}
-      </p>
+    <div className={`${classes.container} ${className || ""}`}>
+      {!hidePreviousPrice && (
+        <p className={`text-default dneutral-xlight ${classes.oldPrice}`}>
+          {prices.previous ? `R$ ${parsePrice(prices.previous)}` : ""}
+        </p>
+      )}
       <p className={`text-small lneutral-xdark ${classes.price}`}>
         R$
         <span className="text-large-m dneutral-dark">

@@ -66,6 +66,15 @@
   overflow: hidden;
 }
 
+.price {
+  padding: 0 var(--px16);
+}
+
+.actions {
+  margin: var(--px12);
+  margin-top: 0;
+}
+
 @media (max-width: 500px) {
   .wrapper {
     grid-template-columns: 7fr 13fr;

@@ -1,62 +1,54 @@
-.wrapper {
+.container {
+  height: var(--px40);
   display: flex;
-  flex-direction: column;
-  padding: var(--px40) var(--px24);
-  border-radius: 8px;
-}
-
-.sale h2 {
-  padding: var(--px4) var(--px24);
-  border-radius: 4px 4px 0 0;
-  transition: 300ms background-color;
-}
-.sale:hover h2,
-.sale:focus h2 {
-  background-color: var(--dneutral-dark);
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--px32);
   gap: var(--px12);
 }
 
-.buyButton {
-  padding: var(--px12) var(--px64);
+.container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
+  text-align: center;
   transition: background-color 300ms;
 }
-.buyButton:hover {
+.container[data-mode="card"] a {
+  padding: var(--px8) 0;
+  flex: 1;
+}
+.container[data-mode="checkoutInfo"] a {
+  padding: 0 var(--px64);
+}
+.container a:hover {
   background-color: var(--primary-dark);
 }
-.buyButton:focus {
+.container a:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.cartButton {
-  display: block;
-  padding: var(--px8);
+.container button {
+  height: 100%;
+  padding: var(--px8) var(--px16);
   outline: 1px solid var(--lneutral-light);
   border-radius: 4px;
   cursor: pointer;
-  transition: outline-color 300ms;
+  transition: background-color 300ms;
 }
-.cartButton:hover {
+.container button:hover {
   background-color: var(--white);
 }
-.cartButton:focus {
+.container button:focus {
   outline: 2px solid var(--lneutral);
   outline-offset: 2px;
 }
 
-.cartButton svg {
-  width: 2.25rem;
-  height: var(--px24);
+.container svg {
+  width: auto;
+  height: 100%;
+  display: block;
   transition: transform 300ms;
 }
-.cartButton:hover svg,
-.cartButton:focus svg {
+.container button:hover svg {
   transform: scale(1.05);
 }

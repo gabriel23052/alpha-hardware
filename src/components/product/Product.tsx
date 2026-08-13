@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import type { TProduct } from "../../app.types";
 
 import ErrorMessage from "@components/ui/ErrorMessage";
-import Actions from "./Actions";
+import CheckoutInfo from "./CheckoutInfo";
 import Gallery from "./Gallery";
 import Related from "./collection/Related";
 import Info from "./Info";
@@ -65,7 +65,7 @@ const Product = ({ productId }: { productId: string }) => {
           media={productRequest.data.media}
           alt={productRequest.data.name}
         />
-        <Actions product={productRequest.data} />
+        <CheckoutInfo product={productRequest.data} />
       </div>
       <Related
         data={relatedProductsRequest.data}
